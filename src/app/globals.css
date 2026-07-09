@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
+/* ============================================
+   ТЕМА — всички цветове живеят тук, на едно място.
+   Смениш ли цвят тук, сменя се навсякъде в сайта.
+   ============================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bg-page: #0e0f13;        /* основен фон */
+  --bg-elevated: #14151b;    /* фон на панели/менюта */
+  --brand-from: #0ea5e9;     /* начало на бранд градиента (sky) */
+  --brand-to: #2563eb;       /* край на бранд градиента (blue) */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(1200px 600px at 70% -10%, #1b1d2a 0%, transparent 60%), var(--bg-page);
+  color: #e6e7ea;
+  min-height: 100vh;
 }
+
+/* Стил на "живия преглед", за да изглежда като истинска HTML страница */
+.preview-body h1 { font-size: 1.25rem; font-weight: 700; margin: 0 0 .35rem; }
+.preview-body h2 { font-size: 1rem; font-weight: 700; margin: .6rem 0 .3rem; }
+.preview-body p  { margin: .3rem 0; line-height: 1.4; font-size: .85rem; }
+.preview-body a  { color: #1a4de0; text-decoration: underline; }
+.preview-body ul { list-style: disc; padding-left: 1.2rem; margin: .3rem 0; font-size: .85rem; }
+.preview-body li { margin: .1rem 0; }
+.preview-body hr { margin: .6rem 0; border: none; border-top: 1px solid #ddd; }
+.preview-body small { color: #666; font-size: .75rem; }
