@@ -1,4 +1,5 @@
 // Обща информация за HTML курса (без уроците)
+// Числата за уроци и секции се смятат автоматично от index.js — не се пишат тук.
 export const meta = {
   slug: 'html',
   category: 'web',
@@ -9,7 +10,4 @@ export const meta = {
     en: 'Your first step into web development. Understand how every page on the internet is built, and start creating your own — from the first line to a full project.',
   },
   level: 'beginner',
-  rating: 4.6,
-  ratingCount: '9.2k+',
-  stats: { lessons: 16, hours: 10, problems: 117, learners: '89.1k' },
 };

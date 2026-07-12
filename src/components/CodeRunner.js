@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Editor from '@monaco-editor/react';
-import { theme } from '@/lib/theme';
+import { useLanguage } from '@/lib/language';
 
 // съответствие език -> Judge0 language_id
 const LANGUAGE_IDS = {
@@ -26,6 +26,7 @@ export default function CodeRunner({ language = 'python', starterCode = '', heig
   const [code, setCode] = useState(starterCode);
   const [output, setOutput] = useState('');
   const [running, setRunning] = useState(false);
+  const { t } = useLanguage();
 
   async function runCode() {
     setRunning(true);
@@ -63,9 +64,20 @@ export default function CodeRunner({ language = 'python', starterCode = '', heig
         <button
           onClick={runCode}
           disabled={running}
-          className={`text-sm font-semibold px-4 py-1.5 rounded-lg ${running ? 'bg-white/10 text-gray-400' : theme.button}`}
+          className={`flex items-center gap-1.5 text-sm font-semibold px-4 py-1.5 rounded-lg transition ${
+            running
+              ? 'bg-white/10 text-gray-400'
+              : 'text-white bg-gradient-to-r from-emerald-500 to-green-600 hover:opacity-90 shadow-lg shadow-emerald-500/25'
+          }`}
         >
-          {running ? '...' : '▶ Пусни'}
+          {running ? (
+            '...'
+          ) : (
+            <>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              Пусни
+            </>
+          )}
         </button>
       </div>
 
@@ -87,8 +99,8 @@ export default function CodeRunner({ language = 'python', starterCode = '', heig
 
       {/* изходът */}
       <div className="border-t border-white/10">
-        <div className="px-4 py-1.5 bg-[var(--bg-elevated)] text-xs text-gray-400">Изход</div>
-        <pre className="px-4 py-3 text-sm text-gray-200 bg-black/30 min-h-[80px] whitespace-pre-wrap">{output || <span className="text-gray-600">Натисни „Пусни", за да видиш резултата</span>}</pre>
+        <div className="px-4 py-1.5 bg-[var(--bg-elevated)] text-xs text-gray-400">{t('output')}</div>
+        <pre className="px-4 py-3 text-sm text-gray-200 bg-black/30 min-h-[80px] whitespace-pre-wrap">{output || <span className="text-gray-600">{t('run_hint')}</span>}</pre>
       </div>
     </div>
   );

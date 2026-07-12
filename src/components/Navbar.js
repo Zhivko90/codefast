@@ -1,10 +1,18 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/lib/language';
 import { theme } from '@/lib/theme';
 
 export default function Navbar() {
   const { t, lang, setLang } = useLanguage();
+  const pathname = usePathname();
+
+  // на страницата на урок навбарът не се показва
+  // (адрес от вида /course/<нещо>/lesson/<нещо>)
+  const isLesson = /^\/course\/[^/]+\/lesson\//.test(pathname || '');
+  if (isLesson) return null;
+
   const links = [t('nav_courses'), t('nav_practice')];
 
   return (

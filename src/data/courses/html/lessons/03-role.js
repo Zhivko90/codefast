@@ -1,26 +1,59 @@
-export default {
+﻿export default {
   id: 3,
-  title: { bg: 'Мястото на HTML сред другите', en: "HTML's place among the others" },
+  type: 'web',
+  label: 'coding',
+  title: { bg: 'Кажи нещо за себе си', en: 'Say something about yourself' },
+  starterCode: `<h1>Ivan</h1>`,
+  expected: '<p>',
+  checkCode: true,
+  testCase: {
+    bg: 'Добави ли изречение в <p> под заглавието?',
+    en: 'Did you add a sentence in a <p> below the heading?',
+  },
   blocks: [
-    { type: 'text', bg: 'Един сайт рядко е само HTML. Обикновено зад него стоят три технологии, които работят заедно. Ако разбереш коя за какво отговаря, всичко останало в уеб разработката ще ти идва много по-логично.', en: "A website is rarely just HTML. Usually three technologies work together behind it. Once you understand which one does what, everything else in web development will make far more sense." },
-
-    { type: 'heading', bg: 'Тримата големи', en: 'The big three' },
-    { type: 'text', bg: 'Представи си човешко тяло. HTML е скелетът — дава формата и структурата, държи всичко на място. CSS е кожата и дрехите — цветовете, шрифтовете, външният вид. JavaScript е мускулите и нервите — движението, реакциите, всичко, което се случва, когато натиснеш нещо.', en: 'Picture a human body. HTML is the skeleton — it gives shape and structure, holds everything in place. CSS is the skin and clothes — the colours, the fonts, the look. JavaScript is the muscles and nerves — the movement, the reactions, everything that happens when you click something.' },
-    { type: 'list', items: [
-      { bg: 'HTML — структурата (какво има на страницата)', en: 'HTML — the structure (what is on the page)' },
-      { bg: 'CSS — оформлението (как изглежда)', en: 'CSS — the styling (how it looks)' },
-      { bg: 'JavaScript — поведението (какво прави)', en: 'JavaScript — the behaviour (what it does)' },
-    ]},
-    { type: 'text', bg: 'Важното: скелет може да съществува и сам. Затова HTML е първи — с него страницата вече работи, макар и семпла. CSS и JavaScript само надграждат отгоре.', en: 'The key point: a skeleton can exist on its own. That is why HTML comes first — with it, the page already works, however plain. CSS and JavaScript only build on top.' },
-
-    { type: 'heading', bg: 'Още една аналогия: къща', en: 'Another analogy: a house' },
-    { type: 'text', bg: 'Ако тялото не ти допада, помисли за строеж на къща. Първо вдигаш стените и покрива — това е HTML, голата конструкция. После боядисваш и мебелираш — това е CSS. Накрая пускаш тока, водата и звънеца — това е JavaScript, нещата, които реагират.', en: "If the body doesn't click for you, think of building a house. First you raise the walls and the roof — that's HTML, the bare structure. Then you paint and furnish — that's CSS. Finally you turn on the power, the water and the doorbell — that's JavaScript, the things that respond." },
-
-    { type: 'heading', bg: 'Защо HTML носи най-много тежест', en: 'Why HTML carries the most weight' },
-    { type: 'text', bg: 'HTML не просто подрежда неща на екрана — той им дава смисъл. Когато напишеш, че нещо е заглавие, а друго е връзка, ти казваш това не само на човека, но и на търсачките и на екранните четци за хора с увредено зрение. Добрият HTML прави страницата ти намираема в Google и достъпна за всички.', en: 'HTML does more than arrange things on screen — it gives them meaning. When you mark something as a heading, or as a link, you are telling that not only to the person, but also to search engines and to screen readers for people with impaired sight. Good HTML makes your page findable on Google and usable by everyone.' },
-    { type: 'quote', bg: 'Красив сайт без добър HTML е като красива сграда без основи — изглежда добре, докато не се наложи да издържи нещо.', en: 'A beautiful site without good HTML is like a beautiful building without foundations — it looks fine until it has to hold something up.' },
-
-    { type: 'heading', bg: 'Какво следва', en: 'What comes next' },
-    { type: 'text', bg: 'В този курс се съсредоточаваме върху HTML — основата. Веднъж щом я усвоиш, CSS и JavaScript ще ти дойдат много по-леко, защото ще имаш върху какво да ги стъпиш. Натисни „Напред" и продължаваме.', en: "In this course we focus on HTML — the foundation. Once you have it, CSS and JavaScript will come far more easily, because you'll have something to build them on. Hit \"Next\" and let's continue." },
+    {
+      type: 'text',
+      bg: 'Заглавието е готово. Сега искаш едно изречение отдолу — например с какво се занимаваш.',
+      en: 'The heading is done. Now you want a sentence below it — for example, what you do.',
+    },
+    {
+      type: 'heading',
+      bg: 'Опитай наивния начин',
+      en: 'Try the naive way',
+    },
+    {
+      type: 'text',
+      bg: 'Просто напиши изречението след </h1>. Натисни Enter, слез на нов ред, напиши го. Пусни.',
+      en: 'Just write the sentence after </h1>. Press Enter, go to a new line, write it. Run.',
+    },
+    {
+      type: 'text',
+      bg: 'Работи, нали? Появява се. Но е гол текст — виси там, без да е нищо конкретно. Браузърът не знае, че това е изречение. За него е просто... букви.',
+      en: 'It works, right? It appears. But it is bare text — hanging there, without being anything in particular. The browser does not know it is a sentence. To it, this is just... letters.',
+    },
+    {
+      type: 'heading',
+      bg: 'Кажи му какво е',
+      en: 'Tell it what it is',
+    },
+    {
+      type: 'code',
+      code: '<p>Уча се да правя уебсайтове.</p>',
+    },
+    {
+      type: 'text',
+      bg: 'Буквата „p" идва от „параграф" — абзац. Обграждаш изречението и вече не е случаен текст, а абзац.',
+      en: 'The letter "p" comes from "paragraph". You wrap the sentence and it is no longer random text, but a paragraph.',
+    },
+    {
+      type: 'text',
+      bg: 'Ще кажеш: изглежда почти същото. Да. Но опитай да напишеш две изречения едно под друго БЕЗ <p> — ще видиш, че се слепват в един ред, колкото и пъти да натиснеш Enter. С <p> всяко си стои самò.',
+      en: 'You will say: it looks almost the same. Yes. But try writing two sentences one below the other WITHOUT <p> — you will see they glue into one line, no matter how many times you press Enter. With <p> each stands on its own.',
+    },
+    {
+      type: 'quote',
+      bg: 'Първият урок за уеб: празните редове, които ти виждаш в кода, за браузъра не съществуват.',
+      en: 'The first lesson of the web: the blank lines you see in your code do not exist for the browser.',
+    },
   ],
 };

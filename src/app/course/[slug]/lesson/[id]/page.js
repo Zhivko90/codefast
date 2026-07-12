@@ -2,137 +2,48 @@
 
 import { use, useState } from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { useRouter, notFound } from 'next/navigation';
 import { useLanguage } from '@/lib/language';
 import { theme } from '@/lib/theme';
 import { getLesson } from '@/core/getCourse';
+import { lessonViews, resolveType } from '@/components/lessons';
 
-function extractBody(code) {
-  const m = code.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-  return m ? m[1].trim() : code;
-}
-
-function highlight(code) {
-  return code
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/(&lt;\/?)([a-z0-9!]+)/g, '$1<span style="color:#7dd3fc">$2</span>');
-}
-
-function CodePreview({ code }) {
+// етикет на урока (Концепция / Пример / Код / Въпрос / Pro)
+function LessonBadge({ lesson, t }) {
+  const map = {
+    concept: { key: 'label_concept', cls: 'text-fuchsia-300 border-fuchsia-500/30 bg-fuchsia-500/10' },
+    example: { key: 'label_example', cls: 'text-orange-300 border-orange-500/30 bg-orange-500/10' },
+    coding:  { key: 'label_coding',  cls: 'text-sky-300 border-sky-500/30 bg-sky-500/10' },
+    mcq:     { key: 'label_mcq',     cls: 'text-violet-300 border-violet-500/30 bg-violet-500/10' },
+    pro:     { key: 'label_pro',     cls: 'text-amber-300 border-amber-500/30 bg-amber-500/10' },
+  };
+  // ако урокът няма изричен label, познаваме по типа
+  const kind = lesson.label ?? (lesson.quiz ? 'mcq' : lesson.type === 'text' ? 'concept' : 'coding');
+  const b = map[kind] ?? map.concept;
   return (
-    <div className="flex flex-col gap-3 h-full">
-      <div className="rounded-lg overflow-hidden border border-white/10 shrink-0">
-        <div className="flex items-center gap-1.5 px-3 py-2 bg-[var(--bg-elevated)] border-b border-white/10">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-          <span className="ml-2 text-[11px] text-gray-500">index.html</span>
-        </div>
-        <pre className="bg-[var(--bg-elevated)] px-3 py-3 text-[11px] leading-relaxed overflow-x-auto"><code className="text-gray-300" dangerouslySetInnerHTML={{ __html: highlight(code) }} /></pre>
-      </div>
-      <div className="rounded-lg overflow-hidden border border-white/10 flex flex-col flex-1 min-h-0">
-        <div className="flex items-center gap-1.5 px-3 py-2 bg-[#2a2b31] shrink-0">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-          <div className="flex-1 mx-2 flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#1a1b20] text-[10px] text-gray-500">
-            codefast.local
-          </div>
-        </div>
-        <div className="bg-white text-black px-4 py-3 preview-body flex-1 overflow-auto" dangerouslySetInnerHTML={{ __html: extractBody(code) }} />
-      </div>
-    </div>
-  );
-}
-
-function Quiz({ questions, lang, t }) {
-  const [answers, setAnswers] = useState({});     // избран отговор за всеки въпрос
-  const [checked, setChecked] = useState({});     // проверен ли е въпросът
-
-  return (
-    <div className="flex flex-col gap-8">
-      {questions.map((question, qi) => {
-        const chosen = answers[qi];
-        const isChecked = checked[qi];
-        const isCorrect = chosen === question.correct;
-
-        return (
-          <div key={qi}>
-            <p className="text-white font-medium mb-4">{qi + 1}. {question.q[lang]}</p>
-            <div className="flex flex-col gap-2">
-              {question.options.map((opt, oi) => {
-                let cls = 'border-white/10 hover:border-white/30';
-                if (isChecked && oi === question.correct) cls = 'border-emerald-500/60 bg-emerald-500/10';
-                else if (isChecked && oi === chosen) cls = 'border-rose-500/60 bg-rose-500/10';
-                else if (!isChecked && oi === chosen) cls = 'border-sky-500/60 bg-sky-500/10';
-                return (
-                  <button key={oi}
-                    onClick={() => !isChecked && setAnswers({ ...answers, [qi]: oi })}
-                    className={`text-left px-4 py-3 rounded-xl border text-sm text-gray-200 transition flex items-center gap-3 ${cls}`}>
-                    <span className={`w-4 h-4 rounded-full border shrink-0 ${oi === chosen ? 'border-sky-400 bg-sky-400/40' : 'border-white/30'}`} />
-                    {opt[lang]}
-                  </button>
-                );
-              })}
-            </div>
-
-            {!isChecked ? (
-              <button
-                disabled={chosen === undefined}
-                onClick={() => setChecked({ ...checked, [qi]: true })}
-                className={`mt-3 px-5 py-2 rounded-lg text-sm font-semibold transition ${chosen === undefined ? 'bg-white/5 text-gray-500 cursor-not-allowed' : theme.button}`}>
-                {t('quiz_submit')}
-              </button>
-            ) : (
-              <div className={`mt-4 rounded-xl border p-4 ${isCorrect ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-rose-500/30 bg-rose-500/5'}`}>
-                <p className={`font-semibold mb-2 ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}`}>
-                  {isCorrect ? '✓ ' + t('quiz_correct') : '✕ ' + t('quiz_wrong')}
-                </p>
-                {!isCorrect && (
-                  <p className="text-sm text-gray-300 mb-2">
-                    <span className="text-gray-400">{t('quiz_answer')} </span>
-                    {question.options[question.correct][lang]}
-                  </p>
-                )}
-                <p className="text-sm text-gray-400"><span className="text-gray-300">{t('quiz_explain')} </span>{question.explain[lang]}</p>
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function Blocks({ blocks, lang }) {
-  return (
-    <div className="flex flex-col gap-4">
-      {blocks.map((b, i) => {
-        if (b.type === 'heading') return <h2 key={i} className="text-lg font-bold text-white mt-3">{b[lang]}</h2>;
-        if (b.type === 'text') return <p key={i} className="text-gray-300 leading-relaxed">{b[lang]}</p>;
-        if (b.type === 'quote') return <p key={i} className="border-l-2 border-sky-500/50 pl-4 text-gray-400 italic">{b[lang]}</p>;
-        if (b.type === 'list') return (
-          <ul key={i} className="flex flex-col gap-2">
-            {b.items.map((it, j) => (
-              <li key={j} className="flex gap-3 text-gray-300 leading-relaxed"><span className="text-sky-400 mt-1">›</span><span>{it[lang]}</span></li>
-            ))}
-          </ul>
-        );
-        return null;
-      })}
-    </div>
+    <span className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full border ${b.cls}`}>{t(b.key)}</span>
   );
 }
 
 export default function LessonPage({ params }) {
   const { slug, id } = use(params);
-  const { t, lang } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const data = getLesson(slug, id);
   if (!data) return notFound();
 
-  const { course, lesson, index, total, nextId } = data;
+  const { course, lesson, index, total, nextId, module, moduleIndex, moduleTotal, section } = data;
+
+  const prevId = index > 0 ? course.lessons[index - 1].id : null;
+  const go = (lessonId) => { if (lessonId) router.push(`/course/${slug}/lesson/${lessonId}`); };
+
+  // на границата на модула ли сме?
+  const atModuleEnd = moduleTotal > 0 && moduleIndex === moduleTotal - 1;
+  const atModuleStart = moduleIndex === 0;
+
+  const View = lessonViews[resolveType(lesson)] || lessonViews.text;
   const progress = Math.round(((index + 1) / total) * 100);
 
   return (
@@ -140,92 +51,180 @@ export default function LessonPage({ params }) {
       {/* СТРАНИЧНО МЕНЮ */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex">
-          <div className="w-72 max-w-[80vw] bg-[var(--bg-elevated)] border-r border-white/10 p-5 overflow-y-auto">
-            <div className="flex items-center justify-between mb-6">
-              <span className="font-bold text-white">{course.title[lang]}</span>
-              <button onClick={() => setMenuOpen(false)} className="text-gray-400 hover:text-white">✕</button>
+          <aside className="w-[340px] max-w-[85vw] bg-[var(--bg-elevated)] border-r border-white/10 flex flex-col">
+            {/* глава */}
+            <div className="p-5 border-b border-white/10">
+              <div className="flex items-start justify-between gap-3 mb-4">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center p-2 shrink-0">
+                    <img src={course.icon} alt="" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-bold text-white truncate">{course.title[lang]}</p>
+                    <Link href={`/course/${slug}`} className="text-xs text-sky-300 hover:text-white transition">
+                      {t('syllabus')} ↗
+                    </Link>
+                  </div>
+                </div>
+                <button onClick={() => setMenuOpen(false)} className="text-gray-400 hover:text-white shrink-0">✕</button>
+              </div>
+
+              <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <div className={`h-full ${theme.brandGradient} transition-all`} style={{ width: `${progress}%` }} />
+              </div>
+              <p className="text-[11px] text-gray-400 mt-2">{progress}% {t('completed_short')}</p>
             </div>
-            <div className="flex flex-col gap-1">
-              {course.lessons.map((l, i) => (
-                <Link key={l.id} href={`/course/${slug}/lesson/${l.id}`} onClick={() => setMenuOpen(false)}
-                  className={`px-3 py-2 rounded-lg text-sm transition ${i === index ? 'bg-sky-500/15 text-sky-300 border border-sky-500/20' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>
-                  {l.title[lang]}
-                </Link>
+
+            {/* дървото: секции → модули → уроци */}
+            <div className="flex-1 overflow-y-auto p-2">
+              {(course.sections ?? []).map((sec) => (
+                <SectionBlock
+                  key={sec.id}
+                  sec={sec}
+                  lang={lang}
+                  t={t}
+                  slug={slug}
+                  currentId={lesson.id}
+                  openByDefault={sec.id === section?.id}
+                  onNavigate={() => setMenuOpen(false)}
+                />
               ))}
             </div>
-          </div>
-          <div className="flex-1 bg-black/50" onClick={() => setMenuOpen(false)} />
+          </aside>
+          <div className="flex-1 bg-black/60" onClick={() => setMenuOpen(false)} />
         </div>
       )}
 
       {/* ГОРНА ЛЕНТА */}
-      <div className="sticky top-16 z-40 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-3 sm:gap-4">
-          <button onClick={() => setMenuOpen(true)} className="text-gray-300 hover:text-white transition" aria-label="menu">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <div className="sticky top-0 z-40 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
+        <div className="w-full px-4 sm:px-6 h-14 flex items-center gap-3">
+          <Link href={`/course/${slug}`} aria-label={t('back')}
+            className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          </Link>
+
+          {/* хамбургер — отваря страничното меню */}
+          <button onClick={() => setMenuOpen(true)} aria-label={t('syllabus')}
+            className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/>
+            </svg>
           </button>
-          <div className="flex-1 flex items-center gap-3">
-            <span className="text-xs text-gray-500 shrink-0">{index + 1} / {total}</span>
-            <div className="flex-1 h-1.5 rounded-full bg-white/10 overflow-hidden">
-              <div className={`h-full ${theme.brandGradient} transition-all`} style={{ width: `${progress}%` }} />
-            </div>
-            <span className="text-xs text-sky-300 font-medium shrink-0">{progress}%</span>
-          </div>
-          {nextId && <Link href={`/course/${slug}/lesson/${nextId}`} className={`text-sm ${theme.accent} shrink-0`}>{t('next')} ›</Link>}
-        </div>
-      </div>
 
-      {/* ТАБОВЕ */}
-      <div className="border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center gap-8">
-          <button className="py-3 text-sm font-semibold text-white border-b-2 border-sky-500">{t('tab_statement')}</button>
-          <button className="py-3 text-sm text-gray-500 hover:text-gray-300 transition">{t('tab_ai')}</button>
-        </div>
-      </div>
+         {/* смяна на езика */}
+          <button
+            onClick={() => setLang(lang === 'bg' ? 'en' : 'bg')}
+            className={`shrink-0 text-xs font-semibold px-3 py-1.5 ${theme.buttonGhost}`}
+          >
+            {t('lang_btn')}
+          </button>
 
-      {/* СЪДЪРЖАНИЕ */}
-      {lesson.quiz ? (
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
-          <h1 className="text-2xl font-extrabold text-white mb-2">{lesson.title[lang]}</h1>
-          <p className="text-gray-400 mb-8">{t('quiz_choose')}</p>
-          <Quiz questions={lesson.questions} lang={lang} t={t} />
-        </div>
-      ) : lesson.split ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[calc(100vh-8rem)]">
-          <div className="px-4 sm:px-8 py-8 lg:overflow-y-auto">
-            <h1 className="text-2xl font-extrabold text-white mb-6">{lesson.title[lang]}</h1>
-            <Blocks blocks={lesson.blocks} lang={lang} />
-          </div>
-          <div className="border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col">
-            <div className="flex items-center gap-3 px-4 py-2.5 bg-[var(--bg-elevated)] border-b border-white/10">
-              <span className="text-[11px] font-semibold tracking-wider text-gray-400">{t('preview_label')}</span>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 text-[11px] text-gray-400">codefast.local</div>
-            </div>
-            <iframe title="preview" srcDoc={lesson.demo} className="bg-white flex-1 w-full border-0" />
-          </div>
-        </div>
-      ) : (
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 lg:gap-12 items-stretch">
-          <div>
-            <h1 className="text-2xl font-extrabold text-white mb-6">{lesson.title[lang]}</h1>
-            <Blocks blocks={lesson.blocks} lang={lang} />
-          </div>
-          {lesson.demo && (
-            <div className="h-full">
-              <CodePreview code={lesson.demo} />
-            </div>
-          )}
-        </div>
-      )}
+          {/* СРЕДА: назад — точки — напред */}
+          <div className="flex-1 flex items-center justify-center gap-3">
+            <button onClick={() => go(prevId)} disabled={!prevId}
+              title={atModuleStart ? t('prev_module_btn') : undefined}
+              className={`shrink-0 h-7 px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${prevId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+              {atModuleStart && prevId && <span className="hidden sm:inline pr-1">{t('prev_module_btn')}</span>}
+            </button>
 
-      {/* БУТОН НАПРЕД */}
-      <div className="border-t border-white/10 mt-4">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex justify-end">
-          <Link href={nextId ? `/course/${slug}/lesson/${nextId}` : `/course/${slug}`} className={`px-8 py-3 ${theme.button}`}>
+            <div className="flex items-center">
+              {(module?.lessons ?? course.lessons).map((l, i) => {
+                const done = i < moduleIndex;
+                const current = i === moduleIndex;
+                return (
+                  <div key={l.id} className="flex items-center">
+                    {i > 0 && <span className={`w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
+                    <button onClick={() => go(l.id)} title={l.title[lang]}
+                      className={`rounded-full transition-all duration-300 ${
+                        current ? 'lesson-dot-current w-3.5 h-3.5 bg-gradient-to-br from-sky-400 to-emerald-400'
+                        : done ? 'w-2.5 h-2.5 bg-emerald-400 hover:scale-125'
+                        : 'w-2.5 h-2.5 bg-transparent border border-white/25 hover:border-white/50'}`} />
+                  </div>
+                );
+              })}
+            </div>
+
+            <button onClick={() => go(nextId)} disabled={!nextId}
+              title={atModuleEnd ? t('next_module') : undefined}
+              className={`shrink-0 h-7 px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${nextId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
+              {atModuleEnd && nextId && <span className="hidden sm:inline pl-1">{t('next_module')}</span>}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <span className="text-xs text-gray-400 font-semibold tabular-nums ml-1">{moduleIndex + 1} / {moduleTotal}</span>
+          </div>
+
+          <Link href={nextId ? `/course/${slug}/lesson/${nextId}` : `/course/${slug}`}
+            className={`shrink-0 flex items-center gap-1.5 px-5 py-2 text-sm ${theme.button}`}>
             {t('next')}
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6"/></svg>
           </Link>
         </div>
       </div>
+
+      <View lesson={lesson} lang={lang} />
+    </div>
+  );
+}
+
+// секция в менюто (акордеон)
+function SectionBlock({ sec, lang, t, slug, currentId, openByDefault, onNavigate }) {
+  const [open, setOpen] = useState(openByDefault);
+
+  return (
+    <div className="mb-1">
+      <button onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-left text-white font-semibold hover:bg-white/5 transition">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+          className={`shrink-0 text-gray-500 transition-transform ${open ? 'rotate-0' : '-rotate-90'}`}>
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+        <span className="text-sm">{sec.title[lang]}</span>
+      </button>
+
+      {open && (
+        <div className="pl-3">
+          {sec.modules.map((mod) => (
+            <ModuleBlock key={mod.id} mod={mod} lang={lang} t={t} slug={slug} currentId={currentId} onNavigate={onNavigate} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// модул в менюто
+function ModuleBlock({ mod, lang, t, slug, currentId, onNavigate }) {
+  const hasCurrent = mod.lessons.some((l) => String(l.id) === String(currentId));
+  const [open, setOpen] = useState(hasCurrent);
+
+  return (
+    <div className="mb-0.5">
+      <button onClick={() => setOpen((v) => !v)}
+        className={`w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-left text-sm transition ${
+          hasCurrent ? 'text-white bg-white/[0.06]' : 'text-gray-300 hover:bg-white/5'
+        }`}>
+        <span className="truncate">{mod.title[lang]}</span>
+        {mod.locked && <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full border text-amber-300 border-amber-500/30 bg-amber-500/10">{t('label_pro')}</span>}
+      </button>
+
+      {open && (
+        <div className="pl-3 flex flex-col">
+          {mod.lessons.map((l) => {
+            const active = String(l.id) === String(currentId);
+            return (
+              <Link key={l.id} href={`/course/${slug}/lesson/${l.id}`} onClick={onNavigate}
+                className={`flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[13px] transition ${
+                  active ? 'bg-sky-500/10 text-sky-200' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                }`}>
+                <span className="truncate">{l.title[lang]}</span>
+                <LessonBadge lesson={l} t={t} />
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
