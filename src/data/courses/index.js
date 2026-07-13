@@ -1,19 +1,20 @@
 // ============================================
 // РЕГИСТЪР НА КУРСОВЕТЕ
-// Тук се изброяват всички курсове. Нов курс = нов ред тук
-// + съответната папка с meta и уроци.
+//
+// Курсът е ПАПКА. Нищо не се пише на ръка.
+// Списъкът идва от src/data/courses/registry.js, който се генерира:
+//   node scripts/build-registry.mjs
+//
+// Този файл е само мост за стария код, който вика allCourses / coursesBySlug.
 // ============================================
-import { html } from './html/index.js';
+import { getCourse, listCourses } from '@/core/getCourse';
 
-// всички курсове, подредени за показване в каталога
-export const allCourses = [
-  html,
-  // css,
-  // javascript,
-  // ... следващите курсове идват тук
-];
+// всички курсове, сглобени за даден език (за каталога)
+export function allCourses(lang = 'bg') {
+  return listCourses().map((slug) => getCourse(slug, lang)).filter(Boolean);
+}
 
-// бърз достъп по slug (за страниците [slug])
-export const coursesBySlug = Object.fromEntries(
-  allCourses.map((c) => [c.slug, c])
-);
+// един курс по slug
+export function courseBySlug(slug, lang = 'bg') {
+  return getCourse(slug, lang);
+}

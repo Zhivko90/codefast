@@ -3,8 +3,11 @@
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { courses } from '@/lib/courses';
+import { allCourses } from '@/data/courses';
 import { theme } from '@/lib/theme';
+
+// Каталогът чете от РЕГИСТЪРА. Нов курс = нова папка → появява се тук сам.
+// Числата се броят от самия курс. Никой не ги преписва на ръка.
 
 export default function CatalogPage() {
   const t = useTranslations('catalog');
@@ -13,8 +16,10 @@ export default function CatalogPage() {
   const lang = useLocale();
 
   const [query, setQuery] = useState('');
+
+  const courses = allCourses(lang);
   const filtered = courses.filter((x) =>
-    x.title[lang].toLowerCase().includes(query.toLowerCase())
+    (x.title ?? '').toLowerCase().includes(query.toLowerCase())
   );
 
   return (
@@ -46,34 +51,40 @@ export default function CatalogPage() {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filtered.map((x) => (
-            <Link
-              key={x.slug}
-              href={`/course/${x.slug}`}
-              className={`group ${theme.card} ${theme.cardHover} p-6`}
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-2 shadow-lg shrink-0">
-                  <img src={x.icon} alt="" className="w-full h-full object-contain" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-white leading-snug group-hover:text-sky-300 transition-colors">
-                    {x.title[lang]}
-                  </h3>
-                  <span className={`inline-block mt-1.5 text-xs px-2 py-0.5 rounded-md border ${theme.level[x.level]}`}>
-                    {c('level_' + x.level)}
-                  </span>
-                </div>
-              </div>
+          {filtered.map((x) => {
+            // истинските числа — броят се от курса, не се преписват
+            const lessonCount = x.lessons.length;
+            const sectionCount = x.sections.length;
 
-              {/* само истински числа */}
-              <div className="text-sm text-gray-500">
-                {x.lessons > 0 && `${x.lessons} ${s('stat_lessons')}`}
-                {x.lessons > 0 && x.sections > 0 && ' • '}
-                {x.sections > 0 && `${x.sections} ${s('stat_sections')}`}
-              </div>
-            </Link>
-          ))}
+            return (
+              <Link
+                key={x.slug}
+                href={`/course/${x.slug}`}
+                className={`group ${theme.card} ${theme.cardHover} p-6`}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-2 shadow-lg shrink-0">
+                    <img src={x.icon} alt="" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-white leading-snug group-hover:text-sky-300 transition-colors">
+                      {x.title}
+                    </h3>
+                    <span className={`inline-block mt-1.5 text-xs px-2 py-0.5 rounded-md border ${theme.level[x.level]}`}>
+                      {c('level_' + x.level)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* само истински числа */}
+                <div className="text-sm text-gray-500">
+                  {lessonCount > 0 && `${lessonCount} ${s('stat_lessons')}`}
+                  {lessonCount > 0 && sectionCount > 0 && ' • '}
+                  {sectionCount > 0 && `${sectionCount} ${s('stat_sections')}`}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>
