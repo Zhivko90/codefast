@@ -7,11 +7,11 @@ import { Blocks } from './shared';
 import { useAuth } from '@/lib/auth';
 import { fetchCode, saveCode, removeCode, markDone } from '@/lib/progress';
 
-const COURSE = 'html';
-
-// Урокът вече идва СГЛОБЕН за езика.
-// lesson.title е низ. lesson.blocks[n].text е низ. Компонентът не знае кой език е.
-export default function WebLesson({ lesson, lang }) {
+// Урокът идва СГЛОБЕН за езика. lesson.title е низ, lesson.blocks[n].text е низ.
+//
+// ⚠ КУРСЪТ идва отвън. Не се предполага.
+// Зашитото 'html' смесваше напредъка: CSS урок 1 щеше да презапише HTML урок 1.
+export default function WebLesson({ lesson, lang, course }) {
   const t = useTranslations('lesson');
   const { user } = useAuth();
 
@@ -27,7 +27,7 @@ export default function WebLesson({ lesson, lang }) {
   useEffect(() => {
     let alive = true;
     (async () => {
-      const saved = await fetchCode(user?.id, COURSE, lesson.id);
+      const saved = await fetchCode(user?.id, course, lesson.id);
       if (!alive) return;
       const c = saved ?? starter;
       setCode(c);
@@ -35,7 +35,7 @@ export default function WebLesson({ lesson, lang }) {
       setReady(true);
     })();
     return () => { alive = false; };
-  }, [user?.id, lesson.id, starter]);
+  }, [user?.id, course, lesson.id, starter]);
 
   // живият преглед — опреснява се сам, докато пишеш
   useEffect(() => {
@@ -47,11 +47,11 @@ export default function WebLesson({ lesson, lang }) {
   useEffect(() => {
     if (!ready) return;
     const id = setTimeout(() => {
-      if (code === starter) removeCode(user?.id, COURSE, lesson.id);
-      else saveCode(user?.id, COURSE, lesson.id, code);
+      if (code === starter) removeCode(user?.id, course, lesson.id);
+      else saveCode(user?.id, course, lesson.id, code);
     }, 800);
     return () => clearTimeout(id);
-  }, [code, ready, user?.id, lesson.id, starter]);
+  }, [code, ready, user?.id, course, lesson.id, starter]);
 
   // ПРОВЕРКАТА — мека.
   // expected === ''  →  „мина си, ако си пипнал кода". Това е урок 1.
@@ -73,14 +73,14 @@ export default function WebLesson({ lesson, lang }) {
       errorTag: ok ? null : 'main',
     });
     setPreview(code);
-    if (ok) markDone(user?.id, COURSE, lesson.id);
+    if (ok) markDone(user?.id, course, lesson.id);
   };
 
   const reset = () => {
     setCode(starter);
     setPreview(starter);
     setResult(null);
-    removeCode(user?.id, COURSE, lesson.id);
+    removeCode(user?.id, course, lesson.id);
   };
 
   return (

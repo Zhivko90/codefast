@@ -9,7 +9,7 @@ import { markDone } from '@/lib/progress';
 // Урокът идва СГЛОБЕН за езика.
 // question.q е низ. question.options е масив от НИЗОВЕ. question.explain е низ.
 // В логиката остава само question.correct (номер).
-export default function QuizLesson({ lesson }) {
+export default function QuizLesson({ lesson, course }) {
   const { user } = useAuth();
   const t = useTranslations('lesson');
 
@@ -67,10 +67,11 @@ export default function QuizLesson({ lesson }) {
   const finished = qi >= questions.length;
 
   // куизът е минат, щом човек стигне до края
+// куизът е минат, щом човек стигне до края
   useEffect(() => {
     if (!finished) return;
-    markDone(user?.id, 'html', lesson.id);
-  }, [finished, lesson.id, user?.id]);
+    markDone(user?.id, course, lesson.id);
+  }, [finished, course, lesson.id, user?.id]);
 
   const submit = () => {
     if (chosen === null) return;

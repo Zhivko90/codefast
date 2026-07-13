@@ -5,13 +5,13 @@ import { Blocks } from './shared';
 import { useAuth } from '@/lib/auth';
 import { markDone } from '@/lib/progress';
 
-// Урокът идва СГЛОБЕН за езика. lesson.title е низ.
-export default function TextLesson({ lesson }) {
+// Курсът идва отвън. Не се предполага.
+export default function TextLesson({ lesson, course }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    markDone(user?.id, 'html', lesson.id);
-  }, [lesson.id, user?.id]);
+    markDone(user?.id, course, lesson.id);
+  }, [course, lesson.id, user?.id]);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">

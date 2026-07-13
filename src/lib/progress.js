@@ -2,55 +2,64 @@
 
 import { supabase } from './supabase';
 
-const DONE = 'codefast-done-';   // codefast-done-19
-const CODE = 'codefast-lesson-'; // codefast-lesson-19
+// ⚠ КУРСЪТ Е В КЛЮЧА.
+// Беше: codefast-done-19  →  HTML урок 19 и CSS урок 19 бяха един и същ ключ.
+// Базата винаги е знаела курса. localStorage — не. Затова човек БЕЗ профил
+// щеше да види чужд напредък и чужд код в момента, в който има втори курс.
+// Сега: codefast-done-html-19
+const DONE = (course, id) => `codefast-done-${course}-${id}`;
+const CODE = (course, id) => `codefast-lesson-${course}-${id}`;
+
+const DONE_PREFIX = (course) => `codefast-done-${course}-`;
+const CODE_PREFIX = (course) => `codefast-lesson-${course}-`;
 
 // ---------- ЛОКАЛНО (когато няма профил) ----------
 
-export function localDone() {
+export function localDone(course) {
   const out = new Set();
+  const p = DONE_PREFIX(course);
   try {
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if (k?.startsWith(DONE) && localStorage.getItem(k) === '1') {
-        out.add(Number(k.slice(DONE.length)));
+      if (k?.startsWith(p) && localStorage.getItem(k) === '1') {
+        out.add(Number(k.slice(p.length)));
       }
     }
   } catch {}
   return out;
 }
 
-export function markLocalDone(lessonId) {
-  try { localStorage.setItem(DONE + lessonId, '1'); } catch {}
+export function markLocalDone(course, lessonId) {
+  try { localStorage.setItem(DONE(course, lessonId), '1'); } catch {}
 }
 
-export function getLocalCode(lessonId) {
-  try { return localStorage.getItem(CODE + lessonId); } catch { return null; }
+export function getLocalCode(course, lessonId) {
+  try { return localStorage.getItem(CODE(course, lessonId)); } catch { return null; }
 }
 
-export function setLocalCode(lessonId, content) {
-  try { localStorage.setItem(CODE + lessonId, content); } catch {}
+export function setLocalCode(course, lessonId, content) {
+  try { localStorage.setItem(CODE(course, lessonId), content); } catch {}
 }
 
-export function clearLocalCode(lessonId) {
-  try { localStorage.removeItem(CODE + lessonId); } catch {}
+export function clearLocalCode(course, lessonId) {
+  try { localStorage.removeItem(CODE(course, lessonId)); } catch {}
 }
 
 // ---------- БАЗАТА (когато има профил) ----------
 
 export async function fetchProgress(userId, course) {
-  if (!userId) return localDone();
+  if (!userId) return localDone(course);
   const { data, error } = await supabase
     .from('progress')
     .select('lesson_id')
     .eq('user_id', userId)
     .eq('course', course);
-  if (error) return localDone();          // няма мрежа → показваме локалното
+  if (error) return localDone(course);          // няма мрежа → показваме локалното
   return new Set(data.map((r) => r.lesson_id));
 }
 
 export async function markDone(userId, course, lessonId) {
-  markLocalDone(lessonId);                // локално винаги, за да е мигновено
+  markLocalDone(course, lessonId);              // локално винаги, за да е мигновено
   if (!userId) return;
   await supabase
     .from('progress')
@@ -61,7 +70,7 @@ export async function markDone(userId, course, lessonId) {
 }
 
 export async function fetchCode(userId, course, lessonId) {
-  if (!userId) return getLocalCode(lessonId);
+  if (!userId) return getLocalCode(course, lessonId);
   const { data, error } = await supabase
     .from('code')
     .select('content')
@@ -69,12 +78,12 @@ export async function fetchCode(userId, course, lessonId) {
     .eq('course', course)
     .eq('lesson_id', lessonId)
     .maybeSingle();
-  if (error || !data) return getLocalCode(lessonId);
+  if (error || !data) return getLocalCode(course, lessonId);
   return data.content;
 }
 
 export async function saveCode(userId, course, lessonId, content) {
-  setLocalCode(lessonId, content);
+  setLocalCode(course, lessonId, content);
   if (!userId) return;
   await supabase
     .from('code')
@@ -85,7 +94,7 @@ export async function saveCode(userId, course, lessonId, content) {
 }
 
 export async function removeCode(userId, course, lessonId) {
-  clearLocalCode(lessonId);
+  clearLocalCode(course, lessonId);
   if (!userId) return;
   await supabase
     .from('code')
@@ -97,14 +106,20 @@ export async function removeCode(userId, course, lessonId) {
 
 // ---------- ПРЕХВЪРЛЯНЕ при първо влизане ----------
 // Човек е учил без профил. Регистрира се. Написаното тръгва с него.
+//
+// ⚠ Белегът е ПО КУРС. Беше един за всички: прехвърлиш ли HTML,
+// CSS никога нямаше да се прехвърли.
 
-const MIGRATED = 'codefast-migrated';
+const MIGRATED = (course) => `codefast-migrated-${course}`;
 
 export async function migrateLocal(userId, course) {
   if (!userId) return;
   try {
-    if (localStorage.getItem(MIGRATED) === userId) return;  // вече е правено
+    if (localStorage.getItem(MIGRATED(course)) === userId) return;  // вече е правено
   } catch { return; }
+
+  const dp = DONE_PREFIX(course);
+  const cp = CODE_PREFIX(course);
 
   const rows = [];
   const codes = [];
@@ -114,16 +129,16 @@ export async function migrateLocal(userId, course) {
       const k = localStorage.key(i);
       if (!k) continue;
 
-      if (k.startsWith(DONE) && localStorage.getItem(k) === '1') {
-        rows.push({ user_id: userId, course, lesson_id: Number(k.slice(DONE.length)) });
+      if (k.startsWith(dp) && localStorage.getItem(k) === '1') {
+        rows.push({ user_id: userId, course, lesson_id: Number(k.slice(dp.length)) });
       }
-      if (k.startsWith(CODE)) {
+      if (k.startsWith(cp)) {
         const content = localStorage.getItem(k);
         if (content) {
           codes.push({
             user_id: userId,
             course,
-            lesson_id: Number(k.slice(CODE.length)),
+            lesson_id: Number(k.slice(cp.length)),
             content,
             updated_at: new Date().toISOString(),
           });
@@ -139,5 +154,5 @@ export async function migrateLocal(userId, course) {
     await supabase.from('code').upsert(codes, { onConflict: 'user_id,course,lesson_id' });
   }
 
-  try { localStorage.setItem(MIGRATED, userId); } catch {}
+  try { localStorage.setItem(MIGRATED(course), userId); } catch {}
 }

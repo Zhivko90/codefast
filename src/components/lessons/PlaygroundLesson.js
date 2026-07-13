@@ -3,18 +3,18 @@
 import { useEffect } from 'react';
 import { Blocks } from './shared';
 import CodeRunner from '@/components/CodeRunner';
+import { useAuth } from '@/lib/auth';
+import { markDone } from '@/lib/progress';
 
-// Урокът идва СГЛОБЕН за езика.
-// ⚠ lesson.lang тук е ЕЗИКЪТ НА ПРОГРАМИРАНЕ (python), не езикът на текста. Не ги бъркай.
-export default function PlaygroundLesson({ lesson }) {
+// ⚠ lesson.lang тук е ЕЗИКЪТ НА ПРОГРАМИРАНЕ (python), не езикът на текста.
+export default function PlaygroundLesson({ lesson, course }) {
+  const { user } = useAuth();
+
   // засега: минат при отваряне. Като има проверка в CodeRunner, ще се брои при успех.
+  // (беше localStorage направо, което заобикаляше progress.js и смесваше курсовете)
   useEffect(() => {
-    try {
-      localStorage.setItem(`codefast-done-${lesson.id}`, '1');
-    } catch {
-      // няма проблем
-    }
-  }, [lesson.id]);
+    markDone(user?.id, course, lesson.id);
+  }, [course, lesson.id, user?.id]);
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">

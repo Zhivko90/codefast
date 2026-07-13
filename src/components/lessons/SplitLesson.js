@@ -5,13 +5,13 @@ import { Blocks } from './shared';
 import { useAuth } from '@/lib/auth';
 import { markDone } from '@/lib/progress';
 
-// Урокът идва СГЛОБЕН за езика. lesson.demo е код — един за всички езици.
-export default function SplitLesson({ lesson }) {
+// Курсът идва отвън. lesson.demo е код — един за всички езици.
+export default function SplitLesson({ lesson, course }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    markDone(user?.id, 'html', lesson.id);
-  }, [lesson.id, user?.id]);
+    markDone(user?.id, course, lesson.id);
+  }, [course, lesson.id, user?.id]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[calc(100vh-8rem)]">
