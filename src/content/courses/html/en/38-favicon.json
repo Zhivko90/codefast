@@ -1,0 +1,19 @@
+{
+  "title": "The icon in the tab",
+  "testCase": "Is there a <link rel=\"icon\"> inside <head>?",
+  "blocks.0.text": "Open any website and look at the tab up top. There is a small icon next to the title. Open yours — there is a grey sheet of paper. Blank.",
+  "blocks.1.text": "It is a small thing. And that is exactly why it shows. A grey sheet says \"someone slapped this together\". An icon says \"this is a real site\".",
+  "blocks.2.text": "It is called a favicon",
+  "blocks.3.text": "From \"favourite icon\" — it used to show up in bookmarks. Today you see it in the tab, in bookmarks, in history, and on a phone, on the home screen if someone pins your site there.",
+  "blocks.4.text": "It goes in <head>, because it is not page content. Nobody reads it — it is information ABOUT the page. Just like <title> and <meta charset>, which you already know.",
+  "blocks.6.items.0": "rel=\"icon\" — what kind of link this is. Here: an icon.",
+  "blocks.6.items.1": "href — where the file is. The same path you already know.",
+  "blocks.7.text": "<link> is another tag with no closing — like <img>, <br> and <meta>. It wraps nothing, it just states something.",
+  "blocks.8.text": "You will not see it here",
+  "blocks.9.text": "Honestly: the preview on the right has no tab. There is nowhere for the icon to appear. You will see it when you open your page in a real browser — until then, trust the code.",
+  "blocks.11.text": "Above is how it will look: the green square is your icon, next to the title from <title>. The two go together — that is your page identity in the tab.",
+  "blocks.12.text": "What kind of file",
+  "blocks.13.text": "Any format works — .png, .jpg, .svg, the old-school .ico. What matters is that it is SQUARE and recognisable at 16 pixels. Your logo may be beautiful, but if it is wide with small text, in the tab it becomes a smudge. That is why a favicon is usually just the letter or the mark, not the whole logo.",
+  "blocks.14.text": "For now we will use the bike photo, just to make it work. It is rectangular and will come out squashed — but let us first see that it works at all.",
+  "blocks.15.text": "Your turn. Give your page an icon. The tag goes in <head>, and the file is /uroci/bike.jpg."
+}

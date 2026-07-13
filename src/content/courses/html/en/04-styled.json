@@ -1,0 +1,13 @@
+{
+  "title": "What you were actually doing",
+  "blocks.0.text": "For three lessons you have been writing without me explaining what you are doing. That was on purpose. Now you have experience, and the words will land on something.",
+  "blocks.1.text": "Those brackets are called tags",
+  "blocks.3.text": "<h1> is an opening tag. </h1> is a closing one — you know it by the slash. What sits between them is the content. The three together make one element.",
+  "blocks.4.text": "Almost every tag has a twin. If you open, you close. Forget to close, and the browser starts guessing where the thing ends — and it usually guesses wrong.",
+  "blocks.5.text": "And why they are needed at all",
+  "blocks.6.text": "Did you notice you never said how big the heading should be? Nor what font, nor what colour. You only said: \"this is a heading\". The browser decided how it looks.",
+  "blocks.7.text": "That is exactly what HTML is. You do not draw — you describe. You say what each thing is: this is a heading, this is a sentence, this is a link. How it gets shown is someone else's job.",
+  "blocks.8.text": "Whose job is the look, then",
+  "blocks.9.text": "CSS's. It comes later and says: \"make headings blue\", \"make sentences use this font\". But CSS can only colour something that already exists. And who creates it? You, with HTML.",
+  "blocks.10.text": "HTML says what is there. CSS says how it looks. JavaScript says what it does. In that order — because you cannot colour or animate something that does not exist."
+}

@@ -1,0 +1,14 @@
+{
+  "title": "When one item has items of its own",
+  "testCase": "Do the front and rear tyre sit INSIDE \"Tyres\"?",
+  "blocks.0.text": "You are listing what the price includes. There are two tyres — front and rear. You wrote them as new items. Run it and look.",
+  "blocks.1.text": "The list comes out with five bullets, all equal. It claims that \"Front\" is the same kind of thing as \"Frame\" and \"Bell\" — a separate part of the bike. It is not. It is part OF the tyres.",
+  "blocks.2.text": "A list is not a drawing. It makes a claim: these things are of the same kind.",
+  "blocks.3.text": "A list inside an item",
+  "blocks.4.text": "Inside a single <li> you can put a whole new <ul>. Not after it, not next to it — INSIDE, before you close the </li>. That way the new list is not a neighbour of \"Tyres\", it is its content.",
+  "blocks.7.text": "Look at the indent and the different bullet. You did not make those — the browser shows on its own that the inner list is on another level. All you said was WHAT belongs to WHAT.",
+  "blocks.8.text": "Where the closing tag goes",
+  "blocks.9.text": "This is the usual mistake: closing </li> right after \"Tyres\" and only then opening the inner <ul>. It looks almost the same, but it is not — the list is no longer inside anything. The closing </li> goes AFTER the inner list.",
+  "blocks.10.text": "You can nest an <ol> inside a <ul> and the other way round — nesting does not care about the type. And you can go deeper still, if it makes sense. Usually it does not.",
+  "blocks.11.text": "Your turn. Make the front and rear tyre belong to \"Tyres\"."
+}

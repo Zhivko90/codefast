@@ -1,0 +1,15 @@
+{
+  "title": "The tag wants details",
+  "testCase": "Did you add a lang attribute to <html>?",
+  "blocks.0.text": "So far your tags said one thing: what this is. A heading. A paragraph. A list. Sometimes, though, that is not enough.",
+  "blocks.1.text": "Soon you will want a link. \"This is a link\" — fine, but where does it lead? Or an image. \"This is an image\" — which one exactly?",
+  "blocks.2.text": "The attribute is the detail",
+  "blocks.4.text": "It lives inside the opening tag. It has a name (title), then an equals sign, then a value in quotes. Quotes are mandatory.",
+  "blocks.5.text": "Put this attribute on the sentence on the right, run, then hover with your mouse and wait a second. A little bubble appears.",
+  "blocks.6.text": "You have already seen one attribute",
+  "blocks.8.text": "There it is: `charset` is the name, `UTF-8` is the value. You just did not know what the thing was called back then.",
+  "blocks.9.text": "Add one more",
+  "blocks.11.text": "It says what language the page is in. It is nowhere visible — but Google reads it to know who to show the page to, and screen readers use it so they do not read one language with another's accent.",
+  "blocks.12.text": "Put it on your page (`bg` for Bulgarian, `en` for English).",
+  "blocks.13.text": "The tag says what a thing is. The attribute says the details about it. Everything from here on in HTML is a combination of the two."
+}

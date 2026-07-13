@@ -1,0 +1,20 @@
+{
+  "title": "A menu that is not a menu",
+  "testCase": "Did you turn the menu into a <nav> with a list inside?",
+  "blocks.0.text": "You made a menu. Three links, separated by bars. Run it — it works, it looks like a menu. All good.",
+  "blocks.1.text": "Except now look at the code and ask yourself: what here says that this is a menu?",
+  "blocks.2.text": "Nothing. There is a paragraph with three links and two bars. You put the bars there so it would look like a menu — but they are a drawing, not meaning. To a machine this is a paragraph that happens to contain links. The same as a sentence with a link in the middle.",
+  "blocks.3.text": "The same thing again: you put punctuation where a tag belongs.",
+  "blocks.4.text": "A menu is a list",
+  "blocks.5.text": "Stop and think about what a menu IS. Several equal things, each leading somewhere. Their order does not matter. You already know this tag — it is <ul>.",
+  "blocks.6.text": "And around it: <nav>. It does nothing visible. It says: here is the site navigation.",
+  "blocks.9.text": "But now it is ugly",
+  "blocks.10.text": "Exactly. It is stacked, bulleted, and takes half the screen. The first version looked better. And still the second one is right.",
+  "blocks.11.text": "Because HTML is not about how things look. It says WHAT they are. Making the menu lie flat, without bullets, with spacing — that is CSS, and it is five minutes of work. But if there is no list inside, CSS has nothing to arrange.",
+  "blocks.12.text": "Who reads <nav>",
+  "blocks.13.items.0": "A blind visitor — their screen reader announces \"navigation, 3 links\" and they skip it. With a paragraph they would sit through all of them, on every page.",
+  "blocks.13.items.1": "Google — sees where the menu is and understands the structure of your site.",
+  "blocks.13.items.2": "You, six months from now — you open the code and immediately know what is what.",
+  "blocks.14.text": "<nav> is for the MAIN navigation. Do not put it around every link. Once or twice per page — the menu at the top, maybe some links at the bottom.",
+  "blocks.15.text": "Your turn. Make the menu what it actually is: navigation with a list of links. Drop the bars."
+}

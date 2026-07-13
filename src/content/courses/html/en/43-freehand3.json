@@ -1,0 +1,16 @@
+{
+  "title": "Freehand: a page that is not alone",
+  "testCase": "Is there navigation, an image with alt, and a link out?",
+  "blocks.0.text": "Empty editor. You know what comes next.",
+  "blocks.1.text": "The task",
+  "blocks.2.text": "Your topic again. But this time the page does not stand alone — it leads somewhere and it shows something.",
+  "blocks.3.text": "It must have: a navigation menu, the kind a real site would have. An image that says what is on it, even when it is missing. At least one link out — to something worth reading on your topic. And text that holds it all together.",
+  "blocks.4.text": "The image is /uroci/bike.jpg or /uroci/bike2.jpg. They have nothing to do with your topic and that is fine — what matters is the tag, not the bike.",
+  "blocks.5.text": "I am not giving you a skeleton. I am not telling you which tag goes where. You decide.",
+  "blocks.6.text": "If you freeze at the blank screen",
+  "blocks.7.text": "That is normal. Do not start from the code — start from the question \"what do I want on this page\". Write it out in plain words, as a list on paper. Then turn it into tags, one at a time.",
+  "blocks.8.text": "A blank file is not a memory test. It is a test of whether you can decide what you want.",
+  "blocks.9.text": "It will be ugly again",
+  "blocks.10.text": "The menu will be a stacked, bulleted list. The image will be too big. Everything will be serif. You know this by now: you did not do it wrong, there is simply no CSS yet.",
+  "blocks.11.text": "But look at what you have. Three sections ago you typed \"Hello\" and wondered what happened. Now you are building a page with navigation, media and links out into the world. With nobody helping, from an empty file."
+}

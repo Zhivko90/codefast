@@ -1,0 +1,11 @@
+{
+  "title": "Notes to yourself",
+  "testCase": "Did you add a comment to the code?",
+  "blocks.0.text": "Sometimes you want to leave a note in the code — for yourself in a month, or for whoever reads it after you. But you do not want it on the page.",
+  "blocks.2.text": "Everything between <!-- and --> disappears. The browser skips it as if it were not there.",
+  "blocks.3.text": "The second use is the more useful one",
+  "blocks.4.text": "Not sure whether to keep a paragraph? Do not delete it — comment it out. If tomorrow you decide it was good, you remove the comment and get it back.",
+  "blocks.6.text": "Try it on the page on the right: comment out the second paragraph and run. It disappears. Remove the comment, run again — it comes back.",
+  "blocks.7.text": "One warning",
+  "blocks.8.text": "A comment is not visible on the page, but it is in the code — and anyone can view the code of any page with two clicks. So it is not a secret. Never write anything there you would not want read."
+}

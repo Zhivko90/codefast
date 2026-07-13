@@ -1,0 +1,10 @@
+{
+  "title": "Someone else's words",
+  "testCase": "Did you wrap the quote in a <blockquote>?",
+  "blocks.0.text": "Sometimes you quote someone. A review, a line from a film, something a friend said.",
+  "blocks.1.text": "You could put it in an ordinary <p> and add quotation marks. It would look decent. But again you would have drawn a quote instead of saying it is one.",
+  "blocks.3.text": "The browser indents it — you see that at once. But more importantly, it is now on record: these words are not yours.",
+  "blocks.4.text": "Why this matters",
+  "blocks.5.text": "Search engines tell your opinion from someone else's. If you pass off someone's text as your own, they catch it and it hurts you. Mark it as a quote — and everything is clean.",
+  "blocks.6.text": "Add a quote to your page. Something someone said about your topic."
+}

@@ -9,6 +9,8 @@ import { theme } from '@/lib/theme';
 import { getCourse } from '@/core/getCourse';
 import { fetchProgress, migrateLocal } from '@/lib/progress';
 
+// Курсът идва СГЛОБЕН за езика. Никъде няма [lang].
+
 function Stat({ icon, label, value }) {
   return (
     <div className="flex items-center gap-2 text-sm">
@@ -39,14 +41,16 @@ const IconLevel = (
 export default function CoursePage({ params }) {
   const { slug } = use(params);
 
-  const t = useTranslations('course');   // напредък, статистики, модули
-  const g = useTranslations('common');   // общи (back, нива)
-  const a = useTranslations('auth');     // подсказката за вход
-  const l = useTranslations('lesson');   // етикети (Pro), solved
+  const t = useTranslations('course');
+  const g = useTranslations('common');
+  const a = useTranslations('auth');
+  const l = useTranslations('lesson');
   const lang = useLocale();
 
   const { user, loading: authLoading } = useAuth();
-  const c = getCourse(slug);
+
+  // ⚠ езикът се подава ТУК
+  const c = getCourse(slug, lang);
 
   const [done, setDone] = useState(new Set());
 
@@ -54,7 +58,6 @@ export default function CoursePage({ params }) {
     if (!c || authLoading) return;
 
     (async () => {
-      // първо влизане с профил → локалният напредък тръгва към базата
       if (user) await migrateLocal(user.id, slug);
       setDone(await fetchProgress(user?.id, slug));
     })();
@@ -65,7 +68,6 @@ export default function CoursePage({ params }) {
   const firstLessonOf = (mod) => mod.lessons[0]?.id;
   const sections = Array.isArray(c.sections) ? c.sections : [];
 
-  // истинските числа — от курса, не на ръка
   const totalLessons = c.lessons.length;
   const totalSections = sections.length;
 
@@ -73,7 +75,6 @@ export default function CoursePage({ params }) {
   const progress = totalLessons ? Math.round((doneCount / totalLessons) * 100) : 0;
   const started = doneCount > 0;
 
-  // накъде води бутонът: първия нерешен, иначе първия изобщо
   const nextLesson = c.lessons.find((x) => !done.has(x.id)) ?? c.lessons[0];
 
   const sectionProgress = (sec) => {
@@ -100,8 +101,8 @@ export default function CoursePage({ params }) {
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight">{c.title[lang]}</h1>
-          <p className="text-gray-400 leading-relaxed max-w-2xl mb-6">{c.desc[lang]}</p>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight">{c.title}</h1>
+          <p className="text-gray-400 leading-relaxed max-w-2xl mb-6">{c.desc}</p>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2 mb-7">
             <Stat icon={IconLessons} value={totalLessons} label={t('stat_lessons')} />
@@ -145,8 +146,8 @@ export default function CoursePage({ params }) {
                   {si + 1}
                 </div>
                 <div className="min-w-0">
-                  <h2 className="text-xl font-bold text-white">{sec.title[lang]}</h2>
-                  {sec.desc && <p className="text-sm text-gray-400 mt-1.5 leading-relaxed">{sec.desc[lang]}</p>}
+                  <h2 className="text-xl font-bold text-white">{sec.title}</h2>
+                  {sec.desc && <p className="text-sm text-gray-400 mt-1.5 leading-relaxed">{sec.desc}</p>}
                   <p className={`text-xs mt-2 font-semibold ${secDone > 0 ? 'text-emerald-400' : 'text-gray-600'}`}>
                     {secDone}% {l('solved')}
                   </p>
@@ -175,7 +176,7 @@ export default function CoursePage({ params }) {
                       )}
 
                       <span className={`flex-1 min-w-0 text-[15px] font-medium truncate transition ${mod.locked ? 'text-gray-500' : 'text-sky-300 group-hover:text-white'}`}>
-                        {mod.title[lang]}
+                        {mod.title}
                       </span>
 
                       {mod.locked ? (

@@ -1,0 +1,12 @@
+{
+  "title": "Bold and italic — but not for looks",
+  "testCase": "Did you use <strong> or <em> somewhere in the text?",
+  "blocks.0.text": "Sometimes one word in a sentence weighs more than the rest. A warning. A key word. Something that must not be missed.",
+  "blocks.1.text": "Two tags",
+  "blocks.3.text": "<strong> comes out bold. <em> comes out italic. So far — obvious.",
+  "blocks.4.text": "But that is not what they are for",
+  "blocks.5.text": "Their names are not \"bold\" and \"italic\". <strong> means \"this is strong, important\". <em> comes from \"emphasis\" — a stress, a note of insistence.",
+  "blocks.6.text": "The difference is not pedantic. A program reading the page aloud for a blind person will read <strong> in a firmer voice. If you put it there just because you liked the look, you lied to it.",
+  "blocks.7.text": "Want something merely bold, without it being important? That is CSS's job. HTML says why, not how.",
+  "blocks.8.text": "Put emphasis where it makes sense in your text."
+}

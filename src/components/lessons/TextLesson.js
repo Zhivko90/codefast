@@ -5,7 +5,8 @@ import { Blocks } from './shared';
 import { useAuth } from '@/lib/auth';
 import { markDone } from '@/lib/progress';
 
-export default function TextLesson({ lesson, lang }) {
+// Урокът идва СГЛОБЕН за езика. lesson.title е низ.
+export default function TextLesson({ lesson }) {
   const { user } = useAuth();
 
   useEffect(() => {
@@ -14,8 +15,8 @@ export default function TextLesson({ lesson, lang }) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
-      <h1 className="text-2xl font-extrabold text-white mb-6">{lesson.title[lang]}</h1>
-      <Blocks blocks={lesson.blocks} lang={lang} />
+      <h1 className="text-2xl font-extrabold text-white mb-6">{lesson.title}</h1>
+      <Blocks blocks={lesson.blocks} />
     </div>
   );
 }

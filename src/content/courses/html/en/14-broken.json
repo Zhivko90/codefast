@@ -1,0 +1,11 @@
+{
+  "title": "The wreck",
+  "testCase": "Does the page show the heading and the sentence below it?",
+  "blocks.0.text": "Here is what real work looks like. Someone hands you code that does not work, and you have to figure out what is wrong with it. Today that someone is me.",
+  "blocks.1.text": "The page on the right is broken. Four things are missing — all of the same kind.",
+  "blocks.2.text": "How to search",
+  "blocks.3.text": "Do not look at the whole code at once — your head will spin. Go from top to bottom and for each tag ask one question: \"is this one closed?\".",
+  "blocks.4.text": "Remember too that <head> and <body> are siblings: one must end before the other begins.",
+  "blocks.5.text": "This is what should come out",
+  "blocks.7.text": "A forgotten closing tag is the most common mistake of a beginner. And of an expert too, honestly — they just find it faster."
+}

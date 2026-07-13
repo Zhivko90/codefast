@@ -1,0 +1,13 @@
+{
+  "title": "Why Enter does not work",
+  "testCase": "Did you wrap each sentence in a <p>?",
+  "blocks.0.text": "Look at the code on the right. Three sentences, neatly separated by blank lines. Now look at the result.",
+  "blocks.1.text": "They are glued together. All in one line, like a single long sentence. The blank lines are gone.",
+  "blocks.2.text": "Try to fight it",
+  "blocks.3.text": "Press Enter ten more times. Add twenty blank lines. Run. Nothing. The browser swallows them all.",
+  "blocks.4.text": "This is not a bug. Blank lines in code are for your eyes — to keep it readable. The browser ignores them on purpose, because otherwise every reshuffle of your code would shift the page.",
+  "blocks.5.text": "Say it with a tag",
+  "blocks.7.text": "If you want a separate paragraph — you say so explicitly. <p> does not mean \"new line\". It means \"this is a standalone paragraph\". The spacing comes as a consequence.",
+  "blocks.8.text": "Wrap the three sentences and run.",
+  "blocks.9.text": "In HTML nothing happens because you arranged it nicely. It happens because you said so."
+}

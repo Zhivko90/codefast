@@ -1,0 +1,12 @@
+{
+  "title": "Say something about yourself",
+  "testCase": "Did you add a sentence in a <p> below the heading?",
+  "blocks.0.text": "The heading is done. Now you want a sentence below it — for example, what you do.",
+  "blocks.1.text": "Try the naive way",
+  "blocks.2.text": "Just write the sentence after </h1>. Press Enter, go to a new line, write it. Run.",
+  "blocks.3.text": "It works, right? It appears. But it is bare text — hanging there, without being anything in particular. The browser does not know it is a sentence. To it, this is just... letters.",
+  "blocks.4.text": "Tell it what it is",
+  "blocks.6.text": "The letter \"p\" comes from \"paragraph\". You wrap the sentence and it is no longer random text, but a paragraph.",
+  "blocks.7.text": "You will say: it looks almost the same. Yes. But try writing two sentences one below the other WITHOUT <p> — you will see they glue into one line, no matter how many times you press Enter. With <p> each stands on its own.",
+  "blocks.8.text": "The first lesson of the web: the blank lines you see in your code do not exist for the browser."
+}

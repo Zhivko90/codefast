@@ -1,0 +1,12 @@
+{
+  "title": "Freehand: tell me about your topic",
+  "testCase": "Are there headings, paragraphs and at least one list?",
+  "blocks.0.text": "Empty editor. Again.",
+  "blocks.1.text": "The task",
+  "blocks.2.text": "Write a page about your topic that actually tells something. Not one line — a whole page someone would read to the end.",
+  "blocks.3.text": "It must have: a main heading, at least two sections with sub-headings, paragraphs, one list of something (reasons, favourites, steps — whatever fits) and some emphasis where it makes sense.",
+  "blocks.4.text": "I am not giving you a skeleton. I am not giving you an order. You decide what goes in and in what sequence.",
+  "blocks.5.text": "By the way",
+  "blocks.6.text": "It will look ugly. Serif font, everything in one column, no colours. You did nothing wrong — that is what a bare page without CSS looks like. The looks come in the next course.",
+  "blocks.7.text": "Many people quit right here, because they think that if it is ugly, they must have made a mistake. You have not. You simply have not reached the beauty part yet."
+}

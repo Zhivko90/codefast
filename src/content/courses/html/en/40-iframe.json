@@ -1,0 +1,22 @@
+{
+  "title": "A window into another site",
+  "testCase": "Did you replace the map image with an <iframe>?",
+  "blocks.0.text": "You want to show where the bike is picked up. You put in a picture of a map. It is dead: you cannot zoom, drag, or search for a street. A picture of a map is not a map.",
+  "blocks.1.text": "By the way, the image does not even exist — there is no /uroci/map.jpg. You see the broken icon. We are not going to fix it, because the fix is not a different picture.",
+  "blocks.2.text": "Not a picture. A window.",
+  "blocks.3.text": "There is a tag that does not show a picture of something, but the thing itself: a whole live page, embedded inside yours. It is called <iframe> — from \"inline frame\".",
+  "blocks.5.text": "Inside that frame ANOTHER page is running. It has its own address, its own code, its own life. It does not know about yours and yours does not know about it. You are just looking through a window.",
+  "blocks.6.text": "You look through it. You do not reach through it.",
+  "blocks.7.text": "You see one every lesson",
+  "blocks.8.text": "The preview on the right, where your page appears — it is an iframe. That is why it behaves like a separate browser inside the browser. And that is why, if you put a link there and click it, it tries to open inside the box instead of a new tab. Remember target=\"_blank\"? That is where the need came from.",
+  "blocks.9.text": "Try it with any site",
+  "blocks.10.text": "Now the obvious move is to put in google.com and see Google inside your page. Try it. You will get a blank box or a refusal message.",
+  "blocks.11.text": "You did not make a mistake. The site refused. Every site has the right to say \"I do not want to be embedded\" and most serious ones do. The reason is theft: if I could embed your bank inside my page, I could fool you into thinking you were on their site while you typed your password.",
+  "blocks.12.text": "So you only embed things that WANT to be embedded: YouTube, Google Maps, Spotify. They even hand you the code — there is an \"Embed\" button.",
+  "blocks.15.text": "Above is a drawing of what you will get. In your editor the map will be real — drag it, zoom it.",
+  "blocks.16.text": "Be careful with this",
+  "blocks.17.items.0": "A foreign page is heavy. Every iframe is a whole site being loaded. Three iframes = three sites.",
+  "blocks.17.items.1": "Do not use it for YOUR OWN parts. A menu in an iframe, a footer in an iframe — people did that twenty years ago and it was bad. For your own structure there are other tags (next section).",
+  "blocks.17.items.2": "Give it a title. A blind visitor hears \"frame\" and nothing more, unless you said what it is.",
+  "blocks.19.text": "Your turn. Remove the dead image and put a real map in its place. Use the address above — or find your own."
+}

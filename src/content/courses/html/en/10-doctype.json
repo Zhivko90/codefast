@@ -1,0 +1,12 @@
+{
+  "title": "The line nobody sees",
+  "testCase": "Did you add <!DOCTYPE html> on the first line?",
+  "blocks.0.text": "There is one line at the very top of almost every page on the internet — and it shows absolutely nothing.",
+  "blocks.2.text": "Who it talks to",
+  "blocks.3.text": "Not to the person — to the browser. It is the first thing it reads, and it is a short order: \"read me by today's rules.\"",
+  "blocks.4.text": "The web is old. Pages from twenty years ago still exist and browsers must display them. So every browser keeps old rules for old pages. If you do not tell it what you are, it starts guessing.",
+  "blocks.5.text": "Delete it and look",
+  "blocks.6.text": "Once you have added it, delete it again and run. Put it back, run again. You will see no difference at all — your page is too simple to break.",
+  "blocks.7.text": "And that is exactly the treacherous part. The difference only shows up once the page gets complex: spacing that is not what you expect, widths measured differently. The mistake does not shout — it waits for you.",
+  "blocks.8.text": "Write it out of habit, on the first line, always. Not because you will see the effect, but because you will not see the problem."
+}

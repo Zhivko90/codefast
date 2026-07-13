@@ -1,0 +1,13 @@
+{
+  "title": "Not everything is an h1",
+  "testCase": "Did you change the sub-headings to <h2>?",
+  "blocks.0.text": "Look at the page on the right. Three headings, all equally large. It looks... wrong, does it not? Like a person shouting the whole time.",
+  "blocks.1.text": "The problem is not aesthetic. The problem is that the page has no hierarchy — you cannot tell what is the main thing and what is a subsection.",
+  "blocks.2.text": "Six levels",
+  "blocks.4.text": "From <h1> to <h6>. Like a book's contents: one chapter, sections inside, subsections inside those.",
+  "blocks.5.text": "The rule",
+  "blocks.6.text": "One <h1> per page — it says what the whole page is about. Everything below it is <h2>, and subsections of <h2> are <h3>. Do not skip levels.",
+  "blocks.7.text": "And most importantly: you do not choose the level by how large you want it to look. You choose it by how important the thing is. The size is a consequence, not a goal.",
+  "blocks.8.text": "Fix the page on the right: leave one <h1> and make the other two <h2>.",
+  "blocks.9.text": "Google reads your headings to understand what the page is about. Blind people use them to jump around it. If everything is an h1, both get lost."
+}

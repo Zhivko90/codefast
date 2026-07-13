@@ -1,0 +1,23 @@
+{
+  "title": "When spaces are not enough",
+  "testCase": "Did you turn the data into a real table?",
+  "blocks.0.text": "Three bikes, three things about each: model, gears, price. You lined them up in columns with spaces. In the editor it looks perfect — everything is aligned.",
+  "blocks.1.text": "Run it.",
+  "blocks.2.text": "A mess. Everything is glued onto one line. The spaces are gone. You know this already — the browser swallows both spaces and blank lines.",
+  "blocks.3.text": "Except this time <p> and <br> will not save you. Try it: put a <br> at the end of each line. The rows separate. And the columns? Gone. \"Black\" is a long word, \"Red\" is short, and everything drifts out of line.",
+  "blocks.4.text": "You do not have a row problem. You have a COLUMN problem.",
+  "blocks.5.text": "The data is two-dimensional",
+  "blocks.6.text": "Everything you have written so far has been linear: one thing after another. A paragraph, then a paragraph. A bullet, then a bullet. Even a list goes one way — down.",
+  "blocks.7.text": "This is different. \"12 leva\" does not belong only to the row \"Red\". It belongs ALSO to the column \"Price\". Every cell has two addresses: which row and which column. That cannot be said with tags lined up one after another.",
+  "blocks.8.text": "Three tags",
+  "blocks.9.items.0": "<table> — the table itself",
+  "blocks.9.items.1": "<tr> — one row (table row)",
+  "blocks.9.items.2": "<td> — one cell inside the row (table data)",
+  "blocks.11.text": "Notice: there is no \"column\" tag. Columns happen on their own. You state only the rows and the cells inside them — and the browser sees that every row has three cells, and lines them up. A column is a consequence, not a command.",
+  "blocks.13.text": "There. The columns line up, whatever you put in the cells. A long word, a short word — the table adjusts. You did not state a single width.",
+  "blocks.14.text": "In the preview above I added borders so the grid shows. Your table will have none — borders are CSS. But the structure will be the same.",
+  "blocks.15.text": "Watch the order of the tags",
+  "blocks.16.text": "This trips people up constantly: <td> goes inside <tr>, not the other way round. A row contains cells; a cell does not contain a row. Get it backwards and the browser will quietly build something odd and you will wonder why.",
+  "blocks.17.text": "And: every row must have the same number of cells. Forget one <td> and the table skews — everything after it shifts one column to the left.",
+  "blocks.18.text": "Your turn. Turn the data into a real table. The first row holds the column names — leave it as an ordinary row for now, the next lesson will fix that."
+}

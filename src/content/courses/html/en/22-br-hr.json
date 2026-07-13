@@ -1,0 +1,16 @@
+{
+  "title": "The one time you actually need Enter",
+  "testCase": "Is the address on separate lines, inside a single paragraph?",
+  "blocks.0.text": "You added a pickup address. You wrote it on three lines, the way an address is written. Run it.",
+  "blocks.1.text": "It is glued into one line. You already know this — the browser ignores your Enter. And you know the fix: wrap each line in a <p>.",
+  "blocks.2.text": "Except it is not a fix. Try it. The three lines fly apart, with gaps between them, like three separate thoughts. But they are not three thoughts — they are one address. And they are not a list either: you cannot reorder the street and the city.",
+  "blocks.3.text": "One paragraph. A new line inside it. That is exactly what <br> is for.",
+  "blocks.6.text": "The tag with no closing",
+  "blocks.7.text": "<br> has no </br>. There is nothing for it to wrap — it holds no text, it just does something on the spot. There are only a few tags like this and you will meet them: <br>, <hr>, and later <img> and <meta>.",
+  "blocks.8.text": "The trap",
+  "blocks.9.text": "Right about now you will want to stack two or three <br> in a row to space something out. Do not. <br> does not mean \"gap\", it means \"the line ends here, but the thought does not\". Gaps are a job for CSS. Every <br> you add for air will get in your way tomorrow.",
+  "blocks.10.text": "An address, a verse, a line of a song — yes. Air between paragraphs — no.",
+  "blocks.11.text": "And <hr>",
+  "blocks.12.text": "Its relative. It shows up as a horizontal line, but it does not mean \"line\" — it means the topic changes here. Between the listing and the contacts below it, for example. If you just want a decorative line, again: CSS.",
+  "blocks.13.text": "Your turn. Make the address sit on separate lines while staying a single paragraph."
+}

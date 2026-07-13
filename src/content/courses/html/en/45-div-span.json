@@ -1,0 +1,19 @@
+{
+  "title": "The box that means nothing",
+  "testCase": "Are the three listings wrapped in a single <div>?",
+  "blocks.0.text": "The listings have a name now. Next you want all three inside ONE shared box — not each on its own, but the three together, as a section of the page.",
+  "blocks.1.text": "Try to say it. Around what should the box go? Around the three paragraphs. Except \"the three paragraphs\" is not a thing. They are three separate things that merely stand next to each other. There is no box holding them together.",
+  "blocks.2.text": "A class gives a name. It does not turn three things into one.",
+  "blocks.3.text": "The empty box",
+  "blocks.4.text": "There is a tag for this. It means nothing, looks like nothing, and does nothing. Its only job is to wrap. It is called <div>.",
+  "blocks.6.text": "Run it. Nothing changes. Absolutely nothing — and that is correct. <div> is invisible by nature. But now the three listings ARE one thing, and that thing has a name. There is something to grab.",
+  "blocks.8.text": "Above the box is drawn in so you can see what you made. In your editor you will not see it — it comes with CSS. Today you only build the box.",
+  "blocks.9.text": "And <span>",
+  "blocks.10.text": "<div> is a block — it takes a whole line, like <p>. It has a twin that is INLINE: <span>. The same emptiness, only it lives inside a sentence.",
+  "blocks.12.text": "Again, nothing shows. But now you can grab just the price in every listing — make it green, bold, whatever you decide. Without <span> the price is only letters in the middle of a sentence, with no name and no handle.",
+  "blocks.13.text": "Careful with <span>",
+  "blocks.14.text": "This is where the temptation starts. You want something bold → you reach for <span class=\"bold\">. It works. Except you already have <strong>, which means \"this matters\" — while <span class=\"bold\"> means nothing at all. Use <span> only when NO suitable tag exists. A price is not an important word; it is a price. That is why <span> is right here, and <strong> is not.",
+  "blocks.15.text": "<div> and <span> are the last resort, not the first.",
+  "blocks.16.text": "Why this matters so much — in the next lesson. I will show you what happens when someone forgets that last sentence.",
+  "blocks.17.text": "Your turn. Gather the three listings into one named <div>. And if you like, name the prices inside as well."
+}

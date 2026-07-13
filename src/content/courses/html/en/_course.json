@@ -1,0 +1,58 @@
+{
+  "title": "HTML",
+  "desc": "The language pages are built with. You touch code from the first minute — you don't watch a video, you write.",
+  "sections": {
+    "intro": {
+      "title": "Introduction to HTML",
+      "desc": "You touch code from the first minute. No theory — first you do it, then you understand why it worked.",
+      "modules": {
+        "htmlbasic": { "title": "What is HTML?" },
+        "docstruct": { "title": "Document Structure" }
+      }
+    },
+    "content": {
+      "title": "Text & Content",
+      "desc": "Bring your text to life. Hierarchy, paragraphs, emphasis and lists that mean something.",
+      "modules": {
+        "headpara": { "title": "Headings & Paragraphs" },
+        "lists": { "title": "Lists & Quotes" }
+      }
+    },
+    "media": {
+      "title": "Links, Images & Media",
+      "desc": "Your page stops being alone. You link it to others, show images, and learn why file paths break more sites than anything else.",
+      "modules": {
+        "links": { "title": "Links" },
+        "mediafiles": { "title": "Images & Media" }
+      }
+    },
+    "semantic": {
+      "title": "Meaning & Structure",
+      "desc": "Your code works. Now you learn why that is not enough — and how to write HTML that says what a thing IS, not how it looks.",
+      "modules": {
+        "meaning": { "title": "Names & Containers" }
+      }
+    },
+    "tables": {
+      "title": "Tables",
+      "desc": "Data in rows and columns. A short section — with one question almost everyone gets wrong: when a table is right, and when it is the mistake.",
+      "modules": {
+        "tablebasic": { "title": "Tables" }
+      }
+    },
+    "forms": {
+      "title": "Forms",
+      "desc": "The page stops talking and starts listening. Fields, buttons — and one tag almost nobody adds, without which the form is unusable for half the people.",
+      "modules": {
+        "formbasic": { "title": "Forms" }
+      }
+    },
+    "final": {
+      "title": "The Finish",
+      "desc": "Two things remain: telling the phone the truth, and building everything from scratch, on your own.",
+      "modules": {
+        "finish": { "title": "The Finish" }
+      }
+    }
+  }
+}

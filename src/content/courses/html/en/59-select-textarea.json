@@ -1,0 +1,20 @@
+{
+  "title": "When a field is not enough",
+  "testCase": "Is there a <select> for the model and a <textarea> for the message?",
+  "blocks.0.text": "Two fields, two problems — and they are opposites.",
+  "blocks.1.text": "First: too much freedom",
+  "blocks.2.text": "The \"Model\" field. You sell three models: Black, Red, Blue. And the field accepts anything. Someone will write \"the black one\", \"black bike\", \"the one below\", \"BLACK\", or mistype it.",
+  "blocks.3.text": "Then you sit there guessing what they ordered. And the server cannot guess at all.",
+  "blocks.4.text": "When the answers are a fixed set, do not ask an open question. Offer a choice.",
+  "blocks.6.text": "Notice value. It is what GOES to the server. The text between the tags is what the person SEES. The same pairing again: one for the machine, one for the human — exactly like <a href>.",
+  "blocks.7.text": "Second: too little room",
+  "blocks.8.text": "The \"Your message\" field. Someone wants to write three sentences — where they live, when they can come, whether they will pay cash. And the field is one line. The text slides sideways and they cannot see what they wrote at the start.",
+  "blocks.9.text": "<input> is for one line. Full stop. For more there is another tag.",
+  "blocks.11.text": "Notice: <textarea> has a closing tag. <input> does not. Odd? Not really — you can put starting text inside a textarea. Just be careful: every space inside counts, so it is written tight.",
+  "blocks.13.text": "And the three kinds of choice",
+  "blocks.14.items.0": "<select> — pick ONE from many. A dropdown. Good for more than five options.",
+  "blocks.14.items.1": "radio — pick ONE from a few, but all are visible at once. Good for two to five.",
+  "blocks.14.items.2": "checkbox — pick AS MANY as you want. Or none.",
+  "blocks.16.text": "Here is a catch that trips everyone up: radio buttons must share ONE AND THE SAME name. The name is what makes them a group — it says \"we are one question\". Give them different names and a person can pick both, and the group falls apart.",
+  "blocks.17.text": "Your turn. Make the model a choice from a list, and the message a large field."
+}

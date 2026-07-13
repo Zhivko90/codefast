@@ -1,0 +1,14 @@
+{
+  "title": "The wrapper that was missing",
+  "testCase": "Did you wrap the content in <html>, <head> and <body>?",
+  "blocks.0.text": "So far you have written bare text with tags, and it worked. The browser is forgiving — it swallows whatever you give it and tries to show it.",
+  "blocks.1.text": "But a real page has a wrapper. And it is not a formality.",
+  "blocks.2.text": "Three parts",
+  "blocks.4.text": "<html> wraps everything — this is the document itself. Inside it there are exactly two things, and they are completely different in meaning.",
+  "blocks.5.text": "The visible and the invisible",
+  "blocks.6.text": "<body> is the page a person sees. Everything you want to appear on screen goes here. Headings, sentences, images — everything.",
+  "blocks.7.text": "<head> is the opposite: nothing in it is visible. It holds information ABOUT the page — what it is called, what language it is in, who wrote it. Like a label on a box: not part of the contents, but it tells you what is inside.",
+  "blocks.8.text": "Do it",
+  "blocks.9.text": "Take your page and wrap it properly: <html> on the outside, <head> empty for now, and everything visible inside <body>.",
+  "blocks.10.text": "Run. Nothing will change on screen. That is exactly why it was easy to skip — and exactly why you must get used to writing it."
+}

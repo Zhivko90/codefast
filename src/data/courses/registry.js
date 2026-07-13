@@ -2,7 +2,7 @@
 // Пише се от: node scripts/build-registry.mjs
 
 // ── html ──
-import html_meta from './html/meta.js';
+import { meta as html_meta } from './html/meta.js';
 import html_outline from './html/outline.js';
 import html_l0 from './html/lessons/01-intro.js';
 import html_l1 from './html/lessons/02-structure.js';

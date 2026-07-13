@@ -1,0 +1,13 @@
+{
+  "title": "Why the letters break",
+  "testCase": "Did you add <meta charset=\"UTF-8\"> to the <head>?",
+  "blocks.0.text": "Sooner or later you will write something in a language with special letters. And then you will see this:",
+  "blocks.2.text": "Gibberish. The mess every beginner sees at least once and concludes they have broken something terrible.",
+  "blocks.3.text": "What is actually happening",
+  "blocks.4.text": "A computer does not store letters. It stores numbers. Every letter is a number, and the alphabet that says which number is which letter is called an encoding.",
+  "blocks.5.text": "If you write using one alphabet, and the browser reads using another — it sees your numbers but translates them with the wrong dictionary. Nonsense comes out.",
+  "blocks.6.text": "Tell it which alphabet you use",
+  "blocks.8.text": "It goes in the <head>, right at the top — before <title>. UTF-8 is the alphabet that holds everything: Cyrillic, Latin, Chinese, emoji. Today there is no reason to use anything else.",
+  "blocks.9.text": "Notice this tag has no closing twin. There is nothing to wrap — it simply announces something. There are few such tags, but they exist.",
+  "blocks.10.text": "The third invisible thing in the page's head. You are starting to sense that <head> is full of things you cannot see, but without which nothing works."
+}

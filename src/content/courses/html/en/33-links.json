@@ -1,0 +1,19 @@
+{
+  "title": "The address that does not click",
+  "testCase": "Did the address become a real link with <a href>?",
+  "blocks.0.text": "You added an address for the model. Run it and try to click it.",
+  "blocks.1.text": "Nothing. You recognise it as an address — you see \"https://\" and you know what it means. The browser sees letters. To it, this is text like \"cucumber\". An address is not a link just because it looks like one.",
+  "blocks.2.text": "The tag with two parts",
+  "blocks.3.text": "Until now your tags only had content. <a> needs a second thing: WHERE it leads. That is said in an attribute — href.",
+  "blocks.5.items.0": "Between the quotes — the address. The machine reads that.",
+  "blocks.5.items.1": "Between the tags — the text. The human reads that.",
+  "blocks.6.text": "The two are different things, and that is the whole idea. That is why the link can say \"See the model\" while leading to a long, ugly address.",
+  "blocks.7.text": "Where it opens",
+  "blocks.8.text": "By default a link opens the new page IN PLACE OF yours. Yours is gone. If you are sending someone away but want to keep them, you add a second attribute:",
+  "blocks.10.text": "Except target=\"_blank\" on its own is a security hole. The page you open gets a small amount of power over yours — it can redirect it somewhere else while the person is looking at the new tab. It opens, then swaps your site out behind your back.",
+  "blocks.12.text": "rel=\"noopener\" closes the hole. One thing to remember: target=\"_blank\" always goes with rel=\"noopener\". They are a pair.",
+  "blocks.14.text": "A link is INLINE — just like <strong>. It lives inside the sentence. So you can link a single word in the middle of a paragraph without breaking anything.",
+  "blocks.15.text": "The link text matters",
+  "blocks.16.text": "Do not write \"click here\". Someone scanning the page sees only the links — they are coloured. If they all say \"here\", the page says nothing. Write what is on the other side.",
+  "blocks.17.text": "Your turn. Make the address a real link that opens in a new tab. And give it text that says something."
+}

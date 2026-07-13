@@ -1,0 +1,22 @@
+{
+  "title": "Freehand: a page with data",
+  "testCase": "Is there a table with a header row — and a semantic page around it?",
+  "blocks.0.text": "Empty editor. Fifth time.",
+  "blocks.1.text": "The task",
+  "blocks.2.text": "Your topic again. This time the page must contain a COMPARISON — something that genuinely has rows and columns.",
+  "blocks.3.text": "Whatever fits: prices of things, specs of models, a ranking, a timetable, results, a recipe breakdown. At least three rows and three columns to be worth it.",
+  "blocks.4.text": "And around the table — a real page. A top part, navigation, main content, a bottom part. Everything you already know.",
+  "blocks.5.text": "The catch",
+  "blocks.6.text": "One <table> on the page. Exactly one. If you see a second — stop and ask yourself whether you are laying something out with it.",
+  "blocks.7.text": "And the header row must be a header REALLY. Not a first row that looks different. A header.",
+  "blocks.8.text": "How to check your table",
+  "blocks.9.text": "Take a cell somewhere in the middle — not from the first row, not from the first column. Just a cell. Look at what is in it.",
+  "blocks.10.text": "Now say out loud what it means. If you can (\"this is the price of the red bike\"), your table is real. If you cannot (\"this is… well, that is where the menu goes\"), you did not build a table. You built a grid.",
+  "blocks.11.text": "Every cell has two addresses. If you cannot name them, it is not a table.",
+  "blocks.12.text": "If you freeze",
+  "blocks.13.text": "Start from the table, not the page. It is the core — everything else exists for it. Write the data first, then wrap it in what explains it.",
+  "blocks.14.text": "And if your topic does not lend itself to a table — you have not looked at it hard enough. Everything has something to compare: prices, years, sizes, ratings, time.",
+  "blocks.15.text": "One more thing",
+  "blocks.16.text": "Your table will not have a single line. No borders, no dividers. It will look like scattered words.",
+  "blocks.17.text": "You know why by now — lines are CSS. But do not feel sorry too soon: the most beautiful tables you have ever seen are built from exactly these tags. Underneath it is the same <tr> and the same <td>."
+}

@@ -1,0 +1,23 @@
+{
+  "title": "Freehand: a page that makes sense without eyes",
+  "testCase": "Is there a header, nav, main, footer and at least one article?",
+  "blocks.0.text": "Empty editor. Fourth time.",
+  "blocks.1.text": "The task",
+  "blocks.2.text": "Your topic, again. But this time you have one extra condition, and it is the whole test:",
+  "blocks.3.text": "Write the page so that someone could understand it without seeing it.",
+  "blocks.4.text": "It must have: a top part with a logo or site title, navigation, main content, at least two standalone things inside it (articles, listings, recipes — whatever fits your topic) and a bottom part.",
+  "blocks.5.text": "Each of those has its own tag. You know them all.",
+  "blocks.6.text": "The rule",
+  "blocks.7.text": "One <div> is allowed. Just one, and only if there truly is no tag for what you are building. If you use two — you were being lazy.",
+  "blocks.8.text": "Not a single <div class=\"big-text\">. Not a single paragraph with bars instead of a menu. Not a single heading that only looks like one.",
+  "blocks.9.text": "How to check yourself",
+  "blocks.10.text": "When you are done, do this: close your eyes and read your code out loud, only the tags. \"Header. Nav. List of three links. Main. Heading one. Article. Heading two…\"",
+  "blocks.11.text": "If that gives you a sensible picture of the page — you did it. If you hear \"group, group, group\" — go back and think again.",
+  "blocks.12.text": "This is not an exercise. It is exactly what someone who cannot see your screen hears.",
+  "blocks.13.text": "If you freeze",
+  "blocks.14.text": "Do not start from the code. Draw the page on paper — rectangles. A strip at the top. Beside or below it — the menu. In the middle — the big part. At the bottom — a narrow strip.",
+  "blocks.15.text": "Now name each rectangle. If you can name it with a word (\"this is the top part\"), there is a tag for it. The code is just writing the drawing down.",
+  "blocks.16.text": "And yes",
+  "blocks.17.text": "It will be ugly again. You know why by now, and you know it is not your fault.",
+  "blocks.18.text": "But look at what is left under the ugliness: a page with meaning, that Google understands, a reader can speak, and a human can maintain. The looks are one file away. The meaning cannot be bolted on later."
+}

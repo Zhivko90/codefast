@@ -1,0 +1,21 @@
+{
+  "title": "Wreck: the listing does not work",
+  "testCase": "Does the image show — that is, is the path right?",
+  "blocks.0.text": "Somebody wrote this listing. They were in a hurry. Run it and look at it as a buyer would.",
+  "blocks.1.text": "The image is missing. The video is a black square that will not play. The model address is just letters — it does not click. One link in the menu leads nowhere. And that is only what you can see.",
+  "blocks.2.text": "There is also something you CANNOT see, but which is just as broken. Look at the menu in the code.",
+  "blocks.3.text": "I will not tell you what to fix",
+  "blocks.4.text": "Until now every lesson showed you the problem and then the fix. Not this one. Here you have a broken page and what you know.",
+  "blocks.5.text": "This is the real job. Nobody will come and tell you \"line 14 is missing controls\". You open something broken, you look at it, and you think.",
+  "blocks.6.text": "Run it. See what is missing. Ask why. Fix it. Run it again.",
+  "blocks.7.text": "Six things",
+  "blocks.8.text": "That is how many there are. You have learned every one of them already. If you get stuck, go back — there is no shame in it, people who do this for a living do the same.",
+  "blocks.9.items.0": "One is a file path.",
+  "blocks.9.items.1": "One is missing from the image entirely, and only a blind visitor notices.",
+  "blocks.9.items.2": "One is a valueless word, without which the video is dead.",
+  "blocks.9.items.3": "One looks like a menu but is not.",
+  "blocks.9.items.4": "One looks like an address but does not click.",
+  "blocks.9.items.5": "One is a link that leads into nothing. Look at it closely.",
+  "blocks.11.text": "Above is how it should look when you are done. The menu is a list, the image shows, the video has buttons, the address is a link.",
+  "blocks.12.text": "Your turn. Fix them. The test checks the image — but do not stop there, fix all six."
+}

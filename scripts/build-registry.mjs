@@ -3,9 +3,9 @@
 //
 //   node scripts/build-registry.mjs
 //
-// Пуска се и автоматично преди dev и build (виж package.json).
+// Пуска се и автоматично преди dev и build.
 
-import { readdirSync, writeFileSync, existsSync, statSync } from 'node:fs';
+import { readdirSync, writeFileSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = process.cwd();
@@ -14,6 +14,15 @@ const CONTENT = join(ROOT, 'src', 'content', 'courses');
 const OUT = join(ROOT, 'src', 'data', 'courses', 'registry.js');
 
 const dirs = (p) => (existsSync(p) ? readdirSync(p).filter((f) => statSync(join(p, f)).isDirectory()) : []);
+
+// meta.js може да е `export default {…}` или `export const meta = {…}`.
+// Не караме хората да помнят кое — разпознаваме го.
+function metaImport(varName, path, file) {
+  const src = existsSync(file) ? readFileSync(file, 'utf8') : '';
+  return /export\s+default/.test(src)
+    ? `import ${varName} from '${path}';`
+    : `import { meta as ${varName} } from '${path}';`;
+}
 
 const courses = dirs(DATA).sort();
 const L = [];
@@ -33,7 +42,7 @@ for (const course of courses) {
   const locales = dirs(join(CONTENT, course)).sort();
 
   L.push(`// ── ${course} ──`);
-  L.push(`import ${V}_meta from './${course}/meta.js';`);
+  L.push(metaImport(`${V}_meta`, `./${course}/meta.js`, join(DATA, course, 'meta.js')));
   L.push(`import ${V}_outline from './${course}/outline.js';`);
 
   slugs.forEach((s, i) => L.push(`import ${V}_l${i} from './${course}/lessons/${s}.js';`));

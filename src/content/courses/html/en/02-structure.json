@@ -1,0 +1,12 @@
+{
+  "title": "Make it big",
+  "testCase": "Did you wrap the name in <h1> and </h1>?",
+  "blocks.0.text": "Your name is there, but it is small. It sits like a random word on a blank sheet. But you want it to be a heading — large, bold, important.",
+  "blocks.1.text": "First try on your own",
+  "blocks.2.text": "Try to make it bigger. Seriously, try. You will not manage — and that is exactly the point.",
+  "blocks.3.text": "There is no way to write \"make it big\". There is no font button. There is nowhere to click. Plain text just sits there.",
+  "blocks.4.text": "Here is the tool",
+  "blocks.5.text": "You wrap the text on both sides. In front you put <h1>, behind it </h1>. The slash at the end says \"this is where it ends\".",
+  "blocks.7.text": "Do it and run. The name becomes large and bold.",
+  "blocks.8.text": "Notice what you did NOT do: you did not choose a font, you did not say how big, you did not touch colour. You only said \"this is a heading\". The rest the browser decided."
+}

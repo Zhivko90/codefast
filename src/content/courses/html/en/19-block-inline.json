@@ -1,0 +1,16 @@
+{
+  "title": "Why two paragraphs will not sit side by side",
+  "testCase": "Is the price on one line, with the amount in <strong>?",
+  "blocks.0.text": "You are selling your bike. You wrote the price as two paragraphs, because that was what you had at hand. Run it and look.",
+  "blocks.1.text": "They sit one below the other. But you want it on one line: \"Price: 25 leva\".",
+  "blocks.2.text": "Try to bring them together",
+  "blocks.3.text": "Delete the Enter between the two paragraphs and glue them next to each other. Run. They split again. Put a space between them. Same. Write them on one line — nothing changes.",
+  "blocks.4.text": "You already learned the browser ignores blank lines. This is different: even with zero blank lines, the two paragraphs still stay apart. So the split does not come from your typing. It comes from the tag itself.",
+  "blocks.5.text": "There are two kinds of tags",
+  "blocks.6.items.0": "Block — each takes a whole line and pushes the next thing down, however short it is: <p>, <h1>…<h6>",
+  "blocks.6.items.1": "Inline — they live inside the line, between the words, and do not break it: <strong>, <em>, <a>",
+  "blocks.7.text": "A block tag is a line. An inline tag is a word.",
+  "blocks.8.text": "So the fix is not to nudge the two paragraphs around — two blocks will never stand side by side. Merge them into ONE paragraph, and inside it mark only the part that should stand out:",
+  "blocks.10.text": "The line stays whole. <strong> does not break it — it only makes the words inside it bold. Why it is called \"strong\" and not \"bold\", and why it is NOT a tag for looks — in the next lesson.",
+  "blocks.12.text": "Your turn. Make the price show on one line, with the amount in bold."
+}

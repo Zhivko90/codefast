@@ -1,0 +1,12 @@
+{
+  "title": "The mess",
+  "blocks.0.text": "Six reasons crammed into one line. Technically correct — it is a sentence and it sits in a paragraph. But nobody will read it like that.",
+  "blocks.1.text": "Try to line them up",
+  "blocks.2.text": "You want each reason on its own line, one below the other. Try. Really try, before you read on.",
+  "blocks.3.text": "Press Enter between them — no good, they glue together (you know that already). Put each in its own <p> — that works, but look at the result: six paragraphs sprawled with gaps between them. It looks like six unrelated thoughts, not a list.",
+  "blocks.4.text": "Try dashes in front too. Does it work? On screen — sort of. But you have not made a list. You have drawn something that looks like a list.",
+  "blocks.5.text": "And here is the difference",
+  "blocks.6.text": "The browser does not know this is a list. Google does not know. The program reading the page aloud will say \"dash, the music, dash, the story\" — like an idiot.",
+  "blocks.7.text": "You do not have the tool. The next lesson gives it to you.",
+  "blocks.8.text": "Remember this feeling — knowing what you want and having nothing to do it with. That is how every developer feels before learning the next thing."
+}

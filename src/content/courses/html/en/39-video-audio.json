@@ -1,0 +1,22 @@
+{
+  "title": "The black rectangle",
+  "testCase": "Do the video and the audio have playback buttons (controls)?",
+  "blocks.0.text": "You know <img>. It stands to reason video works the same way: a tag, src, a path to the file. You wrote exactly that. Run it.",
+  "blocks.1.text": "A black rectangle. No buttons. You click it — nothing happens. And the audio? Nowhere to be seen. An empty space, as if you had written nothing at all.",
+  "blocks.2.text": "The files exist. The paths are right. The tags are right. And still it does not work.",
+  "blocks.3.text": "An image is looked at. A video is operated.",
+  "blocks.4.text": "Here is the difference you missed. An image just SITS there — it needs nothing but to be shown. Video and audio need someone to decide: play, pause, rewind, louder. That is, they need CONTROLS.",
+  "blocks.5.text": "And the browser will not give you buttons until you ask. You did not ask. So it showed you the video with nothing to touch it by — and that is why the audio is invisible: sound with no buttons has nothing to show.",
+  "blocks.7.text": "Notice: controls has no value. No quotes, no equals sign. It just sits there. Attributes like this mean \"yes\" simply by being present — if it is there, it is true; if not, it is not.",
+  "blocks.9.text": "Why there is a closing tag",
+  "blocks.10.text": "Odd, is it not? <img> has no </img>, yet <video> has </video> — even though neither seems to hold anything. Except video does: between the tags you can put text that shows if the browser cannot play the file.",
+  "blocks.12.text": "This is the same idea as alt in the last lesson: what is left when the main thing is missing. Only here you write it inside, not in an attribute.",
+  "blocks.13.text": "The other attributes",
+  "blocks.14.items.0": "controls — the buttons. You almost always want this.",
+  "blocks.14.items.1": "autoplay — starts on its own. Think twice: someone opens your page at the office and music blasts out of the speakers. People hate sites like that.",
+  "blocks.14.items.2": "muted — no sound. Browsers do not allow autoplay WITH sound, so the two usually go together.",
+  "blocks.14.items.3": "loop — plays over and over.",
+  "blocks.14.items.4": "poster — an image that shows until someone presses play. Otherwise you get the first frame, which is often black.",
+  "blocks.16.text": "That is what the photo you already have is for. Instead of a black rectangle — the bike. A small thing, but it shows.",
+  "blocks.17.text": "Your turn. Make the video and the audio playable. And if you like — set the photo as the poster."
+}

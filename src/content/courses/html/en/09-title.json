@@ -1,0 +1,21 @@
+{
+  "title": "The name that is not on the page",
+  "testCase": "Are there a <title> and a <meta name=\"description\"> in the <head>?",
+  "blocks.0.text": "Open any site and look at the very top — at the tab itself. Something is written there. It is not part of the page, yet there it is.",
+  "blocks.1.text": "Your page has no such name yet. Its tab probably says something meaningless, or nothing at all.",
+  "blocks.2.text": "Here is where it lives",
+  "blocks.4.text": "Inside <head> — that is, in the invisible part. Logical: this is not the page's content, it is information ABOUT it.",
+  "blocks.5.text": "Why it is not a trifle",
+  "blocks.6.text": "This text goes to three places you do not think about: the tab label, bookmarks (when someone saves the page) and Google results. So it is the first thing a stranger sees about your page — before they even open it.",
+  "blocks.7.text": "Put it on your page. Run. Nothing will change on screen — but look at the preview's tab.",
+  "blocks.8.text": "The second thing in this course that is invisible yet matters. Get used to it — the web is full of them.",
+  "blocks.9.text": "And the second line",
+  "blocks.10.text": "Go back to Google and look at one result more closely. It has TWO parts. The blue heading on top — that is the <title>, you know it now. And below it, in small grey letters, a sentence explaining what the page is about.",
+  "blocks.11.text": "Where does that come from? You never wrote it.",
+  "blocks.12.text": "If you did not write it — Google makes it up. It grabs the first words it finds on the page. Sometimes that is the menu. Sometimes it is \"Accept cookies\". Sometimes it is half a sentence, cut off mid-word.",
+  "blocks.13.text": "That is the only thing persuading a person to click. And you left it to chance.",
+  "blocks.15.text": "<meta> is another tag with no closing. It holds nothing — it states something. Here it states: this is the explanation of this page, written by me, not guessed.",
+  "blocks.17.text": "Above are the two versions. The same site. One invites, the other repels.",
+  "blocks.18.text": "Write it for a human, not a machine. One or two sentences, up to about a hundred and fifty characters — longer and Google cuts it off. Say what the person will find inside and why it is worth it.",
+  "blocks.19.text": "Your turn. Give your page a name and an explanation."
+}

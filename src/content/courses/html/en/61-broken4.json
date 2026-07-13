@@ -1,0 +1,20 @@
+{
+  "title": "Wreck: the form sends nothing",
+  "testCase": "Does the form send all of its data?",
+  "blocks.0.text": "A contact form. Run it and fill it in like a real visitor.",
+  "blocks.1.text": "It looks fine. The fields take text. The button is there. Now press it.",
+  "blocks.2.text": "Nothing. And that is only the first of six broken things.",
+  "blocks.3.text": "Six",
+  "blocks.4.text": "You have learned every one of them. Not one of them shows on screen — the form looks perfect and is nonetheless useless.",
+  "blocks.5.items.0": "One is missing entirely, and without it nothing goes anywhere.",
+  "blocks.5.items.1": "One field will arrive with no label and the server will throw it away.",
+  "blocks.5.items.2": "One field lies about what it is. On a phone it gives the wrong keyboard.",
+  "blocks.5.items.3": "Every label is a paragraph. Click them — nothing. The reader cannot tell which belongs to what.",
+  "blocks.5.items.4": "The two radio buttons are not a group. You can select both.",
+  "blocks.5.items.5": "One field wants three sentences and has room for half of one.",
+  "blocks.5.items.6": "And the button is pretending to be a button.",
+  "blocks.6.text": "A form that looks fine and does not work is worse than one that looks broken. At least the broken one is honest.",
+  "blocks.7.text": "Notice I listed seven things and said six. One of them is from an earlier section and has nothing to do with forms. Find it.",
+  "blocks.9.text": "Above is how it should look. The labels click, the radios are a group, the message has room.",
+  "blocks.10.text": "Your turn. Fix it all. The test only checks that a form exists — do not stop there."
+}

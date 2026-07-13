@@ -9,6 +9,8 @@ import { getLesson } from '@/core/getCourse';
 import { lessonViews, resolveType } from '@/components/lessons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
+// Курсът идва СГЛОБЕН за езика. Никъде няма [lang].
+
 // етикет на урока (Концепция / Пример / Код / Въпрос / Pro)
 function LessonBadge({ lesson, t }) {
   const map = {
@@ -18,7 +20,6 @@ function LessonBadge({ lesson, t }) {
     mcq:     { key: 'label_mcq',     cls: 'text-violet-300 border-violet-500/30 bg-violet-500/10' },
     pro:     { key: 'label_pro',     cls: 'text-amber-300 border-amber-500/30 bg-amber-500/10' },
   };
-  // ако урокът няма изричен label, познаваме по типа
   const kind = lesson.label ?? (lesson.quiz ? 'mcq' : lesson.type === 'text' ? 'concept' : 'coding');
   const b = map[kind] ?? map.concept;
   return (
@@ -29,15 +30,16 @@ function LessonBadge({ lesson, t }) {
 export default function LessonPage({ params }) {
   const { slug, id } = use(params);
 
-  const t = useTranslations('lesson');   // урок, редактор, етикети
-  const c = useTranslations('course');   // програма, модули, напредък
-  const g = useTranslations('common');   // общи (back)
+  const t = useTranslations('lesson');
+  const c = useTranslations('course');
+  const g = useTranslations('common');
   const lang = useLocale();
 
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const data = getLesson(slug, id);
+  // ⚠ езикът се подава ТУК. Оттук надолу никой не знае кой език е.
+  const data = getLesson(slug, id, lang);
   if (!data) return notFound();
 
   const { course, lesson, index, total, nextId, module, moduleIndex, moduleTotal, section } = data;
@@ -45,7 +47,6 @@ export default function LessonPage({ params }) {
   const prevId = index > 0 ? course.lessons[index - 1].id : null;
   const go = (lessonId) => { if (lessonId) router.push(`/course/${slug}/lesson/${lessonId}`); };
 
-  // на границата на модула ли сме?
   const atModuleEnd = moduleTotal > 0 && moduleIndex === moduleTotal - 1;
   const atModuleStart = moduleIndex === 0;
 
@@ -66,7 +67,7 @@ export default function LessonPage({ params }) {
                     <img src={course.icon} alt="" className="w-full h-full object-contain" />
                   </div>
                   <div className="min-w-0">
-                    <p className="font-bold text-white truncate">{course.title[lang]}</p>
+                    <p className="font-bold text-white truncate">{course.title}</p>
                     <Link href={`/course/${slug}`} className="text-xs text-sky-300 hover:text-white transition">
                       {c('syllabus')} ↗
                     </Link>
@@ -87,7 +88,6 @@ export default function LessonPage({ params }) {
                 <SectionBlock
                   key={sec.id}
                   sec={sec}
-                  lang={lang}
                   t={t}
                   slug={slug}
                   currentId={lesson.id}
@@ -136,7 +136,7 @@ export default function LessonPage({ params }) {
                 return (
                   <div key={l.id} className="flex items-center">
                     {i > 0 && <span className={`w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
-                    <button onClick={() => go(l.id)} title={l.title[lang]}
+                    <button onClick={() => go(l.id)} title={l.title}
                       className={`rounded-full transition-all duration-300 ${
                         current ? 'lesson-dot-current w-3.5 h-3.5 bg-gradient-to-br from-sky-400 to-emerald-400'
                         : done ? 'w-2.5 h-2.5 bg-emerald-400 hover:scale-125'
@@ -172,7 +172,7 @@ export default function LessonPage({ params }) {
 }
 
 // секция в менюто (акордеон)
-function SectionBlock({ sec, lang, t, slug, currentId, openByDefault, onNavigate }) {
+function SectionBlock({ sec, t, slug, currentId, openByDefault, onNavigate }) {
   const [open, setOpen] = useState(openByDefault);
 
   return (
@@ -183,13 +183,13 @@ function SectionBlock({ sec, lang, t, slug, currentId, openByDefault, onNavigate
           className={`shrink-0 text-gray-500 transition-transform ${open ? 'rotate-0' : '-rotate-90'}`}>
           <path d="M6 9l6 6 6-6" />
         </svg>
-        <span className="text-sm">{sec.title[lang]}</span>
+        <span className="text-sm">{sec.title}</span>
       </button>
 
       {open && (
         <div className="pl-3">
           {sec.modules.map((mod) => (
-            <ModuleBlock key={mod.id} mod={mod} lang={lang} t={t} slug={slug} currentId={currentId} onNavigate={onNavigate} />
+            <ModuleBlock key={mod.id} mod={mod} t={t} slug={slug} currentId={currentId} onNavigate={onNavigate} />
           ))}
         </div>
       )}
@@ -198,7 +198,7 @@ function SectionBlock({ sec, lang, t, slug, currentId, openByDefault, onNavigate
 }
 
 // модул в менюто
-function ModuleBlock({ mod, lang, t, slug, currentId, onNavigate }) {
+function ModuleBlock({ mod, t, slug, currentId, onNavigate }) {
   const hasCurrent = mod.lessons.some((l) => String(l.id) === String(currentId));
   const [open, setOpen] = useState(hasCurrent);
 
@@ -208,7 +208,7 @@ function ModuleBlock({ mod, lang, t, slug, currentId, onNavigate }) {
         className={`w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-left text-sm transition ${
           hasCurrent ? 'text-white bg-white/[0.06]' : 'text-gray-300 hover:bg-white/5'
         }`}>
-        <span className="truncate">{mod.title[lang]}</span>
+        <span className="truncate">{mod.title}</span>
         {mod.locked && <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full border text-amber-300 border-amber-500/30 bg-amber-500/10">{t('label_pro')}</span>}
       </button>
 
@@ -221,7 +221,7 @@ function ModuleBlock({ mod, lang, t, slug, currentId, onNavigate }) {
                 className={`flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[13px] transition ${
                   active ? 'bg-sky-500/10 text-sky-200' : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}>
-                <span className="truncate">{l.title[lang]}</span>
+                <span className="truncate">{l.title}</span>
                 <LessonBadge lesson={l} t={t} />
               </Link>
             );

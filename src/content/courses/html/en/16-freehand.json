@@ -1,0 +1,11 @@
+{
+  "title": "Freehand: the skeleton, from memory",
+  "testCase": "Is there a DOCTYPE, html, head with a title, and body with content?",
+  "blocks.0.text": "Empty editor. No hints in the code. No dashes to fill in.",
+  "blocks.1.text": "The task",
+  "blocks.2.text": "Write the whole page for your topic — from scratch, from memory. The skeleton, the name in the tab, the line at the very top, the heading and a few sentences.",
+  "blocks.3.text": "Do not go back and copy from earlier lessons. Try on your own first. You will get something wrong — that is part of the exercise.",
+  "blocks.4.text": "Why exactly this matters",
+  "blocks.5.text": "There is a difference between \"I understand it when I see it\" and \"I can write it\". The first is a feeling. The second is a skill. Only one of them will help you in front of an empty file on a Monday morning.",
+  "blocks.6.text": "If you manage without looking back — you know the skeleton. If not — go back, look, and try again tomorrow. That is not failure, that is how memory works."
+}

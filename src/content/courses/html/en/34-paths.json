@@ -1,0 +1,22 @@
+{
+  "title": "Why the image does not show",
+  "testCase": "Does the image show — that is, is the path to it correct?",
+  "blocks.0.text": "The image exists. It is called exactly bike.jpg. You asked for it exactly like that. Run it.",
+  "blocks.1.text": "A broken icon. Nothing else. This is the beginner failure, and it is almost never about the tag — it is about the PATH.",
+  "blocks.2.text": "Where the browser looks from",
+  "blocks.3.text": "You wrote \"bike.jpg\" thinking: there it is, right there in the folder. But the browser knows nothing about your folder. It knows only ADDRESSES. To it, \"bike.jpg\" means: a file with that name, in the same place this page came from.",
+  "blocks.4.text": "And the image is not there. It is in another folder. So the browser looks where you told it, does not find it, and shows you the broken square. It did not make a mistake. You gave it the wrong address.",
+  "blocks.5.text": "A path is not a file name. A path is directions.",
+  "blocks.6.text": "Two ways to give directions",
+  "blocks.7.text": "A RELATIVE path — you give directions FROM HERE, from where the page is. Like saying \"second door on the right\". It depends on where you stand.",
+  "blocks.8.items.0": "bike.jpg — next to me, in the same folder",
+  "blocks.8.items.1": "images/bike.jpg — go into the images folder, it is there",
+  "blocks.8.items.2": "../bike.jpg — the two dots mean \"go up one folder\"",
+  "blocks.8.items.3": "../../images/bike.jpg — up twice, then down into images",
+  "blocks.9.text": "An ABSOLUTE path — you give directions FROM THE ROOT of the site, no matter where you are. Like giving the full street address. It starts with a slash.",
+  "blocks.11.text": "That leading slash is everything. Without it: \"look next to me\". With it: \"start from the beginning of the site\". One character, two different sets of directions.",
+  "blocks.13.text": "Which one, when",
+  "blocks.14.text": "Relative paths are handy while the site is small. But the moment you move the page into another folder, all its paths break at once — because \"second door on the right\" now means a different door. Absolute paths do not break. So for images and shared files, go with those.",
+  "blocks.15.text": "In this course the images live in a folder called uroci at the root. So their address is always /uroci/name.jpg.",
+  "blocks.16.text": "Your turn. Fix the path so the image shows. It exists — it is called bike.jpg and it lives in uroci."
+}

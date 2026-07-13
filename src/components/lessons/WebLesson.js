@@ -9,16 +9,13 @@ import { fetchCode, saveCode, removeCode, markDone } from '@/lib/progress';
 
 const COURSE = 'html';
 
+// Урокът вече идва СГЛОБЕН за езика.
+// lesson.title е низ. lesson.blocks[n].text е низ. Компонентът не знае кой език е.
 export default function WebLesson({ lesson, lang }) {
   const t = useTranslations('lesson');
-  const p = useTranslations('practice');
   const { user } = useAuth();
 
-  // starterCode може да е низ или { bg, en }
-  const starter =
-    typeof lesson.starterCode === 'object'
-      ? (lesson.starterCode[lang] ?? lesson.starterCode.bg ?? '')
-      : (lesson.starterCode || '');
+  const starter = lesson.starterCode ?? '';
 
   const [code, setCode] = useState(starter);
   const [preview, setPreview] = useState(starter);
@@ -56,14 +53,15 @@ export default function WebLesson({ lesson, lang }) {
     return () => clearTimeout(id);
   }, [code, ready, user?.id, lesson.id, starter]);
 
-  // ПРОВЕРКАТА (както беше — мека)
+  // ПРОВЕРКАТА — мека.
+  // expected === ''  →  „мина си, ако си пипнал кода". Това е урок 1.
   const submit = () => {
     const expected = (lesson.expected ?? '').trim();
     const body = code.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const visible = (body ? body[1] : code).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
     const ok =
-      lesson.expected === ''
+      expected === ''
         ? code.trim() !== starter.trim()
         : lesson.checkCode
           ? code.toLowerCase().replace(/\s+/g, ' ').includes(expected.toLowerCase())
@@ -75,7 +73,6 @@ export default function WebLesson({ lesson, lang }) {
       errorTag: ok ? null : 'main',
     });
     setPreview(code);
-
     if (ok) markDone(user?.id, COURSE, lesson.id);
   };
 
@@ -88,29 +85,27 @@ export default function WebLesson({ lesson, lang }) {
 
   return (
     <WorkBench
-      title={lesson.title[lang]}
-
+      title={lesson.title}
       tabs={[{ id: 'statement', label: t('rail_statement') }]}
       activeTab={tab}
       onTab={setTab}
-
       code={code}
       onCode={setCode}
       language="html"
-
       onRun={() => setPreview(code)}
       onSubmit={submit}
       onReset={reset}
-      canSubmit={!!lesson.expected}
-
+      /* ⚠ БЕШЕ: !!lesson.expected — при expected:'' бутонът „Предай" изчезваше.
+         Урок 1 нямаше как да бъде предаден. Всеки web-урок се предава. */
+      canSubmit
       preview={preview}
       result={result}
-      checkLabels={{ main: lesson.testCase?.[lang] ?? t('test_cases') }}
+      checkLabels={{ main: lesson.testCase ?? t('test_cases') }}
       why={result && !result.passed ? t('submit_no') : null}
       lang={lang}
     >
-      <h1 className="text-xl font-extrabold text-white mb-5">{lesson.title[lang]}</h1>
-      <Blocks blocks={lesson.blocks} lang={lang} />
+      <h1 className="text-xl font-extrabold text-white mb-5">{lesson.title}</h1>
+      <Blocks blocks={lesson.blocks} />
     </WorkBench>
   );
 }

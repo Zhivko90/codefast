@@ -6,8 +6,11 @@ import { theme } from '@/lib/theme';
 import { useAuth } from '@/lib/auth';
 import { markDone } from '@/lib/progress';
 
-export default function QuizLesson({ lesson, lang }) {
-    const { user } = useAuth();
+// Урокът идва СГЛОБЕН за езика.
+// question.q е низ. question.options е масив от НИЗОВЕ. question.explain е низ.
+// В логиката остава само question.correct (номер).
+export default function QuizLesson({ lesson }) {
+  const { user } = useAuth();
   const t = useTranslations('lesson');
 
   const [qi, setQi] = useState(0);
@@ -63,7 +66,7 @@ export default function QuizLesson({ lesson, lang }) {
   const isLast = qi === questions.length - 1;
   const finished = qi >= questions.length;
 
-// куизът е минат, щом човек стигне до края
+  // куизът е минат, щом човек стигне до края
   useEffect(() => {
     if (!finished) return;
     markDone(user?.id, 'html', lesson.id);
@@ -111,7 +114,7 @@ export default function QuizLesson({ lesson, lang }) {
           <p className="text-xs font-bold tracking-wider text-sky-300 mb-3">
             {t('quiz_label').toUpperCase()} {qi + 1} / {questions.length}
           </p>
-          <p className="text-lg text-white leading-relaxed">{question.q[lang]}</p>
+          <p className="text-lg text-white leading-relaxed">{question.q}</p>
 
           {/* обяснението се появява тук след отговор */}
           {checked && (
@@ -122,10 +125,10 @@ export default function QuizLesson({ lesson, lang }) {
               {!isCorrect && (
                 <p className="text-sm text-gray-300 mb-2">
                   <span className="text-gray-400">{t('quiz_answer')} </span>
-                  {question.options[question.correct][lang]}
+                  {question.options[question.correct]}
                 </p>
               )}
-              <p className="text-sm text-gray-400"><span className="text-gray-300">{t('quiz_explain')} </span>{question.explain[lang]}</p>
+              <p className="text-sm text-gray-400"><span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}</p>
             </div>
           )}
         </div>
@@ -159,7 +162,7 @@ export default function QuizLesson({ lesson, lang }) {
                   className={`text-left px-5 py-4 rounded-xl border text-sm text-gray-200 transition flex items-center gap-3 ${cls}`}
                 >
                   <span className={`w-4 h-4 rounded-full border shrink-0 ${oi === chosen ? 'border-sky-400 bg-sky-400/40' : 'border-white/30'}`} />
-                  {opt[lang]}
+                  {opt}
                 </button>
               );
             })}

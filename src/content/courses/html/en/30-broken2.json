@@ -1,0 +1,11 @@
+{
+  "title": "The wreck, part two",
+  "testCase": "Does the list show three bullets, with the sentence below it?",
+  "blocks.0.text": "Broken again. This time there are three mistakes, and they are of different kinds.",
+  "blocks.1.text": "What you are looking for",
+  "blocks.2.items.0": "One list item is opened but never closed.",
+  "blocks.2.items.1": "Another is closed without ever being opened.",
+  "blocks.2.items.2": "One emphasis has started and never stopped — see how far the bold text runs.",
+  "blocks.3.text": "Notice the third: the unclosed <strong> does not complain. It just keeps making everything bold until the page runs out. The browser decided for you.",
+  "blocks.4.text": "The worst mistakes are not the ones that break the page. The worst are the ones that let it keep working — but wrongly."
+}
