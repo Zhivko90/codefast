@@ -8,6 +8,7 @@ import { useAuth } from '@/lib/auth';
 import { theme } from '@/lib/theme';
 import { getCourse } from '@/core/getCourse';
 import { fetchProgress, migrateLocal } from '@/lib/progress';
+import { fetchProject } from '@/lib/project';
 
 // Курсът идва СГЛОБЕН за езика. Никъде няма [lang].
 
@@ -45,6 +46,7 @@ export default function CoursePage({ params }) {
   const g = useTranslations('common');
   const a = useTranslations('auth');
   const l = useTranslations('lesson');
+  const p = useTranslations('project');
   const lang = useLocale();
 
   const { user, loading: authLoading } = useAuth();
@@ -53,6 +55,7 @@ export default function CoursePage({ params }) {
   const c = getCourse(slug, lang);
 
   const [done, setDone] = useState(new Set());
+  const [project, setProject] = useState(null);
 
   useEffect(() => {
     if (!c || authLoading) return;
@@ -60,6 +63,7 @@ export default function CoursePage({ params }) {
     (async () => {
       if (user) await migrateLocal(user.id, slug);
       setDone(await fetchProgress(user?.id, slug));
+      setProject(await fetchProject(user?.id, slug));
     })();
   }, [c, slug, user, authLoading]);
 
@@ -76,6 +80,9 @@ export default function CoursePage({ params }) {
   const started = doneCount > 0;
 
   const nextLesson = c.lessons.find((x) => !done.has(x.id)) ?? c.lessons[0];
+
+  // има ли проект? Ако не — не показваме нищо. Празен линк е обещание, което не си спазил.
+  const hasProject = !!project?.content;
 
   const sectionProgress = (sec) => {
     const ids = sec.modules.flatMap((m) => m.lessons.map((x) => x.id));
@@ -134,6 +141,28 @@ export default function CoursePage({ params }) {
           )}
         </div>
       </div>
+
+      {/* ★ ТВОЯТА СТРАНИЦА — само ако наистина съществува */}
+      {hasProject && (
+        <Link
+          href={`/project/${slug}`}
+          className={`${theme.card} ${theme.cardHover} flex items-center gap-4 px-5 py-4 mb-8 group`}
+        >
+          <span className="shrink-0 w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-300">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 9h20" />
+            </svg>
+          </span>
+          <span className="flex-1 min-w-0">
+            <span className="block font-semibold text-white group-hover:text-emerald-300 transition">{p('heading')}</span>
+            <span className="block text-[13px] text-gray-500 truncate">{p('card_hint')}</span>
+          </span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
+            className="text-gray-600 group-hover:text-emerald-300 transition shrink-0">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </Link>
+      )}
 
       {/* СЕКЦИИ */}
       <div className="flex flex-col gap-4">

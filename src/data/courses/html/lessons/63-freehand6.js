@@ -3,70 +3,39 @@ export default {
   id: 63,
   type: "web",
   label: "coding",
+  project: true,
   starterCode: "",
-  expected: "<label",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "changed", value: "", err: "empty" },
+    { id: "t2", type: "code_contains", value: "<form", err: "no-form" },
+    { id: "t3", type: "code_contains", value: "<label", err: "no-label" },
+    { id: "t4", type: "code_contains", value: "for=", err: "label-not-tied" },
+    { id: "t5", type: "code_contains", value: "<select", err: "no-choice" },
+    { id: "t6", type: "code_contains", value: "<textarea", err: "no-textarea" },
+    { id: "t7", type: "code_contains", value: "<button", err: "no-button" },
+    { id: "t8", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "quote" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "63-freehand6"
 };

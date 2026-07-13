@@ -56,5 +56,7 @@
   "label_example": "Пример",
   "label_coding": "Код",
   "label_mcq": "Въпрос",
-  "label_pro": "Pro"
+  "label_pro": "Pro",
+  "project_previous": "Откъде продължаваш",
+  "project_previous_hint": "Това си построил миналия път. Не го копирай — погледни го и напиши наново. Ако го препишеш, си излъгал само себе си."
 }

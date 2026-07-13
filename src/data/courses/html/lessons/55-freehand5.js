@@ -3,64 +3,35 @@ export default {
   id: 55,
   type: "web",
   label: "coding",
+  project: true,
   starterCode: "",
-  expected: "<th>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "changed", value: "", err: "empty" },
+    { id: "t2", type: "code_contains", value: "<table", err: "no-table" },
+    { id: "t3", type: "code_contains", value: "<th", err: "no-th" },
+    { id: "t4", type: "code_contains", value: "<td", err: "no-td" },
+    { id: "t5", type: "code_contains", value: "<main", err: "no-page" },
+    { id: "t6", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "55-freehand5"
 };

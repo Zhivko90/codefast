@@ -1,11 +1,18 @@
 {
   "title": "Choose what your site will be about",
-  "testCase": "Is there a heading with the topic you chose?",
-  "blocks.0.text": "From here on, every lesson will add something to ONE page — yours. Not to random examples you delete afterwards. To something you will be able to show a person at the end.",
-  "blocks.1.text": "So first decide what it will be about",
-  "blocks.2.text": "Your favourite game. Your dog. A band you listen to. Your team. Your grandmother's recipe. A film you have watched ten times. Anything at all — as long as you care about it.",
-  "blocks.3.text": "This is not a formality. If the page is about something foreign to you, you will just click \"next lesson\" and forget. If it is about something of yours, you will want it to be good.",
+  "checkLabels.t1": "Did you write anything",
+  "checkLabels.t2": "Is there a heading",
+  "checkLabels.t3": "Is it closed",
+  "checkLabels.t4": "Is there a sentence under it",
+  "why.empty": "The editor is empty. Nobody can tell you what to write — that is the whole point of this lesson. A topic. A heading. One sentence.",
+  "why.no-heading": "You wrote something, but it is not a heading. Bare text is just text. To be a heading it has to be inside <h1>.",
+  "why.not-closed": "You opened <h1> and never closed it. The browser does not know where the heading ends, so it will turn everything after it into a heading.",
+  "why.no-sentence": "The heading is there, but it is alone. The lesson asks for one sentence under it — why you chose the topic. That goes in <p>.",
+  "blocks.0.text": "The lessons will teach you on someone else's example — a bicycle for sale. It is foreign on purpose: it can be broken, botched, taken apart. But six times through this course the editor will be empty and it will say \"your page\" above it. Then there is no example. There is only what you remember — and what you have already built.",
+  "blocks.1.text": "So first decide what it is about",
+  "blocks.2.text": "Your favourite game. Your dog. A band you listen to. Your team. Your grandmother's recipe. A film you have watched ten times. Anything — as long as you care about it.",
+  "blocks.3.text": "This is not a formality. If the page is about something you do not care about, you will click \"next lesson\" and forget it. If it is about something of yours, you will want it to be good.",
   "blocks.4.text": "Do it now",
-  "blocks.5.text": "Empty editor. Write a heading with your topic and one sentence below it — why you chose it. The two tags you know are enough.",
-  "blocks.6.text": "Keep what you write. The next twenty lessons will build on top of it."
+  "blocks.5.text": "Empty editor. Write a heading with your topic and one sentence under it — why you chose it. The two tags you know are enough.",
+  "blocks.6.text": "This is the first version of your page. Next time the editor is empty, it will be waiting below — so you can see where you are picking up from."
 }

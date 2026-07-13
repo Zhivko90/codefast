@@ -18,16 +18,23 @@ const norm = (s) => (s ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
 
 // Затворени ли са таговете, и то в правилен ред?
 // Стек: отворен таг влиза, затварящ трябва да срещне същия отгоре.
+// Затворени ли са таговете, и то в правилен ред?
+// Стек: отворен таг влиза, затварящ трябва да срещне същия отгоре.
+//
+// ⚠ Код БЕЗ тагове не е „балансиран" — той е празен.
+// Иначе `asdasdasd` минава проверката „всичко затворено" и това е фалшива похвала.
 function balanced(html) {
   const VOID = new Set(['br', 'img', 'hr', 'input', 'meta', 'link', 'source', 'area', 'base', 'col', 'embed', 'track', 'wbr']);
   const stack = [];
   const re = /<\s*(\/?)\s*([a-zA-Z][a-zA-Z0-9]*)[^>]*?(\/?)\s*>/g;
   let m;
+  let seen = 0;
 
   while ((m = re.exec(html))) {
     const closing = m[1] === '/';
     const name = m[2].toLowerCase();
     const selfClosed = m[3] === '/';
+    seen++;
 
     if (VOID.has(name) || selfClosed) continue;
 
@@ -38,6 +45,8 @@ function balanced(html) {
       if (stack.pop() !== name) return false;    // затваря в грешен ред
     }
   }
+
+  if (seen === 0) return false;                   // няма нито един таг
   return stack.length === 0;                      // нищо не е останало отворено
 }
 

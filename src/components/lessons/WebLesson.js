@@ -5,16 +5,30 @@ import { useTranslations } from 'next-intl';
 import WorkBench from '@/components/WorkBench';
 import { Blocks } from './shared';
 import { useAuth } from '@/lib/auth';
+import { checkProblem } from '@/core/checkProblem';
 import { fetchCode, saveCode, removeCode, markDone } from '@/lib/progress';
+import { fetchProject, saveProject } from '@/lib/project';
 
-// Урокът идва СГЛОБЕН за езика. lesson.title е низ, lesson.blocks[n].text е низ.
+// ============================================
+// Урокът идва СГЛОБЕН за езика. Курсът идва отвън.
 //
-// ⚠ КУРСЪТ идва отвън. Не се предполага.
-// Зашитото 'html' смесваше напредъка: CSS урок 1 щеше да презапише HTML урок 1.
+// ★ ЕДНО ЯДРО за уроци и задачи.
+//   Урок с `checks` минава през checkProblem — както задачите.
+//   Всяка проверка има етикет (`err`), етикетът води до „защо не мина".
+//
+//   Урок БЕЗ `checks` пада на старото: едно `expected`, едно съобщение.
+//   Сайтът работи, докато пълниш проверките урок по урок.
+//
+// ПРОЕКТНИ УРОЦИ (lesson.project):
+//   Редакторът е празен — това е упражнението.
+//   Отдолу стои това, което си построил миналия път.
+// ============================================
 export default function WebLesson({ lesson, lang, course }) {
   const t = useTranslations('lesson');
   const { user } = useAuth();
 
+  const isProject = lesson.project === true;
+  const hasChecks = Array.isArray(lesson.checks) && lesson.checks.length > 0;
   const starter = lesson.starterCode ?? '';
 
   const [code, setCode] = useState(starter);
@@ -22,28 +36,37 @@ export default function WebLesson({ lesson, lang, course }) {
   const [result, setResult] = useState(null);
   const [ready, setReady] = useState(false);
   const [tab, setTab] = useState('statement');
+  const [previous, setPrevious] = useState(null);
 
-  // зареждане на запазения код
+  // зареждане
   useEffect(() => {
     let alive = true;
     (async () => {
-      const saved = await fetchCode(user?.id, course, lesson.id);
-      if (!alive) return;
-      const c = saved ?? starter;
-      setCode(c);
-      setPreview(c);
+      if (isProject) {
+        const p = await fetchProject(user?.id, course);
+        if (!alive) return;
+        setPrevious(p?.content || null);   // за гледане, не за копиране
+        setCode(starter);                  // редакторът остава празен
+        setPreview(starter);
+      } else {
+        const saved = await fetchCode(user?.id, course, lesson.id);
+        if (!alive) return;
+        const c = saved ?? starter;
+        setCode(c);
+        setPreview(c);
+      }
       setReady(true);
     })();
     return () => { alive = false; };
-  }, [user?.id, course, lesson.id, starter]);
+  }, [user?.id, course, lesson.id, starter, isProject]);
 
-  // живият преглед — опреснява се сам, докато пишеш
+  // живият преглед
   useEffect(() => {
     const id = setTimeout(() => setPreview(code), 400);
     return () => clearTimeout(id);
   }, [code]);
 
-  // запазва кода, за да не се губи
+  // черновата се пази
   useEffect(() => {
     if (!ready) return;
     const id = setTimeout(() => {
@@ -53,9 +76,8 @@ export default function WebLesson({ lesson, lang, course }) {
     return () => clearTimeout(id);
   }, [code, ready, user?.id, course, lesson.id, starter]);
 
-  // ПРОВЕРКАТА — мека.
-  // expected === ''  →  „мина си, ако си пипнал кода". Това е урок 1.
-  const submit = () => {
+  // ── СТАРАТА проверка: едно expected, едно съобщение ──
+  const legacyCheck = () => {
     const expected = (lesson.expected ?? '').trim();
     const body = code.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const visible = (body ? body[1] : code).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -67,13 +89,30 @@ export default function WebLesson({ lesson, lang, course }) {
           ? code.toLowerCase().replace(/\s+/g, ' ').includes(expected.toLowerCase())
           : visible.toLowerCase() === expected.toLowerCase();
 
-    setResult({
+    return {
       passed: ok,
       results: [{ id: 'main', ok, hidden: false }],
       errorTag: ok ? null : 'main',
-    });
+    };
+  };
+
+  const submit = async () => {
+    // ★ има checks → минава през ядрото на задачите
+    const r = hasChecks ? checkProblem(lesson, code) : legacyCheck();
+
+    setResult(r);
     setPreview(code);
-    if (ok) markDone(user?.id, course, lesson.id);
+
+    if (r.passed) {
+      markDone(user?.id, course, lesson.id);
+
+      // проектът поема новото
+      if (isProject) {
+        await saveProject(user?.id, course, { content: code });
+        setPrevious(code);
+        removeCode(user?.id, course, lesson.id);
+      }
+    }
   };
 
   const reset = () => {
@@ -83,10 +122,25 @@ export default function WebLesson({ lesson, lang, course }) {
     removeCode(user?.id, course, lesson.id);
   };
 
+  // ЗАЩО НЕ МИНА — обяснението на падналата проверка
+  const why = (() => {
+    if (!result || result.passed) return null;
+    if (hasChecks) return lesson.why?.[result.errorTag] ?? t('submit_no');
+    return t('submit_no');
+  })();
+
+  // имената на проверките — те се показват в долния панел
+  const checkLabels = hasChecks
+    ? (lesson.checkLabels ?? {})
+    : { main: lesson.testCase ?? t('test_cases') };
+
+  const tabs = [{ id: 'statement', label: t('rail_statement') }];
+  if (isProject && previous) tabs.push({ id: 'previous', label: t('project_previous') });
+
   return (
     <WorkBench
       title={lesson.title}
-      tabs={[{ id: 'statement', label: t('rail_statement') }]}
+      tabs={tabs}
       activeTab={tab}
       onTab={setTab}
       code={code}
@@ -95,17 +149,38 @@ export default function WebLesson({ lesson, lang, course }) {
       onRun={() => setPreview(code)}
       onSubmit={submit}
       onReset={reset}
-      /* ⚠ БЕШЕ: !!lesson.expected — при expected:'' бутонът „Предай" изчезваше.
-         Урок 1 нямаше как да бъде предаден. Всеки web-урок се предава. */
       canSubmit
       preview={preview}
       result={result}
-      checkLabels={{ main: lesson.testCase ?? t('test_cases') }}
-      why={result && !result.passed ? t('submit_no') : null}
+      checkLabels={checkLabels}
+      why={why}
       lang={lang}
     >
-      <h1 className="text-xl font-extrabold text-white mb-5">{lesson.title}</h1>
-      <Blocks blocks={lesson.blocks} />
+      {tab === 'previous' && previous ? (
+        <>
+          <h2 className="text-lg font-bold text-white mb-2">{t('project_previous')}</h2>
+          <p className="text-[13px] text-gray-500 leading-relaxed mb-4">{t('project_previous_hint')}</p>
+
+          <div className="rounded-lg overflow-hidden border border-white/10 mb-4">
+            <iframe
+              title="project"
+              sandbox="allow-scripts"
+              srcDoc={previous}
+              className="bg-white w-full border-0"
+              style={{ height: 220 }}
+            />
+          </div>
+
+          <pre className="rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-[12.5px] leading-relaxed overflow-x-auto">
+            <code className="text-sky-200 whitespace-pre-wrap">{previous}</code>
+          </pre>
+        </>
+      ) : (
+        <>
+          <h1 className="text-xl font-extrabold text-white mb-5">{lesson.title}</h1>
+          <Blocks blocks={lesson.blocks} />
+        </>
+      )}
     </WorkBench>
   );
 }

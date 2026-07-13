@@ -10,7 +10,7 @@ import { routing } from './routing';
 //
 // Нов файл = добавяш го в списъка отдолу.
 // ============================================
-const NAMESPACES = ['common', 'catalog', 'course', 'lesson', 'auth', 'home', 'practice'];
+const NAMESPACES = ['common', 'catalog', 'course', 'lesson', 'auth', 'home', 'practice', 'project'];
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;

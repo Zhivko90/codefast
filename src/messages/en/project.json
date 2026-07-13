@@ -1,0 +1,16 @@
+{
+  "heading": "Your page",
+  "desc": "Not an exercise. Not an example. This is something you built — and something is still missing from it.",
+  "url": "your-page.com",
+  "last_grew": "Last grew on",
+  "show_code": "Show the code",
+  "hide_code": "Hide the code",
+  "how_it_grew": "How it grows",
+  "how_it_grew_hint": "Six times through the course the editor is empty and says \"your page\". Here they are.",
+  "empty_desc": "You do not have a page yet.",
+  "empty_hint": "It starts in lesson 7, when you choose what it is about. From there it grows six times — each time from an empty editor, from memory.",
+  "empty_cta": "Start it",
+  "no_account": "Your page lives only in this browser. Clear your history and it is gone.",
+  "no_account_cta": "Create an account",
+  "card_hint": "See what you have built"
+}

@@ -56,5 +56,7 @@
   "label_example": "Example",
   "label_coding": "Coding",
   "label_mcq": "MCQ",
-  "label_pro": "Pro"
+  "label_pro": "Pro",
+  "project_previous": "Where you left off",
+  "project_previous_hint": "This is what you built last time. Do not copy it — look at it and write it again. If you paste it, the only person you fooled is you."
 }

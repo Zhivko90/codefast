@@ -306,9 +306,11 @@ export default function WorkBench({
                     {bottom === 'result' ? t('result') : t('history')}
                   </span>
                   <div className="flex-1" />
-                  {result && bottom === 'result' && (
+                 {result && bottom === 'result' && (
                     <span className={`text-[12px] font-semibold px-2 ${result.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
-                      {result.passed ? '✓ ' + t('all_passed') : '✕'}
+                      {result.passed
+                        ? '✓ ' + t('all_passed')
+                        : `${result.results.filter((r) => !r.ok).length} / ${result.results.length}`}
                     </span>
                   )}
                   <button onClick={() => setShowBot(false)}
@@ -338,9 +340,7 @@ export default function WorkBench({
                               <span>✕</span> {t('why_failed')}
                             </p>
                             <p className="text-[13px] text-rose-100/80 leading-relaxed">{why}</p>
-                            <span className="inline-block mt-3 text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
-                              {t('free')}
-                            </span>
+                           
                           </div>
                         )}
                       </>
