@@ -3,7 +3,7 @@
   "testCase": "Did you change the text to something of your own?",
   "blocks.0.text": "No introduction. No explanations. On the right there is a page that says \"Hello\".",
   "blocks.1.text": "Do this",
-  "blocks.2.text": "Delete \"Hello\" and write your name. Then press the green \"Run\" button.",
+  "blocks.2.text": "Delete \"Hello\" and write your name. Then press the green \"Submit\" button.",
   "blocks.3.text": "That is it. There is nothing else to do in this lesson.",
   "blocks.4.text": "What happened",
   "blocks.5.text": "You have just written a web page. I am not joking — what is on the right is a real page, the kind that would sit on the internet. It just happens to have only a name on it for now.",
