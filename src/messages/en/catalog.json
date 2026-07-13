@@ -1,0 +1,17 @@
+{
+  "crumb": "Catalog",
+  "crumb_all": "All Courses",
+
+  "side_catalog": "Catalog",
+  "side_all": "All Courses",
+  "side_roadmaps": "Roadmaps",
+  "side_skills": "Skill Tests",
+  "side_topics": "Topics",
+
+  "heading": "All Courses Catalog",
+  "desc": "Find all beginner-friendly courses on programming languages, data structures and algorithms, SQL and web development. Practice real-world problem solving and build confidence.",
+  "search": "Search courses...",
+
+  "practice": "Practice",
+  "lessons": "lessons"
+}

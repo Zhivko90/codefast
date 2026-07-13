@@ -1,0 +1,30 @@
+{
+  "title": "Close the tag",
+  "statement": "You are given HTML where the bold tag is opened but never closed. The browser gets confused and bolds everything after it.\n\nClose it so that only the price is bold.",
+
+  "examples": [
+    {
+      "in": "<p>Price: <strong>20 lv</p>",
+      "out": "<p>Price: <strong>20 lv</strong></p>",
+      "explain": "Only “20 lv” is bold. Everything else is normal."
+    }
+  ],
+
+  "constraints": [
+    "Do not remove the text",
+    "Do not add new tags",
+    "Spaces and capitalisation do not matter"
+  ],
+
+  "checks": {
+    "t1": "Has a closing tag",
+    "t2": "Text is unchanged",
+    "t3": "Hidden test"
+  },
+
+  "why": {
+    "no-closing": "You opened the tag but never closed it. The browser does not know where to stop, so it bolds everything to the end.",
+    "text-changed": "The text has changed. The task is only to close the tag — the words stay as they are.",
+    "wrong-order": "You closed the tag, but in the wrong place — after the closing paragraph. Tags close in reverse order: the last one opened closes first. You opened <p>, then <strong> → close </strong> first, then </p>."
+  }
+}

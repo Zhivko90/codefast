@@ -1,0 +1,12 @@
+{
+  "nav_courses": "Courses",
+  "nav_practice": "Practice",
+  "nav_compete": "Compete",
+  "nav_compiler": "Compiler",
+  "pro": "Get Pro",
+  "back": "Back to courses",
+
+  "level_beginner": "Beginner",
+  "level_intermediate": "Intermediate",
+  "level_advanced": "Advanced"
+}

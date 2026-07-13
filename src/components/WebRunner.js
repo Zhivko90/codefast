@@ -1,10 +1,10 @@
 'use client';
 
 import Editor from '@monaco-editor/react';
-import { useLanguage } from '@/lib/language';
+import { useTranslations } from 'next-intl';
 
 export default function WebRunner({ code, onChange, onRun, onSubmit, canSubmit }) {
-  const { t } = useLanguage();
+  const t = useTranslations('lesson')
 
   return (
     <div className="h-full flex flex-col bg-[var(--bg-elevated)]">

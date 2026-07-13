@@ -1,0 +1,12 @@
+{
+  "nav_courses": "Курсове",
+  "nav_practice": "Практика",
+  "nav_compete": "Състезания",
+  "nav_compiler": "Компилатор",
+  "pro": "Вземи Pro",
+  "back": "Обратно към курсовете",
+
+  "level_beginner": "Начинаещ",
+  "level_intermediate": "Средно",
+  "level_advanced": "Напреднал"
+}

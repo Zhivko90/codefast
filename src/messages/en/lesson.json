@@ -1,0 +1,60 @@
+{
+  "lesson_badge": "Lesson",
+  "solved": "solved",
+  "next": "Next",
+  "prev": "Prev",
+
+  "tab_statement": "Statement",
+  "tab_code": "Code",
+  "tab_preview": "Preview",
+  "tab_ai": "AI Help",
+
+  "rail_statement": "Statement",
+  "rail_files": "File Explorer",
+  "rail_reset": "Reset Lab",
+  "rail_browser": "Show Browser",
+  "rail_test": "Test Result",
+
+  "run": "Run",
+  "refresh": "Refresh",
+  "submit": "Submit",
+  "submit_ok": "Well done! That is correct.",
+  "submit_no": "Not quite yet. Check the text and try again.",
+
+  "preview_label": "PREVIEW",
+  "output": "Output",
+  "run_hint": "Press “Run” to see the result",
+  "no_output": "(no output)",
+
+  "files_heading": "Files",
+  "file_index": "index.html",
+
+  "reset_confirm": "Do you want to reset your code? All the progress made so far will be lost!",
+  "reset_yes": "Yes, I know!",
+  "reset_cancel": "Cancel",
+
+  "test_pass": "Test passed",
+  "test_fail": "Test failed",
+  "test_expected": "Expected:",
+  "test_received": "Received:",
+  "test_empty": "Nothing submitted yet. Press “Submit”.",
+  "test_cases": "Test cases",
+  "test_case_one": "Test 1",
+
+  "quiz_label": "Question",
+  "quiz_choose": "Choose the correct answer:",
+  "quiz_submit": "Submit",
+  "quiz_correct": "Correct!",
+  "quiz_wrong": "Wrong answer",
+  "quiz_answer": "Correct answer:",
+  "quiz_explain": "Explanation:",
+  "quiz_next": "Next",
+  "quiz_done": "Done",
+  "quiz_score": "Correct answers:",
+
+  "label_concept": "Concept",
+  "label_example": "Example",
+  "label_coding": "Coding",
+  "label_mcq": "MCQ",
+  "label_pro": "Pro"
+}

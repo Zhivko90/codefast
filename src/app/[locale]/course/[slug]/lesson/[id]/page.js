@@ -1,12 +1,13 @@
 'use client';
 
 import { use, useState } from 'react';
-import Link from 'next/link';
-import { useRouter, notFound } from 'next/navigation';
-import { useLanguage } from '@/lib/language';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, useRouter } from '@/i18n/navigation';
+import { notFound } from 'next/navigation';
 import { theme } from '@/lib/theme';
 import { getLesson } from '@/core/getCourse';
 import { lessonViews, resolveType } from '@/components/lessons';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 // етикет на урока (Концепция / Пример / Код / Въпрос / Pro)
 function LessonBadge({ lesson, t }) {
@@ -27,7 +28,12 @@ function LessonBadge({ lesson, t }) {
 
 export default function LessonPage({ params }) {
   const { slug, id } = use(params);
-  const { t, lang, setLang } = useLanguage();
+
+  const t = useTranslations('lesson');   // урок, редактор, етикети
+  const c = useTranslations('course');   // програма, модули, напредък
+  const g = useTranslations('common');   // общи (back)
+  const lang = useLocale();
+
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -47,7 +53,7 @@ export default function LessonPage({ params }) {
   const progress = Math.round(((index + 1) / total) * 100);
 
   return (
-    <div className="min-h-screen">
+    <div className="h-screen flex flex-col overflow-hidden">
       {/* СТРАНИЧНО МЕНЮ */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex">
@@ -62,7 +68,7 @@ export default function LessonPage({ params }) {
                   <div className="min-w-0">
                     <p className="font-bold text-white truncate">{course.title[lang]}</p>
                     <Link href={`/course/${slug}`} className="text-xs text-sky-300 hover:text-white transition">
-                      {t('syllabus')} ↗
+                      {c('syllabus')} ↗
                     </Link>
                   </div>
                 </div>
@@ -72,7 +78,7 @@ export default function LessonPage({ params }) {
               <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
                 <div className={`h-full ${theme.brandGradient} transition-all`} style={{ width: `${progress}%` }} />
               </div>
-              <p className="text-[11px] text-gray-400 mt-2">{progress}% {t('completed_short')}</p>
+              <p className="text-[11px] text-gray-400 mt-2">{progress}% {c('completed_short')}</p>
             </div>
 
             {/* дървото: секции → модули → уроци */}
@@ -98,34 +104,29 @@ export default function LessonPage({ params }) {
       {/* ГОРНА ЛЕНТА */}
       <div className="sticky top-0 z-40 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
         <div className="w-full px-4 sm:px-6 h-14 flex items-center gap-3">
-          <Link href={`/course/${slug}`} aria-label={t('back')}
+          <Link href={`/course/${slug}`} aria-label={g('back')}
             className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
           </Link>
 
           {/* хамбургер — отваря страничното меню */}
-          <button onClick={() => setMenuOpen(true)} aria-label={t('syllabus')}
+          <button onClick={() => setMenuOpen(true)} aria-label={c('syllabus')}
             className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
               <path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/>
             </svg>
           </button>
 
-         {/* смяна на езика */}
-          <button
-            onClick={() => setLang(lang === 'bg' ? 'en' : 'bg')}
-            className={`shrink-0 text-xs font-semibold px-3 py-1.5 ${theme.buttonGhost}`}
-          >
-            {t('lang_btn')}
-          </button>
+          {/* смяна на езика — сменя URL-а, ученикът остава на същия урок */}
+          <LanguageSwitcher />
 
           {/* СРЕДА: назад — точки — напред */}
           <div className="flex-1 flex items-center justify-center gap-3">
             <button onClick={() => go(prevId)} disabled={!prevId}
-              title={atModuleStart ? t('prev_module_btn') : undefined}
+              title={atModuleStart ? c('prev_module') : undefined}
               className={`shrink-0 h-7 px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${prevId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M15 18l-6-6 6-6"/></svg>
-              {atModuleStart && prevId && <span className="hidden sm:inline pr-1">{t('prev_module_btn')}</span>}
+              {atModuleStart && prevId && <span className="hidden sm:inline pr-1">{c('prev_module')}</span>}
             </button>
 
             <div className="flex items-center">
@@ -146,9 +147,9 @@ export default function LessonPage({ params }) {
             </div>
 
             <button onClick={() => go(nextId)} disabled={!nextId}
-              title={atModuleEnd ? t('next_module') : undefined}
+              title={atModuleEnd ? c('next_module') : undefined}
               className={`shrink-0 h-7 px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${nextId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
-              {atModuleEnd && nextId && <span className="hidden sm:inline pl-1">{t('next_module')}</span>}
+              {atModuleEnd && nextId && <span className="hidden sm:inline pl-1">{c('next_module')}</span>}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6"/></svg>
             </button>
 
@@ -163,7 +164,9 @@ export default function LessonPage({ params }) {
         </div>
       </div>
 
-      <View lesson={lesson} lang={lang} />
+      <div className="flex-1 min-h-0">
+        <View lesson={lesson} lang={lang} />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,18 @@
+{
+  "start_learning": "Започни",
+  "continue_learning": "Продължи",
+  "your_progress": "Твоят напредък",
+  "completed": "завършено",
+  "completed_short": "завършено",
+  "syllabus": "Виж цялата програма",
+
+  "module": "Модул",
+  "next_module": "Следващ модул",
+  "prev_module": "Предишен модул",
+
+  "stat_lessons": "урока",
+  "stat_sections": "секции",
+  "stat_hours": "часа",
+  "stat_problems": "задачи",
+  "stat_level": "ниво"
+}

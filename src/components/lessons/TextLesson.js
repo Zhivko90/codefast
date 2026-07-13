@@ -2,16 +2,15 @@
 
 import { useEffect } from 'react';
 import { Blocks } from './shared';
+import { useAuth } from '@/lib/auth';
+import { markDone } from '@/lib/progress';
 
 export default function TextLesson({ lesson, lang }) {
-  // текстовият урок е минат, щом е отворен — няма какво да се решава
+  const { user } = useAuth();
+
   useEffect(() => {
-    try {
-      localStorage.setItem(`codefast-done-${lesson.id}`, '1');
-    } catch {
-      // няма проблем
-    }
-  }, [lesson.id]);
+    markDone(user?.id, 'html', lesson.id);
+  }, [lesson.id, user?.id]);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">

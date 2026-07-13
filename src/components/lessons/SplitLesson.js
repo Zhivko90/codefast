@@ -2,16 +2,15 @@
 
 import { useEffect } from 'react';
 import { Blocks } from './shared';
+import { useAuth } from '@/lib/auth';
+import { markDone } from '@/lib/progress';
 
 export default function SplitLesson({ lesson, lang }) {
-  // минат при отваряне — няма какво да се решава
+  const { user } = useAuth();
+
   useEffect(() => {
-    try {
-      localStorage.setItem(`codefast-done-${lesson.id}`, '1');
-    } catch {
-      // няма проблем
-    }
-  }, [lesson.id]);
+    markDone(user?.id, 'html', lesson.id);
+  }, [lesson.id, user?.id]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[calc(100vh-8rem)]">

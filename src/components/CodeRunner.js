@@ -2,15 +2,19 @@
 
 import { useState } from 'react';
 import Editor from '@monaco-editor/react';
-import { useLanguage } from '@/lib/language';
+import { useTranslations } from 'next-intl';
 
 // съответствие език -> Judge0 language_id
+// Нов език = нов ред тук. Judge0 поддържа над 60.
 const LANGUAGE_IDS = {
   python: 71,
   javascript: 63,
   cpp: 54,
   c: 50,
   java: 62,
+  csharp: 51,
+  go: 60,
+  rust: 73,
 };
 
 // за оцветяването на редактора
@@ -20,13 +24,17 @@ const MONACO_LANG = {
   cpp: 'cpp',
   c: 'c',
   java: 'java',
+  csharp: 'csharp',
+  go: 'go',
+  rust: 'rust',
 };
 
 export default function CodeRunner({ language = 'python', starterCode = '', height = 320 }) {
+  const t = useTranslations('lesson');
+
   const [code, setCode] = useState(starterCode);
   const [output, setOutput] = useState('');
   const [running, setRunning] = useState(false);
-  const { t } = useLanguage();
 
   async function runCode() {
     setRunning(true);
@@ -49,16 +57,16 @@ export default function CodeRunner({ language = 'python', starterCode = '', heig
       if (out.trim()) setOutput(out);
       else if (err.trim()) setOutput(err);
       else if (comp.trim()) setOutput(comp);
-      else setOutput('(няма изход)');
+      else setOutput(t('no_output'));
     } catch (e) {
-      setOutput('Грешка: ' + e.message);
+      setOutput('Error: ' + e.message);
     }
     setRunning(false);
   }
 
   return (
     <div className="rounded-xl overflow-hidden border border-white/10">
-      {/* лента с бутон Run */}
+      {/* лента с бутон Пусни */}
       <div className="flex items-center justify-between px-4 py-2 bg-[var(--bg-elevated)] border-b border-white/10">
         <span className="text-xs text-gray-400">{language}</span>
         <button
@@ -71,11 +79,11 @@ export default function CodeRunner({ language = 'python', starterCode = '', heig
           }`}
         >
           {running ? (
-            '...'
+            '…'
           ) : (
             <>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-              Пусни
+              {t('run')}
             </>
           )}
         </button>
@@ -100,7 +108,9 @@ export default function CodeRunner({ language = 'python', starterCode = '', heig
       {/* изходът */}
       <div className="border-t border-white/10">
         <div className="px-4 py-1.5 bg-[var(--bg-elevated)] text-xs text-gray-400">{t('output')}</div>
-        <pre className="px-4 py-3 text-sm text-gray-200 bg-black/30 min-h-[80px] whitespace-pre-wrap">{output || <span className="text-gray-600">{t('run_hint')}</span>}</pre>
+        <pre className="px-4 py-3 text-sm text-gray-200 bg-black/30 min-h-[80px] whitespace-pre-wrap">
+          {output || <span className="text-gray-600">{t('run_hint')}</span>}
+        </pre>
       </div>
     </div>
   );

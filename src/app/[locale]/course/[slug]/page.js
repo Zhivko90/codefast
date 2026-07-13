@@ -1,11 +1,13 @@
 'use client';
 
 import { use, useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
-import { useLanguage } from '@/lib/language';
+import { useAuth } from '@/lib/auth';
 import { theme } from '@/lib/theme';
 import { getCourse } from '@/core/getCourse';
+import { fetchProgress, migrateLocal } from '@/lib/progress';
 
 function Stat({ icon, label, value }) {
   return (
@@ -17,7 +19,6 @@ function Stat({ icon, label, value }) {
   );
 }
 
-// иконките за статистиките
 const IconLessons = (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
@@ -37,54 +38,54 @@ const IconLevel = (
 
 export default function CoursePage({ params }) {
   const { slug } = use(params);
-  const { t, lang } = useLanguage();
+
+  const t = useTranslations('course');   // напредък, статистики, модули
+  const g = useTranslations('common');   // общи (back, нива)
+  const a = useTranslations('auth');     // подсказката за вход
+  const l = useTranslations('lesson');   // етикети (Pro), solved
+  const lang = useLocale();
+
+  const { user, loading: authLoading } = useAuth();
   const c = getCourse(slug);
 
-  // кои уроци е пипал ученикът (от localStorage)
-  const [touched, setTouched] = useState(new Set());
+  const [done, setDone] = useState(new Set());
 
-useEffect(() => {
-    if (!c) return;
-    try {
-      const done = new Set();
-      for (const l of c.lessons) {
-        if (localStorage.getItem(`codefast-done-${l.id}`) === '1') done.add(l.id);
-      }
-      setTouched(done);
-    } catch {
-      // localStorage може да е забранен — просто показваме 0%
-    }
-  }, [c]);
+  useEffect(() => {
+    if (!c || authLoading) return;
+
+    (async () => {
+      // първо влизане с профил → локалният напредък тръгва към базата
+      if (user) await migrateLocal(user.id, slug);
+      setDone(await fetchProgress(user?.id, slug));
+    })();
+  }, [c, slug, user, authLoading]);
 
   if (!c) return notFound();
 
   const firstLessonOf = (mod) => mod.lessons[0]?.id;
   const sections = Array.isArray(c.sections) ? c.sections : [];
 
-  // истинските числа — смятат се от курса, не се пишат на ръка
+  // истинските числа — от курса, не на ръка
   const totalLessons = c.lessons.length;
   const totalSections = sections.length;
 
-  // напредък
-  const doneCount = touched.size;
+  const doneCount = done.size;
   const progress = totalLessons ? Math.round((doneCount / totalLessons) * 100) : 0;
   const started = doneCount > 0;
 
-  // накъде води бутонът: първия непипнат урок, или първия изобщо
-  const nextLesson = c.lessons.find((l) => !touched.has(l.id)) ?? c.lessons[0];
+  // накъде води бутонът: първия нерешен, иначе първия изобщо
+  const nextLesson = c.lessons.find((x) => !done.has(x.id)) ?? c.lessons[0];
 
-  // колко от секцията е минато
   const sectionProgress = (sec) => {
-    const ids = sec.modules.flatMap((m) => m.lessons.map((l) => l.id));
+    const ids = sec.modules.flatMap((m) => m.lessons.map((x) => x.id));
     if (!ids.length) return 0;
-    const done = ids.filter((id) => touched.has(id)).length;
-    return Math.round((done / ids.length) * 100);
+    return Math.round((ids.filter((id) => done.has(id)).length / ids.length) * 100);
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
-      <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition mb-6">
-        ← {t('back')}
+      <Link href="/courses" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition mb-6">
+        ← {g('back')}
       </Link>
 
       {/* HERO */}
@@ -107,7 +108,7 @@ useEffect(() => {
             <span className="text-white/10 hidden sm:inline">•</span>
             <Stat icon={IconSections} value={totalSections} label={t('stat_sections')} />
             <span className="text-white/10 hidden sm:inline">•</span>
-            <Stat icon={IconLevel} value={t('level_' + c.level)} label={t('stat_level')} />
+            <Stat icon={IconLevel} value={g('level_' + c.level)} label={t('stat_level')} />
           </div>
 
           <div className="mb-2 flex items-center justify-between text-sm">
@@ -122,6 +123,14 @@ useEffect(() => {
               {started ? t('continue_learning') : t('start_learning')}
             </Link>
           </div>
+
+          {/* подсказка за влизане — само ако е започнал без профил */}
+          {!authLoading && !user && started && (
+            <p className="text-xs text-gray-500 mt-4">
+              <Link href="/login" className="text-sky-300/90 hover:text-sky-300 transition">{a('signin')}</Link>
+              {' '}{a('progress_signin_hint')}
+            </p>
+          )}
         </div>
       </div>
 
@@ -131,7 +140,6 @@ useEffect(() => {
           const secDone = sectionProgress(sec);
           return (
             <div key={sec.id ?? si} className={`${theme.card} p-5 sm:p-6`}>
-              {/* глава на секцията */}
               <div className="flex items-start gap-4 mb-5">
                 <div className="w-11 h-11 rounded-full bg-white/[0.06] border border-white/15 flex items-center justify-center text-white font-bold text-lg shrink-0">
                   {si + 1}
@@ -140,22 +148,20 @@ useEffect(() => {
                   <h2 className="text-xl font-bold text-white">{sec.title[lang]}</h2>
                   {sec.desc && <p className="text-sm text-gray-400 mt-1.5 leading-relaxed">{sec.desc[lang]}</p>}
                   <p className={`text-xs mt-2 font-semibold ${secDone > 0 ? 'text-emerald-400' : 'text-gray-600'}`}>
-                    {secDone}% {t('solved')}
+                    {secDone}% {l('solved')}
                   </p>
                 </div>
               </div>
 
-              {/* модулите в секцията */}
               <div className="flex flex-col divide-y divide-white/5 border-t border-white/5 pl-1">
                 {sec.modules.map((mod) => {
-                  const modIds = mod.lessons.map((l) => l.id);
-                  const modDone = modIds.filter((id) => touched.has(id)).length;
-                  const allDone = modDone === modIds.length && modIds.length > 0;
+                  const ids = mod.lessons.map((x) => x.id);
+                  const modDone = ids.filter((id) => done.has(id)).length;
+                  const allDone = modDone === ids.length && ids.length > 0;
 
                   return (
                     <Link key={mod.id} href={`/course/${slug}/lesson/${firstLessonOf(mod)}`}
                       className="flex items-center gap-3 py-3.5 group">
-                      {/* кръгче / отметка / катинар отпред */}
                       {mod.locked ? (
                         <span className="shrink-0 w-6 h-6 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center text-gray-500">
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
@@ -172,15 +178,15 @@ useEffect(() => {
                         {mod.title[lang]}
                       </span>
 
-                    {mod.locked ? (
-                        <span className="text-[11px] px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-300 shrink-0">{t('module_pro')}</span>
+                      {mod.locked ? (
+                        <span className="text-[11px] px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-300 shrink-0">{l('label_pro')}</span>
                       ) : (
                         <span className={`text-[11px] px-2.5 py-1 rounded-md border shrink-0 tabular-nums ${
                           allDone
                             ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
                             : 'bg-white/[0.06] border-white/10 text-gray-400'
                         }`}>
-                          {modDone} / {modIds.length}
+                          {modDone} / {ids.length}
                         </span>
                       )}
                     </Link>

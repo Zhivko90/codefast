@@ -1,0 +1,60 @@
+{
+  "lesson_badge": "Урок",
+  "solved": "решено",
+  "next": "Напред",
+  "prev": "Предишен",
+
+  "tab_statement": "Урок",
+  "tab_code": "Код",
+  "tab_preview": "Преглед",
+  "tab_ai": "AI помощ",
+
+  "rail_statement": "Условие",
+  "rail_files": "Файлове",
+  "rail_reset": "Нулирай кода",
+  "rail_browser": "Покажи браузър",
+  "rail_test": "Резултат",
+
+  "run": "Пусни",
+  "refresh": "Опресни",
+  "submit": "Предай",
+  "submit_ok": "Браво! Точно така.",
+  "submit_no": "Още не е вярно. Провери текста и опитай пак.",
+
+  "preview_label": "ПРЕГЛЕД",
+  "output": "Изход",
+  "run_hint": "Натисни „Пусни“, за да видиш резултата",
+  "no_output": "(няма изход)",
+
+  "files_heading": "Файлове",
+  "file_index": "index.html",
+
+  "reset_confirm": "Искаш ли да нулираш кода? Целият напредък дотук ще се загуби!",
+  "reset_yes": "Да, знам!",
+  "reset_cancel": "Отказ",
+
+  "test_pass": "Тестът мина успешно",
+  "test_fail": "Тестът не мина",
+  "test_expected": "Очаквано:",
+  "test_received": "Получено:",
+  "test_empty": "Още не си предал. Натисни „Предай“.",
+  "test_cases": "Тестови случаи",
+  "test_case_one": "Тест 1",
+
+  "quiz_label": "Въпрос",
+  "quiz_choose": "Избери верния отговор:",
+  "quiz_submit": "Провери",
+  "quiz_correct": "Правилно!",
+  "quiz_wrong": "Грешен отговор",
+  "quiz_answer": "Верен отговор:",
+  "quiz_explain": "Обяснение:",
+  "quiz_next": "Следващ",
+  "quiz_done": "Готово",
+  "quiz_score": "Верни отговори:",
+
+  "label_concept": "Концепция",
+  "label_example": "Пример",
+  "label_coding": "Код",
+  "label_mcq": "Въпрос",
+  "label_pro": "Pro"
+}

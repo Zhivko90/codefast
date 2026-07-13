@@ -1,0 +1,40 @@
+{
+  "hero_1": "You understand everything.",
+  "hero_2": "Then you open an empty file.",
+  "hero_sub": "And nothing. A blinking cursor. CodeFast is a course where you write — from the first minute, in your browser, with nothing to install.",
+  "hero_note": "The first lesson is open. No account needed.",
+
+  "cta_start": "Start the first lesson",
+  "cta_syllabus": "See the syllabus",
+
+  "problem_title": "Know the feeling?",
+  "problem_sub": "You are not slow. Nobody ever made you write it yourself.",
+  "step1_t": "You read",
+  "step1_d": "It all makes sense. The explanation is clear.",
+  "step2_t": "You nod",
+  "step2_d": "Yes, got it. Looks easy enough.",
+  "step3_t": "You freeze",
+  "step3_d": "Empty file. No idea where to start.",
+  "problem_punch": "Understanding and writing are two different muscles. Here we train the second one.",
+
+  "pillars_title": "What we do differently",
+  "pillars_sub": "Everything here is built to pull you out of memorising and push you into writing.",
+  "p1_t": "Touch before you understand",
+  "p1_d": "The first lesson is writing, not theory. The explanation arrives after you have touched something and seen what happens.",
+  "p2_t": "Problem before tool",
+  "p2_d": "We show you the broken thing first. The fix only comes once it hurts. That is what makes it stick.",
+  "p3_t": "“On your own” lessons",
+  "p3_d": "Empty editor, just a goal. No starter code. This is where the freezing gets cured — and this is exactly what nobody else does.",
+  "p4_t": "Wrecks",
+  "p4_d": "We hand you broken code with six bugs and no hints. Go find them. That is what the real job looks like.",
+
+  "course_title": "The course",
+  "course_desc": "From your first tag to a real site, live online. You write in the browser and see the result instantly.",
+  "course_soon": "CSS and Python are next. One at a time, no rushing.",
+
+  "ugly_quote": "Your page will be ugly. That is not your fault.",
+  "ugly_sub": "HTML does not make things pretty — it makes structure. Pretty is the job of CSS and it comes later. Anyone promising you a beautiful site on day one is either lying or handing you a template you do not understand.",
+
+  "final_title": "Stop reading. Start writing.",
+  "final_sub": "The first lesson takes five minutes. You need nothing — no account, no installs."
+}

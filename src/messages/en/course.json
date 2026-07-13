@@ -1,0 +1,18 @@
+{
+  "start_learning": "Start Learning",
+  "continue_learning": "Continue",
+  "your_progress": "Your Progress",
+  "completed": "completed",
+  "completed_short": "completed",
+  "syllabus": "View full syllabus",
+
+  "module": "Module",
+  "next_module": "Next module",
+  "prev_module": "Prev module",
+
+  "stat_lessons": "lessons",
+  "stat_sections": "sections",
+  "stat_hours": "hours",
+  "stat_problems": "problems",
+  "stat_level": "level"
+}

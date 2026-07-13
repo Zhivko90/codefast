@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { useLanguage } from '@/lib/language';
+import { useTranslations } from 'next-intl';
 import { theme } from '@/lib/theme';
+import { useAuth } from '@/lib/auth';
+import { markDone } from '@/lib/progress';
 
 export default function QuizLesson({ lesson, lang }) {
-  const { t } = useLanguage();
+    const { user } = useAuth();
+  const t = useTranslations('lesson');
 
   const [qi, setQi] = useState(0);
   const [chosen, setChosen] = useState(null);
@@ -60,15 +63,11 @@ export default function QuizLesson({ lesson, lang }) {
   const isLast = qi === questions.length - 1;
   const finished = qi >= questions.length;
 
-  // куизът е минат, щом човек стигне до края
+// куизът е минат, щом човек стигне до края
   useEffect(() => {
     if (!finished) return;
-    try {
-      localStorage.setItem(`codefast-done-${lesson.id}`, '1');
-    } catch {
-      // няма проблем
-    }
-  }, [finished, lesson.id]);
+    markDone(user?.id, 'html', lesson.id);
+  }, [finished, lesson.id, user?.id]);
 
   const submit = () => {
     if (chosen === null) return;

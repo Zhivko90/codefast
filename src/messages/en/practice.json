@@ -1,0 +1,62 @@
+{
+  "heading": "Practice",
+  "sub": "Just problems. No lessons. Come in and solve.",
+
+  "f_topic": "Topic",
+  "f_all": "All",
+  "f_diff": "Difficulty",
+  "f_status": "Status",
+  "f_solved": "Solved",
+  "f_failed": "Failed",
+  "f_new": "New",
+
+  "easy": "Easy",
+  "medium": "Medium",
+  "hard": "Hard",
+
+  "empty_title": "No problems match these filters",
+  "empty_sub": "Loosen them or try another topic.",
+  "none_title": "You have not solved anything yet",
+  "none_sub": "Start with an easy one. Nobody is watching.",
+
+  "run": "Run",
+  "submit": "Submit",
+  "statement": "Statement",
+  "solution": "Solution",
+  "discuss": "Discussion",
+  "locked_hint": "Unlocks when you solve it",
+
+  "example": "Example",
+  "input": "Input",
+  "output": "Output",
+  "constraints": "Constraints",
+
+  "tests": "Tests",
+  "my_test": "Your test",
+  "result": "Result",
+  "preview": "Preview",
+  "hidden_test": "Hidden test",
+  "test_pass": "passed",
+  "test_fail": "failed",
+  "not_run": "Nothing submitted yet.",
+
+  "all_passed": "All tests passed.",
+  "why_failed": "Why it failed",
+  "free": "Free",
+
+  "history": "Your submissions",
+  "no_history": "No previous attempts.",
+  "attempt_ok": "passed",
+  "attempt_no": "failed",
+
+  "back": "All problems",
+  "next_problem": "Next problem",
+  "reset": "Reset",
+
+  "hide_panel": "Hide panel",
+  "show_panel": "Show panel",
+
+  "reset_confirm": "Reset your code? Everything you wrote will be lost.",
+  "reset_yes": "Yes, I know",
+  "reset_cancel": "Cancel"
+}
