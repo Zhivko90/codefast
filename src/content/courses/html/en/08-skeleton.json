@@ -19,6 +19,11 @@
   "hint2.not-code": "Go top to bottom, tag by tag. Every opening tag is looking for its closing tag.",
   "hint3.not-code": "Remember: head ends before body begins. They are siblings, not one inside the other. It is <head></head><body></body>.",
 
+  "hint2.no-html": "All your code goes inside <html> ... </html>. Everything else lives inside it.",
+  "hint2.no-head": "<head> is the first thing inside <html>. It is empty for now — just <head></head>.",
+  "hint2.no-body": "<body> comes AFTER </head>, not inside it. They are siblings.",
+  "hint2.lost-content": "Do not delete. Wrap. The heading and the sentence you already have must stay — just inside <body>.",
+
   "hint2.content-in-head": "Look at what sits between <head> and </head>. That part is the invisible one — it holds information ABOUT the page, not the page itself.",
   "hint3.content-in-head": "The skeleton in the lesson has an empty <head> and an empty <body>. Look at it again. Your heading and your sentence show up on screen — so where do they belong?",
   "hint4.content-in-head": "Cut the two lines with h1 and p out of head. Put them between <body> and </body>.",

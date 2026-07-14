@@ -2,6 +2,7 @@
   "title": "Write your name",
   "checkLabels.t1": "Did you change the text to something of your own",
   "why.unchanged": "It still says \"Hello\". Delete it and write your name — that is the whole lesson. There is no right answer. There is yours.",
+  "hint2.unchanged": "Click in the editor on the right. Select the word Hello. Press Backspace. Type your name.",
   "blocks.0.text": "No introduction. No explanations. On the right there is a page that says \"Hello\".",
   "blocks.1.text": "Do this",
   "blocks.2.text": "Delete \"Hello\" and write your name. Then press the green \"Submit\" button.",

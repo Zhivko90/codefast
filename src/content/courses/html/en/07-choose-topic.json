@@ -11,6 +11,12 @@
   "why.no-heading": "You wrote something, but it is not a heading. Bare text is just text. To be a heading it has to be inside <h1>.",
   "why.no-sentence": "The heading is there, but it is alone. The lesson asks for one sentence under it — why you chose the topic. That goes in <p>.",
 
+  "hint2.empty": "Do not wonder which topic is good. Any of them is, as long as you care about it. Write the first thing that comes to mind.",
+  "hint2.not-closed": "If you opened <h1>, there must be a </h1> somewhere. Go top to bottom, tag by tag.",
+  "hint2.no-heading": "Your topic has to be a heading: <h1>My topic</h1>.",
+  "hint3.no-heading": "Check the text is INSIDE the tag. <h1>My dog</h1>, not <h1></h1>My dog.",
+  "hint2.no-sentence": "Under the heading you need one sentence — why you chose the topic. You wrap it in <p>...</p>.",
+
   "blocks.0.text": "The lessons will teach you on someone else's example — a bicycle for sale. It is foreign on purpose: it can be broken, botched, taken apart. But six times through this course the editor will be empty and it will say \"your page\" above it. Then there is no example. There is only what you remember — and what you have already built.",
   "blocks.1.text": "So first decide what it is about",
   "blocks.2.text": "Your favourite game. Your dog. A band you listen to. Your team. Your grandmother's recipe. A film you have watched ten times. Anything — as long as you care about it.",
