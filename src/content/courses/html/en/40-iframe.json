@@ -1,13 +1,37 @@
 {
   "title": "Someone else's page inside yours",
-  "checkLabels.t1": "There is an embedded window",
-  "checkLabels.t2": "It knows what to show",
-  "checkLabels.t3": "It has a name",
-  "checkLabels.t4": "Everything closed",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There is an embedded window",
+  "checkLabels.t3": "It knows what to show",
+  "checkLabels.t4": "It has a name",
+  "checkLabels.t5": "The name says something",
+  "checkLabels.t6": "The heading is still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of embedding something. Bring the code back.",
+
+  "why.not-closed": "A tag is open and never closed. <iframe> has a closing tag, even when there is nothing between the two.",
+  "hint2.not-closed": "</iframe> must be there. Empty, but there.",
+
   "why.no-iframe": "There is no embedded window. The tag is <iframe> and a whole foreign page lives inside it.",
-  "why.no-src": "The tag is there, but it does not say which page to show. src is missing.",
-  "why.no-title": "There is no title. A blind person reaches the embedded window and hears… nothing. They do not know if it is a map, a video, or an advert. One attribute solves that.",
-  "why.not-closed": "A tag is open and never closed. <iframe> has a closing tag.",
+  "hint2.no-iframe": "Put it after the \"Where to find me\" paragraph.",
+  "hint3.no-iframe": "<iframe src=\"https://example.com\" title=\"...\"></iframe> — the address, the name, and a closing tag.",
+
+  "why.no-src": "The tag is there, but it does not say which page to show — or the src is empty. An empty window looks at nothing.",
+  "hint2.no-src": "src takes a full address — this is someone else's site, not a file next to you.",
+
+  "why.no-title": "The window has no title — or it is empty. A blind person reaches it and hears… nothing. They do not know if it is a map, a video, an advert or emptiness. They do not know whether to enter it at all.",
+  "hint2.no-title": "title is an attribute inside the <iframe>. Do not confuse it with <title> in the head — different things, same name.",
+  "hint3.no-title": "<iframe src=\"...\" title=\"Map of the pickup location\"></iframe> — it says what is inside, before the person goes in.",
+  "hint4.no-title": "Add a title and describe what the window shows. One sentence.",
+
+  "why.useless-title": "You wrote \"iframe\". A blind person hears: \"embedded window: embedded window\". You told them there is a window — their computer already said that. You did not tell them what is INSIDE.",
+  "hint2.useless-title": "The same mistake as alt=\"photo\". The name of the tag is not a description.",
+  "hint3.useless-title": "\"Map of the pickup location\" — that says something. \"iframe\" — does not.",
+
+  "why.lost-h1": "The heading is gone. The task is the window, not deleting things.",
+
   "blocks.0.text": "You want to show where to come and get the bike. A map. Except a map is not something you build with HTML — it is a whole site in its own right.",
   "blocks.1.text": "You do not need to build it. You need to borrow it.",
   "blocks.2.text": "A window into another page",
@@ -22,7 +46,7 @@
   "blocks.12.text": "There is a sandbox attribute that ties its hands — it forbids running code, opening windows, writing to disk. Use it when you embed something you do not fully trust.",
   "blocks.13.text": "The rule: only embed sites you would hand your house keys to.",
   "blocks.14.text": "And the name",
-  "blocks.15.text": "Did you notice the title in the example? It is not decoration.",
+  "blocks.15.text": "Did you notice the title in the example? It is not decoration. And mind this: it is not the <title> from the head — the names just happen to match.",
   "blocks.16.text": "A blind person reaches the embedded window and hears… nothing. They do not know if it is a map, a video, an advert or emptiness. They do not know whether to enter it.",
   "blocks.17.text": "title tells them what is inside — before they decide whether to spend time on it.",
   "blocks.18.text": "The same as alt on images: one invisible attribute, without which half the people are blind to your page.",

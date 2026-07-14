@@ -1,13 +1,41 @@
 {
   "title": "Video and sound",
-  "checkLabels.t1": "There is a video",
-  "checkLabels.t2": "There are controls",
-  "checkLabels.t3": "It does not start on its own",
-  "checkLabels.t4": "Everything closed",
-  "why.no-video": "There is no video. The tag is <video>, the file is /uroci/bike.mp4.",
-  "why.no-controls": "The video is there, but it has no buttons. Without controls the person stares at a still frame and cannot play it. One attribute — and the play button, the bar and the volume appear.",
-  "why.autoplay": "You added autoplay. Think of the last time you opened a site and something suddenly started talking. What did you do? You closed the tab. You did not hunt for the stop button — you just left.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There is a video",
+  "checkLabels.t3": "It knows which file",
+  "checkLabels.t4": "There are controls",
+  "checkLabels.t5": "It does not start on its own",
+  "checkLabels.t6": "The path is right",
+
+  "why.empty": "The editor is empty. You deleted the page instead of adding a video. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed. <video> has a closing tag, unlike <img>.",
+  "hint2.not-closed": "</video> must be there, even when there is nothing between the two tags.",
+  "hint3.not-closed": "<video src=\"...\" controls></video> — it opens and closes right away. The closing tag is not pointless, you will see why.",
+
+  "why.no-video": "There is no video. The tag is <video>.",
+  "hint2.no-video": "Put it after the \"Watch it in action\" paragraph.",
+  "hint3.no-video": "<video src=\"film.mp4\" controls></video> — the file in src, the buttons with controls.",
+
+  "why.no-src": "The tag is there, but it does not say which file — or the src is empty. An empty video is a black rectangle that does nothing.",
+  "hint2.no-src": "The file is /uroci/bike.mp4.",
+  "hint3.no-src": "src is the same attribute you already use on <img>. It works the same way.",
+
+  "why.no-controls": "The video is there, but it has no buttons. Without controls the person stares at a still frame and cannot play it. One attribute — and the play button, the bar and the volume appear.",
+  "hint2.no-controls": "controls is an attribute with no value. It simply exists or it does not.",
+  "hint3.no-controls": "<video src=\"...\" controls></video> — no quotes, no equals sign. Just the word.",
+  "hint4.no-controls": "Add controls inside the opening tag, after src.",
+
+  "why.autoplay": "You added autoplay. Think of the last time you opened a site and something suddenly started talking. What did you do? You closed the tab. You did not hunt for the stop button — you just left.",
+  "hint2.autoplay": "You are making a decision for the person on the other side — about their speakers, in their room, next to their sleeping child.",
+  "hint3.autoplay": "One attribute, no value — just like controls. It simply exists. It does not need =\"true\" to work, and it is not switched off with =\"false\".",
+  "hint4.autoplay": "Remove autoplay. Keep controls and let the person decide.",
+
+  "why.wrong-path": "The path does not point at the video. It is at /uroci/bike.mp4.",
+  "hint2.wrong-path": "Check for a typo. And remember that capital letters matter.",
+
   "blocks.0.text": "The photo shows the bike. But you want to show how it moves.",
   "blocks.1.text": "The tag",
   "blocks.3.text": "Run it without controls and see what happens: a picture that does not move and will not play. The person stares and wonders.",

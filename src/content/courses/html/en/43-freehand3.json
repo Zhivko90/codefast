@@ -1,19 +1,53 @@
 {
   "title": "Freehand: a page that is not alone",
+
   "checkLabels.t1": "Did you write anything",
+  "checkLabels.g1": "Everything closed",
   "checkLabels.t2": "Navigation",
-  "checkLabels.t3": "An image",
-  "checkLabels.t4": "The image describes itself",
-  "checkLabels.t5": "A link",
-  "checkLabels.t6": "It leads out",
-  "checkLabels.t7": "Everything closed",
+  "checkLabels.t3": "The menu links have words",
+  "checkLabels.t4": "An image",
+  "checkLabels.t5": "The image describes itself",
+  "checkLabels.t6": "The description says something",
+  "checkLabels.t7": "A link out",
+  "checkLabels.t8": "The outward link has words",
+  "checkLabels.t9": "It does not say \"click here\"",
+  "checkLabels.t10": "A main heading",
+  "checkLabels.t11": "Some text",
+
   "why.empty": "Empty editor. Do not start from the code — start from the question \"what do I want on this page\". Then turn it into tags, one at a time.",
-  "why.no-nav": "There is no navigation. A list of links is not a menu until you say it is a menu. There is a tag for exactly that, and it exists so the browser can tell it apart from every other list.",
-  "why.no-img": "There is no image. The path is /uroci/bike.jpg. It has nothing to do with your topic and that is fine — what matters is the tag, not the bike.",
-  "why.no-alt": "The image is there, but it is mute. If it does not load — and for some people, some day, it will not — there will be a hole where it stood. Say what is on it.",
-  "why.no-link": "There is not a single link. Your page sits alone on the internet, and the internet is precisely this: pages that lead to one another.",
-  "why.no-outside": "Your links only lead back into you. The task asks for at least one going out — to something genuinely worth reading on your topic. The address starts with http.",
+  "hint2.empty": "One sentence. What is the page about? That is the <h1>. The rest follows it.",
+
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "The menu is four levels deep: nav, ul, li, a. The usual culprit.",
+
+  "why.no-nav": "There is no navigation. Three things must nest: <nav>, a <ul> inside it, and an <li> with a link for each page. A list of links is not a menu until you say it is a menu.",
+  "hint2.no-nav": "A <nav> around a paragraph is not enough. The links must be in a list too.",
+  "hint3.no-nav": "At least two pages. One is the one you are on — index.html. Invent the other: contact.html, about.html.",
+
+  "why.empty-nav-link": "There is a link in the menu with no words in it. An empty link in a menu is the most useless thing on the page.",
+
+  "why.no-img": "There is no image. The path is /uroci/bike.jpg. It has nothing to do with your topic and that is fine — what matters is the tag, not the bike.",
+  "hint2.no-img": "<img src=\"/uroci/bike.jpg\" alt=\"...\"> — one tag, no closing.",
+
+  "why.no-alt": "The image is there, but it is mute. If it does not load — and for some people, some day, it will not — there will be a hole where it stood. Say what is on it.",
+  "hint2.no-alt": "alt is an attribute. It lives inside the <img>, next to src.",
+
+  "why.useless-alt": "You wrote \"photo\" or \"image\". A blind person hears: \"image: image\". They already know it is a picture — their computer said so. Tell them what IS SEEN.",
+  "hint2.useless-alt": "The photo is of a blue mountain bike. Describe it.",
+
+  "why.no-outside": "Your links only lead back into you. The task asks for at least one going out — to something genuinely worth reading on your topic. The address starts with http.",
+  "hint2.no-outside": "An internal link is contact.html. An external one is a full address: https://…",
+  "hint3.no-outside": "Think about your topic. Is there an article, a site, a page you would send a friend? That one.",
+
+  "why.empty-outside": "The outward link has no words in it. Or it is the bare address — and that gets read out character by character by a screen reader.",
+
+  "why.click-here": "You wrote \"click here\". Take the word out of the sentence and read it alone: \"here\". Where? Nobody is watching you now, but the rule does not change when nobody is watching.",
+  "hint2.click-here": "Make the link out of the words that say what is on the other side.",
+
+  "why.no-h1": "There is no main heading, or it is empty. The page has to say what it is about.",
+
+  "why.no-p": "There is no text. A menu and an image are not a page — they are a frame around something that is missing.",
+
   "blocks.0.text": "Empty editor. You know what comes next.",
   "blocks.1.text": "The task",
   "blocks.2.text": "Your topic again. But this time the page does not stand alone — it leads somewhere and it shows something.",

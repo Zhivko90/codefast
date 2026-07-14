@@ -1,13 +1,32 @@
 {
   "title": "The icon in the tab",
-  "checkLabels.t1": "There is a link to a file",
-  "checkLabels.t2": "It says it is an icon",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There is an icon",
   "checkLabels.t3": "It knows which file",
-  "checkLabels.t4": "Everything closed",
-  "why.no-link": "There is still no icon. The tag is <link> and it lives in the <head>. The file is /uroci/favicon.png.",
-  "why.no-rel": "The tag is there, but it does not say WHAT this file is. Without rel=\"icon\" the browser does not know it is an icon — it could be a stylesheet, it could be a font.",
-  "why.no-href": "You have not said which file. href is missing.",
+  "checkLabels.t4": "It sits in the head",
+  "checkLabels.t5": "The image still speaks",
+
+  "why.empty": "The editor is empty. You deleted the page instead of adding an icon. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed. (<link> does not count — it has no closing tag.)",
+
+  "why.no-link": "There is still no icon. The tag is <link>, and rel says what kind of file it is: rel=\"icon\".",
+  "hint2.no-link": "Two attributes are needed. One says WHAT the file is, the other says WHERE it is.",
+  "hint3.no-link": "<link rel=\"icon\" href=\"path/to/file.png\"> — no closing tag, like <img> and <br>.",
+  "hint4.no-link": "<link rel=\"icon\" href=\"/uroci/favicon.png\"> — inside the <head>.",
+
+  "why.no-href": "The tag is there and says it is an icon, but it does not say which one. href is missing or empty.",
+  "hint2.no-href": "The file is /uroci/favicon.png.",
+
+  "why.not-in-head": "The icon is not in the <head>. You put it in the <body>. The browser will take it silently — it is forgiving — but that is not where it belongs.",
+  "hint2.not-in-head": "<head> is for things that are not seen on the page. The icon is seen in the TAB, not on the page.",
+  "hint3.not-in-head": "Everything that says something ABOUT the page — title, encoding, icon — lives in the head. Everything that IS the page lives in the body.",
+  "hint4.not-in-head": "Move the <link> between <head> and </head>, next to the <title>.",
+
+  "why.lost-alt": "The image's alt is gone. The task is the icon, not deleting things. Do not undo what you built.",
+
   "blocks.0.text": "Look at the tabs in your own browser. Every one has an icon. Google has a G, YouTube the red triangle.",
   "blocks.1.text": "Your tab has a blank sheet of paper. That is the default icon — it says \"nobody bothered with this site\".",
   "blocks.2.text": "One line in the head",

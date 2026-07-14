@@ -1,6 +1,62 @@
 {
   "title": "The most abused tag in history",
-  "testCase": "Did you remove the table and use semantic tags?",
+
+  "checkLabels.t1": "There is code",
+  "checkLabels.t2": "You changed something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The site title is here",
+  "checkLabels.t4": "The listing is here",
+  "checkLabels.t5": "The price is here",
+  "checkLabels.t6": "All three links are here",
+  "checkLabels.t7": "The table is gone",
+  "checkLabels.t8": "A top part",
+  "checkLabels.t9": "Navigation with links",
+  "checkLabels.t10": "The menu is a list",
+  "checkLabels.t11": "Main content",
+  "checkLabels.t12": "A standalone listing",
+  "checkLabels.t13": "A bottom part",
+  "checkLabels.t14": "No forced line breaks",
+
+  "why.empty": "The editor is empty. You deleted the whole page.",
+
+  "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
+  "hint2.untouched": "You do not wrap it, you take it apart. Every cell holds something that has a tag of its own.",
+
+  "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "If you remove the <table>, remove every </td>, </tr> and </table> too. A leftover closing tag from the table is the most common mistake here.",
+
+  "why.lost": "You deleted the content. The task was to take the grid apart, not remove the site. Bring back the title, the listing and the price.",
+
+  "why.lost-links": "You lost links. The menu has three — Home, Bikes and Contact. All three stay.",
+
+  "why.still-table": "The table is still there. It is not a layout grid — it is data that has rows and columns. Here not one row and not one column mean anything.",
+  "hint2.still-table": "Ask about a single cell: what does it MEAN? Row 2, cell 1 — what is that? There is no answer. So it is not a table.",
+  "hint3.still-table": "A similar case: <td>menu</td><td>article</td> share no row. They merely sit next to each other on screen.",
+  "hint4.still-table": "Remove <table>, <tr> and <td> completely. Everything inside the cells has a tag of its own — you know them all from lesson 47.",
+
+  "why.no-header": "There is no top part. The shop name and the menu sit at the top — say so with <header>.",
+  "hint2.no-header": "The first cell holds the <h1>. The second holds the menu. Together they are the top part.",
+
+  "why.no-nav": "There is no navigation with links. The three links are not in a <nav> yet, or they have been lost.",
+  "hint2.no-nav": "The cell with the three links is the menu. It sits on the left only because the table put it there — that is appearance, not meaning.",
+
+  "why.no-list": "The menu is not a list. Three links separated by <br> are not a list — they are one line, broken by force.",
+  "hint2.no-list": "Remember lesson 22? <br> breaks a line. It does not create items. A reader does not count <br>.",
+  "hint3.no-list": "A similar case: <nav><ul><li><a href=\"/index.html\">Home</a></li></ul></nav>. Each link in its own item.",
+  "hint4.no-list": "Three links, three <li>, one <ul>, all inside <nav>. And the <br> tags fall away on their own.",
+
+  "why.no-main": "There is no main content. The person came for the bike — that is the point. The menu and the bottom line repeat on every page.",
+  "hint2.no-main": "The cell on the right is the main thing. It sits on the right only because the table put it there.",
+
+  "why.no-article": "The listing is not a standalone thing. A heading and a description of one bike — lift them out of the page and they still make sense. That is an <article>, inside <main>.",
+  "hint2.no-article": "The <h2> and the <p> under it are one thing, not two.",
+
+  "why.no-footer": "There is no bottom part. Written by Ivan, all rights reserved — that is the fine print. It has a tag of its own.",
+  "hint2.no-footer": "The last cell of the table is the bottom of the site. It is at the bottom only because the table put it there.",
+
+  "why.still-br": "There are <br> left. You now have a real list — forcing line breaks is redundant. <br> breaks a line. It does not make items.",
+  "hint2.still-br": "Search with Ctrl+F for br. Every hit was a drawing of a list. The list is real now.",
+
   "blocks.0.text": "Run it. Look at what comes out.",
   "blocks.1.text": "A heading at the top, spanning the full width. A menu on the left, a narrow column. Content on the right, wide. A note at the bottom. It looks like a site. It WORKS like a site.",
   "blocks.2.text": "Now look at the code. It is a TABLE.",
@@ -9,13 +65,13 @@
   "blocks.5.text": "Today it is not. Today there is CSS, which arranges whatever you want, however you want. And the table went back to where it came from: data.",
   "blocks.6.text": "A table is not a layout grid. A table is DATA that has rows and columns.",
   "blocks.7.text": "Ask yourself the question",
-  "blocks.8.text": "There is one question that settles it: \"Do these things make sense as rows and columns?\"",
-  "blocks.9.items.0": "A table of three bikes, each with a model, gears and a price → YES. Ask: what does the cell \"18 leva\" mean? It means the price of the black bike. It gets its meaning from the row and the column it sits in. That is data.",
-  "blocks.9.items.1": "A menu on the left and text on the right → NO. What is the \"row\" that the menu and the article share? There is none. They merely sit next to each other on screen. That is APPEARANCE, not structure.",
+  "blocks.8.text": "There is one question that settles it: do these things make sense as rows and columns?",
+  "blocks.9.items.0": "A table of three bikes, each with a model, gears and a price → YES. Ask: what does the cell 18 leva mean? It means the price of the mountain bike. It gets its meaning from the row and the column it sits in. That is data.",
+  "blocks.9.items.1": "A menu on the left and text on the right → NO. What is the row that the menu and the article share? There is none. They merely sit next to each other on screen. That is APPEARANCE, not structure.",
   "blocks.10.text": "If you cannot say what a cell MEANS, you do not have a table. You have a layout built with the wrong tool.",
   "blocks.11.text": "What the blind visitor hears",
-  "blocks.12.text": "Here is the cost. The reader reaches the table and announces: \"Table. Three rows, two columns.\" The person braces — data is coming.",
-  "blocks.13.text": "\"Row 1, cell 1: Bike Shop. Row 2, cell 1: link Home, link Bikes, link Contact. Row 2, cell 2: Black bike, 21 gears…\"",
+  "blocks.12.text": "Here is the cost. The reader reaches the table and announces: table, three rows, two columns. The person braces — data is coming.",
+  "blocks.13.text": "Row 1, cell 1: Bike Shop. Row 2, cell 1: link Home, link Bikes, link Contact. Row 2, cell 2: Blue mountain bike, 21 gears…",
   "blocks.14.text": "He is looking for data. You hand him a website chopped into cells. There is no menu, no heading, no article — there are rows and columns that mean nothing. Complete nonsense, delivered with total confidence.",
   "blocks.15.text": "And on a phone",
   "blocks.16.text": "A table does not reflow. Its columns cannot stack one below the other — that would destroy its meaning. So on a phone a table either comes out tiny, or it pushes the page sideways.",
@@ -23,6 +79,6 @@
   "blocks.19.text": "The rule",
   "blocks.20.text": "A table for DATA — yes, always. Exchange rates, match results, specs, timetables, prices. Anything with rows and columns where each cell means something.",
   "blocks.21.text": "A table for LAYOUT — never. Not because it is old-fashioned. Because it lies.",
-  "blocks.22.text": "Your turn. Take this table apart. The heading at the top, the menu, the content, the note at the bottom — each has its own tag and you know them all.",
+  "blocks.22.text": "Your turn. Take this table apart completely — not one <table>, not one <td>. The heading at the top, the menu, the content, the note at the bottom — each has its own tag and you know them all. And make the menu a list: those <br> inside it are a drawing of a list, not a list.",
   "blocks.23.text": "It will get uglier. The menu will drop below the content instead of sitting beside it. You know why by now: layout is CSS. But the code will tell the truth."
 }

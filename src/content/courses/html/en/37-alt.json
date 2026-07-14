@@ -1,14 +1,44 @@
 {
   "title": "The image that speaks",
-  "checkLabels.t1": "The image describes itself",
-  "checkLabels.t2": "The description is not empty",
-  "checkLabels.t3": "The description says something",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "The image is there",
+  "checkLabels.t3": "The image describes itself",
   "checkLabels.t4": "It does not say \"photo\"",
-  "checkLabels.t5": "Everything closed",
-  "why.no-alt": "The image is mute. Run it and look — it does not load, and where it stood there is nothing. Half your listing vanished and nobody knew.",
-  "why.empty-alt": "You wrote alt=\"\" — empty. That makes sense ONLY if the image is pure decoration. This one is the thing you are selling.",
-  "why.useless-alt": "You wrote \"image\" or \"photo\". A blind person hears: \"image: image\". You told them there is a picture — they already knew that. You did not tell them what is on it.",
-  "why.not-closed": "A tag is open and never closed.",
+  "checkLabels.t5": "It does not say \"image\"",
+  "checkLabels.t6": "It does not say \"picture\"",
+  "checkLabels.t7": "It is not a filename",
+  "checkLabels.t8": "The description says something",
+  "checkLabels.t9": "The price is still there",
+
+  "why.empty": "The editor is empty. You deleted the listing instead of giving the image a voice. Bring the code back.",
+
+  "why.not-closed": "A tag is open and never closed. (<img> does not count.)",
+
+  "why.lost-img": "The image is gone. The task is to give it a voice, not to delete it. A hole is still a hole without it.",
+
+  "why.no-alt": "The image is mute — there is no alt, or it is empty. Run it and look: it does not load, and where it stood there is nothing. Half your listing vanished and nobody knew.",
+  "hint2.no-alt": "alt is an attribute. It lives inside the <img>, next to src.",
+  "hint3.no-alt": "<img src=\"cat.jpg\" alt=\"Black cat asleep on a chair\"> — what is seen, not what the file is.",
+  "hint4.no-alt": "Add an alt to the image. Describe the bike in one sentence — colour, type, which side it is shot from.",
+
+  "why.useless-alt": "You wrote \"photo\", \"image\" or \"picture\". A blind person hears: \"image: image\". You told them there is a picture — they already knew that, their computer said so. You did not tell them what IS SEEN on it.",
+  "hint2.useless-alt": "Take the word \"photo\" out of the alt. It is always redundant.",
+  "hint3.useless-alt": "\"Photo of a bike\" → \"Blue mountain bike, side view\". The second describes. The first only repeats the obvious.",
+  "hint4.useless-alt": "Close your eyes. Someone is reading the page aloud to you. What do you need to hear to decide whether to buy this bike?",
+
+  "why.filename-alt": "You put the filename in the alt. A blind person hears: \"bike dot jay pee gee\". That is not a description — that is an address.",
+  "hint2.filename-alt": "The filename is already in src. It has no business being in alt too.",
+  "hint3.filename-alt": "src tells the browser WHICH file. alt tells the person WHAT is on it. Different questions.",
+
+  "why.too-short": "\"Bike\". That is all. A blind person hears one word and learns nothing — that you are selling a bike, they read in the heading. Describe what is seen: colour, type, condition.",
+  "hint2.too-short": "One sentence, not one word.",
+  "hint3.too-short": "\"Blue mountain bike, side view, with a basket on the front\" — now they know what they are buying.",
+  "hint4.too-short": "Imagine describing the photo over the phone to someone who cannot see it.",
+
+  "why.lost-price": "The price is gone. The task is the image, not deleting things.",
+
   "blocks.0.text": "Run the page on the right. The image does not load — I put the wrong path in on purpose.",
   "blocks.1.text": "Look at what is left: nothing. A hole. Your listing says \"here is a photo of the bike\", and then — a gap. Half the listing vanished and nobody knows what it was.",
   "blocks.2.text": "One attribute",
@@ -22,7 +52,7 @@
   "blocks.11.items.0": "Describe what IS SEEN, not what the file is. \"Blue mountain bike, side view\", not \"photo\".",
   "blocks.11.items.1": "Do not write \"photo of…\" — they already know it is a photo. Their computer told them.",
   "blocks.11.items.2": "Short. One sentence. Not a novel.",
-  "blocks.12.text": "The test: close your eyes and imagine someone reading the page aloud to you. Does your alt tell you what you need?",
+  "blocks.12.text": "The test: close your eyes and imagine someone reading the page aloud to you. Does your alt tell you what you need? A machine can check that you wrote something. Whether it does the job — only you can say.",
   "blocks.13.text": "When alt is empty",
   "blocks.14.text": "There is one case: alt=\"\" — deliberately empty. Used when the image is pure decoration and carries no meaning. A decorative rule, a background, an icon next to text that already says the same thing.",
   "blocks.15.text": "Then the empty alt tells the reader: \"skip me, there is nothing here for you\". That is better than a bad alt.",

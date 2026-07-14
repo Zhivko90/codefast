@@ -15,10 +15,13 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<iframe", err: "no-iframe" },
-    { id: "t2", type: "code_contains", value: "src=", err: "no-src" },
-    { id: "t3", type: "code_contains", value: "title=", err: "no-title" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_count", value: "iframe", min: 1, err: "no-iframe", weight: 150 },
+    { id: "t3", type: "dom_attr", value: "iframe", attr: "src", err: "no-src", weight: 140 },
+    { id: "t4", type: "dom_attr", value: "iframe", attr: "title", err: "no-title", weight: 130 },
+    { id: "t5", type: "dom_not_has", value: "iframe[title*='iframe' i]", err: "useless-title", weight: 120 },
+    { id: "t6", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 50 },
   ],
   blocks: [
     { type: "text" },

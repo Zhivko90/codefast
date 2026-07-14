@@ -1,17 +1,78 @@
 {
   "title": "The wreck, fourth time",
-  "checkLabels.t1": "Hidden test",
-  "checkLabels.t2": "Hidden test",
-  "checkLabels.t3": "Hidden test",
-  "checkLabels.t4": "Hidden test",
-  "checkLabels.t5": "Hidden test",
-  "checkLabels.t6": "Hidden test",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You touched the code",
+  "checkLabels.g1": "Hidden test",
+  "checkLabels.p1": "The heading is there",
+  "checkLabels.p2": "The form is there",
+  "checkLabels.p3": "The name question is there",
+  "checkLabels.p4": "The email question is there",
+  "checkLabels.p5": "The message question is there",
+  "checkLabels.p6": "The send button is there",
+  "checkLabels.p7": "All three fields are there",
+  "checkLabels.h1": "Hidden test",
+  "checkLabels.h2": "Hidden test",
+  "checkLabels.h3": "Hidden test",
+  "checkLabels.h4": "Hidden test",
+  "checkLabels.h5": "Hidden test",
+  "checkLabels.h6": "Hidden test",
+  "checkLabels.h7": "Hidden test",
+  "checkLabels.h8": "Hidden test",
+  "checkLabels.h9": "Hidden test",
+  "checkLabels.h10": "Hidden test",
+  "checkLabels.h11": "Hidden test",
+  "checkLabels.h12": "Hidden test",
+  "checkLabels.h13": "Hidden test",
+  "checkLabels.h14": "Hidden test",
+
+  "why.empty": "The editor is empty. Deleting is not fixing. Bring the code back.",
+
+  "why.untouched": "You have not touched the code. The form works with a mouse. That is exactly the problem.",
+
+  "why.not-closed": "Something is open and never closed, or closed in the wrong place.",
+
+  "why.lost-content": "You deleted something instead of fixing it. The wreck has ALL of its content — three questions, three fields, a button and a heading. The content is not the mistake. The mistake is how it is said. Bring back what you removed.",
+  "hint2.lost-content": "Something is missing from: the heading, the name question, the email question, the message question, the send button, or one of the three fields. Compare with the original code.",
+
   "why.no-label": "The fields have text above them, but no labels. It is not the same thing — and the difference is only heard by someone who is not looking at the screen.",
-  "why.fake-button": "There is something that looks like a button and is not a button. Try reaching it with Tab.",
+  "hint2.no-label": "Look at which tag the text above each field is written in. Does that tag say anything at all about the field below it?",
+  "hint3.no-label": "A paragraph above a field is just a paragraph that happens to sit on top. There is a tag whose only job is to BE A FIELD'S LABEL. That is the one you want.",
+  "hint4.no-label": "Change the tag. Do not add a new line next to the old one — the old text must not end up on the page twice.",
+
+  "why.label-not-tied": "There are labels, but they do not know which field they belong to. Being close on screen is not a connection. The reader will still say only \"text field\".",
+  "hint2.label-not-tied": "A label is fastened to a field by two attributes — one on each side. One points, the other answers to the name.",
+  "hint3.label-not-tied": "The label has a for. The field has an id. Their value has to be the SAME word. You invent it — all that matters is that it matches.",
+  "hint4.label-not-tied": "Check all three pairs. All three fields need an id. Click a label — if the cursor jumps into the field, the connection is made.",
+
+  "why.no-name": "One or more fields have no name. Data travels as name-value pairs. A field with no name arrives nowhere — the server drops it silently.",
+  "hint2.no-name": "id is for the browser. name is for the server. They do not replace each other.",
+  "hint3.no-name": "Go through the three fields one by one. Which one has no name? There is more than one.",
+
   "why.wrong-type": "One field claims to accept any text at all, while it actually wants one very specific thing.",
+  "hint2.wrong-type": "Read the labels. Which one asks for something with a precise shape?",
+  "hint3.wrong-type": "type is not only about the keyboard. It tells the browser what to expect — and the browser checks it for you. A phone shows a different keyboard. A blind person hears what the type is.",
+
   "why.wrong-field": "One field is far too small for what it is asking. Like handing someone a business card to write a letter on.",
+  "hint2.wrong-field": "Which of the three questions wants a long answer? A one-line box will not do.",
+  "hint3.wrong-field": "There is a tag for many lines of text. It is not an <input> — it opens and closes, because it can hold text inside.",
+  "hint4.wrong-field": "Replace the field. Do not add a new one beside it — otherwise you ask the same thing twice.",
+
+  "why.fake-button": "There is something that looks like a button and is not a button. Try reaching it with Tab.",
+  "hint2.fake-button": "Put the mouse away. Tab moves through the fields and then stops. Why does it never reach it?",
+  "hint3.fake-button": "Tab only visits things that take focus. A labelled group is not one of them. A real button is.",
+  "hint4.fake-button": "Replace it. Do not leave it beside the new one — one button is enough, as long as it is real.",
+
+  "why.no-type": "The button is there, but it does not say what it does.",
+  "hint2.no-type": "There are three possible types. Which one submits the form?",
+
   "why.no-action": "The form collects data and has no idea where to send it.",
-  "why.not-closed": "Something is open and never closed, or missing its name.",
+  "hint2.no-action": "The form's opening tag is bare. It is missing the address.",
+
+  "why.no-method": "The form knows WHERE to send the data, but not HOW.",
+  "hint2.no-method": "There are two ways. One puts everything typed into the address bar for anyone to read. The other does not.",
+  "hint3.no-method": "This form sends a message — it CHANGES something on the other side, it does not read. Which way is for changing?",
+
   "blocks.0.text": "The last wreck. The form on the right works — it fills in, it looks fine, nothing crashes.",
   "blocks.1.text": "And it is unusable for half the people.",
   "blocks.2.text": "The test",
@@ -19,9 +80,9 @@
   "blocks.4.text": "Now fill in the form with the keyboard only. Tab for the next field. Enter to submit.",
   "blocks.5.text": "How far do you get? And why do you stop?",
   "blocks.6.text": "How to search",
-  "blocks.7.text": "Go through each field and ask: does it know what it wants? Does the person know what to type? Does the computer know who to read it out to?",
-  "blocks.8.text": "And finally: is there any way at all to send this?",
-  "blocks.9.text": "The tests are hidden. A direction, not an answer.",
+  "blocks.7.text": "Go through each field and ask: does it know what it wants? Does the person know what to type? Does the computer know who to read it out to? And does what they type reach anywhere at all?",
+  "blocks.8.text": "Then look at the form itself, not the fields inside it. Does it know where all of this is going?",
+  "blocks.9.text": "The tests are hidden. A direction, not an answer. They will tell you where to look — they will not point at the line.",
   "blocks.10.text": "A form that works only with a mouse is not broken. It is simply not for everyone.",
-  "blocks.11.text": "All the mistakes come from the last five lessons."
+  "blocks.11.text": "All the mistakes come from the last five lessons. And a warning: deleting is not fixing. Everything on this page must stay — the three questions, the three fields, the button. What changes is the way they are said."
 }

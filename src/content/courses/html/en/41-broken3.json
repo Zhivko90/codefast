@@ -1,17 +1,53 @@
 {
   "title": "The wreck, third time",
-  "checkLabels.t1": "Hidden test",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Hidden test",
   "checkLabels.t2": "Hidden test",
   "checkLabels.t3": "Hidden test",
   "checkLabels.t4": "Hidden test",
   "checkLabels.t5": "Hidden test",
   "checkLabels.t6": "Hidden test",
-  "why.mute-image": "Something on the page is mute. If it fails to load — there will be nothing where it stood. And for half the people, it is nothing always.",
-  "why.local-path": "One path points at a computer that is not theirs.",
-  "why.click-here": "There is a link whose words do not say where it leads. Read them alone, outside the sentence.",
-  "why.no-nav": "There is a group of links claiming to be a paragraph.",
-  "why.mute-iframe": "There is a window into someone else's page that does not say what is inside.",
+  "checkLabels.t7": "Hidden test",
+  "checkLabels.t8": "Hidden test",
+  "checkLabels.p1": "The image is there",
+  "checkLabels.p2": "The window is there",
+  "checkLabels.p3": "The three links are there",
+  "checkLabels.p4": "The home link is there",
+  "checkLabels.p5": "The heading is there",
+
+  "why.empty": "The editor is empty. Deleting is especially pointless here — the code WORKS. There is no broken tag to remove. Bring it back.",
+
   "why.not-closed": "Something is open and never closed.",
+
+  "why.mute-image": "Something on the page is mute. If it fails to load — there will be nothing where it stood. And for half the people, it is nothing always.",
+  "hint2.mute-image": "There is one element that shows something without describing it.",
+  "hint3.mute-image": "Close your eyes. Which element on this page simply vanishes for you?",
+  "hint4.mute-image": "The image has no alt. Describe what is on it — not \"photo\", but what exactly.",
+
+  "why.local-path": "One path points at a computer that is not theirs.",
+  "hint2.local-path": "Look at the addresses in the menu. One of them looks different from the other.",
+  "hint3.local-path": "If you sent the folder to a friend, which link would break for them?",
+  "hint4.local-path": "contact.html sits next to index.html. So the path to it is written that way — just the name.",
+
+  "why.click-here": "There is a link whose words do not say where it leads. Read them alone, outside the sentence.",
+  "hint2.click-here": "A blind person pulls all the links into a list and reads it. How does your list sound?",
+  "hint3.click-here": "The sentence already says where the link goes. You just did not wrap the tag around the right words.",
+  "hint4.click-here": "\"More about this model\" — there are the words. Make the link out of those.",
+
+  "why.no-nav": "There is a group of links claiming to be a paragraph.",
+  "hint2.no-nav": "There is something at the top that LOOKS like a menu.",
+  "hint3.no-nav": "Three things are missing there: the navigation tag, the list, and the removal of something you typed by hand.",
+  "hint4.no-nav": "The paragraph becomes a <nav>, with a <ul> inside, each link in its own <li>. The bars go — they are CSS.",
+
+  "why.mute-iframe": "There is a window into someone else's page that does not say what is inside.",
+  "hint2.mute-iframe": "A blind person reaches it and hears… nothing. They do not know whether to enter.",
+  "hint3.mute-iframe": "The attribute is called title. Careful: not the one in the <head> — the names just happen to match.",
+  "hint4.mute-iframe": "Add a title to the <iframe>. Describe what it shows.",
+
+  "why.lost-content": "You deleted something. And there is nothing to delete here — the code WORKS. Nothing in it is broken. What is broken is WHO it works for. Bring back what you removed and fix the way it is said.",
+  "hint2.lost-content": "Something is missing from: the image, the embedded window, the three links, the heading. Compare with the original code.",
+
   "blocks.0.text": "A third wreck. This time the code WORKS. Open the preview — the page shows, nothing crashes, everything looks fine.",
   "blocks.1.text": "And yet it is broken in several places.",
   "blocks.2.text": "Broken for whom",
@@ -22,5 +58,5 @@
   "blocks.7.text": "Go through the code and ask of each thing: does this work for someone who cannot see the screen? Does it work on another computer? Does it work if something fails to load?",
   "blocks.8.text": "The tests are hidden. They will give you a direction, not an answer.",
   "blocks.9.text": "Code that works only on your machine is not working code. It just has not reached anyone yet.",
-  "blocks.10.text": "All the mistakes come from the last eight lessons. You know every one of them."
+  "blocks.10.text": "And this time deleting is even more pointless than before. There is no broken tag. Every line works. Remove something and you are not fixing anything — you are just throwing away part of the page."
 }

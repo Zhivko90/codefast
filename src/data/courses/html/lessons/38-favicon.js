@@ -14,10 +14,12 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<link", err: "no-link" },
-    { id: "t2", type: "code_contains", value: "rel=\"icon\"", err: "no-rel" },
-    { id: "t3", type: "code_contains", value: "href=", err: "no-href" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_has", value: "link[rel='icon']", err: "no-link", weight: 150 },
+    { id: "t3", type: "dom_attr", value: "link[rel='icon']", attr: "href", err: "no-href", weight: 130 },
+    { id: "t4", type: "raw_head_contains", value: "<link", err: "not-in-head", weight: 110 },
+    { id: "t5", type: "dom_attr", value: "img", attr: "alt", err: "lost-alt", weight: 50 },
   ],
   blocks: [
     { type: "text" },

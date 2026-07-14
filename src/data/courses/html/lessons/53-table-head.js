@@ -31,10 +31,22 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<th", err: "no-th" },
-    { id: "t2", type: "code_not_contains", value: "<td>model</td>", err: "still-td" },
-    { id: "t3", type: "code_contains", value: "<caption", err: "no-caption" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "changed", err: "untouched", weight: 950 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+
+    { id: "t3", type: "dom_count", value: "table tr", min: 3, err: "lost-row", weight: 200 },
+    { id: "t4", type: "dom_text_contains", value: "td", text: "18 leva", err: "lost-data", weight: 200 },
+    { id: "t5", type: "dom_text_contains", value: "td", text: "25 leva", err: "lost-data", weight: 200 },
+
+    { id: "t6", type: "dom_count", value: "th", min: 3, err: "no-th", weight: 150 },
+    { id: "t7", type: "dom_text_not_empty", value: "th", err: "empty-th", weight: 145 },
+    { id: "t8", type: "dom_text_contains", value: "th", text: "model", err: "still-td", weight: 140 },
+    { id: "t9", type: "dom_text_contains", value: "th", text: "price", err: "still-td", weight: 140 },
+    { id: "t10", type: "dom_text_contains", value: "th", text: "wheels", err: "still-td", weight: 140 },
+
+    { id: "t11", type: "dom_has", value: "table caption", err: "no-caption", weight: 120 },
+    { id: "t12", type: "dom_text_not_empty", value: "caption", err: "empty-caption", weight: 115 },
   ],
   blocks: [
     { type: "text" },

@@ -1,4 +1,8 @@
 // ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/37-alt.json
+//
+// ⚠ Тук машината опира до тавана си. alt="bike" минава всичко долу.
+// Единственият истински съдник е човек — или AI подсказка.
+// axe-core ще хване ЛИПСВАЩ alt, но не и безполезен. Не чакай него.
 export default {
   id: 37,
   type: "web",
@@ -18,11 +22,16 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "alt=", err: "no-alt" },
-    { id: "t2", type: "code_not_contains", value: "alt=\"\"", err: "empty-alt" },
-    { id: "t3", type: "code_not_contains", value: "alt=\"image", err: "useless-alt" },
-    { id: "t4", type: "code_not_contains", value: "alt=\"photo", err: "useless-alt" },
-    { id: "t5", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_count", value: "img", min: 1, err: "lost-img", weight: 200 },
+    { id: "t3", type: "dom_attr", value: "img", attr: "alt", err: "no-alt", weight: 150 },
+    { id: "t4", type: "dom_not_has", value: "img[alt*='photo' i]", err: "useless-alt", weight: 130 },
+    { id: "t5", type: "dom_not_has", value: "img[alt*='image' i]", err: "useless-alt", weight: 128 },
+    { id: "t6", type: "dom_not_has", value: "img[alt*='picture' i]", err: "useless-alt", weight: 126 },
+    { id: "t7", type: "dom_not_has", value: "img[alt$='.jpg' i]", err: "filename-alt", weight: 120 },
+    { id: "t8", type: "dom_not_has", value: "img[alt='bike' i]", err: "too-short", weight: 110 },
+    { id: "t9", type: "dom_text_contains", value: "strong", text: "18 leva", err: "lost-price", weight: 50 },
   ],
   blocks: [
     { type: "text" },

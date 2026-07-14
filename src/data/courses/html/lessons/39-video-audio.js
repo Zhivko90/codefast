@@ -15,10 +15,13 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<video", err: "no-video" },
-    { id: "t2", type: "code_contains", value: "controls", err: "no-controls" },
-    { id: "t3", type: "code_not_contains", value: "autoplay", err: "autoplay" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_count", value: "video", min: 1, err: "no-video", weight: 150 },
+    { id: "t3", type: "dom_attr", value: "video", attr: "src", err: "no-src", weight: 140 },
+    { id: "t4", type: "dom_has", value: "video[controls]", err: "no-controls", weight: 120 },
+    { id: "t5", type: "dom_not_has", value: "video[autoplay], audio[autoplay]", err: "autoplay", weight: 200 },
+    { id: "t6", type: "dom_has", value: "video[src='/uroci/bike.mp4']", err: "wrong-path", weight: 100 },
   ],
   blocks: [
     { type: "text" },

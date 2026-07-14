@@ -17,9 +17,13 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "class=", err: "no-class" },
-    { id: "t2", type: "code_not_contains", value: "id=\"bike\"", err: "id-repeated" },
-    { id: "t3", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_count", value: "p[class]", min: 2, err: "no-class", weight: 150 },
+    { id: "t3", type: "dom_attr", value: "p[class]", attr: "class", err: "empty-class", weight: 140 },
+    { id: "t4", type: "dom_count", value: "p[id]", max: 0, err: "id-instead", weight: 130 },
+    { id: "t5", type: "dom_not_has", value: "[class*='red'], [class*='blue'], [class*='big'], [class*='bold']", err: "named-by-look", weight: 120 },
+    { id: "t6", type: "dom_count", value: "p", min: 3, err: "lost-p", weight: 60 },
   ],
   blocks: [
     { type: "text" },

@@ -1,30 +1,77 @@
 {
   "title": "The page starts listening",
-  "checkLabels.t1": "There is a form",
-  "checkLabels.t2": "The fields have names",
-  "checkLabels.t3": "There is a button",
-  "checkLabels.t4": "Everything closed",
+
+  "checkLabels.t1": "There is code",
+  "checkLabels.t2": "You changed something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The heading is here",
+  "checkLabels.t4": "Both fields are here",
+  "checkLabels.t5": "There is a form",
+  "checkLabels.t6": "The fields are inside it",
+  "checkLabels.t7": "The fields have names",
+  "checkLabels.t8": "Both of them have a name",
+  "checkLabels.t9": "The form knows where",
+  "checkLabels.t10": "The form knows how",
+  "checkLabels.t11": "There is a button",
+  "checkLabels.t12": "The button says something",
+
+  "why.empty": "The editor is empty. You deleted the fields too.",
+
+  "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
+  "hint2.untouched": "Both fields are there. What they lack is a wrapper, names and a button.",
+
+  "why.not-closed": "A tag is open and never closed. <input> does not count — it has no closing tag.",
+  "hint2.not-closed": "<form> wants a </form>. <button> wants a </button>. Check both.",
+
+  "why.lost": "You deleted the heading. The task was about the fields.",
+
+  "why.lost-input": "You lost a field. There are two — one for the name, one for the email. Both stay.",
+
   "why.no-form": "The fields are scattered across the page. They do not know they belong together — there is no way to send them at once. Wrap them in <form>.",
-  "why.no-name": "The fields have no names. You are sending two texts, but nobody knows which is the name and which is the email. Every field wants a name.",
-  "why.no-button": "There is no submit button. The form collects data and has no way to hand it over.",
-  "why.not-closed": "A tag is open and never closed. (<input> does not count — it has no closing tag.)",
+  "hint2.no-form": "A form is a wrapper, like a <ul> around items. It starts before the first field and ends after the button.",
+  "hint3.no-form": "A similar case: <form action=\"/search\" method=\"get\"><input type=\"text\" name=\"q\"><button>Search</button></form>.",
+  "hint4.no-form": "Open <form> above the first paragraph and close it below the button.",
+
+  "why.input-outside": "A field has been left outside the form. Whatever is outside is not sent — as if it were not there.",
+  "hint2.input-outside": "Check where you close the </form>. Close it after the first field and the second stays outside.",
+
+  "why.no-name": "A field with no name, or an empty one. You are sending two texts, but nobody knows which is the name and which is the email. name=\"\" is the same as no name at all — exactly the mistake that does not crash.",
+  "hint2.no-name": "name is an attribute, inside the tag: <input type=\"text\" name=\"...\">.",
+  "hint3.no-name": "A similar case: <input type=\"text\" name=\"city\">. The word in the quotes is the label on the parcel.",
+  "hint4.no-name": "Name the fields after what they hold. And take care: the two names must be DIFFERENT. The same name on both fields means one eats the other.",
+
+  "why.one-name": "Only one field has a name. Both need one — and they must differ.",
+  "hint2.one-name": "The second field is for the email. It wants a name of its own.",
+
+  "why.no-action": "The form does not know where the data goes. action is the address that will receive it.",
+  "hint2.no-action": "The address does not exist yet and that is fine. Write /send.",
+
+  "why.no-method": "The form does not know how to send the data. method says that: post or get.",
+  "hint2.no-method": "A simple rule: search — get. Everything else — post. This is a message, not a search.",
+
+  "why.no-button": "There is no submit button inside the form. The form collects data and has no way to hand it over.",
+  "hint2.no-button": "<button type=\"submit\">…</button>. Its place is inside the form, at the bottom.",
+
+  "why.empty-button": "The button is empty. It should say what it does — Send, Send message.",
+  "hint2.empty-button": "An empty button is a button nobody knows the purpose of. A blind visitor hears only button.",
+
   "blocks.0.text": "Until now your page only talked. It showed things to a person. Now it will start listening.",
   "blocks.1.text": "You added two fields to type in. Run it. They appear, you can type in them. And then? Nothing. Whatever you write stays there.",
   "blocks.2.text": "The form",
   "blocks.4.text": "<form> wraps the fields and makes them one. Without it they are scattered boxes that know nothing about each other.",
   "blocks.5.text": "The two attributes",
   "blocks.6.text": "action says WHERE the data goes. The address of a server that will receive it.",
-  "blocks.7.text": "method says HOW. \"post\" — the data travels hidden. \"get\" — it goes into the address, visible in the browser bar.",
+  "blocks.7.text": "method says HOW. post — the data travels hidden. get — it goes into the address, visible in the browser bar.",
   "blocks.8.text": "A simple rule: search — get. Everything else — post. A password does not belong in the address bar.",
   "blocks.9.text": "The field's name",
-  "blocks.10.text": "Every field must have a name. Without it, its data is not sent at all — as if the field were not there.",
+  "blocks.10.text": "Every field must have a name. Without it, its data is not sent at all — as if the field were not there. And the two names must differ: the same name on two fields means one eats the other.",
   "blocks.11.text": "Think about what arrives on the other side: two texts. Which is the name, which is the email? name is the label on the parcel.",
-  "blocks.12.text": "A forgotten name is a mistake that does not crash. The form submits, the person sees \"thank you\", and the field is simply missing from your inbox.",
+  "blocks.12.text": "A forgotten name is a mistake that does not crash. The form submits, the person sees thank you, and the field is simply missing from your inbox. An empty name=\"\" does exactly the same.",
   "blocks.13.text": "It will not work",
   "blocks.14.text": "Build the form, press the button. Nothing will happen.",
   "blocks.15.text": "The address in action does not exist. And even if it did, someone must be waiting on the other side — a program on a server that takes the data, checks it, stores it and sends an email.",
   "blocks.16.text": "That is not HTML. That is another language, another course.",
   "blocks.17.text": "HTML builds the hand that offers. What happens to what is offered is not its business.",
   "blocks.18.text": "But the hand has to be built right. Otherwise nobody will take it.",
-  "blocks.19.text": "Your turn. Make a form out of the two fields and give it a button."
+  "blocks.19.text": "Your turn. Make a form out of the two fields, give each one a name and add a button."
 }

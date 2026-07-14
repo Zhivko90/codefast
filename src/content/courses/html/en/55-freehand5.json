@@ -1,28 +1,79 @@
 {
   "title": "Freehand: a page with data",
+
   "checkLabels.t1": "Did you write anything",
-  "checkLabels.t2": "A table",
-  "checkLabels.t3": "A header row",
-  "checkLabels.t4": "Data cells",
-  "checkLabels.t5": "A real page around it",
-  "checkLabels.t6": "Everything closed",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There is a table",
+  "checkLabels.t3": "Exactly one table",
+  "checkLabels.t4": "A header row and three more",
+  "checkLabels.t5": "Three header cells",
+  "checkLabels.t6": "The headers are not empty",
+  "checkLabels.t7": "Nine data cells",
+  "checkLabels.t8": "The cells are not empty",
+  "checkLabels.t9": "The table has a name",
+  "checkLabels.t10": "A page heading",
+  "checkLabels.t11": "A top part",
+  "checkLabels.t12": "Navigation with links",
+  "checkLabels.t13": "Main content",
+  "checkLabels.t14": "The table is inside the main",
+  "checkLabels.t15": "A bottom part",
+
   "why.empty": "Empty editor. Start from the table, not the page. It is the core — everything else exists for it.",
-  "why.no-table": "There is no table. The task asks for a comparison — something with rows and columns. If you lined the data up with spaces, look at what comes out on the right: spaces line up nothing.",
-  "why.no-th": "The table has data but no header row. A first row that looks different is not a header row. It has to SAY so — otherwise the browser reads your column names as just another data cell.",
-  "why.no-td": "There is a header row but no data under it. An empty table with headings is a promise you did not keep.",
-  "why.no-page": "The table is floating in mid-air. The task asks for a real page around it — a top part, navigation, main content, a bottom part. Data has to sit in something.",
+
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order. In tables this is the most common mistake — a single </td> goes missing easily.",
+  "hint2.not-closed": "They close from the inside out: </td> before </tr>, </tr> before </table>.",
+
+  "why.no-table": "There is no table. The task asks for a comparison — something with rows and columns. If you lined the data up with spaces, look at what comes out on the right: spaces line up nothing.",
+  "hint2.no-table": "What in your topic gets compared? Prices. Years. Sizes. Ratings. Each of those has rows and columns.",
+
+  "why.two-tables": "There is more than one table. The rule was: exactly one. A second one usually means you are laying something out with it — and that is the mistake from the last lesson.",
+  "hint2.two-tables": "Ask about the second one: what is it? What does one of its cells mean? No answer — it is not a table, it is a grid.",
+
+  "why.too-small": "The table is too small. It needs a header row and at least three rows of data under it. Two things are not a comparison — they are a pair.",
+  "hint2.too-small": "Three rows of data means three things you are comparing. Three bikes, three recipes, three days.",
+
+  "why.no-th": "The table has data but no header row. A first row that looks different is not a header row. It has to SAY so — otherwise the browser reads your column names as just another data cell.",
+  "hint2.no-th": "Three columns means three names. All three cells in the first row are <th>, not just the first.",
+  "hint4.no-th": "th comes from table header.",
+
+  "why.empty-th": "There is an empty header cell. An empty name names nothing.",
+  "hint2.empty-th": "Check the word stayed INSIDE the tag: <th>Price</th>, not <th></th>Price.",
+
+  "why.no-td": "There is a header row but not enough data under it. Three rows by three columns — that is nine cells. An empty table with headings is a promise you did not keep.",
+  "hint2.no-td": "Every value gets a cell of its own. Three things in a row — three <td>.",
+
+  "why.empty-td": "There is an empty cell. An empty cell is not data — it is a hole. If something is missing, write it: a dash, a zero, none.",
+
+  "why.no-caption": "The table has no name, or the name is empty. Lift it out of the page — numbers with no explanation. <caption> is the first thing inside <table>.",
+  "hint2.no-caption": "The page heading does not do this job. It belongs to the page. The table wants a name of its own.",
+  "hint4.no-caption": "Say what it holds and from when: Bike prices, July 2026.",
+
+  "why.no-h1": "There is no page heading, or it is empty. One <h1>, with words in it.",
+
+  "why.no-page": "The table is floating in mid-air. The task asks for a real page around it — a top part, navigation, main content, a bottom part. Data has to sit in something.",
+  "hint2.no-page": "You know the skeleton from lesson 51. It repeats here — only now there is a table inside.",
+
+  "why.no-nav": "There is no navigation with links. A menu without links is a list of words.",
+  "hint2.no-nav": "Each item is an <a href=\"...\">. The files do not exist yet and that is fine.",
+
+  "why.no-main": "There is no main content. Say which part is the point of this page.",
+
+  "why.table-outside": "The table is outside the main content. It IS the reason the page exists — its place is inside <main>.",
+  "hint2.table-outside": "Check where you close the </main>. Close it before the table and the table stays outside.",
+
+  "why.no-footer": "There is no bottom part, or it is empty. Put something in it — a copyright, a year, a contact.",
+
   "blocks.0.text": "Empty editor. Fifth time.",
   "blocks.1.text": "The task",
   "blocks.2.text": "Your topic again. This time the page must contain a COMPARISON — something that genuinely has rows and columns.",
-  "blocks.3.text": "Whatever fits: prices of things, specs of models, a ranking, a timetable, results, a recipe breakdown. At least three rows and three columns to be worth it.",
+  "blocks.3.text": "Whatever fits: prices of things, specs of models, a ranking, a timetable, results, a recipe breakdown. A header row and at least three rows of data under it, three columns, to be worth it. And a name for the table.",
   "blocks.4.text": "And around the table — a real page. A top part, navigation, main content, a bottom part. Everything you already know.",
   "blocks.5.text": "The catch",
   "blocks.6.text": "One <table> on the page. Exactly one. If you see a second — stop and ask yourself whether you are laying something out with it.",
   "blocks.7.text": "And the header row must be a header REALLY. Not a first row that looks different. A header.",
   "blocks.8.text": "How to check your table",
   "blocks.9.text": "Take a cell somewhere in the middle — not from the first row, not from the first column. Just a cell. Look at what is in it.",
-  "blocks.10.text": "Now say out loud what it means. If you can (\"this is the price of the red bike\"), your table is real. If you cannot (\"this is… well, that is where the menu goes\"), you did not build a table. You built a grid.",
+  "blocks.10.text": "Now say out loud what it means. If you can — this is the price of the red bike — your table is real. If you cannot — this is… well, that is where the menu goes — you did not build a table. You built a grid.",
   "blocks.11.text": "Every cell has two addresses. If you cannot name them, it is not a table.",
   "blocks.12.text": "If you freeze",
   "blocks.13.text": "Start from the table, not the page. It is the core — everything else exists for it. Write the data first, then wrap it in what explains it.",

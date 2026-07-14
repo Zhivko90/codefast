@@ -1,18 +1,61 @@
 {
   "title": "Data in rows and columns",
-  "checkLabels.t1": "There is a table",
-  "checkLabels.t2": "There are rows",
-  "checkLabels.t3": "There are cells",
-  "checkLabels.t4": "Everything closed",
-  "why.no-table": "You are still lining things up with spaces. Run it and look — the columns are gone. The browser swallows spaces, you know this from lesson 18.",
-  "why.no-tr": "There is a wrapper, but no rows. Each row gets wrapped in <tr>.",
-  "why.no-td": "There are rows, but no cells. Each thing in the row gets wrapped in <td>.",
+
+  "checkLabels.t1": "There is code",
+  "checkLabels.t2": "You changed something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The heading is here",
+  "checkLabels.t4": "There is a table",
+  "checkLabels.t5": "Three rows",
+  "checkLabels.t6": "Nine cells",
+  "checkLabels.t7": "The cells are not empty",
+  "checkLabels.t8": "Mountain is in the table",
+  "checkLabels.t9": "The first price is in the table",
+  "checkLabels.t10": "City is in the table",
+  "checkLabels.t11": "The second price is in the table",
+  "checkLabels.t12": "The column names are here",
+  "checkLabels.t13": "The old paragraphs are gone",
+
+  "why.empty": "The editor is empty. You deleted the data too.",
+
+  "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
+  "hint2.untouched": "The three paragraphs become a table. Same words, different wrapper.",
+
   "why.not-closed": "A tag is open and never closed. In tables it is easy to lose a </td>.",
+  "hint2.not-closed": "Every cell wants a </td>. Every row wants a </tr>. The opening and closing counts must match.",
+  "hint3.not-closed": "They close from the inside out: </td> before </tr>, </tr> before </table>.",
+
+  "why.lost-h1": "You deleted the page heading. The task was about the three paragraphs, not about it.",
+
+  "why.no-table": "You are still lining things up with spaces. Run it and look — the columns are gone. The browser swallows spaces, you know this from lesson 18.",
+  "hint2.no-table": "Spaces are not a layout tool. Data in rows and columns has a tag of its own.",
+  "hint4.no-table": "Wrap the three rows of data in a <table>. Then work inside it.",
+
+  "why.no-tr": "There are not three rows. The table has a wrapper, but the rows are missing or fewer than three. Each row gets wrapped in <tr>.",
+  "hint2.no-tr": "Three paragraphs, three rows. The column names are a row too — they are the first one.",
+  "hint3.no-tr": "A similar case: <table><tr>...</tr><tr>...</tr></table>. Rows are children of the table.",
+  "hint4.no-tr": "tr comes from table row.",
+
+  "why.no-td": "There are not nine cells. Three rows with three things in each — that is nine. Each thing in the row gets wrapped in <td>.",
+  "hint2.no-td": "Look at one row: Mountain, 18 leva, 26 inches. Three separate things. Three cells.",
+  "hint3.no-td": "A similar case: <tr><td>Monday</td><td>Rain</td><td>12</td></tr>. Three cells in one row.",
+  "hint4.no-td": "td comes from table data. Every value gets a cell of its own.",
+
+  "why.empty-td": "There is an empty cell. An empty cell is not data — it is a hole. Check that every value landed inside its own <td>.",
+  "hint2.empty-td": "This often comes from <td></td>Mountain — the value ended up outside the cell, between it and the next one.",
+
+  "why.lost-data": "You lost data. Both bikes, their prices and their sizes — all of it belongs in the table. The task was to move it, not to trim it.",
+
+  "why.lost-head": "The column names are gone. Model, Price, Wheels — they are the first row. Do not delete them, even if they look redundant. The next lesson is about exactly them.",
+
+  "why.still-p": "The old paragraphs are still there. You built the table but kept the previous version — the data now shows twice.",
+  "hint2.still-p": "Delete the three paragraphs with the spaces. The <h1> stays.",
+
   "blocks.0.text": "You are selling two bikes and you want to compare them — model, price, wheel size.",
   "blocks.1.text": "You lined them up with spaces, like on a typewriter. Run it.",
   "blocks.2.text": "They scattered. The columns are gone. The browser swallows your spaces — you know this from lesson 18. There is no fooling it here.",
   "blocks.3.text": "The table",
-  "blocks.5.text": "<table> is the table itself. <tr> is one row — from \"table row\". <td> is one cell — from \"table data\".",
+  "blocks.5.text": "<table> is the table itself. <tr> is one row — from table row. <td> is one cell — from table data.",
   "blocks.6.text": "You write row by row, left to right. Exactly as you read.",
   "blocks.7.text": "There are no columns",
   "blocks.8.text": "Notice what is missing: there is no tag for a column. There is no <tc>.",
@@ -24,8 +67,8 @@
   "blocks.14.text": "The table is for the data. The lines are for the eyes. And eyes are a job for CSS.",
   "blocks.15.text": "Every beautiful table you have ever seen is exactly this underneath: <tr> and <td>. Nothing more.",
   "blocks.16.text": "Do it",
-  "blocks.17.text": "Turn the three paragraphs into a real table. Three rows, three columns.",
+  "blocks.17.text": "Turn the three paragraphs into a real table. Three rows, three columns. And when you are done — delete the paragraphs. Do not leave the data in two places.",
   "blocks.18.text": "Run it and compare: the spaces vanished, the columns stayed.",
-  "blocks.19.text": "But something is off. The first row — \"Model, Price, Wheels\" — is not data. It is the names of the columns.",
-  "blocks.20.text": "And you told it <td>. Meaning: \"just another data cell\". The next lesson is about that."
+  "blocks.19.text": "But something is off. The first row — Model, Price, Wheels — is not data. It is the names of the columns.",
+  "blocks.20.text": "And you told it <td>. Meaning: just another data cell. The next lesson is about that."
 }
