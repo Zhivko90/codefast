@@ -13,18 +13,28 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<!doctype html>", err: "no-doctype" },
-    { id: "t2", type: "code_contains", value: "<title", err: "lost-title" },
-    { id: "t3", type: "balanced", err: "not-closed" },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "code_contains", value: "<!doctype html", err: "no-doctype", weight: 60 },
+    { id: "t2", type: "code_contains", value: "<meta", err: "no-meta", weight: 50 },
+    { id: "t3", type: "raw_head_contains", value: "charset", err: "charset-not-in-head", weight: 40 },
+    { id: "t4", type: "dom_text_not_empty", value: "title", err: "lost-title", weight: 30 },
   ],
   blocks: [
     { type: "text" },
-    { type: "code", code: "<!DOCTYPE html>" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Моят велосипед за продан</title>
+  </head>` },
+    { type: "text" },
     { type: "heading" },
     { type: "text" },
     { type: "text" },
     { type: "heading" },
-    { type: "text" },
     { type: "text" },
     { type: "quote" },
   ],

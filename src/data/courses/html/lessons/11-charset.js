@@ -6,27 +6,28 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>My page</title>
+    <meta charset="utf-8">
+    <title>My favourite game</title>
   </head>
   <body>
-    <h1>Здравей, свят!</h1>
-    <p>Това е моята страница на български.</p>
+    <h1>My favourite game</h1>
+    <p>I have been playing it for three years.</p>
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "charset", err: "no-charset" },
-    { id: "t2", type: "code_contains", value: "utf-8", err: "wrong-charset" },
-    { id: "t3", type: "balanced", err: "not-closed" },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "code_contains", value: "lang=", err: "no-lang", weight: 60 },
+    { id: "t2", type: "dom_attr", value: "html", attr: "lang", err: "empty-lang", weight: 50 },
+    { id: "t3", type: "code_contains", value: "<meta", err: "lost-meta", weight: 30 },
   ],
   blocks: [
     { type: "text" },
-    { type: "code", code: "Ð—Ð´Ñ€Ð°Ð²ÐµÐ¹, ÑÐ²ÑÑ‚!" },
     { type: "text" },
     { type: "heading" },
     { type: "text" },
+    { type: "code", code: `<html lang="bg">` },
     { type: "text" },
     { type: "heading" },
-    { type: "code", code: "<meta charset=\"UTF-8\">" },
     { type: "text" },
     { type: "text" },
     { type: "quote" },

@@ -1,17 +1,33 @@
 {
-  "title": "The line nobody sees",
-  "checkLabels.t1": "The line at the top",
-  "checkLabels.t2": "The rest is untouched",
-  "checkLabels.t3": "Everything closed",
-  "why.no-doctype": "The line is missing. It shows nothing, and that is exactly why it is easy to forget. Write it out of habit, on the first line, always — not because you will see the effect, but because you will not see the problem.",
-  "why.lost-title": "Something disappeared from the page. The task is only to ADD the line at the top — the rest stays.",
-  "why.not-closed": "A tag is open and never closed.",
-  "blocks.0.text": "There is one line at the very top of almost every page on the internet — and it shows absolutely nothing.",
-  "blocks.2.text": "Who it talks to",
-  "blocks.3.text": "Not to the person — to the browser. It is the first thing it reads, and it is a short order: \"read me by today's rules.\"",
-  "blocks.4.text": "The web is old. Pages from twenty years ago still exist and browsers must display them. So every browser keeps old rules for old pages. If you do not tell it what you are, it starts guessing.",
-  "blocks.5.text": "Delete it and look",
-  "blocks.6.text": "Once you have added it, delete it again and run. Put it back, run again. You will see no difference at all — your page is too simple to break.",
-  "blocks.7.text": "And that is exactly the treacherous part. The difference only shows up once the page gets complex: spacing that is not what you expect, widths measured differently. The mistake does not shout — it waits for you.",
-  "blocks.8.text": "Write it out of habit, on the first line, always. Not because you will see the effect, but because you will not see the problem."
+  "title": "The two lines everybody writes",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "There must be a DOCTYPE",
+  "checkLabels.t2": "There must be a meta",
+  "checkLabels.t3": "charset must be inside head",
+  "checkLabels.t4": "The tab title must still be there",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.no-doctype": "There is no DOCTYPE. Without it the browser switches into a mode for ancient sites and some things start behaving strangely.",
+  "why.no-meta": "There is no meta with an encoding. Non-English letters will come out as question marks or gibberish on someone else's computer.",
+  "why.charset-not-in-head": "The encoding is there, but not in head. It has to be the FIRST thing — the browser reads it before it reaches your text. Put it in body and it is already too late.",
+  "why.lost-title": "The tab title is gone. You are adding two lines, not deleting old ones.",
+
+  "hint2.no-doctype": "DOCTYPE is the first line of the file. Before <html>, not inside it.",
+  "hint3.no-doctype": "The exact line is <!DOCTYPE html>. See the example.",
+  "hint2.no-meta": "The tag is meta. It has no closing tag — it is a void element.",
+  "hint3.no-meta": "It goes inside <head>, before <title>. See the example.",
+  "hint2.charset-not-in-head": "Look at where you put it. Is it between <head> and </head>?",
+  "hint3.charset-not-in-head": "The browser reads the head before it reaches the body. If the encoding is down there, it has already read your text wrong.",
+
+  "blocks.0.text": "Open any website. Right click, \"View page source\". The first lines are the same everywhere.",
+  "blocks.1.text": "They are not a formality. Each of them solves a real problem.",
+  "blocks.2.text": "Here they are",
+  "blocks.3.text": "Two lines. You write them once and never think about them again. But it is worth knowing what they do.",
+  "blocks.5.text": "Add them to your page. Run. You will not see a difference — that is exactly the point.",
+  "blocks.6.text": "DOCTYPE",
+  "blocks.7.text": "It tells the browser: this is modern HTML. Without it the browser switches into a mode for ancient nineties sites and some things start behaving strangely.",
+  "blocks.8.text": "The encoding",
+  "blocks.9.text": "A computer stores letters as numbers. utf-8 is the table it uses to turn them back. Without it, every letter outside the English alphabet is a gamble.",
+  "blocks.10.text": "\"Try removing the meta and writing something in another alphabet. Then open it on someone else's computer. You will see question marks, gibberish or empty boxes. Your code works — it just lies.\""
 }

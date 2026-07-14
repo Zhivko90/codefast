@@ -1,16 +1,31 @@
 {
-  "title": "Notes to yourself",
-  "checkLabels.t1": "There is a comment",
-  "checkLabels.t2": "The comment is closed",
-  "checkLabels.t3": "Everything closed",
-  "why.no-comment": "There is no comment. Open one with <!-- and write whatever you like. Or comment out the second paragraph and watch it disappear.",
-  "why.not-closed-comment": "You opened a comment and never closed it. --> is missing. And this one is dangerous: everything after it vanishes from the page, and you will have no idea why.",
-  "why.not-closed": "A tag is open and never closed.",
-  "blocks.0.text": "Sometimes you want to leave a note in the code — for yourself in a month, or for whoever reads it after you. But you do not want it on the page.",
-  "blocks.2.text": "Everything between <!-- and --> disappears. The browser skips it as if it were not there.",
-  "blocks.3.text": "The second use is the more useful one",
-  "blocks.4.text": "Not sure whether to keep a paragraph? Do not delete it — comment it out. If tomorrow you decide it was good, you remove the comment and get it back.",
-  "blocks.6.text": "Try it on the page on the right: comment out the second paragraph and run. It disappears. Remove the comment, run again — it comes back.",
-  "blocks.7.text": "One warning",
-  "blocks.8.text": "A comment is not visible on the page, but it is in the code — and anyone can view the code of any page with two clicks. So it is not a secret. Never write anything there you would not want read."
+  "title": "A note for you in six months",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "There must be a comment",
+  "checkLabels.t2": "The comment must be closed",
+  "checkLabels.t3": "The heading must still be there",
+  "checkLabels.t4": "The image must still be there",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.no-comment": "There is no comment. The syntax is odd and hard to remember: <!-- in front, --> behind.",
+  "why.not-closed-comment": "You opened the comment but never closed it. --> is missing. An unclosed comment eats everything after it — the whole page disappears.",
+  "why.lost-content": "The heading is gone. You are adding a comment, not deleting the page.",
+  "why.lost-img": "The image is gone. You may have commented it out. Commented code does not exist — to the browser it is not there.",
+
+  "hint2.no-comment": "The syntax is <!-- text -->. See the example.",
+  "hint3.no-comment": "Put it somewhere in <body>, before the image for instance.",
+  "hint2.not-closed-comment": "--> is missing. Look at where your comment ends.",
+  "hint3.not-closed-comment": "Without the closing --> the browser thinks the comment runs to the end of the file. And eats everything.",
+  "hint2.lost-img": "Check the image did not end up INSIDE the comment. Between <!-- and --> nothing exists.",
+
+  "blocks.0.text": "Your code is getting long. Five or six lines doing different things. Today it is all clear to you.",
+  "blocks.1.text": "In six months you will open it and think: \"what is this, who wrote it, why is it like that\". You wrote it. You just forgot.",
+  "blocks.2.text": "You leave yourself a note",
+  "blocks.4.text": "The syntax is odd and hard to remember. <!-- in front, --> behind.",
+  "blocks.5.text": "Put one comment in your code — anywhere. Run. Nothing appears on the page.",
+  "blocks.6.text": "Who reads it",
+  "blocks.7.text": "Not the browser. Not Google. Not the blind person. Only someone who opens the code — and that someone is usually you.",
+  "blocks.8.text": "Careful: commented code DOES NOT EXIST. Wrap something in <!-- --> and to the browser it is gone. That is handy when you want to switch something off for a moment. And it is a trap when you forget.",
+  "blocks.9.text": "\"You in six months open the file and cannot understand what you wrote.\""
 }

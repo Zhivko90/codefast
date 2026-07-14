@@ -1,18 +1,28 @@
 {
-  "title": "Why the letters break",
-  "checkLabels.t1": "Did you say which alphabet you use",
-  "checkLabels.t2": "The alphabet is UTF-8",
-  "checkLabels.t3": "Everything closed",
-  "why.no-charset": "You have not told the browser which alphabet you use. It reads your numbers with the wrong dictionary — that is where the gibberish comes from. The tag goes in the <head>, at the very top, before <title>.",
-  "why.wrong-charset": "There is an encoding, but it is not UTF-8. That is the alphabet that holds everything: Cyrillic, Latin, Chinese, emoji. Today there is no reason to use anything else.",
-  "why.not-closed": "A tag is open and never closed.",
-  "blocks.0.text": "Sooner or later you will write something in a language with special letters. And then you will see this:",
-  "blocks.2.text": "Gibberish. The mess every beginner sees at least once and concludes they have broken something terrible.",
-  "blocks.3.text": "What is actually happening",
-  "blocks.4.text": "A computer does not store letters. It stores numbers. Every letter is a number, and the alphabet that says which number is which letter is called an encoding.",
-  "blocks.5.text": "If you write using one alphabet, and the browser reads using another — it sees your numbers but translates them with the wrong dictionary. Nonsense comes out.",
-  "blocks.6.text": "Tell it which alphabet you use",
-  "blocks.8.text": "It goes in the <head>, right at the top — before <title>. UTF-8 is the alphabet that holds everything: Cyrillic, Latin, Chinese, emoji. Today there is no reason to use anything else.",
-  "blocks.9.text": "Notice this tag has no closing twin. There is nothing to wrap — it simply announces something. There are few such tags, but they exist.",
-  "blocks.10.text": "The third invisible thing in the page's head. You are starting to sense that <head> is full of things you cannot see, but without which nothing works."
+  "title": "What language is this in",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "There must be a lang",
+  "checkLabels.t2": "lang must not be empty",
+  "checkLabels.t3": "The encoding must still be there",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.no-lang": "There is no lang. A screen reader does not know what language it is reading and will pronounce your text in the wrong voice.",
+  "why.empty-lang": "lang is there, but it is empty. An empty attribute is the same as a missing one — nobody knows what the language is.",
+  "why.lost-meta": "The encoding is gone. You are adding an attribute, not deleting lines.",
+
+  "hint2.no-lang": "The attribute goes INSIDE the opening <html> tag, before the closing bracket.",
+  "hint3.no-lang": "Look at the example. The tag is already there — you are only adding something to it.",
+  "hint2.empty-lang": "The value has to be the language code. bg for Bulgarian, en for English.",
+  "hint3.empty-lang": "If your page is in English — <html lang=\"en\">. If it is in Bulgarian — <html lang=\"bg\">.",
+
+  "blocks.0.text": "Your page is in some language. You know that. The browser does not.",
+  "blocks.1.text": "It seems pointless. Who cares what language it is in? Turns out — quite a few people.",
+  "blocks.2.text": "One attribute",
+  "blocks.3.text": "It is not a new tag. It is something you write INSIDE a tag you already have.",
+  "blocks.5.text": "Add it to your <html>. Run. Nothing changes on screen.",
+  "blocks.6.text": "Who reads it",
+  "blocks.7.text": "A screen reader. It needs to know how to pronounce the words. Without lang it will read your text in the wrong voice — and out comes a mess nobody understands.",
+  "blocks.8.text": "Google too. It decides who to show your page to. If it does not know the language, it will show it to the wrong people, or to nobody.",
+  "blocks.9.text": "\"Think of the last time you opened a site and something suddenly started talking. What did you do? Closed the tab. Now imagine that reader is the only way you can read.\""
 }
