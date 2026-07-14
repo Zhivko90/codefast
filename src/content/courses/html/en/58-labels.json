@@ -1,24 +1,62 @@
 {
   "title": "The label almost everyone forgets",
-  "checkLabels.t1": "There are labels",
-  "checkLabels.t2": "The label knows which field is its own",
-  "checkLabels.t3": "The field has a name to answer to",
-  "checkLabels.t4": "Everything closed",
-  "why.no-label": "The fields have no labels. A paragraph above a field is not a label — it is just text that happens to sit on top. There is a tag for it: <label>.",
-  "why.not-tied": "There are labels, but they do not know which field they belong to. for is missing. And without that connection a label is useless to exactly the person it was put there for.",
-  "why.no-id": "The label points at a field, and the field has no id to answer to. The `for` on the label and the `id` on the field must match.",
+
+  "checkLabels.t1": "There is code",
+  "checkLabels.t2": "You changed something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.p1": "Both fields are here",
+  "checkLabels.p2": "The name field is here",
+  "checkLabels.p3": "The email field is here",
+  "checkLabels.p4": "The button is here",
+  "checkLabels.t3": "There are two labels",
+  "checkLabels.t4": "The labels are not empty",
+  "checkLabels.t5": "The name label points",
+  "checkLabels.t6": "The name field answers",
+  "checkLabels.t7": "The email label points",
+  "checkLabels.t8": "The email field answers",
+  "checkLabels.t9": "The old paragraphs are gone",
+
+  "why.empty": "The editor is empty. You deleted the form too.",
+
+  "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
+  "hint2.untouched": "The two paragraphs above the fields become labels. Nothing new is added — the old is replaced.",
+
   "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "<label> has a closing tag: </label>. <input> does not.",
+
+  "why.lost": "You deleted part of the form. Both fields and the button stay — the task is about the labels.",
+
+  "why.no-label": "The fields have no labels. A paragraph above a field is not a label — it is just text that happens to sit on top. There is a tag for it: <label>. Two fields, two labels.",
+  "hint2.no-label": "Look at the two paragraphs: Your name and Your email. They want to be labels, and they are paragraphs.",
+  "hint3.no-label": "A similar case: <label for=\"city\">Your city</label><input type=\"text\" id=\"city\" name=\"city\">.",
+  "hint4.no-label": "Swap <p> for <label> and do not forget the closing tag.",
+
+  "why.empty-label": "There is an empty label. An empty label names nothing — the reader will just say text field, as before.",
+  "hint2.empty-label": "The word sits BETWEEN the tags: <label for=\"...\">Your name</label>.",
+
+  "why.not-tied": "There is a label, but it does not know which field it belongs to. for is missing, or it points at something that does not exist. And without that connection a label is useless to exactly the person it was put there for.",
+  "hint2.not-tied": "for is an attribute on the label. It points at the field's id. The two words must be THE SAME.",
+  "hint3.not-tied": "A similar case: <label for=\"city\">City</label> points at <input id=\"city\">. Change one of them and the connection breaks.",
+  "hint4.not-tied": "Use the same words that are already in name: username and email. That way for, id and name are one word and there is nothing to confuse.",
+
+  "why.no-id": "The label points at a field, and the field has no id to answer to. The for on the label and the id on the field must match.",
+  "hint2.no-id": "id is an attribute on the field, not on the label: <input type=\"text\" id=\"username\" name=\"username\">.",
+  "hint3.no-id": "The field already has a name. Give it an id with the same word — then the connection is visible at a glance.",
+
+  "why.still-p": "The paragraph above the field is still there. You are not adding a label NEXT to it — you are REPLACING it. Otherwise the reader says the words twice.",
+  "hint2.still-p": "Look for <p> inside the form. It was a drawing of a label. Now you have a real one.",
+
   "blocks.0.text": "The form works. There are captions above the fields — a person can see what to type. It looks fine.",
   "blocks.1.text": "But those captions are paragraphs. They sit above the field by coincidence, because you typed them first. To the browser there is no connection between them at all.",
   "blocks.2.text": "Tie them together",
   "blocks.4.text": "<label> is a field's label. The for attribute points at the field's id. The two must match — that is where the connection comes from.",
-  "blocks.5.text": "Notice: the field now has TWO names. id is for the link to the label. name is for the data being sent. Different things, often the same word.",
+  "blocks.5.text": "Notice: the field now has TWO names. id is for the link to the label. name is for the data being sent. Different things, often the same word. Use the same word — here id and name are username and email.",
   "blocks.6.text": "What you gain immediately",
   "blocks.7.text": "Run it and click on the LABEL — not the field. The cursor jumps into the field.",
   "blocks.8.text": "Trivial? Not on a phone. The field is small, the finger is large. A tied label doubles the area a person can hit.",
   "blocks.9.text": "And with a checkbox or radio button it matters even more — there the box is tiny.",
   "blocks.10.text": "And for the one who cannot see",
-  "blocks.11.text": "A blind person reaches the field. Their computer reads it out: \"text field\".",
+  "blocks.11.text": "A blind person reaches the field. Their computer reads it out: text field.",
   "blocks.12.text": "Which field? For what? They do not know. They heard the paragraph above ten seconds ago and have no way of knowing it was related.",
   "blocks.13.text": "A form without labels is a form only a sighted person can fill in.",
   "blocks.14.text": "And a placeholder is not a label",
@@ -26,8 +64,8 @@
   "blocks.16.text": "A placeholder is the grey text INSIDE the field. It looks like a label and many people use it as one.",
   "blocks.17.text": "Except it vanishes the moment someone starts typing. If they pause halfway to think — they no longer know what the field wanted.",
   "blocks.18.text": "Many screen readers do not read it at all. Its contrast is poor. And it is grey, which means older people cannot see it well.",
-  "blocks.19.text": "A placeholder is an EXAMPLE, not a label. \"ivan@abv.bg\" is a good placeholder. \"Email\" is not — that is <label>'s job.",
-  "blocks.20.text": "Your turn. Give every field a real label.",
+  "blocks.19.text": "A placeholder is an EXAMPLE, not a label. ivan@abv.bg is a good placeholder. Email is not — that is <label>'s job.",
+  "blocks.20.text": "Your turn. Give every field a real label. The paragraphs do not stay — they get replaced.",
   "blocks.21.text": "Then click the label and watch the cursor jump. That small pleasure is the sign you did it right.",
   "blocks.22.text": "One tag. One attribute. And your form suddenly works for everyone."
 }

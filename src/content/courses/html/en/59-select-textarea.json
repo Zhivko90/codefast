@@ -1,18 +1,74 @@
 {
   "title": "Choice and long text",
-  "checkLabels.t1": "There is a choice from a list",
-  "checkLabels.t2": "The list has options",
-  "checkLabels.t3": "There is a large text field",
-  "checkLabels.t4": "Everything closed",
-  "why.no-select": "Which bike — still a free field. You know exactly what the possible answers are. Give them. <select> is a list a person chooses from.",
-  "why.no-option": "The list is there, but it is empty. Each possibility is written with <option>.",
-  "why.no-textarea": "The message is still a one-line field. Like handing someone a business card to write a letter on. <textarea> is the big field.",
+
+  "checkLabels.t1": "There is code",
+  "checkLabels.t2": "You changed something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.p1": "All three labels are here",
+  "checkLabels.p2": "The labels have text",
+  "checkLabels.p3": "The name field is here",
+  "checkLabels.p4": "The button is here",
+  "checkLabels.t3": "There is a choice from a list",
+  "checkLabels.t4": "The list has at least two options",
+  "checkLabels.t5": "The options are not empty",
+  "checkLabels.t6": "Each option sends something",
+  "checkLabels.t7": "The choice's label still works",
+  "checkLabels.t8": "The choice has a name",
+  "checkLabels.t9": "There is a large text field",
+  "checkLabels.t10": "The message's label works",
+  "checkLabels.t11": "The large field has a name",
+  "checkLabels.t12": "The old fields are gone",
+
+  "why.empty": "The editor is empty. You deleted the form too.",
+
+  "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
+  "hint2.untouched": "Two of the three fields need to change their tag. The name field stays as it is.",
+
   "why.not-closed": "A tag is open and never closed. <textarea> and <select> have closing tags, unlike <input>.",
-  "blocks.0.text": "The form has three fields and all of them are <input type=\"text\">. Meaning: \"write whatever you like\".",
+  "hint2.not-closed": "<select> wants </select>. <option> wants </option>. <textarea> wants </textarea>. Three new closing tags in one lesson.",
+
+  "why.lost": "You deleted part of the form. The three labels, the name field and the button all stay — the task is about the other two fields.",
+
+  "why.no-select": "Which bike — still a free field. You know exactly what the possible answers are. Give them. <select> is a list a person chooses from.",
+  "hint2.no-select": "The field with name=\"model\" is the one that becomes a list.",
+  "hint3.no-select": "A similar case: <select id=\"city\" name=\"city\"><option value=\"sofia\">Sofia</option></select>.",
+  "hint4.no-select": "Swap the <input> for a <select> and do not forget the </select>. The id and name attributes stay.",
+
+  "why.no-option": "The list is there, but it is empty, or it has only one option. A list with one option is not a choice. Each possibility is written with <option>.",
+  "hint2.no-option": "The two bikes from the whole course: mountain and city. So two <option>.",
+  "hint4.no-option": "Every <option> sits INSIDE the <select>, between the opening and closing tag.",
+
+  "why.empty-option": "There is an empty option. An empty <option> shows as a blank line in the list — a person does not know what they are choosing.",
+  "hint2.empty-option": "The word a person sees sits between the tags: <option value=\"city\">City bike</option>.",
+
+  "why.no-value": "An option with no value, or an empty one. Then the visible text arrives at the server — or nothing does. value is what gets sent.",
+  "hint2.no-value": "value is an attribute on <option>, inside the opening tag.",
+  "hint3.no-value": "The person sees Mountain bike, and mountain arrives at the server. The two can differ — and usually do.",
+
+  "why.select-not-tied": "The list has no id, or it is not the one the label is looking for. The label Which bike points at model — it survives from the last lesson and you should not break it.",
+  "hint2.select-not-tied": "The old <input> had id=\"model\". The new <select> inherits it.",
+
+  "why.select-no-name": "The list has no name. Without a name the choice is not sent — as if it were not there.",
+  "hint2.select-no-name": "name goes on the <select>, not on the <option>. The <option> has a value.",
+
+  "why.no-textarea": "The message is still a one-line field. Like handing someone a business card to write a letter on. <textarea> is the big field.",
+  "hint2.no-textarea": "The field with name=\"message\" is the one that becomes big.",
+  "hint3.no-textarea": "A similar case: <textarea id=\"comment\" name=\"comment\" rows=\"5\"></textarea>.",
+  "hint4.no-textarea": "The closing tag sits right against the opening one. Leave a blank line between them and it lands inside the field.",
+
+  "why.textarea-not-tied": "The large field has no id, or it is not the one the label is looking for. The label Your message points at message.",
+  "hint2.textarea-not-tied": "The old <input> had id=\"message\". The new <textarea> inherits it.",
+
+  "why.textarea-no-name": "The large field has no name. Whatever a person writes in it is not sent.",
+
+  "why.still-input": "An old field is still there. You are not adding a list NEXT to the text field — you are REPLACING it. Only one <input> remains: the one for the name.",
+  "hint2.still-input": "Count the <input> tags. There should be one. Two or three means an old field is still standing.",
+
+  "blocks.0.text": "The form has three fields and all of them are <input type=\"text\">. Meaning: write whatever you like.",
   "blocks.1.text": "But you know which bikes there are. Why let the person spell them out? They will get it wrong, write a different name, capitalise it, and you will be the one sorting it out later.",
   "blocks.2.text": "A choice from ready answers",
   "blocks.4.text": "<select> is a list. <option> is each possibility. value is what gets sent — the text between the tags is what the person sees.",
-  "blocks.5.text": "The two can differ. The person sees \"Mountain bike\", and \"mountain\" arrives at the server.",
+  "blocks.5.text": "The two can differ. The person sees Mountain bike, and mountain arrives at the server.",
   "blocks.6.text": "The big field",
   "blocks.8.text": "<textarea> is for free text longer than one line. A message, a comment, a description.",
   "blocks.9.text": "rows says how many lines tall it starts. The person can drag it bigger themselves.",
@@ -23,5 +79,5 @@
   "blocks.14.text": "A tiny detail everyone discovers the hard way.",
   "blocks.15.text": "Which one when",
   "blocks.16.text": "Do you know the answers in advance — <select>. Do you not, and they are short — <input>. Do you not, and they are long — <textarea>.",
-  "blocks.17.text": "Your turn. Make the bike choice a list, and the message a large field."
+  "blocks.17.text": "Your turn. Make the bike choice a list, and the message a large field. The old fields do not stay — they get replaced. And mind the ids: the labels from the last lesson are looking for them."
 }

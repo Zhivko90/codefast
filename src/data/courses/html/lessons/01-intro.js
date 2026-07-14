@@ -5,7 +5,8 @@ export default {
   label: "coding",
   starterCode: "Hello",
   checks: [
-    { id: "t1", type: "changed", value: "Hello", err: "unchanged" },
+    { id: "t2", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t1", type: "changed", value: "Hello", err: "unchanged", weight: 100 },
   ],
   blocks: [
     { type: "text" },

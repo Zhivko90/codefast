@@ -1,11 +1,38 @@
 {
   "title": "The line without which a phone lies",
-  "checkLabels.t1": "There is a line for the phone",
-  "checkLabels.t2": "It tells the truth about the width",
-  "checkLabels.t3": "Everything closed",
-  "why.no-viewport": "The line for the phone is missing. Without it a phone pretends to be a computer — it draws your page at 980 pixels and then shrinks it. The result: letters like ants.",
-  "why.no-width": "The tag is there, but it does not say the important part. width=device-width means: the page's width is the device's width. Without it nothing changes.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You touched the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.p1": "The heading is there",
+  "checkLabels.p2": "The text is there",
+  "checkLabels.p3": "The charset is there",
+  "checkLabels.p4": "The tab title is there",
+  "checkLabels.p5": "The language is there",
+  "checkLabels.t3": "There is a line for the phone",
+  "checkLabels.t4": "The line is in the head",
+  "checkLabels.t5": "It tells the truth about the width",
+
+  "why.empty": "The editor is empty. The task is one line — not deleting the page. Bring the code back.",
+
+  "why.untouched": "You have not touched the code. The phone is still pretending to be a computer.",
+
   "why.not-closed": "A tag is open and never closed.",
+
+  "why.lost-content": "You deleted something instead of adding. The heading, the sentence, the charset, the tab title, the language — all of it stays. You are only ADDING one line.",
+  "hint2.lost-content": "Compare with the original code. Nothing was supposed to disappear.",
+
+  "why.no-viewport": "The line for the phone is missing. Without it a phone pretends to be a computer — it draws your page at 980 pixels and then shrinks it. The result: letters like ants.",
+  "hint2.no-viewport": "Another <meta> tag. Like the one for the charset — invisible, but nothing is right without it.",
+  "hint3.no-viewport": "<meta name=\"...\" content=\"...\"> — the name says what the tag is about, the content says exactly what.",
+
+  "why.outside-head": "The tag is there, but not in the head. Meta tags go in <head>. In the body the browser sees them too late — the page is already drawn.",
+  "hint2.outside-head": "Put it next to <meta charset>. The two always sit together.",
+
+  "why.no-width": "The tag is there, but it does not say the important part. width=device-width means: the page's width is the device's width. Without it nothing changes — the phone keeps pretending.",
+  "hint2.no-width": "The content of the tag is what does the work. An empty content says nothing.",
+  "hint3.no-width": "Two things inside, separated by a comma. One is about the width. The other says do not zoom in or out.",
+
   "blocks.0.text": "Open your page on a phone. You will see something odd: it looks like the desktop version, only shrunk. Letters like ants. You have to pinch and zoom to read anything at all.",
   "blocks.1.text": "You did nothing wrong. The phone is lying to you — and there is a reason.",
   "blocks.2.text": "Why it pretends to be a computer",
@@ -15,13 +42,13 @@
   "blocks.6.text": "Tell it the truth",
   "blocks.8.text": "Another <meta> in the head. width=device-width means: the page's width is the device's width. No pretending.",
   "blocks.9.text": "initial-scale=1 means: do not zoom in or out. Show me as I am.",
-  "blocks.10.text": "Add it and look at the phone again. The letters are readable. The page is narrow, but real.",
+  "blocks.10.text": "And notice where it goes: into <head>, next to the charset. In the body it does nothing — there the browser sees it after the page is already drawn.",
   "blocks.11.text": "It does not fix everything",
   "blocks.12.text": "This line tells the phone not to lie. It does not make your site look good on a narrow screen.",
   "blocks.13.text": "If you have a table with eight columns, it will run off the edge. If your image is 2000 pixels, it will stick out. That is CSS's job.",
   "blocks.14.text": "But without this line CSS never even starts — the phone does not believe it, because it is pretending to be another screen.",
   "blocks.15.text": "One line, many consequences",
-  "blocks.16.text": "Google ranks sites by how they look on a PHONE. Not a computer. If yours shows up as a shrunken desktop version, it falls in the results.",
+  "blocks.16.text": "Google looks at sites the way they appear on a PHONE. Not a computer. If yours shows up as a shrunken desktop version, it falls in the results.",
   "blocks.17.text": "And more than half the people will open your site on a phone. Not one day — now.",
   "blocks.18.text": "One line in the head. Without it half your visitors see ants.",
   "blocks.19.text": "Write it out of habit, like charset. The two of them belong in the head of every page you will ever build.",

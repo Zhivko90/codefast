@@ -18,6 +18,8 @@ export default {
     { id: "t2", type: "code_contains", value: "<meta", err: "no-meta", weight: 50 },
     { id: "t3", type: "raw_head_contains", value: "charset", err: "charset-not-in-head", weight: 40 },
     { id: "t4", type: "dom_text_not_empty", value: "title", err: "lost-title", weight: 30 },
+    { id: "t5", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 20 },
+    { id: "t6", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 18 },
   ],
   blocks: [
     { type: "text" },

@@ -2,6 +2,9 @@
   "title": "The wrapper that was missing",
 
   "checkLabels.g1": "The code must be valid HTML",
+  "checkLabels.t0": "You must write something",
+  "checkLabels.t7": "The sentence must still be there",
+  "why.empty": "The editor is empty. You deleted the page instead of wrapping it. Bring back the heading and the sentence — the task is to WRAP them, not to remove them.",
   "checkLabels.t1": "There must be an html wrapper",
   "checkLabels.t2": "There must be a head",
   "checkLabels.t3": "There must be a body",

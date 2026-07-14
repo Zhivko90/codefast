@@ -1,287 +1,411 @@
 ﻿
-===== LOGIC: 01-intro.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/01-intro.json
+===== LOGIC: 09-title.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/09-title.json
 export default {
-  id: 1,
+  id: 9,
   type: "web",
   label: "coding",
-  starterCode: "Hello",
-  checks: [
-    { id: "t1", type: "changed", value: "Hello", err: "unchanged" },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-  ],
-  slug: "01-intro"
-};
-===== BG: 01-intro.json =====
-{
-  "title": "Напиши името си",
-  "checkLabels.t1": "Смени ли текста с нещо свое",
-  "why.unchanged": "Още пише „Hello“. Изтрий го и напиши името си — това е целият урок. Няма правилен отговор. Има твой.",
-  "hint2.unchanged": "Кликни в редактора вдясно. Маркирай думата Hello. Натисни Backspace. Напиши името си.",
-  "blocks.0.text": "Без въведение. Без обяснения. Вдясно има страница, на която пише „Hello“.",
-  "blocks.1.text": "Направи това",
-  "blocks.2.text": "Изтрий „Hello“ и напиши името си. После натисни зеления бутон „Предай“.",
-  "blocks.3.text": "Това е. Няма нищо друго за правене в този урок.",
-  "blocks.4.text": "Какво стана",
-  "blocks.5.text": "Току-що написа уеб страница. Не се шегувам — това вдясно е истинска страница, каквато би стояла в интернет. Просто засега на нея пише само едно име.",
-  "blocks.6.text": "Няма да ти обяснявам какво е HTML. Ще ти го обясня, след като си написал няколко неща — тогава думите ще значат нещо."
-  
-}
-===== EN: 01-intro.json =====
-{
-  "title": "Write your name",
-  "checkLabels.t1": "Did you change the text to something of your own",
-  "why.unchanged": "It still says \"Hello\". Delete it and write your name — that is the whole lesson. There is no right answer. There is yours.",
-  "hint2.unchanged": "Click in the editor on the right. Select the word Hello. Press Backspace. Type your name.",
-  "blocks.0.text": "No introduction. No explanations. On the right there is a page that says \"Hello\".",
-  "blocks.1.text": "Do this",
-  "blocks.2.text": "Delete \"Hello\" and write your name. Then press the green \"Submit\" button.",
-  "blocks.3.text": "That is it. There is nothing else to do in this lesson.",
-  "blocks.4.text": "What happened",
-  "blocks.5.text": "You have just written a web page. I am not joking — what is on the right is a real page, the kind that would sit on the internet. It just happens to have only a name on it for now.",
-  "blocks.6.text": "I am not going to explain what HTML is. I will explain it after you have written a few things — then the words will mean something."
-}
-===== LOGIC: 02-structure.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/02-structure.json
-export default {
-  id: 2,
-  type: "web",
-  label: "coding",
-  starterCode: "Ivan",
-  checks: [
-    { id: "g1", type: "balanced", err: "not-wrapped", weight: 1000, guard: true },
-    { id: "t1", type: "code_contains", value: "<h1", err: "no-open", weight: 50 },
-    { id: "t2", type: "code_contains", value: "</h1>", err: "no-close", weight: 40 },
-    { id: "t3", type: "dom_text_not_empty", value: "h1", err: "empty-heading", weight: 10 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "code", code: "<h1>Твоето име</h1>" },
-    { type: "text" },
-    { type: "text" },
-  ],
-  slug: "02-structure"
-};
-===== BG: 02-structure.json =====
-{
-  "title": "Направи го едро",
-
-  "checkLabels.g1": "Таговете трябва да са затворени",
-  "checkLabels.t1": "Трябва да отвориш тага",
-  "checkLabels.t2": "Трябва да го затвориш",
-  "checkLabels.t3": "Името трябва да е ВЪТРЕ в тага",
-
-  "why.not-wrapped": "Таговете са там, но са в грешен ред или не са затворени. Отпред <h1>, после текстът, после </h1>. Точно в този ред.",
-  "why.no-open": "Още няма таг. Не можеш да напишеш „направи го голямо“ — трябва да ОБГРАДИШ името. Отпред слагаш <h1>.",
-  "why.no-close": "Отвори тага, но не го затвори. Липсва </h1>. Наклонената черта казва „тук свършва заглавието“ — без нея браузърът не знае докъде стига то.",
-  "why.empty-heading": "Таговете са там, но заглавието е празно. Името ти е отвън.",
-
-  "hint2.empty-heading": "Погледни внимателно къде свършва </h1> и къде стои името ти. Едното е след другото, а трябва да е вътре.",
-  "hint3.empty-heading": "Обграждането значи: тагът отпред, текстът в средата, тагът отзад. <h1>ТУК</h1>, не <h1></h1>ТУК.",
-
-  "blocks.0.text": "Името ти е там, но е дребно. Стои като случайна дума насред бял лист. А ти искаш да е заглавие — едро, дебело, важно.",
-  "blocks.1.text": "Първо опитай сам",
-  "blocks.2.text": "Пробвай да го увеличиш. Сериозно, опитай. Няма да успееш — и точно това е смисълът.",
-  "blocks.3.text": "Няма как да напишеш „направи го голямо“. Няма бутон за шрифт. Няма къде да натиснеш. Празният текст просто си стои.",
-  "blocks.4.text": "Ето инструментът",
-  "blocks.5.text": "Обграждаш текста от двете страни. Отпред слагаш <h1>, отзад </h1>. Наклонената черта в края казва „тук свършва“.",
-  "blocks.7.text": "Направи го и пусни. Името става едро и дебело.",
-  "blocks.8.text": "Забележи какво НЕ направи: не избра шрифт, не каза колко голямо, не пипна цвят. Само каза „това е заглавие“. Останалото го реши браузърът."
-}
-===== EN: 02-structure.json =====
-{
-  "title": "Make it big",
-
-  "checkLabels.g1": "The tags must be closed",
-  "checkLabels.t1": "You must open the tag",
-  "checkLabels.t2": "You must close it",
-  "checkLabels.t3": "The name must be INSIDE the tag",
-
-  "why.not-wrapped": "The tags are there, but they are in the wrong order or not closed. First <h1>, then the text, then </h1>. Exactly that order.",
-  "why.no-open": "There is still no tag. You cannot write \"make it big\" — you have to WRAP the name. In front of it goes <h1>.",
-  "why.no-close": "You opened the tag but never closed it. </h1> is missing. The slash says \"the heading ends here\" — without it the browser does not know how far it reaches.",
-  "why.empty-heading": "The tags are there, but the heading is empty. Your name is outside it.",
-
-  "hint2.empty-heading": "Look carefully at where </h1> ends and where your name sits. One is after the other, but it should be inside.",
-  "hint3.empty-heading": "Wrapping means: tag in front, text in the middle, tag behind. <h1>HERE</h1>, not <h1></h1>HERE.",
-
-  "blocks.0.text": "Your name is there, but it is small. It sits like a random word on a blank sheet. But you want it to be a heading — large, bold, important.",
-  "blocks.1.text": "First try on your own",
-  "blocks.2.text": "Try to make it bigger. Seriously, try. You will not manage — and that is exactly the point.",
-  "blocks.3.text": "There is no way to write \"make it big\". There is no font button. There is nowhere to click. Plain text just sits there.",
-  "blocks.4.text": "Here is the tool",
-  "blocks.5.text": "You wrap the text on both sides. In front you put <h1>, behind it </h1>. The slash at the end says \"this is where it ends\".",
-  "blocks.7.text": "Do it and run. The name becomes large and bold.",
-  "blocks.8.text": "Notice what you did NOT do: you did not choose a font, you did not say how big, you did not touch colour. You only said \"this is a heading\". The rest the browser decided."
-}
-===== LOGIC: 03-role.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/03-role.json
-export default {
-  id: 3,
-  type: "web",
-  label: "coding",
-  starterCode: "<h1>Ivan</h1>",
+  starterCode: `<html>
+  <head>
+  </head>
+  <body>
+    <h1>My favourite game</h1>
+    <p>I have been playing it for three years.</p>
+  </body>
+</html>`,
   checks: [
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "dom_text_not_empty", value: "h1", err: "lost-heading", weight: 60 },
-    { id: "t2", type: "code_contains", value: "<p", err: "no-p", weight: 50 },
-    { id: "t3", type: "code_contains", value: "</p>", err: "no-close", weight: 40 },
-    { id: "t4", type: "dom_text_not_empty", value: "p", err: "empty-p", weight: 10 },
+    { id: "t1", type: "code_contains", value: "<title", err: "no-title", weight: 60 },
+    { id: "t2", type: "raw_head_contains", value: "<title", err: "title-not-in-head", weight: 50 },
+    { id: "t3", type: "dom_text_not_empty", value: "title", err: "empty-title", weight: 10 },
   ],
   blocks: [
     { type: "text" },
-    { type: "heading" },
-    { type: "text" },
     { type: "text" },
     { type: "heading" },
-    { type: "code", code: "<p>Уча се да правя уебсайтове.</p>" },
+    { type: "text" },
+    { type: "code", code: `<head>
+  <title>Моят велосипед за продан</title>
+</head>` },
+    { type: "text" },
+    { type: "heading" },
     { type: "text" },
     { type: "text" },
     { type: "quote" },
   ],
-  slug: "03-role"
+  slug: "09-title"
 };
-===== BG: 03-role.json =====
+===== BG: 09-title.json =====
 {
-  "title": "Кажи нещо за себе си",
+  "title": "Името на таба",
 
   "checkLabels.g1": "Всички тагове трябва да са затворени",
-  "checkLabels.t1": "Заглавието трябва да е още там",
-  "checkLabels.t2": "Трябва да има абзац",
-  "checkLabels.t3": "Абзацът трябва да е затворен",
-  "checkLabels.t4": "Изречението трябва да е ВЪТРЕ в абзаца",
+  "checkLabels.t1": "Трябва да има title",
+  "checkLabels.t2": "title трябва да е в head",
+  "checkLabels.t3": "title трябва да има текст в него",
 
   "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "why.lost-heading": "Заглавието изчезна. Задачата е да ДОБАВИШ изречение под него, а не да го заместиш. Върни <h1>.",
-  "why.no-p": "Изречението е там, но е гол текст. Браузърът не знае, че това е изречение — за него е просто букви. Обгради го в <p>.",
-  "why.no-close": "Отвори <p>, но не го затвори. Липсва </p>.",
-  "why.empty-p": "Абзацът е там, но е празен. Изречението ти е отвън.",
+  "why.no-title": "Табът още се казва „index.html\". Никой не запазва такъв таб. Дай на страницата име.",
+  "why.title-not-in-head": "Заглавието е там, но не е в head. В body браузърът го премества сам, но кодът ти лъже — а някои инструменти ще го пропуснат.",
+  "why.empty-title": "Тагът е там, но е празен. Табът ще си остане без име.",
 
-  "hint2.empty-p": "Погледни къде свършва </p> и къде стои изречението ти. Едното е след другото, а трябва да е вътре.",
-  "hint3.empty-p": "Обграждането значи: тагът отпред, текстът в средата, тагът отзад. <p>ТУК</p>, не <p></p>ТУК.",
+  "hint2.no-title": "Тагът е title. Влиза вътре в <head>, точно както го видя в примера.",
+  "hint2.title-not-in-head": "Погледни къде си го сложил. Между <head> и </head> ли е, или между <body> и </body>?",
+  "hint3.title-not-in-head": "<title> е информация ЗА страницата — как се казва. Значи мястото му е в невидимата част.",
+  "hint2.empty-title": "Между <title> и </title> трябва да има текст. <title>Моята страница</title>, не <title></title>.",
 
-  "blocks.0.text": "Заглавието е готово. Сега искаш едно изречение отдолу — например с какво се занимаваш.",
-  "blocks.1.text": "Опитай наивния начин",
-  "blocks.2.text": "Просто напиши изречението след </h1>. Натисни Enter, слез на нов ред, напиши го. Пусни.",
-  "blocks.3.text": "Работи, нали? Появява се. Но е гол текст — виси там, без да е нищо конкретно. Браузърът не знае, че това е изречение. За него е просто... букви.",
-  "blocks.4.text": "Кажи му какво е",
-  "blocks.6.text": "Буквата „p“ идва от „параграф“ — абзац. Обграждаш изречението и вече не е случаен текст, а абзац.",
-  "blocks.7.text": "Ще кажеш: изглежда почти същото. Да. Но опитай да напишеш две изречения едно под друго БЕЗ <p> — ще видиш, че се слепват в един ред, колкото и пъти да натиснеш Enter. С <p> всяко си стои самò.",
-  "blocks.8.text": "Първият урок за уеб: празните редове, които ти виждаш в кода, за браузъра не съществуват."
+  "blocks.0.text": "Погледни таба на браузъра горе. Какво пише?",
+  "blocks.1.text": "„index.html“. Или нищо. Или някакъв път към файл. Никой не запазва такъв таб. Никой не го намира после сред двайсетте други.",
+  "blocks.2.text": "Празната глава вече е нужна",
+  "blocks.3.text": "Помниш ли <head> — частта, която не се вижда? Досега стоеше празна и изглеждаше безсмислена. Ето първото нещо, което влиза в нея.",
+  "blocks.5.text": "Пусни. Табът горе се сменя. Кодът на страницата не се е променил с нищо видимо — но нещо се промени.",
+  "blocks.6.text": "Кой чете това",
+  "blocks.7.text": "Табът. Отметките. Историята. Резултатът в Google — синият ред, на който хората кликат. Всичко това чете <title>.",
+  "blocks.8.text": "Никой от тези не гледа страницата ти. Те четат само тази една дума в главата.",
+  "blocks.9.text": "„Не пиша HTML за браузъра. Пиша го за онези, които не гледат екрана.“"
 }
-===== EN: 03-role.json =====
+===== EN: 09-title.json =====
 {
-  "title": "Say something about yourself",
+  "title": "The name of the tab",
 
   "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "The heading must still be there",
-  "checkLabels.t2": "There must be a paragraph",
-  "checkLabels.t3": "The paragraph must be closed",
-  "checkLabels.t4": "The sentence must be INSIDE the paragraph",
+  "checkLabels.t1": "There must be a title",
+  "checkLabels.t2": "title must be inside head",
+  "checkLabels.t3": "title must have text in it",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.lost-heading": "The heading is gone. The task is to ADD a sentence below it, not to replace it. Put <h1> back.",
-  "why.no-p": "The sentence is there, but it is bare text. The browser does not know it is a sentence — to it, these are just letters. Wrap it in <p>.",
-  "why.no-close": "You opened <p> but never closed it. </p> is missing.",
-  "why.empty-p": "The paragraph is there, but it is empty. Your sentence sits outside it.",
+  "why.no-title": "The tab still says \"index.html\". Nobody bookmarks a tab like that. Give the page a name.",
+  "why.title-not-in-head": "The title is there, but not in head. In body the browser moves it for you, but your code is lying — and some tools will miss it.",
+  "why.empty-title": "The tag is there, but it is empty. The tab will stay nameless.",
 
-  "hint2.empty-p": "Look at where </p> ends and where your sentence sits. One is after the other, but it should be inside.",
-  "hint3.empty-p": "Wrapping means: tag in front, text in the middle, tag behind. <p>HERE</p>, not <p></p>HERE.",
+  "hint2.no-title": "The tag is title. It goes inside <head>, exactly as you saw in the example.",
+  "hint2.title-not-in-head": "Look at where you put it. Is it between <head> and </head>, or between <body> and </body>?",
+  "hint3.title-not-in-head": "<title> is information ABOUT the page — what it is called. So its place is in the invisible half.",
+  "hint2.empty-title": "There must be text between <title> and </title>. <title>My page</title>, not <title></title>.",
 
-  "blocks.0.text": "The heading is done. Now you want a sentence below it — for example, what you do.",
-  "blocks.1.text": "Try the naive way",
-  "blocks.2.text": "Just write the sentence after </h1>. Press Enter, go to a new line, write it. Run.",
-  "blocks.3.text": "It works, right? It appears. But it is bare text — hanging there, without being anything in particular. The browser does not know it is a sentence. To it, this is just... letters.",
-  "blocks.4.text": "Tell it what it is",
-  "blocks.6.text": "The letter \"p\" comes from \"paragraph\". You wrap the sentence and it is no longer random text, but a paragraph.",
-  "blocks.7.text": "You will say: it looks almost the same. Yes. But try writing two sentences one below the other WITHOUT <p> — you will see they glue into one line, no matter how many times you press Enter. With <p> each stands on its own.",
-  "blocks.8.text": "The first lesson of the web: the blank lines you see in your code do not exist for the browser."
+  "blocks.0.text": "Look at the browser tab above. What does it say?",
+  "blocks.1.text": "\"index.html\". Or nothing. Or some path to a file. Nobody bookmarks a tab like that. Nobody finds it later among twenty others.",
+  "blocks.2.text": "The empty head is needed now",
+  "blocks.3.text": "Remember <head> — the part that is not visible? So far it sat empty and looked pointless. Here is the first thing that goes into it.",
+  "blocks.5.text": "Run. The tab above changes. Nothing visible in the page has changed — but something did.",
+  "blocks.6.text": "Who reads this",
+  "blocks.7.text": "The tab. Bookmarks. History. The Google result — the blue line people click on. All of them read <title>.",
+  "blocks.8.text": "None of them looks at your page. They read only this one word in the head.",
+  "blocks.9.text": "\"I do not write HTML for the browser. I write it for those who do not look at the screen.\""
 }
-===== LOGIC: 04-styled.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/04-styled.json
+===== LOGIC: 10-doctype.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/10-doctype.json
 export default {
-  id: 4,
-  type: "text",
-  label: "concept",
-  blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "code",
-      code: "<h1>Ivan</h1>"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    }
+  id: 10,
+  type: "web",
+  label: "coding",
+  starterCode: `<html>
+  <head>
+    <title>My favourite game</title>
+  </head>
+  <body>
+    <h1>My favourite game</h1>
+    <p>I have been playing it for three years.</p>
+  </body>
+</html>`,
+  checks: [
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "code_contains", value: "<!doctype html", err: "no-doctype", weight: 60 },
+    { id: "t2", type: "code_contains", value: "<meta", err: "no-meta", weight: 50 },
+    { id: "t3", type: "raw_head_contains", value: "charset", err: "charset-not-in-head", weight: 40 },
+    { id: "t4", type: "dom_text_not_empty", value: "title", err: "lost-title", weight: 30 },
   ],
-  slug: "04-styled"
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Моят велосипед за продан</title>
+  </head>` },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "quote" },
+  ],
+  slug: "10-doctype"
 };
-
-===== BG: 04-styled.json =====
+===== BG: 10-doctype.json =====
 {
-  "title": "Какво всъщност правеше",
-  "blocks.0.text": "Три урока пишеш, без да съм ти обяснил какво правиш. Беше нарочно. Сега вече имаш опит и думите ще ти паснат на нещо.",
-  "blocks.1.text": "Онези скоби се казват тагове",
-  "blocks.3.text": "<h1> е отварящ таг. </h1> е затварящ — познава се по наклонената черта. Това, което е между тях, е съдържанието. Трите заедно правят един елемент.",
-  "blocks.4.text": "Почти всеки таг има близнак. Отвориш ли, затваряш. Забравиш ли да затвориш — браузърът почва да гадае докъде стига нещото, и обикновено гадае грешно.",
-  "blocks.5.text": "А защо изобщо са нужни",
-  "blocks.6.text": "Забеляза ли, че никога не си казвал колко голямо да е заглавието? Нито какъв шрифт, нито какъв цвят. Каза само: „това е заглавие\". Браузърът реши как да изглежда.",
-  "blocks.7.text": "Точно това е HTML. Не рисуваш — описваш. Казваш какво е всяко нещо: това е заглавие, това е изречение, това е връзка. Кой как ще го покаже е чужда работа.",
-  "blocks.8.text": "Чия работа е тогава външният вид",
-  "blocks.9.text": "На CSS. Той идва по-късно и казва: „заглавията да са сини\", „изреченията да са с този шрифт\". Но CSS може да оцвети само нещо, което вече съществува. А кой го създава? Ти, с HTML.",
-  "blocks.10.text": "HTML казва какво има. CSS казва как изглежда. JavaScript казва какво прави. В този ред — защото не можеш да оцветиш или оживиш нещо, което го няма."
-}
+  "title": "Двата реда, които всички пишат",
 
-===== EN: 04-styled.json =====
+  "checkLabels.g1": "Всички тагове трябва да са затворени",
+  "checkLabels.t1": "Трябва да има DOCTYPE",
+  "checkLabels.t2": "Трябва да има meta",
+  "checkLabels.t3": "charset трябва да е в head",
+  "checkLabels.t4": "Заглавието на таба трябва да е още там",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
+  "why.no-doctype": "Няма DOCTYPE. Без него браузърът включва режим за древни сайтове и някои неща почват да се държат странно.",
+  "why.no-meta": "Няма meta с кодировка. Кирилицата ще излезе като въпросителни или йероглифи на чужд компютър.",
+  "why.charset-not-in-head": "Кодировката е там, но не е в head. Тя трябва да е ПЪРВОТО нещо — браузърът я чете, преди да е стигнал до текста. Сложиш ли я в body, вече е късно.",
+  "why.lost-title": "Заглавието на таба изчезна. Добавяш два реда, не триеш стари.",
+
+  "hint2.no-doctype": "DOCTYPE е първият ред на файла. Преди <html>, не вътре в него.",
+  "hint3.no-doctype": "Точният ред е <!DOCTYPE html>. Виж примера.",
+  "hint2.no-meta": "Тагът е meta. Той няма затварящ — това е void елемент.",
+  "hint3.no-meta": "Влиза в <head>, преди <title>. Виж примера.",
+  "hint2.charset-not-in-head": "Погледни къде си я сложил. Между <head> и </head> ли е?",
+  "hint3.charset-not-in-head": "Браузърът чете главата, преди да стигне до тялото. Ако кодировката е долу, той вече е прочел текста грешно.",
+
+  "blocks.0.text": "Отвори произволен сайт. Десен бутон, „Виж кода на страницата“. Първите редове са едни и същи навсякъде.",
+  "blocks.1.text": "Не са формалност. Всеки от тях решава реален проблем.",
+  "blocks.2.text": "Ето ги",
+  "blocks.3.text": "Два реда. Пишеш ги веднъж и повече не мислиш за тях. Но си струва да знаеш какво правят.",
+  "blocks.5.text": "Добави ги към твоята страница. Пусни. Няма да видиш разлика — точно това е смисълът.",
+  "blocks.6.text": "DOCTYPE",
+  "blocks.7.text": "Казва на браузъра: това е модерен HTML. Без него той включва режим за древни сайтове от деветдесетте и някои неща почват да се държат странно.",
+  "blocks.8.text": "Кодировката",
+  "blocks.9.text": "Компютърът пази буквите като числа. utf-8 е таблицата, по която ги превръща обратно. Без нея всяка буква извън английската азбука е рулетка.",
+  "blocks.10.text": "„Пробвай да махнеш meta и да напишеш нещо на кирилица. После го отвори на чужд компютър. Ще видиш въпросителни, йероглифи или квадратчета. Кодът ти работи — просто лъже.“"
+}
+===== EN: 10-doctype.json =====
 {
-  "title": "What you were actually doing",
-  "blocks.0.text": "For three lessons you have been writing without me explaining what you are doing. That was on purpose. Now you have experience, and the words will land on something.",
-  "blocks.1.text": "Those brackets are called tags",
-  "blocks.3.text": "<h1> is an opening tag. </h1> is a closing one — you know it by the slash. What sits between them is the content. The three together make one element.",
-  "blocks.4.text": "Almost every tag has a twin. If you open, you close. Forget to close, and the browser starts guessing where the thing ends — and it usually guesses wrong.",
-  "blocks.5.text": "And why they are needed at all",
-  "blocks.6.text": "Did you notice you never said how big the heading should be? Nor what font, nor what colour. You only said: \"this is a heading\". The browser decided how it looks.",
-  "blocks.7.text": "That is exactly what HTML is. You do not draw — you describe. You say what each thing is: this is a heading, this is a sentence, this is a link. How it gets shown is someone else's job.",
-  "blocks.8.text": "Whose job is the look, then",
-  "blocks.9.text": "CSS's. It comes later and says: \"make headings blue\", \"make sentences use this font\". But CSS can only colour something that already exists. And who creates it? You, with HTML.",
-  "blocks.10.text": "HTML says what is there. CSS says how it looks. JavaScript says what it does. In that order — because you cannot colour or animate something that does not exist."
-}
+  "title": "The two lines everybody writes",
 
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "There must be a DOCTYPE",
+  "checkLabels.t2": "There must be a meta",
+  "checkLabels.t3": "charset must be inside head",
+  "checkLabels.t4": "The tab title must still be there",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.no-doctype": "There is no DOCTYPE. Without it the browser switches into a mode for ancient sites and some things start behaving strangely.",
+  "why.no-meta": "There is no meta with an encoding. Non-English letters will come out as question marks or gibberish on someone else's computer.",
+  "why.charset-not-in-head": "The encoding is there, but not in head. It has to be the FIRST thing — the browser reads it before it reaches your text. Put it in body and it is already too late.",
+  "why.lost-title": "The tab title is gone. You are adding two lines, not deleting old ones.",
+
+  "hint2.no-doctype": "DOCTYPE is the first line of the file. Before <html>, not inside it.",
+  "hint3.no-doctype": "The exact line is <!DOCTYPE html>. See the example.",
+  "hint2.no-meta": "The tag is meta. It has no closing tag — it is a void element.",
+  "hint3.no-meta": "It goes inside <head>, before <title>. See the example.",
+  "hint2.charset-not-in-head": "Look at where you put it. Is it between <head> and </head>?",
+  "hint3.charset-not-in-head": "The browser reads the head before it reaches the body. If the encoding is down there, it has already read your text wrong.",
+
+  "blocks.0.text": "Open any website. Right click, \"View page source\". The first lines are the same everywhere.",
+  "blocks.1.text": "They are not a formality. Each of them solves a real problem.",
+  "blocks.2.text": "Here they are",
+  "blocks.3.text": "Two lines. You write them once and never think about them again. But it is worth knowing what they do.",
+  "blocks.5.text": "Add them to your page. Run. You will not see a difference — that is exactly the point.",
+  "blocks.6.text": "DOCTYPE",
+  "blocks.7.text": "It tells the browser: this is modern HTML. Without it the browser switches into a mode for ancient nineties sites and some things start behaving strangely.",
+  "blocks.8.text": "The encoding",
+  "blocks.9.text": "A computer stores letters as numbers. utf-8 is the table it uses to turn them back. Without it, every letter outside the English alphabet is a gamble.",
+  "blocks.10.text": "\"Try removing the meta and writing something in another alphabet. Then open it on someone else's computer. You will see question marks, gibberish or empty boxes. Your code works — it just lies.\""
+}
+===== LOGIC: 11-charset.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/11-charset.json
+export default {
+  id: 11,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My favourite game</title>
+  </head>
+  <body>
+    <h1>My favourite game</h1>
+    <p>I have been playing it for three years.</p>
+  </body>
+</html>`,
+  checks: [
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "code_contains", value: "lang=", err: "no-lang", weight: 60 },
+    { id: "t2", type: "dom_attr", value: "html", attr: "lang", err: "empty-lang", weight: 50 },
+    { id: "t3", type: "code_contains", value: "<meta", err: "lost-meta", weight: 30 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: `<html lang="bg">` },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+  ],
+  slug: "11-charset"
+};
+===== BG: 11-charset.json =====
+{
+  "title": "На какъв език е това",
+
+  "checkLabels.g1": "Всички тагове трябва да са затворени",
+  "checkLabels.t1": "Трябва да има lang",
+  "checkLabels.t2": "lang не трябва да е празен",
+  "checkLabels.t3": "Кодировката трябва да е още там",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
+  "why.no-lang": "Няма lang. Четецът на незрящия не знае на какъв език чете и ще произнесе твоя текст с чужд глас.",
+  "why.empty-lang": "lang е там, но е празен. Празният атрибут е същото като липсващ — никой не знае какъв е езикът.",
+  "why.lost-meta": "Кодировката изчезна. Добавяш атрибут, не триеш редове.",
+
+  "hint2.no-lang": "Атрибутът се пише ВЪТРЕ в отварящия таг <html>, преди затварящата скоба.",
+  "hint3.no-lang": "Виж примера. Тагът вече го има — само добавяш нещо в него.",
+  "hint2.empty-lang": "Стойността трябва да е кодът на езика. bg за български, en за английски.",
+  "hint3.empty-lang": "Ако страницата ти е на български — <html lang=\"bg\">. Ако е на английски — <html lang=\"en\">.",
+
+  "blocks.0.text": "Страницата ти е на някакъв език. Ти го знаеш. Браузърът — не.",
+  "blocks.1.text": "Изглежда безсмислено. Кой го интересува на какъв език е? Оказва се — доста хора.",
+  "blocks.2.text": "Един атрибут",
+  "blocks.3.text": "Не е нов таг. Това е нещо, което се пише ВЪТРЕ в таг, който вече имаш.",
+  "blocks.5.text": "Добави го към твоя <html>. Пусни. Нищо не се променя на екрана.",
+  "blocks.6.text": "Кой го чете",
+  "blocks.7.text": "Четецът на незрящия. Той трябва да знае как да произнесе думите. Без lang ще прочете „здравей“ с английски глас — и излиза каша, която никой не разбира.",
+  "blocks.8.text": "Google също. Той решава на кого да покаже страницата ти. Ако не знае езика, ще я покаже на грешните хора или на никого.",
+  "blocks.9.text": "„Помисли за последния път, когато отвори сайт и нещо изведнъж започна да говори. Какво направи? Затвори таба. Сега си представи, че четецът е единственият ти начин да четеш.“"
+}
+===== EN: 11-charset.json =====
+{
+  "title": "What language is this in",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "There must be a lang",
+  "checkLabels.t2": "lang must not be empty",
+  "checkLabels.t3": "The encoding must still be there",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.no-lang": "There is no lang. A screen reader does not know what language it is reading and will pronounce your text in the wrong voice.",
+  "why.empty-lang": "lang is there, but it is empty. An empty attribute is the same as a missing one — nobody knows what the language is.",
+  "why.lost-meta": "The encoding is gone. You are adding an attribute, not deleting lines.",
+
+  "hint2.no-lang": "The attribute goes INSIDE the opening <html> tag, before the closing bracket.",
+  "hint3.no-lang": "Look at the example. The tag is already there — you are only adding something to it.",
+  "hint2.empty-lang": "The value has to be the language code. bg for Bulgarian, en for English.",
+  "hint3.empty-lang": "If your page is in English — <html lang=\"en\">. If it is in Bulgarian — <html lang=\"bg\">.",
+
+  "blocks.0.text": "Your page is in some language. You know that. The browser does not.",
+  "blocks.1.text": "It seems pointless. Who cares what language it is in? Turns out — quite a few people.",
+  "blocks.2.text": "One attribute",
+  "blocks.3.text": "It is not a new tag. It is something you write INSIDE a tag you already have.",
+  "blocks.5.text": "Add it to your <html>. Run. Nothing changes on screen.",
+  "blocks.6.text": "Who reads it",
+  "blocks.7.text": "A screen reader. It needs to know how to pronounce the words. Without lang it will read your text in the wrong voice — and out comes a mess nobody understands.",
+  "blocks.8.text": "Google too. It decides who to show your page to. If it does not know the language, it will show it to the wrong people, or to nobody.",
+  "blocks.9.text": "\"Think of the last time you opened a site and something suddenly started talking. What did you do? Closed the tab. Now imagine that reader is the only way you can read.\""
+}
+===== LOGIC: 12-attributes.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/12-attributes.json
+export default {
+  id: 12,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My favourite game</title>
+  </head>
+  <body>
+    <h1>My favourite game</h1>
+    <p>I have been playing it for three years.</p>
+  </body>
+</html>`,
+  checks: [
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "dom_has", value: "img", err: "no-img", weight: 60 },
+    { id: "t2", type: "dom_attr", value: "img", attr: "src", err: "no-src", weight: 50 },
+    { id: "t3", type: "dom_attr", value: "img", attr: "alt", err: "no-alt", weight: 40 },
+    { id: "t4", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 30 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: `<img src="https://picsum.photos/400/250" alt="Червен велосипед, подпрян на стена">` },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "quote" },
+  ],
+  slug: "12-attributes"
+};
+===== BG: 12-attributes.json =====
+{
+  "title": "Тагът казва какво Е. Атрибутът казва подробностите",
+
+  "checkLabels.g1": "Всички тагове трябва да са затворени",
+  "checkLabels.t1": "Трябва да има снимка",
+  "checkLabels.t2": "Снимката трябва да има src",
+  "checkLabels.t3": "Снимката трябва да има alt с текст",
+  "checkLabels.t4": "Заглавието трябва да е още там",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
+  "why.no-img": "Няма снимка. Тагът е img — той няма затварящ, защото няма какво да обгради.",
+  "why.no-src": "Тагът е там, но не казва КОЯ снимка. Без src браузърът няма какво да покаже — ще излезе счупена икона.",
+  "why.no-alt": "Няма alt, или е празен. Незрящият човек стига до снимката и четецът му казва... нищо. Google също не вижда снимката — той чете alt.",
+  "why.lost-content": "Заглавието изчезна. Добавяш снимка, не триеш това, което вече имаш.",
+
+  "hint2.no-img": "Тагът е img. Пиши го вътре в <body>, под изречението.",
+  "hint3.no-img": "img няма затварящ таг. Просто <img ...> и толкова. Виж примера.",
+  "hint2.no-src": "src казва къде е снимката. Стойността е адрес.",
+  "hint3.no-src": "Виж примера — там има готов адрес, който можеш да ползваш.",
+  "hint2.no-alt": "alt е текстът, който заменя снимката. Опиши какво се вижда на нея.",
+  "hint3.no-alt": "Не пиши „снимка\" или „картинка\". Това не казва нищо. Пиши какво Е на снимката: „Червен велосипед, подпрян на стена\".",
+
+  "blocks.0.text": "Досега таговете ти казваха само какво Е нещото. Заглавие. Абзац. Но понякога това не стига.",
+  "blocks.1.text": "Снимка. Тагът казва „това е снимка“. Но КОЯ снимка? Откъде? Това не се събира в името на тага.",
+  "blocks.2.text": "Атрибутите",
+  "blocks.3.text": "Пишат се вътре в отварящия таг. Име, равно, стойност в кавички. Вече видя два — lang и charset. Ето трети и четвърти.",
+  "blocks.5.text": "Добави снимка към страницата си. Пусни. Появява се.",
+  "blocks.6.text": "src е очевиден. alt не е.",
+  "blocks.7.text": "src казва къде е файлът. Без него няма какво да се покаже.",
+  "blocks.8.text": "alt е текстът, който заменя снимката, когато тя не се вижда. Слаб интернет. Счупен адрес. Или — незрящ човек, чийто четец не може да види картинка и чете само това.",
+  "blocks.9.text": "Какво НЕ е alt",
+  "blocks.10.text": "„Не пиши alt=\"снимка\". Четецът ще каже „снимка“ и човекът няма да е разбрал нищо. Пиши какво Е на нея. Ако снимката изчезне и текстът ти не я замества — alt-ът ти е боклук.“",
+  "blocks.11.text": "„Google не вижда картинки. Чете alt. Ти пишеш за незрящия — и печели и търсачката.“"
+}
+===== EN: 12-attributes.json =====
+{
+  "title": "The tag says what it IS. The attribute says the details",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "There must be an image",
+  "checkLabels.t2": "The image must have a src",
+  "checkLabels.t3": "The image must have alt with text",
+  "checkLabels.t4": "The heading must still be there",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.no-img": "There is no image. The tag is img — it has no closing tag, because it has nothing to wrap.",
+  "why.no-src": "The tag is there, but it does not say WHICH image. Without src the browser has nothing to show — you get a broken icon.",
+  "why.no-alt": "There is no alt, or it is empty. A blind person reaches the image and their screen reader says... nothing. Google does not see the image either — it reads alt.",
+  "why.lost-content": "The heading is gone. You are adding an image, not deleting what you already have.",
+
+  "hint2.no-img": "The tag is img. Write it inside <body>, under the sentence.",
+  "hint3.no-img": "img has no closing tag. Just <img ...> and that is it. See the example.",
+  "hint2.no-src": "src says where the image is. The value is an address.",
+  "hint3.no-src": "Look at the example — there is a working address there you can use.",
+  "hint2.no-alt": "alt is the text that replaces the image. Describe what can be seen on it.",
+  "hint3.no-alt": "Do not write \"photo\" or \"image\". That says nothing. Write what IS on it: \"A red bicycle leaning against a wall\".",
+
+  "blocks.0.text": "So far your tags only said what a thing IS. A heading. A paragraph. But sometimes that is not enough.",
+  "blocks.1.text": "An image. The tag says \"this is an image\". But WHICH image? From where? That does not fit into the tag's name.",
+  "blocks.2.text": "Attributes",
+  "blocks.3.text": "They go inside the opening tag. Name, equals, value in quotes. You have already seen two — lang and charset. Here are the third and fourth.",
+  "blocks.5.text": "Add an image to your page. Run. It appears.",
+  "blocks.6.text": "src is obvious. alt is not.",
+  "blocks.7.text": "src says where the file is. Without it there is nothing to show.",
+  "blocks.8.text": "alt is the text that replaces the image when it cannot be seen. Slow internet. A broken address. Or — a blind person, whose screen reader cannot see a picture and reads only this.",
+  "blocks.9.text": "What alt is NOT",
+  "blocks.10.text": "\"Do not write alt=\"photo\". The reader will say \"photo\" and the person will have understood nothing. Write what IS on it. If the image disappears and your text does not replace it — your alt is rubbish.\"",
+  "blocks.11.text": "\"Google does not see pictures. It reads alt. You write for the blind person — and the search engine wins too.\""
+}

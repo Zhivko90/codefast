@@ -1,20 +1,59 @@
 {
   "title": "How your site looks when it is shared",
-  "checkLabels.t1": "There is a title for sharing",
-  "checkLabels.t2": "There is a description",
-  "checkLabels.t3": "There is an image",
-  "checkLabels.t4": "Everything closed",
-  "why.no-og-title": "There is no title for sharing. Without it the social network guesses — sometimes it takes the <title>, sometimes something else.",
-  "why.no-og-desc": "There is no description for sharing. A bare link with no explanation gets no clicks.",
-  "why.no-og-image": "There is no image. This is the most important of the three. A link without a picture is a thin grey strip the eye skips over. A link with one is half a screen.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You touched the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.p1": "The heading is there",
+  "checkLabels.p2": "The text is there",
+  "checkLabels.p3": "The charset is there",
+  "checkLabels.p4": "The tab title is there",
+  "checkLabels.p5": "The line for the phone is there",
+  "checkLabels.p6": "The description for Google is there",
+  "checkLabels.t3": "A title for sharing",
+  "checkLabels.t4": "A description for sharing",
+  "checkLabels.t5": "An image",
+  "checkLabels.t6": "An address",
+  "checkLabels.t7": "It is all in the head",
+  "checkLabels.t8": "The tags are not empty",
+  "checkLabels.t9": "The image has a full address",
+
+  "why.empty": "The editor is empty. The task is to ADD four lines, not delete the page. Bring the code back.",
+
+  "why.untouched": "You have not touched the code. Your link is still a bare blue strip.",
+
   "why.not-closed": "A tag is open and never closed.",
+
+  "why.lost-content": "You deleted something instead of adding. The heading, the sentence, the charset, the tab title, the line for the phone, the description — all of it stays. You are only adding four lines to the head.",
+  "hint2.lost-content": "Compare with the original code. Nothing was supposed to disappear.",
+
+  "why.no-og-title": "There is no title for sharing. Without it the social network guesses — sometimes it takes the <title>, sometimes something else.",
+  "hint2.no-og-title": "A <meta> tag again. But with property, not name. A small difference everyone gets wrong at least once.",
+  "hint3.no-og-title": "<meta property=\"og:something\" content=\"the value\"> — property says which one it is, content says what.",
+
+  "why.no-og-desc": "There is no description for sharing. A bare link with no explanation gets no clicks.",
+
+  "why.no-og-image": "There is no image. This is the most important of the four. A link without a picture is a thin grey strip the eye skips over. A link with one is half a screen.",
+
+  "why.no-og-url": "There is no address. Without it the network does not know the page's official address — and the same page can show up under three different links.",
+
+  "why.outside-head": "The tags are there, but not in the head. <meta> goes in <head>. In the body it does nothing — the program reading your site only looks at the head.",
+  "hint2.outside-head": "Put them next to charset and viewport. All meta tags live together.",
+
+  "why.empty-content": "One or more of the tags is empty. An empty content is the same as a missing tag — it says nothing.",
+  "hint2.empty-content": "Go through the four. Which one has empty quotes?",
+
+  "why.relative-image": "The image is there, but its address is not a full one. Facebook is not on your site — it has nothing to measure a relative path from.",
+  "hint2.relative-image": "bike.jpg works in an <img> because the browser is already on your page. Here it is not.",
+  "hint3.relative-image": "The address must start with https:// and lead to the image if you paste it into a browser yourself.",
+
   "blocks.0.text": "Someone liked your site and sends it to a friend. They copy the address and paste it into a chat.",
   "blocks.1.text": "And what appears? A bare blue link. A thin strip of text nobody will click.",
   "blocks.2.text": "Now remember what it looks like when someone shares an article from a big site: a large image, a title, a sentence beneath. It takes up half the screen and makes you look.",
   "blocks.3.text": "Where the card comes from",
   "blocks.4.text": "It is not an accident. Nor is it Facebook's doing — it simply reads what the site told it.",
-  "blocks.5.text": "More <meta> tags in the head. This time following a standard called Open Graph — invented by Facebook, but understood today by everyone: Viber, WhatsApp, LinkedIn, Slack, Telegram.",
-  "blocks.7.text": "Notice: property, not name. A small difference everyone gets wrong at least once.",
+  "blocks.5.text": "More <meta> tags in the head. This time following a standard called Open Graph — invented by Facebook, but read today by everything: Viber, WhatsApp, LinkedIn, Slack, Telegram, Discord, iMessage. Even X, which has a format of its own, falls back on these tags when the others are missing.",
+  "blocks.7.text": "Notice: property, not name. A small difference everyone gets wrong at least once. And all four go in the head — in the body they do nothing.",
   "blocks.8.text": "The image matters most",
   "blocks.9.text": "Of the four, og:image is the one that makes the difference. A link without an image is a thin grey strip. A link with one is half a screen.",
   "blocks.10.text": "Its address must be FULL — with https:// and everything. A relative path will not work. Facebook is not on your site, it has nothing to measure from.",
@@ -25,9 +64,10 @@
   "blocks.15.text": "Google wants keywords. The friend in the chat wants a reason to click. Sometimes those are different sentences.",
   "blocks.16.text": "One is written for a search engine. The other for a person who just received a message.",
   "blocks.17.text": "How to check",
-  "blocks.18.text": "Do not guess. There are tools that show you exactly what will appear.",
-  "blocks.19.text": "Facebook has the Sharing Debugger. Twitter has the Card Validator. LinkedIn has the Post Inspector. You paste the address and see the card.",
-  "blocks.20.text": "They are useful for another reason too: these platforms cache. You change the image and Facebook still shows the old one — with these tools you make it read it again.",
-  "blocks.21.text": "Your turn. Make your site look good when someone shares it.",
-  "blocks.22.text": "This is the last invisible thing in this course. And probably the cheapest: four lines that decide whether anyone clicks at all."
+  "blocks.18.text": "Do not guess. There is a way to see exactly what will appear.",
+  "blocks.19.text": "Facebook has the Sharing Debugger. LinkedIn has the Post Inspector. You paste the address and see the card. X used to have its own tool, but took it down — there is no official way to check in advance there.",
+  "blocks.20.text": "The simplest test works everywhere, though: send the link to yourself. Open a chat with yourself in Viber, WhatsApp or Telegram, paste the address and watch what comes out.",
+  "blocks.21.text": "And a warning: these networks cache. You change the image and Facebook still shows the old one. That is what the tools are for — with them you make it read the page again.",
+  "blocks.22.text": "Your turn. Make your site look good when someone shares it.",
+  "blocks.23.text": "This is the last invisible thing in this course. And probably the cheapest: four lines that decide whether anyone clicks at all."
 }

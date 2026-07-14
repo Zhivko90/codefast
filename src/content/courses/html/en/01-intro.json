@@ -1,6 +1,8 @@
 {
   "title": "Write your name",
   "checkLabels.t1": "Did you change the text to something of your own",
+  "checkLabels.t2": "Is there anything in the editor",
+  "why.empty": "The editor is empty. You deleted \"Hello\" but wrote nothing in its place. The task is to write your name — not just to remove someone else's.",
   "why.unchanged": "It still says \"Hello\". Delete it and write your name — that is the whole lesson. There is no right answer. There is yours.",
   "hint2.unchanged": "Click in the editor on the right. Select the word Hello. Press Backspace. Type your name.",
   "blocks.0.text": "No introduction. No explanations. On the right there is a page that says \"Hello\".",

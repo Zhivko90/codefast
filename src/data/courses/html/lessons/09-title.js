@@ -16,6 +16,8 @@ export default {
     { id: "t1", type: "code_contains", value: "<title", err: "no-title", weight: 60 },
     { id: "t2", type: "raw_head_contains", value: "<title", err: "title-not-in-head", weight: 50 },
     { id: "t3", type: "dom_text_not_empty", value: "title", err: "empty-title", weight: 10 },
+    { id: "t4", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 20 },
+    { id: "t5", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 18 },
   ],
   blocks: [
     { type: "text" },
