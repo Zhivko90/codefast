@@ -1,184 +1,231 @@
 ﻿
-===== LOGIC: 53-table-head.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/53-table-head.json
+===== LOGIC: 01-intro.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/01-intro.json
 export default {
-  id: 53,
+  id: 1,
   type: "web",
   label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bikes for sale</title>
-  </head>
-  <body>
-    <h1>Bikes for sale</h1>
-
-    <table>
-      <tr>
-        <td>Model</td>
-        <td>Price</td>
-        <td>Wheels</td>
-      </tr>
-      <tr>
-        <td>Mountain</td>
-        <td>18 leva</td>
-        <td>26"</td>
-      </tr>
-      <tr>
-        <td>City</td>
-        <td>25 leva</td>
-        <td>28"</td>
-      </tr>
-    </table>
-  </body>
-</html>`,
+  starterCode: "Hello",
   checks: [
-    { id: "t1", type: "code_contains", value: "<th", err: "no-th" },
-    { id: "t2", type: "code_not_contains", value: "<td>model</td>", err: "still-td" },
-    { id: "t3", type: "code_contains", value: "<caption", err: "no-caption" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "Hello", err: "unchanged" },
   ],
   blocks: [
     { type: "text" },
-    { type: "text" },
     { type: "heading" },
-    {
-      type: "code",
-      code: `<tr>
-  <th>Model</th>
-  <th>Price</th>
-  <th>Wheels</th>
-</tr>`
-    },
+    { type: "text" },
     { type: "text" },
     { type: "heading" },
     { type: "text" },
+    { type: "text" },
+  ],
+  slug: "01-intro"
+};
+===== BG: 01-intro.json =====
+{
+  "title": "Напиши името си",
+  "checkLabels.t1": "Смени ли текста с нещо свое",
+  "why.unchanged": "Още пише „Hello“. Изтрий го и напиши името си — това е целият урок. Няма правилен отговор. Има твой.",
+  "hint2.unchanged": "Кликни в редактора вдясно. Маркирай думата Hello. Натисни Backspace. Напиши името си.",
+  "blocks.0.text": "Без въведение. Без обяснения. Вдясно има страница, на която пише „Hello“.",
+  "blocks.1.text": "Направи това",
+  "blocks.2.text": "Изтрий „Hello“ и напиши името си. После натисни зеления бутон „Предай“.",
+  "blocks.3.text": "Това е. Няма нищо друго за правене в този урок.",
+  "blocks.4.text": "Какво стана",
+  "blocks.5.text": "Току-що написа уеб страница. Не се шегувам — това вдясно е истинска страница, каквато би стояла в интернет. Просто засега на нея пише само едно име.",
+  "blocks.6.text": "Няма да ти обяснявам какво е HTML. Ще ти го обясня, след като си написал няколко неща — тогава думите ще значат нещо."
+  
+}
+===== EN: 01-intro.json =====
+{
+  "title": "Write your name",
+  "checkLabels.t1": "Did you change the text to something of your own",
+  "why.unchanged": "It still says \"Hello\". Delete it and write your name — that is the whole lesson. There is no right answer. There is yours.",
+  "hint2.unchanged": "Click in the editor on the right. Select the word Hello. Press Backspace. Type your name.",
+  "blocks.0.text": "No introduction. No explanations. On the right there is a page that says \"Hello\".",
+  "blocks.1.text": "Do this",
+  "blocks.2.text": "Delete \"Hello\" and write your name. Then press the green \"Submit\" button.",
+  "blocks.3.text": "That is it. There is nothing else to do in this lesson.",
+  "blocks.4.text": "What happened",
+  "blocks.5.text": "You have just written a web page. I am not joking — what is on the right is a real page, the kind that would sit on the internet. It just happens to have only a name on it for now.",
+  "blocks.6.text": "I am not going to explain what HTML is. I will explain it after you have written a few things — then the words will mean something."
+}
+===== LOGIC: 02-structure.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/02-structure.json
+export default {
+  id: 2,
+  type: "web",
+  label: "coding",
+  starterCode: "Ivan",
+  checks: [
+    { id: "g1", type: "balanced", err: "not-wrapped", weight: 1000, guard: true },
+    { id: "t1", type: "code_contains", value: "<h1", err: "no-open", weight: 50 },
+    { id: "t2", type: "code_contains", value: "</h1>", err: "no-close", weight: 40 },
+    { id: "t3", type: "dom_text_not_empty", value: "h1", err: "empty-heading", weight: 10 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: "<h1>Твоето име</h1>" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "02-structure"
+};
+===== BG: 02-structure.json =====
+{
+  "title": "Направи го едро",
+
+  "checkLabels.g1": "Таговете трябва да са затворени",
+  "checkLabels.t1": "Трябва да отвориш тага",
+  "checkLabels.t2": "Трябва да го затвориш",
+  "checkLabels.t3": "Името трябва да е ВЪТРЕ в тага",
+
+  "why.not-wrapped": "Таговете са там, но са в грешен ред или не са затворени. Отпред <h1>, после текстът, после </h1>. Точно в този ред.",
+  "why.no-open": "Още няма таг. Не можеш да напишеш „направи го голямо“ — трябва да ОБГРАДИШ името. Отпред слагаш <h1>.",
+  "why.no-close": "Отвори тага, но не го затвори. Липсва </h1>. Наклонената черта казва „тук свършва заглавието“ — без нея браузърът не знае докъде стига то.",
+  "why.empty-heading": "Таговете са там, но заглавието е празно. Името ти е отвън.",
+
+  "hint2.empty-heading": "Погледни внимателно къде свършва </h1> и къде стои името ти. Едното е след другото, а трябва да е вътре.",
+  "hint3.empty-heading": "Обграждането значи: тагът отпред, текстът в средата, тагът отзад. <h1>ТУК</h1>, не <h1></h1>ТУК.",
+
+  "blocks.0.text": "Името ти е там, но е дребно. Стои като случайна дума насред бял лист. А ти искаш да е заглавие — едро, дебело, важно.",
+  "blocks.1.text": "Първо опитай сам",
+  "blocks.2.text": "Пробвай да го увеличиш. Сериозно, опитай. Няма да успееш — и точно това е смисълът.",
+  "blocks.3.text": "Няма как да напишеш „направи го голямо“. Няма бутон за шрифт. Няма къде да натиснеш. Празният текст просто си стои.",
+  "blocks.4.text": "Ето инструментът",
+  "blocks.5.text": "Обграждаш текста от двете страни. Отпред слагаш <h1>, отзад </h1>. Наклонената черта в края казва „тук свършва“.",
+  "blocks.7.text": "Направи го и пусни. Името става едро и дебело.",
+  "blocks.8.text": "Забележи какво НЕ направи: не избра шрифт, не каза колко голямо, не пипна цвят. Само каза „това е заглавие“. Останалото го реши браузърът."
+}
+===== EN: 02-structure.json =====
+{
+  "title": "Make it big",
+
+  "checkLabels.g1": "The tags must be closed",
+  "checkLabels.t1": "You must open the tag",
+  "checkLabels.t2": "You must close it",
+  "checkLabels.t3": "The name must be INSIDE the tag",
+
+  "why.not-wrapped": "The tags are there, but they are in the wrong order or not closed. First <h1>, then the text, then </h1>. Exactly that order.",
+  "why.no-open": "There is still no tag. You cannot write \"make it big\" — you have to WRAP the name. In front of it goes <h1>.",
+  "why.no-close": "You opened the tag but never closed it. </h1> is missing. The slash says \"the heading ends here\" — without it the browser does not know how far it reaches.",
+  "why.empty-heading": "The tags are there, but the heading is empty. Your name is outside it.",
+
+  "hint2.empty-heading": "Look carefully at where </h1> ends and where your name sits. One is after the other, but it should be inside.",
+  "hint3.empty-heading": "Wrapping means: tag in front, text in the middle, tag behind. <h1>HERE</h1>, not <h1></h1>HERE.",
+
+  "blocks.0.text": "Your name is there, but it is small. It sits like a random word on a blank sheet. But you want it to be a heading — large, bold, important.",
+  "blocks.1.text": "First try on your own",
+  "blocks.2.text": "Try to make it bigger. Seriously, try. You will not manage — and that is exactly the point.",
+  "blocks.3.text": "There is no way to write \"make it big\". There is no font button. There is nowhere to click. Plain text just sits there.",
+  "blocks.4.text": "Here is the tool",
+  "blocks.5.text": "You wrap the text on both sides. In front you put <h1>, behind it </h1>. The slash at the end says \"this is where it ends\".",
+  "blocks.7.text": "Do it and run. The name becomes large and bold.",
+  "blocks.8.text": "Notice what you did NOT do: you did not choose a font, you did not say how big, you did not touch colour. You only said \"this is a heading\". The rest the browser decided."
+}
+===== LOGIC: 03-role.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/03-role.json
+export default {
+  id: 3,
+  type: "web",
+  label: "coding",
+  starterCode: "<h1>Ivan</h1>",
+  checks: [
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "dom_text_not_empty", value: "h1", err: "lost-heading", weight: 60 },
+    { id: "t2", type: "code_contains", value: "<p", err: "no-p", weight: 50 },
+    { id: "t3", type: "code_contains", value: "</p>", err: "no-close", weight: 40 },
+    { id: "t4", type: "dom_text_not_empty", value: "p", err: "empty-p", weight: 10 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<p>Уча се да правя уебсайтове.</p>" },
     { type: "text" },
     { type: "text" },
     { type: "quote" },
-    { type: "heading" },
-    { type: "code", code: "<caption>Bikes in stock, July 2026</caption>" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
   ],
-  slug: "53-table-head"
+  slug: "03-role"
 };
-===== BG: 53-table-head.json =====
+===== BG: 03-role.json =====
 {
-  "title": "Заглавният ред не е първи ред",
-  "checkLabels.t1": "Има заглавен ред",
-  "checkLabels.t2": "Старите клетки ги няма",
-  "checkLabels.t3": "Таблицата има име",
-  "checkLabels.t4": "Всичко затворено",
-  "why.no-th": "Първият ред още е с <td>. Тоест кодът ти твърди, че „Model“ е поредната стойност — като „18 лева“. Не е. То е ИМЕТО на колоната. Тагът е <th>.",
-  "why.still-td": "Едно от имената на колоните още е <td>. И трите трябва да са <th>.",
-  "why.no-caption": "Таблицата няма име. Извадиш ли я от страницата — числа без обяснение. <caption> е първото нещо вътре в <table>.",
-  "why.not-closed": "Някой таг е отворен и не е затворен.",
-  "blocks.0.text": "Таблицата работи. Три реда, три колони, всичко на място.",
-  "blocks.1.text": "Само че първият ред не е като другите. „Model, Price, Wheels“ не са данни — те са имената на колоните. А ти им каза <td>: „поредната клетка със стойност“.",
-  "blocks.2.text": "Има си таг",
-  "blocks.4.text": "<th> — от „table header“. Казва: това не е стойност, това е име на колона.",
-  "blocks.5.text": "Не е за красота",
-  "blocks.6.text": "Пусни и виж: браузърът ги удебелява и центрира сам. Приятно, но не това е важното.",
-  "blocks.7.text": "Важното е за онзи, който не вижда таблицата.",
-  "blocks.8.text": "Незрящият човек чува клетка по клетка. Стигне ли до „18 лева“, компютърът му казва: „Price: 18 лева“. Той знае в коя колона е, без да брои.",
-  "blocks.9.text": "Без <th> той чува само: „18 лева“. И се чуди кое е това число.",
-  "blocks.10.text": "И името на таблицата",
-  "blocks.12.text": "<caption> е името на самата таблица. Слага се първо, веднага след <table>.",
-  "blocks.13.text": "Изглежда излишно — нали отгоре има заглавие? Но заглавието е на страницата, не на таблицата. Извадиш ли таблицата и я сложиш другаде, тя пак трябва да казва какво съдържа.",
-  "blocks.14.text": "Проверката",
-  "blocks.15.text": "Има един въпрос, който отсява всичко:",
-  "blocks.16.text": "Вземи клетка от средата на таблицата. Не от първия ред, не от първата колона. Просто клетка.",
-  "blocks.17.text": "Можеш ли да кажеш какво значи? „18“ — 18 какво? Цена? Килограми? Брой?",
-  "blocks.18.text": "Ако таблицата ти има <th>, отговорът винаги е там: „това е цената на планинския велосипед“. Всяка клетка има два адреса — ред и колона.",
-  "blocks.19.text": "Ако не можеш да ги назовеш — не си направил таблица. Направил си решетка.",
-  "blocks.20.text": "Твой ред. Направи първия ред да е заглавен и дай име на таблицата.",
-  "blocks.21.text": "Пусни и виж: почти нищо не се променя на екрана. Пак същото — най-важната работа в HTML не се вижда."
+  "title": "Кажи нещо за себе си",
+
+  "checkLabels.g1": "Всички тагове трябва да са затворени",
+  "checkLabels.t1": "Заглавието трябва да е още там",
+  "checkLabels.t2": "Трябва да има абзац",
+  "checkLabels.t3": "Абзацът трябва да е затворен",
+  "checkLabels.t4": "Изречението трябва да е ВЪТРЕ в абзаца",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
+  "why.lost-heading": "Заглавието изчезна. Задачата е да ДОБАВИШ изречение под него, а не да го заместиш. Върни <h1>.",
+  "why.no-p": "Изречението е там, но е гол текст. Браузърът не знае, че това е изречение — за него е просто букви. Обгради го в <p>.",
+  "why.no-close": "Отвори <p>, но не го затвори. Липсва </p>.",
+  "why.empty-p": "Абзацът е там, но е празен. Изречението ти е отвън.",
+
+  "hint2.empty-p": "Погледни къде свършва </p> и къде стои изречението ти. Едното е след другото, а трябва да е вътре.",
+  "hint3.empty-p": "Обграждането значи: тагът отпред, текстът в средата, тагът отзад. <p>ТУК</p>, не <p></p>ТУК.",
+
+  "blocks.0.text": "Заглавието е готово. Сега искаш едно изречение отдолу — например с какво се занимаваш.",
+  "blocks.1.text": "Опитай наивния начин",
+  "blocks.2.text": "Просто напиши изречението след </h1>. Натисни Enter, слез на нов ред, напиши го. Пусни.",
+  "blocks.3.text": "Работи, нали? Появява се. Но е гол текст — виси там, без да е нищо конкретно. Браузърът не знае, че това е изречение. За него е просто... букви.",
+  "blocks.4.text": "Кажи му какво е",
+  "blocks.6.text": "Буквата „p“ идва от „параграф“ — абзац. Обграждаш изречението и вече не е случаен текст, а абзац.",
+  "blocks.7.text": "Ще кажеш: изглежда почти същото. Да. Но опитай да напишеш две изречения едно под друго БЕЗ <p> — ще видиш, че се слепват в един ред, колкото и пъти да натиснеш Enter. С <p> всяко си стои самò.",
+  "blocks.8.text": "Първият урок за уеб: празните редове, които ти виждаш в кода, за браузъра не съществуват."
 }
-===== EN: 53-table-head.json =====
+===== EN: 03-role.json =====
 {
-  "title": "A header row is not just the first row",
-  "checkLabels.t1": "There is a header row",
-  "checkLabels.t2": "The old cells are gone",
-  "checkLabels.t3": "The table has a name",
-  "checkLabels.t4": "Everything closed",
-  "why.no-th": "The first row is still <td>. Meaning your code claims \"Model\" is just another value — like \"18 leva\". It is not. It is the NAME of the column. The tag is <th>.",
-  "why.still-td": "One of the column names is still a <td>. All three must be <th>.",
-  "why.no-caption": "The table has no name. Lift it out of the page — numbers with no explanation. <caption> is the first thing inside <table>.",
-  "why.not-closed": "A tag is open and never closed.",
-  "blocks.0.text": "The table works. Three rows, three columns, everything in place.",
-  "blocks.1.text": "But the first row is not like the others. \"Model, Price, Wheels\" are not data — they are the names of the columns. And you told them <td>: \"just another cell with a value\".",
-  "blocks.2.text": "There is a tag for it",
-  "blocks.4.text": "<th> — from \"table header\". It says: this is not a value, this is a column name.",
-  "blocks.5.text": "Not for looks",
-  "blocks.6.text": "Run it and look: the browser makes them bold and centres them by itself. Pleasant, but that is not the point.",
-  "blocks.7.text": "The point is for the person who cannot see the table.",
-  "blocks.8.text": "A blind person hears it cell by cell. When they reach \"18 leva\", their computer says: \"Price: 18 leva\". They know which column they are in without counting.",
-  "blocks.9.text": "Without <th> they hear only: \"18 leva\". And wonder what that number is.",
-  "blocks.10.text": "And the table's name",
-  "blocks.12.text": "<caption> is the name of the table itself. It goes first, right after <table>.",
-  "blocks.13.text": "It seems redundant — there is a heading above, is there not? But the heading belongs to the page, not the table. Lift the table out and put it elsewhere, and it must still say what it contains.",
-  "blocks.14.text": "The check",
-  "blocks.15.text": "There is one question that settles everything:",
-  "blocks.16.text": "Take a cell from the middle of the table. Not from the first row, not from the first column. Just a cell.",
-  "blocks.17.text": "Can you say what it means? \"18\" — 18 what? Price? Kilograms? Quantity?",
-  "blocks.18.text": "If your table has <th>, the answer is always there: \"this is the price of the mountain bike\". Every cell has two addresses — a row and a column.",
-  "blocks.19.text": "If you cannot name them — you did not build a table. You built a grid.",
-  "blocks.20.text": "Your turn. Make the first row a header row and give the table a name.",
-  "blocks.21.text": "Run it and look: almost nothing changes on screen. Same as always — the most important work in HTML is invisible."
+  "title": "Say something about yourself",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "The heading must still be there",
+  "checkLabels.t2": "There must be a paragraph",
+  "checkLabels.t3": "The paragraph must be closed",
+  "checkLabels.t4": "The sentence must be INSIDE the paragraph",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.lost-heading": "The heading is gone. The task is to ADD a sentence below it, not to replace it. Put <h1> back.",
+  "why.no-p": "The sentence is there, but it is bare text. The browser does not know it is a sentence — to it, these are just letters. Wrap it in <p>.",
+  "why.no-close": "You opened <p> but never closed it. </p> is missing.",
+  "why.empty-p": "The paragraph is there, but it is empty. Your sentence sits outside it.",
+
+  "hint2.empty-p": "Look at where </p> ends and where your sentence sits. One is after the other, but it should be inside.",
+  "hint3.empty-p": "Wrapping means: tag in front, text in the middle, tag behind. <p>HERE</p>, not <p></p>HERE.",
+
+  "blocks.0.text": "The heading is done. Now you want a sentence below it — for example, what you do.",
+  "blocks.1.text": "Try the naive way",
+  "blocks.2.text": "Just write the sentence after </h1>. Press Enter, go to a new line, write it. Run.",
+  "blocks.3.text": "It works, right? It appears. But it is bare text — hanging there, without being anything in particular. The browser does not know it is a sentence. To it, this is just... letters.",
+  "blocks.4.text": "Tell it what it is",
+  "blocks.6.text": "The letter \"p\" comes from \"paragraph\". You wrap the sentence and it is no longer random text, but a paragraph.",
+  "blocks.7.text": "You will say: it looks almost the same. Yes. But try writing two sentences one below the other WITHOUT <p> — you will see they glue into one line, no matter how many times you press Enter. With <p> each stands on its own.",
+  "blocks.8.text": "The first lesson of the web: the blank lines you see in your code do not exist for the browser."
 }
-===== LOGIC: 54-when-table.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/54-when-table.json
+===== LOGIC: 04-styled.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/04-styled.json
 export default {
-  id: 54,
-  type: "web",
-  label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bike Shop</title>
-  </head>
-  <body>
-
-    <table>
-      <tr>
-        <td colspan="2">
-          <h1>Bike Shop</h1>
-        </td>
-      </tr>
-      <tr>
-        <td width="150">
-          <a href="/index.html">Home</a><br>
-          <a href="/bikes.html">Bikes</a><br>
-          <a href="/contact.html">Contact</a>
-        </td>
-        <td>
-          <h2>Black bike</h2>
-          <p>21 gears, almost new. 18 leva.</p>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          Written by Ivan. All rights reserved.
-        </td>
-      </tr>
-    </table>
-
-  </body>
-</html>`,
-  expected: "<main>",
-  checkCode: true,
+  id: 4,
+  type: "text",
+  label: "concept",
   blocks: [
     {
       type: "text"
+    },
+    {
+      type: "heading"
+    },
+    {
+      type: "code",
+      code: "<h1>Ivan</h1>"
     },
     {
       type: "text"
@@ -191,357 +238,50 @@ export default {
     },
     {
       type: "text"
+    },
+    {
+      type: "text"
+    },
+    {
+      type: "heading"
     },
     {
       type: "text"
     },
     {
       type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<div style=\"font-family:sans-serif;font-size:13px\"><div style=\"border:1px solid #c33;background:#fee;padding:8px;margin-bottom:8px\"><strong style=\"color:#c33\">Таблица за подредба ✕</strong><table border=\"1\" cellpadding=\"4\" style=\"border-collapse:collapse;margin-top:6px;font-size:11px\"><tr><td colspan=\"2\"><strong>Bike Shop</strong></td></tr><tr><td>Home<br>Bikes</td><td>Black bike, 18 leva</td></tr></table></div><div style=\"border:1px solid #3a3;background:#efe;padding:8px\"><strong style=\"color:#3a3\">Семантика ✓</strong><div style=\"margin-top:6px;font-size:11px;color:#555\">header → nav → main → article → footer<br>подредбата идва от CSS</div></div></div>",
-      height: 260,
-      url: "index.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
     }
   ],
-  slug: "54-when-table"
+  slug: "04-styled"
 };
 
-===== BG: 54-when-table.json =====
+===== BG: 04-styled.json =====
 {
-  "title": "Най-злоупотребяваният таг в историята",
-  "testCase": "Махна ли таблицата и сложи ли семантични тагове?",
-  "blocks.0.text": "Пусни. Виж какво излиза.",
-  "blocks.1.text": "Заглавие най-горе, широко на цялата страница. Меню вляво, тясна колона. Съдържание вдясно, широко. Бележка най-долу. Изглежда като сайт. РАБОТИ като сайт.",
-  "blocks.2.text": "Сега погледни кода. Това е ТАБЛИЦА.",
-  "blocks.3.text": "Така се е правело двайсет години",
-  "blocks.4.text": "Не се шегувам. От средата на деветдесетте до към 2010-та почти всеки сайт в света е бил построен така. Amazon, Yahoo, вестниците — всичките. Защото таблицата беше единственият начин да сложиш две неща едно до друго.",
-  "blocks.5.text": "Днес не е. Днес има CSS, който подрежда каквото си поискаш, както си поискаш. А таблицата се върна там, откъдето е тръгнала: за данни.",
-  "blocks.6.text": "Таблицата не е решетка за подредба. Таблицата е ДАННИ, които имат редове и колони.",
-  "blocks.7.text": "Задай си въпроса",
-  "blocks.8.text": "Има един въпрос, който решава всичко: „Тези неща имат ли смисъл като редове и колони?\"",
-  "blocks.9.items.0": "Таблица с три велосипеда и за всеки — модел, скорости и цена → ДА. Питай: какво значи клетката „18 leva\"? Значи цената на черния велосипед. Тя получава смисъла си от реда и колоната, в които стои. Това са данни.",
-  "blocks.9.items.1": "Меню вляво и текст вдясно → НЕ. Какъв е „редът\", в който са менюто и статията? Няма такъв. Те просто стоят един до друг на екрана. Това е ВИД, не структура.",
-  "blocks.10.text": "Ако не можеш да кажеш какво значи една клетка, значи нямаш таблица. Имаш подредба, направена с грешния инструмент.",
-  "blocks.11.text": "Какво чува незрящият",
-  "blocks.12.text": "Ето цената. Четецът стига до таблицата и обявява: „Таблица. Три реда, две колони.\" Човекът се стяга — сега ще му четат данни.",
-  "blocks.13.text": "„Ред 1, клетка 1: Bike Shop. Ред 2, клетка 1: връзка Home, връзка Bikes, връзка Contact. Ред 2, клетка 2: Black bike, 21 gears…\"",
-  "blocks.14.text": "Той търси данни. Ти му даваш сайт, накълцан на клетки. Няма меню, няма заглавие, няма статия — има редове и колони, които не значат нищо. Пълна безсмислица, изречена с абсолютна увереност.",
-  "blocks.15.text": "И на телефон",
-  "blocks.16.text": "Таблицата не се пренася. Колоните ѝ не могат да слязат една под друга — това би унищожило смисъла ѝ. Затова на телефон таблицата или излиза миниатюрна, или изхвърля страницата настрани.",
-  "blocks.17.text": "Което е правилно за данни. И катастрофа за сайт.",
-  "blocks.19.text": "Правилото",
-  "blocks.20.text": "Таблица за ДАННИ — да, винаги. Курсове на валути, резултати от мачове, спецификации, разписания, цени. Всичко, което има редове и колони и в което всяка клетка значи нещо.",
-  "blocks.21.text": "Таблица за ПОДРЕДБА — никога. Не защото е старомодно. Защото лъже.",
-  "blocks.22.text": "Твой ред. Разглоби тази таблица. Заглавието горе, менюто, съдържанието, бележката отдолу — всяко от тях си има свой таг и ти ги знаеш всичките.",
-  "blocks.23.text": "Ще стане по-грозно. Менюто ще слезе под съдържанието вместо да е встрани. Знаеш вече защо: подредбата е CSS. Но кодът ще казва истината."
+  "title": "Какво всъщност правеше",
+  "blocks.0.text": "Три урока пишеш, без да съм ти обяснил какво правиш. Беше нарочно. Сега вече имаш опит и думите ще ти паснат на нещо.",
+  "blocks.1.text": "Онези скоби се казват тагове",
+  "blocks.3.text": "<h1> е отварящ таг. </h1> е затварящ — познава се по наклонената черта. Това, което е между тях, е съдържанието. Трите заедно правят един елемент.",
+  "blocks.4.text": "Почти всеки таг има близнак. Отвориш ли, затваряш. Забравиш ли да затвориш — браузърът почва да гадае докъде стига нещото, и обикновено гадае грешно.",
+  "blocks.5.text": "А защо изобщо са нужни",
+  "blocks.6.text": "Забеляза ли, че никога не си казвал колко голямо да е заглавието? Нито какъв шрифт, нито какъв цвят. Каза само: „това е заглавие\". Браузърът реши как да изглежда.",
+  "blocks.7.text": "Точно това е HTML. Не рисуваш — описваш. Казваш какво е всяко нещо: това е заглавие, това е изречение, това е връзка. Кой как ще го покаже е чужда работа.",
+  "blocks.8.text": "Чия работа е тогава външният вид",
+  "blocks.9.text": "На CSS. Той идва по-късно и казва: „заглавията да са сини\", „изреченията да са с този шрифт\". Но CSS може да оцвети само нещо, което вече съществува. А кой го създава? Ти, с HTML.",
+  "blocks.10.text": "HTML казва какво има. CSS казва как изглежда. JavaScript казва какво прави. В този ред — защото не можеш да оцветиш или оживиш нещо, което го няма."
 }
 
-===== EN: 54-when-table.json =====
+===== EN: 04-styled.json =====
 {
-  "title": "The most abused tag in history",
-  "testCase": "Did you remove the table and use semantic tags?",
-  "blocks.0.text": "Run it. Look at what comes out.",
-  "blocks.1.text": "A heading at the top, spanning the full width. A menu on the left, a narrow column. Content on the right, wide. A note at the bottom. It looks like a site. It WORKS like a site.",
-  "blocks.2.text": "Now look at the code. It is a TABLE.",
-  "blocks.3.text": "This is how it was done for twenty years",
-  "blocks.4.text": "I am not joking. From the mid-nineties until around 2010 nearly every site in the world was built this way. Amazon, Yahoo, the newspapers — all of them. Because a table was the only way to put two things side by side.",
-  "blocks.5.text": "Today it is not. Today there is CSS, which arranges whatever you want, however you want. And the table went back to where it came from: data.",
-  "blocks.6.text": "A table is not a layout grid. A table is DATA that has rows and columns.",
-  "blocks.7.text": "Ask yourself the question",
-  "blocks.8.text": "There is one question that settles it: \"Do these things make sense as rows and columns?\"",
-  "blocks.9.items.0": "A table of three bikes, each with a model, gears and a price → YES. Ask: what does the cell \"18 leva\" mean? It means the price of the black bike. It gets its meaning from the row and the column it sits in. That is data.",
-  "blocks.9.items.1": "A menu on the left and text on the right → NO. What is the \"row\" that the menu and the article share? There is none. They merely sit next to each other on screen. That is APPEARANCE, not structure.",
-  "blocks.10.text": "If you cannot say what a cell MEANS, you do not have a table. You have a layout built with the wrong tool.",
-  "blocks.11.text": "What the blind visitor hears",
-  "blocks.12.text": "Here is the cost. The reader reaches the table and announces: \"Table. Three rows, two columns.\" The person braces — data is coming.",
-  "blocks.13.text": "\"Row 1, cell 1: Bike Shop. Row 2, cell 1: link Home, link Bikes, link Contact. Row 2, cell 2: Black bike, 21 gears…\"",
-  "blocks.14.text": "He is looking for data. You hand him a website chopped into cells. There is no menu, no heading, no article — there are rows and columns that mean nothing. Complete nonsense, delivered with total confidence.",
-  "blocks.15.text": "And on a phone",
-  "blocks.16.text": "A table does not reflow. Its columns cannot stack one below the other — that would destroy its meaning. So on a phone a table either comes out tiny, or it pushes the page sideways.",
-  "blocks.17.text": "Which is correct for data. And a catastrophe for a website.",
-  "blocks.19.text": "The rule",
-  "blocks.20.text": "A table for DATA — yes, always. Exchange rates, match results, specs, timetables, prices. Anything with rows and columns where each cell means something.",
-  "blocks.21.text": "A table for LAYOUT — never. Not because it is old-fashioned. Because it lies.",
-  "blocks.22.text": "Your turn. Take this table apart. The heading at the top, the menu, the content, the note at the bottom — each has its own tag and you know them all.",
-  "blocks.23.text": "It will get uglier. The menu will drop below the content instead of sitting beside it. You know why by now: layout is CSS. But the code will tell the truth."
+  "title": "What you were actually doing",
+  "blocks.0.text": "For three lessons you have been writing without me explaining what you are doing. That was on purpose. Now you have experience, and the words will land on something.",
+  "blocks.1.text": "Those brackets are called tags",
+  "blocks.3.text": "<h1> is an opening tag. </h1> is a closing one — you know it by the slash. What sits between them is the content. The three together make one element.",
+  "blocks.4.text": "Almost every tag has a twin. If you open, you close. Forget to close, and the browser starts guessing where the thing ends — and it usually guesses wrong.",
+  "blocks.5.text": "And why they are needed at all",
+  "blocks.6.text": "Did you notice you never said how big the heading should be? Nor what font, nor what colour. You only said: \"this is a heading\". The browser decided how it looks.",
+  "blocks.7.text": "That is exactly what HTML is. You do not draw — you describe. You say what each thing is: this is a heading, this is a sentence, this is a link. How it gets shown is someone else's job.",
+  "blocks.8.text": "Whose job is the look, then",
+  "blocks.9.text": "CSS's. It comes later and says: \"make headings blue\", \"make sentences use this font\". But CSS can only colour something that already exists. And who creates it? You, with HTML.",
+  "blocks.10.text": "HTML says what is there. CSS says how it looks. JavaScript says what it does. In that order — because you cannot colour or animate something that does not exist."
 }
 
-===== LOGIC: 55-freehand5.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/55-freehand5.json
-export default {
-  id: 55,
-  type: "web",
-  label: "coding",
-  project: true,
-  starterCode: "",
-  checks: [
-    { id: "t1", type: "changed", value: "", err: "empty" },
-    { id: "t2", type: "code_contains", value: "<table", err: "no-table" },
-    { id: "t3", type: "code_contains", value: "<th", err: "no-th" },
-    { id: "t4", type: "code_contains", value: "<td", err: "no-td" },
-    { id: "t5", type: "code_contains", value: "<main", err: "no-page" },
-    { id: "t6", type: "balanced", err: "not-closed" },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "quote" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-  ],
-  slug: "55-freehand5"
-};
-===== BG: 55-freehand5.json =====
-{
-  "title": "Сам: страница с данни",
-  "checkLabels.t1": "Написа ли нещо",
-  "checkLabels.t2": "Таблица",
-  "checkLabels.t3": "Заглавен ред",
-  "checkLabels.t4": "Клетки с данни",
-  "checkLabels.t5": "Истинска страница около нея",
-  "checkLabels.t6": "Всичко затворено",
-  "why.empty": "Празен редактор. Започни от таблицата, не от страницата. Тя е сърцевината — заради нея е всичко останало.",
-  "why.no-table": "Няма таблица. Задачата иска сравнение — нещо с редове и колони. Ако си подредил данните с интервали, погледни какво излиза вдясно: интервалите не подреждат нищо.",
-  "why.no-th": "Таблицата има данни, но няма заглавен ред. Първи ред, който изглежда различно, не е заглавен ред. Той трябва да ГО КАЗВА — иначе браузърът чете имената на колоните като поредната клетка с данни.",
-  "why.no-td": "Има заглавен ред, но няма данни под него. Празна таблица със заглавия е обещание, което не е спазено.",
-  "why.no-page": "Таблицата виси във въздуха. Задачата иска истинска страница около нея — горна част, навигация, главно съдържание, долна част. Данните трябва да са в нещо.",
-  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред. В таблиците това е най-честата грешка — лесно се губи един </td>.",
-  "blocks.0.text": "Празен редактор. Пети път.",
-  "blocks.1.text": "Задачата",
-  "blocks.2.text": "Пак твоята тема. Този път страницата трябва да съдържа СРАВНЕНИЕ — нещо, което наистина има редове и колони.",
-  "blocks.3.text": "Каквото пасва: цени на неща, характеристики на модели, класация, разписание, резултати, състав на рецепта. Поне три реда и три колони, за да си струва.",
-  "blocks.4.text": "И около таблицата — истинска страница. Горна част, навигация, главно съдържание, долна част. Всичко, което вече знаеш.",
-  "blocks.5.text": "Уловката",
-  "blocks.6.text": "Един <table> на страницата. Точно един. Ако видиш втори — спри се и се питай дали не подреждаш нещо с него.",
-  "blocks.7.text": "И заглавният ред трябва да е заглавен НАИСТИНА. Не първи ред, който изглежда различно. Заглавен.",
-  "blocks.8.text": "Как да си провериш таблицата",
-  "blocks.9.text": "Вземи една клетка някъде по средата — не от първия ред, не от първата колона. Просто клетка. Погледни какво пише в нея.",
-  "blocks.10.text": "Сега кажи на глас какво значи. Ако можеш („това е цената на червения велосипед“), таблицата ти е истинска. Ако не можеш („това е… ами, там стои менюто“), значи не си направил таблица. Направил си решетка.",
-  "blocks.11.text": "Всяка клетка има два адреса. Ако не можеш да ги назовеш, не е таблица.",
-  "blocks.12.text": "Ако заседнеш",
-  "blocks.13.text": "Започни от таблицата, не от страницата. Тя е сърцевината — заради нея е всичко останало. Напиши първо данните, а после ги обгради с това, което ги обяснява.",
-  "blocks.14.text": "И ако темата ти не се поддава на таблица — значи не си я огледал добре. Всичко има какво да се сравни: цени, години, размери, оценки, време.",
-  "blocks.15.text": "Още нещо",
-  "blocks.16.text": "Твоята таблица няма да има нито една линия. Никакви рамки, никакви разделители. Ще изглежда като нахвърляни думи.",
-  "blocks.17.text": "Знаеш вече защо — линиите са CSS. Но не бързай да ги съжаляваш: най-красивите таблици, които си виждал, са построени точно от тези тагове. Отдолу е същият <tr> и същият <td>."
-}
-===== EN: 55-freehand5.json =====
-{
-  "title": "Freehand: a page with data",
-  "checkLabels.t1": "Did you write anything",
-  "checkLabels.t2": "A table",
-  "checkLabels.t3": "A header row",
-  "checkLabels.t4": "Data cells",
-  "checkLabels.t5": "A real page around it",
-  "checkLabels.t6": "Everything closed",
-  "why.empty": "Empty editor. Start from the table, not the page. It is the core — everything else exists for it.",
-  "why.no-table": "There is no table. The task asks for a comparison — something with rows and columns. If you lined the data up with spaces, look at what comes out on the right: spaces line up nothing.",
-  "why.no-th": "The table has data but no header row. A first row that looks different is not a header row. It has to SAY so — otherwise the browser reads your column names as just another data cell.",
-  "why.no-td": "There is a header row but no data under it. An empty table with headings is a promise you did not keep.",
-  "why.no-page": "The table is floating in mid-air. The task asks for a real page around it — a top part, navigation, main content, a bottom part. Data has to sit in something.",
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order. In tables this is the most common mistake — a single </td> goes missing easily.",
-  "blocks.0.text": "Empty editor. Fifth time.",
-  "blocks.1.text": "The task",
-  "blocks.2.text": "Your topic again. This time the page must contain a COMPARISON — something that genuinely has rows and columns.",
-  "blocks.3.text": "Whatever fits: prices of things, specs of models, a ranking, a timetable, results, a recipe breakdown. At least three rows and three columns to be worth it.",
-  "blocks.4.text": "And around the table — a real page. A top part, navigation, main content, a bottom part. Everything you already know.",
-  "blocks.5.text": "The catch",
-  "blocks.6.text": "One <table> on the page. Exactly one. If you see a second — stop and ask yourself whether you are laying something out with it.",
-  "blocks.7.text": "And the header row must be a header REALLY. Not a first row that looks different. A header.",
-  "blocks.8.text": "How to check your table",
-  "blocks.9.text": "Take a cell somewhere in the middle — not from the first row, not from the first column. Just a cell. Look at what is in it.",
-  "blocks.10.text": "Now say out loud what it means. If you can (\"this is the price of the red bike\"), your table is real. If you cannot (\"this is… well, that is where the menu goes\"), you did not build a table. You built a grid.",
-  "blocks.11.text": "Every cell has two addresses. If you cannot name them, it is not a table.",
-  "blocks.12.text": "If you freeze",
-  "blocks.13.text": "Start from the table, not the page. It is the core — everything else exists for it. Write the data first, then wrap it in what explains it.",
-  "blocks.14.text": "And if your topic does not lend itself to a table — you have not looked at it hard enough. Everything has something to compare: prices, years, sizes, ratings, time.",
-  "blocks.15.text": "One more thing",
-  "blocks.16.text": "Your table will not have a single line. No borders, no dividers. It will look like scattered words.",
-  "blocks.17.text": "You know why by now — lines are CSS. But do not feel sorry too soon: the most beautiful tables you have ever seen are built from exactly these tags. Underneath it is the same <tr> and the same <td>."
-}
-===== LOGIC: 56-forms.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/56-forms.json
-export default {
-  id: 56,
-  type: "web",
-  label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>Contact</title>
-  </head>
-  <body>
-    <h1>Ask about the bike</h1>
-
-    <p>Your name:</p>
-    <input type="text">
-
-    <p>Your email:</p>
-    <input type="text">
-  </body>
-</html>`,
-  checks: [
-    { id: "t1", type: "code_contains", value: "<form", err: "no-form" },
-    { id: "t2", type: "code_contains", value: "name=", err: "no-name" },
-    { id: "t3", type: "code_contains", value: "<button", err: "no-button" },
-    { id: "t4", type: "balanced", err: "not-closed" },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    {
-      type: "code",
-      code: `<form action="/send" method="post">
-  <input type="text" name="username">
-  <button type="submit">Send</button>
-</form>`
-    },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "quote" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-  ],
-  slug: "56-forms"
-};
-===== BG: 56-forms.json =====
-{
-  "title": "Страницата започва да слуша",
-  "checkLabels.t1": "Има форма",
-  "checkLabels.t2": "Полетата имат имена",
-  "checkLabels.t3": "Има бутон",
-  "checkLabels.t4": "Всичко затворено",
-  "why.no-form": "Полетата стоят разхвърляни по страницата. Те не знаят, че са заедно — няма как да се изпратят наведнъж. Обгради ги с <form>.",
-  "why.no-name": "Полетата нямат имена. Пращаш два текста, но никой не знае кой е името и кой е имейлът. Всяко поле иска name.",
-  "why.no-button": "Няма бутон за изпращане. Формата събира данни и няма как да ги подаде.",
-  "why.not-closed": "Някой таг е отворен и не е затворен. (<input> не се брои — той няма затварящ.)",
-  "blocks.0.text": "Досега страницата ти само говореше. Показваше неща на човека. Сега ще започне да слуша.",
-  "blocks.1.text": "Сложи две полета за писане. Пусни. Появяват се, можеш да пишеш в тях. И после? Нищо. Каквото напишеш, си остава там.",
-  "blocks.2.text": "Формата",
-  "blocks.4.text": "<form> обгражда полетата и ги прави едно. Без нея те са разхвърляни кутийки, които не знаят една за друга.",
-  "blocks.5.text": "Двата атрибута",
-  "blocks.6.text": "action казва КЪДЕ отиват данните. Адрес на сървър, който ще ги приеме.",
-  "blocks.7.text": "method казва КАК. „post“ — данните пътуват скрито. „get“ — влизат в адреса, виждат се в лентата на браузъра.",
-  "blocks.8.text": "Просто правило: търсене — get. Всичко останало — post. Паролата не се пише в адреса.",
-  "blocks.9.text": "Името на полето",
-  "blocks.10.text": "Всяко поле трябва да има name. Без него данните му не се изпращат — все едно го няма.",
-  "blocks.11.text": "Помисли какво пристига отсреща: два текста. Кой е името, кой е имейлът? name е етикетът на пакета.",
-  "blocks.12.text": "Забравеното name е грешка, която не гърми. Формата се изпраща, човекът вижда „благодарим“, а полето просто липсва в пощата ти.",
-  "blocks.13.text": "Няма да работи",
-  "blocks.14.text": "Направи формата, натисни бутона. Нищо няма да стане.",
-  "blocks.15.text": "Адресът в action не съществува. И дори да съществуваше, някой трябва да го чака отсреща — програма на сървъра, която приема данните, проверява ги, слага ги в база и праща имейл.",
-  "blocks.16.text": "Това не е HTML. Това е друг език, друг курс.",
-  "blocks.17.text": "HTML прави ръката, която подава. Какво става с подаденото — не е негова работа.",
-  "blocks.18.text": "Но ръката трябва да е направена както трябва. Иначе никой няма да я хване.",
-  "blocks.19.text": "Твой ред. Направи форма от двете полета и ѝ сложи бутон."
-}
-===== EN: 56-forms.json =====
-{
-  "title": "The page starts listening",
-  "checkLabels.t1": "There is a form",
-  "checkLabels.t2": "The fields have names",
-  "checkLabels.t3": "There is a button",
-  "checkLabels.t4": "Everything closed",
-  "why.no-form": "The fields are scattered across the page. They do not know they belong together — there is no way to send them at once. Wrap them in <form>.",
-  "why.no-name": "The fields have no names. You are sending two texts, but nobody knows which is the name and which is the email. Every field wants a name.",
-  "why.no-button": "There is no submit button. The form collects data and has no way to hand it over.",
-  "why.not-closed": "A tag is open and never closed. (<input> does not count — it has no closing tag.)",
-  "blocks.0.text": "Until now your page only talked. It showed things to a person. Now it will start listening.",
-  "blocks.1.text": "You added two fields to type in. Run it. They appear, you can type in them. And then? Nothing. Whatever you write stays there.",
-  "blocks.2.text": "The form",
-  "blocks.4.text": "<form> wraps the fields and makes them one. Without it they are scattered boxes that know nothing about each other.",
-  "blocks.5.text": "The two attributes",
-  "blocks.6.text": "action says WHERE the data goes. The address of a server that will receive it.",
-  "blocks.7.text": "method says HOW. \"post\" — the data travels hidden. \"get\" — it goes into the address, visible in the browser bar.",
-  "blocks.8.text": "A simple rule: search — get. Everything else — post. A password does not belong in the address bar.",
-  "blocks.9.text": "The field's name",
-  "blocks.10.text": "Every field must have a name. Without it, its data is not sent at all — as if the field were not there.",
-  "blocks.11.text": "Think about what arrives on the other side: two texts. Which is the name, which is the email? name is the label on the parcel.",
-  "blocks.12.text": "A forgotten name is a mistake that does not crash. The form submits, the person sees \"thank you\", and the field is simply missing from your inbox.",
-  "blocks.13.text": "It will not work",
-  "blocks.14.text": "Build the form, press the button. Nothing will happen.",
-  "blocks.15.text": "The address in action does not exist. And even if it did, someone must be waiting on the other side — a program on a server that takes the data, checks it, stores it and sends an email.",
-  "blocks.16.text": "That is not HTML. That is another language, another course.",
-  "blocks.17.text": "HTML builds the hand that offers. What happens to what is offered is not its business.",
-  "blocks.18.text": "But the hand has to be built right. Otherwise nobody will take it.",
-  "blocks.19.text": "Your turn. Make a form out of the two fields and give it a button."
-}

@@ -23,7 +23,7 @@
 
   "why.id-instead": "You used an id on a paragraph. But an id is a PERSONAL name — only one thing on the page may carry it. The two bikes are not one thing, they are two things of one kind. That is what class is for.",
   "hint2.id-instead": "Give the same id to two things and nobody knows which one you mean.",
-  "hint3.id-instead": "Like an ID card number: two people cannot have the same one.",
+  "hint3.id-instead": "And the sly part: the browser will not complain. Repeat an id and it simply grabs the first one and moves on. Nothing crashes — half your code just quietly does not work.",
   "hint4.id-instead": "Swap the id for a class on the paragraphs. Save id for something that is one of a kind — the heading at the top, for instance.",
 
   "why.named-by-look": "You named the label by LOOK — \"red\", \"blue\", \"big\", \"bold\". Tomorrow the boss wants the price green. So either you rename everything, or you leave class=\"red\" on something green — and everyone reading the code will wonder if it is a bug.",

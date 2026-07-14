@@ -1,28 +1,103 @@
 {
   "title": "Freehand: a form someone will fill in",
+
   "checkLabels.t1": "Did you write anything",
+  "checkLabels.g1": "Everything closed",
   "checkLabels.t2": "A form",
-  "checkLabels.t3": "Labels",
-  "checkLabels.t4": "The labels are tied",
-  "checkLabels.t5": "A choice from a list",
-  "checkLabels.t6": "A large text field",
-  "checkLabels.t7": "A real button",
-  "checkLabels.t8": "Everything closed",
+  "checkLabels.t3": "The page has a heading",
+  "checkLabels.t4": "There is a page around the form",
+  "checkLabels.t5": "No empty paragraph",
+  "checkLabels.t6": "The form knows where it goes",
+  "checkLabels.t7": "The form knows how to send",
+  "checkLabels.t8": "At least two fields",
+  "checkLabels.t9": "The fields are not the same type",
+  "checkLabels.t10": "A choice from ready answers",
+  "checkLabels.t11": "The choice has something to offer",
+  "checkLabels.t12": "A large text field",
+  "checkLabels.t13": "A real button with a word in it",
+  "checkLabels.t14": "The button is inside the form",
+  "checkLabels.t15": "The button submits",
+  "checkLabels.t16": "No fake button",
+  "checkLabels.t17": "Every field has a label",
+  "checkLabels.t18": "The labels have text",
+  "checkLabels.t19": "The labels are tied",
+  "checkLabels.t20": "The fields have an id",
+  "checkLabels.t21": "The fields have a name",
+
   "why.empty": "Empty editor. Do not start from the tags. Start from the questions: what do you want to know about the person filling it in? Answer that, and the tags pick themselves.",
-  "why.no-form": "There is no form. Fields scattered across a page are not a form — they do not know they belong together, and there is no way to send them at once.",
-  "why.no-label": "The fields have no labels. Text above a field is not a label — it is just text that happens to sit on top. If it is a placeholder, remember: it vanishes the moment someone starts typing.",
-  "why.label-not-tied": "There are labels, but they do not know which field they belong to. A label with no connection is useless to exactly the person it was put there for — the reader will say \"text field\" and nothing more.",
-  "why.no-choice": "There is no choice from a list. The task asks for one place where a person picks from ready answers instead of typing freely.",
-  "why.no-textarea": "There is no large free-text field. A one-line box for a message is like handing someone a business card to write a letter on.",
-  "why.no-button": "There is no real button. If you built a button out of something else that merely looks like one — it will not press with Enter and Tab will never reach it.",
+  "hint2.empty": "Write the questions out in plain words, as if on paper. Then turn them into fields.",
+
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "<select> and <textarea> close. <input> does not — it has nothing to hold.",
+  "hint3.not-closed": "Whatever you opened last, you close first. <form> closes after the button, not before it.",
+
+  "why.no-form": "There is no form. Fields scattered across a page are not a form — they do not know they belong together, and there is no way to send them at once.",
+  "hint2.no-form": "<form> wraps everything: labels, fields, button.",
+
+  "why.no-h1": "The page has no heading with text in it. A person has to know where they have landed before deciding whether to fill anything in.",
+
+  "why.no-page": "A bare form floating in space. The task asks for a page AROUND the form — at least two paragraphs saying what this is and why anyone should hand over their details.",
+  "hint2.no-page": "Who are you? What are you offering? What happens after they send it? Those are paragraphs, not fields.",
+
+  "why.empty-p": "There is an empty paragraph. Either put text in it or remove it.",
+
+  "why.no-action": "The form collects data and has no idea where to send it. The opening tag is bare.",
+  "hint2.no-action": "The address does not have to exist. What matters is that the form has one — otherwise it does not know where.",
+
+  "why.no-method": "The form knows WHERE, but not HOW. Or the method is empty.",
+  "hint2.no-method": "One of the two puts everything typed into the address bar. Your form sends a message — it changes something on the other side. Which way is for changing?",
+
+  "why.too-few-fields": "There are not two fields. The task asks for at least two — plus the choice and the large box.",
+
+  "why.same-type": "Both fields are the same type. The task asks for DIFFERENT types.",
+  "hint2.same-type": "Read your own questions. One of them wants something with a precise shape — an email, a phone number, a number, a date.",
+  "hint3.same-type": "type is not only about the keyboard. It tells the browser what to expect — and the browser checks it for you. A phone shows a different keyboard. A reader announces what the type is.",
+
+  "why.no-choice": "There is no choice from ready answers. The task asks for one place where a person picks instead of typing freely.",
+  "hint2.no-choice": "Which of your questions has a limited set of answers? A model, a size, a city, a time, a delivery option.",
+  "hint3.no-choice": "Two ways: a drop-down list, or buttons where only one can be picked. Either works.",
+  "hint4.no-choice": "An open field will receive three different spellings of the same thing and two typos. Then you sit there guessing.",
+
+  "why.too-few-options": "The choice has nothing to choose from. One answer is not a choice.",
+  "hint2.too-few-options": "A list with one option is a question with one answer. Give at least two.",
+
+  "why.no-textarea": "There is no large free-text field. A one-line box for a message is like handing someone a business card to write a letter on.",
+  "hint2.no-textarea": "<textarea> opens and closes — it can hold text. <input> cannot.",
+
+  "why.no-button": "There is no real button with a word in it. An empty button shows as a small box — a blind person hears only the word button and nothing else.",
+  "hint2.no-button": "The word sits between <button> and </button>. It says what happens if you press it.",
+
+  "why.button-outside": "The button is outside the form. A button outside <form> does not know which form to submit — it presses into thin air.",
+  "hint2.button-outside": "The button goes inside the <form>, at the bottom, after the last field.",
+
+  "why.no-submit": "The button is there, but it does not say what it does.",
+  "hint2.no-submit": "There are three types. One of them submits the form.",
+
+  "why.fake-button": "There is something built to look like a button without being one. Put the mouse away — Tab will never reach it.",
+  "hint2.fake-button": "If you have to add code to make something behave like a button — it should have been a button.",
+
+  "why.no-label": "Not every field has a label. Text above a field is not a label — it is just text that happens to sit on top. And a placeholder is not a label: it vanishes the moment someone starts typing.",
+  "hint2.no-label": "Count your fields. Every one wants its own label. The choice and the large box too.",
+
+  "why.empty-label": "There is an empty label. An empty tag tells no one anything.",
+
+  "why.label-not-tied": "There are labels, but they do not know which field they belong to. Being close on screen is not a connection — it is a coincidence. The reader will still say only \"text field\".",
+  "hint2.label-not-tied": "The label has a for. The field has an id. Their value has to be the SAME word.",
+  "hint3.label-not-tied": "You invent the word. All that matters is that it matches on both sides.",
+  "hint4.label-not-tied": "Test yourself: click the label. If the cursor jumps into the field — the connection is made. If not — it is not.",
+
+  "why.no-id": "One or more fields have no id. With no id, the label has nothing to fasten to.",
+
+  "why.no-name": "One or more fields have no name. Data travels as name-value pairs. A field with no name arrives nowhere — the server drops it silently.",
+  "hint2.no-name": "id is for the browser. name is for the server. They do not replace each other — you need both.",
+
   "blocks.0.text": "Empty editor. Sixth time — and the last before the finale.",
   "blocks.1.text": "The task",
   "blocks.2.text": "Your topic. Build a form someone would genuinely fill in: an enquiry, a signup, an order, a contact form, a survey — whatever fits.",
-  "blocks.3.text": "It must have at least: two text fields of different types, one choice from several options, one large free-text field and a submit button. And a page around the form — not a bare form floating in space.",
+  "blocks.3.text": "It must have at least: two text fields of different types, one choice from several options, one large free-text field and a submit button. The form must know where and how it sends. And a page around it — a heading and a few sentences, not a bare form floating in space.",
   "blocks.4.text": "The condition",
   "blocks.5.text": "Every field must be fillable by someone who cannot see the screen.",
-  "blocks.6.text": "That means: every label tied to its field. Every field with a name. Every type — the right one. The button — a real button.",
+  "blocks.6.text": "That means: every label tied to its field. Every field with an id and a name. Every type — the right one. The button — a real button.",
   "blocks.7.text": "No placeholder instead of a label. It vanishes as soon as the person starts typing, and a reader often does not read it at all.",
   "blocks.8.text": "How to check yourself",
   "blocks.9.text": "Put the mouse away. Really — take your hand off it.",
@@ -34,6 +109,6 @@
   "blocks.15.text": "Then for each question ask: is the answer free, or from a list? One line or three? Short text, a number, a date, an email?",
   "blocks.16.text": "Answer that, and the tags pick themselves.",
   "blocks.17.text": "And finally",
-  "blocks.18.text": "The form will not send anything. The address in the action does not exist. You know why by now — what happens to the data afterwards is the server, another language, another course.",
+  "blocks.18.text": "The form will not send anything. The address in the action does not exist — press the button and you will get an error page. That is not broken. It means the button works. What happens to the data afterwards is the server, another language, another course.",
   "blocks.19.text": "But the hand that offers is yours. And if it is built right, anyone can take it."
 }

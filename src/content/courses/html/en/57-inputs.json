@@ -1,15 +1,51 @@
 {
   "title": "The field knows what it wants",
-  "checkLabels.t1": "The email is an email",
-  "checkLabels.t2": "The phone is a phone",
-  "checkLabels.t3": "Something is required",
-  "checkLabels.t4": "Everything closed",
-  "why.no-email-type": "The email field is still type=\"text\". Meaning: \"I accept anything at all\". Change it to email and the browser checks it itself, and phones show a keyboard with an @.",
-  "why.no-tel-type": "The phone is still text. On a mobile the person gets a letter keyboard and has to hunt for the digits. type=\"tel\" opens the number pad.",
-  "why.no-required": "Nothing is required. A person can send an empty form and you receive nothing. One attribute — and the browser refuses to submit.",
+
+  "checkLabels.t1": "There is code",
+  "checkLabels.t2": "You changed something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.p1": "All three fields are here",
+  "checkLabels.p2": "The form is here",
+  "checkLabels.p3": "The fields have names",
+  "checkLabels.p4": "The button is here",
+  "checkLabels.t3": "There is an email field",
+  "checkLabels.t4": "The email type is on the email",
+  "checkLabels.t5": "There is a phone field",
+  "checkLabels.t6": "The phone type is on the phone",
+  "checkLabels.t7": "Something is required",
+  "checkLabels.t8": "The email is required",
+
+  "why.empty": "The editor is empty. You deleted the form too.",
+
+  "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
+  "hint2.untouched": "There are three fields and all of them are type=\"text\". Two of the three types need to change.",
+
   "why.not-closed": "A tag is open and never closed.",
-  "blocks.0.text": "Three fields. All of them type=\"text\". Meaning: \"I accept anything at all\".",
-  "blocks.1.text": "Someone will type \"dunno\" in the email. They will type the letter \"o\" instead of a zero in the phone. And you will receive rubbish.",
+  "hint2.not-closed": "<input> has no closing tag — it does not count. Check <form> and <button>.",
+
+  "why.lost": "You deleted part of the form. The three fields, the button and the action all stay — the task is about types, not content.",
+
+  "why.lost-name": "A field lost its name, or the name is empty. name is what christens the data. Do not delete it while changing the type.",
+
+  "why.no-email-type": "There is no email field. The email field is still type=\"text\" — meaning: I accept anything at all. Change it to email and the browser checks it itself, and phones show a keyboard with an @.",
+  "hint2.no-email-type": "type is an attribute, inside the tag. Only the word in the quotes changes.",
+  "hint3.no-email-type": "A similar case: <input type=\"date\" name=\"birthday\"> opens a calendar instead of an empty box.",
+
+  "why.wrong-field": "The type is on the wrong field. The email wants type=\"email\", the phone wants type=\"tel\". Look at the name to tell which field is which.",
+  "hint2.wrong-field": "The fields differ by name: username, email, phone. The type follows the field's meaning, not its position.",
+
+  "why.no-tel-type": "There is no phone field. The phone is still text. On a mobile the person gets a letter keyboard and has to hunt for the digits. type=\"tel\" opens the number pad.",
+  "hint2.no-tel-type": "tel, not telephone and not phone. Three letters.",
+
+  "why.no-required": "Nothing is required. A person can send an empty form and you receive nothing. One attribute — and the browser refuses to submit.",
+  "hint2.no-required": "required is an attribute with no value. It simply exists: <input type=\"email\" name=\"email\" required>.",
+  "hint3.no-required": "You do not write required=\"true\". No need. Its presence is the value.",
+
+  "why.wrong-required": "The wrong field is required. The task asks for the email to be required — without it there is no way to reply to the person.",
+  "hint2.wrong-required": "Look for the field with name=\"email\". The attribute goes on that one.",
+
+  "blocks.0.text": "Three fields. All of them type=\"text\". Meaning: I accept anything at all.",
+  "blocks.1.text": "Someone will type dunno in the email. They will type the letter o instead of a zero in the phone. And you will receive rubbish.",
   "blocks.2.text": "A field can know more",
   "blocks.3.items.0": "text — any text. The default.",
   "blocks.3.items.1": "email — must have an @ and a dot after it.",
