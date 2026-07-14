@@ -1,13 +1,45 @@
 {
   "title": "The wreck, second time",
-  "checkLabels.t1": "Hidden test",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Hidden test",
   "checkLabels.t2": "Hidden test",
   "checkLabels.t3": "Hidden test",
   "checkLabels.t4": "Hidden test",
+  "checkLabels.t5": "Hidden test",
+  "checkLabels.t6": "Hidden test",
+  "checkLabels.t7": "Hidden test",
+  "checkLabels.t8": "Hidden test",
+  "checkLabels.p1": "The heading is there",
+  "checkLabels.p2": "The front wheel is there",
+  "checkLabels.p3": "The rear wheel is there",
+  "checkLabels.p4": "The price is there",
+
+  "why.empty": "The editor is empty. Deleting is not fixing — that is the first thing to understand here. Bring the code back.",
+
   "why.not-closed": "Something is open and never closed — or closed in the wrong place. Go from top to bottom, tag by tag.",
+  "hint2.not-closed": "There are two of these. One is a heading. The other is inside the paragraph with the price.",
+  "hint3.not-closed": "Whatever you opened last, you close first. If <strong> opens INSIDE a <p>, it has to close inside it too.",
+  "hint4.not-closed": "Look at the price line. Which tag closes first there, and which one should?",
+
   "why.fake-list": "Somewhere there is something that LOOKS like a list without being one. Remember the lesson with the dashes?",
+  "hint2.fake-list": "The list starts correctly. Then someone gave up halfway.",
+  "hint3.fake-list": "The wheels are inside the <ul>, but they are not list items — they are bare text with dashes and a <br>. The browser shows them because it is forgiving. That does not make them bullets.",
+  "hint4.fake-list": "Each of the four things wants its own <li> with a </li>. The dashes and the <br> go away — the browser draws the bullets.",
+
   "why.two-h1": "The hierarchy is wrong. One of the headings claims to be about the whole page, and it is not.",
+  "hint2.two-h1": "Count the top-level headings. How many should a page have?",
+  "hint3.two-h1": "Which of the two describes the WHOLE page? That one stays. The other is a section inside it.",
+  "hint4.two-h1": "\"What is included\" is not the topic of the page — it is a section. Bring it down a level. And do not delete it: it must stay a heading, just a different one.",
+
   "why.no-quote": "Someone else's words are standing as if they were yours. Quotation marks are not a tag.",
+  "hint2.no-quote": "The last paragraph. Who said it, and where does their part end?",
+  "hint3.no-quote": "Quotation marks are characters — the computer does not know these words are not yours. There is a tag that says so.",
+  "hint4.no-quote": "Take the borrowed words out of the sentence, put them in a <blockquote>, and remove the quotation marks. The tag says it now — do not say it twice.",
+
+  "why.lost-content": "You deleted something instead of fixing it. The wreck has ALL of its content — the content is not the mistake. The mistake is how it is said. Bring back what you removed and fix it, do not remove it.",
+  "hint2.lost-content": "Something is missing from: the heading \"Bike for sale\", the price 18 leva, the front wheel, the rear wheel. Compare with the original code.",
+
   "blocks.0.text": "A wreck again. But this time I am not telling you what you are looking for.",
   "blocks.1.text": "The page on the right is broken in several places. Different mistakes, from different lessons. You have learned all of them.",
   "blocks.2.text": "I will not tell you how many",
@@ -16,5 +48,5 @@
   "blocks.5.text": "How to read someone else's code",
   "blocks.6.text": "Do not hunt for errors. Read the code and ask of each thing: \"does this truthfully say what it IS?\". A list that is not a list. A heading that is not the main one. A quote that is only quotation marks.",
   "blocks.7.text": "Half the bugs in real code are not syntax. The code works. It just lies.",
-  "blocks.8.text": "Open the preview and compare it with what it should be. The differences will hint at the rest."
+  "blocks.8.text": "And a warning: deleting is not fixing. Remove the broken thing and the error goes away — but so does the content. Everything on this page must stay. What changes is the way it is said."
 }

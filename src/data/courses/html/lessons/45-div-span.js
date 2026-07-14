@@ -21,9 +21,20 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<div", err: "no-div" },
-    { id: "t2", type: "code_contains", value: "class=", err: "no-class" },
-    { id: "t3", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "changed", err: "untouched", weight: 950 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+
+    { id: "t3", type: "dom_count", value: "img", min: 2, err: "lost", weight: 200 },
+    { id: "t4", type: "dom_text_not_empty", value: "h2", err: "lost", weight: 200 },
+    { id: "t5", type: "dom_text_contains", value: "p", text: "18", err: "lost", weight: 200 },
+
+    { id: "t6", type: "dom_count", value: "div", min: 2, err: "no-div", weight: 120 },
+    { id: "t7", type: "dom_attr", value: "div", attr: "class", err: "no-class", weight: 110 },
+
+    { id: "t8", type: "dom_count", value: "div img", min: 2, err: "outside", weight: 100 },
+    { id: "t9", type: "dom_count", value: "div h2", min: 2, err: "outside", weight: 100 },
+    { id: "t10", type: "dom_count", value: "div p", min: 2, err: "outside", weight: 100 },
   ],
   blocks: [
     { type: "text" },

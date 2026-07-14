@@ -19,11 +19,14 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<ul", err: "no-ul" },
-    { id: "t2", type: "code_contains", value: "<li", err: "no-li" },
-    { id: "t3", type: "code_not_contains", value: "<li>- ", err: "manual-dashes" },
-    { id: "t4", type: "code_not_contains", value: "- frame<br>", err: "old-mess" },
-    { id: "t5", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_count", value: "ul li", min: 4, err: "no-li", weight: 120 },
+    { id: "t3", type: "dom_text_not_empty", value: "li", err: "empty-li", weight: 110 },
+    { id: "t4", type: "dom_count", value: "br", max: 0, err: "old-mess", weight: 90 },
+    { id: "t5", type: "dom_text_contains", value: "li", text: "frame", err: "lost-items", weight: 70 },
+    { id: "t6", type: "dom_text_contains", value: "li", text: "bell", err: "lost-items", weight: 65 },
+    { id: "t7", type: "text_contains", value: "- frame", err: "manual-dashes", weight: 60 },
   ],
   blocks: [
     { type: "text" },

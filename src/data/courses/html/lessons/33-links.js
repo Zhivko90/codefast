@@ -15,11 +15,14 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<a ", err: "no-link" },
-    { id: "t2", type: "code_contains", value: "href=", err: "no-href" },
-    { id: "t3", type: "code_not_contains", value: ">click here<", err: "click-here" },
-    { id: "t4", type: "code_not_contains", value: ">here<", err: "click-here" },
-    { id: "t5", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_text_not_empty", value: "a", err: "no-link", weight: 150 },
+    { id: "t3", type: "dom_attr", value: "a", attr: "href", err: "no-href", weight: 140 },
+    { id: "t4", type: "text_not_contains", value: "click here", err: "click-here", weight: 120 },
+    { id: "t5", type: "text_not_contains", value: "https://en.wikipedia.org", err: "naked-url", weight: 100 },
+    { id: "t6", type: "dom_text_contains", value: "p", text: "same model", err: "lost-sentence", weight: 60 },
+    { id: "t7", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 50 },
   ],
   blocks: [
     { type: "text" },

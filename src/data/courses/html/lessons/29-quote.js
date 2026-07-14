@@ -15,8 +15,12 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<blockquote", err: "no-quote" },
-    { id: "t2", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_text_contains", value: "blockquote", text: "best bike", err: "no-quote", weight: 120 },
+    { id: "t3", type: "text_not_contains", value: "\"this is the best", err: "kept-marks", weight: 90 },
+    { id: "t4", type: "dom_text_contains", value: "p", text: "a friend of mine said", err: "lost-attribution", weight: 70 },
+    { id: "t5", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 50 },
   ],
   blocks: [
     { type: "text" },

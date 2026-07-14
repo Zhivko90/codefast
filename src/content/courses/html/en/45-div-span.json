@@ -1,11 +1,43 @@
 {
   "title": "The box and the ring",
-  "checkLabels.t1": "There is a group",
-  "checkLabels.t2": "The group has a name",
-  "checkLabels.t3": "Everything closed",
-  "why.no-div": "There is still no group. The image, the heading and the price are three separate things — but they are one bike. Wrap them.",
-  "why.no-class": "The group is there, but it is nameless. `<div>` means nothing on its own — all its meaning comes from the label you give it.",
+
+  "checkLabels.t1": "There is code",
+  "checkLabels.t2": "You changed something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "Both images are here",
+  "checkLabels.t4": "The headings are here",
+  "checkLabels.t5": "The prices are here",
+  "checkLabels.t6": "There are two groups",
+  "checkLabels.t7": "The groups have names",
+  "checkLabels.t8": "The image is in the group",
+  "checkLabels.t9": "The heading is in the group",
+  "checkLabels.t10": "The price is in the group",
+
+  "why.empty": "The editor is empty. You deleted everything, the listings included.",
+
+  "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
+  "hint2.untouched": "The task is to wrap each listing — image, heading and price — in one tag.",
+
   "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "Every <div> wants a </div>. Count the open ones and the closed ones — the numbers must match.",
+
+  "why.lost": "You deleted part of the listings. The task was to group them, not remove them. Bring back the images, the headings and the prices — then wrap them.",
+
+  "why.no-div": "There is still no group. The image, the heading and the price are three separate things — but they are one bike. Wrap them.",
+  "hint2.no-div": "Look at the body. Each listing is three lines stacked: img, h2, p. You need one tag around the three. And there are two listings.",
+  "hint3.no-div": "A similar case — two people, each with a name and a job: <div class=\"person\"><h2>Maria</h2><p>Chef</p></div>. The name and the job are now one thing.",
+  "hint4.no-div": "Open a <div> right before the first image. Close it after the price below it. Then do the same for the second listing.",
+
+  "why.no-class": "The group is there, but it is nameless. <div> means nothing on its own — all its meaning comes from the label you give it.",
+  "hint2.no-class": "class is an attribute. It goes inside the opening tag, not on its own: <div class=\"...\">.",
+  "hint3.no-class": "Example: <div class=\"person\">. The word in the quotes is yours, but it must say what the box IS.",
+  "hint4.no-class": "Give it a name that says what the thing inside is — listing, bike, card. Not what it looks like. Empty quotes do not count.",
+
+  "why.outside": "Part of the listing is left outside. The image, the heading and the price must all three be INSIDE one <div>.",
+  "hint2.outside": "Check where you close the </div>. Close it before the price and the price stays out of the box.",
+  "hint3.outside": "Here is the mistake: <div class=\"person\"><h2>Maria</h2></div><p>Chef</p>. The job is outside. The box holds only the name.",
+  "hint4.outside": "The opening tag goes above the image, the closing tag below the price. Everything between them is inside.",
+
   "blocks.0.text": "Two listings. Each is an image, a heading and a price. To the browser these are six independent things, stacked one under the other.",
   "blocks.1.text": "Tomorrow you will want each listing in a frame, with a background, with space around it. But there is nothing to grab — there is no \"listing\", there are three separate tags.",
   "blocks.2.text": "The box",

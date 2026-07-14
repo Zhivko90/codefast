@@ -1,13 +1,39 @@
 {
   "title": "When one item has items of its own",
-  "checkLabels.t1": "The tyres are still there",
-  "checkLabels.t2": "There is an inner list",
-  "checkLabels.t3": "The tyres are no longer equals",
-  "checkLabels.t4": "Everything closed",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There is a list inside an item",
+  "checkLabels.t3": "The tyres are still there",
+  "checkLabels.t4": "The outer list has three items",
+  "checkLabels.t5": "Both tyres are inside",
+  "checkLabels.t6": "No item is empty",
+
+  "why.empty": "The editor is empty. You deleted the list instead of organising it. Bring the code back.",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "The inner <ul> is INSIDE an <li>. So it closes before that <li> does.",
+  "hint3.not-closed": "Whatever you opened last, you close first. <li> → <ul> → <li> → </li> → </ul> → </li>.",
+  "hint4.not-closed": "Check: every <li> has a </li>, every <ul> has a </ul>. And that the inner </ul> comes before the </li> of the tyres.",
+
+  "why.still-flat": "There is no list inside an item. The front and rear tyre still sit level with the frame and the bell — as if they were separate parts of the bike. They are not. They are part OF the tyres.",
+  "hint2.still-flat": "You are not moving the items around. You are putting a new list inside one of them.",
+  "hint3.still-flat": "<li>Tyres <ul><li>Front</li></ul></li> — the new <ul> is the content of \"Tyres\", not its neighbour.",
+  "hint4.still-flat": "Inside <li>Tyres — after the word, before you close the </li> — open a whole new <ul> and put both tyres in it.",
+
   "why.no-tyres": "\"Tyres\" is gone. The task is to put the front and rear INSIDE it, not to delete it.",
-  "why.no-inner": "There is no inner list. Inside the <li> for the tyres you put a whole new <ul> — before you close the </li>.",
-  "why.still-flat": "The front and rear tyre are still separate items, equal to the frame and the bell. But they are not separate parts — they are part OF the tyres.",
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order. This is the classic mistake here: the closing </li> goes AFTER the inner list, not before it.",
+  "hint2.no-tyres": "The word Tyres must stay. It is the thing the other two belong to.",
+
+  "why.wrong-outer": "The outer list does not have three items. There should be exactly three: frame, tyres, bell. If there are five — the tyres are still outside. If there are four — you most likely closed the </li> before the inner list, and it popped out.",
+  "hint2.wrong-outer": "Count the top-level bullets in the result. There should be three.",
+  "hint3.wrong-outer": "Here is the usual mistake: <li>Tyres</li><ul>… — you close the tyres and only then open the list. It looks almost the same, but the list is no longer inside anything.",
+  "hint4.wrong-outer": "The closing </li> of the tyres goes AFTER the inner </ul>, not before the opening <ul>.",
+
+  "why.lost-inner": "The inner list is not complete. Both the front and the rear tyre must be in it.",
+  "hint2.lost-inner": "Two tyres — two <li> inside the inner <ul>.",
+
+  "why.empty-li": "There is an empty item in the list. Either put text in it or remove it.",
+
   "blocks.0.text": "You are listing what the price includes. There are two tyres — front and rear. You wrote them as new items. Run it and look.",
   "blocks.1.text": "The list comes out with five bullets, all equal. It claims that \"Front\" is the same kind of thing as \"Frame\" and \"Bell\" — a separate part of the bike. It is not. It is part OF the tyres.",
   "blocks.2.text": "A list is not a drawing. It makes a claim: these things are of the same kind.",

@@ -19,7 +19,8 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "changed", value: "-", err: "unchanged" },
+    { id: "t1", type: "changed", err: "unchanged", weight: 100 },
+    { id: "t2", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 50 },
   ],
   blocks: [
     { type: "text" },

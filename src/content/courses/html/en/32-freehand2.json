@@ -1,21 +1,58 @@
 {
   "title": "Freehand: tell me about your topic",
+
   "checkLabels.t1": "Did you write anything",
-  "checkLabels.t2": "A main heading",
-  "checkLabels.t3": "Sub-headings",
-  "checkLabels.t4": "Paragraphs",
-  "checkLabels.t5": "A list",
-  "checkLabels.t6": "Everything closed",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "One main heading",
+  "checkLabels.t3": "The heading has text",
+  "checkLabels.t4": "At least two sections",
+  "checkLabels.t5": "The sections have names",
+  "checkLabels.t6": "At least three paragraphs",
+  "checkLabels.t7": "No empty paragraph",
+  "checkLabels.t8": "A list with at least three items",
+  "checkLabels.t9": "No empty list item",
+  "checkLabels.t10": "There is emphasis somewhere",
+
   "why.empty": "An empty editor, again. And it is unpleasant, again. Do not think about the whole page — write just the heading. The rest follows it.",
-  "why.no-h1": "There is no main heading. The page has to start with one thing that says what it is about. One — not two, not five.",
-  "why.no-h2": "There are no sub-headings. The task asks for at least two sections, and a section without a name is not a section — it is just text that keeps going.",
-  "why.no-p": "There are no paragraphs. Headings with no text under them are a table of contents, not a page.",
-  "why.no-list": "There is no list. The task asks for one — reasons, favourites, steps, whatever fits. If you wrote them with dashes inside a sentence, that is not a list. It looks like one. It is not.",
+  "hint2.empty": "One sentence. What is your page about? That is the <h1>.",
+
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order. Read backwards from the end.",
+  "hint2.not-closed": "Whatever you opened last, you close first.",
+  "hint3.not-closed": "Lists are the usual culprit. Every <li> wants its </li>, and the <ul> closes after the last of them.",
+
+  "why.no-h1": "There is no single main heading. The page has to start with one thing that says what it is about. One — not two, not five. Put in more and the page shouts equally loudly about everything.",
+  "hint2.no-h1": "Count your <h1> tags. Exactly one.",
+  "hint3.no-h1": "The other headings do not disappear. They become <h2> — sections inside the page.",
+
+  "why.empty-h1": "The heading is empty. An empty tag is not a heading.",
+
+  "why.no-h2": "There are not two sections. The task asks for at least two, and a section without a name is not a section — it is just text that keeps going.",
+  "hint2.no-h2": "What do you want to tell? Break it into parts. Each part wants a name.",
+  "hint3.no-h2": "If your topic is a game: how I started, what I like, what I do not. Three sections, three <h2>.",
+
+  "why.empty-h2": "There is an empty sub-heading. A section with no name is not a section.",
+
+  "why.no-p": "There are not enough paragraphs. Headings with no text under them are a table of contents, not a page.",
+  "hint2.no-p": "Under every heading there has to be something to read. At least one paragraph each.",
+
+  "why.empty-p": "There is an empty paragraph. Either put text in it or remove it.",
+
+  "why.no-list": "There is no list of at least three things. The task asks for one — reasons, favourites, steps, whatever fits.",
+  "hint2.no-list": "If you wrote them with dashes inside a sentence, that is not a list. It looks like one. It is not.",
+  "hint3.no-list": "<ul> on the outside, <li> around each thing. If the order means something — <ol>. If it does not — <ul>.",
+  "hint4.no-list": "What in your topic can be counted? Reasons, steps, parts, favourites. List at least three.",
+
+  "why.empty-li": "There is an empty item in the list. Either put text in it or remove it.",
+
+  "why.no-emphasis": "There is not a single emphasis. In a whole page of text, something must weigh more than the rest. A warning, a key word, something that must not be missed.",
+  "hint2.no-emphasis": "Read what you wrote out loud. Where would you raise your voice?",
+  "hint3.no-emphasis": "<strong> — this is important. <em> — I am stressing this. One or the other, where it makes sense.",
+  "hint4.no-emphasis": "Do not add emphasis just to pass the check. Find the place where it really weighs, and mark that.",
+
   "blocks.0.text": "Empty editor. Again.",
   "blocks.1.text": "The task",
   "blocks.2.text": "Write a page about your topic that actually tells something. Not one line — a whole page someone would read to the end.",
-  "blocks.3.text": "It must have: a main heading, at least two sections with sub-headings, paragraphs, one list of something (reasons, favourites, steps — whatever fits) and some emphasis where it makes sense.",
+  "blocks.3.text": "It must have: one main heading, at least two sections with sub-headings, at least three paragraphs, one list of at least three things (reasons, favourites, steps — whatever fits) and some emphasis where it makes sense.",
   "blocks.4.text": "I am not giving you a skeleton. I am not giving you an order. You decide what goes in and in what sequence.",
   "blocks.5.text": "By the way",
   "blocks.6.text": "It will look ugly. Serif font, everything in one column, no colours. You did nothing wrong — that is what a bare page without CSS looks like. The looks come in the next course.",

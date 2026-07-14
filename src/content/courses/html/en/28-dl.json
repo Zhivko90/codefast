@@ -1,15 +1,46 @@
 {
   "title": "A list of pairs",
-  "checkLabels.t1": "There is a list of pairs",
-  "checkLabels.t2": "There are names",
-  "checkLabels.t3": "There are values",
-  "checkLabels.t4": "The old list is gone",
-  "checkLabels.t5": "Everything closed",
-  "why.no-dl": "It is still an ordinary list. The specs are not four things — they are four PAIRS. There is a tag for exactly that: <dl>.",
-  "why.no-dt": "There is a wrapper, but no names. <dt> is the name — \"Frame\", \"Wheels\".",
-  "why.no-dd": "There are names, but no values. <dd> is the answer — \"Aluminium\", \"26 inches\".",
-  "why.still-ul": "The old <ul> is still there. Replace it — you have something more precise now.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There are four names",
+  "checkLabels.t3": "There are four values",
+  "checkLabels.t4": "No name is empty",
+  "checkLabels.t5": "No value is empty",
+  "checkLabels.t6": "The old list is gone",
+  "checkLabels.t7": "No colons left",
+  "checkLabels.t8": "All the rows are there",
+
+  "why.empty": "The editor is empty. You deleted the specs instead of fixing them. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "<dt> and <dd> close like everything else. Four pairs means eight tags and eight closings.",
+  "hint3.not-closed": "The <dl> closes too — last of all, after the final </dd>.",
+
+  "why.no-dt": "There are not four names. <dt> is the name: \"Frame\", \"Wheels\", \"Gears\", \"Weight\". One for each pair.",
+  "hint2.no-dt": "Three tags: <dl> on the outside, and inside you alternate <dt> and <dd>.",
+  "hint3.no-dt": "<dl><dt>Colour</dt><dd>Red</dd></dl> — one pair. The name, then the value.",
+  "hint4.no-dt": "For each of the four rows: the name goes in a <dt>, the value in a <dd>. All four pairs inside one <dl>.",
+
+  "why.no-dd": "There are names, but not four values. <dd> is the answer: \"Aluminium\", \"26 inches\", \"21\", \"12 kg\".",
+  "hint2.no-dd": "Every <dt> wants a <dd> right after it.",
+  "hint3.no-dd": "<dt>Colour</dt><dd>Red</dd> — you ask and you answer. Asking with no answer is no use.",
+
+  "why.empty-dt": "There is an empty name. An empty <dt> asks nothing.",
+  "why.empty-dd": "There is an empty value. An empty <dd> answers nothing.",
+
+  "why.still-ul": "The old <ul> is still there. You are not adding the pairs NEXT TO it — you are replacing it with them.",
+  "hint2.still-ul": "Search for <ul> and <li> in your code. Not one should remain.",
+  "hint3.still-ul": "A list of four things and a list of four pairs say different things. They cannot both stand.",
+
+  "why.kept-colon": "You kept the colons. \"Frame: aluminium\" inside a <dt> is the old thinking with new tags. The colon was your way of separating name from value — the tags do that now. You do not need it any more.",
+  "hint2.kept-colon": "Look at your <dt>. Is there anything in it besides the name?",
+  "hint3.kept-colon": "<dt>Frame:</dt> — the colon is a leftover from the <li>. Here it separates nothing, it just hangs there.",
+  "hint4.kept-colon": "Remove every colon. The <dt> holds only the name, the <dd> only the value.",
+
+  "why.lost-rows": "A row is gone. The four pairs are frame, wheels, gears and weight. The task is to describe them more precisely, not to shorten them.",
+  "hint2.lost-rows": "Count the pairs in the result. There should be four.",
+
   "blocks.0.text": "You are adding the bike's specifications. Every line is a pair: a name and a value. Frame — aluminium. Wheels — 26 inches.",
   "blocks.1.text": "You did it with a list and a colon. It works. But look at what your code says: \"here are four things of one kind\". They are not four things. They are four PAIRS. The colon is something only you know about.",
   "blocks.2.text": "There is a tag for exactly this",
@@ -17,7 +48,7 @@
   "blocks.6.text": "When you use it",
   "blocks.7.text": "Specifications. A glossary. Questions and answers. Metadata — author, date, category. Anywhere there is a name and an answer.",
   "blocks.8.text": "One name can have several values — you just put two <dd> in a row. And the other way round: two names sharing one value.",
-  "blocks.9.text": "Notice the browser indents the values by itself. Again, you never told it to.",
+  "blocks.9.text": "Notice the browser indents the values by itself. Again, you never told it to. And notice one more thing: the colon is gone. You needed it while you had nothing to separate name from value with. Now the tags do it.",
   "blocks.10.text": "Why it matters",
   "blocks.11.text": "Google reads <dl> and understands this is a spec — it can show it straight in the results. From a <ul> with colons it understands nothing.",
   "blocks.12.text": "The same on screen. Different for everything else."

@@ -1,14 +1,39 @@
 {
   "title": "Someone else's words",
-  "checkLabels.t1": "The quote is set apart",
-  "checkLabels.t2": "Everything closed",
-  "why.no-quote": "The quote is still buried inside a sentence, in quotation marks. Quotation marks are just characters — the computer does not know these words are not yours. Wrap them in <blockquote>.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "The quote is set apart",
+  "checkLabels.t3": "The quotation marks are gone",
+  "checkLabels.t4": "It is clear who said it",
+  "checkLabels.t5": "The heading is still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of setting the quote apart. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "<blockquote> closes. And the <p> inside it closes too.",
+  "hint3.not-closed": "Whatever you opened last, you close first: <blockquote> → <p> → </p> → </blockquote>.",
+
+  "why.no-quote": "The quote is not inside a <blockquote> yet. Quotation marks are just characters — the computer does not know these words are not yours. The tag says so.",
+  "hint2.no-quote": "Wrap the borrowed words. Not the whole sentence — only what your friend actually said.",
+  "hint3.no-quote": "<blockquote><p>I did not say this.</p></blockquote> — there is still a paragraph inside the quote. A quote is a block, not a word.",
+  "hint4.no-quote": "Take \"This is the best bike I have ever ridden\" out of the sentence and put it in a <blockquote> below it.",
+
+  "why.kept-marks": "The quotation marks are still there. Now you have both a tag and marks — you said the same thing twice, in two different ways. The tag already claims the words are someone else's. The marks were the old way, before you had a tag.",
+  "hint2.kept-marks": "Look at what sits inside the <blockquote>. Is there anything there besides the words themselves?",
+  "hint3.kept-marks": "The browser sets the quote apart with an indent on its own. It does not need your marks to show it.",
+  "hint4.kept-marks": "Remove the two quotation marks around the quote. Only the text stays.",
+
+  "why.lost-attribution": "Who said it is gone. A quote with no source is just a sentence hanging there. \"A friend of mine said\" must stay — that part is yours, not theirs.",
+  "hint2.lost-attribution": "The sentence splits in two: your part stays in the <p>, their part goes into the <blockquote>.",
+
+  "why.lost-h1": "The heading is gone. The task is to set the quote apart, not to delete things.",
+
   "blocks.0.text": "Someone said something about your bike and you want to quote them. You wrote it in quotation marks, inside a sentence. It works.",
   "blocks.1.text": "But quotation marks are just characters",
-  "blocks.3.text": "<blockquote> says: these words are not mine. The browser sets it apart with an indent — but more importantly, the code now says so.",
+  "blocks.3.text": "<blockquote> says: these words are not mine. The browser sets it apart with an indent — but more importantly, the code now says so. And once the tag says it, the marks are redundant: do not say the same thing twice.",
   "blocks.4.text": "There is an inline version too — <q> — for a short quote in the middle of a sentence. It adds the quotation marks itself, and the right ones for the page's language at that.",
   "blocks.5.text": "Why marks are not enough",
-  "blocks.6.text": "Google tells a quote apart from your own text — and does not penalise you for copying someone else's. A screen reader can say \"quote\" and change its tone. And if you ever want to pull every quote out of your site, you will need the tag, not the marks.",
+  "blocks.6.text": "Google tells a quote apart from your own text — and does not penalise you for copying someone else's. And if you ever want to pull every quote out of your site, you will need the tag, not the marks. A quotation mark turns up in the middle of words too; a tag does not.",
   "blocks.7.text": "Both take a cite attribute with an address — where the quote is from. It is not visible on screen, but it is there for whoever looks for the source."
 }

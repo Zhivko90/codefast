@@ -29,11 +29,20 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<h1", err: "no-h1" },
-    { id: "t2", type: "code_contains", value: "<p", err: "no-p" },
-    { id: "t3", type: "code_contains", value: "<ul", err: "no-list" },
-    { id: "t4", type: "code_not_contains", value: "class=\"big-title\"", err: "still-div" },
-    { id: "t5", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "changed", err: "untouched", weight: 950 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+
+    { id: "t3", type: "dom_text_not_empty", value: "h1", err: "no-h1", weight: 200 },
+    { id: "t4", type: "dom_count", value: "h1", min: 1, max: 1, err: "many-h1", weight: 190 },
+    { id: "t5", type: "dom_count", value: "div.big-title", max: 0, err: "still-fake", weight: 180 },
+
+    { id: "t6", type: "dom_text_contains", value: "p", text: "1998", err: "no-p", weight: 170 },
+    { id: "t7", type: "dom_text_contains", value: "p", text: "2026", err: "no-p-footer", weight: 160 },
+    { id: "t8", type: "dom_count", value: "div.text", max: 0, err: "still-fake", weight: 150 },
+
+    { id: "t9", type: "dom_count", value: "ul li", min: 3, err: "no-list", weight: 140 },
+    { id: "t10", type: "dom_count", value: "div.menu-item", max: 0, err: "still-fake", weight: 130 },
   ],
   blocks: [
     { type: "text" },

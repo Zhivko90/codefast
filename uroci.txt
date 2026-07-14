@@ -1,0 +1,421 @@
+﻿
+===== LOGIC: 33-links.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/33-links.json
+export default {
+  id: 33,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>My bike</title>
+  </head>
+  <body>
+    <h1>Bike for sale</h1>
+
+    <p>It is the same model as this one: https://en.wikipedia.org/wiki/Bicycle</p>
+  </body>
+</html>`,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<a ", err: "no-link" },
+    { id: "t2", type: "code_contains", value: "href=", err: "no-href" },
+    { id: "t3", type: "code_not_contains", value: ">click here<", err: "click-here" },
+    { id: "t4", type: "code_not_contains", value: ">here<", err: "click-here" },
+    { id: "t5", type: "balanced", err: "not-closed" },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<a href=\"https://en.wikipedia.org/wiki/Bicycle\">this one</a>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "33-links"
+};
+===== BG: 33-links.json =====
+{
+  "title": "Връзката",
+  "checkLabels.t1": "Има връзка",
+  "checkLabels.t2": "Води някъде",
+  "checkLabels.t3": "Не пише „тук“",
+  "checkLabels.t4": "Не пише „кликни тук“",
+  "checkLabels.t5": "Всичко затворено",
+  "why.no-link": "Адресът още е гол текст. Изглежда като връзка, но не се кликва — за браузъра са просто букви. Обгради го с <a>.",
+  "why.no-href": "Тагът е там, но не казва накъде води. Без href връзката е бутон, който не прави нищо.",
+  "why.click-here": "Написал си „кликни тук“ или „тук“. Извади тази дума от изречението и я прочети сама: „тук“. Накъде? Незрящият човек често преглежда САМО връзките на страницата — списък от думи. Ако всичките са „тук“, той не знае нито една накъде води. Направи връзката от думите, които казват какво има отсреща.",
+  "why.not-closed": "Някой таг е отворен и не е затворен.",
+  "blocks.0.text": "Искаш да покажеш на човека модела на велосипеда си. Написа адреса направо в изречението. Пусни.",
+  "blocks.1.text": "Излиза като текст. Не се кликва, не е син, не прави нищо. За браузъра това са просто букви — той няма как да познае, че искаш да са връзка.",
+  "blocks.2.text": "Кажи му",
+  "blocks.4.text": "<a> е тагът. Атрибутът href казва накъде води. А това, което е между отварящия и затварящия таг, е думата, върху която се кликва.",
+  "blocks.5.text": "Забележи разделението: адресът е за машината, думата е за човека. Затова не е нужно да показваш адреса — той може да е грозен и дълъг.",
+  "blocks.6.text": "Как се пише думата",
+  "blocks.7.text": "Ето къде почти всички грешат. Изкушението е да напишеш „кликни тук“ или просто „тук“.",
+  "blocks.8.text": "Не го прави. Извади думата от изречението и я прочети сама: „тук“. Накъде? Незрящият човек често преглежда САМО връзките на страницата — компютърът му ги изважда в списък. Ако всичките са „тук“, той не знае нито една накъде води.",
+  "blocks.9.text": "Правилото е просто: думата трябва да казва какво има отсреща, дори когато я четеш извън изречението.",
+  "blocks.10.text": "„Кликни тук“ е връзка, която работи само за човек, който гледа екрана.",
+  "blocks.11.text": "И новият прозорец",
+  "blocks.12.text": "Добавиш ли target=\"_blank\", връзката се отваря в нов таб. Полезно е, когато пращаш човека навън и не искаш да си тръгне от твоята страница.",
+  "blocks.13.text": "Но не го слагай навсякъде. Ти решаваш вместо човека какво да прави с неговия браузър — а той може и да не иска нов таб.",
+  "blocks.14.text": "Общото правило: връзки навън — нов таб. Връзки вътре в твоя сайт — същият.",
+  "blocks.15.text": "Твой ред. Направи адреса да е връзка — и внимавай коя дума избираш."
+}
+===== EN: 33-links.json =====
+{
+  "title": "The link",
+  "checkLabels.t1": "There is a link",
+  "checkLabels.t2": "It leads somewhere",
+  "checkLabels.t3": "It does not say \"here\"",
+  "checkLabels.t4": "It does not say \"click here\"",
+  "checkLabels.t5": "Everything closed",
+  "why.no-link": "The address is still bare text. It looks like a link but does not click — to the browser they are just letters. Wrap it in <a>.",
+  "why.no-href": "The tag is there, but it does not say where it leads. Without href a link is a button that does nothing.",
+  "why.click-here": "You wrote \"click here\" or \"here\". Take that word out of the sentence and read it alone: \"here\". Where? A blind person often skims ONLY the links on a page — a list of words. If they all say \"here\", they know where none of them lead. Make the link out of the words that say what is on the other side.",
+  "why.not-closed": "A tag is open and never closed.",
+  "blocks.0.text": "You want to show someone the model of your bike. You wrote the address straight into the sentence. Run it.",
+  "blocks.1.text": "It comes out as text. It does not click, it is not blue, it does nothing. To the browser these are just letters — it cannot guess you meant them as a link.",
+  "blocks.2.text": "Tell it",
+  "blocks.4.text": "<a> is the tag. The href attribute says where it leads. And what sits between the opening and closing tag is the word you click on.",
+  "blocks.5.text": "Notice the split: the address is for the machine, the word is for the person. So there is no need to show the address — it can be ugly and long.",
+  "blocks.6.text": "How to write the word",
+  "blocks.7.text": "Here is where almost everyone goes wrong. The temptation is to write \"click here\" or just \"here\".",
+  "blocks.8.text": "Do not. Take the word out of the sentence and read it alone: \"here\". Where? A blind person often skims ONLY the links on a page — their computer pulls them into a list. If they all say \"here\", they know where none of them lead.",
+  "blocks.9.text": "The rule is simple: the word must say what is on the other side, even when read outside its sentence.",
+  "blocks.10.text": "\"Click here\" is a link that only works for someone looking at the screen.",
+  "blocks.11.text": "And the new window",
+  "blocks.12.text": "Add target=\"_blank\" and the link opens in a new tab. Useful when you send someone out and do not want them to leave your page.",
+  "blocks.13.text": "But do not put it everywhere. You are deciding for someone what to do with their own browser — and they may not want a new tab.",
+  "blocks.14.text": "The general rule: links out — new tab. Links inside your own site — same tab.",
+  "blocks.15.text": "Your turn. Make the address into a link — and mind which word you choose."
+}
+===== LOGIC: 34-paths.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/34-paths.json
+export default {
+  id: 34,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>My bike</title>
+  </head>
+  <body>
+    <h1>Bike for sale</h1>
+
+    <p>See also: <a href="C:\\Users\\me\\Desktop\\bikes\\contact.html">contact page</a></p>
+  </body>
+</html>`,
+  checks: [
+    { id: "t1", type: "code_not_contains", value: "c:\\", err: "local-path" },
+    { id: "t2", type: "code_contains", value: "href=\"contact.html\"", err: "not-relative" },
+    { id: "t3", type: "balanced", err: "not-closed" },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<a href=\"C:\\Users\\me\\Desktop\\bikes\\contact.html\">contact page</a>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<a href=\"contact.html\">contact page</a>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "list", items: [undefined, undefined, undefined] },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "34-paths"
+};
+===== BG: 34-paths.json =====
+{
+  "title": "Пътят, който чупи повече сайтове от всичко",
+  "checkLabels.t1": "Няма път от твоя компютър",
+  "checkLabels.t2": "Пътят е относителен",
+  "checkLabels.t3": "Всичко затворено",
+  "why.local-path": "Пътят сочи към твоя компютър — C:\\Users\\… Този адрес съществува само при теб. Качиш ли сайта в интернет, връзката ще води в нищото за всички останали.",
+  "why.not-relative": "Пътят още не е относителен. Ако двата файла са един до друг, пишеш просто името: contact.html. Нищо повече.",
+  "why.not-closed": "Някой таг е отворен и не е затворен.",
+  "blocks.0.text": "Правиш втора страница — за контакти. Свързваш я с първата. Копираш пътя от Explorer и го слагаш в href.",
+  "blocks.1.text": "Работи! На твоя компютър. Отваряш, кликаш, отива. Всичко е наред.",
+  "blocks.2.text": "Ето какво си написал",
+  "blocks.4.text": "Този адрес съществува само на един компютър в света — твоя. Утре качваш сайта в интернет и връзката води в нищото за всички останали.",
+  "blocks.5.text": "Това е грешката, която чупи повече начинаещи сайтове от всяка друга.",
+  "blocks.6.text": "Пътят е относителен",
+  "blocks.8.text": "Толкова. Ако двата файла са един до друг, пишеш само името. Браузърът го чете спрямо мястото на текущата страница — оттам „относителен“.",
+  "blocks.9.text": "Не питай къде е файлът на диска. Питай къде е спрямо мен.",
+  "blocks.10.text": "Трите форми",
+  "blocks.11.items.0": "contact.html — файл до мен, в същата папка",
+  "blocks.11.items.1": "pages/contact.html — файл в папка pages, вътре в моята",
+  "blocks.11.items.2": "../contact.html — две точки значат „една папка нагоре“",
+  "blocks.12.text": "И четвъртата — тази, която започва с наклонена черта: /contact.html. Тя значи „от корена на сайта“, независимо къде съм. Полезна е при голям сайт, но не работи, докато файловете стоят на твоя компютър.",
+  "blocks.13.text": "Как да се провериш",
+  "blocks.14.text": "Има един въпрос, който отсява всичко: ако взема цялата папка на сайта, пратя я на друг човек и той я отвори на своя компютър — ще работи ли?",
+  "blocks.15.text": "Ако в кода ти има буква на диск, име на потребител или дума „Desktop“ — отговорът е не.",
+  "blocks.16.text": "Сайтът е папка, не място на диска.",
+  "blocks.17.text": "Едно предупреждение за края: на твоя компютър пътищата не различават главни от малки букви. На сървъра — различават. Bike.jpg и bike.jpg са два различни файла там.",
+  "blocks.18.text": "Оттам идва класическото: „при мен работи“.",
+  "blocks.19.text": "Твой ред. Оправи връзката."
+}
+===== EN: 34-paths.json =====
+{
+  "title": "The path that breaks more sites than anything else",
+  "checkLabels.t1": "No path from your own computer",
+  "checkLabels.t2": "The path is relative",
+  "checkLabels.t3": "Everything closed",
+  "why.local-path": "The path points at your own computer — C:\\Users\\… That address exists only on your machine. Upload the site and the link leads nowhere for everyone else.",
+  "why.not-relative": "The path is still not relative. If the two files sit next to each other, you write just the name: contact.html. Nothing more.",
+  "why.not-closed": "A tag is open and never closed.",
+  "blocks.0.text": "You are making a second page — for contacts. You link it from the first. You copy the path out of Explorer and paste it into href.",
+  "blocks.1.text": "It works! On your computer. You open it, you click, it goes. Everything is fine.",
+  "blocks.2.text": "Here is what you wrote",
+  "blocks.4.text": "This address exists on exactly one computer in the world — yours. Tomorrow you upload the site and the link leads nowhere for everyone else.",
+  "blocks.5.text": "This is the mistake that breaks more beginner sites than any other.",
+  "blocks.6.text": "The path is relative",
+  "blocks.8.text": "That is all. If the two files sit next to each other, you write only the name. The browser reads it relative to where the current page is — hence \"relative\".",
+  "blocks.9.text": "Do not ask where the file is on disk. Ask where it is relative to me.",
+  "blocks.10.text": "The three forms",
+  "blocks.11.items.0": "contact.html — a file next to me, in the same folder",
+  "blocks.11.items.1": "pages/contact.html — a file in the pages folder, inside mine",
+  "blocks.11.items.2": "../contact.html — two dots mean \"one folder up\"",
+  "blocks.12.text": "And a fourth — the one that starts with a slash: /contact.html. It means \"from the root of the site\", wherever I am. Useful on a large site, but it will not work while the files sit on your own computer.",
+  "blocks.13.text": "How to check yourself",
+  "blocks.14.text": "There is one question that settles everything: if I take the whole site folder, send it to another person, and they open it on their machine — will it work?",
+  "blocks.15.text": "If your code contains a drive letter, a username, or the word \"Desktop\" — the answer is no.",
+  "blocks.16.text": "A site is a folder, not a place on a disk.",
+  "blocks.17.text": "One warning to finish with: on your computer paths ignore upper and lower case. On a server — they do not. Bike.jpg and bike.jpg are two different files there.",
+  "blocks.18.text": "That is where the classic line comes from: \"it works on my machine\".",
+  "blocks.19.text": "Your turn. Fix the link."
+}
+===== LOGIC: 35-nav.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/35-nav.json
+export default {
+  id: 35,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>My bike</title>
+  </head>
+  <body>
+    <p>
+      <a href="index.html">Home</a> |
+      <a href="bikes.html">Bikes</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+
+    <h1>Bike for sale</h1>
+  </body>
+</html>`,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<nav", err: "no-nav" },
+    { id: "t2", type: "code_contains", value: "<ul", err: "no-list" },
+    { id: "t3", type: "code_not_contains", value: "</a> |", err: "manual-bars" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    {
+      type: "code",
+      code: `<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="bikes.html">Bikes</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>`
+    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
+  ],
+  slug: "35-nav"
+};
+===== BG: 35-nav.json =====
+{
+  "title": "Менюто не е абзац с чертички",
+  "checkLabels.t1": "Има навигация",
+  "checkLabels.t2": "Връзките са списък",
+  "checkLabels.t3": "Няма ръчни разделители",
+  "checkLabels.t4": "Всичко затворено",
+  "why.no-nav": "Няма навигация. Кодът ти казва „ето един абзац с три връзки“. Не казва „ето менюто на сайта“. Обгради го с <nav>.",
+  "why.no-list": "Връзките не са списък. Те са три неща от един вид — точно това е списък. И редът им не е случаен, ти си го избрал.",
+  "why.manual-bars": "Разделяш връзките с чертички на ръка. Помниш ли урока за списъците? Пак рисуваш нещо, вместо да го кажеш. Разделителите са CSS.",
+  "why.not-closed": "Някой таг е отворен и не е затворен.",
+  "blocks.0.text": "Сайтът ти вече има няколко страници. Трябва меню, за да се движи човек между тях.",
+  "blocks.1.text": "Направи го както се сещаш: абзац с връзки и чертички между тях. Пусни. Работи. Изглежда като меню.",
+  "blocks.2.text": "Но не е меню",
+  "blocks.3.text": "Кодът ти казва: „ето един абзац, а вътре има три връзки и някакви чертички“. Не казва „ето менюто на този сайт“.",
+  "blocks.4.text": "Разликата не е козметична. Незрящият човек не може да прескочи менюто, защото не знае, че е меню. Google не разбира коя е структурата на сайта ти. И чертичките си ги написал на ръка — пак рисуваш, вместо да казваш.",
+  "blocks.5.text": "Кажи го с два тага",
+  "blocks.7.text": "<nav> казва: това е навигация. <ul> казва: това са неща от един вид. Заедно: меню.",
+  "blocks.8.text": "Чертичките ги няма. Ако искаш разделители — това е CSS. Ако искаш менюто да е хоризонтално — пак CSS. Ти каза какво Е; как изглежда, ще решиш после.",
+  "blocks.9.text": "Защо е списък",
+  "blocks.10.text": "Първата ти реакция е „защо да е списък, аз не искам точки“. Точките са външен вид, а ти избираш по смисъл.",
+  "blocks.11.text": "Менюто е няколко неща от един вид. Това е списък. Редът им не е случаен — ти си решил кое е първо.",
+  "blocks.12.text": "И най-практичното: незрящият човек чува „списък от три елемента“ и знае колко голямо е менюто, преди да влезе в него.",
+  "blocks.13.text": "Един сайт, много менюта",
+  "blocks.14.text": "<nav> може да има повече от едно на страница: главното меню горе, второ меню в долната част, странично меню. Всяко си е навигация.",
+  "blocks.15.text": "Но не всяка връзка е навигация. Връзка насред изречение е просто връзка. <nav> е за групите връзки, които водят из сайта.",
+  "blocks.16.text": "Твой ред. Направи менюто както трябва."
+}
+===== EN: 35-nav.json =====
+{
+  "title": "A menu is not a paragraph with bars",
+  "checkLabels.t1": "There is navigation",
+  "checkLabels.t2": "The links are a list",
+  "checkLabels.t3": "No hand-typed separators",
+  "checkLabels.t4": "Everything closed",
+  "why.no-nav": "There is no navigation. Your code says \"here is a paragraph with three links\". It does not say \"here is the site's menu\". Wrap it in <nav>.",
+  "why.no-list": "The links are not a list. They are three things of one kind — which is exactly what a list is. And their order is not accidental, you chose it.",
+  "why.manual-bars": "You are separating the links with hand-typed bars. Remember the lesson about lists? You are drawing something again instead of saying it. Separators are CSS.",
+  "why.not-closed": "A tag is open and never closed.",
+  "blocks.0.text": "Your site now has several pages. It needs a menu, so a person can move between them.",
+  "blocks.1.text": "You built it the obvious way: a paragraph with links and bars between them. Run it. It works. It looks like a menu.",
+  "blocks.2.text": "But it is not a menu",
+  "blocks.3.text": "Your code says: \"here is a paragraph, and inside it there are three links and some bars\". It does not say \"here is this site's menu\".",
+  "blocks.4.text": "The difference is not cosmetic. A blind person cannot skip the menu, because they do not know it is a menu. Google does not understand your site's structure. And you typed the bars by hand — drawing again, instead of saying.",
+  "blocks.5.text": "Say it with two tags",
+  "blocks.7.text": "<nav> says: this is navigation. <ul> says: these are things of one kind. Together: a menu.",
+  "blocks.8.text": "The bars are gone. If you want separators — that is CSS. If you want the menu horizontal — CSS again. You said what it IS; how it looks, you will decide later.",
+  "blocks.9.text": "Why a list",
+  "blocks.10.text": "Your first reaction is \"why a list, I do not want bullets\". Bullets are appearance, and you choose by meaning.",
+  "blocks.11.text": "A menu is several things of one kind. That is a list. Their order is not random — you decided what comes first.",
+  "blocks.12.text": "And the most practical part: a blind person hears \"list of three items\" and knows how big the menu is before entering it.",
+  "blocks.13.text": "One site, many menus",
+  "blocks.14.text": "You can have more than one <nav> on a page: the main menu at the top, a second one in the footer, a sidebar. Each is navigation.",
+  "blocks.15.text": "But not every link is navigation. A link in the middle of a sentence is just a link. <nav> is for groups of links that move you around the site.",
+  "blocks.16.text": "Your turn. Build the menu properly."
+}
+===== LOGIC: 36-images.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/36-images.json
+export default {
+  id: 36,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>My bike</title>
+  </head>
+  <body>
+    <h1>Bike for sale</h1>
+
+    <p>Here is a photo of it:</p>
+
+    <p>Price: <strong>18 leva</strong></p>
+  </body>
+</html>`,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<img", err: "no-img" },
+    { id: "t2", type: "code_contains", value: "src=", err: "no-src" },
+    { id: "t3", type: "code_not_contains", value: "</img>", err: "closed-img" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<img src=\"/uroci/bike.jpg\">" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "36-images"
+};
+===== BG: 36-images.json =====
+{
+  "title": "Снимката",
+  "checkLabels.t1": "Има снимка",
+  "checkLabels.t2": "Знае коя е",
+  "checkLabels.t3": "Няма затварящ таг",
+  "checkLabels.t4": "Всичко затворено",
+  "why.no-img": "Няма снимка. Тагът е <img>, а пътят е /uroci/bike.jpg.",
+  "why.no-src": "Тагът е там, но не казва коя снимка. Без src браузърът не знае какво да покаже.",
+  "why.closed-img": "Написал си </img>. Няма такова нещо. <img> не обгражда нищо — той просто слага снимка на място. Затварящ таг му е излишен.",
+  "why.not-closed": "Някой друг таг е отворен и не е затворен. (<img> не се брои.)",
+  "blocks.0.text": "Обявата има нужда от снимка. Иначе никой няма да я погледне.",
+  "blocks.1.text": "Тагът",
+  "blocks.3.text": "src идва от „source“ — източник. Казва кой файл да се покаже.",
+  "blocks.4.text": "Забележи: няма </img>. Няма какво да обгради — той не съдържа текст, а слага нещо на място. Като <br> и <meta>, които вече знаеш.",
+  "blocks.5.text": "Пътят е същият",
+  "blocks.6.text": "Всичко от урока за пътищата важи и тук. /uroci/bike.jpg. Ако снимката е в папка до теб — images/bike.jpg. Ако е на чужд сайт — целият адрес.",
+  "blocks.7.text": "И същият капан: пътят от твоя компютър работи само при теб.",
+  "blocks.8.text": "А главните букви са важни. Bike.JPG и bike.jpg са различни файлове на сървъра.",
+  "blocks.9.text": "Ще е огромна",
+  "blocks.10.text": "Пусни и виж. Снимката излиза в истинския си размер — може да е 3000 пиксела широка и да излезе извън екрана.",
+  "blocks.11.text": "Иска ти се да я смалиш. Има атрибути width и height и те работят. Но не ги ползвай за красота — размерът е CSS.",
+  "blocks.12.text": "Тагът казва „ето снимка“. Колко голяма да се вижда, решава стилът.",
+  "blocks.13.text": "Има обаче една причина да ги сложиш: ако кажеш предварително колко място ще заеме снимката, браузърът го запазва — и страницата не подскача, докато тя се зарежда. Всеки е псувал сайт, на който текстът е избягал точно преди да кликнеш.",
+  "blocks.14.text": "Но нещо липсва",
+  "blocks.15.text": "Снимката е там и се вижда. Само че тя е няма — не казва нищо за себе си. Ако не се зареди, на нейно място ще зее празнина. Следващият урок е за това."
+}
+===== EN: 36-images.json =====
+{
+  "title": "The image",
+  "checkLabels.t1": "There is an image",
+  "checkLabels.t2": "It knows which one",
+  "checkLabels.t3": "No closing tag",
+  "checkLabels.t4": "Everything closed",
+  "why.no-img": "There is no image. The tag is <img>, and the path is /uroci/bike.jpg.",
+  "why.no-src": "The tag is there, but it does not say which image. Without src the browser does not know what to show.",
+  "why.closed-img": "You wrote </img>. There is no such thing. <img> wraps nothing — it simply places an image on the spot. A closing tag would be pointless.",
+  "why.not-closed": "Some other tag is open and never closed. (<img> does not count.)",
+  "blocks.0.text": "The listing needs a photo. Otherwise nobody will look at it.",
+  "blocks.1.text": "The tag",
+  "blocks.3.text": "src comes from \"source\". It says which file to show.",
+  "blocks.4.text": "Notice: there is no </img>. There is nothing to wrap — it holds no text, it places something on the spot. Like <br> and <meta>, which you already know.",
+  "blocks.5.text": "The path is the same",
+  "blocks.6.text": "Everything from the paths lesson applies here. /uroci/bike.jpg. If the image is in a folder next to you — images/bike.jpg. If it is on someone else's site — the full address.",
+  "blocks.7.text": "And the same trap: a path from your own computer works only on your computer.",
+  "blocks.8.text": "And capital letters matter. Bike.JPG and bike.jpg are different files on a server.",
+  "blocks.9.text": "It will be huge",
+  "blocks.10.text": "Run it and look. The image comes out at its true size — it might be 3000 pixels wide and run off the screen.",
+  "blocks.11.text": "You will want to shrink it. There are width and height attributes and they work. But do not use them for looks — size is CSS.",
+  "blocks.12.text": "The tag says \"here is an image\". How big it appears is decided by the style.",
+  "blocks.13.text": "There is one good reason to add them, though: if you say in advance how much room the image will take, the browser reserves it — and the page does not jump around while it loads. Everyone has cursed a site where the text ran away just before they clicked.",
+  "blocks.14.text": "But something is missing",
+  "blocks.15.text": "The image is there and it shows. But it is mute — it says nothing about itself. If it fails to load, there will be a hole where it stood. The next lesson is about that."
+}

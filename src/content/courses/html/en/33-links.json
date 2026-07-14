@@ -1,14 +1,45 @@
 {
   "title": "The link",
-  "checkLabels.t1": "There is a link",
-  "checkLabels.t2": "It leads somewhere",
-  "checkLabels.t3": "It does not say \"here\"",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "The link has words",
+  "checkLabels.t3": "It leads somewhere",
   "checkLabels.t4": "It does not say \"click here\"",
-  "checkLabels.t5": "Everything closed",
-  "why.no-link": "The address is still bare text. It looks like a link but does not click — to the browser they are just letters. Wrap it in <a>.",
-  "why.no-href": "The tag is there, but it does not say where it leads. Without href a link is a button that does nothing.",
-  "why.click-here": "You wrote \"click here\" or \"here\". Take that word out of the sentence and read it alone: \"here\". Where? A blind person often skims ONLY the links on a page — a list of words. If they all say \"here\", they know where none of them lead. Make the link out of the words that say what is on the other side.",
+  "checkLabels.t5": "The address is not on show",
+  "checkLabels.t6": "The sentence is still there",
+  "checkLabels.t7": "The heading is still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of making a link. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "<a> closes with </a>. Between them sits the word you click on.",
+  "hint3.not-closed": "<a href=\"...\">word</a> — three parts: an opening with the address, the word, the closing.",
+
+  "why.no-link": "There is no link with words in it. Either there is no <a>, or the tag is empty. An empty link is the worst kind — it clicks, but a blind person hears only the address, character by character.",
+  "hint2.no-link": "There must be text between <a> and </a>. That is what a person sees and clicks.",
+  "hint3.no-link": "<a href=\"https://example.com\">the official site</a> — the address is outside, the words are inside.",
+  "hint4.no-link": "Wrap words from the sentence in <a> — \"this one\", for instance. The address goes in href.",
+
+  "why.no-href": "The tag is there, but it does not say where it leads — or the href is empty. With no address, a link is a button that does nothing.",
+  "hint2.no-href": "href is an attribute. It lives inside the opening tag, not between the tags.",
+  "hint3.no-href": "<a href=\"the-address-here\">the word</a> — the address goes in quotes, inside the <a>.",
+
+  "why.click-here": "You wrote \"click here\". Take that word out of the sentence and read it alone: \"here\". Where? A blind person often skims ONLY the links on a page — their computer pulls them into a list. If they all say \"here\", they know where none of them lead.",
+  "hint2.click-here": "Read your link text on its own, without the sentence around it. Can you tell where it goes?",
+  "hint3.click-here": "\"Click here for prices\" → the link is \"prices\", not \"click here\". The word that says what is on the other side.",
+  "hint4.click-here": "Make the link out of the words that describe the destination. They are right there in the sentence: \"this one\" or \"the same model\".",
+
+  "why.naked-url": "The address still shows on the page. It may click, but it is bare — https://en.wikipedia.org/wiki/Bicycle. A blind person hears that read out, character by character. The address is for the machine. The word is for the person.",
+  "hint2.naked-url": "The address belongs in href, not between the tags.",
+  "hint3.naked-url": "<a href=\"https://example.com/long/ugly/path\">a short word</a> — the ugly part is hidden, the person sees the word.",
+  "hint4.naked-url": "Take the address out of the sentence. It goes into href. A word from the text takes its place.",
+
+  "why.lost-sentence": "The sentence is gone. The task is to make a link INSIDE it, not to replace it.",
+  "hint2.lost-sentence": "\"It is the same model as this one\" must stay. You are only making part of it clickable.",
+
+  "why.lost-h1": "The heading is gone. The task is the link, not deleting things.",
+
   "blocks.0.text": "You want to show someone the model of your bike. You wrote the address straight into the sentence. Run it.",
   "blocks.1.text": "It comes out as text. It does not click, it is not blue, it does nothing. To the browser these are just letters — it cannot guess you meant them as a link.",
   "blocks.2.text": "Tell it",

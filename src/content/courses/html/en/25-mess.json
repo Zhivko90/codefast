@@ -1,7 +1,14 @@
 {
   "title": "Try to make a list",
+
   "checkLabels.t1": "Did you even try",
+  "checkLabels.t2": "The heading is still there",
+
   "why.unchanged": "You did not touch the code. Try — that is the whole lesson. You will fail, and that is exactly why you will need the next one. Have a go with dashes, with spaces, with whatever comes to mind.",
+  "hint2.unchanged": "There is no right answer. There is no way to get it wrong. The only way not to pass is not to try.",
+
+  "why.lost-h1": "The heading is gone. Experiment with the list, not by deleting the page.",
+
   "blocks.0.text": "The bike listing has to spell out what is included in the price. Four things: frame, front wheel, rear wheel, bell.",
   "blocks.1.text": "You know paragraphs and you know <br>. So you can do this. Do it.",
   "blocks.2.text": "Try on your own before you read on",

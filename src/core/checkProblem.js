@@ -8,7 +8,7 @@ import {
   balanced,
 } from './helpers';
 
-function runCheck(check, code) {
+function runCheck(check, code, starter) {
   const clean = removeHtmlComments(code);
   const doc = parse(code);
   const v = check.value;
@@ -69,11 +69,15 @@ function runCheck(check, code) {
     case 'text_contains':
       return visibleText(code).includes(norm(v));
 
+      case 'text_not_contains':
+      return !visibleText(code).includes(norm(v));
+
     case 'balanced':
       return balanced(code);
 
+   // Няма value → сравнява със скелета. Празен редактор също пада.
     case 'changed':
-      return norm(code) !== norm(v ?? '');
+      return norm(code) !== norm(v ?? starter ?? '');
 
     default:
       return false;
@@ -87,7 +91,7 @@ export function checkProblem(problem, code) {
     err: c.err,
     weight: c.weight ?? 0,
     guard: !!c.guard,
-    ok: runCheck(c, code),
+    ok: runCheck(c, code, problem.starterCode),
   }));
 
   const passed = results.every((r) => r.ok);

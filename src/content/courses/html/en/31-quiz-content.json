@@ -1,27 +1,35 @@
 {
   "title": "Check yourself: content",
+
   "questions.0.q": "You want a sub-heading, but <h2> looks too small to you. What do you do?",
   "questions.0.options.0": "Use <h1>, because it is bigger",
   "questions.0.options.1": "Keep <h2> and enlarge it later with CSS",
   "questions.0.options.2": "Use a <p> and make it bold",
   "questions.0.options.3": "Use <h1>, but with a smaller font",
+  "questions.0.hint": "Ask what the heading level is for — the size, or something else?",
   "questions.0.explain": "The heading level is about meaning, not size. If it is a subsection — it is an <h2>, however small it looks. The size is fixed with CSS. The meaning cannot be fixed with anything.",
+
   "questions.1.q": "You make a list of your favourite films. Their order means nothing. Which do you pick?",
   "questions.1.options.0": "<ol> — numbers look tidier",
   "questions.1.options.1": "<ul> — because the order does not matter",
   "questions.1.options.2": "Several <p> with dashes in front",
   "questions.1.options.3": "Does not matter — both are lists",
+  "questions.1.hint": "What does a numbered list CLAIM about the things inside it?",
   "questions.1.explain": "Numbers say \"this is first, this is second\". If the order is arbitrary, you are lying to the reader. The test is simple: swap two items. If nothing changes — <ul>.",
+
   "questions.2.q": "You forget to close a <strong> halfway down the page. What happens?",
   "questions.2.options.0": "The browser shows an error",
   "questions.2.options.1": "Only that word stays bold",
   "questions.2.options.2": "Everything after it becomes bold",
   "questions.2.options.3": "Nothing — <strong> does not have to be closed",
+  "questions.2.hint": "You said where the important part begins. Did you ever say where it ends?",
   "questions.2.explain": "You said \"the important part starts here\" and never said where it ends. The browser assumes the important part is everything until the end. It does not complain — it just carries on.",
-  "questions.3.q": "Why is <em> not simply \"italic text\"?",
-  "questions.3.options.0": "Because sometimes it comes out bold",
-  "questions.3.options.1": "Because it means emphasis — and the program reading aloud pronounces it differently",
-  "questions.3.options.2": "Because it is an old tag and no longer used",
-  "questions.3.options.3": "Because it only works inside a <p>",
-  "questions.3.explain": "The slant is a consequence, not the meaning. If you need italic text without emphasis — that is CSS's job. Otherwise you are lying to everyone who is not looking with their eyes."
+
+  "questions.3.q": "You wonder why you should use <strong> instead of just bold letters with CSS. A colleague says: \"because the screen reader says it in a firmer voice\". Are they right?",
+  "questions.3.options.0": "Yes — that is exactly the difference between <strong> and CSS",
+  "questions.3.options.1": "No — the reader is silent about both. <strong> records WHY, not how it sounds",
+  "questions.3.options.2": "Yes, but only in JAWS",
+  "questions.3.options.3": "No — <strong> is not about importance at all",
+  "questions.3.hint": "This is the most repeated claim about <strong> on the web. Check it before you believe it.",
+  "questions.3.explain": "Neither JAWS, nor NVDA, nor VoiceOver say anything about <strong>. NVDA did it once and stopped — emphasis is so overused on the web that the noise became unbearable. So why the tag? Because it records the MEANING: this is important. For you in six months, for the machine processing the text, for the day the readers grow up. And the consequence few will tell you: since the reader stays silent, do not rely on bold to carry importance. Say it in words too."
 }

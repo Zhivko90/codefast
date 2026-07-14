@@ -1,14 +1,44 @@
 {
   "title": "Say that it is a list",
-  "checkLabels.t1": "There is a list",
-  "checkLabels.t2": "There are items in it",
-  "checkLabels.t3": "No manual dashes",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "Four things in a list",
+  "checkLabels.t3": "None of them is empty",
   "checkLabels.t4": "The old mess is gone",
-  "why.no-ul": "There is still no list. Wrap the four things in <ul> — that says \"everything inside is of one kind\".",
-  "why.no-li": "The wrapper is there, but there is nothing inside it. Each thing gets wrapped in <li>.",
-  "why.manual-dashes": "You left the dashes inside the <li>. You do not need them — the browser draws the bullets. Your dashes are now sitting NEXT TO its bullets.",
-  "why.old-mess": "The old paragraph with the dashes is still there. Delete it — you have a real list now.",
+  "checkLabels.t5": "The frame is there",
+  "checkLabels.t6": "The bell is there",
+  "checkLabels.t7": "No manual dashes",
+
+  "why.empty": "The editor is empty. You deleted the page instead of making a list. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order. In lists this happens easily — every <li> wants its </li>.",
+  "hint2.not-closed": "Count the opening <li> tags and the closing </li> tags. The numbers must match.",
+  "hint3.not-closed": "The <ul> closes too. It wraps everything — so the </ul> goes last, after the final </li>.",
+  "hint4.not-closed": "Four things means four <li> and four </li>. Plus one <ul> and one </ul> around them.",
+
+  "why.no-li": "There are not four things in a list. Each of the four gets wrapped in an <li>, and all of them together in a <ul>.",
+  "hint2.no-li": "Two parts: <ul> on the outside, <li> around each thing inside.",
+  "hint3.no-li": "<ul><li>Bread</li><li>Milk</li></ul> — one list, two things. One wrapper, as many things as you like.",
+  "hint4.no-li": "Wrap the frame, the front wheel, the rear wheel and the bell — each in its own <li>. Then wrap all four in a <ul>.",
+
+  "why.empty-li": "There is an empty <li>. An empty item is not an item — it says nothing. Either put text in it or remove it.",
+  "hint2.empty-li": "You opened and closed an <li> with nothing between them.",
+  "hint3.empty-li": "<li></li>Frame — the tag is empty and Frame hangs outside it. It should be <li>Frame</li>.",
+
+  "why.old-mess": "The old <br> tags are still there. You do not need them — every <li> is a block and takes its own line. Delete the old paragraph with the dashes.",
+  "hint2.old-mess": "Search for <br> in your code. Not one should remain.",
+  "hint3.old-mess": "You are not adding a list NEXT TO the mess. You are replacing the mess with a list.",
+  "hint4.old-mess": "Remove the whole <p> with the dashes and the <br> tags. The <ul> goes in its place.",
+
+  "why.lost-items": "Something is missing from the list. The four are: frame, front wheel, rear wheel, bell. The task is to organise them, not to shorten them.",
+  "hint2.lost-items": "Count the items in the result. There should be four.",
+
+  "why.manual-dashes": "You kept the dashes. You do not need them — the browser draws the bullets. Now your dashes sit NEXT TO its bullets.",
+  "hint2.manual-dashes": "Look at the result on the right. Every line has two marks in front of it. You only asked for one.",
+  "hint3.manual-dashes": "<li>- Frame</li> — the dash is part of the text, and the bullet comes from the browser. The two add up.",
+  "hint4.manual-dashes": "Remove every dash from inside the <li>. Only the name of the thing stays.",
+
   "blocks.0.text": "The problem from the last lesson: you drew a list instead of making one. Here is the tool.",
   "blocks.1.text": "Two parts",
   "blocks.3.text": "<ul> wraps the whole list. It comes from \"unordered list\". Meaning the order does not matter: the frame is not \"more first\" than the bell.",

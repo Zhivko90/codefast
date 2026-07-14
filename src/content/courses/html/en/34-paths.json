@@ -1,11 +1,32 @@
 {
   "title": "The path that breaks more sites than anything else",
-  "checkLabels.t1": "No path from your own computer",
-  "checkLabels.t2": "The path is relative",
-  "checkLabels.t3": "Everything closed",
-  "why.local-path": "The path points at your own computer — C:\\Users\\… That address exists only on your machine. Upload the site and the link leads nowhere for everyone else.",
-  "why.not-relative": "The path is still not relative. If the two files sit next to each other, you write just the name: contact.html. Nothing more.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "The link leads somewhere",
+  "checkLabels.t3": "No drive letter",
+  "checkLabels.t4": "No Desktop",
+  "checkLabels.t5": "The path is relative",
+  "checkLabels.t6": "The link has words",
+
+  "why.empty": "The editor is empty. You deleted the page instead of fixing the path. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed.",
+
+  "why.no-href": "The link has no address, or it is empty. Without href it leads nowhere.",
+
+  "why.local-path": "The path still points at your own computer — C:\\Users\\… That address exists only on your machine. Upload the site and the link leads nowhere for everyone else.",
+  "hint2.local-path": "Look at the href. Is there a drive letter, a username, or the word Desktop in it?",
+  "hint3.local-path": "This path says \"the file is at this spot on the disk\". It should say \"the file is over there, relative to me\".",
+  "hint4.local-path": "Delete everything before the filename. The two files are in one folder — so the name is enough.",
+
+  "why.not-relative": "The path is still not relative. The two files sit next to each other — you write just the name: contact.html. Nothing more, no folders in front.",
+  "hint2.not-relative": "Where is contact.html relative to the page you are on? In the same folder.",
+  "hint3.not-relative": "<a href=\"about.html\">about me</a> — a file next to me. That is all there is to it.",
+  "hint4.not-relative": "href=\"contact.html\". Just the filename, nothing else.",
+
+  "why.lost-link": "The link or its words are gone. The task is to fix the path, not to delete things.",
+
   "blocks.0.text": "You are making a second page — for contacts. You link it from the first. You copy the path out of Explorer and paste it into href.",
   "blocks.1.text": "It works! On your computer. You open it, you click, it goes. Everything is fine.",
   "blocks.2.text": "Here is what you wrote",
