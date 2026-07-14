@@ -17,13 +17,20 @@ import { fetchProject, saveProject } from '@/lib/project';
 //   Всяка проверка има етикет (`err`), етикетът води до „защо не мина".
 //
 //   Урок БЕЗ `checks` пада на старото: едно `expected`, едно съобщение.
-//   Сайтът работи, докато пълниш проверките урок по урок.
+//
+// ★ СТЪЛБАТА НА ПОДСКАЗКИТЕ
+//   why.<err>    — симптомът. Показва се сам.
+//   hint2.<err>  — къде да гледаш.
+//   hint3.<err>  — разработен пример.
+//   hint4.<err>  — какво да направиш.
+//
+//   Ученикът дърпа стъпалата сам. Липсва ли ниво — просто го няма.
 //
 // ПРОЕКТНИ УРОЦИ (lesson.project):
 //   Редакторът е празен — това е упражнението.
 //   Отдолу стои това, което си построил миналия път.
 // ============================================
-export default function WebLesson({ lesson, lang, course }) {
+export default function WebLesson({ lesson, lang, course, onDone  }) {
   const t = useTranslations('lesson');
   const { user } = useAuth();
 
@@ -103,8 +110,9 @@ export default function WebLesson({ lesson, lang, course }) {
     setResult(r);
     setPreview(code);
 
-    if (r.passed) {
-      markDone(user?.id, course, lesson.id);
+   if (r.passed) {
+      await markDone(user?.id, course, lesson.id);
+      onDone?.();
 
       // проектът поема новото
       if (isProject) {
@@ -127,6 +135,18 @@ export default function WebLesson({ lesson, lang, course }) {
     if (!result || result.passed) return null;
     if (hasChecks) return lesson.why?.[result.errorTag] ?? t('submit_no');
     return t('submit_no');
+  })();
+
+  // ★ СТЪЛБАТА — само нивата, които наистина ги има за тази грешка.
+  // Урок без hint2/3/4 просто няма бутон. Нищо не гърми.
+  const hints = (() => {
+    if (!result || result.passed || !hasChecks) return [];
+    const tag = result.errorTag;
+    return [
+      lesson.hint2?.[tag],
+      lesson.hint3?.[tag],
+      lesson.hint4?.[tag],
+    ].filter(Boolean);
   })();
 
   // имената на проверките — те се показват в долния панел
@@ -154,6 +174,7 @@ export default function WebLesson({ lesson, lang, course }) {
       result={result}
       checkLabels={checkLabels}
       why={why}
+      hints={hints}
       lang={lang}
     >
       {tab === 'previous' && previous ? (

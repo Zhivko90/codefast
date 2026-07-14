@@ -1,4 +1,7 @@
 // ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/30-broken2.json
+//
+// Развалината. Проверките са СКРИТИ — целият смисъл е човек да ги намери сам.
+// Обяснението е общо: посока, не отговор.
 export default {
   id: 30,
   type: "web",
@@ -6,40 +9,40 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>Broken again</title>
+    <title>My bike</title>
   </head>
   <body>
-    <h1>My top three</h1>
+    <h1>Bike for sale
+    <h1>What is included</h1>
+
+    <p>Price: <strong>18 leva</p></strong>
+
     <ul>
-      <li>The first one
-      <li>The second one</li>
-      The third one</li>
+      <li>Frame
+      <li>Bell</li>
+      - Front wheel<br>
+      - Rear wheel
     </ul>
-    <p>And here is why: <strong>they never get old.</p>
+
+    <p>A friend said: "Best bike ever."</p>
   </body>
 </html>`,
-  expected: "The first one The second one The third one And here is why: they never get old.",
+  checks: [
+    { id: "t1", type: "balanced", hidden: true, err: "not-closed" },
+    { id: "t2", type: "code_not_contains", value: "- front wheel", hidden: true, err: "fake-list" },
+    { id: "t3", type: "code_contains", value: "<h2", hidden: true, err: "two-h1" },
+    { id: "t4", type: "code_contains", value: "<blockquote", hidden: true, err: "no-quote" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
   ],
   slug: "30-broken2"
 };

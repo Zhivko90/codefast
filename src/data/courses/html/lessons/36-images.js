@@ -11,68 +11,34 @@ export default {
   <body>
     <h1>Bike for sale</h1>
 
+    <p>Here is a photo of it:</p>
+
     <p>Price: <strong>18 leva</strong></p>
-
-    <p>Here is the photo:</p>
-
   </body>
 </html>`,
-  expected: "<img",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<img", err: "no-img" },
+    { id: "t2", type: "code_contains", value: "src=", err: "no-src" },
+    { id: "t3", type: "code_not_contains", value: "</img>", err: "closed-img" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<img src=\"/uroci/bike.jpg\" alt=\"Black bike, side view\">"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<h1>Bike for sale</h1><p>Price: <strong>18 leva</strong></p><p>Here is the photo:</p><img src=\"/uroci/bike.jpg\" alt=\"Black bike, side view\" style=\"max-width:100%\">",
-      height: 300,
-      url: "index.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<img src=\"/uroci/bike.jpg\">" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "36-images"
 };

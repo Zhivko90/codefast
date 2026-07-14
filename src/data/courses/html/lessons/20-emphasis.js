@@ -14,38 +14,26 @@ export default {
     <p>The best part is the music.</p>
   </body>
 </html>`,
-  expected: "<strong>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<strong>", err: "no-emphasis" },
+    { id: "t2", type: "code_not_contains", value: "<b>", err: "used-b" },
+    { id: "t3", type: "code_not_contains", value: "<i>", err: "used-i" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "code",
       code: `<strong>Never</strong> play it after midnight.
 The best part is <em>the music</em>.`
     },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "20-emphasis"
 };

@@ -1,10 +1,14 @@
 {
   "title": "Someone else's words",
-  "testCase": "Did you wrap the quote in a <blockquote>?",
-  "blocks.0.text": "Sometimes you quote someone. A review, a line from a film, something a friend said.",
-  "blocks.1.text": "You could put it in an ordinary <p> and add quotation marks. It would look decent. But again you would have drawn a quote instead of saying it is one.",
-  "blocks.3.text": "The browser indents it — you see that at once. But more importantly, it is now on record: these words are not yours.",
-  "blocks.4.text": "Why this matters",
-  "blocks.5.text": "Search engines tell your opinion from someone else's. If you pass off someone's text as your own, they catch it and it hurts you. Mark it as a quote — and everything is clean.",
-  "blocks.6.text": "Add a quote to your page. Something someone said about your topic."
+  "checkLabels.t1": "The quote is set apart",
+  "checkLabels.t2": "Everything closed",
+  "why.no-quote": "The quote is still buried inside a sentence, in quotation marks. Quotation marks are just characters — the computer does not know these words are not yours. Wrap them in <blockquote>.",
+  "why.not-closed": "A tag is open and never closed.",
+  "blocks.0.text": "Someone said something about your bike and you want to quote them. You wrote it in quotation marks, inside a sentence. It works.",
+  "blocks.1.text": "But quotation marks are just characters",
+  "blocks.3.text": "<blockquote> says: these words are not mine. The browser sets it apart with an indent — but more importantly, the code now says so.",
+  "blocks.4.text": "There is an inline version too — <q> — for a short quote in the middle of a sentence. It adds the quotation marks itself, and the right ones for the page's language at that.",
+  "blocks.5.text": "Why marks are not enough",
+  "blocks.6.text": "Google tells a quote apart from your own text — and does not penalise you for copying someone else's. A screen reader can say \"quote\" and change its tone. And if you ever want to pull every quote out of your site, you will need the tag, not the marks.",
+  "blocks.7.text": "Both take a cite attribute with an address — where the quote is from. It is not visible on screen, but it is there for whoever looks for the source."
 }

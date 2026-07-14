@@ -11,8 +11,7 @@ export default {
   <body>
     <h1>Bike for sale</h1>
 
-    <p>What the price includes:</p>
-
+    <p>What is included:</p>
     <ul>
       <li>Frame</li>
       <li>Tyres</li>
@@ -22,59 +21,38 @@ export default {
     </ul>
   </body>
 </html>`,
-  expected: "<ul>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<li>tyres", err: "no-tyres" },
+    { id: "t2", type: "code_contains", value: "<ul>", err: "no-inner" },
+    { id: "t3", type: "code_not_contains", value: "</li>\n      <li>front", err: "still-flat" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text",
-      bbg: "Списъкът излиза с пет точки, всичките еднакви. Той твърди, че „Front\" е такова нещо, каквото е „Frame\" и „Bell\" — отделна част от велосипеда. А то не е. То е част ОТ гумите."
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
     {
       type: "code",
-      code: `<ul>
-  <li>Frame</li>
-  <li>Tyres
-    <ul>
-      <li>Front</li>
-      <li>Rear</li>
-    </ul>
-  </li>
-  <li>Bell</li>
-</ul>`
+      code: `<li>Tyres
+  <ul>
+    <li>Front</li>
+    <li>Rear</li>
+  </ul>
+</li>`
     },
     {
       type: "preview",
-      html: "<h1>Bike for sale</h1><p>What the price includes:</p><ul><li>Frame</li><li>Tyres<ul><li>Front</li><li>Rear</li></ul></li><li>Bell</li></ul>",
-      height: 220,
+      html: "<h1>Bike for sale</h1><p>What is included:</p><ul><li>Frame</li><li>Tyres<ul><li>Front</li><li>Rear</li></ul></li><li>Bell</li></ul>",
+      height: 190,
       url: "index.html"
     },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "27-nested-lists"
 };

@@ -1,6 +1,11 @@
 {
   "title": "The line nobody sees",
-  "testCase": "Did you add <!DOCTYPE html> on the first line?",
+  "checkLabels.t1": "The line at the top",
+  "checkLabels.t2": "The rest is untouched",
+  "checkLabels.t3": "Everything closed",
+  "why.no-doctype": "The line is missing. It shows nothing, and that is exactly why it is easy to forget. Write it out of habit, on the first line, always — not because you will see the effect, but because you will not see the problem.",
+  "why.lost-title": "Something disappeared from the page. The task is only to ADD the line at the top — the rest stays.",
+  "why.not-closed": "A tag is open and never closed.",
   "blocks.0.text": "There is one line at the very top of almost every page on the internet — and it shows absolutely nothing.",
   "blocks.2.text": "Who it talks to",
   "blocks.3.text": "Not to the person — to the browser. It is the first thing it reads, and it is a short order: \"read me by today's rules.\"",

@@ -1,12 +1,15 @@
 {
-  "title": "The mess",
-  "blocks.0.text": "Six reasons crammed into one line. Technically correct — it is a sentence and it sits in a paragraph. But nobody will read it like that.",
-  "blocks.1.text": "Try to line them up",
-  "blocks.2.text": "You want each reason on its own line, one below the other. Try. Really try, before you read on.",
-  "blocks.3.text": "Press Enter between them — no good, they glue together (you know that already). Put each in its own <p> — that works, but look at the result: six paragraphs sprawled with gaps between them. It looks like six unrelated thoughts, not a list.",
-  "blocks.4.text": "Try dashes in front too. Does it work? On screen — sort of. But you have not made a list. You have drawn something that looks like a list.",
-  "blocks.5.text": "And here is the difference",
-  "blocks.6.text": "The browser does not know this is a list. Google does not know. The program reading the page aloud will say \"dash, the music, dash, the story\" — like an idiot.",
-  "blocks.7.text": "You do not have the tool. The next lesson gives it to you.",
-  "blocks.8.text": "Remember this feeling — knowing what you want and having nothing to do it with. That is how every developer feels before learning the next thing."
+  "title": "Try to make a list",
+  "checkLabels.t1": "Did you even try",
+  "why.unchanged": "You did not touch the code. Try — that is the whole lesson. You will fail, and that is exactly why you will need the next one. Have a go with dashes, with spaces, with whatever comes to mind.",
+  "blocks.0.text": "The bike listing has to spell out what is included in the price. Four things: frame, front wheel, rear wheel, bell.",
+  "blocks.1.text": "You know paragraphs and you know <br>. So you can do this. Do it.",
+  "blocks.2.text": "Try on your own before you read on",
+  "blocks.3.text": "Put dashes in front. Spaces for indentation. Whatever comes to mind. Run it and look.",
+  "blocks.4.text": "Does it work? By the look of it — yes. It looks like a list. It has bullets, it sits neatly.",
+  "blocks.5.text": "Now try making one of the items a sub-item. Or number them and then reorder them. Or remove one from the middle. You will find every change is manual work — because this is not a list, it is text that looks like a list.",
+  "blocks.6.text": "What the problem actually is",
+  "blocks.7.text": "Your code says: \"here is a paragraph with dashes and line breaks\". It does not say \"here are four things of the same kind\".",
+  "blocks.8.text": "Google does not know it is a list. The screen reader will not say \"list of four items\". You cannot renumber them if you reorder them. And every dash you typed by hand.",
+  "blocks.9.text": "You drew a list. You did not make a list. The next lesson is about the difference."
 }

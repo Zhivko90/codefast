@@ -1,4 +1,4 @@
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/13-comments.json
+﻿// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/13-comments.json
 export default {
   id: 13,
   type: "web",
@@ -15,38 +15,21 @@ export default {
     <p>This one I am not sure about yet.</p>
   </body>
 </html>`,
-  expected: "<!--",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<!--", err: "no-comment" },
+    { id: "t2", type: "code_contains", value: "-->", err: "not-closed-comment" },
+    { id: "t3", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<!-- Тази част още не е готова -->"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<!-- <p>Maybe I will use this later.</p> -->"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "code", code: "<!-- Тази част още не е готова -->" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: "<!-- <p>Maybe I will use this later.</p> -->" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
   ],
   slug: "13-comments"
 };

@@ -6,111 +6,55 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>Order</title>
+    <title>Contact</title>
   </head>
   <body>
-    <h1>Order a bike</h1>
+    <h1>Ask about the bike</h1>
 
-    <form action="/order" method="post">
-      <p>Name:</p>
-      <input type="text" name="name">
+    <form action="/send" method="post">
+      <p>Your name:</p>
+      <input type="text" name="username">
 
-      <p>Email:</p>
+      <p>Your email:</p>
       <input type="text" name="email">
 
-      <p>Phone:</p>
+      <p>Your phone:</p>
       <input type="text" name="phone">
 
-      <p>How many:</p>
-      <input type="text" name="count">
-
-      <p>Pickup date:</p>
-      <input type="text" name="date">
-
-      <button>Order</button>
+      <button type="submit">Send</button>
     </form>
   </body>
 </html>`,
-  expected: "type=\"email\"",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "type=\"email\"", err: "no-email-type" },
+    { id: "t2", type: "code_contains", value: "type=\"tel\"", err: "no-tel-type" },
+    { id: "t3", type: "code_contains", value: "required", err: "no-required" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "code",
-      code: `<input type="email" name="email">
-<input type="tel" name="phone">
-<input type="number" name="count" min="1" max="10">
-<input type="date" name="date">`
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<h1>Order a bike</h1><p>Email:</p><input type=\"email\" value=\"ivan\" style=\"padding:4px;border:2px solid #c33;width:200px\"><br><small style=\"color:#c33\">↑ браузърът сам казва: липсва @</small><p>How many:</p><input type=\"number\" value=\"3\" min=\"1\" style=\"padding:4px;border:1px solid #999;width:80px\"><p>Pickup date:</p><input type=\"date\" style=\"padding:4px;border:1px solid #999\">",
-      height: 300,
-      url: "order.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<input type=\"email\" name=\"email\" required>"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<input type=\"email\" name=\"email\" placeholder=\"ivan@example.com\" required>"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "list", items: [undefined, undefined, undefined, undefined, undefined, undefined] },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<input type=\"email\" name=\"email\" required>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "57-inputs"
 };

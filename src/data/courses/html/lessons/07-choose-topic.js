@@ -6,10 +6,10 @@ export default {
   project: true,
   starterCode: "",
   checks: [
-    { id: "t1", type: "changed", value: "", err: "empty" },
-    { id: "t2", type: "code_contains", value: "<h1", err: "no-heading" },
-    { id: "t3", type: "code_contains", value: "</h1>", err: "not-closed" },
-    { id: "t4", type: "code_contains", value: "<p", err: "no-sentence" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_text_not_empty", value: "h1", err: "no-heading", weight: 50 },
+    { id: "t3", type: "dom_text_not_empty", value: "p", err: "no-sentence", weight: 40 },
   ],
   blocks: [
     { type: "text" },

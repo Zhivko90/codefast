@@ -1,8 +1,8 @@
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/12-attributes.json
+﻿// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/12-attributes.json
 export default {
   id: 12,
   type: "web",
-  label: "concept",
+  label: "coding",
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
@@ -14,54 +14,26 @@ export default {
     <p>Hover over this sentence and wait a second.</p>
   </body>
 </html>`,
-  expected: "lang=",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "lang=", err: "no-lang" },
+    { id: "t2", type: "code_contains", value: "<html lang", err: "wrong-place" },
+    { id: "t3", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "code",
-      code: "<p title=\"Extra information\">Hover over me</p>"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "code",
-      code: "<meta charset=\"UTF-8\">"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "code",
-      code: "<html lang=\"bg\">"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<p title=\"Extra information\">Hover over me</p>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<meta charset=\"UTF-8\">" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<html lang=\"bg\">" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
   ],
   slug: "12-attributes"
 };

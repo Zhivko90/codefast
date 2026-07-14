@@ -10,8 +10,14 @@ import Editor from '@monaco-editor/react';
 // ТРИ КОЛОНИ:  Условие | Редактор | Преглед
 // Вертикалната лента вляво пали и гаси колоните.
 //
-// Урокът и задачата ползват едно и също.
-// Разликата е само какво им подаваш.
+// ★ СТЪЛБАТА НА ПОДСКАЗКИТЕ (Cognitive Tutor, 4 нива):
+//   1. `why`    — симптомът. Показва се сам. Посока, не отговор.
+//   2. hints[0] — къде да гледаш.
+//   3. hints[1] — разработен пример. Подобен случай, не твоят.
+//   4. hints[2] — bottom-out. Какво да направиш. Но не готовият код.
+//
+// Ученикът дърпа стълбата сам. Не му се сипва отгоре.
+// Липсва ли ниво — бутонът изчезва. Не гърми.
 // ============================================
 
 const RAIL = 48;      // вертикалната лента
@@ -57,7 +63,7 @@ export default function WorkBench({
 
   onRun, onSubmit, onReset, canSubmit = true,
 
-  preview, result, checkLabels = {}, why, history = [], lang = 'bg',
+  preview, result, checkLabels = {}, why, hints = [], history = [], lang = 'bg',
 }) {
   const t = useTranslations('practice');
 
@@ -72,6 +78,8 @@ export default function WorkBench({
   const [leftW, setLeftW] = useState(null);            // null = още не е измерено
   const [prevW, setPrevW] = useState(380);
   const [botH, setBotH] = useState(200);
+
+  const [rungs, setRungs] = useState(0);               // колко стъпала от стълбата е дръпнал
 
   const wrap = useRef(null);
   const drag = useRef(null);
@@ -104,9 +112,9 @@ export default function WorkBench({
     return () => ro.disconnect();
   }, []);
 
-  // при предаване долният панел изскача
+  // при предаване долният панел изскача, а стълбата се прибира
   useEffect(() => {
-    if (result) { setShowBot(true); setBottom('result'); }
+    if (result) { setShowBot(true); setBottom('result'); setRungs(0); }
   }, [result]);
 
   const start = (which) => (e) => {
@@ -306,11 +314,11 @@ export default function WorkBench({
                     {bottom === 'result' ? t('result') : t('history')}
                   </span>
                   <div className="flex-1" />
-                 {result && bottom === 'result' && (
+                  {result && bottom === 'result' && (
                     <span className={`text-[12px] font-semibold px-2 ${result.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
                       {result.passed
                         ? '✓ ' + t('all_passed')
-                        : `${result.results.filter((r) => !r.ok).length} / ${result.results.length}`}
+                        : `${result.results.filter((r) => r.ok).length} / ${result.results.length}`}
                     </span>
                   )}
                   <button onClick={() => setShowBot(false)}
@@ -333,14 +341,27 @@ export default function WorkBench({
                           </div>
                         ))}
 
-                        {/* ★ ЗАЩО НЕ МИНА — безплатно */}
+                        {/* ★ ЗАЩО НЕ МИНА — безплатно.
+                            Стълбата: ученикът я дърпа, не му се сипва отгоре. */}
                         {!result.passed && why && (
                           <div className="mt-4 rounded-xl border border-rose-500/30 bg-rose-500/[0.07] p-4">
                             <p className="flex items-center gap-2 text-[13px] font-semibold text-rose-300 mb-2">
                               <span>✕</span> {t('why_failed')}
                             </p>
                             <p className="text-[13px] text-rose-100/80 leading-relaxed">{why}</p>
-                           
+
+                            {hints.slice(0, rungs).map((h, i) => (
+                              <p key={i} className="mt-3 pt-3 border-t border-rose-500/20 text-[13px] text-gray-300 leading-relaxed">
+                                {h}
+                              </p>
+                            ))}
+
+                            {rungs < hints.length && (
+                              <button onClick={() => setRungs((n) => n + 1)}
+                                className="mt-3 text-[12px] font-semibold text-sky-300 hover:text-sky-200 transition">
+                                {t('more_hint')} ({hints.length - rungs})
+                              </button>
+                            )}
                           </div>
                         )}
                       </>

@@ -1,6 +1,21 @@
 {
   "title": "Say something about yourself",
-  "testCase": "Did you add a sentence in a <p> below the heading?",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "The heading must still be there",
+  "checkLabels.t2": "There must be a paragraph",
+  "checkLabels.t3": "The paragraph must be closed",
+  "checkLabels.t4": "The sentence must be INSIDE the paragraph",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.lost-heading": "The heading is gone. The task is to ADD a sentence below it, not to replace it. Put <h1> back.",
+  "why.no-p": "The sentence is there, but it is bare text. The browser does not know it is a sentence — to it, these are just letters. Wrap it in <p>.",
+  "why.no-close": "You opened <p> but never closed it. </p> is missing.",
+  "why.empty-p": "The paragraph is there, but it is empty. Your sentence sits outside it.",
+
+  "hint2.empty-p": "Look at where </p> ends and where your sentence sits. One is after the other, but it should be inside.",
+  "hint3.empty-p": "Wrapping means: tag in front, text in the middle, tag behind. <p>HERE</p>, not <p></p>HERE.",
+
   "blocks.0.text": "The heading is done. Now you want a sentence below it — for example, what you do.",
   "blocks.1.text": "Try the naive way",
   "blocks.2.text": "Just write the sentence after </h1>. Press Enter, go to a new line, write it. Run.",

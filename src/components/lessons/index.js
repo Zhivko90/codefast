@@ -5,6 +5,7 @@ import SplitLesson from './SplitLesson';
 import QuizLesson from './QuizLesson';
 import PlaygroundLesson from './PlaygroundLesson';
 import WebLesson from './WebLesson';
+import ReviewLesson from './ReviewLesson';
 
 export const lessonViews = {
   text: TextLesson,
@@ -12,6 +13,7 @@ export const lessonViews = {
   quiz: QuizLesson,
   playground: PlaygroundLesson,
   web: WebLesson,
+  review: ReviewLesson,
 };
 
 // Разбира кой тип е урокът (по новото поле type, или по старите булеви полета).

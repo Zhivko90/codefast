@@ -1,6 +1,11 @@
 {
   "title": "The tag wants details",
-  "testCase": "Did you add a lang attribute to <html>?",
+  "checkLabels.t1": "There is a language attribute",
+  "checkLabels.t2": "On the right tag",
+  "checkLabels.t3": "Everything closed",
+  "why.no-lang": "There is no language attribute. It is nowhere visible — but Google reads it to know who to show the page to, and screen readers use it so they do not read one language with another's accent.",
+  "why.wrong-place": "The attribute is there, but not on the right tag. The language belongs to the whole page, not a part of it — so it lives on the opening <html>.",
+  "why.not-closed": "A tag is open and never closed.",
   "blocks.0.text": "So far your tags said one thing: what this is. A heading. A paragraph. A list. Sometimes, though, that is not enough.",
   "blocks.1.text": "Soon you will want a link. \"This is a link\" — fine, but where does it lead? Or an image. \"This is an image\" — which one exactly?",
   "blocks.2.text": "The attribute is the detail",

@@ -15,53 +15,29 @@ export default {
     <p>Sale! The new price is 18 leva.</p>
   </body>
 </html>`,
-  expected: "<del>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<del>", err: "no-del" },
+    { id: "t2", type: "code_contains", value: "</del>", err: "del-not-closed" },
+    { id: "t3", type: "code_not_contains", value: "the new price is 18 leva", err: "still-a-sentence" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<p>Price: <del>25 leva</del> <strong>18 leva</strong></p>"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "list", items: [undefined, undefined, undefined, undefined, undefined] },
+    { type: "text" },
+    { type: "code", code: "<p>Price: <del>25 leva</del> <strong>18 leva</strong></p>" },
     {
       type: "preview",
       html: "<h1>Bike for sale</h1><p>Price: <del>25 leva</del> <strong>18 leva</strong> <mark>sale</mark><br><small>Price excludes delivery.</small></p>",
       height: 150,
       url: "index.html"
     },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "21-formatting"
 };

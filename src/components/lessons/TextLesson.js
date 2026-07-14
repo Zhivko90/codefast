@@ -6,11 +6,11 @@ import { useAuth } from '@/lib/auth';
 import { markDone } from '@/lib/progress';
 
 // Курсът идва отвън. Не се предполага.
-export default function TextLesson({ lesson, course }) {
+export default function TextLesson({ lesson, course, onDone }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    markDone(user?.id, course, lesson.id);
+    markDone(user?.id, course, lesson.id).then(() => onDone?.());
   }, [course, lesson.id, user?.id]);
 
   return (

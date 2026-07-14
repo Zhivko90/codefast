@@ -6,41 +6,32 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>My page</title>
+    <title>My bike</title>
   </head>
   <body>
-    <h1>Why I like this game</h1>
-    <p>The music. The story. The characters. The world. The fights. The ending.</p>
+    <h1>Bike for sale</h1>
+
+    <p>What is included:</p>
+    <p>- Frame<br>
+    - Front wheel<br>
+    - Rear wheel<br>
+    - Bell</p>
   </body>
 </html>`,
+  checks: [
+    { id: "t1", type: "changed", value: "-", err: "unchanged" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
   ],
   slug: "25-mess"
 };

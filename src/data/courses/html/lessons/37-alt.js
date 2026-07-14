@@ -11,83 +11,43 @@ export default {
   <body>
     <h1>Bike for sale</h1>
 
+    <p>Here is a photo of it:</p>
+    <img src="/uroci/bike-missing.jpg">
+
     <p>Price: <strong>18 leva</strong></p>
-
-    <img src="/uroci/bike.jpg" alt="">
-
-    <p>See the detail:</p>
-
-    <img src="/uroci/bike2.jpg" alt="photo">
   </body>
 </html>`,
-  expected: "alt=\"",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "alt=", err: "no-alt" },
+    { id: "t2", type: "code_not_contains", value: "alt=\"\"", err: "empty-alt" },
+    { id: "t3", type: "code_not_contains", value: "alt=\"image", err: "useless-alt" },
+    { id: "t4", type: "code_not_contains", value: "alt=\"photo", err: "useless-alt" },
+    { id: "t5", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<h1>Bike for sale</h1><p>Price: <strong>18 leva</strong></p><img src=\"/uroci/nothing.jpg\" alt=\"Black bike, side view\"><p>See the detail:</p><img src=\"/uroci/nothing.jpg\" alt=\"Rear tyre and chain, close up\">",
-      height: 200,
-      url: "index.html"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<img src=\"/uroci/bike.jpg\" alt=\"Blue mountain bike, side view\">" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "list", items: [undefined, undefined, undefined] },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "37-alt"
 };

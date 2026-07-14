@@ -1,13 +1,16 @@
 {
   "title": "Choose what your site will be about",
-  "checkLabels.t1": "Did you write anything",
-  "checkLabels.t2": "Is there a heading",
-  "checkLabels.t3": "Is it closed",
-  "checkLabels.t4": "Is there a sentence under it",
+
+  "checkLabels.t1": "You must write something",
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t2": "There must be a heading with text in it",
+  "checkLabels.t3": "There must be a sentence under it",
+
   "why.empty": "The editor is empty. Nobody can tell you what to write — that is the whole point of this lesson. A topic. A heading. One sentence.",
+  "why.not-closed": "You opened a tag and never closed it. The browser does not know where the heading ends, so it will turn everything after it into a heading.",
   "why.no-heading": "You wrote something, but it is not a heading. Bare text is just text. To be a heading it has to be inside <h1>.",
-  "why.not-closed": "You opened <h1> and never closed it. The browser does not know where the heading ends, so it will turn everything after it into a heading.",
   "why.no-sentence": "The heading is there, but it is alone. The lesson asks for one sentence under it — why you chose the topic. That goes in <p>.",
+
   "blocks.0.text": "The lessons will teach you on someone else's example — a bicycle for sale. It is foreign on purpose: it can be broken, botched, taken apart. But six times through this course the editor will be empty and it will say \"your page\" above it. Then there is no example. There is only what you remember — and what you have already built.",
   "blocks.1.text": "So first decide what it is about",
   "blocks.2.text": "Your favourite game. Your dog. A band you listen to. Your team. Your grandmother's recipe. A film you have watched ten times. Anything — as long as you care about it.",

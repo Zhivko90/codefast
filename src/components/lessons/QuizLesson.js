@@ -7,15 +7,30 @@ import { useAuth } from '@/lib/auth';
 import { markDone } from '@/lib/progress';
 
 // Урокът идва СГЛОБЕН за езика.
-// question.q е низ. question.options е масив от НИЗОВЕ. question.explain е низ.
+// question.q, question.options[], question.explain, question.hint — низове.
 // В логиката остава само question.correct (номер).
+//
+// ПОТОК:
+//   1-ва грешка -> ✕ + hint (посока, НЕ отговор). Бутоните живи. Опитваш пак.
+//   2-ра грешка -> ✕ + верният отговор + explain. Въпросът влиза в опашката за накрая.
+//   няма hint   -> първата грешка веднага разкрива (стар режим, не гърми)
+//   накрая      -> сгрешените се задават пак, докато не ги минеш
+//
+// Резултатът брои само верните от първи опит в първия кръг.
 export default function QuizLesson({ lesson, course }) {
   const { user } = useAuth();
   const t = useTranslations('lesson');
 
-  const [qi, setQi] = useState(0);
+  const questions = lesson.questions ?? [];
+
+  const [queue, setQueue] = useState(() => questions.map((_, i) => i));
+  const [pos, setPos] = useState(0);
+  const [retry, setRetry] = useState([]);
+  const [round, setRound] = useState(1);
+
   const [chosen, setChosen] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [phase, setPhase] = useState('idle'); // idle | hint | reveal | correct
   const [score, setScore] = useState(0);
 
   const [leftWidth, setLeftWidth] = useState(null);
@@ -61,43 +76,68 @@ export default function QuizLesson({ lesson, course }) {
     document.body.style.userSelect = '';
   };
 
-  const questions = lesson.questions ?? [];
-  const question = questions[qi];
-  const isLast = qi === questions.length - 1;
-  const finished = qi >= questions.length;
+  const qIndex = queue[pos];
+  const question = questions[qIndex];
+  const finished = pos >= queue.length && retry.length === 0;
 
-  // куизът е минат, щом човек стигне до края
-// куизът е минат, щом човек стигне до края
   useEffect(() => {
     if (!finished) return;
     markDone(user?.id, course, lesson.id);
   }, [finished, course, lesson.id, user?.id]);
 
   const submit = () => {
-    if (chosen === null) return;
-    setChecked(true);
-    if (chosen === question.correct) setScore((s) => s + 1);
+    if (chosen === null || phase === 'correct' || phase === 'reveal') return;
+
+    if (chosen === question.correct) {
+      if (round === 1 && attempt === 0) setScore((s) => s + 1);
+      setPhase('correct');
+      return;
+    }
+
+    const hasHint = Boolean(question.hint);
+    if (attempt === 0 && hasHint) {
+      setPhase('hint');
+      setAttempt(1);
+      setChosen(null);
+      return;
+    }
+
+    setPhase('reveal');
+    if (round === 1 && !retry.includes(qIndex)) setRetry((r) => [...r, qIndex]);
   };
 
   const next = () => {
+    const nextPos = pos + 1;
+
+    if (nextPos >= queue.length && retry.length > 0) {
+      setQueue(retry);
+      setRetry([]);
+      setPos(0);
+      setRound((r) => r + 1);
+    } else {
+      setPos(nextPos);
+    }
+
     setChosen(null);
-    setChecked(false);
-    setQi((i) => i + 1);
+    setAttempt(0);
+    setPhase('idle');
   };
 
   if (finished) {
     return (
       <div className="w-full">
         <div className="h-[calc(100vh-56px)] min-h-[400px] flex flex-col items-center justify-center gap-4 border-t border-white/10">
-          <div className="text-5xl">🎉</div>
           <h1 className="text-2xl font-extrabold text-white">{t('quiz_done')}</h1>
-          <p className="text-gray-400">{t('quiz_score')} <span className="text-emerald-400 font-bold">{score} / {questions.length}</span></p>
+          <p className="text-gray-400">
+            {t('quiz_score')}{' '}
+            <span className="text-emerald-400 font-bold">{score} / {questions.length}</span>
+          </p>
         </div>
       </div>
     );
   }
 
-  const isCorrect = chosen === question.correct;
+  const locked = phase === 'correct' || phase === 'reveal';
 
   return (
     <div className="w-full">
@@ -113,23 +153,37 @@ export default function QuizLesson({ lesson, course }) {
         {/* ВЛЯВО: въпросът */}
         <div className="shrink-0 overflow-y-auto p-6 sm:p-8" style={{ width: leftWidth ?? '50%' }}>
           <p className="text-xs font-bold tracking-wider text-sky-300 mb-3">
-            {t('quiz_label').toUpperCase()} {qi + 1} / {questions.length}
+            {round > 1 ? t('quiz_again').toUpperCase() : t('quiz_label').toUpperCase()} {pos + 1} / {queue.length}
           </p>
           <p className="text-lg text-white leading-relaxed">{question.q}</p>
 
-          {/* обяснението се появява тук след отговор */}
-          {checked && (
-            <div className={`mt-6 rounded-xl border p-4 ${isCorrect ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-rose-500/30 bg-rose-500/5'}`}>
-              <p className={`font-semibold mb-2 ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}`}>
-                {isCorrect ? '✓ ' + t('quiz_correct') : '✕ ' + t('quiz_wrong')}
+          {phase === 'hint' && (
+            <div className="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
+              <p className="font-semibold mb-2 text-amber-300">✕ {t('quiz_wrong')}</p>
+              <p className="text-sm text-gray-300">{question.hint}</p>
+              <p className="text-xs text-gray-500 mt-3">{t('quiz_try_again')}</p>
+            </div>
+          )}
+
+          {phase === 'reveal' && (
+            <div className="mt-6 rounded-xl border border-rose-500/30 bg-rose-500/5 p-4">
+              <p className="font-semibold mb-2 text-rose-300">✕ {t('quiz_wrong')}</p>
+              <p className="text-sm text-gray-300 mb-2">
+                <span className="text-gray-400">{t('quiz_answer')} </span>
+                {question.options[question.correct]}
               </p>
-              {!isCorrect && (
-                <p className="text-sm text-gray-300 mb-2">
-                  <span className="text-gray-400">{t('quiz_answer')} </span>
-                  {question.options[question.correct]}
-                </p>
-              )}
-              <p className="text-sm text-gray-400"><span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}</p>
+              <p className="text-sm text-gray-400">
+                <span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}
+              </p>
+            </div>
+          )}
+
+          {phase === 'correct' && (
+            <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+              <p className="font-semibold mb-2 text-emerald-300">✓ {t('quiz_correct')}</p>
+              <p className="text-sm text-gray-400">
+                <span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}
+              </p>
             </div>
           )}
         </div>
@@ -152,15 +206,17 @@ export default function QuizLesson({ lesson, course }) {
           <div className="flex flex-col gap-3 max-w-xl">
             {question.options.map((opt, oi) => {
               let cls = 'border-white/10 hover:border-white/30';
-              if (checked && oi === question.correct) cls = 'border-emerald-500/60 bg-emerald-500/10';
-              else if (checked && oi === chosen) cls = 'border-rose-500/60 bg-rose-500/10';
-              else if (!checked && oi === chosen) cls = 'border-sky-500/60 bg-sky-500/10';
+
+              if (phase === 'reveal' && oi === question.correct) cls = 'border-emerald-500/60 bg-emerald-500/10';
+              else if (phase === 'reveal' && oi === chosen) cls = 'border-rose-500/60 bg-rose-500/10';
+              else if (phase === 'correct' && oi === chosen) cls = 'border-emerald-500/60 bg-emerald-500/10';
+              else if (!locked && oi === chosen) cls = 'border-sky-500/60 bg-sky-500/10';
 
               return (
                 <button
                   key={oi}
-                  onClick={() => !checked && setChosen(oi)}
-                  className={`text-left px-5 py-4 rounded-xl border text-sm text-gray-200 transition flex items-center gap-3 ${cls}`}
+                  onClick={() => !locked && setChosen(oi)}
+                  className={`text-left px-5 py-4 rounded-xl border text-sm text-gray-200 transition flex items-center gap-3 ${cls} ${locked ? 'cursor-default' : ''}`}
                 >
                   <span className={`w-4 h-4 rounded-full border shrink-0 ${oi === chosen ? 'border-sky-400 bg-sky-400/40' : 'border-white/30'}`} />
                   {opt}
@@ -171,7 +227,7 @@ export default function QuizLesson({ lesson, course }) {
 
           {/* бутоните */}
           <div className="mt-6 max-w-xl">
-            {!checked ? (
+            {!locked ? (
               <button
                 disabled={chosen === null}
                 onClick={submit}
@@ -181,7 +237,7 @@ export default function QuizLesson({ lesson, course }) {
               </button>
             ) : (
               <button onClick={next} className={`px-6 py-2.5 text-sm ${theme.button}`}>
-                {isLast ? t('quiz_done') : t('quiz_next')} ›
+                {t('quiz_next')} ›
               </button>
             )}
           </div>

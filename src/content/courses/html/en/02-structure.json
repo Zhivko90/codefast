@@ -1,6 +1,19 @@
 {
   "title": "Make it big",
-  "testCase": "Did you wrap the name in <h1> and </h1>?",
+
+  "checkLabels.g1": "The tags must be closed",
+  "checkLabels.t1": "You must open the tag",
+  "checkLabels.t2": "You must close it",
+  "checkLabels.t3": "The name must be INSIDE the tag",
+
+  "why.not-wrapped": "The tags are there, but they are in the wrong order or not closed. First <h1>, then the text, then </h1>. Exactly that order.",
+  "why.no-open": "There is still no tag. You cannot write \"make it big\" — you have to WRAP the name. In front of it goes <h1>.",
+  "why.no-close": "You opened the tag but never closed it. </h1> is missing. The slash says \"the heading ends here\" — without it the browser does not know how far it reaches.",
+  "why.empty-heading": "The tags are there, but the heading is empty. Your name is outside it.",
+
+  "hint2.empty-heading": "Look carefully at where </h1> ends and where your name sits. One is after the other, but it should be inside.",
+  "hint3.empty-heading": "Wrapping means: tag in front, text in the middle, tag behind. <h1>HERE</h1>, not <h1></h1>HERE.",
+
   "blocks.0.text": "Your name is there, but it is small. It sits like a random word on a blank sheet. But you want it to be a heading — large, bold, important.",
   "blocks.1.text": "First try on your own",
   "blocks.2.text": "Try to make it bigger. Seriously, try. You will not manage — and that is exactly the point.",

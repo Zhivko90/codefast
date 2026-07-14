@@ -11,75 +11,35 @@ export default {
   <body>
     <h1>Bike for sale</h1>
 
-    <p>Price: <strong>18 leva</strong></p>
-
-    <img src="bike.jpg">
+    <p>See also: <a href="C:\\Users\\me\\Desktop\\bikes\\contact.html">contact page</a></p>
   </body>
 </html>`,
-  expected: "/uroci/bike.jpg",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_not_contains", value: "c:\\", err: "local-path" },
+    { id: "t2", type: "code_contains", value: "href=\"contact.html\"", err: "not-relative" },
+    { id: "t3", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<img src=\"/uroci/bike.jpg\">"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<h1>Bike for sale</h1><p>Price: <strong>18 leva</strong></p><img src=\"/uroci/bike.jpg\" alt=\"Black bike, side view\" style=\"max-width:100%\">",
-      height: 260,
-      url: "index.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<a href=\"C:\\Users\\me\\Desktop\\bikes\\contact.html\">contact page</a>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<a href=\"contact.html\">contact page</a>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "list", items: [undefined, undefined, undefined] },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "34-paths"
 };

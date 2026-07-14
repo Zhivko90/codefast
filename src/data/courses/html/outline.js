@@ -7,7 +7,7 @@ export default {
     {
       id: 'intro',
       modules: [
-        { id: 'htmlbasic', lessons: ['01-intro', '02-structure', '03-role', '04-styled', '05-quiz', '06-first-code'] },
+        { id: 'htmlbasic', lessons: ['01-intro', '02-structure', '03-role', '04-styled', 'R1-review-basics', '05-quiz', '06-first-code'] },
         { id: 'docstruct', lessons: ['07-choose-topic', '08-skeleton', '09-title', '10-doctype', '11-charset', '12-attributes', '13-comments', '14-broken', '15-quiz-skeleton', '16-freehand'] },
       ],
     },

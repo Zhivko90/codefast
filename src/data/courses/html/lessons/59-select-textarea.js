@@ -6,100 +6,61 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>Order</title>
+    <title>Contact</title>
   </head>
   <body>
-    <h1>Order a bike</h1>
+    <h1>Ask about the bike</h1>
 
-    <form action="/order" method="post">
-      <label for="model">Model:</label>
+    <form action="/send" method="post">
+      <label for="username">Your name</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="model">Which bike</label>
       <input type="text" id="model" name="model">
 
-      <label for="msg">Your message:</label>
-      <input type="text" id="msg" name="msg">
+      <label for="message">Your message</label>
+      <input type="text" id="message" name="message">
 
-      <button>Order</button>
+      <button type="submit">Send</button>
     </form>
   </body>
 </html>`,
-  expected: "<select",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<select", err: "no-select" },
+    { id: "t2", type: "code_contains", value: "<option", err: "no-option" },
+    { id: "t3", type: "code_contains", value: "<textarea", err: "no-textarea" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "code",
-      code: `<label for="model">Model:</label>
+      code: `<label for="model">Which bike</label>
 <select id="model" name="model">
-  <option value="black">Black</option>
-  <option value="red">Red</option>
-  <option value="blue">Blue</option>
+  <option value="mountain">Mountain bike</option>
+  <option value="city">City bike</option>
 </select>`
     },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "code",
-      code: `<label for="msg">Your message:</label>
-<textarea id="msg" name="msg" rows="5"></textarea>`
+      code: `<label for="message">Your message</label>
+<textarea id="message" name="message" rows="5"></textarea>`
     },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<h1>Order a bike</h1><form style=\"font-family:sans-serif;font-size:13px\"><label>Model:</label><br><select style=\"padding:4px;width:150px\"><option>Black</option><option>Red</option><option>Blue</option></select><br><br><label>Your message:</label><br><textarea rows=\"4\" style=\"width:250px;padding:4px;border:1px solid #999\">Zdraveyte, iskam da vzema kolelото v sabota...</textarea></form>",
-      height: 280,
-      url: "order.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "code",
-      code: `<input type="radio" id="cash" name="pay" value="cash">
-<label for="cash">Cash</label>
-
-<input type="radio" id="card" name="pay" value="card">
-<label for="card">Card</label>`
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "59-select-textarea"
 };

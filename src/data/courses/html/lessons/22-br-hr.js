@@ -19,21 +19,17 @@ export default {
     Dobrich</p>
   </body>
 </html>`,
-  expected: "<br",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<br", err: "no-br" },
+    { id: "t2", type: "code_not_contains", value: "<p>12 rakovski", err: "split-into-p" },
+    { id: "t3", type: "code_not_contains", value: "<br><br>", err: "br-for-air" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
     {
       type: "code",
       code: `<p>Pickup address:<br>
@@ -47,30 +43,14 @@ Dobrich</p>`
       height: 190,
       url: "index.html"
     },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "heading" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "22-br-hr"
 };

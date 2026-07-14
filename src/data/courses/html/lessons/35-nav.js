@@ -10,82 +10,48 @@ export default {
   </head>
   <body>
     <p>
-      <a href="/index.html">Home</a> |
-      <a href="/price.html">Price</a> |
-      <a href="/contact.html">Contact</a>
+      <a href="index.html">Home</a> |
+      <a href="bikes.html">Bikes</a> |
+      <a href="contact.html">Contact</a>
     </p>
 
     <h1>Bike for sale</h1>
-
-    <p>Price: <strong>18 leva</strong></p>
   </body>
 </html>`,
-  expected: "<nav>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<nav", err: "no-nav" },
+    { id: "t2", type: "code_contains", value: "<ul", err: "no-list" },
+    { id: "t3", type: "code_not_contains", value: "</a> |", err: "manual-bars" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "code",
       code: `<nav>
   <ul>
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="/price.html">Price</a></li>
-    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="bikes.html">Bikes</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>`
     },
-    {
-      type: "preview",
-      html: "<nav><ul><li><a href=\"#\">Home</a></li><li><a href=\"#\">Price</a></li><li><a href=\"#\">Contact</a></li></ul></nav><h1>Bike for sale</h1><p>Price: <strong>18 leva</strong></p>",
-      height: 250,
-      url: "index.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
   ],
   slug: "35-nav"
 };

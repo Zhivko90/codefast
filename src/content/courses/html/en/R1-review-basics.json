@@ -1,0 +1,24 @@
+{
+  "title": "The basics",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "Tags and elements",
+  "groups.0.items.0.term": "Opening and closing tag",
+  "groups.0.items.0.def": "<h1> opens. </h1> closes. The slash says \"this is where it ends\". Forget it, and the browser guesses where the thing ends — and it usually guesses wrong.",
+  "groups.0.items.1.term": "Element",
+  "groups.0.items.1.def": "Opening tag + content + closing tag. The three together.",
+  "groups.0.items.2.term": "Wrapping",
+  "groups.0.items.2.def": "The text sits INSIDE the tag, not after it. <h1>Ivan</h1>, not <h1></h1>Ivan.",
+
+  "groups.1.title": "The tags you know",
+  "groups.1.items.0.term": "<h1>",
+  "groups.1.items.0.def": "Top-level heading. It does not mean \"big\" — it means \"important\". The size is the browser's call.",
+  "groups.1.items.1.term": "<p>",
+  "groups.1.items.1.def": "Paragraph. Without it, sentences glue into one line, no matter how many Enters you press.",
+
+  "groups.2.title": "What you are actually doing",
+  "groups.2.items.0.term": "You describe, you do not draw",
+  "groups.2.items.0.def": "You never say how big, what font, what colour. You only say what a thing IS. How it looks is the browser's call.",
+  "groups.2.items.1.term": "Blank lines do not exist",
+  "groups.2.items.1.def": "The Enters you see in your code are not there for the browser. If you want separation, you say so with a tag."
+}

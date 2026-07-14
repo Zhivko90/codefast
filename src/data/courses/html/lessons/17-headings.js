@@ -16,18 +16,17 @@ export default {
     <p>A friend showed it to me.</p>
   </body>
 </html>`,
-  expected: "<h2>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<h2", err: "no-h2" },
+    { id: "t2", type: "code_contains", value: "<h1", err: "no-h1" },
+    { id: "t3", type: "code_not_contains", value: "<h1>why i like it", err: "still-h1" },
+    { id: "t4", type: "code_not_contains", value: "<h1>how i started", err: "still-h1" },
+    { id: "t5", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "code",
       code: `<h1>Main title</h1>
@@ -35,24 +34,12 @@ export default {
 <h3>Subsection</h3>
 <h4>Even deeper</h4>`
     },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    }
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
   ],
   slug: "17-headings"
 };

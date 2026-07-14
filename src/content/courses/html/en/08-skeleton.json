@@ -1,6 +1,28 @@
 {
   "title": "The wrapper that was missing",
-  "testCase": "Did you wrap the content in <html>, <head> and <body>?",
+
+  "checkLabels.g1": "The code must be valid HTML",
+  "checkLabels.t1": "There must be an html wrapper",
+  "checkLabels.t2": "There must be a head",
+  "checkLabels.t3": "There must be a body",
+  "checkLabels.t4": "The content must still be there",
+  "checkLabels.t5": "The heading must be inside body",
+  "checkLabels.t6": "The sentence must be inside body",
+
+  "why.not-code": "There is not a single closed tag. Either you wrote something that is not HTML, or a tag is open and never closed.",
+  "why.no-html": "There is no wrapper. Everything on the page lives inside one tag — it wraps both the head and the body.",
+  "why.no-head": "There is no head. It is empty for now, and that is exactly why it is easy to skip. But in two lessons you will need it — the tab name and the encoding go there.",
+  "why.no-body": "There is no body. Everything a person sees lives inside it. Your heading and your sentence belong there.",
+  "why.lost-content": "The heading is gone. The task is to WRAP what you already have — not to delete it and start over.",
+  "why.content-in-head": "The wrapper is there, but something sits in the wrong half.",
+
+  "hint2.not-code": "Go top to bottom, tag by tag. Every opening tag is looking for its closing tag.",
+  "hint3.not-code": "Remember: head ends before body begins. They are siblings, not one inside the other. It is <head></head><body></body>.",
+
+  "hint2.content-in-head": "Look at what sits between <head> and </head>. That part is the invisible one — it holds information ABOUT the page, not the page itself.",
+  "hint3.content-in-head": "The skeleton in the lesson has an empty <head> and an empty <body>. Look at it again. Your heading and your sentence show up on screen — so where do they belong?",
+  "hint4.content-in-head": "Cut the two lines with h1 and p out of head. Put them between <body> and </body>.",
+
   "blocks.0.text": "So far you have written bare text with tags, and it worked. The browser is forgiving — it swallows whatever you give it and tries to show it.",
   "blocks.1.text": "But a real page has a wrapper. And it is not a formality.",
   "blocks.2.text": "Three parts",

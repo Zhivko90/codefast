@@ -1,6 +1,11 @@
 {
   "title": "Notes to yourself",
-  "testCase": "Did you add a comment to the code?",
+  "checkLabels.t1": "There is a comment",
+  "checkLabels.t2": "The comment is closed",
+  "checkLabels.t3": "Everything closed",
+  "why.no-comment": "There is no comment. Open one with <!-- and write whatever you like. Or comment out the second paragraph and watch it disappear.",
+  "why.not-closed-comment": "You opened a comment and never closed it. --> is missing. And this one is dangerous: everything after it vanishes from the page, and you will have no idea why.",
+  "why.not-closed": "A tag is open and never closed.",
   "blocks.0.text": "Sometimes you want to leave a note in the code — for yourself in a month, or for whoever reads it after you. But you do not want it on the page.",
   "blocks.2.text": "Everything between <!-- and --> disappears. The browser skips it as if it were not there.",
   "blocks.3.text": "The second use is the more useful one",

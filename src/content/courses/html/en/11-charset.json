@@ -1,6 +1,11 @@
 {
   "title": "Why the letters break",
-  "testCase": "Did you add <meta charset=\"UTF-8\"> to the <head>?",
+  "checkLabels.t1": "Did you say which alphabet you use",
+  "checkLabels.t2": "The alphabet is UTF-8",
+  "checkLabels.t3": "Everything closed",
+  "why.no-charset": "You have not told the browser which alphabet you use. It reads your numbers with the wrong dictionary — that is where the gibberish comes from. The tag goes in the <head>, at the very top, before <title>.",
+  "why.wrong-charset": "There is an encoding, but it is not UTF-8. That is the alphabet that holds everything: Cyrillic, Latin, Chinese, emoji. Today there is no reason to use anything else.",
+  "why.not-closed": "A tag is open and never closed.",
   "blocks.0.text": "Sooner or later you will write something in a language with special letters. And then you will see this:",
   "blocks.2.text": "Gibberish. The mess every beginner sees at least once and concludes they have broken something terrible.",
   "blocks.3.text": "What is actually happening",

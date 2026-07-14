@@ -15,94 +15,46 @@ export default {
     <p>Price & delivery: 18 leva</p>
   </body>
 </html>`,
-  expected: "&lt;",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "&lt;", err: "no-lt" },
+    { id: "t2", type: "code_contains", value: "&gt;", err: "no-gt" },
+    { id: "t3", type: "text_contains", value: "learned the <p> tag", err: "not-visible" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "code",
-      code: "<p>Today I learned the &lt;p&gt; tag and the &lt;strong&gt; tag.</p>"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "list", items: [undefined, undefined, undefined, undefined] },
+    { type: "code", code: "<p>Today I learned the &lt;p&gt; tag and the &lt;strong&gt; tag.</p>" },
     {
       type: "preview",
       html: "<h1>Bike for sale</h1><p>Today I learned the &lt;p&gt; tag and the &lt;strong&gt; tag.</p><p>Price &amp; delivery: 18&nbsp;leva</p>",
       height: 170,
       url: "index.html"
     },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: "<p>Today I learned the <code>&lt;p&gt;</code> tag.</p>"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
+    { type: "heading" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "code", code: "<p>Today I learned the <code>&lt;p&gt;</code> tag.</p>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
     {
       type: "code",
       code: `<pre><code>&lt;p&gt;First line&lt;/p&gt;
 &lt;p&gt;Second line&lt;/p&gt;</code></pre>`
     },
-    {
-      type: "text"
-    },
+    { type: "text" },
     {
       type: "preview",
       html: `<h1>Bike for sale</h1><p>Today I learned the <code style="background:#eee;padding:2px 4px;border-radius:3px">&lt;p&gt;</code> tag.</p><pre style="background:#eee;padding:10px;border-radius:4px;overflow-x:auto"><code>&lt;p&gt;First line&lt;/p&gt;
@@ -110,12 +62,8 @@ export default {
       height: 220,
       url: "index.html"
     },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "23-entities"
 };

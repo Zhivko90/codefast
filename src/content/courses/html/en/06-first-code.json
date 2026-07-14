@@ -1,6 +1,16 @@
 {
   "title": "Blank page",
-  "testCase": "Is there at least one heading and one paragraph on the page?",
+
+  "checkLabels.t1": "You must write something",
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t2": "There must be a heading with text in it",
+  "checkLabels.t3": "There must be a sentence with text in it",
+
+  "why.empty": "It is empty. I know. This is the moment where most people freeze — and there is no trick for it. Write anything at all. A name. A single letter. Code gets written by starting to write.",
+  "why.not-closed": "A tag is open and never closed. Every opening tag wants a closing one.",
+  "why.no-heading": "There is no heading with text in it. You know the tag. Wrap your name in it.",
+  "why.no-p": "There is a heading, but nothing under it. Who you are — that is the heading. What you do — that is the sentence.",
+
   "blocks.0.text": "The editor on the right is empty. There is nothing. Nothing to fix, no dashes to fill in, no code to copy.",
   "blocks.1.text": "This is the moment where most people freeze. You know everything you need — and still your fingers will not move. That is normal. You will live through it many more times.",
   "blocks.2.text": "Make a page about yourself",

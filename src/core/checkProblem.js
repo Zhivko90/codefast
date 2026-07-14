@@ -1,99 +1,97 @@
-// ============================================
-// ПРОВЕРКАТА на задача.
-//
-// Връща за всяка проверка: мина ли, и ако не — какъв е етикетът на грешката.
-// Етикетът води до обяснението „Защо не мина" в JSON-а.
-//
-// Меки проверки: интервали, главни букви и подредба не се наказват.
-// ============================================
+import {
+  removeHtmlComments,
+  norm,
+  parse,
+  rawHead,
+  rawBody,
+  visibleText,
+  balanced,
+} from './helpers';
 
-// какво вижда човек на екрана (без таговете)
-function visibleText(html) {
-  const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-  const inner = body ? body[1] : html;
-  return inner.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
-const norm = (s) => (s ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
-
-// Затворени ли са таговете, и то в правилен ред?
-// Стек: отворен таг влиза, затварящ трябва да срещне същия отгоре.
-// Затворени ли са таговете, и то в правилен ред?
-// Стек: отворен таг влиза, затварящ трябва да срещне същия отгоре.
-//
-// ⚠ Код БЕЗ тагове не е „балансиран" — той е празен.
-// Иначе `asdasdasd` минава проверката „всичко затворено" и това е фалшива похвала.
-function balanced(html) {
-  const VOID = new Set(['br', 'img', 'hr', 'input', 'meta', 'link', 'source', 'area', 'base', 'col', 'embed', 'track', 'wbr']);
-  const stack = [];
-  const re = /<\s*(\/?)\s*([a-zA-Z][a-zA-Z0-9]*)[^>]*?(\/?)\s*>/g;
-  let m;
-  let seen = 0;
-
-  while ((m = re.exec(html))) {
-    const closing = m[1] === '/';
-    const name = m[2].toLowerCase();
-    const selfClosed = m[3] === '/';
-    seen++;
-
-    if (VOID.has(name) || selfClosed) continue;
-
-    if (!closing) {
-      stack.push(name);
-    } else {
-      if (stack.length === 0) return false;      // затваря нещо, което не е отворено
-      if (stack.pop() !== name) return false;    // затваря в грешен ред
-    }
-  }
-
-  if (seen === 0) return false;                   // няма нито един таг
-  return stack.length === 0;                      // нищо не е останало отворено
-}
-
-// Пуска една проверка. Връща true/false.
 function runCheck(check, code) {
+  const clean = removeHtmlComments(code);
+  const doc = parse(code);
+  const v = check.value;
+
   switch (check.type) {
     case 'code_contains':
-      return norm(code).includes(norm(check.value));
+      return norm(clean).includes(norm(v));
 
     case 'code_not_contains':
-      return !norm(code).includes(norm(check.value));
+      return !norm(clean).includes(norm(v));
+
+    case 'dom_has':
+      return !!doc.querySelector(v);
+
+    case 'dom_text_not_empty': {
+      const el = doc.querySelector(v);
+      return !!el && el.textContent.trim() !== '';
+    }
+
+    case 'dom_not_has':
+      return !doc.querySelector(v);
+
+    case 'dom_count':
+      return doc.querySelectorAll(v).length >= (check.min ?? 1);
+
+    case 'dom_attr':
+      return Array.from(doc.querySelectorAll(v)).every(
+        (el) => (el.getAttribute(check.attr) ?? '').trim() !== ''
+      );
+
+    case 'raw_head_contains':
+      return norm(removeHtmlComments(rawHead(code))).includes(norm(v));
+
+   case 'raw_head_not_contains': {
+      const head = rawHead(code);
+      if (!head && !/<head[^>]*>/i.test(code)) return false;  // няма head → не е ✓
+      return !norm(removeHtmlComments(head)).includes(norm(v));
+    }
+
+    case 'raw_body_contains':
+      return norm(removeHtmlComments(rawBody(code))).includes(norm(v));
 
     case 'text_equals':
-      return norm(visibleText(code)) === norm(check.value);
+      return visibleText(code) === norm(v);
 
     case 'text_contains':
-      return norm(visibleText(code)).includes(norm(check.value));
+      return visibleText(code).includes(norm(v));
 
     case 'balanced':
       return balanced(code);
 
-    case 'changed':                               // просто е пипнал нещо
-      return norm(code) !== norm(check.value ?? '');
+    case 'changed':
+      return norm(code) !== norm(v ?? '');
 
     default:
       return false;
   }
 }
 
-// ГЛАВНАТА. Проверява цялата задача.
 export function checkProblem(problem, code) {
   const results = (problem.checks ?? []).map((c) => ({
     id: c.id,
     hidden: !!c.hidden,
     err: c.err,
+    weight: c.weight ?? 0,
+    guard: !!c.guard,
     ok: runCheck(c, code),
   }));
 
-  const passed = results.every((r) => r.ok);
+ const passed = results.every((r) => r.ok);
 
-  // първата паднала проверка дава етикета на грешката
-  const firstFail = results.find((r) => !r.ok);
+  // Не първата паднала — НАЙ-ТЕЖКАТА паднала.
+  // Счупен синтаксис бие всичко. Няма смисъл да говориш за семантика,
+  // докато таговете не се затварят.
+  // Няма weight → 0 → пада на реда. Старите уроци не се пипат.
+  const worst = results
+    .filter((r) => !r.ok)
+    .sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0))[0];
 
   return {
     passed,
     results,
-    failedCheck: firstFail?.id ?? null,
-    errorTag: firstFail?.err ?? null,
+    failedCheck: worst?.id ?? null,
+    errorTag: worst?.err ?? null,
   };
 }

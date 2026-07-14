@@ -58,5 +58,6 @@
 
   "reset_confirm": "Reset your code? Everything you wrote will be lost.",
   "reset_yes": "Yes, I know",
-  "reset_cancel": "Cancel"
+  "reset_cancel": "Cancel",
+  "more_hint": "More hint"
 }

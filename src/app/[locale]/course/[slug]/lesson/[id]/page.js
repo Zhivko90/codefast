@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useState } from 'react';
+import { use, useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, useRouter } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
@@ -8,6 +8,8 @@ import { theme } from '@/lib/theme';
 import { getLesson } from '@/core/getCourse';
 import { lessonViews, resolveType } from '@/components/lessons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useAuth } from '@/lib/auth';
+import { fetchProgress } from '@/lib/progress';
 
 // Курсът идва СГЛОБЕН за езика. Никъде няма [lang].
 
@@ -37,6 +39,20 @@ export default function LessonPage({ params }) {
 
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Кои уроци са РЕАЛНО минати. Не „кои са преди текущия".
+  const { user } = useAuth();
+  const [done, setDone] = useState(() => new Set());
+
+// Напредъкът се чете при зареждане И всеки път, когато урокът каже „минат".
+  // Без второто точката не позеленява, докато не презаредиш.
+  const refresh = () => fetchProgress(user?.id, slug).then(setDone);
+
+  useEffect(() => {
+    let alive = true;
+    fetchProgress(user?.id, slug).then((s) => { if (alive) setDone(s); });
+    return () => { alive = false; };
+  }, [user?.id, slug, id]);
 
   // ⚠ езикът се подава ТУК. Оттук надолу никой не знае кой език е.
   const data = getLesson(slug, id, lang);
@@ -130,12 +146,12 @@ export default function LessonPage({ params }) {
             </button>
 
             <div className="flex items-center">
-              {(module?.lessons ?? course.lessons).map((l, i) => {
+            {(module?.lessons ?? course.lessons).map((l, i) => {
                 const done = i < moduleIndex;
                 const current = i === moduleIndex;
                 return (
                   <div key={l.id} className="flex items-center">
-                    {i > 0 && <span className={`w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
+                  {i > 0 && <span className={`w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
                     <button onClick={() => go(l.id)} title={l.title}
                       className={`rounded-full transition-all duration-300 ${
                         current ? 'lesson-dot-current w-3.5 h-3.5 bg-gradient-to-br from-sky-400 to-emerald-400'
@@ -165,7 +181,7 @@ export default function LessonPage({ params }) {
       </div>
 
       <div className="flex-1 min-h-0">
-        <View lesson={lesson} lang={lang} course={slug} />
+        <View lesson={lesson} lang={lang} course={slug} onDone={refresh} />
       </div>
     </div>
   );

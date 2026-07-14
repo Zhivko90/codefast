@@ -1,4 +1,7 @@
 // ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/41-broken3.json
+//
+// Развалина. Проверките са СКРИТИ — смисълът е човек да ги намери сам.
+// Обяснението дава посока, не отговор.
 export default {
   id: 41,
   type: "web",
@@ -10,76 +13,39 @@ export default {
   </head>
   <body>
     <p>
-      <a href="/index.html">Home</a> |
-      <a href="">Contact</a>
+      <a href="index.html">Home</a> |
+      <a href="C:\\Users\\me\\Desktop\\contact.html">Contact</a>
     </p>
 
     <h1>Bike for sale</h1>
 
-    <p>Price: <strong>18 leva</strong></p>
+    <img src="/uroci/bike.jpg">
 
-    <img src="bike.jpg">
+    <p>More about this model: <a href="https://en.wikipedia.org/wiki/Bicycle">click here</a></p>
 
-    <p>Watch it in action:</p>
-
-    <video src="/uroci/bike.mp4" width="480"></video>
-
-    <p>See the model: https://en.wikipedia.org/wiki/Bicycle</p>
+    <iframe src="https://example.com"></iframe>
   </body>
 </html>`,
-  expected: "/uroci/bike.jpg",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "alt=", hidden: true, err: "mute-image" },
+    { id: "t2", type: "code_not_contains", value: "c:\\", hidden: true, err: "local-path" },
+    { id: "t3", type: "code_not_contains", value: ">click here<", hidden: true, err: "click-here" },
+    { id: "t4", type: "code_contains", value: "<nav", hidden: true, err: "no-nav" },
+    { id: "t5", type: "code_contains", value: "title=", hidden: true, err: "mute-iframe" },
+    { id: "t6", type: "balanced", hidden: true, err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "preview",
-      html: "<nav><ul><li><a href=\"#\">Home</a></li><li><a href=\"#\">Contact</a></li></ul></nav><h1>Bike for sale</h1><p>Price: <strong>18 leva</strong></p><img src=\"/uroci/bike.jpg\" alt=\"Black bike, side view\" style=\"max-width:100%\"><p>Watch it in action:</p><div style=\"width:100%;max-width:380px;height:90px;background:#222;color:#ccc;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:12px;border-radius:4px\">▶ video with controls</div><p>See the model: <a href=\"#\">Bicycle on Wikipedia</a></p>",
-      height: 420,
-      url: "index.html"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
   ],
   slug: "41-broken3"
 };

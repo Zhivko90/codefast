@@ -1,4 +1,4 @@
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/18-paragraphs.json
+﻿// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/18-paragraphs.json
 export default {
   id: 18,
   type: "web",
@@ -18,40 +18,23 @@ export default {
     Now I cannot stop.
   </body>
 </html>`,
-  expected: "<p>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<p>i started", err: "no-p-first" },
+    { id: "t2", type: "code_contains", value: "<p>a friend", err: "no-p-second" },
+    { id: "t3", type: "code_contains", value: "<p>now i cannot", err: "no-p-third" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "code",
-      code: "<p>I started playing three years ago.</p>"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<p>I started playing three years ago.</p>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
   ],
   slug: "18-paragraphs"
 };

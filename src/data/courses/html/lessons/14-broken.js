@@ -13,34 +13,26 @@ export default {
     <p>But what exactly?</p>
 
 </html>`,
-  expected: "Something is wrong here But what exactly?",
+  checks: [
+    { id: "t1", type: "code_contains", value: "</title>", err: "title-open" },
+    { id: "t2", type: "code_contains", value: "</head>", err: "head-open" },
+    { id: "t3", type: "code_contains", value: "</h1>", err: "h1-open" },
+    { id: "t4", type: "code_contains", value: "</body>", err: "body-open" },
+    { id: "t5", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "preview",
       html: "<h1>Something is wrong here</h1><p>But what exactly?</p>",
       height: 140
     },
-    {
-      type: "quote"
-    }
+    { type: "quote" },
   ],
   slug: "14-broken"
 };

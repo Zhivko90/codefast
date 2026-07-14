@@ -6,38 +6,32 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>My page</title>
+    <title>My bike</title>
   </head>
   <body>
-    <h1>My favourite game</h1>
-    <p>A reviewer said: This game will steal a year of your life.</p>
+    <h1>Bike for sale</h1>
+
+    <p>A friend of mine said: "This is the best bike I have ever ridden."</p>
   </body>
 </html>`,
-  expected: "<blockquote>",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<blockquote", err: "no-quote" },
+    { id: "t2", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "code",
-      code: "<blockquote>This game will steal a year of your life.</blockquote>"
+      code: `<blockquote>
+  <p>This is the best bike I have ever ridden.</p>
+</blockquote>`
     },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "29-quote"
 };

@@ -6,96 +6,41 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>My bike</title>
+    <title>Bike for sale</title>
   </head>
   <body>
     <h1>Bike for sale</h1>
 
-    <p>Price: <strong>18 leva</strong></p>
-
     <p>Watch it in action:</p>
-
-    <video src="/uroci/bike.mp4" width="480"></video>
-
-    <p>And this is the bell:</p>
-
-    <audio src="/uroci/bell.mp3"></audio>
   </body>
 </html>`,
-  expected: "controls",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<video", err: "no-video" },
+    { id: "t2", type: "code_contains", value: "controls", err: "no-controls" },
+    { id: "t3", type: "code_not_contains", value: "autoplay", err: "autoplay" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: `<video src="/uroci/bike.mp4" controls></video>
-
-<audio src="/uroci/bell.mp3" controls></audio>`
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<h1>Bike for sale</h1><p>Price: <strong>18 leva</strong></p><p>Watch it in action:</p><video src=\"/uroci/bike.mp4\" controls style=\"max-width:100%\"></video><p>And this is the bell:</p><audio src=\"/uroci/bell.mp3\" controls></audio>",
-      height: 330,
-      url: "index.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: `<video src="/uroci/bike.mp4" controls>
-  Your browser cannot play this video.
-</video>`
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "code",
-      code: "<video src=\"/uroci/bike.mp4\" controls poster=\"/uroci/bike.jpg\"></video>"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<video src=\"/uroci/bike.mp4\" controls></video>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "39-video-audio"
 };

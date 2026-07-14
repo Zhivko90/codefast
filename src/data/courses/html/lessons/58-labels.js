@@ -6,108 +6,56 @@ export default {
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>Order</title>
+    <title>Contact</title>
   </head>
   <body>
-    <h1>Order a bike</h1>
+    <h1>Ask about the bike</h1>
 
-    <form action="/order" method="post">
-      <p>Name:</p>
-      <input type="text" name="name">
+    <form action="/send" method="post">
+      <p>Your name:</p>
+      <input type="text" name="username" required>
 
-      <p>Email:</p>
-      <input type="email" name="email">
+      <p>Your email:</p>
+      <input type="email" name="email" required>
 
-      <p>How many:</p>
-      <input type="number" name="count">
-
-      <button>Order</button>
+      <button type="submit">Send</button>
     </form>
   </body>
 </html>`,
-  expected: "<label",
-  checkCode: true,
+  checks: [
+    { id: "t1", type: "code_contains", value: "<label", err: "no-label" },
+    { id: "t2", type: "code_contains", value: "for=", err: "not-tied" },
+    { id: "t3", type: "code_contains", value: "id=", err: "no-id" },
+    { id: "t4", type: "balanced", err: "not-closed" },
+  ],
   blocks: [
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "quote"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
     {
       type: "code",
-      code: `<label for="email">Email:</label>
-<input type="email" id="email" name="email">`
+      code: `<label for="username">Your name</label>
+<input type="text" id="username" name="username">`
     },
-    {
-      type: "text"
-    },
-    {
-      type: "list",
-      items: [
-        undefined,
-        undefined,
-        undefined
-      ]
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "preview",
-      html: "<h1>Order a bike</h1><form><label for=\"e\" style=\"cursor:pointer;text-decoration:underline dotted\">Email:</label><br><input type=\"email\" id=\"e\" style=\"padding:4px;border:1px solid #999;width:200px\"><div style=\"margin-top:14px;padding:8px;background:#efe;border:1px solid #9c9;font-family:sans-serif;font-size:12px\">Кликни върху „Email:\" отгоре.<br>Курсорът скача в полето.<br><br>Четецът казва: „Email, текстово поле\"</div></form>",
-      height: 260,
-      url: "order.html"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "code",
-      code: `<label>
-  Email:
-  <input type="email" name="email">
-</label>`
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "heading"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    },
-    {
-      type: "text"
-    }
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
   slug: "58-labels"
 };
