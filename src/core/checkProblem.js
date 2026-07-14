@@ -40,10 +40,23 @@ function runCheck(check, code, starter) {
     case 'dom_not_has':
       return !doc.querySelector(v);
 
-    // min и max. Без max „само едно <h1>" е неизразимо.
+    // min и max.
+    //
+    // ⚠ Подразбиращият се min зависи от това има ли max.
+    //
+    //   { value: "h1" }            → min 1. „Поне едно."   (както винаги е било)
+    //   { value: "h1", min: 2 }    → min 2.
+    //   { value: "br", max: 0 }    → min 0, max 0. „Нито едно."
+    //
+    // Ако min падаше на 1 винаги, { max: 0 } искаше n >= 1 && n <= 0 —
+    // невъзможно. Проверката падаше при ВСЕКИ отговор и урокът беше непроходим.
+    // Ако min падаше на 0 винаги, голото { value: "h1" } не искаше нищо
+    // и минаваше тихо, дори при нула заглавия.
     case 'dom_count': {
       const n = doc.querySelectorAll(v).length;
-      return n >= (check.min ?? 1) && n <= (check.max ?? Infinity);
+      const min = check.min ?? (check.max === undefined ? 1 : 0);
+      const max = check.max ?? Infinity;
+      return n >= min && n <= max;
     }
 
     case 'dom_attr':
@@ -69,13 +82,13 @@ function runCheck(check, code, starter) {
     case 'text_contains':
       return visibleText(code).includes(norm(v));
 
-      case 'text_not_contains':
+    case 'text_not_contains':
       return !visibleText(code).includes(norm(v));
 
     case 'balanced':
       return balanced(code);
 
-   // Няма value → сравнява със скелета. Празен редактор също пада.
+    // Няма value → сравнява със скелета. Празен редактор също пада.
     case 'changed':
       return norm(code) !== norm(v ?? starter ?? '');
 

@@ -1,13 +1,42 @@
 {
   "title": "A menu is not a paragraph with bars",
-  "checkLabels.t1": "There is navigation",
-  "checkLabels.t2": "The links are a list",
-  "checkLabels.t3": "No hand-typed separators",
-  "checkLabels.t4": "Everything closed",
-  "why.no-nav": "There is no navigation. Your code says \"here is a paragraph with three links\". It does not say \"here is the site's menu\". Wrap it in <nav>.",
-  "why.no-list": "The links are not a list. They are three things of one kind — which is exactly what a list is. And their order is not accidental, you chose it.",
-  "why.manual-bars": "You are separating the links with hand-typed bars. Remember the lesson about lists? You are drawing something again instead of saying it. Separators are CSS.",
-  "why.not-closed": "A tag is open and never closed.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "A menu: nav, list, links",
+  "checkLabels.t3": "The links have words",
+  "checkLabels.t4": "No hand-typed separators",
+  "checkLabels.t5": "The paragraph is gone",
+  "checkLabels.t6": "The links lead somewhere",
+  "checkLabels.t7": "The heading is still there",
+
+  "why.empty": "The editor is empty. You deleted the menu instead of fixing it. Bring the code back.",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "There are four levels nested here: <nav>, <ul>, <li>, <a>. Each one closes.",
+  "hint3.not-closed": "Whatever you opened last, you close first: <li><a>…</a></li>.",
+  "hint4.not-closed": "Three links means three <li> and three </li>. And one <a> and </a> inside each.",
+
+  "why.no-nav": "The menu is not a menu yet. Three things must nest: <nav> on the outside, a <ul> inside it, and an <li> with a link for each page. Miss any one of them and the code does not say \"this is the site's menu\".",
+  "hint2.no-nav": "Wrapping the paragraph in <nav> is not enough. The links must be in a list too.",
+  "hint3.no-nav": "<nav><ul><li><a href=\"index.html\">Home</a></li></ul></nav> — four tags, one inside the other. One menu item.",
+  "hint4.no-nav": "Delete the paragraph. In its place: <nav>, then a <ul>, then one <li> for each of the three links.",
+
+  "why.empty-link": "There is a link with no words in it. An empty link in a menu is the most useless thing on the page.",
+
+  "why.manual-bars": "The bars are still there. Remember the lesson about lists? You are drawing something again instead of saying it. Separators between menu items are CSS — not your job here.",
+  "hint2.manual-bars": "Search for the | character in your code. Not one should remain.",
+  "hint3.manual-bars": "You drew the bars because the links were glued together in one paragraph. Now each sits in its own <li> — nothing glues them.",
+  "hint4.manual-bars": "Remove the three | characters. The list separates the items on its own now.",
+
+  "why.still-p": "The old paragraph is still inside the <nav>. You do not wrap the mess — you replace it. A paragraph says \"this is text\"; a menu is not text, it is a list of links.",
+  "hint2.still-p": "Look for a <p> inside your <nav>. It does not belong there.",
+  "hint3.still-p": "<nav><p><a>…</a></p></nav> — that is a paragraph in a navigation. It should be a list in a navigation.",
+
+  "why.no-href": "A link in the menu has no address, or it is empty. A menu that leads nowhere is not a menu.",
+
+  "why.lost-h1": "The heading is gone. The task is the menu, not deleting things.",
+
   "blocks.0.text": "Your site now has several pages. It needs a menu, so a person can move between them.",
   "blocks.1.text": "You built it the obvious way: a paragraph with links and bars between them. Run it. It works. It looks like a menu.",
   "blocks.2.text": "But it is not a menu",

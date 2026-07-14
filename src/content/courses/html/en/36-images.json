@@ -1,13 +1,38 @@
 {
   "title": "The image",
-  "checkLabels.t1": "There is an image",
-  "checkLabels.t2": "It knows which one",
-  "checkLabels.t3": "No closing tag",
-  "checkLabels.t4": "Everything closed",
-  "why.no-img": "There is no image. The tag is <img>, and the path is /uroci/bike.jpg.",
-  "why.no-src": "The tag is there, but it does not say which image. Without src the browser does not know what to show.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There is an image",
+  "checkLabels.t3": "It knows which one",
+  "checkLabels.t4": "No closing tag",
+  "checkLabels.t5": "The path is right",
+  "checkLabels.t6": "The price is still there",
+
+  "why.empty": "The editor is empty. You deleted the listing instead of adding a photo. Bring the code back.",
+
+  "why.not-closed": "Some other tag is open and never closed. (<img> does not count — it has no closing twin.)",
+
+  "why.no-img": "There is no image. The tag is <img>.",
+  "hint2.no-img": "Put it where you say \"Here is a photo of it\" — right after that paragraph.",
+  "hint3.no-img": "<img src=\"path/to/file.jpg\"> — one tag, no closing.",
+  "hint4.no-img": "<img src=\"/uroci/bike.jpg\"> — that is all.",
+
+  "why.no-src": "The tag is there, but it does not say which image — or the src is empty. With no address the browser does not know what to show and leaves a hole.",
+  "hint2.no-src": "src is an attribute. It lives inside the tag, in quotes.",
+  "hint3.no-src": "An empty src=\"\" is the same as none at all. It points nowhere.",
+
   "why.closed-img": "You wrote </img>. There is no such thing. <img> wraps nothing — it simply places an image on the spot. A closing tag would be pointless.",
-  "why.not-closed": "Some other tag is open and never closed. (<img> does not count.)",
+  "hint2.closed-img": "Remember <br>. It has no closing twin either.",
+  "hint3.closed-img": "A closing tag only makes sense when something is being wrapped. What would the image be wrapping?",
+  "hint4.closed-img": "Delete the </img>. The tag ends where it ends — with a >.",
+
+  "why.wrong-path": "The path does not point at the image. It is at /uroci/bike.jpg.",
+  "hint2.wrong-path": "Check for a typo. And remember: capital letters matter on a server.",
+  "hint3.wrong-path": "Bike.JPG and bike.jpg are different files where the site lives. On your machine — they are not. That is where \"it works on mine\" comes from.",
+
+  "why.lost-price": "The price is gone. The task is to add an image, not to delete things.",
+
   "blocks.0.text": "The listing needs a photo. Otherwise nobody will look at it.",
   "blocks.1.text": "The tag",
   "blocks.3.text": "src comes from \"source\". It says which file to show.",

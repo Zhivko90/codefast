@@ -35,14 +35,14 @@ export default {
 
     { id: "t3", type: "dom_text_not_empty", value: "h1", err: "no-h1", weight: 200 },
     { id: "t4", type: "dom_count", value: "h1", min: 1, max: 1, err: "many-h1", weight: 190 },
-    { id: "t5", type: "dom_count", value: "div.big-title", max: 0, err: "still-fake", weight: 180 },
+    { id: "t5", type: "dom_not_has", value: "div.big-title", err: "still-fake", weight: 180 },
 
     { id: "t6", type: "dom_text_contains", value: "p", text: "1998", err: "no-p", weight: 170 },
     { id: "t7", type: "dom_text_contains", value: "p", text: "2026", err: "no-p-footer", weight: 160 },
-    { id: "t8", type: "dom_count", value: "div.text", max: 0, err: "still-fake", weight: 150 },
+    { id: "t8", type: "dom_not_has", value: "div.text", err: "still-fake", weight: 150 },
 
     { id: "t9", type: "dom_count", value: "ul li", min: 3, err: "no-list", weight: 140 },
-    { id: "t10", type: "dom_count", value: "div.menu-item", max: 0, err: "still-fake", weight: 130 },
+    { id: "t10", type: "dom_not_has", value: "div.menu-item", err: "still-fake", weight: 130 },
   ],
   blocks: [
     { type: "text" },

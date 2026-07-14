@@ -49,10 +49,10 @@ export default {
     { id: "t11", type: "dom_count", value: "nav a", min: 2, err: "nav-empty", weight: 120 },
     { id: "t12", type: "dom_count", value: "header h1", min: 1, err: "h1-outside", weight: 110 },
     { id: "t13", type: "dom_count", value: "main article", min: 1, err: "article-outside", weight: 105 },
-    { id: "t14", type: "dom_count", value: "main", max: 1, err: "many-main", weight: 100 },
+    { id: "t14", type: "dom_count", value: "main", min: 1, max: 1, err: "many-main", weight: 100 },
     { id: "t15", type: "dom_text_contains", value: "footer", text: "2026", err: "footer-empty", weight: 95 },
 
-    { id: "t16", type: "dom_count", value: "div", max: 0, err: "still-div", weight: 50 },
+    { id: "t16", type: "dom_not_has", value: "div", err: "still-div", weight: 50 },
   ],
   blocks: [
     { type: "text" },
