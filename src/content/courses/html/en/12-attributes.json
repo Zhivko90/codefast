@@ -5,20 +5,26 @@
   "checkLabels.t1": "There must be an image",
   "checkLabels.t2": "The image must have a src",
   "checkLabels.t3": "The image must have alt with text",
+  "checkLabels.t6": "alt must say something",
   "checkLabels.t4": "The heading must still be there",
+  "checkLabels.t5": "The sentence must still be there",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.no-img": "There is no image. The tag is img — it has no closing tag, because it has nothing to wrap.",
   "why.no-src": "The tag is there, but it does not say WHICH image. Without src the browser has nothing to show — you get a broken icon.",
   "why.no-alt": "There is no alt, or it is empty. A blind person reaches the image and their screen reader says... nothing. Google does not see the image either — it reads alt.",
-  "why.lost-content": "The heading is gone. You are adding an image, not deleting what you already have.",
+  "why.useless-alt": "You wrote \"photo\" or \"image\". The reader has already told the person there is an image there. You just repeated it. You did not tell them what IS SEEN on it.",
+  "why.lost-content": "Something is gone from the page. You are adding an image, not deleting what you already have.",
 
   "hint2.no-img": "The tag is img. Write it inside <body>, under the sentence.",
   "hint3.no-img": "img has no closing tag. Just <img ...> and that is it. See the example.",
   "hint2.no-src": "src says where the image is. The value is an address.",
   "hint3.no-src": "Look at the example — there is a working address there you can use.",
   "hint2.no-alt": "alt is the text that replaces the image. Describe what can be seen on it.",
-  "hint3.no-alt": "Do not write \"photo\" or \"image\". That says nothing. Write what IS on it: \"A red bicycle leaning against a wall\".",
+  "hint3.no-alt": "Do not write \"photo\". Write what IS on it: \"A red bicycle leaning against a wall\".",
+  "hint2.useless-alt": "If the image disappears and your text does not replace it — your alt is rubbish.",
+  "hint3.useless-alt": "Close your eyes. Someone is reading the page aloud to you. What do you need to hear to know what is there?",
+  "hint2.lost-content": "Compare with the original code. The heading and the sentence stay — the image gets ADDED below them.",
 
   "blocks.0.text": "So far your tags only said what a thing IS. A heading. A paragraph. But sometimes that is not enough.",
   "blocks.1.text": "An image. The tag says \"this is an image\". But WHICH image? From where? That does not fit into the tag's name.",
@@ -29,6 +35,6 @@
   "blocks.7.text": "src says where the file is. Without it there is nothing to show.",
   "blocks.8.text": "alt is the text that replaces the image when it cannot be seen. Slow internet. A broken address. Or — a blind person, whose screen reader cannot see a picture and reads only this.",
   "blocks.9.text": "What alt is NOT",
-  "blocks.10.text": "\"Do not write alt=\"photo\". The reader will say \"photo\" and the person will have understood nothing. Write what IS on it. If the image disappears and your text does not replace it — your alt is rubbish.\"",
+  "blocks.10.text": "\"Do not write alt=\"photo\". The reader has already told the person there is an image there — you are just repeating it. Write what IS on it. If the image disappears and your text does not replace it — your alt is rubbish.\"",
   "blocks.11.text": "\"Google does not see pictures. It reads alt. You write for the blind person — and the search engine wins too.\""
 }

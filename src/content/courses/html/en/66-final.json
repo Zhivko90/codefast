@@ -1,27 +1,140 @@
 {
   "title": "From a blank page",
+
   "checkLabels.t1": "Did you write anything",
+  "checkLabels.g1": "Everything closed",
   "checkLabels.t2": "A skeleton",
-  "checkLabels.t3": "Meaning",
-  "checkLabels.t4": "Main content",
-  "checkLabels.t5": "A bottom part",
-  "checkLabels.t6": "Media",
-  "checkLabels.t7": "Data",
-  "checkLabels.t8": "A form",
-  "checkLabels.t9": "Works on a phone",
-  "checkLabels.t10": "Everything closed",
+  "checkLabels.t3": "The page's language",
+  "checkLabels.t4": "A charset",
+  "checkLabels.t5": "A tab title",
+  "checkLabels.t6": "Works on a phone",
+  "checkLabels.t7": "A top part",
+  "checkLabels.t8": "Navigation",
+  "checkLabels.t9": "Main content",
+  "checkLabels.t10": "A bottom part",
+  "checkLabels.t11": "The main part is not empty",
+  "checkLabels.t12": "One main heading",
+  "checkLabels.t13": "The heading has text",
+  "checkLabels.t14": "At least two sections",
+  "checkLabels.t15": "The sections have names",
+  "checkLabels.t16": "There is something to read",
+  "checkLabels.t17": "No empty paragraph",
+  "checkLabels.t18": "A list",
+  "checkLabels.t19": "No empty list item",
+  "checkLabels.t20": "An image",
+  "checkLabels.t21": "The image points somewhere",
+  "checkLabels.t22": "The image is described",
+  "checkLabels.t23": "A table",
+  "checkLabels.t24": "The table has headers",
+  "checkLabels.t25": "The table has data",
+  "checkLabels.t26": "The headers are not empty",
+  "checkLabels.t27": "A form",
+  "checkLabels.t28": "The form knows where it goes",
+  "checkLabels.t29": "The form has fields",
+  "checkLabels.t30": "The fields have labels",
+  "checkLabels.t31": "The labels have text",
+  "checkLabels.t32": "The labels are tied",
+  "checkLabels.t33": "The fields have an id",
+  "checkLabels.t34": "The fields have a name",
+  "checkLabels.t35": "A real button",
+  "checkLabels.t36": "The button submits",
+  "checkLabels.t37": "No fake button",
+  "checkLabels.t38": "A link with words in it",
+  "checkLabels.t39": "The link leads somewhere",
+  "checkLabels.t40": "The link is not \"click here\"",
+  "checkLabels.t41": "The link is not \"кликни тук\"",
+
   "why.empty": "You will freeze. A blank file does that to everyone, including people who have done this for twenty years. The difference is that you now know what to do with the feeling. Write one tag. Any tag. Then the next.",
-  "why.no-skeleton": "There is no skeleton. The line at the top, the wrapper, the head, the body. You know them — you have written them five times from memory.",
-  "why.no-semantics": "There is no semantics. Your code works, but it says nothing. Go back and ask of each thing: what IS this, not what does it look like.",
-  "why.no-main": "There is no main content. If everything is equally important, nothing is.",
-  "why.no-footer": "There is no bottom part. The site just stops, with nothing to say that it has stopped.",
-  "why.no-media": "There is not a single image. A site of bare text is a document, not a site.",
-  "why.no-table": "There is no data. A comparison, a ranking, prices, specs — something that genuinely has rows and columns. Every topic has something to compare.",
-  "why.no-form": "There is no form. Your site only talks. Nothing listens.",
-  "why.no-viewport": "The line for the phone is missing. On a computer it will look flawless; on a phone it will be shrunk and unreadable. One line in the head — and it is fixed.",
+  "hint2.empty": "Do not think about the site. Think about the first line. It is the same in every file you have ever written.",
+
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order. Big page, many tags — start from the end and work back.",
+  "hint2.not-closed": "Lists and tables are the usual culprits. Every <li> wants its </li>. Every <tr> wants its </tr>.",
+
+  "why.no-skeleton": "There is no skeleton. The line at the top, the wrapper, the head, the body. You know them — you have written them five times from memory.",
+
+  "why.no-lang": "The page does not say what language it is in. A screen reader has to know how to pronounce it — otherwise it reads your words in the wrong voice.",
+
+  "why.no-charset": "There is no charset. Without it, letters outside the English alphabet turn into question marks.",
+
+  "why.no-title": "There is no tab title. Open ten tabs and you cannot tell which is which. Google cannot either.",
+
+  "why.no-viewport": "The line for the phone is missing. On a computer it will look flawless; on a phone it will be shrunk and unreadable. One line in the head — and it is fixed.",
+
+  "why.no-header": "There is no top part. Every page has something at the top — a name, a logo, navigation. Say that it is that.",
+
+  "why.no-nav": "There is no navigation. Even a one-page site has links — inside itself or out. Say which of them are navigation.",
+
+  "why.no-main": "There is no main content. If everything is equally important, nothing is.",
+
+  "why.no-footer": "There is no bottom part. The site just stops, with nothing to say that it has stopped.",
+
+  "why.empty-main": "The main content is empty. The tag is there, but there is nothing inside it.",
+
+  "why.no-h1": "There is not exactly one main heading. One — not zero, not three. It says what the WHOLE page is about.",
+
+  "why.empty-h1": "The heading is empty. An empty tag is not a heading.",
+
+  "why.no-h2": "There are not two sections. A whole page with no sub-headings is a wall of text nobody walks through.",
+
+  "why.empty-h2": "There is an empty sub-heading. A section with no name is not a section.",
+
+  "why.no-text": "There is not enough text. Headings with nothing under them are a table of contents, not a site.",
+
+  "why.empty-p": "There is an empty paragraph. Either put text in it or remove it.",
+
+  "why.no-list": "There is no list. Every topic has something to count — reasons, steps, parts, favourites.",
+
+  "why.empty-li": "There is an empty item in the list.",
+
+  "why.no-media": "There is not a single image. A site of bare text is a document, not a site.",
+
+  "why.no-src": "The image points nowhere — the src is empty or missing.",
+
+  "why.no-alt": "An image with no description. You know what is in it. Google does not. A blind person does not. And neither will you in six months, when the file breaks and only a small box is left.",
+  "hint2.no-alt": "alt=\"\" is not a description. An empty attribute slips past the eye and tells no one anything.",
+  "hint3.no-alt": "Close your eyes and describe the picture to someone on the phone. That is the alt.",
+
+  "why.no-table": "There is no data. A comparison, a ranking, prices, specs — something that genuinely has rows and columns. Every topic has something to compare.",
+
+  "why.no-th": "The table has no headers. Without them a blind person hears the numbers without knowing what any of them are.",
+
+  "why.empty-table": "The table is empty. It has a frame and no data.",
+
+  "why.empty-th": "There is an empty column header. A column with no name is a column of numbers with no meaning.",
+
+  "why.no-form": "There is no form. Your site only talks. Nothing listens.",
+
+  "why.no-action": "The form does not know where to send the data. The address does not have to exist — it just has to be there.",
+
+  "why.no-fields": "The form is empty. There is nothing to fill in.",
+
+  "why.no-label": "The fields have no labels. Text above a field is not a label. Neither is a placeholder — it vanishes the moment someone starts typing.",
+
+  "why.empty-label": "There is an empty label.",
+
+  "why.label-not-tied": "The labels do not know which field they belong to. Being close on screen is not a connection.",
+  "hint2.label-not-tied": "The label has a for. The field has an id. The same word on both sides.",
+  "hint3.label-not-tied": "Test it: click the label. If the cursor jumps into the field — it is tied.",
+
+  "why.no-id": "One or more fields have no id. With no id, the label has nothing to fasten to.",
+
+  "why.no-name": "One or more fields have no name. A field with no name arrives nowhere — the server drops it silently.",
+
+  "why.no-button": "There is no real button with a word in it.",
+
+  "why.no-submit": "The button does not say what it does. It is missing its type.",
+
+  "why.fake-button": "There is something built to look like a button without being one. Tab will never reach it.",
+
+  "why.no-link": "There is not a single link with words in it. A site with no links is a dead end.",
+
+  "why.no-href": "The link leads nowhere — the href is empty or missing.",
+
+  "why.click-here": "You wrote \"click here\". Take that word out of the sentence and read it alone: \"here\". Where? A blind person often skims ONLY the links — their computer pulls them into a list. If they all say \"here\", they know where none of them lead.",
+  "hint2.click-here": "A link's words must say what is on the other side, even when read outside their sentence.",
+
   "blocks.0.text": "An empty editor. The last time.",
-  "blocks.1.text": "No instructions. No steps. No hints about how many things to include.",
+  "blocks.1.text": "No instructions. No steps. The list of checks is all you get — and it tells you WHAT, never HOW.",
   "blocks.2.text": "The task",
   "blocks.3.text": "Build the site for your topic. The whole thing. The kind you would show someone.",
   "blocks.4.text": "That is all.",

@@ -1,22 +1,26 @@
 {
   "title": "A note for you in six months",
 
+  "checkLabels.t0": "You must write something",
   "checkLabels.g1": "All tags must be closed",
   "checkLabels.t1": "There must be a comment",
   "checkLabels.t2": "The comment must be closed",
   "checkLabels.t3": "The heading must still be there",
+  "checkLabels.t5": "The sentence must still be there",
   "checkLabels.t4": "The image must still be there",
 
+  "why.empty": "The editor is empty. You deleted the page instead of leaving yourself a note in it. Bring the code back.",
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.no-comment": "There is no comment. The syntax is odd and hard to remember: <!-- in front, --> behind.",
   "why.not-closed-comment": "You opened the comment but never closed it. --> is missing. An unclosed comment eats everything after it — the whole page disappears.",
-  "why.lost-content": "The heading is gone. You are adding a comment, not deleting the page.",
+  "why.lost-content": "Something is gone from the page. You are adding a comment, not deleting. And careful: you may have commented it out — and commented code does not exist.",
   "why.lost-img": "The image is gone. You may have commented it out. Commented code does not exist — to the browser it is not there.",
 
   "hint2.no-comment": "The syntax is <!-- text -->. See the example.",
   "hint3.no-comment": "Put it somewhere in <body>, before the image for instance.",
   "hint2.not-closed-comment": "--> is missing. Look at where your comment ends.",
   "hint3.not-closed-comment": "Without the closing --> the browser thinks the comment runs to the end of the file. And eats everything.",
+  "hint2.lost-content": "Check that nothing ended up INSIDE the comment. Between <!-- and --> nothing exists.",
   "hint2.lost-img": "Check the image did not end up INSIDE the comment. Between <!-- and --> nothing exists.",
 
   "blocks.0.text": "Your code is getting long. Five or six lines doing different things. Today it is all clear to you.",

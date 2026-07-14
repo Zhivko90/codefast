@@ -19,9 +19,9 @@ export default {
     { id: "t1", type: "dom_has", value: "img", err: "no-img", weight: 60 },
     { id: "t2", type: "dom_attr", value: "img", attr: "src", err: "no-src", weight: 50 },
     { id: "t3", type: "dom_attr", value: "img", attr: "alt", err: "no-alt", weight: 40 },
+    { id: "t6", type: "dom_not_has", value: "img[alt*='снимка' i], img[alt*='картинка' i], img[alt*='изображение' i], img[alt*='photo' i], img[alt*='image' i]", err: "useless-alt", weight: 35 },
     { id: "t4", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 30 },
     { id: "t5", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 28 },
-    { id: "t6", type: "dom_not_has", value: "img[alt*='снимка' i], img[alt*='картинка' i], img[alt*='photo' i], img[alt*='image' i]", err: "useless-alt", weight: 35 },
   ],
   blocks: [
     { type: "text" },

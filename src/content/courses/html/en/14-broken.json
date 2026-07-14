@@ -1,21 +1,25 @@
 {
   "title": "The ruin",
 
+  "checkLabels.t0": "You must write something",
   "checkLabels.g1": "Hidden test",
-  "checkLabels.t1": "Hidden test",
-  "checkLabels.t2": "Hidden test",
-  "checkLabels.t3": "Hidden test",
-  "checkLabels.t4": "Hidden test",
+  "checkLabels.t1": "The tab title is there",
+  "checkLabels.t2": "The heading is there",
+  "checkLabels.t3": "Both paragraphs are there",
+  "checkLabels.t5": "The paragraphs are not empty",
+  "checkLabels.t4": "The image is there",
+
+  "why.empty": "The editor is empty. Deleting is not fixing — it is running away. Bring the code back.",
 
   "why.not-closed": "Something is open and never closed. Go top to bottom, tag by tag.",
+  "hint2.not-closed": "Four tags are open and never closed. That is all I am telling you.",
+  "hint3.not-closed": "Run it and look at the result. The browser tried to clean up the mess for you — look at HOW it cleaned it. That is your clue: the swallowed text shows you where a closing tag is missing.",
+  "hint4.not-closed": "Go through the code top to bottom. For every opening tag, hunt for its closing one with your eyes. The first one you cannot find — that is it.",
+
   "why.lost-title": "The tab title is gone. The task is to CLOSE the tags, not delete them.",
   "why.lost-h1": "The heading is gone. The task is to CLOSE the tags, not delete them.",
-  "why.lost-p": "One of the paragraphs is gone. There were two. The task is to close them, not remove them.",
+  "why.lost-p": "A paragraph is gone or empty. There were two, with text in them. The task is to close them, not remove them.",
   "why.lost-img": "The image is gone. The task is to CLOSE the tags, not delete them.",
-
-  "hint2.not-closed": "Four tags are open and never closed. Find them.",
-  "hint3.not-closed": "Start from the head. Look at <title>. Does it ever reach </title>? Then go down into the body.",
-  "hint4.not-closed": "Missing: </title>, </h1> and both </p>. Now put them where they belong.",
 
   "blocks.0.text": "Here is code someone wrote in a hurry. It works. Almost.",
   "blocks.1.text": "Four tags are open and never closed. I will not tell you which.",

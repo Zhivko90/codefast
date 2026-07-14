@@ -5,16 +5,20 @@
   "checkLabels.t1": "There must be a title",
   "checkLabels.t2": "title must be inside head",
   "checkLabels.t3": "title must have text in it",
+  "checkLabels.t4": "The heading must still be there",
+  "checkLabels.t5": "The sentence must still be there",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.no-title": "The tab still says \"index.html\". Nobody bookmarks a tab like that. Give the page a name.",
   "why.title-not-in-head": "The title is there, but not in head. In body the browser moves it for you, but your code is lying — and some tools will miss it.",
   "why.empty-title": "The tag is there, but it is empty. The tab will stay nameless.",
+  "why.lost-content": "Something is gone from the page. You are naming the tab, not deleting content. The heading and the sentence stay.",
 
   "hint2.no-title": "The tag is title. It goes inside <head>, exactly as you saw in the example.",
   "hint2.title-not-in-head": "Look at where you put it. Is it between <head> and </head>, or between <body> and </body>?",
   "hint3.title-not-in-head": "<title> is information ABOUT the page — what it is called. So its place is in the invisible half.",
   "hint2.empty-title": "There must be text between <title> and </title>. <title>My page</title>, not <title></title>.",
+  "hint2.lost-content": "Compare with the original code. The heading and the sentence must be inside <body>.",
 
   "blocks.0.text": "Look at the browser tab above. What does it say?",
   "blocks.1.text": "\"index.html\". Or nothing. Or some path to a file. Nobody bookmarks a tab like that. Nobody finds it later among twenty others.",

@@ -16,10 +16,12 @@ export default {
   </body>
 </html>`,
   checks: [
+    { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
     { id: "t1", type: "code_contains", value: "<!--", err: "no-comment", weight: 60 },
     { id: "t2", type: "code_contains", value: "-->", err: "not-closed-comment", weight: 50 },
     { id: "t3", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 40 },
+    { id: "t5", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 35 },
     { id: "t4", type: "dom_has", value: "img", err: "lost-img", weight: 30 },
   ],
   blocks: [

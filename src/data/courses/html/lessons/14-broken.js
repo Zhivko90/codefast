@@ -1,4 +1,7 @@
 // ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/14-broken.json
+//
+// Развалината. Проверките са СКРИТИ.
+// ⚠ Пазачите (t1–t4) НЕ са скрити — те не са загадка, а спирачка срещу триене.
 export default {
   id: 14,
   type: "web",
@@ -17,11 +20,13 @@ export default {
   </body>
 </html>`,
   checks: [
+    { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "g1", type: "balanced", hidden: true, err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "dom_text_not_empty", value: "title", hidden: true, err: "lost-title", weight: 60 },
-    { id: "t2", type: "dom_text_not_empty", value: "h1", hidden: true, err: "lost-h1", weight: 50 },
-    { id: "t3", type: "dom_count", value: "p", min: 2, hidden: true, err: "lost-p", weight: 40 },
-    { id: "t4", type: "dom_has", value: "img", hidden: true, err: "lost-img", weight: 30 },
+    { id: "t1", type: "dom_text_not_empty", value: "title", err: "lost-title", weight: 60 },
+    { id: "t2", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 50 },
+    { id: "t3", type: "dom_count", value: "p", min: 2, err: "lost-p", weight: 40 },
+    { id: "t5", type: "dom_text_not_empty", value: "p", err: "lost-p", weight: 38 },
+    { id: "t4", type: "dom_attr", value: "img", attr: "src", err: "lost-img", weight: 30 },
   ],
   blocks: [
     { type: "text" },

@@ -1,308 +1,8 @@
 ﻿
-===== LOGIC: 09-title.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/09-title.json
+===== LOGIC: 13-comments.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/13-comments.json
 export default {
-  id: 9,
-  type: "web",
-  label: "coding",
-  starterCode: `<html>
-  <head>
-  </head>
-  <body>
-    <h1>My favourite game</h1>
-    <p>I have been playing it for three years.</p>
-  </body>
-</html>`,
-  checks: [
-    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "code_contains", value: "<title", err: "no-title", weight: 60 },
-    { id: "t2", type: "raw_head_contains", value: "<title", err: "title-not-in-head", weight: 50 },
-    { id: "t3", type: "dom_text_not_empty", value: "title", err: "empty-title", weight: 10 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "code", code: `<head>
-  <title>Моят велосипед за продан</title>
-</head>` },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "quote" },
-  ],
-  slug: "09-title"
-};
-===== BG: 09-title.json =====
-{
-  "title": "Името на таба",
-
-  "checkLabels.g1": "Всички тагове трябва да са затворени",
-  "checkLabels.t1": "Трябва да има title",
-  "checkLabels.t2": "title трябва да е в head",
-  "checkLabels.t3": "title трябва да има текст в него",
-
-  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "why.no-title": "Табът още се казва „index.html\". Никой не запазва такъв таб. Дай на страницата име.",
-  "why.title-not-in-head": "Заглавието е там, но не е в head. В body браузърът го премества сам, но кодът ти лъже — а някои инструменти ще го пропуснат.",
-  "why.empty-title": "Тагът е там, но е празен. Табът ще си остане без име.",
-
-  "hint2.no-title": "Тагът е title. Влиза вътре в <head>, точно както го видя в примера.",
-  "hint2.title-not-in-head": "Погледни къде си го сложил. Между <head> и </head> ли е, или между <body> и </body>?",
-  "hint3.title-not-in-head": "<title> е информация ЗА страницата — как се казва. Значи мястото му е в невидимата част.",
-  "hint2.empty-title": "Между <title> и </title> трябва да има текст. <title>Моята страница</title>, не <title></title>.",
-
-  "blocks.0.text": "Погледни таба на браузъра горе. Какво пише?",
-  "blocks.1.text": "„index.html“. Или нищо. Или някакъв път към файл. Никой не запазва такъв таб. Никой не го намира после сред двайсетте други.",
-  "blocks.2.text": "Празната глава вече е нужна",
-  "blocks.3.text": "Помниш ли <head> — частта, която не се вижда? Досега стоеше празна и изглеждаше безсмислена. Ето първото нещо, което влиза в нея.",
-  "blocks.5.text": "Пусни. Табът горе се сменя. Кодът на страницата не се е променил с нищо видимо — но нещо се промени.",
-  "blocks.6.text": "Кой чете това",
-  "blocks.7.text": "Табът. Отметките. Историята. Резултатът в Google — синият ред, на който хората кликат. Всичко това чете <title>.",
-  "blocks.8.text": "Никой от тези не гледа страницата ти. Те четат само тази една дума в главата.",
-  "blocks.9.text": "„Не пиша HTML за браузъра. Пиша го за онези, които не гледат екрана.“"
-}
-===== EN: 09-title.json =====
-{
-  "title": "The name of the tab",
-
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be a title",
-  "checkLabels.t2": "title must be inside head",
-  "checkLabels.t3": "title must have text in it",
-
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-title": "The tab still says \"index.html\". Nobody bookmarks a tab like that. Give the page a name.",
-  "why.title-not-in-head": "The title is there, but not in head. In body the browser moves it for you, but your code is lying — and some tools will miss it.",
-  "why.empty-title": "The tag is there, but it is empty. The tab will stay nameless.",
-
-  "hint2.no-title": "The tag is title. It goes inside <head>, exactly as you saw in the example.",
-  "hint2.title-not-in-head": "Look at where you put it. Is it between <head> and </head>, or between <body> and </body>?",
-  "hint3.title-not-in-head": "<title> is information ABOUT the page — what it is called. So its place is in the invisible half.",
-  "hint2.empty-title": "There must be text between <title> and </title>. <title>My page</title>, not <title></title>.",
-
-  "blocks.0.text": "Look at the browser tab above. What does it say?",
-  "blocks.1.text": "\"index.html\". Or nothing. Or some path to a file. Nobody bookmarks a tab like that. Nobody finds it later among twenty others.",
-  "blocks.2.text": "The empty head is needed now",
-  "blocks.3.text": "Remember <head> — the part that is not visible? So far it sat empty and looked pointless. Here is the first thing that goes into it.",
-  "blocks.5.text": "Run. The tab above changes. Nothing visible in the page has changed — but something did.",
-  "blocks.6.text": "Who reads this",
-  "blocks.7.text": "The tab. Bookmarks. History. The Google result — the blue line people click on. All of them read <title>.",
-  "blocks.8.text": "None of them looks at your page. They read only this one word in the head.",
-  "blocks.9.text": "\"I do not write HTML for the browser. I write it for those who do not look at the screen.\""
-}
-===== LOGIC: 10-doctype.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/10-doctype.json
-export default {
-  id: 10,
-  type: "web",
-  label: "coding",
-  starterCode: `<html>
-  <head>
-    <title>My favourite game</title>
-  </head>
-  <body>
-    <h1>My favourite game</h1>
-    <p>I have been playing it for three years.</p>
-  </body>
-</html>`,
-  checks: [
-    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "code_contains", value: "<!doctype html", err: "no-doctype", weight: 60 },
-    { id: "t2", type: "code_contains", value: "<meta", err: "no-meta", weight: 50 },
-    { id: "t3", type: "raw_head_contains", value: "charset", err: "charset-not-in-head", weight: 40 },
-    { id: "t4", type: "dom_text_not_empty", value: "title", err: "lost-title", weight: 30 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "code", code: `<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Моят велосипед за продан</title>
-  </head>` },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "quote" },
-  ],
-  slug: "10-doctype"
-};
-===== BG: 10-doctype.json =====
-{
-  "title": "Двата реда, които всички пишат",
-
-  "checkLabels.g1": "Всички тагове трябва да са затворени",
-  "checkLabels.t1": "Трябва да има DOCTYPE",
-  "checkLabels.t2": "Трябва да има meta",
-  "checkLabels.t3": "charset трябва да е в head",
-  "checkLabels.t4": "Заглавието на таба трябва да е още там",
-
-  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "why.no-doctype": "Няма DOCTYPE. Без него браузърът включва режим за древни сайтове и някои неща почват да се държат странно.",
-  "why.no-meta": "Няма meta с кодировка. Кирилицата ще излезе като въпросителни или йероглифи на чужд компютър.",
-  "why.charset-not-in-head": "Кодировката е там, но не е в head. Тя трябва да е ПЪРВОТО нещо — браузърът я чете, преди да е стигнал до текста. Сложиш ли я в body, вече е късно.",
-  "why.lost-title": "Заглавието на таба изчезна. Добавяш два реда, не триеш стари.",
-
-  "hint2.no-doctype": "DOCTYPE е първият ред на файла. Преди <html>, не вътре в него.",
-  "hint3.no-doctype": "Точният ред е <!DOCTYPE html>. Виж примера.",
-  "hint2.no-meta": "Тагът е meta. Той няма затварящ — това е void елемент.",
-  "hint3.no-meta": "Влиза в <head>, преди <title>. Виж примера.",
-  "hint2.charset-not-in-head": "Погледни къде си я сложил. Между <head> и </head> ли е?",
-  "hint3.charset-not-in-head": "Браузърът чете главата, преди да стигне до тялото. Ако кодировката е долу, той вече е прочел текста грешно.",
-
-  "blocks.0.text": "Отвори произволен сайт. Десен бутон, „Виж кода на страницата“. Първите редове са едни и същи навсякъде.",
-  "blocks.1.text": "Не са формалност. Всеки от тях решава реален проблем.",
-  "blocks.2.text": "Ето ги",
-  "blocks.3.text": "Два реда. Пишеш ги веднъж и повече не мислиш за тях. Но си струва да знаеш какво правят.",
-  "blocks.5.text": "Добави ги към твоята страница. Пусни. Няма да видиш разлика — точно това е смисълът.",
-  "blocks.6.text": "DOCTYPE",
-  "blocks.7.text": "Казва на браузъра: това е модерен HTML. Без него той включва режим за древни сайтове от деветдесетте и някои неща почват да се държат странно.",
-  "blocks.8.text": "Кодировката",
-  "blocks.9.text": "Компютърът пази буквите като числа. utf-8 е таблицата, по която ги превръща обратно. Без нея всяка буква извън английската азбука е рулетка.",
-  "blocks.10.text": "„Пробвай да махнеш meta и да напишеш нещо на кирилица. После го отвори на чужд компютър. Ще видиш въпросителни, йероглифи или квадратчета. Кодът ти работи — просто лъже.“"
-}
-===== EN: 10-doctype.json =====
-{
-  "title": "The two lines everybody writes",
-
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be a DOCTYPE",
-  "checkLabels.t2": "There must be a meta",
-  "checkLabels.t3": "charset must be inside head",
-  "checkLabels.t4": "The tab title must still be there",
-
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-doctype": "There is no DOCTYPE. Without it the browser switches into a mode for ancient sites and some things start behaving strangely.",
-  "why.no-meta": "There is no meta with an encoding. Non-English letters will come out as question marks or gibberish on someone else's computer.",
-  "why.charset-not-in-head": "The encoding is there, but not in head. It has to be the FIRST thing — the browser reads it before it reaches your text. Put it in body and it is already too late.",
-  "why.lost-title": "The tab title is gone. You are adding two lines, not deleting old ones.",
-
-  "hint2.no-doctype": "DOCTYPE is the first line of the file. Before <html>, not inside it.",
-  "hint3.no-doctype": "The exact line is <!DOCTYPE html>. See the example.",
-  "hint2.no-meta": "The tag is meta. It has no closing tag — it is a void element.",
-  "hint3.no-meta": "It goes inside <head>, before <title>. See the example.",
-  "hint2.charset-not-in-head": "Look at where you put it. Is it between <head> and </head>?",
-  "hint3.charset-not-in-head": "The browser reads the head before it reaches the body. If the encoding is down there, it has already read your text wrong.",
-
-  "blocks.0.text": "Open any website. Right click, \"View page source\". The first lines are the same everywhere.",
-  "blocks.1.text": "They are not a formality. Each of them solves a real problem.",
-  "blocks.2.text": "Here they are",
-  "blocks.3.text": "Two lines. You write them once and never think about them again. But it is worth knowing what they do.",
-  "blocks.5.text": "Add them to your page. Run. You will not see a difference — that is exactly the point.",
-  "blocks.6.text": "DOCTYPE",
-  "blocks.7.text": "It tells the browser: this is modern HTML. Without it the browser switches into a mode for ancient nineties sites and some things start behaving strangely.",
-  "blocks.8.text": "The encoding",
-  "blocks.9.text": "A computer stores letters as numbers. utf-8 is the table it uses to turn them back. Without it, every letter outside the English alphabet is a gamble.",
-  "blocks.10.text": "\"Try removing the meta and writing something in another alphabet. Then open it on someone else's computer. You will see question marks, gibberish or empty boxes. Your code works — it just lies.\""
-}
-===== LOGIC: 11-charset.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/11-charset.json
-export default {
-  id: 11,
-  type: "web",
-  label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>My favourite game</title>
-  </head>
-  <body>
-    <h1>My favourite game</h1>
-    <p>I have been playing it for three years.</p>
-  </body>
-</html>`,
-  checks: [
-    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "code_contains", value: "lang=", err: "no-lang", weight: 60 },
-    { id: "t2", type: "dom_attr", value: "html", attr: "lang", err: "empty-lang", weight: 50 },
-    { id: "t3", type: "code_contains", value: "<meta", err: "lost-meta", weight: 30 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "code", code: `<html lang="bg">` },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "quote" },
-  ],
-  slug: "11-charset"
-};
-===== BG: 11-charset.json =====
-{
-  "title": "На какъв език е това",
-
-  "checkLabels.g1": "Всички тагове трябва да са затворени",
-  "checkLabels.t1": "Трябва да има lang",
-  "checkLabels.t2": "lang не трябва да е празен",
-  "checkLabels.t3": "Кодировката трябва да е още там",
-
-  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "why.no-lang": "Няма lang. Четецът на незрящия не знае на какъв език чете и ще произнесе твоя текст с чужд глас.",
-  "why.empty-lang": "lang е там, но е празен. Празният атрибут е същото като липсващ — никой не знае какъв е езикът.",
-  "why.lost-meta": "Кодировката изчезна. Добавяш атрибут, не триеш редове.",
-
-  "hint2.no-lang": "Атрибутът се пише ВЪТРЕ в отварящия таг <html>, преди затварящата скоба.",
-  "hint3.no-lang": "Виж примера. Тагът вече го има — само добавяш нещо в него.",
-  "hint2.empty-lang": "Стойността трябва да е кодът на езика. bg за български, en за английски.",
-  "hint3.empty-lang": "Ако страницата ти е на български — <html lang=\"bg\">. Ако е на английски — <html lang=\"en\">.",
-
-  "blocks.0.text": "Страницата ти е на някакъв език. Ти го знаеш. Браузърът — не.",
-  "blocks.1.text": "Изглежда безсмислено. Кой го интересува на какъв език е? Оказва се — доста хора.",
-  "blocks.2.text": "Един атрибут",
-  "blocks.3.text": "Не е нов таг. Това е нещо, което се пише ВЪТРЕ в таг, който вече имаш.",
-  "blocks.5.text": "Добави го към твоя <html>. Пусни. Нищо не се променя на екрана.",
-  "blocks.6.text": "Кой го чете",
-  "blocks.7.text": "Четецът на незрящия. Той трябва да знае как да произнесе думите. Без lang ще прочете „здравей“ с английски глас — и излиза каша, която никой не разбира.",
-  "blocks.8.text": "Google също. Той решава на кого да покаже страницата ти. Ако не знае езика, ще я покаже на грешните хора или на никого.",
-  "blocks.9.text": "„Помисли за последния път, когато отвори сайт и нещо изведнъж започна да говори. Какво направи? Затвори таба. Сега си представи, че четецът е единственият ти начин да четеш.“"
-}
-===== EN: 11-charset.json =====
-{
-  "title": "What language is this in",
-
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be a lang",
-  "checkLabels.t2": "lang must not be empty",
-  "checkLabels.t3": "The encoding must still be there",
-
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-lang": "There is no lang. A screen reader does not know what language it is reading and will pronounce your text in the wrong voice.",
-  "why.empty-lang": "lang is there, but it is empty. An empty attribute is the same as a missing one — nobody knows what the language is.",
-  "why.lost-meta": "The encoding is gone. You are adding an attribute, not deleting lines.",
-
-  "hint2.no-lang": "The attribute goes INSIDE the opening <html> tag, before the closing bracket.",
-  "hint3.no-lang": "Look at the example. The tag is already there — you are only adding something to it.",
-  "hint2.empty-lang": "The value has to be the language code. bg for Bulgarian, en for English.",
-  "hint3.empty-lang": "If your page is in English — <html lang=\"en\">. If it is in Bulgarian — <html lang=\"bg\">.",
-
-  "blocks.0.text": "Your page is in some language. You know that. The browser does not.",
-  "blocks.1.text": "It seems pointless. Who cares what language it is in? Turns out — quite a few people.",
-  "blocks.2.text": "One attribute",
-  "blocks.3.text": "It is not a new tag. It is something you write INSIDE a tag you already have.",
-  "blocks.5.text": "Add it to your <html>. Run. Nothing changes on screen.",
-  "blocks.6.text": "Who reads it",
-  "blocks.7.text": "A screen reader. It needs to know how to pronounce the words. Without lang it will read your text in the wrong voice — and out comes a mess nobody understands.",
-  "blocks.8.text": "Google too. It decides who to show your page to. If it does not know the language, it will show it to the wrong people, or to nobody.",
-  "blocks.9.text": "\"Think of the last time you opened a site and something suddenly started talking. What did you do? Closed the tab. Now imagine that reader is the only way you can read.\""
-}
-===== LOGIC: 12-attributes.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/12-attributes.json
-export default {
-  id: 12,
+  id: 13,
   type: "web",
   label: "coding",
   starterCode: `<!DOCTYPE html>
@@ -314,21 +14,325 @@ export default {
   <body>
     <h1>My favourite game</h1>
     <p>I have been playing it for three years.</p>
+    <img src="https://picsum.photos/400/250" alt="A red bicycle leaning against a wall">
   </body>
 </html>`,
   checks: [
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "dom_has", value: "img", err: "no-img", weight: 60 },
-    { id: "t2", type: "dom_attr", value: "img", attr: "src", err: "no-src", weight: 50 },
-    { id: "t3", type: "dom_attr", value: "img", attr: "alt", err: "no-alt", weight: 40 },
-    { id: "t4", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 30 },
+    { id: "t1", type: "code_contains", value: "<!--", err: "no-comment", weight: 60 },
+    { id: "t2", type: "code_contains", value: "-->", err: "not-closed-comment", weight: 50 },
+    { id: "t3", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 40 },
+    { id: "t4", type: "dom_has", value: "img", err: "lost-img", weight: 30 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: `<!-- Тук започва галерията -->` },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+  ],
+  slug: "13-comments"
+};
+===== BG: 13-comments.json =====
+{
+  "title": "Бележка за теб след шест месеца",
+
+  "checkLabels.g1": "Всички тагове трябва да са затворени",
+  "checkLabels.t1": "Трябва да има коментар",
+  "checkLabels.t2": "Коментарът трябва да е затворен",
+  "checkLabels.t3": "Заглавието трябва да е още там",
+  "checkLabels.t4": "Снимката трябва да е още там",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
+  "why.no-comment": "Няма коментар. Синтаксисът е странен и се помни трудно: <!-- отпред, --> отзад.",
+  "why.not-closed-comment": "Отвори коментара, но не го затвори. Липсва -->. Незатворен коментар изяжда всичко след себе си — цялата страница изчезва.",
+  "why.lost-content": "Заглавието изчезна. Добавяш коментар, не триеш страницата.",
+  "why.lost-img": "Снимката изчезна. Може да си я коментирал. Коментираният код не съществува — за браузъра го няма.",
+
+  "hint2.no-comment": "Синтаксисът е <!-- текст -->. Виж примера.",
+  "hint3.no-comment": "Сложи го някъде в <body>, преди снимката например.",
+  "hint2.not-closed-comment": "Липсва -->. Виж къде свършва коментарът ти.",
+  "hint3.not-closed-comment": "Без затварящото --> браузърът мисли, че коментарът продължава до края на файла. И изяжда всичко.",
+  "hint2.lost-img": "Провери дали снимката не е попаднала ВЪТРЕ в коментара. Между <!-- и --> нищо не съществува.",
+
+  "blocks.0.text": "Кодът ти вече е дълъг. Пет-шест реда, които правят различни неща. Днес всичко ти е ясно.",
+  "blocks.1.text": "След шест месеца ще го отвориш и ще си помислиш: „какво е това, кой го е писал, защо е така“. Ти си го писал. Просто си забравил.",
+  "blocks.2.text": "Оставяш си бележка",
+  "blocks.4.text": "Синтаксисът е странен и се помни трудно. <!-- отпред, --> отзад.",
+  "blocks.5.text": "Сложи един коментар в кода си — където и да е. Пусни. На страницата няма да се появи нищо.",
+  "blocks.6.text": "Кой го чете",
+  "blocks.7.text": "Не браузърът. Не Google. Не незрящият. Само човек, който отваря кода — и този човек най-често си ти.",
+  "blocks.8.text": "Внимавай: коментираният код НЕ СЪЩЕСТВУВА. Обградиш ли нещо в <!-- -->, за браузъра го няма. Това е удобно, когато искаш да изключиш нещо временно. И е капан, когато забравиш.",
+  "blocks.9.text": "„Ти след шест месеца отваряш файла и не разбираш какво си писал.“"
+}
+===== EN: 13-comments.json =====
+{
+  "title": "A note for you in six months",
+
+  "checkLabels.g1": "All tags must be closed",
+  "checkLabels.t1": "There must be a comment",
+  "checkLabels.t2": "The comment must be closed",
+  "checkLabels.t3": "The heading must still be there",
+  "checkLabels.t4": "The image must still be there",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "why.no-comment": "There is no comment. The syntax is odd and hard to remember: <!-- in front, --> behind.",
+  "why.not-closed-comment": "You opened the comment but never closed it. --> is missing. An unclosed comment eats everything after it — the whole page disappears.",
+  "why.lost-content": "The heading is gone. You are adding a comment, not deleting the page.",
+  "why.lost-img": "The image is gone. You may have commented it out. Commented code does not exist — to the browser it is not there.",
+
+  "hint2.no-comment": "The syntax is <!-- text -->. See the example.",
+  "hint3.no-comment": "Put it somewhere in <body>, before the image for instance.",
+  "hint2.not-closed-comment": "--> is missing. Look at where your comment ends.",
+  "hint3.not-closed-comment": "Without the closing --> the browser thinks the comment runs to the end of the file. And eats everything.",
+  "hint2.lost-img": "Check the image did not end up INSIDE the comment. Between <!-- and --> nothing exists.",
+
+  "blocks.0.text": "Your code is getting long. Five or six lines doing different things. Today it is all clear to you.",
+  "blocks.1.text": "In six months you will open it and think: \"what is this, who wrote it, why is it like that\". You wrote it. You just forgot.",
+  "blocks.2.text": "You leave yourself a note",
+  "blocks.4.text": "The syntax is odd and hard to remember. <!-- in front, --> behind.",
+  "blocks.5.text": "Put one comment in your code — anywhere. Run. Nothing appears on the page.",
+  "blocks.6.text": "Who reads it",
+  "blocks.7.text": "Not the browser. Not Google. Not the blind person. Only someone who opens the code — and that someone is usually you.",
+  "blocks.8.text": "Careful: commented code DOES NOT EXIST. Wrap something in <!-- --> and to the browser it is gone. That is handy when you want to switch something off for a moment. And it is a trap when you forget.",
+  "blocks.9.text": "\"You in six months open the file and cannot understand what you wrote.\""
+}
+===== LOGIC: 14-broken.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/14-broken.json
+export default {
+  id: 14,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike for sale
+  </head>
+  <body>
+    <h1>Red bike, almost new
+    <p>Bought it two years ago. Rode it four times.
+    <img src="https://picsum.photos/400/250" alt="A red bicycle">
+    <p>Call me if you want it.
+  </body>
+</html>`,
+  checks: [
+    { id: "g1", type: "balanced", hidden: true, err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "dom_text_not_empty", value: "title", hidden: true, err: "lost-title", weight: 60 },
+    { id: "t2", type: "dom_text_not_empty", value: "h1", hidden: true, err: "lost-h1", weight: 50 },
+    { id: "t3", type: "dom_count", value: "p", min: 2, hidden: true, err: "lost-p", weight: 40 },
+    { id: "t4", type: "dom_has", value: "img", hidden: true, err: "lost-img", weight: 30 },
   ],
   blocks: [
     { type: "text" },
     { type: "text" },
     { type: "heading" },
     { type: "text" },
-    { type: "code", code: `<img src="https://picsum.photos/400/250" alt="Червен велосипед, подпрян на стена">` },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+  ],
+  slug: "14-broken"
+};
+===== BG: 14-broken.json =====
+{
+  "title": "Развалината",
+
+  "checkLabels.g1": "Скрит тест",
+  "checkLabels.t1": "Скрит тест",
+  "checkLabels.t2": "Скрит тест",
+  "checkLabels.t3": "Скрит тест",
+  "checkLabels.t4": "Скрит тест",
+
+  "why.not-closed": "Нещо е отворено и не е затворено. Тръгни отгоре надолу, таг по таг.",
+  "why.lost-title": "Заглавието на таба изчезна. Задачата е да ЗАТВОРИШ таговете, не да ги триеш.",
+  "why.lost-h1": "Заглавието изчезна. Задачата е да ЗАТВОРИШ таговете, не да ги триеш.",
+  "why.lost-p": "Един от абзаците изчезна. Бяха два. Задачата е да ги затвориш, не да ги махнеш.",
+  "why.lost-img": "Снимката изчезна. Задачата е да ЗАТВОРИШ таговете, не да ги триеш.",
+
+  "hint2.not-closed": "Четири тага са отворени и не са затворени. Намери ги.",
+  "hint3.not-closed": "Тръгни от главата. Виж <title>. Стига ли до </title>? После слез в тялото.",
+  "hint4.not-closed": "Липсват: </title>, </h1> и двата </p>. Сега ги сложи на местата им.",
+
+  "blocks.0.text": "Ето код, който някой е написал набързо. Работи. Почти.",
+  "blocks.1.text": "Четири тага са отворени и никога не са затворени. Няма да ти кажа кои.",
+  "blocks.2.text": "Твоята задача",
+  "blocks.3.text": "Поправи го. Пусни го и виж какво излиза — там е първата ти следа. Браузърът не спира с грешка, той се опитва да оправи кашата вместо теб. И оправя грешно.",
+  "blocks.4.text": "Не трий нищо. Всичко, което е там, трябва да остане. Само затвори това, което е отворено.",
+  "blocks.5.text": "Проверките са скрити. Няма да ти кажат КОЕ не е наред — само че нещо не е.",
+  "blocks.6.text": "„Половината грешки в истинския код не са синтактични. Кодът работи. Просто лъже.“"
+}
+===== EN: 14-broken.json =====
+{
+  "title": "The ruin",
+
+  "checkLabels.g1": "Hidden test",
+  "checkLabels.t1": "Hidden test",
+  "checkLabels.t2": "Hidden test",
+  "checkLabels.t3": "Hidden test",
+  "checkLabels.t4": "Hidden test",
+
+  "why.not-closed": "Something is open and never closed. Go top to bottom, tag by tag.",
+  "why.lost-title": "The tab title is gone. The task is to CLOSE the tags, not delete them.",
+  "why.lost-h1": "The heading is gone. The task is to CLOSE the tags, not delete them.",
+  "why.lost-p": "One of the paragraphs is gone. There were two. The task is to close them, not remove them.",
+  "why.lost-img": "The image is gone. The task is to CLOSE the tags, not delete them.",
+
+  "hint2.not-closed": "Four tags are open and never closed. Find them.",
+  "hint3.not-closed": "Start from the head. Look at <title>. Does it ever reach </title>? Then go down into the body.",
+  "hint4.not-closed": "Missing: </title>, </h1> and both </p>. Now put them where they belong.",
+
+  "blocks.0.text": "Here is code someone wrote in a hurry. It works. Almost.",
+  "blocks.1.text": "Four tags are open and never closed. I will not tell you which.",
+  "blocks.2.text": "Your task",
+  "blocks.3.text": "Fix it. Run it and look at what comes out — that is your first clue. The browser does not stop with an error, it tries to clean up the mess for you. And it cleans up wrong.",
+  "blocks.4.text": "Do not delete anything. Everything that is there must stay. Only close what is open.",
+  "blocks.5.text": "The tests are hidden. They will not tell you WHAT is wrong — only that something is.",
+  "blocks.6.text": "\"Half the mistakes in real code are not syntax errors. The code works. It just lies.\""
+}
+===== LOGIC: 15-quiz-skeleton.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/15-quiz-skeleton.json
+export default {
+  id: 15,
+  quiz: true,
+  label: "mcq",
+  questions: [
+    {
+      options: [
+        undefined,
+        undefined,
+        undefined,
+        undefined
+      ],
+      correct: 1
+    },
+    {
+      options: [
+        undefined,
+        undefined,
+        undefined,
+        undefined
+      ],
+      correct: 1
+    },
+    {
+      options: [
+        undefined,
+        undefined,
+        undefined,
+        undefined
+      ],
+      correct: 1
+    },
+    {
+      options: [
+        undefined,
+        undefined,
+        undefined,
+        undefined
+      ],
+      correct: 1
+    }
+  ],
+  slug: "15-quiz-skeleton"
+};
+
+===== BG: 15-quiz-skeleton.json =====
+{
+  "title": "Провери се",
+
+  "questions.0.q": "Забравяш <meta charset=\"utf-8\">. Всичко изглежда добре на твоя компютър. Кога ще се счупи?",
+  "questions.0.options.0": "Никога — модерните браузъри се справят сами",
+  "questions.0.options.1": "Веднага — страницата няма да се зареди",
+  "questions.0.options.2": "Когато някой я отвори другаде и кирилицата стане въпросителни",
+  "questions.0.options.3": "Само ако ползваш стар браузър",
+  "questions.0.hint": "Помисли кой ще види проблема — ти на твоя компютър, или някой друг на друг компютър?",
+  "questions.0.explain": "Твоят компютър може да познае кодировката. Чуждият — не. Кодът работи при теб и се чупи при него. Това е най-подлият вид грешка: не я виждаш.",
+
+  "questions.1.q": "Пишеш <html> без lang. Какво губиш?",
+  "questions.1.options.0": "Нищо — страницата изглежда еднакво",
+  "questions.1.options.1": "Четецът на незрящия не знае как да произнесе текста",
+  "questions.1.options.2": "Страницата няма да се покаже на телефон",
+  "questions.1.options.3": "Браузърът показва грешка",
+  "questions.1.hint": "На екрана наистина не се променя нищо. Питай се кой НЕ гледа екрана.",
+  "questions.1.explain": "На екрана нищо не се променя. Затова е лесно да го пропуснеш. Но четецът произнася твоя текст с чужд глас, а Google не знае на кого да го покаже.",
+
+  "questions.2.q": "Кое НЕ може да стои в <head>?",
+  "questions.2.options.0": "<title>",
+  "questions.2.options.1": "<meta>",
+  "questions.2.options.2": "<h1>",
+  "questions.2.options.3": "Всичко изброено може",
+  "questions.2.hint": "Едно от четирите се вижда на екрана. Останалите — не.",
+  "questions.2.explain": "<head> е за информация ЗА страницата. <h1> е самата страница. Сложиш ли го там, браузърът мълчаливо ще го премести в <body> — работи, но кодът ти лъже.",
+
+  "questions.3.q": "Пишеш <img src=\"котка.jpg\">, без alt. Кой губи?",
+  "questions.3.options.0": "Никой — снимката се вижда",
+  "questions.3.options.1": "Само хората със слаб интернет",
+  "questions.3.options.2": "Незрящият, Google, и ти самият, ако адресът се счупи",
+  "questions.3.options.3": "Браузърът, защото не знае размера",
+  "questions.3.hint": "Питай се кой чете alt-а. Не един човек — трима.",
+  "questions.3.explain": "alt не е формалност. Той е това, което остава, когато снимката я няма. Четецът чете него. Google чете него. И ти го виждаш, когато адресът се счупи."
+}
+===== EN: 15-quiz-skeleton.json =====
+{
+  "title": "Check yourself",
+
+  "questions.0.q": "You forget <meta charset=\"utf-8\">. Everything looks fine on your computer. When will it break?",
+  "questions.0.options.0": "Never — modern browsers handle it themselves",
+  "questions.0.options.1": "Immediately — the page will not load",
+  "questions.0.options.2": "When someone opens it elsewhere and the letters turn into question marks",
+  "questions.0.options.3": "Only if you use an old browser",
+  "questions.0.hint": "Think about who will see the problem — you on your computer, or someone else on another one?",
+  "questions.0.explain": "Your computer may guess the encoding. Someone else's will not. The code works for you and breaks for them. That is the nastiest kind of bug: you cannot see it.",
+
+  "questions.1.q": "You write <html> with no lang. What do you lose?",
+  "questions.1.options.0": "Nothing — the page looks the same",
+  "questions.1.options.1": "A screen reader does not know how to pronounce the text",
+  "questions.1.options.2": "The page will not show on a phone",
+  "questions.1.options.3": "The browser shows an error",
+  "questions.1.hint": "Nothing really changes on screen. Ask yourself who is NOT looking at the screen.",
+  "questions.1.explain": "Nothing changes on screen. That is why it is easy to skip. But the reader pronounces your text in the wrong voice, and Google does not know who to show it to.",
+
+  "questions.2.q": "Which one CANNOT sit inside <head>?",
+  "questions.2.options.0": "<title>",
+  "questions.2.options.1": "<meta>",
+  "questions.2.options.2": "<h1>",
+  "questions.2.options.3": "All of them can",
+  "questions.2.hint": "One of the four shows up on screen. The others do not.",
+  "questions.2.explain": "<head> is for information ABOUT the page. <h1> is the page itself. Put it there and the browser quietly moves it into <body> — it works, but your code is lying.",
+
+  "questions.3.q": "You write <img src=\"cat.jpg\"> with no alt. Who loses?",
+  "questions.3.options.0": "Nobody — the image shows",
+  "questions.3.options.1": "Only people on a slow connection",
+  "questions.3.options.2": "The blind person, Google, and you, if the address breaks",
+  "questions.3.options.3": "The browser, because it does not know the size",
+  "questions.3.hint": "Ask yourself who reads the alt. Not one person — three.",
+  "questions.3.explain": "alt is not a formality. It is what remains when the image is not there. The reader reads it. Google reads it. And you see it when the address breaks."
+}
+===== LOGIC: 16-freehand.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/16-freehand.json
+export default {
+  id: 16,
+  type: "web",
+  label: "coding",
+  project: true,
+  starterCode: "",
+  checks: [
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "code_contains", value: "<!doctype html", err: "no-doctype", weight: 70 },
+    { id: "t3", type: "dom_attr", value: "html", attr: "lang", err: "no-lang", weight: 60 },
+    { id: "t4", type: "raw_head_contains", value: "charset", err: "no-charset", weight: 50 },
+    { id: "t5", type: "dom_text_not_empty", value: "title", err: "no-title", weight: 40 },
+    { id: "t6", type: "dom_text_not_empty", value: "h1", err: "no-heading", weight: 30 },
+    { id: "t7", type: "dom_text_not_empty", value: "p", err: "no-p", weight: 20 },
+  ],
+  blocks: [
     { type: "text" },
     { type: "heading" },
     { type: "text" },
@@ -337,75 +341,85 @@ export default {
     { type: "text" },
     { type: "quote" },
   ],
-  slug: "12-attributes"
+  slug: "16-freehand"
 };
-===== BG: 12-attributes.json =====
+===== BG: 16-freehand.json =====
 {
-  "title": "Тагът казва какво Е. Атрибутът казва подробностите",
+  "title": "Твоята страница, както трябва",
 
+  "checkLabels.t1": "Трябва да напишеш нещо",
   "checkLabels.g1": "Всички тагове трябва да са затворени",
-  "checkLabels.t1": "Трябва да има снимка",
-  "checkLabels.t2": "Снимката трябва да има src",
-  "checkLabels.t3": "Снимката трябва да има alt с текст",
-  "checkLabels.t4": "Заглавието трябва да е още там",
+  "checkLabels.t2": "Трябва да има DOCTYPE",
+  "checkLabels.t3": "html трябва да има lang",
+  "checkLabels.t4": "Трябва да има кодировка в head",
+  "checkLabels.t5": "Трябва да има title с текст",
+  "checkLabels.t6": "Трябва да има заглавие с текст",
+  "checkLabels.t7": "Трябва да има изречение с текст",
 
+  "why.empty": "Празен е. Няма скелет за преписване. Напиши го от нула — знаеш всичко необходимо.",
   "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "why.no-img": "Няма снимка. Тагът е img — той няма затварящ, защото няма какво да обгради.",
-  "why.no-src": "Тагът е там, но не казва КОЯ снимка. Без src браузърът няма какво да покаже — ще излезе счупена икона.",
-  "why.no-alt": "Няма alt, или е празен. Незрящият човек стига до снимката и четецът му казва... нищо. Google също не вижда снимката — той чете alt.",
-  "why.lost-content": "Заглавието изчезна. Добавяш снимка, не триеш това, което вече имаш.",
+  "why.no-doctype": "Няма DOCTYPE. Първият ред на файла.",
+  "why.no-lang": "Няма lang, или е празен. Четецът на незрящия не знае как да произнесе текста.",
+  "why.no-charset": "Няма кодировка в head. Кирилицата ще се счупи на чужд компютър.",
+  "why.no-title": "Няма title, или е празен. Табът ще си остане без име.",
+  "why.no-heading": "Няма заглавие с текст в него.",
+  "why.no-p": "Няма изречение с текст в него.",
 
-  "hint2.no-img": "Тагът е img. Пиши го вътре в <body>, под изречението.",
-  "hint3.no-img": "img няма затварящ таг. Просто <img ...> и толкова. Виж примера.",
-  "hint2.no-src": "src казва къде е снимката. Стойността е адрес.",
-  "hint3.no-src": "Виж примера — там има готов адрес, който можеш да ползваш.",
-  "hint2.no-alt": "alt е текстът, който заменя снимката. Опиши какво се вижда на нея.",
-  "hint3.no-alt": "Не пиши „снимка\" или „картинка\". Това не казва нищо. Пиши какво Е на снимката: „Червен велосипед, подпрян на стена\".",
+  "hint2.empty": "Тръгни от DOCTYPE. После <html>. После главата. После тялото. Ред по ред.",
+  "hint3.empty": "Ако си замръзнал — напиши първия ред. После следващия. Не гледай целия скелет наведнъж.",
+  "hint2.not-closed": "Тръгни отгоре надолу, таг по таг. Всеки отворен търси своя затварящ.",
+  "hint2.no-doctype": "<!DOCTYPE html> е първият ред. Преди <html>, не вътре в него.",
+  "hint2.no-lang": "lang се пише ВЪТРЕ в отварящия таг: <html lang=\"bg\">.",
+  "hint2.no-charset": "Кодировката е meta таг вътре в <head>. Той няма затварящ.",
+  "hint2.no-title": "<title> влиза в <head>. Между таговете трябва да има текст.",
+  "hint2.no-heading": "Заглавието влиза в <body>. Обгради темата си в <h1>.",
+  "hint2.no-p": "Изречението влиза в <body>, под заглавието. Обгради го в <p>.",
 
-  "blocks.0.text": "Досега таговете ти казваха само какво Е нещото. Заглавие. Абзац. Но понякога това не стига.",
-  "blocks.1.text": "Снимка. Тагът казва „това е снимка“. Но КОЯ снимка? Откъде? Това не се събира в името на тага.",
-  "blocks.2.text": "Атрибутите",
-  "blocks.3.text": "Пишат се вътре в отварящия таг. Име, равно, стойност в кавички. Вече видя два — lang и charset. Ето трети и четвърти.",
-  "blocks.5.text": "Добави снимка към страницата си. Пусни. Появява се.",
-  "blocks.6.text": "src е очевиден. alt не е.",
-  "blocks.7.text": "src казва къде е файлът. Без него няма какво да се покаже.",
-  "blocks.8.text": "alt е текстът, който заменя снимката, когато тя не се вижда. Слаб интернет. Счупен адрес. Или — незрящ човек, чийто четец не може да види картинка и чете само това.",
-  "blocks.9.text": "Какво НЕ е alt",
-  "blocks.10.text": "„Не пиши alt=\"снимка\". Четецът ще каже „снимка“ и човекът няма да е разбрал нищо. Пиши какво Е на нея. Ако снимката изчезне и текстът ти не я замества — alt-ът ти е боклук.“",
-  "blocks.11.text": "„Google не вижда картинки. Чете alt. Ти пишеш за незрящия — и печели и търсачката.“"
+  "blocks.0.text": "Втори път редакторът е празен. Този път знаеш повече.",
+  "blocks.1.text": "Твоята страница",
+  "blocks.2.text": "Построй я наново, но както трябва: DOCTYPE, обвивка, глава с име и кодировка, тяло със заглавие и изречение.",
+  "blocks.3.text": "Няма скелет за преписване. Няма пример вдясно. Пиши от нула.",
+  "blocks.4.text": "Ако си замръзнал",
+  "blocks.5.text": "Не гледай целия скелет наведнъж. Напиши първия ред. После следващия. После третия. Кодът се строи ред по ред, а не наум.",
+  "blocks.6.text": "„Ще замръзнеш. Празният файл прави това с всички, включително с хората, които го работят от двайсет години. Разликата е, че вече знаеш какво да правиш с това чувство.“"
 }
-===== EN: 12-attributes.json =====
+===== EN: 16-freehand.json =====
 {
-  "title": "The tag says what it IS. The attribute says the details",
+  "title": "Your page, done properly",
 
+  "checkLabels.t1": "You must write something",
   "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be an image",
-  "checkLabels.t2": "The image must have a src",
-  "checkLabels.t3": "The image must have alt with text",
-  "checkLabels.t4": "The heading must still be there",
+  "checkLabels.t2": "There must be a DOCTYPE",
+  "checkLabels.t3": "html must have a lang",
+  "checkLabels.t4": "There must be an encoding in head",
+  "checkLabels.t5": "There must be a title with text",
+  "checkLabels.t6": "There must be a heading with text",
+  "checkLabels.t7": "There must be a sentence with text",
 
+  "why.empty": "It is empty. There is no skeleton to copy. Write it from scratch — you know everything you need.",
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-img": "There is no image. The tag is img — it has no closing tag, because it has nothing to wrap.",
-  "why.no-src": "The tag is there, but it does not say WHICH image. Without src the browser has nothing to show — you get a broken icon.",
-  "why.no-alt": "There is no alt, or it is empty. A blind person reaches the image and their screen reader says... nothing. Google does not see the image either — it reads alt.",
-  "why.lost-content": "The heading is gone. You are adding an image, not deleting what you already have.",
+  "why.no-doctype": "There is no DOCTYPE. The first line of the file.",
+  "why.no-lang": "There is no lang, or it is empty. A screen reader does not know how to pronounce the text.",
+  "why.no-charset": "There is no encoding in head. Non-English letters will break on someone else's computer.",
+  "why.no-title": "There is no title, or it is empty. The tab will stay nameless.",
+  "why.no-heading": "There is no heading with text in it.",
+  "why.no-p": "There is no sentence with text in it.",
 
-  "hint2.no-img": "The tag is img. Write it inside <body>, under the sentence.",
-  "hint3.no-img": "img has no closing tag. Just <img ...> and that is it. See the example.",
-  "hint2.no-src": "src says where the image is. The value is an address.",
-  "hint3.no-src": "Look at the example — there is a working address there you can use.",
-  "hint2.no-alt": "alt is the text that replaces the image. Describe what can be seen on it.",
-  "hint3.no-alt": "Do not write \"photo\" or \"image\". That says nothing. Write what IS on it: \"A red bicycle leaning against a wall\".",
+  "hint2.empty": "Start from DOCTYPE. Then <html>. Then the head. Then the body. Line by line.",
+  "hint3.empty": "If you are frozen — write the first line. Then the next. Do not look at the whole skeleton at once.",
+  "hint2.not-closed": "Go top to bottom, tag by tag. Every opening tag is looking for its closing one.",
+  "hint2.no-doctype": "<!DOCTYPE html> is the first line. Before <html>, not inside it.",
+  "hint2.no-lang": "lang goes INSIDE the opening tag: <html lang=\"en\">.",
+  "hint2.no-charset": "The encoding is a meta tag inside <head>. It has no closing tag.",
+  "hint2.no-title": "<title> goes in <head>. There must be text between the tags.",
+  "hint2.no-heading": "The heading goes in <body>. Wrap your topic in <h1>.",
+  "hint2.no-p": "The sentence goes in <body>, under the heading. Wrap it in <p>.",
 
-  "blocks.0.text": "So far your tags only said what a thing IS. A heading. A paragraph. But sometimes that is not enough.",
-  "blocks.1.text": "An image. The tag says \"this is an image\". But WHICH image? From where? That does not fit into the tag's name.",
-  "blocks.2.text": "Attributes",
-  "blocks.3.text": "They go inside the opening tag. Name, equals, value in quotes. You have already seen two — lang and charset. Here are the third and fourth.",
-  "blocks.5.text": "Add an image to your page. Run. It appears.",
-  "blocks.6.text": "src is obvious. alt is not.",
-  "blocks.7.text": "src says where the file is. Without it there is nothing to show.",
-  "blocks.8.text": "alt is the text that replaces the image when it cannot be seen. Slow internet. A broken address. Or — a blind person, whose screen reader cannot see a picture and reads only this.",
-  "blocks.9.text": "What alt is NOT",
-  "blocks.10.text": "\"Do not write alt=\"photo\". The reader will say \"photo\" and the person will have understood nothing. Write what IS on it. If the image disappears and your text does not replace it — your alt is rubbish.\"",
-  "blocks.11.text": "\"Google does not see pictures. It reads alt. You write for the blind person — and the search engine wins too.\""
+  "blocks.0.text": "The editor is empty for the second time. This time you know more.",
+  "blocks.1.text": "Your page",
+  "blocks.2.text": "Build it again, but properly: DOCTYPE, wrapper, head with a name and an encoding, body with a heading and a sentence.",
+  "blocks.3.text": "No skeleton to copy. No example on the right. Write it from scratch.",
+  "blocks.4.text": "If you are frozen",
+  "blocks.5.text": "Do not look at the whole skeleton at once. Write the first line. Then the next. Then the third. Code gets built line by line, not in your head.",
+  "blocks.6.text": "\"You will freeze. The empty file does that to everyone, including people who have been doing this for twenty years. The difference is that now you know what to do with that feeling.\""
 }
