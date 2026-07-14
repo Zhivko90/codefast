@@ -1,13 +1,43 @@
 {
   "title": "Why Enter does not work",
-  "checkLabels.t1": "The first sentence is a paragraph",
-  "checkLabels.t2": "The second one too",
-  "checkLabels.t3": "And the third",
-  "checkLabels.t4": "Everything closed",
-  "why.no-p-first": "The first sentence is still bare text. Blank lines do not exist for the browser — you have to SAY that this is a paragraph. Wrap it in <p>.",
-  "why.no-p-second": "The second sentence is still bare text. All three must be wrapped, not just the first.",
-  "why.no-p-third": "The third sentence is still bare text.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "There are three paragraphs",
+  "checkLabels.t3": "No paragraph is empty",
+  "checkLabels.t4": "The first sentence is inside a paragraph",
+  "checkLabels.t5": "The second one too",
+  "checkLabels.t6": "And the third",
+  "checkLabels.t7": "The heading is still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of wrapping the sentences. Bring the code back.",
+
   "why.not-closed": "A <p> is open and never closed.",
+  "hint2.not-closed": "Wrapping is two things. It is easy to put the opening tag in and forget the closing one.",
+  "hint3.not-closed": "<p>Hello there — that is not a paragraph. That is a paragraph that never ends. The browser swallows everything after it.",
+  "hint4.not-closed": "Count the opening <p> tags and the closing </p> tags. The numbers must match.",
+
+  "why.no-p": "There are not three paragraphs. Each of the three sentences wants its OWN <p> — not one shared wrapper.",
+  "hint2.no-p": "Count the paragraphs. You need three, because there are three sentences.",
+  "hint3.no-p": "One shared <p> around all three does not do it — that is one paragraph with three sentences, not three paragraphs. The blank lines inside it mean nothing, you have seen that already.",
+  "hint4.no-p": "Close each paragraph before you open the next one. Three opening tags, three closing tags.",
+
+  "why.empty-p": "There is an empty <p>. An empty paragraph is not a paragraph — it carries nothing. Either put text in it or remove it.",
+  "hint2.empty-p": "You opened and closed a paragraph with nothing between them. The text stayed outside.",
+  "hint3.empty-p": "<p></p>Hello — the tag is empty and Hello hangs outside it. It should be <p>Hello</p>.",
+  "hint4.empty-p": "The text goes BETWEEN the opening and the closing tag. Not before them, not after them.",
+
+  "why.loose-first": "The first sentence is still bare text. Blank lines do not exist for the browser — you have to SAY that this is a paragraph. Wrap it in <p>.",
+  "hint2.loose-first": "Look at where the sentence starts and where it ends. The tag opens before the first letter and closes after the full stop.",
+  "hint3.loose-first": "If you have the line Hello there, the paragraph is <p>Hello there</p>. You open before the H and close after the e.",
+  "hint4.loose-first": "Wrap the first sentence. Opening tag in front, closing tag behind. The full stop goes INSIDE.",
+
+  "why.loose-second": "The second sentence is still bare text. All three must be wrapped, not just the first.",
+  "why.loose-third": "The third sentence is still bare text. One left.",
+
+  "why.lost-h1": "The heading is gone. The task is to wrap the sentences, not to delete things.",
+  "hint2.lost-h1": "My favourite game must still be up there, as an <h1>.",
+
   "blocks.0.text": "Look at the code on the right. Three sentences, neatly separated by blank lines. Now look at the result.",
   "blocks.1.text": "They are glued together. All in one line, like a single long sentence. The blank lines are gone.",
   "blocks.2.text": "Try to fight it",

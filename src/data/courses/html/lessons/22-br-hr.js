@@ -20,10 +20,12 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<br", err: "no-br" },
-    { id: "t2", type: "code_not_contains", value: "<p>12 rakovski", err: "split-into-p" },
-    { id: "t3", type: "code_not_contains", value: "<br><br>", err: "br-for-air" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_count", value: "p", min: 2, max: 2, err: "split-into-p", weight: 120 },
+    { id: "t3", type: "dom_count", value: "br", min: 3, err: "no-br", weight: 100 },
+    { id: "t4", type: "dom_count", value: "br + br", max: 0, err: "br-for-air", weight: 90 },
+    { id: "t5", type: "dom_text_contains", value: "p", text: "pickup address: 12 rakovski street floor 3, flat 7 dobrich", err: "lost-address", weight: 60 },
   ],
   blocks: [
     { type: "text" },

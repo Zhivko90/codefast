@@ -23,16 +23,28 @@ function runCheck(check, code) {
     case 'dom_has':
       return !!doc.querySelector(v);
 
+    // ⚠ ВСИЧКИ, не първият. Два <h2>, вторият празен — това не е ✓.
     case 'dom_text_not_empty': {
-      const el = doc.querySelector(v);
-      return !!el && el.textContent.trim() !== '';
+      const els = Array.from(doc.querySelectorAll(v));
+      return els.length > 0 && els.every((el) => el.textContent.trim() !== '');
     }
+
+    // „КЪДЕ е този текст." Не в кода — в елемента.
+    // code_contains: "<p>i started" пада, ако ученикът е сложил интервал.
+    // Тук интервалите не се наказват — norm ги изяжда.
+    case 'dom_text_contains':
+      return Array.from(doc.querySelectorAll(v)).some(
+        (el) => norm(el.textContent).includes(norm(check.text))
+      );
 
     case 'dom_not_has':
       return !doc.querySelector(v);
 
-    case 'dom_count':
-      return doc.querySelectorAll(v).length >= (check.min ?? 1);
+    // min и max. Без max „само едно <h1>" е неизразимо.
+    case 'dom_count': {
+      const n = doc.querySelectorAll(v).length;
+      return n >= (check.min ?? 1) && n <= (check.max ?? Infinity);
+    }
 
     case 'dom_attr':
       return Array.from(doc.querySelectorAll(v)).every(
@@ -42,7 +54,7 @@ function runCheck(check, code) {
     case 'raw_head_contains':
       return norm(removeHtmlComments(rawHead(code))).includes(norm(v));
 
-   case 'raw_head_not_contains': {
+    case 'raw_head_not_contains': {
       const head = rawHead(code);
       if (!head && !/<head[^>]*>/i.test(code)) return false;  // няма head → не е ✓
       return !norm(removeHtmlComments(head)).includes(norm(v));
@@ -78,7 +90,7 @@ export function checkProblem(problem, code) {
     ok: runCheck(c, code),
   }));
 
- const passed = results.every((r) => r.ok);
+  const passed = results.every((r) => r.ok);
 
   // Не първата паднала — НАЙ-ТЕЖКАТА паднала.
   // Счупен синтаксис бие всичко. Няма смисъл да говориш за семантика,

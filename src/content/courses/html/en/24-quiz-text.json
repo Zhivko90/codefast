@@ -1,45 +1,59 @@
 {
   "title": "Check yourself: text & content",
+
   "questions.0.q": "Someone wants two lines of text one below the other. They press Enter between them in the code. They run it — the text comes out glued on one line. What have they missed?",
   "questions.0.options.0": "They needed a second Enter — one is not enough",
   "questions.0.options.1": "The browser ignores blank lines in the code; separation must be asked for with a tag",
   "questions.0.options.2": "The editor broke the code when saving",
   "questions.0.options.3": "The <!DOCTYPE html> is missing",
+  "questions.0.hint": "Ask yourself who the blank lines in the code are for — your eyes, or the browser?",
   "questions.0.explain": "Blank lines in code are for your eyes. The browser swallows them on purpose — otherwise every reshuffle of the code would shift the page. Want something separate? Say it with a tag.",
+
   "questions.1.q": "They want \"Price: 25 leva\" on one line. They put the label in one <p>, the amount in another <p>, and glue them together with no blank line at all. They still split. Why?",
   "questions.1.options.0": "Because <p> is a block tag — each takes a whole line, however short it is",
   "questions.1.options.1": "Because there is no space between them",
   "questions.1.options.2": "Because they must be inside one <h1>",
   "questions.1.options.3": "Because paragraphs cannot contain numbers",
+  "questions.1.hint": "The split does not come from how they typed it. It comes from the tag itself. What kind of tag is <p>?",
   "questions.1.explain": "Two blocks will never stand side by side — this is not a matter of nudging. The fix is ONE paragraph, with an inline tag inside it for the part that should stand out.",
+
   "questions.2.q": "They want some air between two paragraphs. They stack three <br> in a row. It works. What is wrong with it?",
   "questions.2.options.0": "Nothing — if it looks right, it is right",
   "questions.2.options.1": "<br> does not mean \"gap\", it means \"the line ends here but the thought does not\". Gaps are CSS",
   "questions.2.options.2": "At most two <br> are allowed",
   "questions.2.options.3": "<br> only works inside <h1>",
-  "questions.2.explain": "It looks right, and that is exactly why it is a trap. You pick the tag by meaning. <br> is for an address, a verse, a line of a song — not for air between paragraphs.",
+  "questions.2.hint": "It works and it looks right. That is exactly why it is a trap. Ask what the tag SAYS, not what it does.",
+  "questions.2.explain": "You pick the tag by meaning. <br> is for an address, a verse, a line of a song — not for air between paragraphs.",
+
   "questions.3.q": "They are running a sale. They want the old price crossed out because \"it looks nicer and shows up grey\". What is the better reason to use <del>?",
   "questions.3.options.0": "That <del> makes the text grey and struck through",
   "questions.3.options.1": "That <del> means \"this was here and no longer applies\" — it carries meaning, not a look",
   "questions.3.options.2": "That <del> is shorter to type than CSS",
   "questions.3.options.3": "That without <del> the price will not show",
+  "questions.3.hint": "Tomorrow you change the style. Which of the two reasons survives that?",
   "questions.3.explain": "If you pick a tag for its look, the meaning vanishes the day you change the style. <del> says what HAPPENED to that price. How it looks is CSS.",
+
   "questions.4.q": "They write on their page: \"Today I learned the <p> tag\". They run it — the sentence comes out mangled and the tag is nowhere. What happened?",
   "questions.4.options.0": "The browser cannot tell \"here is a tag\" from \"I am talking about a tag\" — it executed it",
   "questions.4.options.1": "The <p> tag cannot be written in lowercase",
   "questions.4.options.2": "A closing </p> is missing",
   "questions.4.options.3": "It needs to be inside <strong>",
+  "questions.4.hint": "What does an angle bracket mean to the browser? Does it have any way of knowing you are only talking about a tag this time?",
   "questions.4.explain": "To the browser an angle bracket means one thing: a tag begins. So when you want to SHOW the symbol, you write its name: &lt; and &gt;. Code cannot describe itself using itself.",
+
   "questions.5.q": "A three-line address: street, floor, city. Which is right?",
   "questions.5.options.0": "Three separate <p> — each line stands on its own",
   "questions.5.options.1": "A list — the lines are an enumeration",
   "questions.5.options.2": "One <p> with <br> inside — one address, on new lines",
   "questions.5.options.3": "Three <h3> — so they stand out",
+  "questions.5.hint": "How many thoughts is an address — one or three? And can you reorder the street and the city?",
   "questions.5.explain": "An address is one thought, not three. And it is not a list — you cannot reorder the street and the city. That is exactly what <br> is for: a new line INSIDE one paragraph.",
+
   "questions.6.q": "They want the word \"important\" bold, because it is important. One colleague says: \"use <strong>\". Another says: \"use CSS\". Who is right?",
   "questions.6.options.0": "The first — the word truly IS important, and <strong> carries exactly that meaning",
   "questions.6.options.1": "The second — bold is always styling",
   "questions.6.options.2": "Neither — bold is not done in HTML",
   "questions.6.options.3": "It makes no difference, as long as it comes out bold",
-  "questions.6.explain": "The question is not \"should it be bold\" but \"why\". If the word CARRIES weight — <strong>. If you just want thick letters for looks — CSS. Same appearance, two different reasons."
+  "questions.6.hint": "Both give you thick letters. The question is not how it will look, but why it is bold.",
+  "questions.6.explain": "The question is not \"should it be bold\" but \"why\". If the word CARRIES weight — <strong>. If you just want thick letters for looks — CSS. Same appearance, two different reasons. And remember: the screen reader is silent about both. So important things get said in words too, not only in bold."
 }

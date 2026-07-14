@@ -1,14 +1,42 @@
 {
   "title": "Not everything is an h1",
-  "checkLabels.t1": "There are sub-headings",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
   "checkLabels.t2": "There is a main heading",
   "checkLabels.t3": "Only one h1",
-  "checkLabels.t4": "The second one came down too",
-  "checkLabels.t5": "Everything closed",
-  "why.no-h2": "There is still not a single sub-heading. \"Why I like it\" and \"How I started\" are not what the whole page is about — they are sections inside it. Go down one level: <h2>.",
-  "why.no-h1": "You deleted the main heading too. One <h1> must remain — it says what the WHOLE page is about.",
-  "why.still-h1": "One of the sub-headings is still an <h1>. If everything is an h1, the page shouts equally loudly about everything — and both Google and the blind reader get lost in it.",
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order. If you changed <h1> to <h2>, change the closing tag too.",
+  "checkLabels.t4": "Why I like it came down to h2",
+  "checkLabels.t5": "How I started too",
+  "checkLabels.t6": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of fixing it. Bring the code back and change the levels — not with deletion.",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "It is almost always a forgotten closing tag. You change the opening one and the closing one stays behind.",
+  "hint3.not-closed": "<h1>Contact</h2> looks innocent. It is not. You open one thing and close another — the browser does not know what to do with that.",
+  "hint4.not-closed": "Go through the headings one by one. For each, check that the number at the front and the number at the back are the same.",
+
+  "why.no-h1": "There is no main heading, or it is empty. One <h1> must remain — it says what the WHOLE page is about.",
+  "hint2.no-h1": "You brought all three down. One of them is not a section — it is the topic.",
+  "hint3.no-h1": "A book with no title on the cover. You open it and Chapter One starts right away. You do not know what you are holding.",
+  "hint4.no-h1": "Put back as <h1> the heading that describes the whole page. The other two stay <h2>.",
+
+  "why.still-h1": "The page has more than one <h1>. If everything is an h1, it shouts equally loudly about everything — and both Google and the blind reader get lost in it.",
+  "hint2.still-h1": "Count the h1 tags in your code. Exactly one must remain — the one that describes the whole page.",
+  "hint3.still-h1": "Think of a book's contents: one chapter called Insects, with Feeding and Breeding inside it. There is one chapter. There can be as many sections as you like.",
+  "hint4.still-h1": "Which of the three headings describes the whole page? That one stays an h1. The other two are sections inside it.",
+
+  "why.no-h2": "Why I like it is still not a sub-heading. It is not what the whole page is about — it is a section inside it. Go down one level: <h2>.",
+  "hint2.no-h2": "The heading Why I like it has an opening tag and a closing tag. Both are h1.",
+  "hint3.no-h2": "If you have <h1>Contact</h1> and you want it to be a section, you write <h2>Contact</h2>. Change the one to a two at the front — and at the back too.",
+  "hint4.no-h2": "Change both tags around Why I like it. Forget the closing one and the everything-closed check will fail.",
+
+  "why.no-h2-second": "You brought the first one down. Not the second. How I started is a section too, not the topic of the page.",
+  "hint2.no-h2-second": "Do to How I started exactly what you did to Why I like it. Both tags, not just one.",
+
+  "why.lost-p": "A paragraph is gone. The task is to change the heading levels, not to delete text. Bring it back.",
+  "hint2.lost-p": "Look at the preview. The sentences It never gets boring and A friend showed it to me must still be there.",
+
   "blocks.0.text": "Look at the page on the right. Three headings, all equally large. It looks... wrong, does it not? Like a person shouting the whole time.",
   "blocks.1.text": "The problem is not aesthetic. The problem is that the page has no hierarchy — you cannot tell what is the main thing and what is a subsection.",
   "blocks.2.text": "Six levels",

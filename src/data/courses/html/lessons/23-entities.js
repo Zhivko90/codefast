@@ -11,15 +11,16 @@ export default {
   <body>
     <h1>Bike for sale</h1>
 
-    <p>Today I learned the <p> tag and the <strong> tag.</p>
+    <p>Today I learned the &lt;p&gt tag and the strong tag.</p>
     <p>Price & delivery: 18 leva</p>
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "&lt;", err: "no-lt" },
-    { id: "t2", type: "code_contains", value: "&gt;", err: "no-gt" },
-    { id: "t3", type: "text_contains", value: "learned the <p> tag", err: "not-visible" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "text_contains", value: "learned the <p> tag", err: "not-visible", weight: 100 },
+    { id: "t3", type: "text_contains", value: "and the <strong> tag", err: "no-strong-shown", weight: 80 },
+    { id: "t4", type: "dom_count", value: "p", min: 2, err: "lost-p", weight: 50 },
   ],
   blocks: [
     { type: "text" },

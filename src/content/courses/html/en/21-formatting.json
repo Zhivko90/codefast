@@ -1,13 +1,38 @@
 {
   "title": "How to say \"this is no longer true\"",
-  "checkLabels.t1": "The old price is crossed out",
-  "checkLabels.t2": "The crossing-out is closed",
-  "checkLabels.t3": "The clumsy sentence is gone",
-  "checkLabels.t4": "Everything closed",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "The old price is crossed out",
+  "checkLabels.t3": "The new price stands out",
+  "checkLabels.t4": "Everything is in one paragraph",
+  "checkLabels.t5": "The heading is still there",
+
+  "why.empty": "The editor is empty. You deleted the listing instead of fixing it. Bring the code back.",
+
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "Inline tags close INSIDE the paragraph, before the </p>.",
+  "hint3.not-closed": "<p>Price: <del>25 leva</p></del> — closed in the wrong order. Whatever you opened last, you close first.",
+  "hint4.not-closed": "Check the pairs: <del> with </del>, <strong> with </strong>, and both inside the single <p>.",
+
   "why.no-del": "The old price is still not crossed out. There is no \"cross this out\" tag — there is a \"this no longer holds\" tag. It is called <del> and it comes out crossed out as a consequence.",
-  "why.del-not-closed": "You opened <del> but never closed it. </del> is missing — and now the browser is crossing out everything after it.",
-  "why.still-a-sentence": "You are still explaining the discount with a sentence. In a real listing the old price is crossed out with the new one beside it. One glance is enough. Remove the sentence and do it properly.",
-  "why.not-closed": "A tag is open and never closed.",
+  "hint2.no-del": "Wrap the amount 25 leva only. Not the whole paragraph.",
+  "hint3.no-del": "<p>Old: <del>40 leva</del></p> — the tag wraps the price, not the sentence around it.",
+  "hint4.no-del": "Put <del> before 25 and </del> after leva. An empty <del></del> does nothing — the price must be INSIDE it.",
+
+  "why.no-new-price": "The old price is crossed out, but the new one is missing or does not stand out. A crossed-out price with nothing beside it says nothing — the reader sees that the old one is void and has no idea what holds now.",
+  "hint2.no-new-price": "18 leva must sit next to the crossed-out old price, on the same line.",
+  "hint3.no-new-price": "<p>Price: <del>40 leva</del> <strong>30 leva</strong></p> — the old and the new, side by side.",
+  "hint4.no-new-price": "Wrap 18 leva in <strong>. Both prices go into the same paragraph.",
+
+  "why.still-a-sentence": "You still have two paragraphs. The sentence \"Sale! The new price is 18 leva\" is no longer needed — the prices say it themselves. Merge everything into one paragraph.",
+  "hint2.still-a-sentence": "Count the <p> tags in your code. One must remain.",
+  "hint3.still-a-sentence": "A real listing has no sentence explaining the discount. It has a crossed-out price and a new one beside it. One glance is enough.",
+  "hint4.still-a-sentence": "Remove the second paragraph entirely. Move the new price into the first one, next to the crossed-out one.",
+
+  "why.lost-h1": "The heading is gone. The task is to fix the price, not to delete things.",
+  "hint2.lost-h1": "Bike for sale must still be up there, as an <h1>.",
+
   "blocks.0.text": "You decided to drop the price. You wrote it the only way you could think of — with one more sentence. Run it and look.",
   "blocks.1.text": "It works, but it is clumsy. In a real listing the old price is crossed out, with the new one beside it. One glance is enough. Except you have nothing to cross it out with. <strong> makes bold. <em> makes italic. There is no \"cross this out\" tag you know of.",
   "blocks.2.text": "There is one. You just have not reached it yet.",
@@ -20,5 +45,5 @@
   "blocks.5.text": "All of them are INLINE — exactly like <strong> from the last lesson. They do not break the line, they live inside it. That is why the old and the new price can sit on one line.",
   "blocks.8.text": "Again, not for looks",
   "blocks.9.text": "Crossed-out is not \"a grey style\". It means: this was here and now it is gone. If you just want grey text, that is a job for CSS. You pick the tag by MEANING, not by look — otherwise tomorrow, when you change the style, the meaning disappears with it.",
-  "blocks.10.text": "Your turn. Cross out the old price, and put the new one on the same line, in bold. If you like, add some fine print below."
+  "blocks.10.text": "Your turn. Merge everything into one paragraph: the old price crossed out, the new one beside it and in bold."
 }

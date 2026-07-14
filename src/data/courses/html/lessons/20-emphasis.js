@@ -15,24 +15,32 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<strong>", err: "no-emphasis" },
-    { id: "t2", type: "code_not_contains", value: "<b>", err: "used-b" },
-    { id: "t3", type: "code_not_contains", value: "<i>", err: "used-i" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "code_not_contains", value: "<b>", err: "used-b", weight: 200 },
+    { id: "t3", type: "code_not_contains", value: "<i>", err: "used-i", weight: 190 },
+    { id: "t4", type: "dom_text_contains", value: "strong", text: "never", err: "no-strong", weight: 100 },
+    { id: "t5", type: "dom_text_contains", value: "em", text: "music", err: "no-em", weight: 80 },
+    { id: "t6", type: "dom_count", value: "p", min: 2, err: "lost-p", weight: 45 },
   ],
   blocks: [
     { type: "text" },
     { type: "heading" },
     {
       type: "code",
-      code: `<strong>Never</strong> play it after midnight.
-The best part is <em>the music</em>.`
+      code: `<p><strong>Never</strong> play it after midnight.</p>
+<p>The best part is <em>the music</em>.</p>`
     },
     { type: "text" },
     { type: "heading" },
     { type: "text" },
     { type: "text" },
+    { type: "heading" },
     { type: "text" },
+    { type: "list", items: [undefined, undefined, undefined, undefined] },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
     { type: "text" },
   ],
   slug: "20-emphasis"

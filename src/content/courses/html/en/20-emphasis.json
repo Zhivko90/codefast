@@ -1,19 +1,58 @@
 {
   "title": "Bold and italic — but not for looks",
-  "checkLabels.t1": "There is emphasis",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
   "checkLabels.t2": "You did not use b",
   "checkLabels.t3": "You did not use i",
-  "checkLabels.t4": "Everything closed",
-  "why.no-emphasis": "There is not a single emphasis. There are words in this text that weigh more — \"Never\" is a warning. Say so with <strong>.",
-  "why.used-b": "You used <b>. It also comes out bold — but it means nothing. It only means \"bold\". <strong> means \"this is important\", and a program reading the page aloud will say it in a firmer voice. <b> it will read like everything else.",
-  "why.used-i": "You used <i>. It tilts the letters, but it does not say why. <em> means \"I am stressing this\". The difference is not pedantic — it is the difference between saying something and merely looking like it.",
+  "checkLabels.t4": "The warning is marked as important",
+  "checkLabels.t5": "The music is stressed",
+  "checkLabels.t6": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted the text instead of marking it up. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed.",
-  "blocks.0.text": "Sometimes one word in a sentence weighs more than the rest. A warning. A key word. Something that must not be missed.",
-  "blocks.1.text": "Two tags",
-  "blocks.3.text": "<strong> comes out bold. <em> comes out italic. So far — obvious.",
-  "blocks.4.text": "But that is not what they are for",
-  "blocks.5.text": "Their names are not \"bold\" and \"italic\". <strong> means \"this is strong, important\". <em> comes from \"emphasis\" — a stress, a note of insistence.",
-  "blocks.6.text": "The difference is not pedantic. A program reading the page aloud for a blind person will read <strong> in a firmer voice. If you put it there just because you liked the look, you lied to it.",
-  "blocks.7.text": "Want something merely bold, without it being important? That is CSS's job. HTML says why, not how.",
-  "blocks.8.text": "Put emphasis where it makes sense in your text."
+  "hint2.not-closed": "Inline tags close INSIDE the paragraph, not after it.",
+  "hint3.not-closed": "<p><strong>Never play it.</p></strong> — that is closed in the wrong order. Whatever you opened last, you close first.",
+  "hint4.not-closed": "Check each pair: <strong> closes before </p>, not after it.",
+
+  "why.used-b": "You used <b>. It also comes out bold — but it says something else. <b> means \"pay attention\", without claiming the thing is more important. Never is not a key word. It is a warning. That is <strong>.",
+  "hint2.used-b": "The two tags give the same picture. The question is not how it looks. It is what you are saying.",
+  "hint3.used-b": "<b>Sale</b> on a shop label — you catch the eye, nothing more. <strong>Do not touch</strong> on a live wire — that is different. The second one is a warning.",
+  "hint4.used-b": "Swap <b> for <strong>. Both the opening and the closing tag.",
+
+  "why.used-i": "You used <i>. It also comes out italic — but it means \"another voice\": a foreign word, a term, the name of a ship. There is no other voice here. There is stress. That is <em>.",
+  "hint2.used-i": "Italic is not one thing. There is italic because the word is foreign, and italic because you are stressing it.",
+  "hint3.used-i": "<i>Titanic</i> — the name of a ship, another voice. He <em>really</em> said it — stress. Different things, same picture.",
+  "hint4.used-i": "Swap <i> for <em>. Both the opening and the closing tag.",
+
+  "why.no-strong": "Never is not marked. It is a warning — the heaviest word in the sentence. Wrap it in <strong>.",
+  "hint2.no-strong": "Read the first sentence out loud. Which word must not be missed?",
+  "hint3.no-strong": "<p><strong>Warning</strong> the floor is wet.</p> — the tag wraps the word only, not the whole paragraph.",
+  "hint4.no-strong": "Wrap Never only. The rest of the sentence stays as it is.",
+
+  "why.no-em": "The music is not stressed. The sentence says the best part is the music — the stress falls on it. Wrap the music in <em>.",
+  "hint2.no-em": "What is the thing the stress falls on in the second sentence?",
+  "hint3.no-em": "<p>The problem is <em>the price</em>.</p> — you stress one part, not the whole line.",
+  "hint4.no-em": "Wrap the music. The full stop stays outside.",
+
+  "why.lost-p": "A paragraph is gone. The task is to mark up words, not to delete sentences.",
+  "hint2.lost-p": "Both sentences must be there. You mark them, you do not remove them.",
+
+  "blocks.0.text": "Sometimes one word weighs more than the rest. A warning. Something that must not be missed. HTML has two tags for this — and two more that look just like them.",
+  "blocks.1.text": "The two tags",
+  "blocks.3.text": "<strong> comes out bold. <em> comes out italic. So far — obvious. And here almost every course tells you the following sentence, which is not true.",
+  "blocks.4.text": "The myth",
+  "blocks.5.text": "You will read everywhere that the program reading the page aloud for a blind person says <strong> in a firmer voice. It does not. Neither JAWS, nor NVDA, nor VoiceOver say anything at all about <strong> and <em>. NVDA did it for a while and stopped — users complained that emphasis is so overused on the web that the noise was unbearable. The browser does not even pass the information along.",
+  "blocks.6.text": "Check it yourself when you get to a real screen reader. A course that promises you a voice which does not exist is teaching you to pick a tag for an effect. Exactly the thing it claims to be teaching you not to do.",
+  "blocks.7.text": "So why bother",
+  "blocks.8.text": "Because the tag is not an effect. It is a record. Four tags, four different things, two pictures:",
+  "blocks.9.items.0": "<strong> — this is important. A warning, a danger, something urgent.",
+  "blocks.9.items.1": "<b> — draw attention, but it is not more important. A key word, a product name.",
+  "blocks.9.items.2": "<em> — I am stressing this. The stress lands here and changes what the sentence means.",
+  "blocks.9.items.3": "<i> — another voice. A foreign word, a term, the name of a ship.",
+  "blocks.10.text": "<b> and <i> are not forbidden. What is forbidden is using them when you mean importance or stress. Want something merely bold, meaning nothing? That is CSS's job.",
+  "blocks.11.text": "And the consequence few will tell you: since the screen reader stays silent, do not rely on bold to carry importance. Say it in words. \"Never play it after midnight\" already says it — the word Never carries the meaning, not the font. The tag only records that it weighs more.",
+  "blocks.12.text": "Write for the meaning. The picture comes after it — sometimes.",
+  "blocks.13.text": "Mark the warning with <strong> and the music with <em>. No <b>, no <i>."
 }

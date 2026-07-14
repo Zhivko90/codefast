@@ -17,11 +17,13 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<h2", err: "no-h2" },
-    { id: "t2", type: "code_contains", value: "<h1", err: "no-h1" },
-    { id: "t3", type: "code_not_contains", value: "<h1>why i like it", err: "still-h1" },
-    { id: "t4", type: "code_not_contains", value: "<h1>how i started", err: "still-h1" },
-    { id: "t5", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_text_not_empty", value: "h1", err: "no-h1", weight: 120 },
+    { id: "t3", type: "dom_count", value: "h1", min: 1, max: 1, err: "still-h1", weight: 100 },
+    { id: "t4", type: "dom_text_contains", value: "h2", text: "why i like it", err: "no-h2", weight: 60 },
+    { id: "t5", type: "dom_text_contains", value: "h2", text: "how i started", err: "no-h2-second", weight: 55 },
+    { id: "t6", type: "dom_count", value: "p", min: 2, err: "lost-p", weight: 45 },
   ],
   blocks: [
     { type: "text" },

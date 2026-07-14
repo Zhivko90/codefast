@@ -16,10 +16,12 @@ export default {
   </body>
 </html>`,
   checks: [
-    { id: "t1", type: "code_contains", value: "<del>", err: "no-del" },
-    { id: "t2", type: "code_contains", value: "</del>", err: "del-not-closed" },
-    { id: "t3", type: "code_not_contains", value: "the new price is 18 leva", err: "still-a-sentence" },
-    { id: "t4", type: "balanced", err: "not-closed" },
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+    { id: "t2", type: "dom_text_contains", value: "del", text: "25", err: "no-del", weight: 100 },
+    { id: "t3", type: "dom_text_contains", value: "strong", text: "18", err: "no-new-price", weight: 80 },
+    { id: "t4", type: "dom_count", value: "p", min: 1, max: 1, err: "still-a-sentence", weight: 60 },
+    { id: "t5", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 45 },
   ],
   blocks: [
     { type: "text" },

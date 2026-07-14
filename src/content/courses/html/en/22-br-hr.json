@@ -1,13 +1,37 @@
 {
   "title": "The one time you actually need Enter",
-  "checkLabels.t1": "The lines break",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
   "checkLabels.t2": "The address is one paragraph",
-  "checkLabels.t3": "No br used for air",
-  "checkLabels.t4": "Everything closed",
-  "why.no-br": "The address is still glued into one line. Enter does not work — you know that by now. You have to SAY that the line ends here: <br>.",
-  "why.split-into-p": "You broke the address into separate paragraphs. Run it and look: they fly apart, with gaps between them, like three separate thoughts. But they are not three thoughts — they are one address. One <p>, with <br> inside.",
-  "why.br-for-air": "You stacked <br> in a row to space something out. That is exactly what you must not do. <br> does not mean \"gap\", it means \"the line ends here, but the thought does not\". Gaps are a job for CSS.",
+  "checkLabels.t3": "The lines break",
+  "checkLabels.t4": "No br used for air",
+  "checkLabels.t5": "The address is complete",
+
+  "why.empty": "The editor is empty. You deleted the listing instead of fixing the address. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed. (<br> does not count — it has no closing twin.)",
+  "hint2.not-closed": "Do not look for </br>. There is no such tag.",
+  "hint3.not-closed": "Check the <p> and </p> tags. There should be two paragraphs, each one closed.",
+
+  "why.split-into-p": "The address is not one paragraph. Break it into separate <p> tags and the lines fly apart, with gaps between them, like three separate thoughts. But they are not three thoughts — they are one address.",
+  "hint2.split-into-p": "Count the <p> tags in your code. There should be exactly two: the price and the address.",
+  "hint3.split-into-p": "The address is not a list either — you cannot reorder the street and the city. It is one thought, written across several lines.",
+  "hint4.split-into-p": "Keep the address in ONE <p>. You say the new lines inside it, not with new paragraphs.",
+
+  "why.no-br": "The address is still glued together. Enter does not work — you know that by now. You have to SAY that the line ends here: <br>. There are four lines, so there are three breaks.",
+  "hint2.no-br": "Count where you want a line to end. After \"Pickup address:\", after the street, after the floor. Three places.",
+  "hint3.no-br": "<p>Ivan<br>Petrov</p> — one paragraph, two lines. The tag sits BETWEEN them, not at the start.",
+  "hint4.no-br": "Put a <br> at the end of every line except the last. Not after Dobrich — nothing follows it.",
+
+  "why.br-for-air": "You stacked <br> next to each other. That is exactly what you must not do. <br> does not mean \"gap\", it means \"the line ends here, but the thought does not\". Gaps are a job for CSS.",
+  "hint2.br-for-air": "Two <br> in a row describe nothing. They just push the text down.",
+  "hint3.br-for-air": "It looks right, and that is exactly why it is a trap. Tomorrow, when you add CSS, those empty lines will get in your way — and you will not remember why they are there.",
+  "hint4.br-for-air": "One <br> per break. Never two glued together.",
+
+  "why.lost-address": "Part of the address is gone. The task is to lay it out on lines, not to shorten it.",
+  "hint2.lost-address": "All four lines must be there: Pickup address:, the street, the floor, the city.",
+
   "blocks.0.text": "You added a pickup address. You wrote it on three lines, the way an address is written. Run it.",
   "blocks.1.text": "It is glued into one line. You already know this — the browser ignores your Enter. And you know the fix: wrap each line in a <p>.",
   "blocks.2.text": "Except it is not a fix. Try it. The three lines fly apart, with gaps between them, like three separate thoughts. But they are not three thoughts — they are one address. And they are not a list either: you cannot reorder the street and the city.",

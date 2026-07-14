@@ -14,14 +14,20 @@ export function Blocks({ blocks }) {
         if (b.type === 'text') return <p key={i} className="text-gray-300 leading-relaxed">{b.text}</p>;
         if (b.type === 'quote') return <p key={i} className="border-l-2 border-sky-500/50 pl-4 text-gray-400 italic">{b.text}</p>;
 
+      // ⚠ items идват като НИЗОВЕ: "blocks.6.items.0" пише низ направо в масива.
+        // Обектната форма { text } се приема, за да не гърми стар урок.
         if (b.type === 'list') return (
           <ul key={i} className="flex flex-col gap-2">
-            {(b.items ?? []).map((it, j) => (
-              <li key={j} className="flex gap-3 text-gray-300 leading-relaxed">
-                <span className="text-sky-400 mt-1">›</span>
-                <span>{it.text}</span>
-              </li>
-            ))}
+            {(b.items ?? []).map((it, j) => {
+              const t = typeof it === 'string' ? it : it?.text;
+              if (!t) return null;   // липсва превод → няма куха стрелка
+              return (
+                <li key={j} className="flex gap-3 text-gray-300 leading-relaxed">
+                  <span className="text-sky-400 mt-1">›</span>
+                  <span>{t}</span>
+                </li>
+              );
+            })}
           </ul>
         );
 

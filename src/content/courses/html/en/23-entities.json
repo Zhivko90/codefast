@@ -1,18 +1,36 @@
 {
   "title": "How to write a tag without it becoming a tag",
-  "checkLabels.t1": "The opening bracket has a name",
-  "checkLabels.t2": "The closing one too",
-  "checkLabels.t3": "The tag shows on the page",
-  "checkLabels.t4": "Everything closed",
-  "why.no-lt": "You are still writing the angle bracket directly. The browser cannot tell \"here is a tag\" from \"I am talking about a tag\" — to it, the bracket means one thing: a tag starts here. Write it by name: &lt;",
-  "why.no-gt": "The opening bracket has a name, but the closing one does not. Both are needed: &lt; and &gt;",
-  "why.not-visible": "\"<p>\" still does not show as text on the page. Look at the result on the right — the sentence is mangled, the tag got executed instead of shown.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "The <p> tag shows on the page",
+  "checkLabels.t3": "The <strong> tag shows too",
+  "checkLabels.t4": "Both paragraphs are there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of fixing the sentence. Bring the code back.",
+
   "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "Careful you have not written a real tag where you only meant to show one.",
+  "hint3.not-closed": "<p>Today I learned the <p> tag</p> — the second <p> is not text, it is a new paragraph. The browser executes it.",
+
+  "why.not-visible": "The page still does not read \"the <p> tag\". Look at the result on the right — the bracket is unfinished. The name of a symbol starts with & and ENDS with a semicolon. Without it the browser does not know where the name stops.",
+  "hint2.not-visible": "Look closely at the code: &lt;p&gt — do you see what is missing at the end?",
+  "hint3.not-visible": "&lt; gives <. &gt; gives >. Both end with a ;. Forget it and the name is not recognised, so it comes out half-drawn.",
+  "hint4.not-visible": "Add a semicolon after &gt. It must read &lt;p&gt; — with a ; in both places.",
+
+  "why.no-strong-shown": "The first tag shows now. The second one is still bare text — it just says \"strong\", with no brackets. It is a tag too, and it wants its brackets named as well.",
+  "hint2.no-strong-shown": "Look at the second half of the sentence. There are no brackets there at all.",
+  "hint3.no-strong-shown": "Do to strong what you did to p: brackets, but written by name.",
+  "hint4.no-strong-shown": "Write &lt;strong&gt; — with a semicolon in both places.",
+
+  "why.lost-p": "A paragraph is gone. The task is to show the tags, not to delete text.",
+  "hint2.lost-p": "Both paragraphs must be there: the sentence about what you learned, and the price.",
+
   "blocks.0.text": "You decided to show off what you learned. You wrote it the normal way. Run it and see what comes out.",
   "blocks.1.text": "The sentence is mangled. The tag you were talking about is gone — instead of being shown, it got EXECUTED. The browser cannot tell \"here is a tag\" from \"I am talking about a tag\". To it, an angle bracket means one thing: a tag starts here.",
   "blocks.2.text": "The characters you write HTML with cannot simply be text inside HTML.",
   "blocks.3.text": "You write it by name, not by symbol",
-  "blocks.4.text": "The fix is to write not the symbol itself, but its name. It starts with & and ends with a semicolon. The browser reads it, understands it, and finally draws the symbol — as text this time, not as a command.",
+  "blocks.4.text": "The fix is to write not the symbol itself, but its name. It starts with & and ends with a semicolon. The browser reads it, understands it, and finally draws the symbol — as text this time, not as a command. The semicolon is not decoration: it says where the name ends.",
   "blocks.5.items.0": "&lt; gives < — less than",
   "blocks.5.items.1": "&gt; gives > — greater than",
   "blocks.5.items.2": "&amp; gives & — the ampersand itself, because it is special too",
@@ -32,5 +50,5 @@
   "blocks.21.text": "This is the one place in all of HTML where the browser HONOURS your spaces and blank lines. The tag is called <pre> — from \"preformatted\".",
   "blocks.23.text": "The two together: <pre> keeps the layout, <code> says it is code. You will always see them as a pair.",
   "blocks.25.text": "Careful with <pre>: it keeps EVERYTHING. Every space you add for tidiness in the code will show up on screen. So it is written tight, with no indentation — otherwise the indentation appears in the result.",
-  "blocks.26.text": "Your turn. Make the sentence actually say \"I learned the <p> tag\" — with the tag visible. If you like, wrap it in <code> and fix the ampersand in the second paragraph too."
+  "blocks.26.text": "Your turn. Make the sentence really say \"I learned the <p> tag and the <strong> tag\" — with both of them visible."
 }

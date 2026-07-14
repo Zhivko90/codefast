@@ -1,13 +1,27 @@
 {
   "title": "Why two paragraphs will not sit side by side",
-  "checkLabels.t1": "The amount is bold",
-  "checkLabels.t2": "The two paragraphs are merged",
-  "checkLabels.t3": "It comes out on one line",
-  "checkLabels.t4": "Everything closed",
-  "why.no-strong": "There is no emphasis on the amount. Merge the two paragraphs into one and wrap just the number — <strong> is inline, it does not break the line.",
-  "why.still-two-blocks": "The price is still split into two paragraphs. Two blocks will NEVER sit side by side, however much you nudge them. Merge them into one <p>.",
-  "why.not-one-line": "The price still does not come out as one sentence. It should read \"Price: 25 leva\" on a single line, inside a single paragraph.",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t2": "One paragraph left",
+  "checkLabels.t3": "The price comes out on one line",
+  "checkLabels.t4": "The amount is bold",
+  "checkLabels.t5": "The heading is still there",
+
+  "why.empty": "The editor is empty. You deleted the ad instead of fixing it. Bring the code back.",
   "why.not-closed": "A tag is open and never closed.",
+  "why.still-two-blocks": "The price is still split into two paragraphs. Two blocks will NEVER sit side by side, however much you nudge them. Merge them into one <p>.",
+  "why.not-one-line": "There is one paragraph, but its text does not read Price: 25 leva. Both parts must be in the same paragraph, next to each other.",
+  "why.no-strong": "There is no emphasis on the amount. Wrap just the number — <strong> is inline, it lives inside the line and does not break it.",
+  "why.lost-h1": "The heading is gone. The task is to merge the two paragraphs, not to delete things.",
+
+  "hint2.still-two-blocks": "Count the <p> tags in your code. One must remain.",
+  "hint3.still-two-blocks": "If you have <p>Name:</p> and <p>Ivan</p> and you want Name: Ivan on one line, you write <p>Name: Ivan</p>. One paragraph, two things inside it.",
+  "hint4.still-two-blocks": "Remove the closing tag of the first paragraph and the opening tag of the second. One <p> is left, with all the text.",
+
+  "hint2.no-strong": "Do not wrap the whole paragraph. Only the amount.",
+  "hint3.no-strong": "<p>Name: <strong>Ivan</strong></p> — the line stays whole, and Ivan comes out bold.",
+
   "blocks.0.text": "You are selling your bike. You wrote the price as two paragraphs, because that was what you had at hand. Run it and look.",
   "blocks.1.text": "They sit one below the other. But you want it on one line: \"Price: 25 leva\".",
   "blocks.2.text": "Try to bring them together",
