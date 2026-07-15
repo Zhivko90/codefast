@@ -1,0 +1,22 @@
+{
+  "title": "Lists and quotes",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The real list",
+  "groups.0.items.0.term": "Drawn versus made",
+  "groups.0.items.0.def": "Dashes and <br> look like a list. They are not. Try reordering a row or removing one item — every change is manual. A list CLAIMS: these things are of one kind.",
+  "groups.0.items.1.term": "ul and li",
+  "groups.0.items.1.def": "<ul> wraps the list, <li> is each thing. The browser draws the bullets — you type none. Leave dashes inside and they sit NEXT TO its bullets.",
+  "groups.0.items.2.term": "ul or ol",
+  "groups.0.items.2.def": "<ul> — order does not matter. <ol> — it does: steps, a ranking. The browser numbers <ol> itself, and reorder two items and the numbers rearrange on their own.",
+
+  "groups.1.title": "Nested and pairs",
+  "groups.1.items.0.term": "A list in a list",
+  "groups.1.items.0.def": "A new <ul> INSIDE an <li>, before you close it — not next to it. That way the sub-list is the thing's content, not its neighbour. The closing </li> goes AFTER the inner </ul>.",
+  "groups.1.items.1.term": "dl, dt, dd",
+  "groups.1.items.1.def": "A list of name-value pairs. <dt> is the name, <dd> is the value. For specs, a glossary, metadata. The colon disappears — the tags separate instead of it.",
+
+  "groups.2.title": "Someone else's words",
+  "groups.2.items.0.term": "blockquote and q",
+  "groups.2.items.0.def": "Quotation marks are just characters — the computer does not know the words are not yours. <blockquote> is a block quote, <q> is inline. The tag claims it; the marks become redundant. Both take a cite with the source's address."
+}

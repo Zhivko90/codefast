@@ -1,0 +1,28 @@
+{
+  "title": "Text and headings",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The hierarchy",
+  "groups.0.items.0.term": "One h1 per page",
+  "groups.0.items.0.def": "<h1> says what the WHOLE page is about. There is one. If everything is h1, the page shouts equally loud about everything — and both Google and a blind person get lost.",
+  "groups.0.items.1.term": "Levels by importance",
+  "groups.0.items.1.def": "<h1> to <h6>, like a book's contents: chapter, section, subsection. You do not skip levels. And you do not pick the level by how big you want it — you pick it by importance. The size is a consequence.",
+  "groups.0.items.2.term": "The paragraph",
+  "groups.0.items.2.def": "<p>. Each sentence — its own paragraph, not one shared. The blank lines in your code do not exist for the browser; if you want separation, you say so with a tag.",
+
+  "groups.1.title": "Block and inline",
+  "groups.1.items.0.term": "Block tag",
+  "groups.1.items.0.def": "Takes a whole line and pushes the next thing down: <p>, <h1>. Two blocks will NEVER stand side by side, no matter how you arrange them.",
+  "groups.1.items.1.term": "Inline tag",
+  "groups.1.items.1.def": "Lives inside the line, between words, does not break it: <strong>, <em>, <a>. A block is a line, an inline is a word.",
+  "groups.1.items.2.term": "strong and em",
+  "groups.1.items.2.def": "<strong> does not mean \"bold\" — it means \"important\". <em> does not mean \"slanted\" — it means \"stress\". If you want only the look, that is CSS's job. The tag is chosen by meaning.",
+
+  "groups.2.title": "More from this section",
+  "groups.2.items.0.term": "del, ins, mark, small",
+  "groups.2.items.0.def": "<del> = no longer valid (comes out struck through). <ins> = added. <mark> = highlighted. <small> = the fine print. Again by meaning, not look — change the style tomorrow and the meaning must not go with it.",
+  "groups.2.items.1.term": "br and hr",
+  "groups.2.items.1.def": "<br> is a new line inside a paragraph — an address, a verse. Not for space between paragraphs. <hr> is a change of topic. Both are void — no closing tag.",
+  "groups.2.items.2.term": "Entities",
+  "groups.2.items.2.def": "How you write a character that is otherwise code. &lt; for <, &gt; for >, &amp; for &. Otherwise the browser takes < as the start of a tag. &nbsp; is a space that does not break."
+}

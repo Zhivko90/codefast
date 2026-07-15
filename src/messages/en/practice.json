@@ -23,6 +23,9 @@
   "submit": "Submit",
   "statement": "Statement",
   "solution": "Solution",
+  "sol_why": "Why the simple way fails",
+  "sol_code": "How it is done",
+  "sol_note": "What stays with you",
   "discuss": "Discussion",
   "locked_hint": "Unlocks when you solve it",
 

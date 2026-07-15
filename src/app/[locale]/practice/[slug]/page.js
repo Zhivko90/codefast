@@ -85,7 +85,6 @@ export default function ProblemPage({ params }) {
         tabs={[
           { id: 'statement', label: t('statement') },
           { id: 'solution',  label: t('solution'), locked: !solved },
-          { id: 'discuss',   label: t('discuss'),  locked: !solved },
         ]}
         activeTab={tab}
         onTab={setTab}
@@ -148,8 +147,24 @@ export default function ProblemPage({ params }) {
           </>
         )}
 
-        {tab === 'solution' && <p className="text-sm text-gray-400">…</p>}
-        {tab === 'discuss' && <p className="text-sm text-gray-400">…</p>}
+        {tab === 'solution' && txt.solution && (
+          <>
+            <p className="text-[10px] font-bold tracking-widest text-gray-500 mb-2">{t('sol_why')}</p>
+            {txt.solution.why?.split('\n\n').map((par, i) => (
+              <p key={i} className="text-[14px] text-gray-300 leading-relaxed mb-3">{par}</p>
+            ))}
+
+            <p className="text-[10px] font-bold tracking-widest text-gray-500 mt-6 mb-2">{t('sol_code')}</p>
+            <pre className="rounded-lg border border-white/[0.07] bg-black/30 px-4 py-3 font-mono text-[12.5px] leading-relaxed text-emerald-200 whitespace-pre-wrap break-words overflow-x-auto">{txt.solution.code}</pre>
+
+            {txt.solution.note && (
+              <>
+                <p className="text-[10px] font-bold tracking-widest text-gray-500 mt-6 mb-2">{t('sol_note')}</p>
+                <p className="text-[14px] text-gray-300 leading-relaxed">{txt.solution.note}</p>
+              </>
+            )}
+          </>
+        )}
       </WorkBench>
     </div>
   );

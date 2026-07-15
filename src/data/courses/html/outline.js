@@ -14,8 +14,8 @@ export default {
     {
       id: 'content',
       modules: [
-        { id: 'headpara', lessons: ['17-headings', '18-paragraphs', '19-block-inline', '20-emphasis', '21-formatting', '22-br-hr', '23-entities', '24-quiz-text'] },
-        { id: 'lists', lessons: ['25-mess', '26-lists', '27-nested-lists', '28-dl', '29-quote', '30-broken2', '31-quiz-content', '32-freehand2'] },
+        { id: 'headpara', lessons: ['17-headings', '18-paragraphs', '19-block-inline', '20-emphasis', '21-formatting', '22-br-hr', '23-entities', 'R3-review-headpara', '24-quiz-text'] },
+        { id: 'lists', lessons: ['25-mess', '26-lists', '27-nested-lists', '28-dl', '29-quote', '30-broken2', 'R4-review-lists', '31-quiz-content', '32-freehand2'] },
       ],
     },
     {
