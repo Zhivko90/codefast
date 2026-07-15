@@ -1,0 +1,20 @@
+{
+  "title": "Tables",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "Rows and columns",
+  "groups.0.items.0.term": "table, tr, td",
+  "groups.0.items.0.def": "<table> is the table, <tr> is a row (table row), <td> is a cell (table data). You write row by row, left to right — exactly as you read. Spaces do not align; the browser swallows them.",
+  "groups.0.items.1.term": "No tag for a column",
+  "groups.0.items.1.def": "You write rows. Columns are a CONSEQUENCE — if every row has three cells, there are three columns. One row with four cells breaks the table and it shows at once.",
+
+  "groups.1.title": "Heading and name",
+  "groups.1.items.0.term": "th",
+  "groups.1.items.0.def": "The header cell (table header). The first row is not data — it is the NAMES of the columns. A blind person hears \"Price: 18\" and knows which column without counting. With <td> they hear only \"18\" and wonder what the number is.",
+  "groups.1.items.1.term": "caption",
+  "groups.1.items.1.def": "The name of the table itself — the first thing inside <table>, not above it. The page's heading does not do this job. Move the table elsewhere and it must still say what it holds and from when.",
+
+  "groups.2.title": "When a table",
+  "groups.2.items.0.term": "Data, not layout",
+  "groups.2.items.0.def": "The test: take a cell from the middle — what does it MEAN? \"18\" = the price of the mountain bike (row + column). There is an answer → data, the table is right. A menu on the left, text on the right — what is their row? None → that is LOOK, not structure. Layout is CSS. A layout table lies: a blind person hears \"table, three rows\" and gets a site chopped into meaningless cells."
+}

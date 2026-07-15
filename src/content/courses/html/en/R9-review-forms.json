@@ -1,0 +1,24 @@
+{
+  "title": "Forms",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The form",
+  "groups.0.items.0.term": "form, action, method",
+  "groups.0.items.0.def": "<form> wraps the fields and makes them one. action says WHERE the data goes, method — HOW: post hides it, get puts it in the address. Rule: search — get, everything else — post. Whatever is outside the form is not sent.",
+  "groups.0.items.1.term": "name names the data",
+  "groups.0.items.1.def": "Every field needs a name — otherwise its data arrives nowhere while the form still says \"thank you\". name=\"\" does the same. The two names must DIFFER — identical ones eat each other. Exactly the mistake that does not crash.",
+  "groups.0.items.2.term": "type and required",
+  "groups.0.items.2.def": "type=\"email\", type=\"tel\", type=\"number\" — the browser checks for you and the phone gives the right keyboard. required blocks an empty field. But this is CONVENIENCE, not protection: anyone removes required in two clicks. The server checks AGAIN, always.",
+
+  "groups.1.title": "Label and choice",
+  "groups.1.items.0.term": "label (for ↔ id)",
+  "groups.1.items.0.def": "A paragraph above a field is not a label — it just sits on top. <label> has for, the field has id, their value is ONE word. Click the label, the cursor jumps into the field. Without the link a blind person hears only \"text field\".",
+  "groups.1.items.1.term": "select and option",
+  "groups.1.items.1.def": "<select> is a choice list, <option> is each choice. value is what gets sent; the text between the tags is what a person sees — the two often differ (sees \"Mountain\", sends \"mtb\"). If you know the answers in advance — select.",
+
+  "groups.2.title": "Long text and button",
+  "groups.2.items.0.term": "textarea",
+  "groups.2.items.0.def": "The big field for many lines. It has a closing tag, unlike <input> — and the starting text is BETWEEN the tags, not in value. So </textarea> is stuck right after: a blank line between the tags goes into the field.",
+  "groups.2.items.1.term": "button, not div",
+  "groups.2.items.1.def": "<button type=\"submit\"> is real — Tab reaches it, Enter presses it, the focus shows. <div class=\"button\"> is fake: without a mouse the form cannot be sent. Rule: leads somewhere — a link; does something — a button. If it needs code to behave like a button — it should have been a button."
+}

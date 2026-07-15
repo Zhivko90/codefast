@@ -61,5 +61,16 @@
       "Search with Ctrl+F for the paragraph tag. It is still there.",
       "You made the list but did not remove what it replaces."
     ]
+  },
+  "solution": {
+    "why": "The first instinct is to put dots and dashes so it looks like a list. But a dash is a sign for the eye — to the browser it is just a letter. A list that looks like a list but is not one is the most common mistake here.\n\nThe second trap is sneakier: you make <li> but forget <ul>. The browser still draws the bullets, and you think you are done. You are not — items without a container are not a list, they only look like one.",
+    "steps": [
+      "Remove the paragraph. It is not a container for a list — a list has its own.",
+      "Open a <ul>. It says: a list starts here.",
+      "Wrap each thing in <li> and </li>. That is one item of the list.",
+      "Remove the dashes. The bullet in front is drawn by <ul> itself — yours is redundant."
+    ],
+    "code": "<body>\n  <h2>What I need from the shop</h2>\n  <ul>\n    <li>salt</li>\n    <li>pepper</li>\n    <li>two lemons</li>\n  </ul>\n</body>",
+    "note": "Do not look at whether it looks right. Look at whether it IS right. The browser draws bullets even on a broken list — the eye lies, the structure does not."
   }
 }

@@ -146,3 +146,19 @@ export function loadCode(course, slug) {
   if (typeof window === 'undefined') return null;
   return localStorage.getItem(kCode(course, slug));
 }
+
+// ── решена ли е вече? (localStorage или база)
+export async function isSolved(userId, course, slug) {
+  if (typeof window !== 'undefined' && localStorage.getItem(kSolved(course, slug))) {
+    return true;
+  }
+  if (!userId) return false;
+  const { data } = await supabase
+    .from('problem_solved')
+    .select('problem_slug')
+    .eq('user_id', userId)
+    .eq('course', course)
+    .eq('problem_slug', slug)
+    .maybeSingle();
+  return !!data;
+}

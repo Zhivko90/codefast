@@ -1,0 +1,22 @@
+{
+  "title": "The meaning you cannot see",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "Names and labels",
+  "groups.0.items.0.term": "class and id",
+  "groups.0.items.0.def": "class is a KIND — it can repeat (\"all bikes\"). id is a NAME — once per page (\"this exact one\"). Repeat an id and the browser does not crash — it grabs the first and moves on, and half your code silently fails. In doubt — class.",
+  "groups.0.items.1.term": "By meaning, not look",
+  "groups.0.items.1.def": "class=\"price\", not class=\"red\". Tomorrow the price turns green — \"red\" on green is a trap for anyone reading the code. A price stays a price, whatever you do to it.",
+  "groups.0.items.2.term": "id jumps",
+  "groups.0.items.2.def": "One thing id does on its own, no CSS: a link to #top takes you to the thing with that id, no reload. That is why id must be unique — otherwise the browser does not know where to take you.",
+
+  "groups.1.title": "The empty boxes",
+  "groups.1.items.0.term": "div and span",
+  "groups.1.items.0.def": "<div> is a block box, <span> is an inline wrap — the same pair as <p> and <strong>. They group so CSS has something to grab. But they mean NOTHING on their own.",
+  "groups.1.items.1.term": "div soup",
+  "groups.1.items.1.def": "The danger: it is easy to wrap everything in <div> and tell yourself \"it works\". It does — but the code no longer says what the page IS. Google hears a group, the reader hears a group, so do you six months later. <div> is used only WHEN THERE IS NO tag.",
+
+  "groups.2.title": "The tags of meaning",
+  "groups.2.items.0.term": "header, nav, main, article, aside, footer",
+  "groups.2.items.0.def": "<main> is exactly one (the point). <article> is standalone (makes sense lifted out). <aside> is off to the side (not the point). The reader collects them into a list of landmarks and jumps between them. The test: read only the tags aloud — does it sound like a page? Beauty is skin-deep; structure is not."
+}

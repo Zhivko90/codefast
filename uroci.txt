@@ -1,31 +1,44 @@
 ﻿
-===== LOGIC: 17-headings.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/17-headings.json
+===== LOGIC: 56-forms.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/56-forms.json
 export default {
-  id: 17,
+  id: 56,
   type: "web",
   label: "coding",
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>My page</title>
+    <title>Contact</title>
   </head>
   <body>
-    <h1>My favourite game</h1>
-    <h1>Why I like it</h1>
-    <p>It never gets boring.</p>
-    <h1>How I started</h1>
-    <p>A friend showed it to me.</p>
+    <h1>Ask about the bike</h1>
+
+    <p>Your name:</p>
+    <input type="text">
+
+    <p>Your email:</p>
+    <input type="text">
   </body>
 </html>`,
   checks: [
     { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "changed", err: "untouched", weight: 950 },
     { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
-    { id: "t2", type: "dom_text_not_empty", value: "h1", err: "no-h1", weight: 120 },
-    { id: "t3", type: "dom_count", value: "h1", min: 1, max: 1, err: "still-h1", weight: 100 },
-    { id: "t4", type: "dom_text_contains", value: "h2", text: "why i like it", err: "no-h2", weight: 60 },
-    { id: "t5", type: "dom_text_contains", value: "h2", text: "how i started", err: "no-h2-second", weight: 55 },
-    { id: "t6", type: "dom_count", value: "p", min: 2, err: "lost-p", weight: 45 },
+
+    { id: "t3", type: "dom_text_not_empty", value: "h1", err: "lost", weight: 200 },
+    { id: "t4", type: "dom_count", value: "input", min: 2, err: "lost-input", weight: 195 },
+
+    { id: "t5", type: "dom_has", value: "form", err: "no-form", weight: 150 },
+    { id: "t6", type: "dom_count", value: "form input", min: 2, err: "input-outside", weight: 145 },
+
+    { id: "t7", type: "dom_attr", value: "input", attr: "name", err: "no-name", weight: 140 },
+    { id: "t8", type: "dom_count", value: "input[name]", min: 2, err: "one-name", weight: 135 },
+
+    { id: "t9", type: "dom_attr", value: "form", attr: "action", err: "no-action", weight: 130 },
+    { id: "t10", type: "dom_attr", value: "form", attr: "method", err: "no-method", weight: 125 },
+
+    { id: "t11", type: "dom_has", value: "form button", err: "no-button", weight: 120 },
+    { id: "t12", type: "dom_text_not_empty", value: "button", err: "empty-button", weight: 115 },
   ],
   blocks: [
     { type: "text" },
@@ -33,345 +46,573 @@ export default {
     { type: "heading" },
     {
       type: "code",
-      code: `<h1>Main title</h1>
-<h2>Section</h2>
-<h3>Subsection</h3>
-<h4>Even deeper</h4>`
+      code: `<form action="/send" method="post">
+  <input type="text" name="username">
+  <button type="submit">Send</button>
+</form>`
     },
     { type: "text" },
     { type: "heading" },
     { type: "text" },
     { type: "text" },
-    { type: "text" },
     { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
   ],
-  slug: "17-headings"
+  slug: "56-forms"
 };
-===== BG: 17-headings.json =====
+===== BG: 56-forms.json =====
 {
-  "title": "Не всичко е h1",
+  "title": "Страницата започва да слуша",
 
-  "checkLabels.t1": "Написа нещо",
+  "checkLabels.t1": "Има код",
+  "checkLabels.t2": "Пипна кода",
   "checkLabels.g1": "Всичко затворено",
-  "checkLabels.t2": "Има главно заглавие",
-  "checkLabels.t3": "Само едно h1",
-  "checkLabels.t4": "Защо я харесвам е слязло на h2",
-  "checkLabels.t5": "Как започнах също",
-  "checkLabels.t6": "Абзаците са си на мястото",
+  "checkLabels.t3": "Заглавието е тук",
+  "checkLabels.t4": "Двете полета са тук",
+  "checkLabels.t5": "Има форма",
+  "checkLabels.t6": "Полетата са вътре в нея",
+  "checkLabels.t7": "Полетата имат имена",
+  "checkLabels.t8": "И двете имат име",
+  "checkLabels.t9": "Формата знае къде",
+  "checkLabels.t10": "Формата знае как",
+  "checkLabels.t11": "Има бутон",
+  "checkLabels.t12": "На бутона пише нещо",
 
-  "why.empty": "Редакторът е празен. Изтри страницата, вместо да я оправиш. Върни кода и слез с нивата — не с триене.",
+  "why.empty": "Редакторът е празен. Изтри и полетата.",
 
-  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "hint2.not-closed": "Почти винаги е забравен затварящ таг. Смени ли отварящия, затварящият остава стар.",
-  "hint3.not-closed": "<h1>Contact</h2> изглежда невинно. Не е. Отваряш едно, затваряш друго — браузърът не знае какво да прави.",
-  "hint4.not-closed": "Мини заглавията едно по едно. За всяко провери дали цифрата отпред и цифрата отзад са една и съща.",
+  "why.untouched": "Кодът е точно този, който ти дадох. Не си пипнал нищо.",
+  "hint2.untouched": "Двете полета са там. Липсва им обвивката, имената и бутонът.",
 
-  "why.no-h1": "Няма главно заглавие, или то е празно. Едно <h1> трябва да остане — то казва за какво е ЦЯЛАТА страница.",
-  "hint2.no-h1": "Свалил си и трите. Едно от тях не е раздел — то е темата.",
-  "hint3.no-h1": "Книга без заглавие на корицата. Отваряш я и веднага почва Глава първа. Не знаеш какво държиш.",
-  "hint4.no-h1": "Върни на <h1> заглавието, което описва цялата страница. Другите две остават <h2>.",
+  "why.not-closed": "Някой таг е отворен и не е затворен. <input> не се брои — той няма затварящ.",
+  "hint2.not-closed": "<form> иска </form>. <button> иска </button>. Провери и двата.",
 
-  "why.still-h1": "Страницата има повече от едно <h1>. Ако всичко е h1, тя крещи еднакво силно за всичко — и Google, и незрящият човек се губят в нея.",
-  "hint2.still-h1": "Броят h1-ците в кода си. Трябва да остане точно едно — това, което описва цялата страница.",
-  "hint3.still-h1": "Представи си съдържание на книга: една глава Насекоми, вътре Хранене и Размножаване. Главата е една. Разделите са колкото искаш.",
-  "hint4.still-h1": "Кое от трите заглавия описва цялата страница? То остава h1. Другите две са раздели вътре в нея.",
+  "why.lost": "Изтри заглавието. Задачата беше за полетата.",
 
-  "why.no-h2": "Защо я харесвам още не е подзаглавие. То не е тема на цялата страница — то е раздел вътре в нея. Слез едно ниво: <h2>.",
-  "hint2.no-h2": "Заглавието Why I like it има отварящ и затварящ таг. И двата са h1.",
-  "hint3.no-h2": "Ако имаш <h1>Contact</h1> и искаш да е раздел, пишеш <h2>Contact</h2>. Смениш ли единицата на двойка отпред, смени я и отзад.",
-  "hint4.no-h2": "Смени и двата тага около Why I like it. Забравиш ли затварящия, проверката за затворени тагове ще падне.",
+  "why.lost-input": "Изгуби поле. Две са — за име и за имейл. И двете остават.",
 
-  "why.no-h2-second": "Първото го свали. Второто — не. Как започнах също е раздел, не тема на страницата.",
-  "hint2.no-h2-second": "Направи с How I started точно това, което направи с Why I like it. Двата тага, не само единия.",
+  "why.no-form": "Полетата стоят разхвърляни по страницата. Те не знаят, че са заедно — няма как да се изпратят наведнъж. Обгради ги с <form>.",
+  "hint2.no-form": "Формата е обвивка, като <ul> около точките. Тя започва преди първото поле и свършва след бутона.",
+  "hint3.no-form": "Подобен случай: <form action=\"/search\" method=\"get\"><input type=\"text\" name=\"q\"><button>Търси</button></form>.",
+  "hint4.no-form": "Отвори <form> над първия абзац и я затвори под бутона.",
 
-  "why.lost-p": "Изчезнал е абзац. Задачата е да смениш нивата на заглавията, не да триеш текст. Върни го.",
-  "hint2.lost-p": "Виж превюто. Изреченията It never gets boring и A friend showed it to me трябва да са там.",
+  "why.input-outside": "Поле е останало извън формата. Каквото е навън, не се изпраща — все едно го няма.",
+  "hint2.input-outside": "Провери къде затваряш </form>. Затвориш ли я след първото поле, второто остава навън.",
 
-  "blocks.0.text": "Виж страницата вдясно. Три заглавия, всичките еднакво едри. Изглежда... грешно, нали? Все едно човек крещи през цялото време.",
-  "blocks.1.text": "Проблемът не е естетически. Проблемът е, че страницата няма йерархия — не личи кое е главното и кое е подраздел.",
-  "blocks.2.text": "Шест нива",
-  "blocks.4.text": "От <h1> до <h6>. Като съдържанието на книга: една глава, вътре раздели, вътре подраздели.",
-  "blocks.5.text": "Правилото",
-  "blocks.6.text": "Един <h1> на страница — той казва за какво е цялата страница. Всичко останало под него е <h2>, а подразделите на <h2> са <h3>. Не прескачай нива.",
-  "blocks.7.text": "И най-важното: не избираш нивото според това колко едро искаш да изглежда. Избираш го според това колко важно е нещото. Размерът е следствие, не цел.",
-  "blocks.8.text": "Оправи страницата вдясно: остави един <h1> и направи другите две <h2>.",
-  "blocks.9.text": "Google чете заглавията ти, за да разбере за какво е страницата. Незрящите хора ги ползват, за да скачат из нея. Ако всичко е h1, и двамата се губят."
+  "why.no-name": "Поле без име, или с празно име. Пращаш два текста, но никой не знае кой е името и кой е имейлът. name=\"\" е същото като никакво име — точно грешката, която не гърми.",
+  "hint2.no-name": "name е атрибут, вътре в тага: <input type=\"text\" name=\"...\">.",
+  "hint3.no-name": "Подобен случай: <input type=\"text\" name=\"city\">. Думата в кавичките е етикетът на пакета.",
+  "hint4.no-name": "Кръсти полетата с това, което съдържат. И внимавай: двете имена трябва да са РАЗЛИЧНИ. Едно и също име на двете полета значи, че едното изяжда другото.",
+
+  "why.one-name": "Само едното поле има име. И двете трябва да имат — и то различни.",
+  "hint2.one-name": "Второто поле е за имейл. То също иска свой name.",
+
+  "why.no-action": "Формата не знае къде отиват данните. action е адресът, който ще ги приеме.",
+  "hint2.no-action": "Адресът още не съществува и няма страшно. Пиши /send.",
+
+  "why.no-method": "Формата не знае как да изпрати данните. method казва това: post или get.",
+  "hint2.no-method": "Просто правило: търсене — get. Всичко останало — post. Това тук е съобщение, не търсене.",
+
+  "why.no-button": "Няма бутон за изпращане вътре във формата. Формата събира данни и няма как да ги подаде.",
+  "hint2.no-button": "<button type=\"submit\">…</button>. Мястото му е вътре във формата, най-отдолу.",
+
+  "why.empty-button": "Бутонът е празен. На него трябва да пише какво прави — Изпрати, Прати съобщение.",
+  "hint2.empty-button": "Празният бутон е бутон, за който никой не знае за какво служи. Незрящият чува само бутон.",
+
+  "blocks.0.text": "Досега страницата ти само говореше. Показваше неща на човека. Сега ще започне да слуша.",
+  "blocks.1.text": "Сложи две полета за писане. Пусни. Появяват се, можеш да пишеш в тях. И после? Нищо. Каквото напишеш, си остава там.",
+  "blocks.2.text": "Формата",
+  "blocks.4.text": "<form> обгражда полетата и ги прави едно. Без нея те са разхвърляни кутийки, които не знаят една за друга.",
+  "blocks.5.text": "Двата атрибута",
+  "blocks.6.text": "action казва КЪДЕ отиват данните. Адрес на сървър, който ще ги приеме.",
+  "blocks.7.text": "method казва КАК. post — данните пътуват скрито. get — влизат в адреса, виждат се в лентата на браузъра.",
+  "blocks.8.text": "Просто правило: търсене — get. Всичко останало — post. Паролата не се пише в адреса.",
+  "blocks.9.text": "Името на полето",
+  "blocks.10.text": "Всяко поле трябва да има name. Без него данните му не се изпращат — все едно го няма. И двете имена трябва да са различни: едно и също име на две полета значи, че едното изяжда другото.",
+  "blocks.11.text": "Помисли какво пристига отсреща: два текста. Кой е името, кой е имейлът? name е етикетът на пакета.",
+  "blocks.12.text": "Забравеното name е грешка, която не гърми. Формата се изпраща, човекът вижда благодарим, а полето просто липсва в пощата ти. Празното name=\"\" прави точно същото.",
+  "blocks.13.text": "Няма да работи",
+  "blocks.14.text": "Направи формата, натисни бутона. Нищо няма да стане.",
+  "blocks.15.text": "Адресът в action не съществува. И дори да съществуваше, някой трябва да го чака отсреща — програма на сървъра, която приема данните, проверява ги, слага ги в база и праща имейл.",
+  "blocks.16.text": "Това не е HTML. Това е друг език, друг курс.",
+  "blocks.17.text": "HTML прави ръката, която подава. Какво става с подаденото — не е негова работа.",
+  "blocks.18.text": "Но ръката трябва да е направена както трябва. Иначе никой няма да я хване.",
+  "blocks.19.text": "Твой ред. Направи форма от двете полета, дай на всяко свое име и ѝ сложи бутон."
 }
-===== LOGIC: 18-paragraphs.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/18-paragraphs.json
+===== LOGIC: 57-inputs.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/57-inputs.json
 export default {
-  id: 18,
+  id: 57,
   type: "web",
   label: "coding",
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>My page</title>
+    <title>Contact</title>
   </head>
   <body>
-    <h1>My favourite game</h1>
+    <h1>Ask about the bike</h1>
 
-    I started playing three years ago.
+    <form action="/send" method="post">
+      <p>Your name:</p>
+      <input type="text" name="username">
 
-    A friend showed it to me.
+      <p>Your email:</p>
+      <input type="text" name="email">
 
-    Now I cannot stop.
+      <p>Your phone:</p>
+      <input type="text" name="phone">
+
+      <button type="submit">Send</button>
+    </form>
   </body>
 </html>`,
   checks: [
     { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "changed", err: "untouched", weight: 950 },
     { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
-    { id: "t2", type: "dom_count", value: "p", min: 3, err: "no-p", weight: 100 },
-    { id: "t3", type: "dom_text_not_empty", value: "p", err: "empty-p", weight: 90 },
-    { id: "t4", type: "dom_text_contains", value: "p", text: "i started playing three years ago", err: "loose-first", weight: 70 },
-    { id: "t5", type: "dom_text_contains", value: "p", text: "a friend showed it to me", err: "loose-second", weight: 65 },
-    { id: "t6", type: "dom_text_contains", value: "p", text: "now i cannot stop", err: "loose-third", weight: 60 },
-    { id: "t7", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 45 },
+
+    { id: "p1", type: "dom_count", value: "input", min: 3, err: "lost", weight: 210 },
+    { id: "p2", type: "dom_has", value: "form[action]", err: "lost", weight: 205 },
+    { id: "p3", type: "dom_attr", value: "input", attr: "name", err: "lost-name", weight: 200 },
+    { id: "p4", type: "dom_text_not_empty", value: "button", err: "lost", weight: 195 },
+
+    { id: "t3", type: "dom_has", value: "input[type=\"email\"]", err: "no-email-type", weight: 150 },
+    { id: "t4", type: "dom_has", value: "input[name=\"email\"][type=\"email\"]", err: "wrong-field", weight: 145 },
+
+    { id: "t5", type: "dom_has", value: "input[type=\"tel\"]", err: "no-tel-type", weight: 140 },
+    { id: "t6", type: "dom_has", value: "input[name=\"phone\"][type=\"tel\"]", err: "wrong-field", weight: 135 },
+
+    { id: "t7", type: "dom_has", value: "input[required]", err: "no-required", weight: 130 },
+    { id: "t8", type: "dom_has", value: "input[name=\"email\"][required]", err: "wrong-required", weight: 125 },
   ],
   blocks: [
     { type: "text" },
     { type: "text" },
     { type: "heading" },
+    { type: "list", items: [undefined, undefined, undefined, undefined, undefined, undefined] },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
     { type: "text" },
     { type: "text" },
     { type: "heading" },
-    { type: "code", code: "<p>I started playing three years ago.</p>" },
+    { type: "code", code: "<input type=\"email\" name=\"email\" required>" },
     { type: "text" },
     { type: "text" },
     { type: "quote" },
-  ],
-  slug: "18-paragraphs"
-};
-===== BG: 18-paragraphs.json =====
-{
-  "title": "Защо Enter не работи",
-
-  "checkLabels.t1": "Написа нещо",
-  "checkLabels.g1": "Всичко затворено",
-  "checkLabels.t2": "Има три абзаца",
-  "checkLabels.t3": "Никой абзац не е празен",
-  "checkLabels.t4": "Първото изречение е вътре в абзац",
-  "checkLabels.t5": "Второто също",
-  "checkLabels.t6": "И третото",
-  "checkLabels.t7": "Заглавието е останало",
-
-  "why.empty": "Редакторът е празен. Изтри страницата, вместо да обградиш изреченията. Върни кода.",
-
-  "why.not-closed": "Някой <p> е отворен и не е затворен.",
-  "hint2.not-closed": "Обграждането е две неща. Лесно е да сложиш отварящия и да забравиш затварящия.",
-  "hint3.not-closed": "<p>Hello there — това не е абзац. Това е абзац, който никога не свършва. Браузърът поглъща всичко след него.",
-  "hint4.not-closed": "Преброй отварящите <p> и затварящите </p>. Числата трябва да съвпадат.",
-
-  "why.no-p": "Няма три абзаца. Всяко от трите изречения си иска СВОЙ <p> — не един общ.",
-  "hint2.no-p": "Преброй абзаците. Трябват три, защото изреченията са три.",
-  "hint3.no-p": "Един общ <p> около трите не върши работа — това е един абзац с три изречения, не три абзаца. Празните редове вътре в него не значат нищо, вече го видя.",
-  "hint4.no-p": "Затвори всеки абзац, преди да отвориш следващия. Три отварящи, три затварящи.",
-
-  "why.empty-p": "Има празен <p>. Празният абзац не е абзац — той не носи нищо. Или сложи текст в него, или го махни.",
-  "hint2.empty-p": "Отворил си и си затворил абзац, без нищо между тях. Текстът е останал отвън.",
-  "hint3.empty-p": "<p></p>Hello — тагът е празен, а Hello виси навън. Трябва да е <p>Hello</p>.",
-  "hint4.empty-p": "Текстът влиза МЕЖДУ отварящия и затварящия таг. Не преди тях, не след тях.",
-
-  "why.loose-first": "Първото изречение още е гол текст. Празните редове не съществуват за браузъра — трябва да КАЖЕШ, че това е абзац. Обгради го в <p>.",
-  "hint2.loose-first": "Виж къде почва изречението и къде свършва. Тагът тръгва преди първата буква и се затваря след точката.",
-  "hint3.loose-first": "Ако имаш реда Hello there, абзацът е <p>Hello there</p>. Отваряш преди H, затваряш след e.",
-  "hint4.loose-first": "Обгради първото изречение. Отварящ таг отпред, затварящ отзад. Точката влиза ВЪТРЕ.",
-
-  "why.loose-second": "Второто изречение още е гол текст. И трите трябва да се обградят, не само първото.",
-  "why.loose-third": "Третото изречение още е гол текст. Остана едно.",
-
-  "why.lost-h1": "Изчезна заглавието. Задачата е да обградиш изреченията, не да триеш.",
-  "hint2.lost-h1": "My favourite game трябва да си стои горе, като <h1>.",
-
-  "blocks.0.text": "Погледни кода вдясно. Три изречения, спретнато разделени с празни редове. А сега погледни резултата.",
-  "blocks.1.text": "Слепени са. Всичките в един ред, като едно дълго изречение. Празните редове ги няма.",
-  "blocks.2.text": "Опитай да се пребориш",
-  "blocks.3.text": "Натисни Enter още десет пъти. Сложи двайсет празни реда. Пусни. Нищо. Браузърът ги гълта всичките.",
-  "blocks.4.text": "Това не е бъг. Празните редове в кода са за твоите очи — да ти е четимо. Браузърът ги пренебрегва нарочно, защото иначе всяко разместване на кода щеше да мести страницата.",
-  "blocks.5.text": "Кажи го с таг",
-  "blocks.7.text": "Искаш ли отделен абзац — казваш го изрично. <p> не значи „нов ред“. Значи „това е самостоятелен абзац“. Разстоянието идва като следствие.",
-  "blocks.8.text": "Обгради трите изречения и пусни.",
-  "blocks.9.text": "В HTML нищо не се случва, защото си го подредил красиво. Случва се, защото си го казал."
-}
-===== LOGIC: 19-block-inline.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/19-block-inline.json
-export default {
-  id: 19,
-  type: "web",
-  label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>My bike</title>
-  </head>
-  <body>
-    <h1>Bike for sale</h1>
-
-    <p>Price:</p>
-    <p>25 leva</p>
-  </body>
-</html>`,
-  checks: [
-    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
-    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
-    { id: "t2", type: "dom_count", value: "p", min: 1, max: 1, err: "still-two-blocks", weight: 100 },
-    { id: "t3", type: "dom_text_contains", value: "p", text: "price: 25 leva", err: "not-one-line", weight: 80 },
-    { id: "t4", type: "dom_text_contains", value: "strong", text: "25", err: "no-strong", weight: 60 },
-    { id: "t5", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 45 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "text" },
     { type: "heading" },
     { type: "text" },
     { type: "text" },
-    { type: "heading" },
-    { type: "list", items: [undefined, undefined] },
-    { type: "quote" },
     { type: "text" },
-    { type: "code", code: "<p>Price: <strong>25 leva</strong></p>" },
     { type: "text" },
-    {
-      type: "preview",
-      html: "<h1>Bike for sale</h1><p>Price: <strong>25 leva</strong></p>",
-      height: 130,
-      url: "index.html"
-    },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
     { type: "text" },
   ],
-  slug: "19-block-inline"
+  slug: "57-inputs"
 };
-===== BG: 19-block-inline.json =====
+===== BG: 57-inputs.json =====
 {
-  "title": "Защо два абзаца не искат да стоят един до друг",
+  "title": "Полето знае какво иска",
 
-  "checkLabels.t1": "Написа нещо",
+  "checkLabels.t1": "Има код",
+  "checkLabels.t2": "Пипна кода",
   "checkLabels.g1": "Всичко затворено",
-  "checkLabels.t2": "Остана един абзац",
-  "checkLabels.t3": "Цената излиза на един ред",
-  "checkLabels.t4": "Сумата е удебелена",
-  "checkLabels.t5": "Заглавието е останало",
+  "checkLabels.p1": "Трите полета са тук",
+  "checkLabels.p2": "Формата е тук",
+  "checkLabels.p3": "Полетата имат имена",
+  "checkLabels.p4": "Бутонът е тук",
+  "checkLabels.t3": "Има поле за имейл",
+  "checkLabels.t4": "Имейлът е точно на имейла",
+  "checkLabels.t5": "Има поле за телефон",
+  "checkLabels.t6": "Телефонът е точно на телефона",
+  "checkLabels.t7": "Нещо е задължително",
+  "checkLabels.t8": "Имейлът е задължителен",
 
-  "why.empty": "Редакторът е празен. Изтри обявата, вместо да я оправиш. Върни кода.",
+  "why.empty": "Редакторът е празен. Изтри и формата.",
+
+  "why.untouched": "Кодът е точно този, който ти дадох. Не си пипнал нищо.",
+  "hint2.untouched": "Полетата са три и всичките са type=\"text\". Два от трите типа трябва да се сменят.",
+
   "why.not-closed": "Някой таг е отворен и не е затворен.",
-  "why.still-two-blocks": "Цената още е разделена на два абзаца. Два блока НИКОГА няма да застанат един до друг, колкото и да ги наместваш. Слей ги в един <p>.",
-  "why.not-one-line": "Абзацът е един, но текстът в него не чете Price: 25 leva. Двете части трябва да са в един и същ абзац, една до друга.",
-  "why.no-strong": "Няма акцент върху сумата. Обгради само числото — <strong> е редов, живее вътре в реда и не го чупи.",
-  "why.lost-h1": "Изчезна заглавието. Задачата е да слееш двата абзаца, не да триеш.",
+  "hint2.not-closed": "<input> няма затварящ таг — той не се брои. Провери <form> и <button>.",
 
-  "hint2.still-two-blocks": "Броят <p> в кода. Трябва да остане един.",
-  "hint3.still-two-blocks": "Ако имаш <p>Name:</p> и <p>Ivan</p> и искаш Name: Ivan на един ред, пишеш <p>Name: Ivan</p>. Един абзац, две неща вътре.",
-  "hint4.still-two-blocks": "Махни затварящия таг на първия абзац и отварящия на втория. Остава един <p> с целия текст.",
+  "why.lost": "Изтри част от формата. Трите полета, бутонът и адресът остават — задачата е за типовете, не за съдържанието.",
 
-  "hint2.no-strong": "Не обграждай целия абзац. Само сумата.",
-  "hint3.no-strong": "<p>Name: <strong>Ivan</strong></p> — редът остава цял, а Ivan излиза дебело.",
+  "why.lost-name": "Поле остана без име, или името му е празно. name е онова, което кръщава данните. Не го трий, докато сменяш типа.",
 
-  "blocks.0.text": "Продаваш велосипеда си. Написа цената на два абзаца, защото така ти беше подръка. Пусни и виж.",
-  "blocks.1.text": "Стоят едно под друго. А ти го искаш на един ред: „Price: 25 leva“.",
-  "blocks.2.text": "Опитай да ги събереш",
-  "blocks.3.text": "Махни Enter-а между двата абзаца и ги залепи един до друг. Пусни. Пак се разделят. Сложи интервал между тях. Пак. Напиши ги в един ред — нищо не се променя.",
-  "blocks.4.text": "Вече разбра, че браузърът не гледа празните редове. Тук е друго: и да няма нито един празен ред, двата абзаца пак стоят разделени. Значи разделянето не идва от твоето писане. Идва от самия таг.",
-  "blocks.5.text": "Таговете са два вида",
-  "blocks.6.items.0": "Блокови — всеки си взема цял ред и бута следващото надолу, колкото и къс да е: <p>, <h1>…<h6>",
-  "blocks.6.items.1": "Редови — живеят вътре в реда, между думите, и не го чупят: <strong>, <em>, <a>",
-  "blocks.7.text": "Блоковият таг е ред. Редовият е дума.",
-  "blocks.8.text": "Затова решението не е да наместваш двата абзаца — два блока никога няма да застанат един до друг. Слей ги в ЕДИН абзац и вътре в него отбележи само частта, която да изпъква:",
-  "blocks.10.text": "Редът остава цял. <strong> не го чупи — само удебелява думите вътре в себе си. Защо се казва „strong“, а не „bold“, и защо това НЕ е таг за красота — в следващия урок.",
-  "blocks.12.text": "Твой ред. Направи цената да излиза на един ред, а сумата да е удебелена."
+  "why.no-email-type": "Няма поле от тип имейл. Полето за имейл още е type=\"text\" — тоест приемам каквото и да е. Смениш ли го на email, браузърът сам проверява и телефонът показва клавиатура с @.",
+  "hint2.no-email-type": "type е атрибут, вътре в тага. Сменя се само думата в кавичките.",
+  "hint3.no-email-type": "Подобен случай: <input type=\"date\" name=\"birthday\"> отваря календар вместо празно поле.",
+
+  "why.wrong-field": "Типът е сложен на грешното поле. Имейлът иска type=\"email\", телефонът иска type=\"tel\". Гледай name, за да разбереш кое поле е кое.",
+  "hint2.wrong-field": "Полетата се различават по name: username, email, phone. Типът върви по смисъла на полето, не по реда му.",
+
+  "why.no-tel-type": "Няма поле от тип телефон. Телефонът още е text. На телефона човекът ще получи азбучна клавиатура и ще търси цифрите. type=\"tel\" отваря цифровата.",
+  "hint2.no-tel-type": "tel, не telephone и не phone. Три букви.",
+
+  "why.no-required": "Нищо не е задължително. Човек може да прати празна форма и ти получаваш нищо. Един атрибут — и браузърът сам не пуска изпращането.",
+  "hint2.no-required": "required е атрибут без стойност. Просто съществува: <input type=\"email\" name=\"email\" required>.",
+  "hint3.no-required": "Не се пише required=\"true\". Няма нужда. Присъствието му е стойността.",
+
+  "why.wrong-required": "Задължително е грешното поле. Задачата иска имейлът да е задължителен — без него няма как да отговориш на човека.",
+  "hint2.wrong-required": "Търси полето с name=\"email\". Атрибутът върви на него.",
+
+  "blocks.0.text": "Три полета. Всичките type=\"text\". Тоест: приемам каквото и да е.",
+  "blocks.1.text": "Човек ще напише не знам в имейла. Ще напише буквата о вместо нула в телефона. И ти ще получиш боклук.",
+  "blocks.2.text": "Полето може да знае повече",
+  "blocks.3.items.0": "text — какъвто и да е текст. По подразбиране.",
+  "blocks.3.items.1": "email — трябва да има @ и точка след нея.",
+  "blocks.3.items.2": "tel — телефон. На мобилен отваря цифровата клавиатура.",
+  "blocks.3.items.3": "number — само числа. Има и min и max.",
+  "blocks.3.items.4": "date — календар. Не текст, истински календар.",
+  "blocks.3.items.5": "password — това, което пишеш, се крие с точки.",
+  "blocks.4.text": "И още: url, search, color, time, file, range.",
+  "blocks.5.text": "Три неща наведнъж",
+  "blocks.6.text": "Смени type=\"text\" на type=\"email\" и виж какво печелиш безплатно.",
+  "blocks.7.text": "Браузърът сам проверява — напише ли човек нещо без @, формата не се изпраща и той вижда съобщение. Ти не си написал нито ред за това.",
+  "blocks.8.text": "На телефона се отваря клавиатура с @ на видно място. Човекът не го търси.",
+  "blocks.9.text": "И задължителното",
+  "blocks.11.text": "required е атрибут без стойност — просто съществува. Значи: без това поле формата не тръгва.",
+  "blocks.12.text": "Пробвай: остави го празно и натисни бутона. Браузърът спира изпращането и посочва полето.",
+  "blocks.13.text": "Пак нула редове код от твоя страна.",
+  "blocks.14.text": "Но не му вярвай",
+  "blocks.15.text": "Ето важното, което много хора не разбират: тази проверка е УДОБСТВО, не защита.",
+  "blocks.16.text": "Всеки може да отвори инструментите на браузъра и да махне required с два клика. Или да прати данните направо, без изобщо да отваря страницата ти.",
+  "blocks.17.text": "Проверката в браузъра пази човека от собствената му грешка. Не пази теб от лошия човек.",
+  "blocks.18.text": "Затова сървърът ПАК проверява всичко. Винаги. Без изключение.",
+  "blocks.19.text": "Правилото: проверявай в браузъра за удобство. Проверявай на сървъра за сигурност. Никога само едното.",
+  "blocks.20.text": "Твой ред. Дай на всяко поле верния тип и направи имейла задължителен.",
+  "blocks.21.text": "И ако си на телефон — пробвай преди и след. Разликата ще я усетиш с пръстите си.",
+  "blocks.22.text": "Само че нещо още липсва. Полетата ти нямат надписи — има абзаци над тях, което не е същото. Следващият урок."
 }
-===== LOGIC: 21-formatting.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/21-formatting.json
+===== LOGIC: 59-select-textarea.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/59-select-textarea.json
 export default {
-  id: 21,
+  id: 59,
   type: "web",
   label: "coding",
   starterCode: `<!DOCTYPE html>
 <html>
   <head>
-    <title>My bike</title>
+    <title>Contact</title>
   </head>
   <body>
-    <h1>Bike for sale</h1>
+    <h1>Ask about the bike</h1>
 
-    <p>Price: <strong>25 leva</strong></p>
-    <p>Sale! The new price is 18 leva.</p>
+    <form action="/send" method="post">
+      <label for="username">Your name</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="model">Which bike</label>
+      <input type="text" id="model" name="model">
+
+      <label for="message">Your message</label>
+      <input type="text" id="message" name="message">
+
+      <button type="submit">Send</button>
+    </form>
   </body>
 </html>`,
   checks: [
     { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "changed", err: "untouched", weight: 950 },
     { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
-    { id: "t2", type: "dom_text_contains", value: "del", text: "25", err: "no-del", weight: 100 },
-    { id: "t3", type: "dom_text_contains", value: "strong", text: "18", err: "no-new-price", weight: 80 },
-    { id: "t4", type: "dom_count", value: "p", min: 1, max: 1, err: "still-a-sentence", weight: 60 },
-    { id: "t5", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 45 },
+
+    { id: "p1", type: "dom_count", value: "label", min: 3, err: "lost", weight: 210 },
+    { id: "p2", type: "dom_text_not_empty", value: "label", err: "lost", weight: 205 },
+    { id: "p3", type: "dom_has", value: "input[name=\"username\"]", err: "lost", weight: 200 },
+    { id: "p4", type: "dom_text_not_empty", value: "button", err: "lost", weight: 195 },
+
+    { id: "t3", type: "dom_has", value: "form select", err: "no-select", weight: 150 },
+    { id: "t4", type: "dom_count", value: "select option", min: 2, err: "no-option", weight: 145 },
+    { id: "t5", type: "dom_text_not_empty", value: "option", err: "empty-option", weight: 140 },
+    { id: "t6", type: "dom_attr", value: "option", attr: "value", err: "no-value", weight: 135 },
+    { id: "t7", type: "dom_has", value: "select#model", err: "select-not-tied", weight: 130 },
+    { id: "t8", type: "dom_attr", value: "select", attr: "name", err: "select-no-name", weight: 125 },
+
+    { id: "t9", type: "dom_has", value: "form textarea", err: "no-textarea", weight: 120 },
+    { id: "t10", type: "dom_has", value: "textarea#message", err: "textarea-not-tied", weight: 115 },
+    { id: "t11", type: "dom_attr", value: "textarea", attr: "name", err: "textarea-no-name", weight: 110 },
+
+    { id: "t12", type: "dom_count", value: "input", max: 1, err: "still-input", weight: 60 },
   ],
   blocks: [
     { type: "text" },
     { type: "text" },
-    { type: "text" },
     { type: "heading" },
-    { type: "list", items: [undefined, undefined, undefined, undefined, undefined] },
-    { type: "text" },
-    { type: "code", code: "<p>Price: <del>25 leva</del> <strong>18 leva</strong></p>" },
     {
-      type: "preview",
-      html: "<h1>Bike for sale</h1><p>Price: <del>25 leva</del> <strong>18 leva</strong> <mark>sale</mark><br><small>Price excludes delivery.</small></p>",
-      height: 150,
-      url: "index.html"
+      type: "code",
+      code: `<label for="model">Which bike</label>
+<select id="model" name="model">
+  <option value="mountain">Mountain bike</option>
+  <option value="city">City bike</option>
+</select>`
     },
+    { type: "text" },
+    { type: "text" },
     { type: "heading" },
+    {
+      type: "code",
+      code: `<label for="message">Your message</label>
+<textarea id="message" name="message" rows="5"></textarea>`
+    },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "text" },
     { type: "text" },
     { type: "text" },
   ],
-  slug: "21-formatting"
+  slug: "59-select-textarea"
 };
-===== BG: 21-formatting.json =====
+===== BG: 59-select-textarea.json =====
 {
-  "title": "Как се казва „това вече не е вярно“",
+  "title": "Избор и дълъг текст",
+
+  "checkLabels.t1": "Има код",
+  "checkLabels.t2": "Пипна кода",
+  "checkLabels.g1": "Всичко затворено",
+  "checkLabels.p1": "Трите надписа са тук",
+  "checkLabels.p2": "Надписите имат текст",
+  "checkLabels.p3": "Полето за име е тук",
+  "checkLabels.p4": "Бутонът е тук",
+  "checkLabels.t3": "Има избор от списък",
+  "checkLabels.t4": "Списъкът има поне две възможности",
+  "checkLabels.t5": "Възможностите не са празни",
+  "checkLabels.t6": "Всяка възможност праща нещо",
+  "checkLabels.t7": "Надписът на избора още работи",
+  "checkLabels.t8": "Изборът има име",
+  "checkLabels.t9": "Има голямо поле за текст",
+  "checkLabels.t10": "Надписът на съобщението работи",
+  "checkLabels.t11": "Голямото поле има име",
+  "checkLabels.t12": "Старите полета ги няма",
+
+  "why.empty": "Редакторът е празен. Изтри и формата.",
+
+  "why.untouched": "Кодът е точно този, който ти дадох. Не си пипнал нищо.",
+  "hint2.untouched": "Две от трите полета трябва да сменят тага си. Полето за име остава каквото е.",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен. <textarea> и <select> имат затварящи, за разлика от <input>.",
+  "hint2.not-closed": "<select> иска </select>. <option> иска </option>. <textarea> иска </textarea>. Три нови затварящи тага в един урок.",
+
+  "why.lost": "Изтри част от формата. Трите надписа, полето за име и бутонът остават — задачата е за другите две полета.",
+
+  "why.no-select": "Кой велосипед — още е свободно поле. Ти знаеш точно кои са възможните отговори. Дай ги. <select> е списък, от който човек избира.",
+  "hint2.no-select": "Полето с name=\"model\" е онова, което трябва да стане списък.",
+  "hint3.no-select": "Подобен случай: <select id=\"city\" name=\"city\"><option value=\"sofia\">София</option></select>.",
+  "hint4.no-select": "Смени <input> със <select> и не забравяй </select>. Атрибутите id и name остават.",
+
+  "why.no-option": "Списъкът е там, но е празен, или има само една възможност. Списък с една възможност не е избор. Всяка възможност се пише с <option>.",
+  "hint2.no-option": "Двата велосипеда от целия курс: планински и градски. Значи два <option>.",
+  "hint4.no-option": "Всеки <option> стои ВЪТРЕ в <select>, между отварящия и затварящия таг.",
+
+  "why.empty-option": "Има празна възможност. Празният <option> се показва като празен ред в списъка — човек не знае какво избира.",
+  "hint2.empty-option": "Думата, която човек вижда, стои между таговете: <option value=\"city\">Градски велосипед</option>.",
+
+  "why.no-value": "Възможност без value, или с празно value. Тогава на сървъра пристига видимият текст — или нищо. value е това, което се изпраща.",
+  "hint2.no-value": "value е атрибут на <option>, вътре в отварящия таг.",
+  "hint3.no-value": "Човек вижда Планински велосипед, а на сървъра пристига mountain. Двете могат да са различни — и обикновено са.",
+
+  "why.select-not-tied": "Списъкът няма id, или то не е онова, което надписът търси. Надписът Which bike сочи към model — той остава от миналия урок и не бива да го чупиш.",
+  "hint2.select-not-tied": "Старият <input> имаше id=\"model\". Новият <select> трябва да го наследи.",
+
+  "why.select-no-name": "Списъкът няма име. Без name изборът не се изпраща — все едно го няма.",
+  "hint2.select-no-name": "name върви на <select>, не на <option>. <option> има value.",
+
+  "why.no-textarea": "Съобщението още е едноредово поле. Все едно даваш визитка на човек, за да напише писмо. <textarea> е голямото поле.",
+  "hint2.no-textarea": "Полето с name=\"message\" е онова, което трябва да стане голямо.",
+  "hint3.no-textarea": "Подобен случай: <textarea id=\"comment\" name=\"comment\" rows=\"5\"></textarea>.",
+  "hint4.no-textarea": "Затварящият таг се лепи веднага след отварящия. Оставиш ли празен ред между тях, той влиза в полето.",
+
+  "why.textarea-not-tied": "Голямото поле няма id, или то не е онова, което надписът търси. Надписът Your message сочи към message.",
+  "hint2.textarea-not-tied": "Старият <input> имаше id=\"message\". Новият <textarea> го наследява.",
+
+  "why.textarea-no-name": "Голямото поле няма име. Каквото и да напише човек в него, то не се изпраща.",
+
+  "why.still-input": "Старо поле е останало. Ти не добавяш списък ДО текстовото поле — ти го ЗАМЕНЯШ. Остава само едно <input>: онова за името.",
+  "hint2.still-input": "Преброй <input>-ите. Трябва да е един. Ако са два или три, някое старо поле още стои.",
+
+  "blocks.0.text": "Формата има три полета и всичките са <input type=\"text\">. Тоест: пиши каквото искаш.",
+  "blocks.1.text": "Но ти знаеш кои са велосипедите. Защо да оставяш човека да ги изписва? Ще сгреши, ще напише друго име, ще сложи главна буква и ти после ще се мъчиш.",
+  "blocks.2.text": "Избор от готови отговори",
+  "blocks.4.text": "<select> е списък. <option> е всяка възможност. value е това, което се изпраща — текстът между таговете е това, което човек вижда.",
+  "blocks.5.text": "Двете могат да са различни. Човек вижда Планински велосипед, а на сървъра пристига mountain.",
+  "blocks.6.text": "Голямото поле",
+  "blocks.8.text": "<textarea> е за свободен текст, който е повече от един ред. Съобщение, коментар, описание.",
+  "blocks.9.text": "rows казва колко реда да е високо в началото. Човекът може да го разтегли сам.",
+  "blocks.10.text": "Странният таг",
+  "blocks.11.text": "Забележи нещо: <textarea> има затварящ таг, а <input> няма.",
+  "blocks.12.text": "И още: началното съдържание се пише МЕЖДУ таговете, не в атрибут. При <input> е value=\"…\". Тук — просто текст вътре.",
+  "blocks.13.text": "Затова затварящият таг се лепи веднага след отварящия: <textarea></textarea>. Оставиш ли празен ред между тях, той влиза в полето и човекът започва писането си с празен ред.",
+  "blocks.14.text": "Дребна подробност, която всеки открива по трудния начин.",
+  "blocks.15.text": "Кога кое",
+  "blocks.16.text": "Знаеш ли отговорите предварително — <select>. Не ги ли знаеш и са къси — <input>. Не ги ли знаеш и са дълги — <textarea>.",
+  "blocks.17.text": "Твой ред. Направи избора на велосипед списък, а съобщението — голямо поле. Старите полета не остават — те се заменят. И внимавай с id-тата: надписите от миналия урок ги търсят."
+}
+===== LOGIC: 60-button.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/60-button.json
+//
+// ⚠ Стартовият код има ДВЕ блокиращи полета (text + email) нарочно.
+// С едно единствено текстово поле браузърът изпраща формата с Enter дори
+// без submit бутон (implicit submission). Тогава урокът лъже.
+export default {
+  id: 60,
+  type: "web",
+  label: "coding",
+  starterCode: `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact</title>
+  </head>
+  <body>
+    <h1>Ask about the bike</h1>
+
+    <form action="/send" method="post">
+      <label for="username">Your name</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="email">Your email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Your message</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+
+      <div class="button">Send</div>
+    </form>
+  </body>
+</html>`,
+  checks: [
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "changed", err: "untouched", weight: 950 },
+    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
+
+    // Пазачи на съдържанието. Развалината не се поправя с Delete.
+    { id: "p1", type: "dom_text_contains", value: "h1", text: "ask about the bike", err: "lost-content", weight: 220 },
+    { id: "p2", type: "dom_has", value: "form[action]", err: "lost-content", weight: 215 },
+    { id: "p3", type: "dom_count", value: "label", min: 3, err: "lost-content", weight: 210 },
+    { id: "p4", type: "dom_text_not_empty", value: "label", err: "lost-content", weight: 205 },
+    { id: "p5", type: "dom_count", value: "input", min: 2, err: "lost-content", weight: 200 },
+    { id: "p6", type: "dom_has", value: "textarea", err: "lost-content", weight: 195 },
+
+    // Урокът.
+    { id: "t3", type: "dom_text_not_empty", value: "button", err: "no-button", weight: 150 },
+    { id: "t4", type: "dom_has", value: "form button", err: "button-outside", weight: 140 },
+    { id: "t5", type: "dom_has", value: "button[type=\"submit\"]", err: "no-type", weight: 130 },
+    { id: "t6", type: "dom_not_has", value: "div.button", err: "fake-button", weight: 120 },
+    { id: "t7", type: "dom_count", value: "button", max: 1, err: "two-buttons", weight: 110 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<button type=\"submit\">Send</button>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "60-button"
+};
+===== BG: 60-button.json =====
+{
+  "title": "Бутонът, който не е бутон",
 
   "checkLabels.t1": "Написа нещо",
+  "checkLabels.t2": "Пипна кода",
   "checkLabels.g1": "Всичко затворено",
-  "checkLabels.t2": "Старата цена е зачеркната",
-  "checkLabels.t3": "Новата цена изпъква",
-  "checkLabels.t4": "Всичко е в един абзац",
-  "checkLabels.t5": "Заглавието е останало",
+  "checkLabels.p1": "Заглавието е там",
+  "checkLabels.p2": "Формата е там",
+  "checkLabels.p3": "Трите надписа са там",
+  "checkLabels.p4": "Надписите имат текст",
+  "checkLabels.p5": "Полетата са там",
+  "checkLabels.p6": "Голямото поле е там",
+  "checkLabels.t3": "Има истински бутон с дума в него",
+  "checkLabels.t4": "Бутонът е вътре във формата",
+  "checkLabels.t5": "Бутонът знае какво прави",
+  "checkLabels.t6": "Фалшивият го няма",
+  "checkLabels.t7": "Само един бутон",
 
-  "why.empty": "Редакторът е празен. Изтри обявата, вместо да я оправиш. Върни кода.",
+  "why.empty": "Редакторът е празен. Изтри формата, вместо да поправиш бутона. Върни кода.",
+
+  "why.untouched": "Не си пипнал кода. Бутонът е още фалшив. Смени го.",
 
   "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "hint2.not-closed": "Редовите тагове се затварят ВЪТРЕ в абзаца, преди </p>.",
-  "hint3.not-closed": "<p>Price: <del>25 leva</p></del> — затворено в грешен ред. Каквото си отворил последно, него затваряш първо.",
-  "hint4.not-closed": "Провери двойките: <del> с </del>, <strong> с </strong>, и двете вътре в единствения <p>.",
+  "hint2.not-closed": "<button> се затваря с </button>. Между тях стои думата, която се вижда върху бутона.",
 
-  "why.no-del": "Старата цена още не е зачеркната. Няма таг „зачеркни“ — има таг „това вече не важи“. Казва се <del> и излиза зачеркнато като следствие.",
-  "hint2.no-del": "Обгради само сумата 25 leva. Не целия абзац.",
-  "hint3.no-del": "<p>Old: <del>40 leva</del></p> — тагът обгражда цената, не изречението около нея.",
-  "hint4.no-del": "Сложи <del> преди 25 и </del> след leva. Празен <del></del> не върши работа — трябва цената да е ВЪТРЕ в него.",
+  "why.lost-content": "Изтри нещо, вместо да го поправиш. Формата има три надписа, две полета, голямо поле за текст и заглавие. Всичко това остава. Сменя се само бутонът.",
+  "hint2.lost-content": "Сравни с първоначалния код. Задачата е един ред — този с div-а.",
 
-  "why.no-new-price": "Старата цена е зачеркната, но новата я няма или не изпъква. Зачеркната цена без нова до себе си не казва нищо — човекът вижда, че старото не важи, и не знае какво важи.",
-  "hint2.no-new-price": "18 leva трябва да стои до зачеркнатата стара цена, на същия ред.",
-  "hint3.no-new-price": "<p>Price: <del>40 leva</del> <strong>30 leva</strong></p> — старото и новото, едно до друго.",
-  "hint4.no-new-price": "Обгради 18 leva в <strong>. И двете цени влизат в един и същ абзац.",
+  "why.no-button": "Няма истински бутон с дума в него. Или няма <button>, или тагът е празен. Празният бутон се вижда като квадратче — незрящият чува само „бутон“ и нищо повече.",
+  "hint2.no-button": "Тагът е <button>. Думата, която се вижда, стои между отварящия и затварящия таг.",
+  "hint3.no-button": "<button type=\"submit\">Прати</button> — три части: отваряне с типа, дума, затваряне.",
 
-  "why.still-a-sentence": "Още имаш два абзаца. Изречението „Sale! The new price is 18 leva“ вече не ти трябва — цените си го казват сами. Слей всичко в един абзац.",
-  "hint2.still-a-sentence": "Броят <p> в кода. Трябва да остане един.",
-  "hint3.still-a-sentence": "В истинска обява няма изречение, което обяснява намалението. Има зачеркната цена и нова до нея. Един поглед стига.",
-  "hint4.still-a-sentence": "Махни втория абзац изцяло. Вкарай новата цена в първия, до зачеркнатата.",
+  "why.button-outside": "Бутонът е там, но е извън формата. Бутон извън <form> не знае коя форма да изпрати — натиска във въздуха.",
+  "hint2.button-outside": "Бутонът стои ВЪТРЕ във <form>, обикновено най-отдолу, след последното поле.",
 
-  "why.lost-h1": "Изчезна заглавието. Задачата е да оправиш цената, не да триеш.",
-  "hint2.lost-h1": "Bike for sale трябва да си стои горе, като <h1>.",
+  "why.no-type": "Бутонът е там, но не казва какво прави. Без type=\"submit\" формата може и да не се изпрати — старите браузъри се държат различно.",
+  "hint2.no-type": "type е атрибут. Стои вътре в отварящия таг: <button type=\"...\">.",
+  "hint3.no-type": "Три са възможните: submit изпраща, reset изтрива, button не прави нищо сам. Кой ти трябва тук?",
 
-  "blocks.0.text": "Реши да намалиш цената. Написа го както се сещаш — с още едно изречение. Пусни и виж.",
-  "blocks.1.text": "Работи, но е тромаво. В истинска обява старата цена стои зачеркната, а до нея — новата. Един поглед стига. Само че ти нямаш с какво да зачеркнеш. <strong> удебелява. <em> накланя. Няма таг „зачеркни“.",
-  "blocks.2.text": "Има. Просто още не си стигнал до него.",
-  "blocks.3.text": "Още пет редови тага",
-  "blocks.4.items.0": "<del> — премахнато, вече не важи. Излиза зачеркнато.",
-  "blocks.4.items.1": "<ins> — добавено на мястото на премахнатото. Излиза подчертано.",
-  "blocks.4.items.2": "<mark> — маркирано с флумастер. Тук е важното.",
-  "blocks.4.items.3": "<small> — дребният шрифт. Условия, бележки, „цената е без доставка“.",
-  "blocks.4.items.4": "<sub> и <sup> — долен и горен индекс: H<sub>2</sub>O, 5<sup>2</sup>.",
-  "blocks.5.text": "Всичките са РЕДОВИ — точно като <strong> от миналия урок. Не чупят реда, стоят вътре в него. Затова старата и новата цена могат да са на един ред.",
-  "blocks.8.text": "Пак не е за красота",
-  "blocks.9.text": "Зачеркнатото не е „сив стил“. То значи: това го е имало и вече го няма. Ако просто искаш сив текст, това е работа на CSS. Тагът се избира по СМИСЪЛ, не по вид — иначе утре, като смениш стила, значението изчезва заедно с него.",
-  "blocks.10.text": "Твой ред. Слей всичко в един абзац: старата цена зачеркната, новата до нея и удебелена."
+  "why.fake-button": "Фалшивият бутон още е там — div-ът с етикет button. Ти не добавяш бутон до него. Ти го ЗАМЕНЯШ.",
+  "hint2.fake-button": "Изтрий целия ред с <div class=\"button\">. На негово място сложи <button>.",
+
+  "why.two-buttons": "Има повече от един бутон. Формата има един начин да се изпрати, не два.",
+
+  "blocks.0.text": "Погледни бутона на формата. Пусни. Изглежда като бутон. Сложиш ли му CSS, ще е неразличим от истински.",
+  "blocks.1.text": "Само че не е. Това е <div> с етикет „button“ — група, която не значи нищо.",
+  "blocks.2.text": "Пробвай сам",
+  "blocks.3.text": "Прибери мишката. Натисни Tab няколко пъти — курсорът минава през полетата.",
+  "blocks.4.text": "После? Спира. До бутона не се стига. Никога. Tab минава само през неща, които приемат фокус — полета, връзки, бутони. <div> не е никое от тях.",
+  "blocks.5.text": "Опитай и с Enter, докато стоиш в поле. Формата не тръгва. Опитай с интервал — не можеш дори да застанеш върху бутона, за да го натиснеш.",
+  "blocks.6.text": "Формата ти е попълнима, но неизпратима — за всеки, който не ползва мишка.",
+  "blocks.7.text": "Истинският бутон",
+  "blocks.9.text": "Смени го и пробвай пак. Tab стига до него. Enter го натиска. Интервалът също. Появява се и рамка около него, за да се вижда къде си.",
+  "blocks.10.text": "Всичко това е безплатно. Не си написал нито ред за него.",
+  "blocks.11.text": "И едно предупреждение: щом бутонът стане истински, Enter наистина ще изпрати формата. Адресът в action не съществува — ще видиш страница с грешка. Това не е счупено. Точно обратното: значи бутонът работи.",
+  "blocks.12.text": "Три вида бутони",
+  "blocks.13.text": "type=\"submit\" — изпраща формата. Това е по подразбиране вътре във <form>, но го пиши изрично.",
+  "blocks.14.text": "type=\"reset\" — изчиства всичко. Не го ползвай. Човек го натиска по погрешка вместо „изпрати“ и губи всичко, което е написал.",
+  "blocks.15.text": "type=\"button\" — не прави нищо сам. За него после ще закачиш JavaScript.",
+  "blocks.16.text": "Защо толкова хора грешат",
+  "blocks.17.text": "Защото <div> е по-лесен за стилизиране. Истинският бутон идва с вградени стилове, които трябва да махаш.",
+  "blocks.18.text": "Тоест: хората правят фалшив бутон, за да си спестят три реда CSS. И плащат с това, че бутонът не работи за никого без мишка.",
+  "blocks.19.text": "Три реда CSS срещу цялата функционалност. Лоша сделка.",
+  "blocks.20.text": "Ако трябва да добавяш код, за да накараш нещо да се държи като бутон — трябвало е да е бутон.",
+  "blocks.21.text": "Същото и с връзките",
+  "blocks.22.text": "Обратната грешка е също толкова честа: <a>, което не води никъде, а прави нещо.",
+  "blocks.23.text": "Правилото е просто. Води ли някъде — връзка. Прави ли нещо — бутон.",
+  "blocks.24.text": "Твой ред. Направи бутона истински."
 }

@@ -24,8 +24,10 @@
   "statement": "Statement",
   "solution": "Solution",
   "sol_why": "Why the simple way fails",
+  "sol_steps": "Step by step",
   "sol_code": "How it is done",
   "sol_note": "What stays with you",
+  "sol_cost": "What it costs",
   "discuss": "Discussion",
   "locked_hint": "Unlocks when you solve it",
 

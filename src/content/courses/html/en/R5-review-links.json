@@ -1,0 +1,22 @@
+{
+  "title": "Links and navigation",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The link",
+  "groups.0.items.0.term": "a and href",
+  "groups.0.items.0.def": "<a> is the tag, href says where. Between the tags is the word you click. The address is for the machine, the word is for the person — so the address can be ugly and hidden.",
+  "groups.0.items.1.term": "Not \"click here\"",
+  "groups.0.items.1.def": "Take the link text out of the sentence and read it alone. \"Here\"? Where? A blind person skims ONLY the links in a list — if they all say \"here\", they know where none of them lead. The word says the destination.",
+  "groups.0.items.2.term": "The bare address",
+  "groups.0.items.2.def": "An address left between the tags is read out character by character. It belongs in href, not on screen. On screen — a word.",
+
+  "groups.1.title": "The paths",
+  "groups.1.items.0.term": "Relative path",
+  "groups.1.items.0.def": "Do not ask where the file is on the disk. Ask where it is relative to me. contact.html = next to me. pages/contact.html = in a subfolder. ../contact.html = one folder up.",
+  "groups.1.items.1.term": "A site is a folder",
+  "groups.1.items.1.def": "C:\\Users\\… works only on your machine. The test: send the folder to someone else and they open it — does it work? A drive letter or \"Desktop\" — no. And beware: on a server Bike.jpg and bike.jpg are different files.",
+
+  "groups.2.title": "The menu",
+  "groups.2.items.0.term": "nav, ul, li",
+  "groups.2.items.0.def": "A menu = <nav> (this is navigation) + <ul> (things of one kind) + one <li> per link. The dividers between them are CSS, not typed by hand. A blind person hears \"list of three\" and knows how big the menu is before entering it. A link mid-sentence is NOT nav — it is for the groups of links that move through the site."
+}

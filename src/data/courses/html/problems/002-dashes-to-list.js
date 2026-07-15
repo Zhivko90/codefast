@@ -20,14 +20,14 @@ export default {
   </p>
 </body>`,
 
-  // ЦЕЛТА. Не е отговорът — друго съдържание, същата структура.
-  // Ученикът вижда КАК изглежда истински списък, без да му се дава решението.
+// ЦЕЛТА. Точният изход — какво трябва да се получи.
+  // Ученикът вижда рендерирания резултат, не кода. Няма какво да преписва.
   targetCode: `<body>
-  <h2>Tools in the shed</h2>
+  <h2>What I need from the shop</h2>
   <ul>
-    <li>hammer</li>
-    <li>saw</li>
-    <li>three nails</li>
+    <li>salt</li>
+    <li>pepper</li>
+    <li>two lemons</li>
   </ul>
 </body>`,
 

@@ -21,26 +21,26 @@ export default {
     {
       id: 'media',
       modules: [
-        { id: 'links', lessons: ['33-links', '34-paths', '35-nav'] },
-        { id: 'mediafiles', lessons: ['36-images', '37-alt', '38-favicon', '39-video-audio', '40-iframe', '41-broken3', '42-quiz-media', '43-freehand3'] },
+        { id: 'links', lessons: ['33-links', '34-paths', '35-nav', 'R5-review-links'] },
+        { id: 'mediafiles', lessons: ['36-images', '37-alt', '38-favicon', '39-video-audio', '40-iframe', '41-broken3', 'R6-review-mediafiles', '42-quiz-media', '43-freehand3'] },
       ],
     },
     {
       id: 'semantic',
       modules: [
-        { id: 'meaning', lessons: ['44-id-class', '45-div-span', '46-div-problem', '47-semantic', '48-who-reads', '49-real-site', '50-quiz-semantic', '51-freehand4'] },
+        { id: 'meaning', lessons: ['44-id-class', '45-div-span', '46-div-problem', '47-semantic', '48-who-reads', '49-real-site', 'R7-review-meaning', '50-quiz-semantic', '51-freehand4'] },
       ],
     },
     {
       id: 'tables',
       modules: [
-        { id: 'tablebasic', lessons: ['52-tables', '53-table-head', '54-when-table', '55-freehand5'] },
+        { id: 'tablebasic', lessons: ['52-tables', '53-table-head', '54-when-table', 'R8-review-tables', '55-freehand5'] },
       ],
     },
     {
       id: 'forms',
       modules: [
-        { id: 'formbasic', lessons: ['56-forms', '57-inputs', '58-labels', '59-select-textarea', '60-button', '61-broken4', '62-quiz-forms', '63-freehand6'] },
+       { id: 'formbasic', lessons: ['56-forms', '57-inputs', '58-labels', '59-select-textarea', '60-button', '61-broken4', 'R9-review-forms', '62-quiz-forms', '63-freehand6'] },
       ],
     },
     {

@@ -1,0 +1,22 @@
+{
+  "title": "Images, video, embedding",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The image and its voice",
+  "groups.0.items.0.term": "img and alt",
+  "groups.0.items.0.def": "<img> is void — no </img>. src says which image, alt says what IS SEEN on it. For a blind person the image IS this text, there is no other. Do not write \"photo\" (they already know) and do not write the filename.",
+  "groups.0.items.1.term": "The empty alt",
+  "groups.0.items.1.def": "alt=\"\" — deliberately empty, for pure decoration: a divider, a background, an icon next to text that already says the same. It tells the reader \"skip me\". A deliberately empty alt and a missing alt are different things — the difference is huge.",
+  "groups.0.items.2.term": "The path again",
+  "groups.0.items.2.def": "src is the same path as with links. C:\\Users\\… works only on your machine. And on a server Bike.jpg and bike.jpg are different files — hence \"works on my machine\".",
+
+  "groups.1.title": "Video, sound, icon",
+  "groups.1.items.0.term": "video and controls",
+  "groups.1.items.0.def": "<video src controls></video> — it has a closing tag, unlike <img>, because things live inside: fallback text, captions (<track> — the deaf person's only way), other formats. Without controls it is a still frame. autoplay — never: the person just closes the tab.",
+  "groups.1.items.1.term": "The tab icon",
+  "groups.1.items.1.def": "<link rel=\"icon\" href=\"...\"> in <head>. A void tag. Without it the tab is a blank sheet — the site looks unfinished and the person cannot find it again among twenty other tabs.",
+
+  "groups.2.title": "Someone else's page inside",
+  "groups.2.items.0.term": "iframe and title",
+  "groups.2.items.0.def": "<iframe> is a window into a whole external site — maps, video, payment. A wall divides them: you do not touch it, it does not touch you. title says what is inside — a blind person otherwise hears nothing and does not know whether to enter. (Not the <title> from the head — the names just match.) On untrusted code, add sandbox."
+}

@@ -9,7 +9,7 @@ import { theme } from '@/lib/theme';
 import WorkBench from '@/components/WorkBench';
 import { getProblem } from '@/core/getProblem';
 import { checkProblem } from '@/core/checkProblem';
-import { saveSubmission, fetchHistory, loadCode } from '@/lib/practice';
+import { saveSubmission, fetchHistory, loadCode, isSolved } from '@/lib/practice';
 
 const COURSE = 'html';
 
@@ -32,6 +32,7 @@ export default function ProblemPage({ params }) {
   const [result, setResult] = useState(null);
   const [tab, setTab] = useState('statement');
   const [history, setHistory] = useState([]);
+  const [solvedBefore, setSolvedBefore] = useState(false);
 
   // зареждаме запазения код, ако има
   useEffect(() => {
@@ -42,7 +43,8 @@ export default function ProblemPage({ params }) {
   }, [slug, p?.starterCode]);
 
   // историята на предаванията
-  useEffect(() => {
+useEffect(() => {
+    isSolved(user?.id, COURSE, slug).then(setSolvedBefore);
     if (!user) return;
     fetchHistory(user.id, COURSE, slug).then(setHistory);
   }, [user, slug]);
@@ -57,7 +59,7 @@ export default function ProblemPage({ params }) {
   if (!p) return notFound();
 
   const txt = p.text ?? {};
-  const solved = result?.passed;
+ const solved = result?.passed || solvedBefore;
 
  const submit = async () => {
     const r = await checkProblem(p, code);
@@ -154,6 +156,20 @@ export default function ProblemPage({ params }) {
               <p key={i} className="text-[14px] text-gray-300 leading-relaxed mb-3">{par}</p>
             ))}
 
+            {txt.solution.steps?.length > 0 && (
+              <>
+                <p className="text-[10px] font-bold tracking-widest text-gray-500 mt-6 mb-2">{t('sol_steps')}</p>
+                <ol className="flex flex-col gap-2.5">
+                  {txt.solution.steps.map((s, i) => (
+                    <li key={i} className="flex gap-3 text-[14px] text-gray-300 leading-relaxed">
+                      <span className="shrink-0 w-5 h-5 rounded-full bg-white/[0.08] text-[11px] font-bold flex items-center justify-center text-gray-400">{i + 1}</span>
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            )}
+
             <p className="text-[10px] font-bold tracking-widest text-gray-500 mt-6 mb-2">{t('sol_code')}</p>
             <pre className="rounded-lg border border-white/[0.07] bg-black/30 px-4 py-3 font-mono text-[12.5px] leading-relaxed text-emerald-200 whitespace-pre-wrap break-words overflow-x-auto">{txt.solution.code}</pre>
 
@@ -161,6 +177,13 @@ export default function ProblemPage({ params }) {
               <>
                 <p className="text-[10px] font-bold tracking-widest text-gray-500 mt-6 mb-2">{t('sol_note')}</p>
                 <p className="text-[14px] text-gray-300 leading-relaxed">{txt.solution.note}</p>
+              </>
+            )}
+
+            {txt.solution.complexity && (
+              <>
+                <p className="text-[10px] font-bold tracking-widest text-gray-500 mt-6 mb-2">{t('sol_cost')}</p>
+                <p className="text-[13px] text-gray-400 font-mono">{txt.solution.complexity}</p>
               </>
             )}
           </>
