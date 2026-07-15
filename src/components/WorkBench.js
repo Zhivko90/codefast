@@ -63,15 +63,16 @@ export default function WorkBench({
 
   onRun, onSubmit, onReset, canSubmit = true,
 
-  preview, result, checkLabels = {}, why, hints = [], history = [], lang = 'bg',
+preview, target, result, checkLabels = {}, why, hints = [], history = [], lang = 'bg',
 }) {
   const t = useTranslations('practice');
 
   const hasPreview = preview != null;
+  const hasTarget = target != null;
 
-  // кои колони се виждат
-  const [showLeft, setShowLeft] = useState(true);
-  const [showPrev, setShowPrev] = useState(false);
+const [showLeft, setShowLeft] = useState(true);
+  const [showPrev, setShowPrev] = useState(target != null);   // има ли цел — прегледът е отворен
+  const [pane, setPane] = useState('mine');                   // 'mine' | 'target'
   const [showBot, setShowBot] = useState(false);       // резултат/история — изскача отдолу
   const [bottom, setBottom] = useState('result');
 
@@ -404,20 +405,37 @@ export default function WorkBench({
             </div>
 
             <div className="shrink-0 flex flex-col min-w-0 border-l border-white/10" style={{ width: prevW ?? 320 }}>
-              <div className="shrink-0 flex items-center gap-2 px-3 h-9 bg-[#2a2b31] border-b border-white/10">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-                <div className="flex-1 mx-1 px-3 py-0.5 rounded-full bg-[#1a1b20] text-[10px] text-gray-500 truncate">
-                  codefast.local
-                </div>
+            <div className="shrink-0 flex items-center gap-2 px-3 h-9 bg-[#2a2b31] border-b border-white/10">
+                {hasTarget ? (
+                  <div className="flex gap-1 flex-1 min-w-0">
+                    {[['mine', t('pane_mine')], ['target', t('pane_target')]].map(([id, label]) => (
+                      <button key={id} onClick={() => setPane(id)}
+                        className={`px-2.5 py-0.5 rounded-md text-[11px] transition ${
+                          pane === id ? 'bg-white/[0.10] text-white' : 'text-gray-500 hover:text-gray-300'
+                        }`}>
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <>
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                    <div className="flex-1 mx-1 px-3 py-0.5 rounded-full bg-[#1a1b20] text-[10px] text-gray-500 truncate">
+                      codefast.local
+                    </div>
+                  </>
+                )}
                 <button onClick={onRun} title={t('run')} className="text-gray-500 hover:text-white transition shrink-0">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
                   </svg>
                 </button>
               </div>
-              <iframe title="preview" srcDoc={guard(preview)} className="flex-1 bg-white w-full border-0" />
+              <iframe title="preview" key={pane}
+                srcDoc={guard(pane === 'target' && hasTarget ? target : preview)}
+                className="flex-1 bg-white w-full border-0" />
             </div>
           </>
         )}

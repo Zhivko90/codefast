@@ -12,6 +12,9 @@
 //   5. Празният таг и празният атрибут минават.
 //   6. Проверка, която иска невъзможното — урокът е непроходим.
 //
+// ⚠ ДОКЛАДЪТ НЕ Е ПРИСЪДА. Всяка находка иска поглед в очите.
+//    Скриптът брои пазачи. Той не чете какво пазят.
+//
 // Пуска се:  node scripts\audit-checks.mjs
 //            node scripts\audit-checks.mjs 45 67     (само този обхват)
 // ============================================
@@ -72,14 +75,22 @@ for (const file of files) {
     continue;
   }
 
+  // ⚠ Стартов код БЕЗ тагове (урок 1: "Hello") или урок, чиято задача е да се
+  // провалиш (урок 25: нарисувай списък с чертички).
+  // За тях balanced и пазачите на съдържанието са безсмислени:
+  // balanced връща false, когато няма нито един таг → урокът става НЕПРОХОДИМ.
+  // Затова тези две правила важат само когато в стартовия код ИМА тагове.
+  const starter = typeof L.starterCode === 'string' ? L.starterCode : '';
+  const starterHasTags = /<[a-z]/i.test(starter);
+  const startsEmpty = starter.trim() === '';
+
   // ── 1. Празното ──
   //
   // Празният редактор минава ли? Само ако НИТО ЕДНА проверка не го лови.
   // balanced го лови (няма тагове → пада). dom_* го лови (няма елемент → пада).
-  // Затова тревога вдигаме само когато редакторът тръгва празен —
-  // freehand урок без changed се минава с интервал.
+  // Тревога вдигаме само когато редакторът тръгва празен —
+  // freehand урок без changed се минава с един интервал.
   const hasEmpty = checks.some((c) => c.type === 'changed' && c.value === '');
-  const startsEmpty = !L.starterCode || L.starterCode.trim() === '';
 
   if (!hasEmpty && startsEmpty) {
     add(slug, 'no-empty-check', '⚠ ПРАЗЕН РЕДАКТОР + няма changed с value: "" — минава се с един интервал.');
@@ -88,12 +99,14 @@ for (const file of files) {
   }
 
   // ── 2. Пазачът на синтаксиса ──
-  const hasGuard = checks.some((c) => c.type === 'balanced' && c.guard);
-  if (!hasGuard) {
-    const hasBalanced = checks.some((c) => c.type === 'balanced');
-    add(slug, 'no-guard', hasBalanced
-      ? 'balanced го има, но не е guard — счупен таг ще покаже семантична грешка.'
-      : 'НЯМА balanced изобщо.');
+  if (starterHasTags) {
+    const hasGuard = checks.some((c) => c.type === 'balanced' && c.guard);
+    if (!hasGuard) {
+      const hasBalanced = checks.some((c) => c.type === 'balanced');
+      add(slug, 'no-guard', hasBalanced
+        ? 'balanced го има, но не е guard — счупен таг ще покаже семантична грешка.'
+        : 'НЯМА balanced изобщо.');
+    }
   }
 
   // ── 3. Тежестите ──
@@ -106,12 +119,11 @@ for (const file of files) {
   }
 
   // ── 4. ТРИЕНЕТО. Най-важното. ──
-  const hasStarter = typeof L.starterCode === 'string' && L.starterCode.trim() !== '';
   const contentGuards = checks.filter((c) => CONTENT_TYPES.has(c.type) || isCountGuard(c));
 
-  if (hasStarter && contentGuards.length === 0) {
+  if (starterHasTags && contentGuards.length === 0) {
     add(slug, 'no-content-guard', '⚠ УРОКЪТ СЕ МИНАВА С ТРИЕНЕ. Нищо не пази съдържанието на стартовия код.');
-  } else if (hasStarter && contentGuards.length < 2) {
+  } else if (starterHasTags && contentGuards.length < 2) {
     add(slug, 'weak-content-guard', `само 1 пазач на съдържанието (${contentGuards[0].id}). Обикновено трябват 2-3.`);
   }
 
@@ -158,7 +170,8 @@ for (const file of files) {
     add(slug, 'no-why', `⚠ err без why (ученикът вижда ПРАЗНО): ${noWhy.join(', ')}`);
   }
 
-  const noLadder = errs.filter((e) => bg[`why.${e}`] && !bg[`hint2.${e}`] && !['empty', 'untouched', 'lost'].includes(e));
+  const NO_LADDER_NEEDED = ['empty', 'untouched', 'unchanged', 'lost'];
+  const noLadder = errs.filter((e) => bg[`why.${e}`] && !bg[`hint2.${e}`] && !NO_LADDER_NEEDED.includes(e));
   if (noLadder.length && noLadder.length === errs.length) {
     add(slug, 'no-ladder', 'НЯМА нито едно hint2. Стълбата липсва изцяло.');
   }
@@ -173,7 +186,15 @@ if (findings.length === 0) {
 const byLesson = {};
 for (const f of findings) (byLesson[f.lesson] ??= []).push(f);
 
-const SEVERE = new Set(['no-checks', 'old-format', 'dead-check', 'no-content-guard', 'no-bg', 'no-why', 'no-empty-check']);
+const SEVERE = new Set([
+  'no-checks',
+  'old-format',
+  'dead-check',
+  'no-content-guard',
+  'no-bg',
+  'no-why',
+  'no-empty-check',
+]);
 
 console.log('');
 for (const [lesson, list] of Object.entries(byLesson)) {
@@ -186,4 +207,5 @@ for (const [lesson, list] of Object.entries(byLesson)) {
 }
 
 const severeCount = findings.filter((f) => SEVERE.has(f.rule)).length;
-console.log(`${findings.length} находки в ${Object.keys(byLesson).length} урока. ${severeCount} тежки.\n`);
+console.log(`${findings.length} находки в ${Object.keys(byLesson).length} урока. ${severeCount} тежки.`);
+console.log('Тежките се гледат. Останалото се преценява.\n');

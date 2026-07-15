@@ -26,7 +26,11 @@ export default {
     { id: "t4", type: "dom_count", value: "br", max: 0, err: "old-mess", weight: 90 },
     { id: "t5", type: "dom_text_contains", value: "li", text: "frame", err: "lost-items", weight: 70 },
     { id: "t6", type: "dom_text_contains", value: "li", text: "bell", err: "lost-items", weight: 65 },
-    { id: "t7", type: "text_contains", value: "- frame", err: "manual-dashes", weight: 60 },
+
+    // ⚠ БЕШЕ text_contains. Значи искаше чертичката ДА Е там.
+    // Верният отговор — <li>Frame</li> — падаше с думите „Оставил си чертичките".
+    // Урокът беше НЕПРОХОДИМ.
+    { id: "t7", type: "text_not_contains", value: "- frame", err: "manual-dashes", weight: 60 },
   ],
   blocks: [
     { type: "text" },

@@ -15,6 +15,7 @@ export default {
   </body>
 </html>`,
   checks: [
+    { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
     { id: "t1", type: "dom_has", value: "img", err: "no-img", weight: 60 },
     { id: "t2", type: "dom_attr", value: "img", attr: "src", err: "no-src", weight: 50 },

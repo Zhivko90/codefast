@@ -16,12 +16,18 @@ const OUT = join(ROOT, 'src', 'data', 'courses', 'registry.js');
 const dirs = (p) => (existsSync(p) ? readdirSync(p).filter((f) => statSync(join(p, f)).isDirectory()) : []);
 
 // meta.js може да е `export default {…}` или `export const meta = {…}`.
-// Не караме хората да помнят кое — разпознаваме го.
 function metaImport(varName, path, file) {
   const src = existsSync(file) ? readFileSync(file, 'utf8') : '';
   return /export\s+default/.test(src)
     ? `import ${varName} from '${path}';`
     : `import { meta as ${varName} } from '${path}';`;
+}
+
+// id-то на задача се чете от самия файл: `id: 2` → "2". Ключът за getProblem.
+function problemId(file) {
+  const src = readFileSync(file, 'utf8');
+  const m = src.match(/\bid\s*:\s*(\d+)/);
+  return m ? m[1] : null;
 }
 
 const courses = dirs(DATA).sort();
@@ -39,36 +45,65 @@ for (const course of courses) {
   const slugs = existsSync(lessonDir)
     ? readdirSync(lessonDir).filter((f) => f.endsWith('.js')).map((f) => f.replace(/\.js$/, '')).sort()
     : [];
-  const locales = dirs(join(CONTENT, course)).sort();
+
+  // ── ЗАДАЧИ ── същият модел като уроците, отделна папка.
+  // Файлът е 001-close-the-tag.js, текстът е problems/{loc}/001.json (по префикса).
+  const problemDir = join(DATA, course, 'problems');
+  const probFiles = existsSync(problemDir)
+    ? readdirSync(problemDir).filter((f) => f.endsWith('.js')).sort()
+    : [];
+  const problems = probFiles.map((f) => {
+    const base = f.replace(/\.js$/, '');
+    const numMatch = base.match(/^(\d+)/);       // "001-close-the-tag" → "001"
+    return {
+      file: base,
+      num: numMatch ? numMatch[1] : null,        // текстът живее по това: 001.json
+      id: problemId(join(problemDir, f)),        // числото от кода: ключ за getProblem
+    };
+  }).filter((p) => p.num != null && p.id != null);
+
+  const locales = dirs(join(CONTENT, course)).filter((d) => d !== 'problems').sort();
 
   L.push(`// ── ${course} ──`);
   L.push(metaImport(`${V}_meta`, `./${course}/meta.js`, join(DATA, course, 'meta.js')));
   L.push(`import ${V}_outline from './${course}/outline.js';`);
 
   slugs.forEach((s, i) => L.push(`import ${V}_l${i} from './${course}/lessons/${s}.js';`));
+  problems.forEach((p, i) => L.push(`import ${V}_p${i} from './${course}/problems/${p.file}.js';`));
 
   for (const loc of locales) {
     L.push(`import ${V}_${loc}_course from '@/content/courses/${course}/${loc}/_course.json';`);
     slugs.forEach((s, i) => L.push(`import ${V}_${loc}_${i} from '@/content/courses/${course}/${loc}/${s}.json';`));
+    problems.forEach((p, i) => L.push(`import ${V}_${loc}_p${i} from '@/content/courses/${course}/problems/${loc}/${p.num}.json';`));
   }
   L.push('');
 
-  entries.push({ course, V, slugs, locales });
+  entries.push({ course, V, slugs, problems, locales });
 }
 
 L.push('export const registry = {');
-for (const { course, V, slugs, locales } of entries) {
+for (const { course, V, slugs, problems, locales } of entries) {
   L.push(`  '${course}': {`);
   L.push(`    meta: ${V}_meta,`);
   L.push(`    outline: ${V}_outline,`);
   L.push(`    logic: {`);
   slugs.forEach((s, i) => L.push(`      '${s}': ${V}_l${i},`));
   L.push(`    },`);
+  L.push(`    problems: {`);
+  problems.forEach((p, i) => L.push(`      '${p.file.replace(/^\d+-/, '')}': ${V}_p${i},`));
+  L.push(`    },`);
   L.push(`    text: {`);
   for (const loc of locales) {
     L.push(`      ${loc}: {`);
     L.push(`        _course: ${V}_${loc}_course,`);
     slugs.forEach((s, i) => L.push(`        '${s}': ${V}_${loc}_${i},`));
+    L.push(`      },`);
+  }
+  L.push(`    },`);
+  L.push(`    problemText: {`);
+  for (const loc of locales) {
+    L.push(`      ${loc}: {`);
+    problems.forEach((p, i) => L.push(`        '${p.id}': ${V}_${loc}_p${i},`));
     L.push(`      },`);
   }
   L.push(`    },`);
@@ -83,6 +118,6 @@ L.push('');
 writeFileSync(OUT, L.join('\n'), 'utf8');
 
 console.log(`registry.js записан.`);
-for (const { course, slugs, locales } of entries) {
-  console.log(`  ${course}: ${slugs.length} урока · ${locales.join(', ')}`);
+for (const { course, slugs, problems, locales } of entries) {
+  console.log(`  ${course}: ${slugs.length} урока · ${problems.length} задачи · ${locales.join(', ')}`);
 }

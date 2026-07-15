@@ -1,51 +1,42 @@
 // ============================================
-// Сглобява ЛОГИКАТА (js) с ТЕКСТА (json) за даден език.
+// Сглобява ЛОГИКАТА (js) с ТЕКСТА (json) за задачите.
 //
-// Задачата не знае нищо за езици. Текстът не знае нищо за логика.
-// Тук се срещат.
+// Чете от генерирания регистър — като getCourse.
+// Нула ръчни импорти. Нов файл в problems/ → node scripts/build-registry.mjs.
 // ============================================
-import { problems as htmlProblems } from '@/data/problems/html';
+import { registry } from '@/data/courses/registry';
 
-// текстовете — Next ги свързва при build
-import bg001 from '@/content/problems/html/bg/001.json';
-import en001 from '@/content/problems/html/en/001.json';
+const FALLBACK = 'en';
 
-const TEXT = {
-  html: {
-    bg: { 1: bg001 },
-    en: { 1: en001 },
-  },
-};
-
-const BY_COURSE = {
-  html: htmlProblems,
-};
-
-// всички задачи (за списъка)
+// всички задачи за курса (логиката), готови за списъка
 export function listProblems(course = 'html') {
-  return BY_COURSE[course] ?? [];
+  const c = registry[course];
+  if (!c?.problems) return [];
+  return Object.values(c.problems);
 }
 
 // една задача, сглобена с текста за езика
 export function getProblem(course, slug, lang = 'bg') {
-  const p = (BY_COURSE[course] ?? []).find((x) => x.slug === slug);
+  const c = registry[course];
+  const p = c?.problems?.[slug];
   if (!p) return null;
 
-  const text = TEXT[course]?.[lang]?.[p.id] ?? TEXT[course]?.bg?.[p.id] ?? {};
-  return { ...p, text };
+  const text = c.problemText?.[lang]?.[p.id] ?? c.problemText?.[FALLBACK]?.[p.id] ?? {};
+  return { ...p, course, text };
 }
 
 // заглавието на задача (за списъка) — без да сглобяваме всичко
 export function problemTitle(course, id, lang = 'bg') {
-  return TEXT[course]?.[lang]?.[id]?.title ?? TEXT[course]?.bg?.[id]?.title ?? '';
+  const c = registry[course];
+  return c?.problemText?.[lang]?.[id]?.title ?? c?.problemText?.[FALLBACK]?.[id]?.title ?? '';
 }
 
-// задачите по таг (за моста от урока)
+// задачите по таг — за моста от урока
 export function problemsByTag(course, tag) {
   return listProblems(course).filter((p) => p.tags?.includes(tag));
 }
 
-// задачите по етикет на грешка (за „слабите места")
+// задачите по етикет на грешка — за „слабите места"
 export function problemsByError(course, errorTag) {
   return listProblems(course).filter((p) =>
     p.checks?.some((c) => c.err === errorTag)

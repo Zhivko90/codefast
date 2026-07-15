@@ -105,7 +105,7 @@ export default function WebLesson({ lesson, lang, course, onDone  }) {
 
   const submit = async () => {
     // ★ има checks → минава през ядрото на задачите
-    const r = hasChecks ? checkProblem(lesson, code) : legacyCheck();
+   const r = hasChecks ? await checkProblem(lesson, code) : legacyCheck();
 
     setResult(r);
     setPreview(code);

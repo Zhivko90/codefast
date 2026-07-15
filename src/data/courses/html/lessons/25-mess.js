@@ -1,4 +1,7 @@
 // ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/25-mess.json
+//
+// ⚠ БЕЗ balanced нарочно. Урокът е „опитай и се провали" — ученикът пише
+// каша с чертички. balanced би го наказал за самия експеримент.
 export default {
   id: 25,
   type: "web",
@@ -19,6 +22,7 @@ export default {
   </body>
 </html>`,
   checks: [
+    { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "t1", type: "changed", err: "unchanged", weight: 100 },
     { id: "t2", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 50 },
   ],

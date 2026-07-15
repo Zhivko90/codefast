@@ -1,6 +1,7 @@
 {
   "title": "The tag says what it IS. The attribute says the details",
 
+  "checkLabels.t0": "There is code",
   "checkLabels.g1": "All tags must be closed",
   "checkLabels.t1": "There must be an image",
   "checkLabels.t2": "The image must have a src",
@@ -9,6 +10,7 @@
   "checkLabels.t4": "The heading must still be there",
   "checkLabels.t5": "The sentence must still be there",
 
+  "why.empty": "The editor is empty. You are adding an image, and you deleted the whole page. Bring the code back.",
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.no-img": "There is no image. The tag is img — it has no closing tag, because it has nothing to wrap.",
   "why.no-src": "The tag is there, but it does not say WHICH image. Without src the browser has nothing to show — you get a broken icon.",

@@ -1,0 +1,68 @@
+{
+  "title": "A list that is not a list",
+  "statement": "Run the code. You see a list. Three things, one under another, each with a dash in front.\n\nThe browser sees one paragraph.\n\nMake it what it looks like.",
+
+  "examples": [
+    {
+      "in": "<p>- bread<br>- milk</p>",
+      "out": "<ul><li>bread</li><li>milk</li></ul>",
+      "explain": "The dashes are gone. The browser draws the bullets, because this is now actually a list."
+    }
+  ],
+
+  "constraints": [
+    "The three things stay three things",
+    "Do not touch the heading",
+    "Nothing is left over from the old code"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "t2": "You changed something",
+    "g1": "Everything closed",
+    "t3": "The heading is here",
+    "t4": "The bread is here",
+    "t5": "The milk is here",
+    "t6": "The eggs are here",
+    "t7": "There are three items",
+    "t8": "The items have text",
+    "t9": "The items are in a list",
+    "t10": "The paragraph is gone",
+    "t11": "No line breaks left",
+    "t12": "Hidden test"
+  },
+
+  "why": {
+    "empty": "The editor is empty. You deleted everything, the page included.",
+    "untouched": "This is exactly the code I gave you. Nothing has been changed.",
+    "not-closed": "A tag is open and never closed. Every <li> wants a </li>.",
+    "lost": "You lost some of the content. The three things on the list stay three.",
+    "not-a-list": "There are still no list items. A dash is a sign YOU can see. To the browser it is just a letter, like an a or a b.",
+    "empty-li": "There is a list item with no text in it. An empty box counts for nothing.",
+    "no-ul": "The items are there, but the list is not. An <li> means a thing from a list — from which list? The browser draws the bullets even without the container, and that is exactly what fools you. It looks right. It is not.",
+    "old-paragraph": "The paragraph is still there. You made the list but left the old text next to it. One of the two is redundant.",
+    "old-breaks": "There are line break tags left over. A list puts each thing on its own line by itself — it needs no help.",
+    "dashes-left": "The dashes are still in the text. Now you have a list that draws a bullet, and next to it you wrote another dash. Twice over."
+  },
+
+  "hints": {
+    "not-a-list": [
+      "You see a list. The browser sees one paragraph with dashes inside. Which of you is right?",
+      "A similar case: \"- monday - tuesday\" inside a paragraph is text. Three list items in one container are a list. They look the same.",
+      "The paragraph goes. In its place comes a container, and each thing inside it is its own item."
+    ],
+    "no-ul": [
+      "List items do not live alone. They live in something.",
+      "Think: if you have three list items side by side, how does the browser know they are ONE list and not three separate ones?",
+      "The items get wrapped in a container. One container. Three items inside it."
+    ],
+    "dashes-left": [
+      "Look at the bullets in the preview. Their number tells you what happened.",
+      "The bullet in front is drawn by the browser. You wrote another one."
+    ],
+    "old-paragraph": [
+      "Search with Ctrl+F for the paragraph tag. It is still there.",
+      "You made the list but did not remove what it replaces."
+    ]
+  }
+}

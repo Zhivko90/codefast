@@ -59,8 +59,8 @@ export default function ProblemPage({ params }) {
   const txt = p.text ?? {};
   const solved = result?.passed;
 
-  const submit = async () => {
-    const r = checkProblem(p, code);
+ const submit = async () => {
+    const r = await checkProblem(p, code);
     setResult(r);
     setPreview(code);
     await saveSubmission(user?.id, COURSE, slug, code, r);

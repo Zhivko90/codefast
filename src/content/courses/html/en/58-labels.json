@@ -10,10 +10,9 @@
   "checkLabels.p4": "The button is here",
   "checkLabels.t3": "There are two labels",
   "checkLabels.t4": "The labels are not empty",
-  "checkLabels.t5": "The name label points",
-  "checkLabels.t6": "The name field answers",
-  "checkLabels.t7": "The email label points",
-  "checkLabels.t8": "The email field answers",
+"checkLabels.t5": "Every label points somewhere",
+  "checkLabels.t6": "Every field has an id",
+  "checkLabels.t7": "The reader hears the field's name",
   "checkLabels.t9": "The old paragraphs are gone",
 
   "why.empty": "The editor is empty. You deleted the form too.",

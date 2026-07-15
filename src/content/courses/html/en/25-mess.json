@@ -1,9 +1,11 @@
 {
   "title": "Try to make a list",
 
+  "checkLabels.t0": "There is code",
   "checkLabels.t1": "Did you even try",
   "checkLabels.t2": "The heading is still there",
 
+  "why.empty": "The editor is empty. There is no right answer here — but empty is not an attempt. Bring the code back and try something.",
   "why.unchanged": "You did not touch the code. Try — that is the whole lesson. You will fail, and that is exactly why you will need the next one. Have a go with dashes, with spaces, with whatever comes to mind.",
   "hint2.unchanged": "There is no right answer. There is no way to get it wrong. The only way not to pass is not to try.",
 

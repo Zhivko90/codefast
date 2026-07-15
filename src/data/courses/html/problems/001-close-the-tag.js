@@ -20,9 +20,12 @@ export default {
   // ПРОВЕРКИТЕ.
   // hidden: true = ученикът не вижда какво проверява, докато не падне.
   // err: етикетът на грешката → оттам идва „Защо не мина".
-  checks: [
-    { id: 't1', type: 'code_contains', value: '</strong>', hidden: false, err: 'no-closing' },
-    { id: 't2', type: 'text_equals',   value: 'Price: 20 lv', hidden: false, err: 'text-changed' },
-    { id: 't3', type: 'balanced',      hidden: true,           err: 'wrong-order' },
+ checks: [
+    { id: 'e1', type: 'changed', value: '', err: 'empty',     weight: 1000 },
+    { id: 'e2', type: 'changed',            err: 'untouched', weight: 950 },
+
+    { id: 't1', type: 'code_contains',  value: '</strong>',  err: 'no-closing',   weight: 200 },
+    { id: 't2', type: 'text_contains',   value: '20 lv',     err: 'text-changed', weight: 190 },
+    { id: 't3', type: 'balanced', hidden: true, err: 'wrong-order', weight: 150 },
   ],
 };

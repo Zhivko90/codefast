@@ -35,10 +35,16 @@ export default {
     { id: "t3", type: "dom_count", value: "label", min: 2, err: "no-label", weight: 150 },
     { id: "t4", type: "dom_text_not_empty", value: "label", err: "empty-label", weight: 145 },
 
-    { id: "t5", type: "dom_has", value: "label[for=\"username\"]", err: "not-tied", weight: 140 },
-    { id: "t6", type: "dom_has", value: "input#username", err: "no-id", weight: 135 },
-    { id: "t7", type: "dom_has", value: "label[for=\"email\"]", err: "not-tied", weight: 130 },
-    { id: "t8", type: "dom_has", value: "input#email", err: "no-id", weight: 125 },
+   // Думите вече не са зашити. Ученикът е свободен да кръсти полетата както иска.
+    { id: "t5", type: "dom_count", value: "label[for]", min: 2, err: "not-tied", weight: 140 },
+    { id: "t6", type: "dom_count", value: "input[id]", min: 2, err: "no-id", weight: 135 },
+
+    // ★ ИСТИНСКАТА проверка. Ядрото не може да сравни два атрибута —
+    // axe не сравнява низове, а пита каквото пита четецът:
+    // „има ли това поле име". Хваща и for → несъществуващ id,
+    // и надпис, закачен за ГРЕШНОТО поле.
+    // Стои ПОД специфичните по тежест — те дават точното съобщение, той — истината.
+    { id: "t7", type: "axe_clean", value: "label", err: "not-tied", weight: 120 },
 
     { id: "t9", type: "dom_not_has", value: "form p", err: "still-p", weight: 60 },
   ],

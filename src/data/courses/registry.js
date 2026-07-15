@@ -72,6 +72,8 @@ import html_l64 from './html/lessons/65-opengraph.js';
 import html_l65 from './html/lessons/66-final.js';
 import html_l66 from './html/lessons/67-publish.js';
 import html_l67 from './html/lessons/R1-review-basics.js';
+import html_p0 from './html/problems/001-close-the-tag.js';
+import html_p1 from './html/problems/002-dashes-to-list.js';
 import html_bg_course from '@/content/courses/html/bg/_course.json';
 import html_bg_0 from '@/content/courses/html/bg/01-intro.json';
 import html_bg_1 from '@/content/courses/html/bg/02-structure.json';
@@ -141,6 +143,8 @@ import html_bg_64 from '@/content/courses/html/bg/65-opengraph.json';
 import html_bg_65 from '@/content/courses/html/bg/66-final.json';
 import html_bg_66 from '@/content/courses/html/bg/67-publish.json';
 import html_bg_67 from '@/content/courses/html/bg/R1-review-basics.json';
+import html_bg_p0 from '@/content/courses/html/problems/bg/001.json';
+import html_bg_p1 from '@/content/courses/html/problems/bg/002.json';
 import html_en_course from '@/content/courses/html/en/_course.json';
 import html_en_0 from '@/content/courses/html/en/01-intro.json';
 import html_en_1 from '@/content/courses/html/en/02-structure.json';
@@ -210,6 +214,8 @@ import html_en_64 from '@/content/courses/html/en/65-opengraph.json';
 import html_en_65 from '@/content/courses/html/en/66-final.json';
 import html_en_66 from '@/content/courses/html/en/67-publish.json';
 import html_en_67 from '@/content/courses/html/en/R1-review-basics.json';
+import html_en_p0 from '@/content/courses/html/problems/en/001.json';
+import html_en_p1 from '@/content/courses/html/problems/en/002.json';
 
 export const registry = {
   'html': {
@@ -284,6 +290,10 @@ export const registry = {
       '66-final': html_l65,
       '67-publish': html_l66,
       'R1-review-basics': html_l67,
+    },
+    problems: {
+      'close-the-tag': html_p0,
+      'dashes-to-list': html_p1,
     },
     text: {
       bg: {
@@ -427,6 +437,16 @@ export const registry = {
         '66-final': html_en_65,
         '67-publish': html_en_66,
         'R1-review-basics': html_en_67,
+      },
+    },
+    problemText: {
+      bg: {
+        '1': html_bg_p0,
+        '2': html_bg_p1,
+      },
+      en: {
+        '1': html_en_p0,
+        '2': html_en_p1,
       },
     },
     locales: ["bg","en"],

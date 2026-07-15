@@ -7,8 +7,9 @@ import {
   visibleText,
   balanced,
 } from './helpers';
+import { runAxe } from './axeCheck';
 
-function runCheck(check, code, starter) {
+function runCheck(check, code, starter, axeMap) {
   const clean = removeHtmlComments(code);
   const doc = parse(code);
   const v = check.value;
@@ -44,14 +45,12 @@ function runCheck(check, code, starter) {
     //
     // ⚠ Подразбиращият се min зависи от това има ли max.
     //
-    //   { value: "h1" }            → min 1. „Поне едно."   (както винаги е било)
+    //   { value: "h1" }            → min 1. „Поне едно."
     //   { value: "h1", min: 2 }    → min 2.
     //   { value: "br", max: 0 }    → min 0, max 0. „Нито едно."
     //
     // Ако min падаше на 1 винаги, { max: 0 } искаше n >= 1 && n <= 0 —
-    // невъзможно. Проверката падаше при ВСЕКИ отговор и урокът беше непроходим.
-    // Ако min падаше на 0 винаги, голото { value: "h1" } не искаше нищо
-    // и минаваше тихо, дори при нула заглавия.
+    // невъзможно. Пет урока бяха непроходими месеци наред.
     case 'dom_count': {
       const n = doc.querySelectorAll(v).length;
       const min = check.min ?? (check.max === undefined ? 1 : 0);
@@ -63,6 +62,23 @@ function runCheck(check, code, starter) {
       return Array.from(doc.querySelectorAll(v)).every(
         (el) => (el.getAttribute(check.attr) ?? '').trim() !== ''
       );
+
+    // ── axe-core ──
+    // { type: "axe_clean", value: "label", err: "blind-cant-see", weight: 200 }
+    //
+    // ⚠ axe е ДОБАВКА, не заместител.
+    // image-alt ПРОПУСКА alt="" — за axe това е ПРАВИЛНИЯТ запис за
+    // декоративна снимка. dom_attr е ПО-СТРОГ: иска непразен alt.
+    // Не махай dom_attr от урок 37. Двете вървят заедно.
+    //
+    // Печалбата е там, където ядрото НЕ МОЖЕ:
+    //   label         — връзката for ↔ id. Урок 58. Ядрото не я вижда.
+    //   heading-order — h1 → h3. Ядрото не мери РЕД.
+    //   link-name     — <a></a> без достъпно име.
+    //
+    // Сметнато е ВЕДНЪЖ за целия урок, в checkProblem. Тук само се чете.
+    case 'axe_clean':
+      return axeMap[v] === true;
 
     case 'raw_head_contains':
       return norm(removeHtmlComments(rawHead(code))).includes(norm(v));
@@ -88,23 +104,56 @@ function runCheck(check, code, starter) {
     case 'balanced':
       return balanced(code);
 
-    // Няма value → сравнява със скелета. Празен редактор също пада.
-    case 'changed':
-      return norm(code) !== norm(v ?? starter ?? '');
+    // Няма value → сравнява СЪС СКЕЛЕТА И С ПРАЗНОТО.
+    //
+    // ⚠ Празният редактор е различен от скелета — значи "changed" сам по себе си
+    // го пропуска. А празният редактор НЕ Е решение, никога.
+    //
+    //   { type: "changed" }             → пипнал си кода И не си го изтрил
+    //   { type: "changed", value: "" }  → само: не е празно
+    //   { type: "changed", value: "X" } → само: различно е от X
+    case 'changed': {
+      if (v !== undefined) return norm(code) !== norm(v);
+      return norm(code) !== '' && norm(code) !== norm(starter ?? '');
+    }
 
     default:
       return false;
   }
 }
 
-export function checkProblem(problem, code) {
-  const results = (problem.checks ?? []).map((c) => ({
+// ⚠ ASYNC — заради axe. Всеки, който я вика, слага await.
+//   src/app/[locale]/practice/[slug]/page.js   ред ~63
+//   src/components/lessons/WebLesson.js        ред ~108
+export async function checkProblem(problem, code) {
+  const checks = problem.checks ?? [];
+
+  // Един пуск на axe за целия урок, не по един на проверка.
+  // Няма axe_clean → нула мрежа, нула рамка, нула забавяне.
+  // Всичките 67 стари урока работят точно както преди.
+  const rules = [...new Set(
+    checks.filter((c) => c.type === 'axe_clean').map((c) => c.value)
+  )];
+
+  let axeMap = {};
+  if (rules.length) {
+    try {
+      axeMap = await runAxe(code, rules);
+    } catch (e) {
+      // Счупен axe → проверките ПАДАТ. Не минават тихо.
+      // По-добре ✕ на верен код, отколкото ✓ на грешен.
+      console.error('axe:', e);
+      axeMap = {};
+    }
+  }
+
+  const results = checks.map((c) => ({
     id: c.id,
     hidden: !!c.hidden,
     err: c.err,
     weight: c.weight ?? 0,
     guard: !!c.guard,
-    ok: runCheck(c, code, problem.starterCode),
+    ok: runCheck(c, code, problem.starterCode, axeMap),
   }));
 
   const passed = results.every((r) => r.ok);
@@ -112,7 +161,6 @@ export function checkProblem(problem, code) {
   // Не първата паднала — НАЙ-ТЕЖКАТА паднала.
   // Счупен синтаксис бие всичко. Няма смисъл да говориш за семантика,
   // докато таговете не се затварят.
-  // Няма weight → 0 → пада на реда. Старите уроци не се пипат.
   const worst = results
     .filter((r) => !r.ok)
     .sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0))[0];
