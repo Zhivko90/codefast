@@ -53,6 +53,7 @@ export default {
     { id: "t15", type: "dom_text_contains", value: "footer", text: "2026", err: "footer-empty", weight: 95 },
 
     { id: "t16", type: "dom_not_has", value: "div", err: "still-div", weight: 50 },
+     { id: "t17", type: "axe_clean", value: "region", err: "orphan-content", weight: 45 },
   ],
   blocks: [
     { type: "text" },

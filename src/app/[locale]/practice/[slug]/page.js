@@ -119,17 +119,13 @@ export default function ProblemPage({ params }) {
                 <p className="text-[10px] font-bold tracking-widest text-gray-500 mb-2">
                   {t('example')} {txt.examples.length > 1 ? i + 1 : ''}
                 </p>
-                <div className="rounded-lg border border-white/[0.07] bg-black/30 px-4 py-3 font-mono text-[12.5px] leading-relaxed">
-                  <div>
-                    <span className="text-gray-500">{t('input')}: </span>
-                    <span className="text-sky-200">{ex.in}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">{t('output')}: </span>
-                    <span className="text-emerald-300">{ex.out}</span>
-                  </div>
+               <div className="rounded-lg border border-white/[0.07] bg-black/30 px-4 py-3 font-mono text-[12.5px] leading-relaxed">
+                  <p className="text-[10px] font-bold tracking-widest text-gray-600 mb-1">{t('input')}</p>
+                  <pre className="text-sky-200 whitespace-pre-wrap break-words mb-3">{ex.in}</pre>
+                  <p className="text-[10px] font-bold tracking-widest text-gray-600 mb-1">{t('output')}</p>
+                  <pre className="text-emerald-300 whitespace-pre-wrap break-words">{ex.out}</pre>
                   {ex.explain && (
-                    <p className="mt-2 text-[12px] text-gray-500 italic font-sans">{ex.explain}</p>
+                    <p className="mt-3 pt-3 border-t border-white/[0.06] text-[12px] text-gray-500 italic font-sans whitespace-normal">{ex.explain}</p>
                   )}
                 </div>
               </div>

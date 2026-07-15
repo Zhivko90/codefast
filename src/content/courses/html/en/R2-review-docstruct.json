@@ -1,0 +1,28 @@
+{
+  "title": "The skeleton of a page",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The two halves",
+  "groups.0.items.0.term": "html, head, body",
+  "groups.0.items.0.def": "<html> wraps everything. Inside are two halves: <head> is the invisible one (information ABOUT the page), <body> is the visible one (the page itself).",
+  "groups.0.items.1.term": "What goes in head",
+  "groups.0.items.1.def": "Everything that is ABOUT the page but is not the page: the tab title, the charset, the language. A reader does not see it — machines read it.",
+  "groups.0.items.2.term": "What goes in body",
+  "groups.0.items.2.def": "Everything a person sees: headings, text, images. If it shows on screen — it goes here.",
+
+  "groups.1.title": "The lines everybody writes",
+  "groups.1.items.0.term": "<!DOCTYPE html>",
+  "groups.1.items.0.def": "The first line of the file. It says \"this is modern HTML\". Without it the browser switches into a mode for ancient sites and some things go crooked.",
+  "groups.1.items.1.term": "<meta charset>",
+  "groups.1.items.1.def": "The table that turns letters back from numbers. Without utf-8 non-English letters come out as question marks on someone else's computer. The code works — it just lies.",
+  "groups.1.items.2.term": "lang",
+  "groups.1.items.2.def": "An attribute on <html>. It says what language the page is in. A blind person's reader needs to know — otherwise it reads the text in the wrong voice and it comes out as gibberish.",
+
+  "groups.2.title": "More from this section",
+  "groups.2.items.0.term": "<title>",
+  "groups.2.items.0.def": "The name of the tab. Bookmarks, history, the blue line in Google — all of them read it. None of them looks at your page.",
+  "groups.2.items.1.term": "src and alt",
+  "groups.2.items.1.def": "Attributes on <img>. src says which image. alt says what is seen on it — for a blind person and for Google. \"photo\" is not alt; alt is what replaces the picture when it is gone.",
+  "groups.2.items.2.term": "Comment",
+  "groups.2.items.2.def": "<!-- a note -->. Nobody sees it except whoever opens the code — usually you, six months later. But be careful: commented-out code does NOT exist. To the browser it is gone."
+}

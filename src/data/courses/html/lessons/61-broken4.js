@@ -51,6 +51,7 @@ export default {
 
     { id: "h4", type: "dom_attr", value: "label", attr: "for", hidden: true, err: "label-not-tied", weight: 144 },
     { id: "h5", type: "dom_count", value: "input[id], textarea[id]", min: 3, hidden: true, err: "label-not-tied", weight: 142 },
+    { id: "h5b", type: "axe_clean", value: "label", hidden: true, err: "label-not-tied", weight: 141 },
 
     { id: "h6", type: "dom_attr", value: "input, textarea", attr: "name", hidden: true, err: "no-name", weight: 138 },
 

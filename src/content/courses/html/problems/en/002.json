@@ -4,8 +4,8 @@
 
   "examples": [
     {
-      "in": "<p>- salt<br>- pepper</p>",
-      "out": "<ul><li>salt</li><li>pepper</li></ul>",
+      "in": "<p>\n  - salt<br>\n  - pepper\n</p>",
+      "out": "<ul>\n  <li>salt</li>\n  <li>pepper</li>\n</ul>",
       "explain": "The dashes are gone. The browser draws the bullets, because this is now actually a list."
     }
   ],

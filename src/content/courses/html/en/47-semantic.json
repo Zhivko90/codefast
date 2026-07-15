@@ -18,7 +18,10 @@
   "checkLabels.t14": "Exactly one main",
   "checkLabels.t15": "The copyright is at the bottom",
   "checkLabels.t16": "No groups left",
+  "checkLabels.t17": "All content is under a landmark",
 
+  "why.orphan-content": "There is content that is under no landmark. Swap all five wrappers — the moment one thing stays in a bare group or straight in the body, the reader hears it \"floating\", outside the list of landmarks.",
+  "hint2.orphan-content": "A blind person jumps between landmarks: header, nav, main, footer. Anything in none of them is skipped in the jumping.",
   "why.empty": "The editor is empty. You deleted everything, the page included.",
 
   "why.untouched": "This is exactly the code I gave you. Nothing has been changed.",
