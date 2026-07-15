@@ -35,6 +35,8 @@
   "my_test": "Твой тест",
   "result": "Резултат",
   "preview": "Преглед",
+  "pane_mine": "Твоята",
+  "pane_target": "Целта",
   "hidden_test": "Скрит тест",
   "test_pass": "мина",
   "test_fail": "падна",

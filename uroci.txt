@@ -1,12 +1,202 @@
 ﻿
-===== LOGIC: 12-attributes.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/12-attributes.json
+===== LOGIC: 02-structure.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/02-structure.json
 export default {
-  id: 12,
+  id: 2,
+  type: "web",
+  label: "coding",
+  starterCode: "Ivan",
+  checks: [
+    { id: "g1", type: "balanced", err: "not-wrapped", weight: 1000, guard: true },
+    { id: "t1", type: "code_contains", value: "<h1", err: "no-open", weight: 50 },
+    { id: "t2", type: "code_contains", value: "</h1>", err: "no-close", weight: 40 },
+    { id: "t3", type: "dom_text_not_empty", value: "h1", err: "empty-heading", weight: 10 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: "<h1>Твоето име</h1>" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "02-structure"
+};
+===== BG: 02-structure.json =====
+{
+  "title": "Направи го едро",
+
+  "checkLabels.g1": "Таговете трябва да са затворени",
+  "checkLabels.t1": "Трябва да отвориш тага",
+  "checkLabels.t2": "Трябва да го затвориш",
+  "checkLabels.t3": "Името трябва да е ВЪТРЕ в тага",
+
+  "why.not-wrapped": "Таговете са там, но са в грешен ред или не са затворени. Отпред <h1>, после текстът, после </h1>. Точно в този ред.",
+  "why.no-open": "Още няма таг. Не можеш да напишеш „направи го голямо“ — трябва да ОБГРАДИШ името. Отпред слагаш <h1>.",
+  "why.no-close": "Отвори тага, но не го затвори. Липсва </h1>. Наклонената черта казва „тук свършва заглавието“ — без нея браузърът не знае докъде стига то.",
+  "why.empty-heading": "Таговете са там, но заглавието е празно. Името ти е отвън.",
+
+  "hint2.empty-heading": "Погледни внимателно къде свършва </h1> и къде стои името ти. Едното е след другото, а трябва да е вътре.",
+  "hint3.empty-heading": "Обграждането значи: тагът отпред, текстът в средата, тагът отзад. <h1>ТУК</h1>, не <h1></h1>ТУК.",
+
+  "blocks.0.text": "Името ти е там, но е дребно. Стои като случайна дума насред бял лист. А ти искаш да е заглавие — едро, дебело, важно.",
+  "blocks.1.text": "Първо опитай сам",
+  "blocks.2.text": "Пробвай да го увеличиш. Сериозно, опитай. Няма да успееш — и точно това е смисълът.",
+  "blocks.3.text": "Няма как да напишеш „направи го голямо“. Няма бутон за шрифт. Няма къде да натиснеш. Празният текст просто си стои.",
+  "blocks.4.text": "Ето инструментът",
+  "blocks.5.text": "Обграждаш текста от двете страни. Отпред слагаш <h1>, отзад </h1>. Наклонената черта в края казва „тук свършва“.",
+  "blocks.7.text": "Направи го и пусни. Името става едро и дебело.",
+  "blocks.8.text": "Забележи какво НЕ направи: не избра шрифт, не каза колко голямо, не пипна цвят. Само каза „това е заглавие“. Останалото го реши браузърът."
+}
+===== LOGIC: 03-role.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/03-role.json
+export default {
+  id: 3,
+  type: "web",
+  label: "coding",
+  starterCode: "<h1>Ivan</h1>",
+  checks: [
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "dom_text_not_empty", value: "h1", err: "lost-heading", weight: 60 },
+    { id: "t2", type: "code_contains", value: "<p", err: "no-p", weight: 50 },
+    { id: "t3", type: "code_contains", value: "</p>", err: "no-close", weight: 40 },
+    { id: "t4", type: "dom_text_not_empty", value: "p", err: "empty-p", weight: 10 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "code", code: "<p>Уча се да правя уебсайтове.</p>" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+  ],
+  slug: "03-role"
+};
+===== BG: 03-role.json =====
+{
+  "title": "Кажи нещо за себе си",
+
+  "checkLabels.g1": "Всички тагове трябва да са затворени",
+  "checkLabels.t1": "Заглавието трябва да е още там",
+  "checkLabels.t2": "Трябва да има абзац",
+  "checkLabels.t3": "Абзацът трябва да е затворен",
+  "checkLabels.t4": "Изречението трябва да е ВЪТРЕ в абзаца",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
+  "why.lost-heading": "Заглавието изчезна. Задачата е да ДОБАВИШ изречение под него, а не да го заместиш. Върни <h1>.",
+  "why.no-p": "Изречението е там, но е гол текст. Браузърът не знае, че това е изречение — за него е просто букви. Обгради го в <p>.",
+  "why.no-close": "Отвори <p>, но не го затвори. Липсва </p>.",
+  "why.empty-p": "Абзацът е там, но е празен. Изречението ти е отвън.",
+
+  "hint2.empty-p": "Погледни къде свършва </p> и къде стои изречението ти. Едното е след другото, а трябва да е вътре.",
+  "hint3.empty-p": "Обграждането значи: тагът отпред, текстът в средата, тагът отзад. <p>ТУК</p>, не <p></p>ТУК.",
+
+  "blocks.0.text": "Заглавието е готово. Сега искаш едно изречение отдолу — например с какво се занимаваш.",
+  "blocks.1.text": "Опитай наивния начин",
+  "blocks.2.text": "Просто напиши изречението след </h1>. Натисни Enter, слез на нов ред, напиши го. Пусни.",
+  "blocks.3.text": "Работи, нали? Появява се. Но е гол текст — виси там, без да е нищо конкретно. Браузърът не знае, че това е изречение. За него е просто... букви.",
+  "blocks.4.text": "Кажи му какво е",
+  "blocks.6.text": "Буквата „p“ идва от „параграф“ — абзац. Обграждаш изречението и вече не е случаен текст, а абзац.",
+  "blocks.7.text": "Ще кажеш: изглежда почти същото. Да. Но опитай да напишеш две изречения едно под друго БЕЗ <p> — ще видиш, че се слепват в един ред, колкото и пъти да натиснеш Enter. С <p> всяко си стои самò.",
+  "blocks.8.text": "Първият урок за уеб: празните редове, които ти виждаш в кода, за браузъра не съществуват."
+}
+===== LOGIC: 10-doctype.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/10-doctype.json
+export default {
+  id: 10,
+  type: "web",
+  label: "coding",
+  starterCode: `<html>
+  <head>
+    <title>My favourite game</title>
+  </head>
+  <body>
+    <h1>My favourite game</h1>
+    <p>I have been playing it for three years.</p>
+  </body>
+</html>`,
+  checks: [
+    { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
+    { id: "t1", type: "code_contains", value: "<!doctype html", err: "no-doctype", weight: 60 },
+    { id: "t2", type: "code_contains", value: "<meta", err: "no-meta", weight: 50 },
+    { id: "t3", type: "raw_head_contains", value: "charset", err: "charset-not-in-head", weight: 40 },
+    { id: "t4", type: "dom_text_not_empty", value: "title", err: "lost-title", weight: 30 },
+    { id: "t5", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 20 },
+    { id: "t6", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 18 },
+  ],
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "code", code: `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Моят велосипед за продан</title>
+  </head>` },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "quote" },
+  ],
+  slug: "10-doctype"
+};
+===== BG: 10-doctype.json =====
+{
+  "title": "Двата реда, които всички пишат",
+
+  "checkLabels.g1": "Всички тагове трябва да са затворени",
+  "checkLabels.t1": "Трябва да има DOCTYPE",
+  "checkLabels.t2": "Трябва да има meta",
+  "checkLabels.t3": "charset трябва да е в head",
+  "checkLabels.t4": "Заглавието на таба трябва да е още там",
+  "checkLabels.t5": "Заглавието трябва да е още там",
+  "checkLabels.t6": "Изречението трябва да е още там",
+
+  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
+  "why.no-doctype": "Няма DOCTYPE. Без него браузърът включва режим за древни сайтове и някои неща почват да се държат странно.",
+  "why.no-meta": "Няма meta с кодировка. Кирилицата ще излезе като въпросителни или йероглифи на чужд компютър.",
+  "why.charset-not-in-head": "Кодировката е там, но не е в head. Тя трябва да е ПЪРВОТО нещо — браузърът я чете, преди да е стигнал до текста. Сложиш ли я в body, вече е късно.",
+  "why.lost-title": "Заглавието на таба изчезна. Добавяш два реда, не триеш стари.",
+  "why.lost-content": "Изчезна нещо от страницата. Добавяш два реда в главата — тялото остава непокътнато.",
+
+  "hint2.no-doctype": "DOCTYPE е първият ред на файла. Преди <html>, не вътре в него.",
+  "hint3.no-doctype": "Точният ред е <!DOCTYPE html>. Виж примера.",
+  "hint2.no-meta": "Тагът е meta. Той няма затварящ — това е void елемент.",
+  "hint3.no-meta": "Влиза в <head>, преди <title>. Виж примера.",
+  "hint2.charset-not-in-head": "Погледни къде си я сложил. Между <head> и </head> ли е?",
+  "hint3.charset-not-in-head": "Браузърът чете главата, преди да стигне до тялото. Ако кодировката е долу, той вече е прочел текста грешно.",
+  "hint2.lost-content": "Сравни с първоначалния код. Заглавието и изречението трябва да са в <body>.",
+
+  "blocks.0.text": "Отвори произволен сайт. Десен бутон, „Виж кода на страницата“. Първите редове са едни и същи навсякъде.",
+  "blocks.1.text": "Не са формалност. Всеки от тях решава реален проблем.",
+  "blocks.2.text": "Ето ги",
+  "blocks.3.text": "Два реда. Пишеш ги веднъж и повече не мислиш за тях. Но си струва да знаеш какво правят.",
+  "blocks.5.text": "Добави ги към твоята страница. Пусни. Няма да видиш разлика — точно това е смисълът.",
+  "blocks.6.text": "DOCTYPE",
+  "blocks.7.text": "Казва на браузъра: това е модерен HTML. Без него той включва режим за древни сайтове от деветдесетте и някои неща почват да се държат странно.",
+  "blocks.8.text": "Кодировката",
+  "blocks.9.text": "Компютърът пази буквите като числа. utf-8 е таблицата, по която ги превръща обратно. Без нея всяка буква извън английската азбука е рулетка.",
+  "blocks.10.text": "„Пробвай да махнеш meta и да напишеш нещо на кирилица. После го отвори на чужд компютър. Ще видиш въпросителни, йероглифи или квадратчета. Кодът ти работи — просто лъже.“"
+}
+===== LOGIC: 11-charset.js =====
+// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/11-charset.json
+export default {
+  id: 11,
   type: "web",
   label: "coding",
   starterCode: `<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <title>My favourite game</title>
@@ -18,508 +208,50 @@ export default {
 </html>`,
   checks: [
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "dom_has", value: "img", err: "no-img", weight: 60 },
-    { id: "t2", type: "dom_attr", value: "img", attr: "src", err: "no-src", weight: 50 },
-    { id: "t3", type: "dom_attr", value: "img", attr: "alt", err: "no-alt", weight: 40 },
-    { id: "t6", type: "dom_not_has", value: "img[alt*='снимка' i], img[alt*='картинка' i], img[alt*='изображение' i], img[alt*='photo' i], img[alt*='image' i]", err: "useless-alt", weight: 35 },
-    { id: "t4", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 30 },
-    { id: "t5", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 28 },
+    { id: "t1", type: "code_contains", value: "lang=", err: "no-lang", weight: 60 },
+    { id: "t2", type: "dom_attr", value: "html", attr: "lang", err: "empty-lang", weight: 50 },
+    { id: "t3", type: "code_contains", value: "<meta", err: "lost-meta", weight: 30 },
   ],
   blocks: [
     { type: "text" },
     { type: "text" },
     { type: "heading" },
     { type: "text" },
-    { type: "code", code: `<img src="https://picsum.photos/400/250" alt="Червен велосипед, подпрян на стена">` },
+    { type: "code", code: `<html lang="bg">` },
     { type: "text" },
     { type: "heading" },
     { type: "text" },
-    { type: "text" },
-    { type: "heading" },
     { type: "text" },
     { type: "quote" },
   ],
-  slug: "12-attributes"
+  slug: "11-charset"
 };
-===== BG: 12-attributes.json =====
+===== BG: 11-charset.json =====
 {
-  "title": "Тагът казва какво Е. Атрибутът казва подробностите",
+  "title": "На какъв език е това",
 
   "checkLabels.g1": "Всички тагове трябва да са затворени",
-  "checkLabels.t1": "Трябва да има снимка",
-  "checkLabels.t2": "Снимката трябва да има src",
-  "checkLabels.t3": "Снимката трябва да има alt с текст",
-  "checkLabels.t6": "alt трябва да казва нещо",
-  "checkLabels.t4": "Заглавието трябва да е още там",
-  "checkLabels.t5": "Изречението трябва да е още там",
+  "checkLabels.t1": "Трябва да има lang",
+  "checkLabels.t2": "lang не трябва да е празен",
+  "checkLabels.t3": "Кодировката трябва да е още там",
 
   "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "why.no-img": "Няма снимка. Тагът е img — той няма затварящ, защото няма какво да обгради.",
-  "why.no-src": "Тагът е там, но не казва КОЯ снимка. Без src браузърът няма какво да покаже — ще излезе счупена икона.",
-  "why.no-alt": "Няма alt, или е празен. Незрящият човек стига до снимката и четецът му казва... нищо. Google също не вижда снимката — той чете alt.",
-  "why.useless-alt": "Написал си „снимка“ или „картинка“. Четецът вече е казал на човека, че там има изображение. Ти му повтори същото. Не му каза какво СЕ ВИЖДА на него.",
-  "why.lost-content": "Изчезна нещо от страницата. Добавяш снимка, не триеш това, което вече имаш.",
+  "why.no-lang": "Няма lang. Четецът на незрящия не знае на какъв език чете и ще произнесе твоя текст с чужд глас.",
+  "why.empty-lang": "lang е там, но е празен. Празният атрибут е същото като липсващ — никой не знае какъв е езикът.",
+  "why.lost-meta": "Кодировката изчезна. Добавяш атрибут, не триеш редове.",
 
-  "hint2.no-img": "Тагът е img. Пиши го вътре в <body>, под изречението.",
-  "hint3.no-img": "img няма затварящ таг. Просто <img ...> и толкова. Виж примера.",
-  "hint2.no-src": "src казва къде е снимката. Стойността е адрес.",
-  "hint3.no-src": "Виж примера — там има готов адрес, който можеш да ползваш.",
-  "hint2.no-alt": "alt е текстът, който заменя снимката. Опиши какво се вижда на нея.",
-  "hint3.no-alt": "Не пиши „снимка“. Пиши какво Е на нея: „Червен велосипед, подпрян на стена“.",
-  "hint2.useless-alt": "Ако снимката изчезне и твоят текст не я замества — alt-ът ти е боклук.",
-  "hint3.useless-alt": "Затвори очи. Някой ти чете страницата на глас. Какво трябва да чуеш, за да разбереш какво има там?",
-  "hint2.lost-content": "Сравни с първоначалния код. Заглавието и изречението остават — снимката се ДОБАВЯ под тях.",
+  "hint2.no-lang": "Атрибутът се пише ВЪТРЕ в отварящия таг <html>, преди затварящата скоба.",
+  "hint3.no-lang": "Виж примера. Тагът вече го има — само добавяш нещо в него.",
+  "hint2.empty-lang": "Стойността трябва да е кодът на езика. bg за български, en за английски.",
+  "hint3.empty-lang": "Ако страницата ти е на български — <html lang=\"bg\">. Ако е на английски — <html lang=\"en\">.",
 
-  "blocks.0.text": "Досега таговете ти казваха само какво Е нещото. Заглавие. Абзац. Но понякога това не стига.",
-  "blocks.1.text": "Снимка. Тагът казва „това е снимка“. Но КОЯ снимка? Откъде? Това не се събира в името на тага.",
-  "blocks.2.text": "Атрибутите",
-  "blocks.3.text": "Пишат се вътре в отварящия таг. Име, равно, стойност в кавички. Вече видя два — lang и charset. Ето трети и четвърти.",
-  "blocks.5.text": "Добави снимка към страницата си. Пусни. Появява се.",
-  "blocks.6.text": "src е очевиден. alt не е.",
-  "blocks.7.text": "src казва къде е файлът. Без него няма какво да се покаже.",
-  "blocks.8.text": "alt е текстът, който заменя снимката, когато тя не се вижда. Слаб интернет. Счупен адрес. Или — незрящ човек, чийто четец не може да види картинка и чете само това.",
-  "blocks.9.text": "Какво НЕ е alt",
-  "blocks.10.text": "„Не пиши alt=\"снимка\". Четецът вече е казал на човека, че там има изображение — ти му повтаряш същото. Пиши какво Е на нея. Ако снимката изчезне и текстът ти не я замества — alt-ът ти е боклук.“",
-  "blocks.11.text": "„Google не вижда картинки. Чете alt. Ти пишеш за незрящия — и печели и търсачката.“"
-}
-===== EN: 12-attributes.json =====
-{
-  "title": "The tag says what it IS. The attribute says the details",
-
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be an image",
-  "checkLabels.t2": "The image must have a src",
-  "checkLabels.t3": "The image must have alt with text",
-  "checkLabels.t6": "alt must say something",
-  "checkLabels.t4": "The heading must still be there",
-  "checkLabels.t5": "The sentence must still be there",
-
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-img": "There is no image. The tag is img — it has no closing tag, because it has nothing to wrap.",
-  "why.no-src": "The tag is there, but it does not say WHICH image. Without src the browser has nothing to show — you get a broken icon.",
-  "why.no-alt": "There is no alt, or it is empty. A blind person reaches the image and their screen reader says... nothing. Google does not see the image either — it reads alt.",
-  "why.useless-alt": "You wrote \"photo\" or \"image\". The reader has already told the person there is an image there. You just repeated it. You did not tell them what IS SEEN on it.",
-  "why.lost-content": "Something is gone from the page. You are adding an image, not deleting what you already have.",
-
-  "hint2.no-img": "The tag is img. Write it inside <body>, under the sentence.",
-  "hint3.no-img": "img has no closing tag. Just <img ...> and that is it. See the example.",
-  "hint2.no-src": "src says where the image is. The value is an address.",
-  "hint3.no-src": "Look at the example — there is a working address there you can use.",
-  "hint2.no-alt": "alt is the text that replaces the image. Describe what can be seen on it.",
-  "hint3.no-alt": "Do not write \"photo\". Write what IS on it: \"A red bicycle leaning against a wall\".",
-  "hint2.useless-alt": "If the image disappears and your text does not replace it — your alt is rubbish.",
-  "hint3.useless-alt": "Close your eyes. Someone is reading the page aloud to you. What do you need to hear to know what is there?",
-  "hint2.lost-content": "Compare with the original code. The heading and the sentence stay — the image gets ADDED below them.",
-
-  "blocks.0.text": "So far your tags only said what a thing IS. A heading. A paragraph. But sometimes that is not enough.",
-  "blocks.1.text": "An image. The tag says \"this is an image\". But WHICH image? From where? That does not fit into the tag's name.",
-  "blocks.2.text": "Attributes",
-  "blocks.3.text": "They go inside the opening tag. Name, equals, value in quotes. You have already seen two — lang and charset. Here are the third and fourth.",
-  "blocks.5.text": "Add an image to your page. Run. It appears.",
-  "blocks.6.text": "src is obvious. alt is not.",
-  "blocks.7.text": "src says where the file is. Without it there is nothing to show.",
-  "blocks.8.text": "alt is the text that replaces the image when it cannot be seen. Slow internet. A broken address. Or — a blind person, whose screen reader cannot see a picture and reads only this.",
-  "blocks.9.text": "What alt is NOT",
-  "blocks.10.text": "\"Do not write alt=\"photo\". The reader has already told the person there is an image there — you are just repeating it. Write what IS on it. If the image disappears and your text does not replace it — your alt is rubbish.\"",
-  "blocks.11.text": "\"Google does not see pictures. It reads alt. You write for the blind person — and the search engine wins too.\""
-}
-===== LOGIC: 25-mess.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/25-mess.json
-export default {
-  id: 25,
-  type: "web",
-  label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>My bike</title>
-  </head>
-  <body>
-    <h1>Bike for sale</h1>
-
-    <p>What is included:</p>
-    <p>- Frame<br>
-    - Front wheel<br>
-    - Rear wheel<br>
-    - Bell</p>
-  </body>
-</html>`,
-  checks: [
-    { id: "t1", type: "changed", err: "unchanged", weight: 100 },
-    { id: "t2", type: "dom_text_not_empty", value: "h1", err: "lost-h1", weight: 50 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "quote" },
-  ],
-  slug: "25-mess"
-};
-===== BG: 25-mess.json =====
-{
-  "title": "Опитай да направиш списък",
-
-  "checkLabels.t1": "Опита ли изобщо",
-  "checkLabels.t2": "Заглавието е останало",
-
-  "why.unchanged": "Не си пипал кода. Опитай — това е целият урок. Ще се провалиш, и точно затова следващият урок ще ти е нужен. Пробвай с чертички, с интервали, с каквото се сетиш.",
-  "hint2.unchanged": "Няма верен отговор. Няма как да сбъркаш. Единственият начин да не минеш е да не опиташ.",
-
-  "why.lost-h1": "Изчезна заглавието. Пробвай със списъка, не с триене на страницата.",
-
-  "blocks.0.text": "Обявата за велосипеда трябва да изброи какво влиза в цената. Четири неща: рамка, предна гума, задна гума, звънец.",
-  "blocks.1.text": "Ти знаеш абзаци и знаеш <br>. Значи можеш да го направиш. Направи го.",
-  "blocks.2.text": "Опитай сам, преди да продължиш",
-  "blocks.3.text": "Пиши чертички отпред. Интервали за отстъп. Каквото ти хрумне. Пусни и виж.",
-  "blocks.4.text": "Работи ли? На вид — да. Изглежда като списък. Има си точки, стои си подредено.",
-  "blocks.5.text": "Само че опитай да направиш едно от нещата подсписък. Или го номерирай и после разместиш реда. Или махни едно от средата. Ще се окаже, че всяка промяна е ръчна работа — защото това не е списък, а текст, който прилича на списък.",
-  "blocks.6.text": "Кое е проблемът всъщност",
-  "blocks.7.text": "Твоят код казва: „ето един абзац с чертички и нови редове“. Не казва „ето четири неща, които са от един вид“.",
-  "blocks.8.text": "Google не знае, че е списък. Програмата за незрящи няма да каже „списък от четири неща“. Ти не можеш да ги преномерираш, ако размениш реда. И всяка чертичка си я написал на ръка.",
-  "blocks.9.text": "Ти нарисува списък. Не направи списък. Следващият урок е за разликата."
-}
-===== EN: 25-mess.json =====
-{
-  "title": "Try to make a list",
-
-  "checkLabels.t1": "Did you even try",
-  "checkLabels.t2": "The heading is still there",
-
-  "why.unchanged": "You did not touch the code. Try — that is the whole lesson. You will fail, and that is exactly why you will need the next one. Have a go with dashes, with spaces, with whatever comes to mind.",
-  "hint2.unchanged": "There is no right answer. There is no way to get it wrong. The only way not to pass is not to try.",
-
-  "why.lost-h1": "The heading is gone. Experiment with the list, not by deleting the page.",
-
-  "blocks.0.text": "The bike listing has to spell out what is included in the price. Four things: frame, front wheel, rear wheel, bell.",
-  "blocks.1.text": "You know paragraphs and you know <br>. So you can do this. Do it.",
-  "blocks.2.text": "Try on your own before you read on",
-  "blocks.3.text": "Put dashes in front. Spaces for indentation. Whatever comes to mind. Run it and look.",
-  "blocks.4.text": "Does it work? By the look of it — yes. It looks like a list. It has bullets, it sits neatly.",
-  "blocks.5.text": "Now try making one of the items a sub-item. Or number them and then reorder them. Or remove one from the middle. You will find every change is manual work — because this is not a list, it is text that looks like a list.",
-  "blocks.6.text": "What the problem actually is",
-  "blocks.7.text": "Your code says: \"here is a paragraph with dashes and line breaks\". It does not say \"here are four things of the same kind\".",
-  "blocks.8.text": "Google does not know it is a list. The screen reader will not say \"list of four items\". You cannot renumber them if you reorder them. And every dash you typed by hand.",
-  "blocks.9.text": "You drew a list. You did not make a list. The next lesson is about the difference."
-}
-===== LOGIC: 26-lists.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/26-lists.json
-export default {
-  id: 26,
-  type: "web",
-  label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>My bike</title>
-  </head>
-  <body>
-    <h1>Bike for sale</h1>
-
-    <p>What is included:</p>
-    <p>- Frame<br>
-    - Front wheel<br>
-    - Rear wheel<br>
-    - Bell</p>
-  </body>
-</html>`,
-  checks: [
-    { id: "t1", type: "changed", err: "empty", weight: 1000 },
-    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
-    { id: "t2", type: "dom_count", value: "ul li", min: 4, err: "no-li", weight: 120 },
-    { id: "t3", type: "dom_text_not_empty", value: "li", err: "empty-li", weight: 110 },
-    { id: "t4", type: "dom_count", value: "br", max: 0, err: "old-mess", weight: 90 },
-    { id: "t5", type: "dom_text_contains", value: "li", text: "frame", err: "lost-items", weight: 70 },
-    { id: "t6", type: "dom_text_contains", value: "li", text: "bell", err: "lost-items", weight: 65 },
-    { id: "t7", type: "text_contains", value: "- frame", err: "manual-dashes", weight: 60 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "heading" },
-    {
-      type: "code",
-      code: `<ul>
-  <li>Frame</li>
-  <li>Front wheel</li>
-  <li>Rear wheel</li>
-  <li>Bell</li>
-</ul>`
-    },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-  ],
-  slug: "26-lists"
-};
-===== BG: 26-lists.json =====
-{
-  "title": "Кажи, че е списък",
-
-  "checkLabels.t1": "Написа нещо",
-  "checkLabels.g1": "Всичко затворено",
-  "checkLabels.t2": "Има четири неща в списък",
-  "checkLabels.t3": "Никое не е празно",
-  "checkLabels.t4": "Старата каша я няма",
-  "checkLabels.t5": "Рамката е там",
-  "checkLabels.t6": "Звънецът е там",
-  "checkLabels.t7": "Няма ръчни чертички",
-
-  "why.empty": "Редакторът е празен. Изтри страницата, вместо да направиш списък. Върни кода.",
-
-  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред. В списъците това става лесно — всеки <li> си иска </li>.",
-  "hint2.not-closed": "Преброй отварящите <li> и затварящите </li>. Числата трябва да съвпадат.",
-  "hint3.not-closed": "И <ul> се затваря. Той обгражда всичко — значи </ul> отива най-накрая, след последния </li>.",
-  "hint4.not-closed": "Четири неща значи четири <li> и четири </li>. Плюс един <ul> и един </ul> около тях.",
-
-  "why.no-li": "Няма четири неща в списък. Всяко от четирите се обгражда в <li>, а всичките заедно — в <ul>.",
-  "hint2.no-li": "Две части: <ul> отвън, <li> около всяко нещо вътре.",
-  "hint3.no-li": "<ul><li>Bread</li><li>Milk</li></ul> — един списък, две неща. Обвивката е една, нещата са колкото искаш.",
-  "hint4.no-li": "Обгради рамката, предната гума, задната гума и звънеца — всяко в свой <li>. После обгради и четирите в <ul>.",
-
-  "why.empty-li": "Има празно <li>. Празното нещо не е нещо — то не казва нищо. Или сложи текст в него, или го махни.",
-  "hint2.empty-li": "Отворил си и си затворил <li>, без нищо между тях.",
-  "hint3.empty-li": "<li></li>Frame — тагът е празен, а Frame виси навън. Трябва да е <li>Frame</li>.",
-
-  "why.old-mess": "Старите <br> още са там. Не ти трябват — всяко <li> е блоково и само си взема реда. Изтрий стария абзац с чертичките.",
-  "hint2.old-mess": "Търси <br> в кода. Не бива да остане нито един.",
-  "hint3.old-mess": "Не добавяш списък ДО кашата. Заменяш кашата със списък.",
-  "hint4.old-mess": "Махни целия <p> с чертичките и <br>-овете. На негово място слагаш <ul>.",
-
-  "why.lost-items": "Изчезнало е нещо от списъка. Четирите са рамка, предна гума, задна гума и звънец. Задачата е да ги подредиш, не да ги съкращаваш.",
-  "hint2.lost-items": "Преброй нещата в резултата. Трябва да са четири.",
-
-  "why.manual-dashes": "Оставил си чертичките. Не ти трябват — точките ги рисува браузърът. Сега твоите чертички стоят ДО неговите точки.",
-  "hint2.manual-dashes": "Виж резултата вдясно. Всеки ред има по два знака отпред. Единият не си го искал.",
-  "hint3.manual-dashes": "<li>- Frame</li> — чертичката е част от текста, а точката идва от браузъра. Двете се събират.",
-  "hint4.manual-dashes": "Махни всяка чертичка отвътре в <li>. Остава само името на нещото.",
-
-  "blocks.0.text": "Проблемът от миналия урок: ти нарисува списък, вместо да направиш списък. Ето инструмента.",
-  "blocks.1.text": "Две части",
-  "blocks.3.text": "<ul> обгражда целия списък. Идва от „unordered list“ — неподреден списък. Тоест редът няма значение: рамката не е „по-първа“ от звънеца.",
-  "blocks.4.text": "<li> е всяко нещо вътре. От „list item“.",
-  "blocks.5.text": "Забележи какво изчезна",
-  "blocks.6.text": "Няма ги чертичките. Не си написал нито една точка — браузърът ги рисува сам. Ти каза само какво Е това; как изглежда, той реши.",
-  "blocks.7.text": "И няма <br>. Всяко <li> е блоково — само си взима реда. Не му е нужно да му го казваш.",
-  "blocks.8.text": "А ако редът има значение",
-  "blocks.9.text": "Тогава не е <ul>, а <ol> — „ordered list“. Стъпки в рецепта, класация, инструкции. Браузърът сам ги номерира, а ако размениш две — номерата се пренареждат сами. Опитай това с ръчно написани цифри."
-}
-===== EN: 26-lists.json =====
-{
-  "title": "Say that it is a list",
-
-  "checkLabels.t1": "You wrote something",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t2": "Four things in a list",
-  "checkLabels.t3": "None of them is empty",
-  "checkLabels.t4": "The old mess is gone",
-  "checkLabels.t5": "The frame is there",
-  "checkLabels.t6": "The bell is there",
-  "checkLabels.t7": "No manual dashes",
-
-  "why.empty": "The editor is empty. You deleted the page instead of making a list. Bring the code back.",
-
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order. In lists this happens easily — every <li> wants its </li>.",
-  "hint2.not-closed": "Count the opening <li> tags and the closing </li> tags. The numbers must match.",
-  "hint3.not-closed": "The <ul> closes too. It wraps everything — so the </ul> goes last, after the final </li>.",
-  "hint4.not-closed": "Four things means four <li> and four </li>. Plus one <ul> and one </ul> around them.",
-
-  "why.no-li": "There are not four things in a list. Each of the four gets wrapped in an <li>, and all of them together in a <ul>.",
-  "hint2.no-li": "Two parts: <ul> on the outside, <li> around each thing inside.",
-  "hint3.no-li": "<ul><li>Bread</li><li>Milk</li></ul> — one list, two things. One wrapper, as many things as you like.",
-  "hint4.no-li": "Wrap the frame, the front wheel, the rear wheel and the bell — each in its own <li>. Then wrap all four in a <ul>.",
-
-  "why.empty-li": "There is an empty <li>. An empty item is not an item — it says nothing. Either put text in it or remove it.",
-  "hint2.empty-li": "You opened and closed an <li> with nothing between them.",
-  "hint3.empty-li": "<li></li>Frame — the tag is empty and Frame hangs outside it. It should be <li>Frame</li>.",
-
-  "why.old-mess": "The old <br> tags are still there. You do not need them — every <li> is a block and takes its own line. Delete the old paragraph with the dashes.",
-  "hint2.old-mess": "Search for <br> in your code. Not one should remain.",
-  "hint3.old-mess": "You are not adding a list NEXT TO the mess. You are replacing the mess with a list.",
-  "hint4.old-mess": "Remove the whole <p> with the dashes and the <br> tags. The <ul> goes in its place.",
-
-  "why.lost-items": "Something is missing from the list. The four are: frame, front wheel, rear wheel, bell. The task is to organise them, not to shorten them.",
-  "hint2.lost-items": "Count the items in the result. There should be four.",
-
-  "why.manual-dashes": "You kept the dashes. You do not need them — the browser draws the bullets. Now your dashes sit NEXT TO its bullets.",
-  "hint2.manual-dashes": "Look at the result on the right. Every line has two marks in front of it. You only asked for one.",
-  "hint3.manual-dashes": "<li>- Frame</li> — the dash is part of the text, and the bullet comes from the browser. The two add up.",
-  "hint4.manual-dashes": "Remove every dash from inside the <li>. Only the name of the thing stays.",
-
-  "blocks.0.text": "The problem from the last lesson: you drew a list instead of making one. Here is the tool.",
-  "blocks.1.text": "Two parts",
-  "blocks.3.text": "<ul> wraps the whole list. It comes from \"unordered list\". Meaning the order does not matter: the frame is not \"more first\" than the bell.",
-  "blocks.4.text": "<li> is each thing inside. From \"list item\".",
-  "blocks.5.text": "Notice what disappeared",
-  "blocks.6.text": "The dashes are gone. You did not type a single bullet — the browser draws them itself. You only said what this IS; how it looks, it decided.",
-  "blocks.7.text": "And there is no <br>. Every <li> is a block — it takes its own line. It does not need to be told.",
-  "blocks.8.text": "And if the order does matter",
-  "blocks.9.text": "Then it is not <ul> but <ol> — \"ordered list\". Steps in a recipe, a ranking, instructions. The browser numbers them itself, and if you swap two — the numbers rearrange on their own. Try that with hand-typed digits."
-}
-===== LOGIC: 27-nested-lists.js =====
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/html/{bg,en}/27-nested-lists.json
-export default {
-  id: 27,
-  type: "web",
-  label: "coding",
-  starterCode: `<!DOCTYPE html>
-<html>
-  <head>
-    <title>My bike</title>
-  </head>
-  <body>
-    <h1>Bike for sale</h1>
-
-    <p>What is included:</p>
-    <ul>
-      <li>Frame</li>
-      <li>Tyres</li>
-      <li>Front</li>
-      <li>Rear</li>
-      <li>Bell</li>
-    </ul>
-  </body>
-</html>`,
-  checks: [
-    { id: "t1", type: "changed", err: "empty", weight: 1000 },
-    { id: "g1", type: "balanced", err: "not-closed", weight: 900, guard: true },
-    { id: "t2", type: "dom_has", value: "li ul li", err: "still-flat", weight: 120 },
-    { id: "t3", type: "dom_text_contains", value: "li", text: "tyres", err: "no-tyres", weight: 100 },
-    { id: "t4", type: "dom_count", value: "body > ul > li", min: 3, max: 3, err: "wrong-outer", weight: 80 },
-    { id: "t5", type: "dom_count", value: "li ul li", min: 2, err: "lost-inner", weight: 70 },
-    { id: "t6", type: "dom_text_not_empty", value: "li", err: "empty-li", weight: 60 },
-  ],
-  blocks: [
-    { type: "text" },
-    { type: "text" },
-    { type: "quote" },
-    { type: "heading" },
-    { type: "text" },
-    {
-      type: "code",
-      code: `<li>Tyres
-  <ul>
-    <li>Front</li>
-    <li>Rear</li>
-  </ul>
-</li>`
-    },
-    {
-      type: "preview",
-      html: "<h1>Bike for sale</h1><p>What is included:</p><ul><li>Frame</li><li>Tyres<ul><li>Front</li><li>Rear</li></ul></li><li>Bell</li></ul>",
-      height: 190,
-      url: "index.html"
-    },
-    { type: "text" },
-    { type: "heading" },
-    { type: "text" },
-    { type: "text" },
-    { type: "text" },
-  ],
-  slug: "27-nested-lists"
-};
-===== BG: 27-nested-lists.json =====
-{
-  "title": "Когато едно нещо има свои неща",
-
-  "checkLabels.t1": "Написа нещо",
-  "checkLabels.g1": "Всичко затворено",
-  "checkLabels.t2": "Има списък вътре в нещо",
-  "checkLabels.t3": "Гумите са останали",
-  "checkLabels.t4": "Външният списък е с три неща",
-  "checkLabels.t5": "И двете гуми са вътре",
-  "checkLabels.t6": "Никое нещо не е празно",
-
-  "why.empty": "Редакторът е празен. Изтри списъка, вместо да го подредиш. Върни кода.",
-
-  "why.not-closed": "Някой таг е отворен и не е затворен, или е затворен в грешен ред.",
-  "hint2.not-closed": "Вътрешният <ul> е ВЪТРЕ в едно <li>. Значи се затваря, преди да се затвори то.",
-  "hint3.not-closed": "Каквото си отворил последно, него затваряш първо. <li> → <ul> → <li> → </li> → </ul> → </li>.",
-  "hint4.not-closed": "Провери: всеки <li> има </li>, всеки <ul> има </ul>. И че </ul> на вътрешния идва преди </li> на гумите.",
-
-  "why.still-flat": "Няма списък вътре в нещо. Предната и задната гума още стоят наравно с рамката и звънеца — все едно са отделни части на велосипеда. Не са. Те са част ОТ гумите.",
-  "hint2.still-flat": "Не местиш нещата. Слагаш нов списък вътре в едно от тях.",
-  "hint3.still-flat": "<li>Tyres <ul><li>Front</li></ul></li> — новият <ul> е съдържание на „Гуми“, не негов съсед.",
-  "hint4.still-flat": "Вътре в <li>Tyres — след думата, преди да затвориш </li> — отвори цял нов <ul> и сложи двете гуми в него.",
-
-  "why.no-tyres": "„Гуми“ изчезна. Задачата е предната и задната да влязат ВЪТРЕ в него, а не да го трием.",
-  "hint2.no-tyres": "Думата Tyres трябва да си остане. Тя е нещото, на което принадлежат другите две.",
-
-  "why.wrong-outer": "Външният списък няма три неща. Трябва да са точно три: рамка, гуми, звънец. Ако са пет — гумите още са отвън. Ако са четири — най-вероятно си затворил </li> преди вътрешния списък и той е изскочил навън.",
-  "hint2.wrong-outer": "Преброй точките от първо ниво в резултата. Три трябва да са.",
-  "hint3.wrong-outer": "Ето обичайната грешка: <li>Tyres</li><ul>… — затваряш гумите и чак тогава отваряш списъка. Изглежда почти същото, но списъкът вече не е вътре в нищо.",
-  "hint4.wrong-outer": "Затварящият </li> на гумите отива СЛЕД вътрешния </ul>, не преди отварящия <ul>.",
-
-  "why.lost-inner": "Вътрешният списък не е пълен. И предната, и задната гума трябва да са в него.",
-  "hint2.lost-inner": "Две гуми — две <li> вътре във вътрешния <ul>.",
-
-  "why.empty-li": "Има празно нещо в списъка. Или сложи текст в него, или го махни.",
-
-  "blocks.0.text": "Изброяваш какво влиза в цената. Гумите са две — предна и задна. Написа ги като нови неща в списъка. Пусни и виж.",
-  "blocks.1.text": "Списъкът излиза с пет точки, всичките равни. Твърди, че „Предна“ е същото нещо като „Рамка“ и „Звънец“ — отделна част от велосипеда. Не е. Тя е част ОТ гумите.",
-  "blocks.2.text": "Списъкът не е рисунка. Той твърди нещо: тези неща са от един вид.",
-  "blocks.3.text": "Списък вътре в нещо",
-  "blocks.4.text": "Вътре в едно <li> можеш да сложиш цял нов <ul>. Не след него, не до него — ВЪТРЕ, преди да затвориш </li>. Така новият списък не е съсед на „Гуми“, а негово съдържание.",
-  "blocks.7.text": "Погледни отстъпа и другата точка. Ти не си ги правил — браузърът сам показва, че вътрешният списък е на друго ниво. Ти каза само КОЕ на КОГО принадлежи.",
-  "blocks.8.text": "Къде отива затварящият таг",
-  "blocks.9.text": "Ето обичайната грешка: затваряш </li> веднага след „Гуми“ и чак тогава отваряш вътрешния <ul>. Изглежда почти същото, но не е — списъкът вече не е вътре в нищо. Затварящият </li> отива СЛЕД вътрешния списък.",
-  "blocks.10.text": "Можеш да вложиш <ol> в <ul> и обратно — влагането не се интересува от вида. И можеш да слизаш още по-дълбоко, ако има смисъл. Обикновено няма.",
-  "blocks.11.text": "Твой ред. Направи предната и задната гума да принадлежат на „Гуми“."
-}
-===== EN: 27-nested-lists.json =====
-{
-  "title": "When one item has items of its own",
-
-  "checkLabels.t1": "You wrote something",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t2": "There is a list inside an item",
-  "checkLabels.t3": "The tyres are still there",
-  "checkLabels.t4": "The outer list has three items",
-  "checkLabels.t5": "Both tyres are inside",
-  "checkLabels.t6": "No item is empty",
-
-  "why.empty": "The editor is empty. You deleted the list instead of organising it. Bring the code back.",
-
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "hint2.not-closed": "The inner <ul> is INSIDE an <li>. So it closes before that <li> does.",
-  "hint3.not-closed": "Whatever you opened last, you close first. <li> → <ul> → <li> → </li> → </ul> → </li>.",
-  "hint4.not-closed": "Check: every <li> has a </li>, every <ul> has a </ul>. And that the inner </ul> comes before the </li> of the tyres.",
-
-  "why.still-flat": "There is no list inside an item. The front and rear tyre still sit level with the frame and the bell — as if they were separate parts of the bike. They are not. They are part OF the tyres.",
-  "hint2.still-flat": "You are not moving the items around. You are putting a new list inside one of them.",
-  "hint3.still-flat": "<li>Tyres <ul><li>Front</li></ul></li> — the new <ul> is the content of \"Tyres\", not its neighbour.",
-  "hint4.still-flat": "Inside <li>Tyres — after the word, before you close the </li> — open a whole new <ul> and put both tyres in it.",
-
-  "why.no-tyres": "\"Tyres\" is gone. The task is to put the front and rear INSIDE it, not to delete it.",
-  "hint2.no-tyres": "The word Tyres must stay. It is the thing the other two belong to.",
-
-  "why.wrong-outer": "The outer list does not have three items. There should be exactly three: frame, tyres, bell. If there are five — the tyres are still outside. If there are four — you most likely closed the </li> before the inner list, and it popped out.",
-  "hint2.wrong-outer": "Count the top-level bullets in the result. There should be three.",
-  "hint3.wrong-outer": "Here is the usual mistake: <li>Tyres</li><ul>… — you close the tyres and only then open the list. It looks almost the same, but the list is no longer inside anything.",
-  "hint4.wrong-outer": "The closing </li> of the tyres goes AFTER the inner </ul>, not before the opening <ul>.",
-
-  "why.lost-inner": "The inner list is not complete. Both the front and the rear tyre must be in it.",
-  "hint2.lost-inner": "Two tyres — two <li> inside the inner <ul>.",
-
-  "why.empty-li": "There is an empty item in the list. Either put text in it or remove it.",
-
-  "blocks.0.text": "You are listing what the price includes. There are two tyres — front and rear. You wrote them as new items. Run it and look.",
-  "blocks.1.text": "The list comes out with five bullets, all equal. It claims that \"Front\" is the same kind of thing as \"Frame\" and \"Bell\" — a separate part of the bike. It is not. It is part OF the tyres.",
-  "blocks.2.text": "A list is not a drawing. It makes a claim: these things are of the same kind.",
-  "blocks.3.text": "A list inside an item",
-  "blocks.4.text": "Inside a single <li> you can put a whole new <ul>. Not after it, not next to it — INSIDE, before you close the </li>. That way the new list is not a neighbour of \"Tyres\", it is its content.",
-  "blocks.7.text": "Look at the indent and the different bullet. You did not make those — the browser shows on its own that the inner list is on another level. All you said was WHAT belongs to WHAT.",
-  "blocks.8.text": "Where the closing tag goes",
-  "blocks.9.text": "This is the usual mistake: closing </li> right after \"Tyres\" and only then opening the inner <ul>. It looks almost the same, but it is not — the list is no longer inside anything. The closing </li> goes AFTER the inner list.",
-  "blocks.10.text": "You can nest an <ol> inside a <ul> and the other way round — nesting does not care about the type. And you can go deeper still, if it makes sense. Usually it does not.",
-  "blocks.11.text": "Your turn. Make the front and rear tyre belong to \"Tyres\"."
+  "blocks.0.text": "Страницата ти е на някакъв език. Ти го знаеш. Браузърът — не.",
+  "blocks.1.text": "Изглежда безсмислено. Кой го интересува на какъв език е? Оказва се — доста хора.",
+  "blocks.2.text": "Един атрибут",
+  "blocks.3.text": "Не е нов таг. Това е нещо, което се пише ВЪТРЕ в таг, който вече имаш.",
+  "blocks.5.text": "Добави го към твоя <html>. Пусни. Нищо не се променя на екрана.",
+  "blocks.6.text": "Кой го чете",
+  "blocks.7.text": "Четецът на незрящия. Той трябва да знае как да произнесе думите. Без lang ще прочете „здравей“ с английски глас — и излиза каша, която никой не разбира.",
+  "blocks.8.text": "Google също. Той решава на кого да покаже страницата ти. Ако не знае езика, ще я покаже на грешните хора или на никого.",
+  "blocks.9.text": "„Помисли за последния път, когато отвори сайт и нещо изведнъж започна да говори. Какво направи? Затвори таба. Сега си представи, че четецът е единственият ти начин да четеш.“"
 }

@@ -90,7 +90,11 @@ for (const file of files) {
   // balanced го лови (няма тагове → пада). dom_* го лови (няма елемент → пада).
   // Тревога вдигаме само когато редакторът тръгва празен —
   // freehand урок без changed се минава с един интервал.
-  const hasEmpty = checks.some((c) => c.type === 'changed' && c.value === '');
+// Голият { type: "changed" } (value: undefined) пази празното дори по-строго
+  // от value: "" — той пада и на непипнат код. Ядрото го знае; одитът да го знае също.
+  const hasEmpty = checks.some(
+    (c) => c.type === 'changed' && (c.value === '' || c.value === undefined)
+  );
 
   if (!hasEmpty && startsEmpty) {
     add(slug, 'no-empty-check', '⚠ ПРАЗЕН РЕДАКТОР + няма changed с value: "" — минава се с един интервал.');

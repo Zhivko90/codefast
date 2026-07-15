@@ -98,7 +98,8 @@ export default function ProblemPage({ params }) {
         onSubmit={submit}
         onReset={reset}
 
-        preview={preview}
+       preview={preview}
+        target={p.targetCode ?? null}
         result={result}
         checkLabels={txt.checks ?? {}}
         why={result && !result.passed && result.errorTag ? txt.why?.[result.errorTag] : null}

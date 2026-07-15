@@ -5,6 +5,8 @@
   "checkLabels.t1": "You must open the tag",
   "checkLabels.t2": "You must close it",
   "checkLabels.t3": "The name must be INSIDE the tag",
+  "checkLabels.t0": "There is code",
+  "why.empty": "The editor is empty. Even the name is gone. Bring it back and wrap it.",
 
   "why.not-wrapped": "The tags are there, but they are in the wrong order or not closed. First <h1>, then the text, then </h1>. Exactly that order.",
   "why.no-open": "There is still no tag. You cannot write \"make it big\" — you have to WRAP the name. In front of it goes <h1>.",

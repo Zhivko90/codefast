@@ -5,6 +5,8 @@
   "checkLabels.t1": "There must be a lang",
   "checkLabels.t2": "lang must not be empty",
   "checkLabels.t3": "The encoding must still be there",
+  "checkLabels.t0": "There is code",
+  "why.empty": "The editor is empty. You are adding one attribute, and you deleted the whole page. Bring the code back.",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.no-lang": "There is no lang. A screen reader does not know what language it is reading and will pronounce your text in the wrong voice.",

@@ -5,6 +5,7 @@ export default {
   label: "coding",
   starterCode: "Ivan",
   checks: [
+    { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "g1", type: "balanced", err: "not-wrapped", weight: 1000, guard: true },
     { id: "t1", type: "code_contains", value: "<h1", err: "no-open", weight: 50 },
     { id: "t2", type: "code_contains", value: "</h1>", err: "no-close", weight: 40 },

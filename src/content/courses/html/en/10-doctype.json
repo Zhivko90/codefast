@@ -8,6 +8,8 @@
   "checkLabels.t4": "The tab title must still be there",
   "checkLabels.t5": "The heading must still be there",
   "checkLabels.t6": "The sentence must still be there",
+  "checkLabels.t0": "There is code",
+  "why.empty": "The editor is empty. You are adding two lines, and you deleted the whole page. Bring the code back.",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.no-doctype": "There is no DOCTYPE. Without it the browser switches into a mode for ancient sites and some things start behaving strangely.",

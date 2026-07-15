@@ -6,6 +6,8 @@
   "checkLabels.t2": "There must be a paragraph",
   "checkLabels.t3": "The paragraph must be closed",
   "checkLabels.t4": "The sentence must be INSIDE the paragraph",
+  "checkLabels.t0": "There is code",
+  "why.empty": "The editor is empty. You deleted the heading too. Bring the code back and add the sentence.",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.lost-heading": "The heading is gone. The task is to ADD a sentence below it, not to replace it. Put <h1> back.",

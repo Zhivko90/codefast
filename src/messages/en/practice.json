@@ -35,6 +35,8 @@
   "my_test": "Your test",
   "result": "Result",
   "preview": "Preview",
+  "pane_mine": "Yours",
+  "pane_target": "The target",
   "hidden_test": "Hidden test",
   "test_pass": "passed",
   "test_fail": "failed",
