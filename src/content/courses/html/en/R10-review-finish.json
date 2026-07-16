@@ -1,0 +1,16 @@
+{
+  "title": "Before you publish",
+  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The phone",
+  "groups.0.items.0.term": "viewport",
+  "groups.0.items.0.def": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> in <head>. Without it a phone pretends to be a 980-pixel screen and shrinks everything — letters like ants. width=device-width tells it the truth. It does not fix the design (that is CSS) — but without it CSS never even starts. Google looks at the site through a phone.",
+
+  "groups.1.title": "Sharing",
+  "groups.1.items.0.term": "Open Graph",
+  "groups.1.items.0.def": "<meta property=\"og:title / og:description / og:image / og:url\"> — how the link looks in a chat. property, not name (everyone gets it wrong once). og:image is the most important: no image — a grey strip, an image — half a screen. The image address FULL (https://), because Facebook is not on your site. All of it in the head.",
+
+  "groups.2.title": "The whole course, at once",
+  "groups.2.items.0.term": "What you learned",
+  "groups.2.items.0.def": "Skeleton (DOCTYPE, lang, charset, viewport, title). Meaning (header, nav, main, article, footer — not div soup). Content by importance (one h1, then h2). Media with a voice (alt). Data in a table (th, caption). A form that works for everyone (label with for↔id, a real button). One rule under all of it: say what a thing IS, not how it looks. The most important work in HTML is invisible — it is for the three who do not look at the screen: the blind person, Google, and you six months from now."
+}

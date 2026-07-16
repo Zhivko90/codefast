@@ -46,7 +46,7 @@ export default {
     {
       id: 'final',
       modules: [
-        { id: 'finish', lessons: ['64-viewport', '65-opengraph', '66-final', '67-publish'] },
+        { id: 'finish', lessons: ['64-viewport', '65-opengraph', '66-final', 'R10-review-finish', '67-publish'] },
       ],
     },
   ],

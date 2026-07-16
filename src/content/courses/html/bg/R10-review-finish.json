@@ -1,0 +1,16 @@
+{
+  "title": "Преди да пуснеш",
+  "assignment": "Прегледай понятията от този раздел. Ако нещо не ти е ясно, върни се на урока.",
+
+  "groups.0.title": "Телефонът",
+  "groups.0.items.0.term": "viewport",
+  "groups.0.items.0.def": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> в <head>. Без него телефонът се прави на екран от 980 пиксела и смалява всичко — букви като мравки. width=device-width му казва истината. Не оправя дизайна (това е CSS) — но без него CSS дори не започва. Google гледа сайта през телефон.",
+
+  "groups.1.title": "Споделянето",
+  "groups.1.items.0.term": "Open Graph",
+  "groups.1.items.0.def": "<meta property=\"og:title / og:description / og:image / og:url\"> — как изглежда линкът в чата. property, не name (всички го бъркат веднъж). og:image е най-важната: без снимка — сива ивица, със снимка — половин екран. Адресът на снимката ПЪЛЕН (https://), защото Facebook не е на твоя сайт. Всичко в главата.",
+
+  "groups.2.title": "Целият курс, наведнъж",
+  "groups.2.items.0.term": "Какво научи",
+  "groups.2.items.0.def": "Скелет (DOCTYPE, lang, charset, viewport, title). Смисъл (header, nav, main, article, footer — не div soup). Съдържание по важност (един h1, после h2). Медия с глас (alt). Данни в таблица (th, caption). Форма, която работи за всички (label с for↔id, истински button). Едно правило под всичко: казвай какво нещото Е, не как изглежда. Най-важната работа в HTML не се вижда — тя е за тримата, които не гледат екрана: незрящия, Google и теб след шест месеца."
+}
