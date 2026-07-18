@@ -96,12 +96,14 @@ export default function CodeRunner({ language = 'python', starterCode = '', heig
         theme="vs-dark"
         value={code}
         onChange={(v) => setCode(v ?? '')}
-        options={{
+       options={{
           minimap: { enabled: false },
           fontSize: 14,
           lineNumbers: 'on',
           scrollBeyondLastLine: false,
           padding: { top: 12 },
+          wordWrap: 'on',
+          automaticLayout: true,
         }}
       />
 

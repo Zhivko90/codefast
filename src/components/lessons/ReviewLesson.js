@@ -16,8 +16,8 @@ export default function ReviewLesson({ lesson, course, onDone  }) {
   }, [course, lesson.id, user?.id]);
 
   return (
-    <div className="w-full overflow-y-auto h-[calc(100vh-56px)] border-t border-white/10">
-      <div className="max-w-3xl mx-auto px-6 py-10">
+<div className="w-full overflow-y-auto h-full border-t border-white/10">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
 
         <p className="text-xs font-bold tracking-wider text-sky-300 mb-3">
           {t('review_label').toUpperCase()}

@@ -14,22 +14,22 @@ const COURSE = 'html';
 const TAG_ICON = {
   tags: (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5"/>
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><circle cx="7" cy="7" r="1.5" />
     </svg>
   ),
   lists: (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/>
+      <path d="M8 6h13M8 12h13M8 18h13" /><circle cx="3.5" cy="6" r="1" /><circle cx="3.5" cy="12" r="1" /><circle cx="3.5" cy="18" r="1" />
     </svg>
   ),
   forms: (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <rect x="3" y="5" width="18" height="5" rx="1"/><rect x="3" y="14" width="10" height="5" rx="1"/>
+      <rect x="3" y="5" width="18" height="5" rx="1" /><rect x="3" y="14" width="10" height="5" rx="1" />
     </svg>
   ),
   text: (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M4 7V5h16v2M9 5v14M15 5v14M7 19h4M13 19h4"/>
+      <path d="M4 7V5h16v2M9 5v14M15 5v14M7 19h4M13 19h4" />
     </svg>
   ),
 };
@@ -40,8 +40,8 @@ function Empty({ title, sub }) {
     <div className="flex flex-col items-center text-center py-20 px-6">
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.1" className="text-gray-700 mb-5">
-        <rect x="3" y="4" width="18" height="16" rx="2"/>
-        <path d="M8 10l2 2-2 2M13 14h4"/>
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path d="M8 10l2 2-2 2M13 14h4" />
       </svg>
       <p className="text-white font-semibold mb-1.5">{title}</p>
       <p className="text-sm text-gray-500 max-w-xs leading-relaxed">{sub}</p>
@@ -51,12 +51,11 @@ function Empty({ title, sub }) {
 
 function Chips({ options, value, onChange, labels }) {
   return (
-    <div className="flex gap-1 p-1 rounded-xl bg-white/[0.04] border border-white/[0.08]">
+    <div className="flex gap-1 p-1 rounded-xl bg-white/[0.04] border border-white/[0.08] max-w-full overflow-x-auto">
       {options.map((o) => (
         <button key={o} onClick={() => onChange(o)}
-          className={`text-xs px-3 py-1.5 rounded-lg transition ${
-            value === o ? 'bg-white/[0.09] text-white' : 'text-gray-400 hover:text-white'
-          }`}>
+          className={`shrink-0 text-xs px-3 py-1.5 rounded-lg transition ${value === o ? 'bg-white/[0.09] text-white' : 'text-gray-400 hover:text-white'
+            }`}>
           {labels(o)}
         </button>
       ))}
@@ -130,9 +129,8 @@ export default function PracticePage() {
             return (
               <Link key={p.slug} href={`/practice/${p.slug}`}
                 className="flex items-center gap-3.5 px-5 py-3.5 border-b border-white/[0.06] last:border-0 hover:bg-white/[0.03] transition group">
-                <span className={`w-5 text-center shrink-0 ${
-                  st === 'solved' ? 'text-emerald-400' : st === 'failed' ? 'text-rose-400' : 'text-gray-700'
-                }`}>
+                <span className={`w-5 text-center shrink-0 ${st === 'solved' ? 'text-emerald-400' : st === 'failed' ? 'text-rose-400' : 'text-gray-700'
+                  }`}>
                   {st === 'solved' ? '✓' : st === 'failed' ? '✕' : '○'}
                 </span>
 

@@ -98,9 +98,8 @@ export default function ProjectPage({ params }) {
             <iframe
               title="project"
               sandbox="allow-scripts"
-              srcDoc={project.content}
-              className="bg-white w-full border-0"
-              style={{ height: 480 }}
+            srcDoc={project.content}
+              className="bg-white w-full border-0 h-[320px] sm:h-[480px]"
             />
           </div>
 

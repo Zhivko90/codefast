@@ -1,0 +1,65 @@
+{
+  "title": "A list inside a list",
+  "statement": "Six things, all on one level. But they are not equal.\n\nTwo of them are categories. The other four belong under them.\n\nLook at the target on the right and make your list look like that.",
+
+  "examples": [
+    {
+      "in": "<ul>\n  <li>Fruit</li>\n  <li>Apple</li>\n  <li>Pear</li>\n</ul>",
+      "out": "<ul>\n  <li>Fruit\n    <ul>\n      <li>Apple</li>\n      <li>Pear</li>\n    </ul>\n  </li>\n</ul>",
+      "explain": "The sublist is INSIDE the item it belongs to. Not next to it."
+    }
+  ],
+
+  "constraints": [
+    "All six things stay",
+    "Do not change the words",
+    "Do not touch the heading"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "t2": "You changed something",
+    "g1": "Everything closed",
+    "t3": "The heading is here",
+    "t4": "All six things are here",
+    "t5": "There are sublists",
+    "t6": "The sublists are nested",
+    "t7": "The things are in the sublists"
+  },
+
+  "why": {
+    "empty": "The editor is empty. You deleted everything, the page included.",
+    "untouched": "This is exactly the code I gave you. Nothing has been changed.",
+    "not-closed": "A tag is open and never closed. A nested list has two ends — and both are on the inside.",
+    "lost": "You lost the heading. It is not to be touched.",
+    "lost-items": "You lost something from the list. The six things stay six — only their place changes.",
+    "no-sublists": "There are still no sublists. All six sit on one level, as if they were equal. They are not.",
+    "not-nested": "You made a sublist, but it is NEXT TO the item, not INSIDE it. On screen it looks the same — indented, with bullets. But to the browser these are two separate lists side by side. The water is not under drinks — it is beside them."
+   
+  },
+
+  "hints": {
+    "not-nested": [
+      "Look at where you close the </li> of the category. Close it before the sublist and the sublist stays outside.",
+      "A similar case: <li>Fruit</li><ul><li>Apple</li></ul> — here the apple is NOT under the fruit. The right way is <li>Fruit<ul><li>Apple</li></ul></li>.",
+      "The category opens, then the whole sublist comes, and only then the category closes. A box inside a box."
+    ],
+    "no-sublists": [
+      "Which two of the six are names of groups, rather than things to eat and drink?",
+      "Each of the two groups wants its own list underneath it."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to put the sublist right after the category — open a <ul>, put the things in, close it. On screen it looks exactly right: indented, with bullets.\n\nBut those are two separate lists standing next to each other. The browser does not know the water belongs under drinks. A screen reader will announce two unrelated lists. The indentation you see is an accident, not structure.",
+    "steps": [
+      "Decide which two things are categories and which four belong under them.",
+      "Open the <li> of the first category, but do NOT close it right away.",
+      "Inside that open <li>, put a whole <ul> with the things from that category.",
+      "Only after the closing </ul> do you close the </li> of the category.",
+      "Repeat for the second category."
+    ],
+    "code": "<body>\n  <h2>Menu</h2>\n  <ul>\n    <li>Drinks\n      <ul>\n        <li>Water</li>\n        <li>Juice</li>\n      </ul>\n    </li>\n    <li>Food\n      <ul>\n        <li>Pizza</li>\n        <li>Salad</li>\n      </ul>\n    </li>\n  </ul>\n</body>",
+    "note": "Nesting is not indentation. Indentation is something you see. Nesting is something the code says. Two things can look identical and mean something completely different."
+  }
+}

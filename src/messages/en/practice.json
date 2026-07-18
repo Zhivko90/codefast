@@ -43,8 +43,8 @@
   "pane_mine": "Yours",
   "pane_target": "The target",
   "hidden_test": "Hidden test",
-  "test_pass": "passed",
-  "test_fail": "failed",
+  "test_pass": "Passed",
+  "test_fail": "Failed",
   "not_run": "Nothing submitted yet.",
 
   "all_passed": "All tests passed.",
@@ -53,8 +53,8 @@
 
   "history": "Your submissions",
   "no_history": "No previous attempts.",
-  "attempt_ok": "passed",
-  "attempt_no": "failed",
+  "attempt_ok": "Passed",
+  "attempt_no": "Failed",
 
   "back": "All problems",
   "next_problem": "Next problem",
@@ -66,5 +66,7 @@
   "reset_confirm": "Reset your code? Everything you wrote will be lost.",
   "reset_yes": "Yes, I know",
   "reset_cancel": "Cancel",
-  "more_hint": "More hint"
+  "more_hint": "More hint",
+  "grew_solved": "You got it after {n} tries.",
+  "grew_trying": "{n} tries so far. Keep going."
 }

@@ -17,6 +17,9 @@ import { markDone } from '@/lib/progress';
 //   накрая      -> сгрешените се задават пак, докато не ги минеш
 //
 // Резултатът брои само верните от първи опит в първия кръг.
+//
+// ТЕЛЕФОН: две колони не се събират. Въпросът застава ГОРЕ, вариантите ПОД него,
+// всичко в един скрол. Сплитерът се крие — тъч не го влачи така или иначе.
 export default function QuizLesson({ lesson, course }) {
   const { user } = useAuth();
   const t = useTranslations('lesson');
@@ -38,6 +41,16 @@ export default function QuizLesson({ lesson, course }) {
   const dragging = useRef(false);
   const userMoved = useRef(false);
   const [isDragging, setIsDragging] = useState(false);
+
+  // тесен екран → изправяме колоните една под друга
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)');
+    const on = () => setIsMobile(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
 
   useEffect(() => {
     const setToMiddle = () => {
@@ -125,8 +138,8 @@ export default function QuizLesson({ lesson, course }) {
 
   if (finished) {
     return (
-      <div className="w-full">
-        <div className="h-[calc(100vh-56px)] min-h-[400px] flex flex-col items-center justify-center gap-4 border-t border-white/10">
+      <div className="w-full h-full">
+        <div className="h-full min-h-[400px] flex flex-col items-center justify-center gap-4 px-6 text-center border-t border-white/10">
           <h1 className="text-2xl font-extrabold text-white">{t('quiz_done')}</h1>
           <p className="text-gray-400">
             {t('quiz_score')}{' '}
@@ -139,53 +152,117 @@ export default function QuizLesson({ lesson, course }) {
 
   const locked = phase === 'correct' || phase === 'reveal';
 
+  // въпросът — един източник за двете подредби
+  const questionPane = (
+    <>
+      <p className="text-xs font-bold tracking-wider text-sky-300 mb-3">
+        {round > 1 ? t('quiz_again').toUpperCase() : t('quiz_label').toUpperCase()} {pos + 1} / {queue.length}
+      </p>
+      <p className="text-lg text-white leading-relaxed">{question.q}</p>
+
+      {phase === 'hint' && (
+        <div className="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
+          <p className="font-semibold mb-2 text-amber-300">✕ {t('quiz_wrong')}</p>
+          <p className="text-sm text-gray-300">{question.hint}</p>
+          <p className="text-xs text-gray-500 mt-3">{t('quiz_try_again')}</p>
+        </div>
+      )}
+
+      {phase === 'reveal' && (
+        <div className="mt-6 rounded-xl border border-rose-500/30 bg-rose-500/5 p-4">
+          <p className="font-semibold mb-2 text-rose-300">✕ {t('quiz_wrong')}</p>
+          <p className="text-sm text-gray-300 mb-2">
+            <span className="text-gray-400">{t('quiz_answer')} </span>
+            {question.options[question.correct]}
+          </p>
+          <p className="text-sm text-gray-400">
+            <span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}
+          </p>
+        </div>
+      )}
+
+      {phase === 'correct' && (
+        <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+          <p className="font-semibold mb-2 text-emerald-300">✓ {t('quiz_correct')}</p>
+          <p className="text-sm text-gray-400">
+            <span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}
+          </p>
+        </div>
+      )}
+    </>
+  );
+
+  // вариантите + бутонът
+  const answerPane = (
+    <>
+      <p className="text-white font-semibold mb-6">{t('quiz_choose')}</p>
+
+      <div className="flex flex-col gap-3 max-w-xl">
+        {question.options.map((opt, oi) => {
+          let cls = 'border-white/10 hover:border-white/30';
+
+          if (phase === 'reveal' && oi === question.correct) cls = 'border-emerald-500/60 bg-emerald-500/10';
+          else if (phase === 'reveal' && oi === chosen) cls = 'border-rose-500/60 bg-rose-500/10';
+          else if (phase === 'correct' && oi === chosen) cls = 'border-emerald-500/60 bg-emerald-500/10';
+          else if (!locked && oi === chosen) cls = 'border-sky-500/60 bg-sky-500/10';
+
+          return (
+            <button
+              key={oi}
+              onClick={() => !locked && setChosen(oi)}
+              className={`text-left px-4 sm:px-5 py-4 rounded-xl border text-sm text-gray-200 transition flex items-center gap-3 ${cls} ${locked ? 'cursor-default' : ''}`}
+            >
+              <span className={`w-4 h-4 rounded-full border shrink-0 ${oi === chosen ? 'border-sky-400 bg-sky-400/40' : 'border-white/30'}`} />
+              <span className="min-w-0">{opt}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* бутоните */}
+      <div className="mt-6 max-w-xl">
+        {!locked ? (
+          <button
+            disabled={chosen === null}
+            onClick={submit}
+            className={`w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-lg text-sm font-semibold transition ${chosen === null ? 'bg-white/5 text-gray-500 cursor-not-allowed' : theme.button}`}
+          >
+            {t('quiz_submit')}
+          </button>
+        ) : (
+          <button onClick={next} className={`w-full sm:w-auto text-center px-6 py-3 sm:py-2.5 text-sm ${theme.button}`}>
+            {t('quiz_next')} ›
+          </button>
+        )}
+      </div>
+    </>
+  );
+
+  // ── ТЕЛЕФОН: въпрос горе, отговори долу, един скрол ──
+  if (isMobile) {
+    return (
+      <div className="w-full h-full overflow-y-auto border-t border-white/10">
+        <div className="px-4 py-6 border-b border-white/10">{questionPane}</div>
+        <div className="px-4 py-6">{answerPane}</div>
+      </div>
+    );
+  }
+
+  // ── ДЕСКТОП: две колони с разделител ──
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <div
         ref={containerRef}
         onMouseMove={onMove}
         onMouseUp={stopDrag}
         onMouseLeave={stopDrag}
-        className="relative flex items-stretch h-[calc(100vh-56px)] min-h-[400px] overflow-hidden border-t border-white/10"
+        className="relative flex items-stretch h-full min-h-[400px] overflow-hidden border-t border-white/10"
       >
         {isDragging && <div className="absolute inset-0 z-50 cursor-col-resize" />}
 
         {/* ВЛЯВО: въпросът */}
         <div className="shrink-0 overflow-y-auto p-6 sm:p-8" style={{ width: leftWidth ?? '50%' }}>
-          <p className="text-xs font-bold tracking-wider text-sky-300 mb-3">
-            {round > 1 ? t('quiz_again').toUpperCase() : t('quiz_label').toUpperCase()} {pos + 1} / {queue.length}
-          </p>
-          <p className="text-lg text-white leading-relaxed">{question.q}</p>
-
-          {phase === 'hint' && (
-            <div className="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
-              <p className="font-semibold mb-2 text-amber-300">✕ {t('quiz_wrong')}</p>
-              <p className="text-sm text-gray-300">{question.hint}</p>
-              <p className="text-xs text-gray-500 mt-3">{t('quiz_try_again')}</p>
-            </div>
-          )}
-
-          {phase === 'reveal' && (
-            <div className="mt-6 rounded-xl border border-rose-500/30 bg-rose-500/5 p-4">
-              <p className="font-semibold mb-2 text-rose-300">✕ {t('quiz_wrong')}</p>
-              <p className="text-sm text-gray-300 mb-2">
-                <span className="text-gray-400">{t('quiz_answer')} </span>
-                {question.options[question.correct]}
-              </p>
-              <p className="text-sm text-gray-400">
-                <span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}
-              </p>
-            </div>
-          )}
-
-          {phase === 'correct' && (
-            <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
-              <p className="font-semibold mb-2 text-emerald-300">✓ {t('quiz_correct')}</p>
-              <p className="text-sm text-gray-400">
-                <span className="text-gray-300">{t('quiz_explain')} </span>{question.explain}
-              </p>
-            </div>
-          )}
+          {questionPane}
         </div>
 
         {/* СПЛИТЕР */}
@@ -201,46 +278,7 @@ export default function QuizLesson({ lesson, course }) {
 
         {/* ВДЯСНО: вариантите */}
         <div className="flex-1 min-w-0 overflow-y-auto p-6 sm:p-8">
-          <p className="text-white font-semibold mb-6">{t('quiz_choose')}</p>
-
-          <div className="flex flex-col gap-3 max-w-xl">
-            {question.options.map((opt, oi) => {
-              let cls = 'border-white/10 hover:border-white/30';
-
-              if (phase === 'reveal' && oi === question.correct) cls = 'border-emerald-500/60 bg-emerald-500/10';
-              else if (phase === 'reveal' && oi === chosen) cls = 'border-rose-500/60 bg-rose-500/10';
-              else if (phase === 'correct' && oi === chosen) cls = 'border-emerald-500/60 bg-emerald-500/10';
-              else if (!locked && oi === chosen) cls = 'border-sky-500/60 bg-sky-500/10';
-
-              return (
-                <button
-                  key={oi}
-                  onClick={() => !locked && setChosen(oi)}
-                  className={`text-left px-5 py-4 rounded-xl border text-sm text-gray-200 transition flex items-center gap-3 ${cls} ${locked ? 'cursor-default' : ''}`}
-                >
-                  <span className={`w-4 h-4 rounded-full border shrink-0 ${oi === chosen ? 'border-sky-400 bg-sky-400/40' : 'border-white/30'}`} />
-                  {opt}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* бутоните */}
-          <div className="mt-6 max-w-xl">
-            {!locked ? (
-              <button
-                disabled={chosen === null}
-                onClick={submit}
-                className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition ${chosen === null ? 'bg-white/5 text-gray-500 cursor-not-allowed' : theme.button}`}
-              >
-                {t('quiz_submit')}
-              </button>
-            ) : (
-              <button onClick={next} className={`px-6 py-2.5 text-sm ${theme.button}`}>
-                {t('quiz_next')} ›
-              </button>
-            )}
-          </div>
+          {answerPane}
         </div>
       </div>
     </div>

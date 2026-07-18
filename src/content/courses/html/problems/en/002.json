@@ -1,76 +1,72 @@
 {
-  "title": "A list that is not a list",
-  "statement": "Run the code. You see a list. Three things, one under another, each with a dash in front.\n\nThe browser sees one paragraph.\n\nMake it what it looks like.",
+  "title": "A menu on two levels",
+  "statement": "An empty editor. Build the menu you see in the target on the right.\n\nEight things. Two of them are groups, the other six belong under them — not alongside them.",
 
   "examples": [
     {
-      "in": "<p>\n  - salt<br>\n  - pepper\n</p>",
-      "out": "<ul>\n  <li>salt</li>\n  <li>pepper</li>\n</ul>",
-      "explain": "The dashes are gone. The browser draws the bullets, because this is now actually a list."
+      "in": "",
+      "out": "<ul>\n  <li>Fruit\n    <ul>\n      <li>Apple</li>\n      <li>Pear</li>\n    </ul>\n  </li>\n</ul>",
+      "explain": "The sublist is INSIDE the item it belongs to. Not next to it."
     }
   ],
 
   "constraints": [
-    "The words stay as they are given to you",
-    "Do not touch the heading",
-    "Nothing is left over from the old code"
+    "Heading: Menu",
+    "Groups: Drinks, Food",
+    "Under Drinks: Water, Juice, Coffee",
+    "Under Food: Pizza, Salad, Soup"
   ],
 
   "checks": {
     "t1": "There is code",
-    "t2": "You changed something",
     "g1": "Everything closed",
-    "t3": "The heading is here",
-    "t7": "There are three items",
-    "t8": "The items have text",
-    "t9": "The items are in a list",
-    "t10": "The paragraph is gone",
-    "t11": "No line breaks left",
-    "t12": "Hidden test"
+    "t2": "There is a heading",
+    "t3": "All eight things are here",
+    "t4": "The things have text",
+    "t5": "There are sublists",
+    "t6": "The sublists are nested",
+    "t7": "The things are in the sublists",
+    "t8": "Hidden test"
   },
 
   "why": {
-    "empty": "The editor is empty. You deleted everything, the page included.",
-    "untouched": "This is exactly the code I gave you. Nothing has been changed.",
-    "not-closed": "A tag is open and never closed. Every <li> wants a </li>.",
-    "lost": "You lost some of the content. The three things on the list stay three.",
-    "not-a-list": "There are still no list items. A dash is a sign YOU can see. To the browser it is just a letter, like an a or a b.",
-    "empty-li": "There is a list item with no text in it. An empty box counts for nothing.",
-    "no-ul": "The items are there, but the list is not. An <li> means a thing from a list — from which list? The browser draws the bullets even without the container, and that is exactly what fools you. It looks right. It is not.",
-    "old-paragraph": "The paragraph is still there. You may have put the list INSIDE it — but a list inside a paragraph is not allowed. The browser silently closes the paragraph before the list and throws the list out. You wrote one paragraph, you got two empty ones — and neither holds the list.\n\nThe paragraph does not wrap the list. The paragraph goes.",
-    "old-breaks": "There are line break tags left over. A list puts each thing on its own line by itself — it needs no help.",
-    "dashes-left": "The dashes are still in the text. Now you have a list that draws a bullet, and next to it you wrote another dash. Twice over."
+    "empty": "The editor is empty. There is no starter code here — you build the list yourself.",
+    "not-closed": "A tag is open and never closed. A nested list has two ends, and both are on the inside.",
+    "no-heading": "There is no heading, or it is empty. The menu wants a name.",
+    "few-items": "There are not eight things. Two groups and six under them make eight.",
+    "empty-items": "There is a list item with no text in it. An empty box counts for nothing.",
+    "no-sublists": "There are no sublists. Everything sits on one level, as if all eight things were equal. They are not.",
+    "not-nested": "You made a sublist, but it is NEXT TO the group, not INSIDE it. On screen it looks the same — indented, with bullets. But to the browser these are two separate lists side by side. The water is not under drinks — it is beside them.",
+    "too-deep": "You nested a third level. There are two levels here: groups and the things under them. Nothing goes under something that is already under something."
   },
 
   "hints": {
-    "not-a-list": [
-      "You see a list. The browser sees one paragraph with dashes inside. Which of you is right?",
-      "A similar case: \"- monday - tuesday\" inside a paragraph is text. Three list items in one container are a list. They look the same.",
-      "The paragraph goes. In its place comes a container, and each thing inside it is its own item."
+    "not-nested": [
+      "Look at where you close the </li> of the group. Close it before the sublist and the sublist stays outside.",
+      "A similar case: <li>Fruit</li><ul><li>Apple</li></ul> — here the apple is NOT under the fruit. The right way is <li>Fruit<ul><li>Apple</li></ul></li>.",
+      "The group opens, then the whole sublist comes, and only then the group closes. A box inside a box."
     ],
-    "no-ul": [
-      "List items do not live alone. They live in something.",
-      "Think: if you have three list items side by side, how does the browser know they are ONE list and not three separate ones?",
-      "The items get wrapped in a container. One container. Three items inside it."
+    "no-sublists": [
+      "The two groups are not things to eat. They are names of categories.",
+      "Each group wants its own list underneath it."
     ],
-    "dashes-left": [
-      "Look at the bullets in the preview. Their number tells you what happened.",
-      "The bullet in front is drawn by the browser. You wrote another one."
-    ],
-    "old-paragraph": [
-      "Search with Ctrl+F for the paragraph tag. It is still there.",
-      "You made the list but did not remove what it replaces."
+    "few-items": [
+      "Count: two groups, three things under each.",
+      "The groups are list items too. They count."
     ]
   },
+
   "solution": {
-    "why": "The first instinct is to put dots and dashes so it looks like a list. But a dash is a sign for the eye — to the browser it is just a letter. A list that looks like a list but is not one is the most common mistake here.\n\nThe second trap is sneakier: you make <li> but forget <ul>. The browser still draws the bullets, and you think you are done. You are not — items without a container are not a list, they only look like one.",
+    "why": "The first instinct is to write the eight things one under another and call it a list. It looks like a menu — but it is not. Eight equal things, where the water stands level with drinks.\n\nThe second instinct is to put the sublist right after the group, separately. On screen it looks exactly right: indented, with bullets. But those are two separate lists standing side by side. The browser does not know the water belongs under drinks.",
     "steps": [
-      "Remove the paragraph. It is not a container for a list — a list has its own.",
-      "Open a <ul>. It says: a list starts here.",
-      "Wrap each thing in <li> and </li>. That is one item of the list.",
-      "Remove the dashes. The bullet in front is drawn by <ul> itself — yours is redundant."
+      "Open the outer list. It will hold only two things — the groups.",
+      "Open the <li> of the first group, but do NOT close it.",
+      "Inside that open <li>, put a whole <ul> with the three things from that group.",
+      "Only after the closing </ul> do you close the </li> of the group.",
+      "Repeat for the second group.",
+      "Close the outer list."
     ],
-    "code": "<body>\n  <h2>What I need from the shop</h2>\n  <ul>\n    <li>salt</li>\n    <li>pepper</li>\n    <li>two lemons</li>\n  </ul>\n</body>",
-    "note": "Do not look at whether it looks right. Look at whether it IS right. The browser draws bullets even on a broken list — the eye lies, the structure does not."
+    "code": "<body>\n  <h2>Menu</h2>\n  <ul>\n    <li>Drinks\n      <ul>\n        <li>Water</li>\n        <li>Juice</li>\n        <li>Coffee</li>\n      </ul>\n    </li>\n    <li>Food\n      <ul>\n        <li>Pizza</li>\n        <li>Salad</li>\n        <li>Soup</li>\n      </ul>\n    </li>\n  </ul>\n</body>",
+    "note": "Nesting is not indentation. Indentation is something you see. Nesting is something the code says. Two things can look identical and mean something completely different."
   }
 }

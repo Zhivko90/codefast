@@ -123,11 +123,11 @@ export default function CoursePage({ params }) {
             <span className="text-gray-400">{t('your_progress')}</span>
             <span className="text-white font-medium">{progress}% {t('completed')}</span>
           </div>
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <div className="flex-1 h-2 rounded-full bg-white/[0.06] overflow-hidden">
               <div className={`h-full ${theme.brandGradient} transition-all duration-500`} style={{ width: `${progress}%` }} />
             </div>
-            <Link href={`/course/${slug}/lesson/${nextLesson.id}`} className={`shrink-0 px-6 py-2.5 ${theme.button}`}>
+           <Link href={`/course/${slug}/lesson/${nextLesson.id}`} className={`shrink-0 text-center px-6 py-2.5 ${theme.button}`}>
               {started ? t('continue_learning') : t('start_learning')}
             </Link>
           </div>

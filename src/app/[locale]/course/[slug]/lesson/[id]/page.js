@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { use, useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
@@ -70,7 +70,8 @@ export default function LessonPage({ params }) {
   const progress = Math.round(((index + 1) / total) * 100);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    // 100dvh, не 100vh: адрес-барът на телефона се свива и разпъва.
+    <div className="h-[100dvh] flex flex-col overflow-hidden">
       {/* СТРАНИЧНО МЕНЮ */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex">
@@ -90,6 +91,11 @@ export default function LessonPage({ params }) {
                   </div>
                 </div>
                 <button onClick={() => setMenuOpen(false)} className="text-gray-400 hover:text-white shrink-0">✕</button>
+              </div>
+
+              {/* на телефон езикът живее ТУК — горе няма място за него */}
+              <div className="sm:hidden mb-4">
+                <LanguageSwitcher />
               </div>
 
               <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
@@ -117,9 +123,13 @@ export default function LessonPage({ params }) {
         </div>
       )}
 
-      {/* ГОРНА ЛЕНТА */}
+      {/* ГОРНА ЛЕНТА
+          На телефон местата не стигат за всичко. Реда на жертвите:
+          езикът слиза в менюто, надписите на бутоните падат,
+          точките получават право да се плъзгат. Бутонът НАПРЕД
+          не отстъпва никога — без него ученикът е заключен. */}
       <div className="sticky top-0 z-40 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
-        <div className="w-full px-4 sm:px-6 h-14 flex items-center gap-3">
+        <div className="w-full px-3 sm:px-6 h-14 flex items-center gap-2 sm:gap-3">
           <Link href={`/course/${slug}`} aria-label={g('back')}
             className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
@@ -133,27 +143,30 @@ export default function LessonPage({ params }) {
             </svg>
           </button>
 
-          {/* смяна на езика — сменя URL-а, ученикът остава на същия урок */}
-          <LanguageSwitcher />
+          {/* смяна на езика — на телефон е в менюто, тук няма място */}
+          <div className="hidden sm:block shrink-0">
+            <LanguageSwitcher />
+          </div>
 
           {/* СРЕДА: назад — точки — напред */}
-          <div className="flex-1 flex items-center justify-center gap-3">
+          <div className="flex-1 min-w-0 flex items-center justify-center gap-1.5 sm:gap-3">
             <button onClick={() => go(prevId)} disabled={!prevId}
               title={atModuleStart ? c('prev_module') : undefined}
-              className={`shrink-0 h-7 px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${prevId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
+              className={`shrink-0 h-7 px-1.5 sm:px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${prevId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M15 18l-6-6 6-6"/></svg>
               {atModuleStart && prevId && <span className="hidden sm:inline pr-1">{c('prev_module')}</span>}
             </button>
 
-            <div className="flex items-center">
+            {/* точките: дълъг модул на тесен екран — плъзгат се, не изяждат бутоните */}
+            <div className="flex items-center min-w-0 overflow-x-auto py-1">
             {(module?.lessons ?? course.lessons).map((l, i) => {
                 const done = i < moduleIndex;
                 const current = i === moduleIndex;
                 return (
-                  <div key={l.id} className="flex items-center">
-                  {i > 0 && <span className={`w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
+                  <div key={l.id} className="flex items-center shrink-0">
+                  {i > 0 && <span className={`w-3 sm:w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
                     <button onClick={() => go(l.id)} title={l.title}
-                      className={`rounded-full transition-all duration-300 ${
+                      className={`shrink-0 rounded-full transition-all duration-300 ${
                         current ? 'lesson-dot-current w-3.5 h-3.5 bg-gradient-to-br from-sky-400 to-emerald-400'
                         : done ? 'w-2.5 h-2.5 bg-emerald-400 hover:scale-125'
                         : 'w-2.5 h-2.5 bg-transparent border border-white/25 hover:border-white/50'}`} />
@@ -164,17 +177,19 @@ export default function LessonPage({ params }) {
 
             <button onClick={() => go(nextId)} disabled={!nextId}
               title={atModuleEnd ? c('next_module') : undefined}
-              className={`shrink-0 h-7 px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${nextId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
+              className={`shrink-0 h-7 px-1.5 sm:px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${nextId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
               {atModuleEnd && nextId && <span className="hidden sm:inline pl-1">{c('next_module')}</span>}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6"/></svg>
             </button>
 
-            <span className="text-xs text-gray-400 font-semibold tabular-nums ml-1">{moduleIndex + 1} / {moduleTotal}</span>
+            <span className="shrink-0 text-[11px] sm:text-xs text-gray-400 font-semibold tabular-nums ml-0.5 sm:ml-1">{moduleIndex + 1} / {moduleTotal}</span>
           </div>
 
+          {/* НАПРЕД — на телефон само стрелка, но винаги на екрана */}
           <Link href={nextId ? `/course/${slug}/lesson/${nextId}` : `/course/${slug}`}
-            className={`shrink-0 flex items-center gap-1.5 px-5 py-2 text-sm ${theme.button}`}>
-            {t('next')}
+            aria-label={t('next')}
+            className={`shrink-0 flex items-center gap-1.5 px-3 sm:px-5 py-2 text-sm ${theme.button}`}>
+            <span className="hidden sm:inline">{t('next')}</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6"/></svg>
           </Link>
         </div>

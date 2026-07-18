@@ -132,7 +132,7 @@ export async function fetchHistory(userId, course, slug) {
   if (!userId) return [];
   const { data } = await supabase
     .from('submissions')
-    .select('id, passed, error_tag, created_at')
+    .select('id, passed, error_tag, failed_check, code, created_at')
     .eq('user_id', userId)
     .eq('course', course)
     .eq('problem_slug', slug)

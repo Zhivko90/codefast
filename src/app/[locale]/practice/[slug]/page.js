@@ -33,6 +33,7 @@ export default function ProblemPage({ params }) {
   const [tab, setTab] = useState('statement');
   const [history, setHistory] = useState([]);
   const [solvedBefore, setSolvedBefore] = useState(false);
+  const [openRow, setOpenRow] = useState(null);
 
   // зареждаме запазения код, ако има
   useEffect(() => {
@@ -84,9 +85,10 @@ useEffect(() => {
         title={txt.title}
         badge={{ text: t(p.difficulty), cls: DIFF[p.difficulty] }}
 
-        tabs={[
+      tabs={[
           { id: 'statement', label: t('statement') },
           { id: 'solution',  label: t('solution'), locked: !solved },
+          { id: 'history',   label: t('history') },
         ]}
         activeTab={tab}
         onTab={setTab}
@@ -187,6 +189,63 @@ useEffect(() => {
               </>
             )}
           </>
+        )}
+       {tab === 'history' && (
+          history.length === 0 ? (
+            <div className="flex flex-col items-center text-center py-16 px-6">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="text-gray-700 mb-4">
+                <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>
+              </svg>
+              <p className="text-gray-500 text-sm max-w-xs leading-relaxed">{t('no_history')}</p>
+            </div>
+          ) : (
+            <>
+              <h1 className="text-xl font-extrabold text-white mb-1">{t('history')}</h1>
+
+              {/* рамка на растеж: не "провали", а "хвана го след N опита" */}
+              {(() => {
+                const solvedIdx = history.findIndex((h) => h.passed);       // първото решено (отгоре = най-ново)
+                const tries = solvedIdx === -1 ? history.length : history.length - solvedIdx;
+                return (
+                  <p className="text-[13px] text-gray-500 mb-5">
+                    {history.some((h) => h.passed)
+                      ? t('grew_solved', { n: tries })
+                      : t('grew_trying', { n: history.length })}
+                  </p>
+                );
+              })()}
+
+              <div className="flex flex-col">
+                {history.map((h) => (
+                  <div key={h.id} className="border-b border-white/[0.06] last:border-0">
+                    <button
+                      onClick={() => setOpenRow(openRow === h.id ? null : h.id)}
+                      className="w-full flex items-center gap-3 py-3 text-left hover:bg-white/[0.02] transition rounded-lg px-1">
+                      <span className={`w-5 h-5 shrink-0 rounded-full flex items-center justify-center text-[11px] ${h.passed ? 'bg-emerald-500/15 text-emerald-400' : 'bg-rose-500/15 text-rose-400'}`}>
+                        {h.passed ? '✓' : '✕'}
+                      </span>
+                      <span className="flex-1 text-[14px] text-gray-300">
+                        {h.passed ? t('attempt_ok') : (txt.checks?.[h.failed_check] ?? t('attempt_no'))}
+                      </span>
+                      <span className="text-[12px] text-gray-600">
+                        {new Date(h.created_at).toLocaleDateString(lang === 'bg' ? 'bg-BG' : 'en-GB', {
+                          day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
+                        })}
+                      </span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                        className={`shrink-0 text-gray-600 transition-transform ${openRow === h.id ? 'rotate-180' : ''}`}>
+                        <path d="M6 9l6 6 6-6"/>
+                      </svg>
+                    </button>
+
+                    {openRow === h.id && h.code && (
+                      <pre className="mb-3 mx-1 rounded-lg border border-white/[0.07] bg-black/30 px-4 py-3 font-mono text-[12px] leading-relaxed text-gray-300 whitespace-pre-wrap break-words overflow-x-auto">{h.code}</pre>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )
         )}
       </WorkBench>
     </div>

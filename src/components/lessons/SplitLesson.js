@@ -19,7 +19,7 @@ export default function SplitLesson({ lesson, course }) {
         <h1 className="text-2xl font-extrabold text-white mb-6">{lesson.title}</h1>
         <Blocks blocks={lesson.blocks} />
       </div>
-      <div className="border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col">
+      <div className="border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col min-h-[320px] lg:min-h-0">
         <iframe title="preview" srcDoc={lesson.demo} sandbox="allow-scripts" className="bg-white flex-1 w-full border-0" />
       </div>
     </div>

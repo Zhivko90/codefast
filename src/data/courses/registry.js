@@ -72,8 +72,18 @@ import html_l64 from './html/lessons/65-opengraph.js';
 import html_l65 from './html/lessons/66-final.js';
 import html_l66 from './html/lessons/67-publish.js';
 import html_l67 from './html/lessons/R1-review-basics.js';
-import html_p0 from './html/problems/001-close-the-tag.js';
-import html_p1 from './html/problems/002-dashes-to-list.js';
+import html_l68 from './html/lessons/R10-review-finish.js';
+import html_l69 from './html/lessons/R2-review-docstruct.js';
+import html_l70 from './html/lessons/R3-review-headpara.js';
+import html_l71 from './html/lessons/R4-review-lists.js';
+import html_l72 from './html/lessons/R5-review-links.js';
+import html_l73 from './html/lessons/R6-review-mediafiles.js';
+import html_l74 from './html/lessons/R7-review-meaning.js';
+import html_l75 from './html/lessons/R8-review-tables.js';
+import html_l76 from './html/lessons/R9-review-forms.js';
+import html_p0 from './html/problems/001-first-page.js';
+import html_p1 from './html/problems/002-build-a-list.js';
+import html_p2 from './html/problems/003-list-in-list.js';
 import html_bg_course from '@/content/courses/html/bg/_course.json';
 import html_bg_0 from '@/content/courses/html/bg/01-intro.json';
 import html_bg_1 from '@/content/courses/html/bg/02-structure.json';
@@ -143,8 +153,18 @@ import html_bg_64 from '@/content/courses/html/bg/65-opengraph.json';
 import html_bg_65 from '@/content/courses/html/bg/66-final.json';
 import html_bg_66 from '@/content/courses/html/bg/67-publish.json';
 import html_bg_67 from '@/content/courses/html/bg/R1-review-basics.json';
+import html_bg_68 from '@/content/courses/html/bg/R10-review-finish.json';
+import html_bg_69 from '@/content/courses/html/bg/R2-review-docstruct.json';
+import html_bg_70 from '@/content/courses/html/bg/R3-review-headpara.json';
+import html_bg_71 from '@/content/courses/html/bg/R4-review-lists.json';
+import html_bg_72 from '@/content/courses/html/bg/R5-review-links.json';
+import html_bg_73 from '@/content/courses/html/bg/R6-review-mediafiles.json';
+import html_bg_74 from '@/content/courses/html/bg/R7-review-meaning.json';
+import html_bg_75 from '@/content/courses/html/bg/R8-review-tables.json';
+import html_bg_76 from '@/content/courses/html/bg/R9-review-forms.json';
 import html_bg_p0 from '@/content/courses/html/problems/bg/001.json';
 import html_bg_p1 from '@/content/courses/html/problems/bg/002.json';
+import html_bg_p2 from '@/content/courses/html/problems/bg/003.json';
 import html_en_course from '@/content/courses/html/en/_course.json';
 import html_en_0 from '@/content/courses/html/en/01-intro.json';
 import html_en_1 from '@/content/courses/html/en/02-structure.json';
@@ -214,8 +234,18 @@ import html_en_64 from '@/content/courses/html/en/65-opengraph.json';
 import html_en_65 from '@/content/courses/html/en/66-final.json';
 import html_en_66 from '@/content/courses/html/en/67-publish.json';
 import html_en_67 from '@/content/courses/html/en/R1-review-basics.json';
+import html_en_68 from '@/content/courses/html/en/R10-review-finish.json';
+import html_en_69 from '@/content/courses/html/en/R2-review-docstruct.json';
+import html_en_70 from '@/content/courses/html/en/R3-review-headpara.json';
+import html_en_71 from '@/content/courses/html/en/R4-review-lists.json';
+import html_en_72 from '@/content/courses/html/en/R5-review-links.json';
+import html_en_73 from '@/content/courses/html/en/R6-review-mediafiles.json';
+import html_en_74 from '@/content/courses/html/en/R7-review-meaning.json';
+import html_en_75 from '@/content/courses/html/en/R8-review-tables.json';
+import html_en_76 from '@/content/courses/html/en/R9-review-forms.json';
 import html_en_p0 from '@/content/courses/html/problems/en/001.json';
 import html_en_p1 from '@/content/courses/html/problems/en/002.json';
+import html_en_p2 from '@/content/courses/html/problems/en/003.json';
 
 export const registry = {
   'html': {
@@ -290,10 +320,20 @@ export const registry = {
       '66-final': html_l65,
       '67-publish': html_l66,
       'R1-review-basics': html_l67,
+      'R10-review-finish': html_l68,
+      'R2-review-docstruct': html_l69,
+      'R3-review-headpara': html_l70,
+      'R4-review-lists': html_l71,
+      'R5-review-links': html_l72,
+      'R6-review-mediafiles': html_l73,
+      'R7-review-meaning': html_l74,
+      'R8-review-tables': html_l75,
+      'R9-review-forms': html_l76,
     },
     problems: {
-      'close-the-tag': html_p0,
-      'dashes-to-list': html_p1,
+      'first-page': html_p0,
+      'build-a-list': html_p1,
+      'list-in-list': html_p2,
     },
     text: {
       bg: {
@@ -366,6 +406,15 @@ export const registry = {
         '66-final': html_bg_65,
         '67-publish': html_bg_66,
         'R1-review-basics': html_bg_67,
+        'R10-review-finish': html_bg_68,
+        'R2-review-docstruct': html_bg_69,
+        'R3-review-headpara': html_bg_70,
+        'R4-review-lists': html_bg_71,
+        'R5-review-links': html_bg_72,
+        'R6-review-mediafiles': html_bg_73,
+        'R7-review-meaning': html_bg_74,
+        'R8-review-tables': html_bg_75,
+        'R9-review-forms': html_bg_76,
       },
       en: {
         _course: html_en_course,
@@ -437,16 +486,27 @@ export const registry = {
         '66-final': html_en_65,
         '67-publish': html_en_66,
         'R1-review-basics': html_en_67,
+        'R10-review-finish': html_en_68,
+        'R2-review-docstruct': html_en_69,
+        'R3-review-headpara': html_en_70,
+        'R4-review-lists': html_en_71,
+        'R5-review-links': html_en_72,
+        'R6-review-mediafiles': html_en_73,
+        'R7-review-meaning': html_en_74,
+        'R8-review-tables': html_en_75,
+        'R9-review-forms': html_en_76,
       },
     },
     problemText: {
       bg: {
         '1': html_bg_p0,
         '2': html_bg_p1,
+        '3': html_bg_p2,
       },
       en: {
         '1': html_en_p0,
         '2': html_en_p1,
+        '3': html_en_p2,
       },
     },
     locales: ["bg","en"],
