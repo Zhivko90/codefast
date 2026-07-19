@@ -33,3 +33,59 @@ body {
   50%      { box-shadow: 0 0 0 6px rgba(56, 189, 248, 0); }
 }
 .lesson-dot-current { animation: lessonPulse 1.8s ease-in-out infinite; }
+
+/* ============================================
+   dockview — под палитрата на CodeFast.
+   Числата са същите като на лентата с един файл в WorkBench:
+   фон black/20, активен таб white/[0.07], кант white/[0.08].
+
+   ⚠ УДВОЕН КЛАС: .dockview-theme-dark.dockview-theme-dark
+   Техният блок е също .dockview-theme-dark и се зарежда СЛЕД globals.css.
+   При равна специфичност печели по-късният — затова техните числа
+   надделяваха над моите. Удвояването вдига специфичността и краде
+   победата обратно, независимо от реда на зареждане.
+
+   ⚠ Виолетовото, което се виждаше, НЕ беше тяхна тема — табът идваше
+   прозрачен и през него прозираше радиалният градиент на body.
+   ============================================ */
+
+.dv-shell.dv-shell.dv-shell {
+  --dv-background-color: transparent;
+  --dv-group-view-background-color: transparent;
+
+  /* лентата */
+  --dv-tabs-and-actions-container-background-color: rgba(0, 0, 0, 0.25);
+  --dv-tabs-container-scrollbar-color: rgba(255, 255, 255, 0.15);
+  --dv-tab-divider-color: rgba(255, 255, 255, 0.06);
+
+  /* активен таб — в активната и в неактивната група еднакво,
+     иначе вторият панел изглежда изключен */
+  --dv-activegroup-visiblepanel-tab-background-color: rgba(255, 255, 255, 0.07);
+  --dv-inactivegroup-visiblepanel-tab-background-color: rgba(255, 255, 255, 0.07);
+  --dv-activegroup-visiblepanel-tab-color: #ffffff;
+  --dv-inactivegroup-visiblepanel-tab-color: rgba(255, 255, 255, 0.75);
+
+  /* скрити табове */
+  --dv-activegroup-hiddenpanel-tab-background-color: transparent;
+  --dv-inactivegroup-hiddenpanel-tab-background-color: transparent;
+  --dv-activegroup-hiddenpanel-tab-color: #6b7280;
+  --dv-inactivegroup-hiddenpanel-tab-color: #6b7280;
+
+  /* рамки и разделители */
+  --dv-separator-border: rgba(255, 255, 255, 0.08);
+  --dv-paneview-header-border-color: rgba(255, 255, 255, 0.08);
+  --dv-paneview-active-outline-color: rgba(56, 189, 248, 0.6);
+
+  /* влаченето — небесно */
+  --dv-drag-over-background-color: rgba(56, 189, 248, 0.12);
+  --dv-drag-over-border-color: rgba(125, 211, 252, 0.9);
+
+  --dv-icon-hover-background-color: rgba(255, 255, 255, 0.08);
+  --dv-active-sash-color: rgba(56, 189, 248, 0.7);
+}
+
+/* лентата да е висока колкото при уроците с един файл */
+.dv-shell.dv-shell .dv-tabs-and-actions-container {
+  height: 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}

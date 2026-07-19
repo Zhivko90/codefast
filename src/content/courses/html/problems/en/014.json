@@ -1,0 +1,115 @@
+{
+  "title": "Where Is It From Here",
+
+  "statement": "Empty editor. Build the contact page shown in the target on the right.\n\nOne thing is different this time: this page is NOT in the main folder. It lives in a subfolder called pages, together with about.html.\n\nIn the main folder of the site, one step above you, sit three things: the file index.html, the folder images with the logo inside, and the folder shop with bikes.html inside.\n\nFrom here, everything sits somewhere different. One thing is beside you. Another is a folder up. A third is up and then down into another folder. A fourth isn't on your site at all.\n\nDon't ask where the file is on the disk. Ask where it is relative to me.",
+
+  "constraints": [
+    "Heading: Contact",
+    "A menu of three links: Home, About, Bikes",
+    "Home is index.html in the main folder",
+    "About is beside you, in the same folder",
+    "Bikes is in the shop folder",
+    "The logo is images/logo.png, described",
+    "Subheading Where we are and two paragraphs",
+    "At the end, a link to a map on someone else's site"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a heading",
+    "t3": "There are four links",
+    "t4": "Every link has an address",
+    "t5": "No address is empty",
+    "t6": "There are links going up a folder",
+    "t7": "They reach the right file",
+    "t8": "There is a link to a neighbour",
+    "t9": "There is a link to another site",
+    "t10": "There is an image",
+    "t11": "The image is looked for one folder up",
+    "t12": "The image is described",
+    "t13": "The description isn't empty",
+    "t14": "The menu is a list of three links",
+    "t15": "There is a subheading",
+    "t16": "There are two paragraphs",
+    "t17": "The paragraphs aren't empty"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the page yourself.",
+
+    "not-closed": "Some tag is opened and never closed.",
+
+    "no-heading": "There is no heading, or it is empty.",
+
+    "few-links": "There aren't four links. The three in the menu and the map at the end make four.",
+
+    "no-href": "There is a link with no address at all.",
+
+    "empty-href": "There is a link with an empty address. It's blue, underlined and clickable, and it reloads the same page.",
+
+    "no-up": "There aren't two links that step out of your folder.\n\nYou're in a subfolder. The home page and the shop aren't here — they're above.\n\nWrite just the file name and the browser will look for it beside you. It won't find it, and the link will go nowhere — no error, no warning.\n\nTwo dots mean: one folder up.",
+
+    "no-sibling": "There is no link to a file in the same folder.\n\nThe about page is right beside you. For that you need neither dots nor folders — only the file name.\n\nThe browser reads the path relative to where the current page sits. Hence \"relative\".",
+
+    "no-external": "There is no link to another site with a full address.\n\nThe map isn't your file. It's on someone else's site — so its address starts from far away, with the protocol and the domain.\n\nWrite it as a file name and the browser will look for it in your folder.",
+
+    "no-img": "There is no image.",
+
+    "img-wrong-path": "The logo isn't looked for where it actually is.\n\nIt's in the images folder, and that folder isn't inside yours — it's beside it, one step up. So first you step out, then you step in.",
+
+    "no-alt": "The image has no description, or it is empty.",
+
+    "nav-not-list": "The menu isn't a list of three links inside navigation.",
+
+    "no-subheading": "There is no subheading, or it is empty.",
+
+    "few-paragraphs": "There aren't two paragraphs. The address and the reply time are two separate things.",
+
+    "empty-paragraph": "There is an empty paragraph.",
+
+    "local-path": "One of your paths points at your own computer.\n\nIt works on your machine. You click, it goes, everything is fine — which is exactly what makes it so hard to catch.\n\nBut that address exists on one computer in the world. Publish the site and the link goes nowhere for everyone else.\n\nThe test is one question: if I take the whole site folder, send it to someone else and they open it on their machine — will it work?"
+  },
+
+  "hints": {
+    "no-up": [
+      "Look at the folder diagram in the brief. You're in pages. Where is index.html?",
+      "It isn't with you. So first you have to step out of your folder.",
+      "Lesson 34: two dots mean one folder up. After them comes the path down."
+    ],
+    "no-sibling": [
+      "Where is about.html relative to the page you're on?",
+      "In the same folder. So you need nothing in front — only the file name."
+    ],
+    "no-external": [
+      "Is the map on your site?",
+      "It isn't. So its address can't be a file name — the browser would look for it at your place.",
+      "It starts from far away: protocol, then domain."
+    ],
+    "img-wrong-path": [
+      "Look at the diagram. Is the images folder inside pages, or beside it?",
+      "Beside it. So the path goes out first, then in.",
+      "You step out with two dots, then step in with the folder name and a slash."
+    ],
+    "local-path": [
+      "Go through every address and ask: would this path work on someone else's computer?",
+      "Look for a drive letter, a user name, or the word Desktop. Each of them means \"only on my machine\".",
+      "A site is a folder, not a place on a disk. Delete everything before the part that's inside the site folder."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to write the file names and move on. And if the page were in the main folder, that would be right.\n\nBut it isn't. It's in a subfolder — and from there everything sits at a different distance.\n\nThat's the trap of relative paths: they aren't read from where the file sits on disk, but from where the PAGE that contains them sits. Move the page into another folder and all of its paths mean something different, without you touching a single one.\n\nAnd the failure is silent. Nothing red, no message. The link looks like a link and simply goes nowhere.\n\nThe question that settles it: not \"where is the file\", but \"where is it RELATIVE TO ME\".",
+    "steps": [
+      "Look at the folder diagram and find yourself. You're in pages.",
+      "About is beside you. A neighbour needs nothing in front — just the name.",
+      "Home isn't with you. Step one folder up, then take the file.",
+      "Bikes is up and then down into another folder. Out first, then in.",
+      "The logo is the same: out of pages, into images.",
+      "The map isn't your file at all. It wants a full address, protocol and domain.",
+      "Finally go through every path and ask: would this work on someone else's computer?"
+    ],
+    "code": "<body>\n  <h1>Contact</h1>\n  <nav>\n    <ul>\n      <li><a href=\"../index.html\">Home</a></li>\n      <li><a href=\"about.html\">About</a></li>\n      <li><a href=\"../shop/bikes.html\">Bikes</a></li>\n    </ul>\n  </nav>\n  <img src=\"../images/logo.png\" alt=\"Nordic Bikes logo, a wheel over a mountain\">\n  <h2>Where we are</h2>\n  <p>Bulgaria Street 12, Dobrich.</p>\n  <p>We answer within a day.</p>\n  <a href=\"https://example.com/map\">See the map</a>\n</body>",
+    "note": "And one warning for the end: on your own computer paths don't tell capital letters from small ones. On a server they do.\n\nLogo.png and logo.png are two different files there. That's where the classic \"works on my machine\" comes from."
+  }
+}

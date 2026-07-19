@@ -1,0 +1,91 @@
+{
+  "title": "One Thought, Four Lines",
+
+  "statement": "Empty editor. Build the listing shown in the target on the right.\n\nThree things sit on separate lines: the description, the price and the address.\n\nBut the address is different from the other two. It's on four lines and it's still ONE thing — you can't swap the street and the town.\n\nThe description and the price are two separate thoughts. The address is one thought written on four lines.\n\nAnd somewhere in the middle, the subject changes.",
+
+  "constraints": [
+    "Heading: Bike for sale",
+    "Description: Blue mountain bike, 21 gears, ridden for two summers.",
+    "Price: Price: 180 leva.",
+    "The subject changes here",
+    "Subheading: Pickup address",
+    "The address on four lines: Nordic Bikes · Bulgaria Street 12 · floor 2 · Dobrich",
+    "The address is one paragraph"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a main heading",
+    "t3": "There is a subheading",
+    "t4": "There are exactly three paragraphs",
+    "t5": "No paragraph is empty",
+    "t6": "There are exactly three line breaks",
+    "t7": "The breaks are inside a paragraph",
+    "t8": "No two breaks are stuck together",
+    "t9": "There is exactly one change of subject",
+    "t10": "The change of subject isn't inside a paragraph"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the listing yourself.",
+
+    "not-closed": "Some tag is opened and never closed.\n\nA line break doesn't count — it has no closing twin. Don't look for one, there isn't any.",
+
+    "no-heading": "There is no main heading, or it is empty.",
+
+    "no-subheading": "There is no subheading, or it is empty.",
+
+    "address-split": "There aren't exactly three paragraphs.\n\nIf there are more, you've most likely broken the address into separate paragraphs. Load it and see: the four lines fly apart, with gaps between them, like four separate thoughts.\n\nBut they aren't four thoughts. They're one address.\n\nAnd they aren't a list either — you can't reorder the street and the town.",
+
+    "empty-p": "There is an empty paragraph.",
+
+    "wrong-breaks": "There aren't exactly three line breaks.\n\nThe address is on four lines. Between four lines there are THREE places where a line ends — after the last one, nothing follows.\n\nIf there are more than three, somewhere you've put two next to each other.",
+
+    "br-outside": "The breaks aren't inside a paragraph.\n\nThey say \"the line ends here, but the thought doesn't\". Outside a paragraph there's no thought to continue.",
+
+    "br-for-air": "You've put two breaks next to each other.\n\nThat's exactly what you mustn't do. A break doesn't mean \"space\" — it means \"the line ends here, but the thought doesn't\". Two in a row describe nothing; they just push the text down.\n\nIt looks right, and that's precisely why it's a trap. Tomorrow, when you add CSS, those empty lines will get in your way — and you won't remember why they're there.\n\nSpacing is the job of CSS.",
+
+    "no-hr": "There isn't exactly one change of subject.\n\nAfter the price the listing ends and something else begins — where to come and collect it. That isn't a new paragraph of the same subject, it's a new subject.\n\nAnd note: the tag comes out as a horizontal line, but it doesn't mean \"line\". It means the subject changes here. If you just want a line for looks — that's CSS again.",
+
+    "hr-inside": "The change of subject has ended up inside a paragraph.\n\nA paragraph is one thought. A subject doesn't change halfway through one thought."
+  },
+
+  "hints": {
+    "address-split": [
+      "Read the three things and ask each: is this one thought, or several?",
+      "The description is one. The price is another. And the address? Are the street and the town separate thoughts?",
+      "They aren't. So the address is one paragraph — and the lines inside it are said another way."
+    ],
+    "wrong-breaks": [
+      "Count exactly where you want a line to end. After the name, after the street, after the floor.",
+      "Three places. After the town there's nothing — nothing there to break.",
+      "The tag sits BETWEEN the lines, not at the start of each."
+    ],
+    "br-for-air": [
+      "Look at where you put the breaks. Are any two stuck together?",
+      "If you put them there to add space — they don't do that. They push text down and nothing more.",
+      "One per break. Never two side by side."
+    ],
+    "no-hr": [
+      "Look at the listing top to bottom. Is there a place where one thing ends and something else entirely begins?",
+      "Lesson 22: there's a tag that says exactly that — the subject changes here.",
+      "It has no closing twin either."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to put every line in its own paragraph. It's logical — the lines are separate, so the paragraphs should be too.\n\nLoad it and see what happens: the four lines of the address fly apart, with air between them, like four separate messages.\n\nBut the address isn't four messages. It's one. The street without the town means nothing, and you can't swap them.\n\nA paragraph means \"a new thought\". A line break means \"the line ends here, but the thought carries on\".\n\nThe description and the price are two thoughts — two paragraphs. The address is one thought on four lines — one paragraph and three breaks.\n\nAnd between the listing and the address, no thought changes. A subject does.",
+    "steps": [
+      "Start with the heading.",
+      "The description and the price are two separate thoughts — one paragraph each.",
+      "After them the listing ends and something else begins. Say so.",
+      "The subheading announces the new part.",
+      "The address is ONE paragraph, however many lines it holds.",
+      "Inside it, say where each line ends. Four lines, three breaks.",
+      "Finally check that no two breaks sit next to each other."
+    ],
+    "code": "<body>\n  <h1>Bike for sale</h1>\n  <p>Blue mountain bike, 21 gears, ridden for two summers.</p>\n  <p>Price: 180 leva.</p>\n  <hr>\n  <h2>Pickup address</h2>\n  <p>Nordic Bikes<br>\n  Bulgaria Street 12<br>\n  floor 2<br>\n  Dobrich</p>\n</body>",
+    "note": "Notice what you didn't do: you didn't add a single break to space something out.\n\nEvery break here sits where a line of one and the same address genuinely ends. If tomorrow a designer decides the address should sit differently, they'll change the styling — and nothing in your code will be in the way."
+  }
+}

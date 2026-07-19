@@ -1,0 +1,99 @@
+{
+  "title": "Show It, Don't Run It",
+
+  "statement": "Empty editor. Build the notes shown in the target on the right.\n\nThis page talks ABOUT tags. So it has to show them.\n\nAnd the browser can't tell the difference. To it, an angle bracket means one thing: a tag starts here. Write it the way your hand wants to, and the tag won't show up — it will run. And vanish from the sentence without a word.\n\nThe same goes for the ampersand. See why.",
+
+  "constraints": [
+    "Heading: My HTML notes",
+    "Sentence: Today I learned the <p> tag and the <strong> tag.",
+    "Both tags in it are VISIBLE, and marked as code",
+    "Second line: Price & delivery: 18 leva",
+    "The number and the unit never split across lines",
+    "At the end, a two-line code example with its line breaks kept"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a heading",
+    "t3": "There are exactly two paragraphs",
+    "t4": "The opening bracket is visible",
+    "t5": "The closing bracket is visible",
+    "t6": "The ampersand is visible",
+    "t7": "At least three places are marked as code",
+    "t8": "The code isn't empty",
+    "t9": "The example keeps its line breaks",
+    "t10": "The tags in the sentence are marked as code",
+    "t11": "The number and unit don't split"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the notes yourself.",
+
+    "not-closed": "Some tag is opened and never closed, or closed in the wrong order.\n\nWatch out for writing a real tag where you only meant to show one — it isn't text, it runs.",
+
+    "no-heading": "There is no heading, or it is empty.",
+
+    "tag-executed": "You've written a real tag where you only meant to talk about one.\n\nThe browser ran it. It didn't show up anywhere — it simply fired and disappeared from the sentence.\n\nThat's what makes it hard to catch: no error, nothing red. The sentence is just maimed, and you don't know where from.",
+
+    "no-lt": "There is no opening angle bracket visible on the page.\n\nYou're talking about tags, so the brackets have to be there in the text. Written the way your hand wants to, they aren't text — they're the start of a command.",
+
+    "no-gt": "There is no closing angle bracket visible on the page.\n\nEither it isn't there at all, or its name is unfinished. The name starts with an ampersand and ENDS with a semicolon. Without it the browser doesn't know where the name stops and doesn't recognise it.",
+
+    "no-amp": "There is no ampersand visible on the page.\n\nHere's the trap: since every character name starts with an ampersand, the ampersand itself can no longer be an ordinary sign. Otherwise the browser looks at \"Price & delivery\" and wonders where the name ends.\n\nSo it has a name of its own too.",
+
+    "no-code": "There aren't three places marked as code.\n\nThe brackets show up now, but they sit like ordinary words in the middle of a sentence. Nothing says this is CODE rather than chatter.",
+
+    "empty-code": "There is an empty place marked as code. The content has to be INSIDE the tag.",
+
+    "no-pre": "The example at the end doesn't keep its line breaks.\n\nTwo lines of code glued into one aren't an example any more — they're a mess. The browser swallows blank lines and spacing everywhere. There is exactly one place where it respects them.",
+
+    "code-not-inline": "The tags inside the sentence aren't marked as code.\n\nThey're part of the sentence, not separate blocks — which is why the tag that marks them is inline and doesn't break the line.",
+
+    "no-nbsp": "The number and the unit can split across lines.\n\nShrink the window far enough and you'll see it: 18 stays on one line, leva drops to the next. Between them you need a space the browser isn't allowed to break."
+  },
+
+  "hints": {
+    "tag-executed": [
+      "Read the sentence on screen and compare it with what you wrote. What's missing?",
+      "What's missing wasn't deleted. It fired — the browser took it for a command, ran it, and removed it from the text.",
+      "Lesson 23: you don't write the character itself, you write its name. The brackets around those words get written as names."
+    ],
+    "no-gt": [
+      "Look at your code closely. The name of the character starts with an ampersand — what does it end with?",
+      "The semicolon isn't decoration. It says where the name stops.",
+      "Forget it and the name isn't recognised and comes out half-drawn. Check both brackets."
+    ],
+    "no-amp": [
+      "Read the price line on screen. Is all of it there?",
+      "The ampersand is special for the same reason the brackets are — every name begins with it.",
+      "So it has a name too. Three letters between the ampersand and the semicolon."
+    ],
+    "no-pre": [
+      "Try the example inside the code tag alone. What happens to the two lines?",
+      "There is one single place in all of HTML where the browser respects your spacing and blank lines.",
+      "Careful: it keeps EVERYTHING. Every indent you add for tidiness will show up on screen — so it gets written flush left."
+    ],
+    "no-nbsp": [
+      "Shrink the browser window until the price line wraps. Where did it break?",
+      "Lesson 23 gave you a space with one property: the browser isn't allowed to wrap the line on it.",
+      "It's written as a name, like the brackets. And you don't line several of them up — spacing is the job of CSS."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to write the sentence the way you think it: \"I learned the <p> tag\". You load it and the sentence is maimed — the tag is gone.\n\nIt wasn't deleted. It ran.\n\nThe browser can't tell \"here's a tag\" from \"I'm talking about a tag\". To it an angle bracket means one single thing: a tag starts here. The characters HTML is written with can't simply be text in HTML.\n\nThe fix is not to write the character but its name — and in the end the browser draws the character, but as text now, not as a command.\n\nAnd immediately a second problem appears: since every name begins with an ampersand, the ampersand itself can't be an ordinary sign either. So it has a name too.",
+    "steps": [
+      "Start with the heading.",
+      "Write the sentence and get to the first tag. Don't write the brackets — write their names.",
+      "Every name ends with a semicolon. Without it, it comes out half-drawn.",
+      "The two tags in the sentence are code, not chatter. Mark them — the tag for that is inline and won't break the sentence.",
+      "The price line has an ampersand in it. That wants a name too.",
+      "Between the number and the unit put the space that doesn't break. Otherwise they split on a narrow screen.",
+      "Finally the example: two lines that have to stay two. The code tag alone isn't enough — the lines glue together.",
+      "Wrap it in the tag that preserves layout. And write it flush left — it preserves indents too."
+    ],
+    "code": "<body>\n  <h1>My HTML notes</h1>\n  <p>Today I learned the <code>&lt;p&gt;</code> tag and the <code>&lt;strong&gt;</code> tag.</p>\n  <p>Price &amp; delivery: 18&nbsp;leva</p>\n  <pre><code>&lt;p&gt;Hello&lt;/p&gt;\n&lt;strong&gt;Bye&lt;/strong&gt;</code></pre>\n</body>",
+    "note": "This is the only lesson where you write HTML about HTML itself. And the only place where the browser respects your blank lines.\n\nRemember the pair: the layout tag keeps the lines, the code tag says it's code. You'll always see them together."
+  }
+}

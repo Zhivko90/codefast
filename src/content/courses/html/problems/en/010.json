@@ -1,0 +1,66 @@
+{
+  "title": "The Vanished Price List",
+
+  "statement": "Load the page on the right. The heading is there. Nothing else is.\n\nThe prices, the workshop photo, the opening hours — they're all in the code. They're not on the screen.\n\nNobody deleted them.",
+
+  "constraints": [
+    "Nothing gets deleted — the whole code stays",
+    "The note about the prices stays a note",
+    "After the fix you can see: the heading, both prices, the photo and the opening hours"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "t2": "You changed the code",
+    "g1": "Everything is closed",
+    "p1": "The heading is there",
+    "p2": "All three sentences are visible",
+    "p3": "The sentences aren't empty",
+    "p4": "The image is visible",
+    "p5": "The image is described",
+    "t5": "The page has a name",
+    "t6": "The page says what language it's in",
+    "t7": "The language isn't empty",
+    "t8": "The alphabet is declared"
+  },
+
+  "why": {
+    "empty": "The editor is empty. Deleting is not fixing. Bring the code back.",
+
+    "untouched": "The code is exactly the one I gave you. You haven't changed anything.",
+
+    "not-closed": "Some tag is opened and never closed, or closed in the wrong order.",
+
+    "lost-content": "The heading is gone. The task is to bring back what vanished, not to delete more.",
+
+    "commented-out": "The content isn't on the page.\n\nIt's in the code — you can read it. But to the browser it doesn't exist.\n\nCommented-out code doesn't exist. Between the opening and closing of a comment there is nothing, however much is written inside.\n\nAnd a comment with no closing doesn't end anywhere. It runs to the end of the file, swallowing everything on the way.",
+
+    "lost-alt": "The image is there, but its description vanished or is empty. That wasn't the mistake — leave it alone.",
+
+    "lost-head": "Something vanished from the head of the page — the name, the language or the alphabet. Those weren't the mistake."
+  },
+
+  "hints": {
+    "commented-out": [
+      "Read the code top to bottom and find where the vanishing starts.",
+      "Just above the first missing price there's a line that opens something. Where does it close?",
+      "The comment was meant to end after the words about the prices. It doesn't end there — which is why it swallows them, and everything below."
+    ],
+    "lost-content": [
+      "The heading wasn't part of the problem. Bring it back."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct, when half a page is missing, is to look for what got deleted. Nothing got deleted — the code is all there, line by line, and you can read every word of it.\n\nThat's what makes it hard to find: your eyes pass over the prices and the photo, see them, and your brain accepts that they're on the page.\n\nBut between the opening and closing of a comment, nothing exists. And this comment closes nowhere — so it ends nowhere. It runs to the end of the file and swallows everything after it.\n\nThe comment isn't the mistake. The missing end is.",
+    "steps": [
+      "Load the page and see how far the visible part goes. The heading shows; the next line doesn't.",
+      "Look at the code right at that boundary. What sits between the last visible thing and the first missing one?",
+      "There's an open comment there. Check where it closes.",
+      "It doesn't close anywhere. Close it right after the note about the prices.",
+      "Load it again. Everything comes back at once."
+    ],
+    "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Dobrich Bike Repair</title>\n</head>\n<body>\n  <h1>Dobrich Bike Repair</h1>\n  <!-- prices below, update every spring -->\n  <p>Tyre change: 8 leva</p>\n  <p>Full service: 35 leva</p>\n  <img src=\"workshop.jpg\" alt=\"A workbench with bike tools laid out\">\n  <p>Open Monday to Friday.</p>\n</body>\n</html>",
+    "note": "One missing end, and three lines of content plus an image disappear. No error, no warning, nothing red anywhere.\n\nThat's why a comment is handy when you want to switch something off temporarily — and a trap when you forget to close it."
+  }
+}

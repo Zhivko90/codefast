@@ -1,14 +1,6 @@
 {
   "title": "A menu on two levels",
-  "statement": "An empty editor. Build the menu you see in the target on the right.\n\nEight things. Two of them are groups, the other six belong under them — not alongside them.",
-
-  "examples": [
-    {
-      "in": "",
-      "out": "<ul>\n  <li>Fruit\n    <ul>\n      <li>Apple</li>\n      <li>Pear</li>\n    </ul>\n  </li>\n</ul>",
-      "explain": "The sublist is INSIDE the item it belongs to. Not next to it."
-    }
-  ],
+  "statement": "An empty editor. Build the menu from the target on the right.\n\nEight things. Two are groups, six belong under them — not alongside them.",
 
   "constraints": [
     "Heading: Menu",
@@ -25,8 +17,7 @@
     "t4": "The things have text",
     "t5": "There are sublists",
     "t6": "The sublists are nested",
-    "t7": "The things are in the sublists",
-    "t8": "Hidden test"
+    "t7": "The things are in the sublists"
   },
 
   "why": {
@@ -36,8 +27,8 @@
     "few-items": "There are not eight things. Two groups and six under them make eight.",
     "empty-items": "There is a list item with no text in it. An empty box counts for nothing.",
     "no-sublists": "There are no sublists. Everything sits on one level, as if all eight things were equal. They are not.",
-    "not-nested": "You made a sublist, but it is NEXT TO the group, not INSIDE it. On screen it looks the same — indented, with bullets. But to the browser these are two separate lists side by side. The water is not under drinks — it is beside them.",
-    "too-deep": "You nested a third level. There are two levels here: groups and the things under them. Nothing goes under something that is already under something."
+    "not-nested": "You made a sublist, but it is NEXT TO the group, not INSIDE it. On screen it looks the same — indented, with bullets. But to the browser these are two separate lists side by side. The water is not under drinks — it is beside them."
+    
   },
 
   "hints": {

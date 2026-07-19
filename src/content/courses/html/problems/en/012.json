@@ -1,0 +1,126 @@
+{
+  "title": "The Page With Everything",
+
+  "statement": "Empty editor. Build the page shown in the target on the right.\n\nFour things: an image, a video, audio and a map. Each has its own tag and you know all of them.\n\nThe hard part is elsewhere. On your screen this page will look equally fine no matter how much of it you've broken.\n\nA video without controls looks like a photo. A map without a name looks like a map. A video without captions looks like a video. And autoplay your browser blocks anyway — so you won't notice you left it in.\n\nGo through each thing and ask not \"is it visible\", but \"who can't use it\".",
+
+  "constraints": [
+    "Heading: Nordic Bikes workshop",
+    "Four parts, each with its own subheading",
+    "A photo of the workshop, described",
+    "A video the visitor starts themselves",
+    "The video has captions and a download link in case it won't play",
+    "Audio, also started by the visitor",
+    "A map in a window onto someone else's site, with a real name",
+    "Nothing starts without being asked"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a main heading",
+    "t3": "There are four subheadings",
+    "t4": "There is an image",
+    "t5": "The image has a description",
+    "t6": "The description isn't empty",
+    "t7": "There is a video",
+    "t8": "The video knows which file",
+    "t9": "The video's file isn't empty",
+    "t10": "The video has controls",
+    "t11": "The video has captions",
+    "t12": "The captions point at a file",
+    "t13": "There is a download link for the video",
+    "t14": "There is audio",
+    "t15": "The audio knows which file",
+    "t16": "The audio has controls",
+    "t17": "There is an embedded window",
+    "t18": "The window knows what to show",
+    "t19": "The address isn't empty",
+    "t20": "The window has a name",
+    "t21": "The name isn't empty",
+    "t22": "Every link has an address"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the page yourself.",
+
+    "not-closed": "Some tag is opened and never closed.\n\nNote: video, audio and the embedded window all have closing tags, unlike an image. Even when there's nothing between the two.",
+
+    "no-heading": "There is no main heading, or it is empty.",
+
+    "no-sections": "There aren't four subheadings. The workshop, the video, the audio and the map are four separate parts.",
+
+    "no-img": "There is no image.",
+
+    "no-alt": "The image has no description, or it is empty.\n\nYou can see the picture. The description is for the person who can't — the blind visitor, the search engine, and you, when the file goes missing.",
+
+    "no-video": "There is no video.",
+
+    "no-src": "The video doesn't say which file to play, or the address is empty.\n\nAn empty video is a black rectangle that does nothing.",
+
+    "no-controls": "There's a video or audio with no controls.\n\nWithout them the visitor is looking at a still picture and can't start it. They don't know it's a video — it looks like a photo.\n\nAnd for audio it's worse: without controls there's nothing on screen at all. Just empty space.",
+
+    "no-track": "The video has no captions.\n\nFor a deaf visitor that's the only way to know what's being said. Without them, the video is a silent picture.\n\nAnd not only for them: half the people watching video have the sound off — on the bus, in an office, next to a sleeping child.",
+
+    "no-track-src": "The captions are there, but they don't point at a file.",
+
+    "no-fallback": "There's nothing between the opening and closing tags of the video.\n\nThis is why video has a closing tag when an image doesn't: that empty space isn't empty. It's where everything lives that happens when something goes wrong.\n\nAn old browser, a broken file, an unsupported format — then the visitor sees whatever you put inside. Put nothing, and they see nothing.",
+
+    "no-audio": "There is no audio.",
+
+    "no-audio-src": "The audio doesn't say which file to play, or the address is empty.",
+
+    "no-iframe": "There is no embedded window.\n\nA map isn't built with HTML — it's a whole site in itself. You don't need to build it, you need to borrow it.",
+
+    "no-iframe-src": "The window doesn't say which page to show, or the address is empty. An empty window looks at nothing.",
+
+    "no-iframe-title": "The window has no name, or the name is empty.\n\nA blind visitor reaches it and hears… nothing. They don't know whether it's a map, a video, an advert or emptiness. They don't know whether to go into it at all.\n\nNote: this isn't the page name from the head — the word just happens to match.",
+
+    "empty-href": "There is a link with an empty address.",
+
+    "autoplay": "You've left something to start on its own.\n\nYour browser blocks it — which is why it looks fine on your machine. On someone else's it won't be blocked.\n\nThink of the last time you opened a site and something suddenly started talking. What did you do? You closed the tab. You didn't go looking for the stop button — you just left.\n\nYou're making a decision on behalf of the person at the other end: about their speakers, in their room, next to their sleeping child."
+  },
+
+  "hints": {
+    "no-controls": [
+      "Load the page and try to start the video. How?",
+      "Lesson 39: one attribute with no value. No quotes, no equals sign — just the word.",
+      "The audio wants the same. Without it there's nothing of it on screen at all."
+    ],
+    "no-track": [
+      "Who can't use this video, even when everything works?",
+      "Lesson 39: a separate tag INSIDE the video, pointing at a file with the text.",
+      "It wants an address, a kind and a language. Without an address it's an empty shell."
+    ],
+    "no-fallback": [
+      "Why does video have a closing tag when an image doesn't?",
+      "Because you can put something between the two. It shows when the video won't play.",
+      "Put a link to the file itself — so at least they can download it."
+    ],
+    "no-iframe-title": [
+      "Close your eyes and imagine arriving at this window. What do you hear?",
+      "There's an attribute that says what's inside — before the visitor decides whether to go in.",
+      "And don't write \"iframe\". That's the same mistake as a description saying \"image\" — you're telling them what their computer already told them."
+    ],
+    "autoplay": [
+      "Go through your attributes one by one. Is there one making a decision for the visitor?",
+      "It works. Browsers block it not because it's broken, but because everyone hates it.",
+      "Take it out. The controls stay — the visitor decides."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to drop in the four tags, give each one a file, and look at the result. It looks exactly like a workshop page.\n\nAnd that's the trap of this whole module: every one of the failures looks fine from your chair.\n\nA video without controls is a still picture — you know it's a video, because you put it there. The visitor sees a photo.\n\nA video without captions looks like a video — to you. A deaf visitor sees moving lips.\n\nA window without a name looks like a map — to you. A blind visitor hears \"embedded window\" and that's it.\n\nAutoplay doesn't blow up on your machine, because your browser stops it. On someone with an older browser it won't.\n\nSo the question here isn't \"is it visible\". It's \"who can't use it\".",
+    "steps": [
+      "Start with the heading and the four subheadings. They're the skeleton.",
+      "The image is easy and you already know it: a file and a description.",
+      "The video wants a file and controls. Controls is an attribute with no value — just the word.",
+      "Then the captions: a separate tag inside the video, pointing at the file with the text.",
+      "And the way out: between the opening and closing tags, put a link to the file itself.",
+      "Audio works the same way — same attributes, same rules, just no picture.",
+      "The map is someone else's page in a window. Give it an address and a name that says what's inside.",
+      "Finally go through it all again and ask: does anything start without being asked?"
+    ],
+    "code": "<body>\n  <h1>Nordic Bikes workshop</h1>\n\n  <h2>The workshop</h2>\n  <img src=\"workshop.jpg\" alt=\"A workbench with wheels hanging above it\">\n\n  <h2>Watch it in action</h2>\n  <video src=\"build.mp4\" controls>\n    <track src=\"build.vtt\" kind=\"captions\" srclang=\"en\" label=\"English\">\n    <a href=\"build.mp4\">Download the video</a>\n  </video>\n\n  <h2>Listen to the shop</h2>\n  <audio src=\"shop.mp3\" controls>\n    <a href=\"shop.mp3\">Download the audio</a>\n  </audio>\n\n  <h2>Where to find us</h2>\n  <iframe src=\"https://example.com/map\" title=\"Map showing the workshop entrance on Bulgaria Street\"></iframe>\n</body>",
+    "note": "Count how many of the things you fixed are visible on screen. Not one.\n\nThe controls, the captions, the fallback link, the window's name, the autoplay you removed — all invisible from your chair, and all of them decide whether anyone can use your page.\n\nThat's this whole module in one page: media is where it's easiest to build something that works only for you."
+  }
+}

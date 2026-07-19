@@ -1,6 +1,30 @@
 // ⚠ ГЕНЕРИРАН ФАЙЛ. Не го пипай — ще бъде презаписан.
 // Пише се от: node scripts/build-registry.mjs
 
+// ── css ──
+import { meta as css_meta } from './css/meta.js';
+import css_outline from './css/outline.js';
+import css_l0 from './css/lessons/01-ugly.js';
+import css_l1 from './css/lessons/02-where.js';
+import css_l2 from './css/lessons/03-rule.js';
+import css_l3 from './css/lessons/04-stylesheet.js';
+import css_l4 from './css/lessons/05-defaults.js';
+import css_l5 from './css/lessons/R1-review-intro.js';
+import css_bg_course from '@/content/courses/css/bg/_course.json';
+import css_bg_0 from '@/content/courses/css/bg/01-ugly.json';
+import css_bg_1 from '@/content/courses/css/bg/02-where.json';
+import css_bg_2 from '@/content/courses/css/bg/03-rule.json';
+import css_bg_3 from '@/content/courses/css/bg/04-stylesheet.json';
+import css_bg_4 from '@/content/courses/css/bg/05-defaults.json';
+import css_bg_5 from '@/content/courses/css/bg/R1-review-intro.json';
+import css_en_course from '@/content/courses/css/en/_course.json';
+import css_en_0 from '@/content/courses/css/en/01-ugly.json';
+import css_en_1 from '@/content/courses/css/en/02-where.json';
+import css_en_2 from '@/content/courses/css/en/03-rule.json';
+import css_en_3 from '@/content/courses/css/en/04-stylesheet.json';
+import css_en_4 from '@/content/courses/css/en/05-defaults.json';
+import css_en_5 from '@/content/courses/css/en/R1-review-intro.json';
+
 // ── html ──
 import { meta as html_meta } from './html/meta.js';
 import html_outline from './html/outline.js';
@@ -83,7 +107,23 @@ import html_l75 from './html/lessons/R8-review-tables.js';
 import html_l76 from './html/lessons/R9-review-forms.js';
 import html_p0 from './html/problems/001-first-page.js';
 import html_p1 from './html/problems/002-build-a-list.js';
-import html_p2 from './html/problems/003-list-in-list.js';
+import html_p2 from './html/problems/003-three-levels.js';
+import html_p3 from './html/problems/004-real-form.js';
+import html_p4 from './html/problems/005-links-that-work.js';
+import html_p5 from './html/problems/006-table-or-not.js';
+import html_p6 from './html/problems/007-price-went-up.js';
+import html_p7 from './html/problems/008-say-what-it-is.js';
+import html_p8 from './html/problems/009-ready-to-publish.js';
+import html_p9 from './html/problems/010-the-vanished-list.js';
+import html_p10 from './html/problems/011-show-dont-run.js';
+import html_p11 from './html/problems/012-the-media-page.js';
+import html_p12 from './html/problems/013-name-and-value.js';
+import html_p13 from './html/problems/014-where-is-it-from-here.js';
+import html_p14 from './html/problems/015-right-thing-wrong-place.js';
+import html_p15 from './html/problems/016-the-field-knows.js';
+import html_p16 from './html/problems/017-two-ways-to-name.js';
+import html_p17 from './html/problems/018-what-kind-of-list.js';
+import html_p18 from './html/problems/019-one-thought-many-lines.js';
 import html_bg_course from '@/content/courses/html/bg/_course.json';
 import html_bg_0 from '@/content/courses/html/bg/01-intro.json';
 import html_bg_1 from '@/content/courses/html/bg/02-structure.json';
@@ -165,6 +205,22 @@ import html_bg_76 from '@/content/courses/html/bg/R9-review-forms.json';
 import html_bg_p0 from '@/content/courses/html/problems/bg/001.json';
 import html_bg_p1 from '@/content/courses/html/problems/bg/002.json';
 import html_bg_p2 from '@/content/courses/html/problems/bg/003.json';
+import html_bg_p3 from '@/content/courses/html/problems/bg/004.json';
+import html_bg_p4 from '@/content/courses/html/problems/bg/005.json';
+import html_bg_p5 from '@/content/courses/html/problems/bg/006.json';
+import html_bg_p6 from '@/content/courses/html/problems/bg/007.json';
+import html_bg_p7 from '@/content/courses/html/problems/bg/008.json';
+import html_bg_p8 from '@/content/courses/html/problems/bg/009.json';
+import html_bg_p9 from '@/content/courses/html/problems/bg/010.json';
+import html_bg_p10 from '@/content/courses/html/problems/bg/011.json';
+import html_bg_p11 from '@/content/courses/html/problems/bg/012.json';
+import html_bg_p12 from '@/content/courses/html/problems/bg/013.json';
+import html_bg_p13 from '@/content/courses/html/problems/bg/014.json';
+import html_bg_p14 from '@/content/courses/html/problems/bg/015.json';
+import html_bg_p15 from '@/content/courses/html/problems/bg/016.json';
+import html_bg_p16 from '@/content/courses/html/problems/bg/017.json';
+import html_bg_p17 from '@/content/courses/html/problems/bg/018.json';
+import html_bg_p18 from '@/content/courses/html/problems/bg/019.json';
 import html_en_course from '@/content/courses/html/en/_course.json';
 import html_en_0 from '@/content/courses/html/en/01-intro.json';
 import html_en_1 from '@/content/courses/html/en/02-structure.json';
@@ -246,8 +302,65 @@ import html_en_76 from '@/content/courses/html/en/R9-review-forms.json';
 import html_en_p0 from '@/content/courses/html/problems/en/001.json';
 import html_en_p1 from '@/content/courses/html/problems/en/002.json';
 import html_en_p2 from '@/content/courses/html/problems/en/003.json';
+import html_en_p3 from '@/content/courses/html/problems/en/004.json';
+import html_en_p4 from '@/content/courses/html/problems/en/005.json';
+import html_en_p5 from '@/content/courses/html/problems/en/006.json';
+import html_en_p6 from '@/content/courses/html/problems/en/007.json';
+import html_en_p7 from '@/content/courses/html/problems/en/008.json';
+import html_en_p8 from '@/content/courses/html/problems/en/009.json';
+import html_en_p9 from '@/content/courses/html/problems/en/010.json';
+import html_en_p10 from '@/content/courses/html/problems/en/011.json';
+import html_en_p11 from '@/content/courses/html/problems/en/012.json';
+import html_en_p12 from '@/content/courses/html/problems/en/013.json';
+import html_en_p13 from '@/content/courses/html/problems/en/014.json';
+import html_en_p14 from '@/content/courses/html/problems/en/015.json';
+import html_en_p15 from '@/content/courses/html/problems/en/016.json';
+import html_en_p16 from '@/content/courses/html/problems/en/017.json';
+import html_en_p17 from '@/content/courses/html/problems/en/018.json';
+import html_en_p18 from '@/content/courses/html/problems/en/019.json';
 
 export const registry = {
+  'css': {
+    meta: css_meta,
+    outline: css_outline,
+    logic: {
+      '01-ugly': css_l0,
+      '02-where': css_l1,
+      '03-rule': css_l2,
+      '04-stylesheet': css_l3,
+      '05-defaults': css_l4,
+      'R1-review-intro': css_l5,
+    },
+    problems: {
+    },
+    text: {
+      bg: {
+        _course: css_bg_course,
+        '01-ugly': css_bg_0,
+        '02-where': css_bg_1,
+        '03-rule': css_bg_2,
+        '04-stylesheet': css_bg_3,
+        '05-defaults': css_bg_4,
+        'R1-review-intro': css_bg_5,
+      },
+      en: {
+        _course: css_en_course,
+        '01-ugly': css_en_0,
+        '02-where': css_en_1,
+        '03-rule': css_en_2,
+        '04-stylesheet': css_en_3,
+        '05-defaults': css_en_4,
+        'R1-review-intro': css_en_5,
+      },
+    },
+    problemText: {
+      bg: {
+      },
+      en: {
+      },
+    },
+    locales: ["bg","en"],
+  },
   'html': {
     meta: html_meta,
     outline: html_outline,
@@ -333,7 +446,23 @@ export const registry = {
     problems: {
       'first-page': html_p0,
       'build-a-list': html_p1,
-      'list-in-list': html_p2,
+      'three-levels': html_p2,
+      'real-form': html_p3,
+      'links-that-work': html_p4,
+      'table-or-not': html_p5,
+      'price-went-up': html_p6,
+      'say-what-it-is': html_p7,
+      'ready-to-publish': html_p8,
+      'the-vanished-list': html_p9,
+      'show-dont-run': html_p10,
+      'the-media-page': html_p11,
+      'name-and-value': html_p12,
+      'where-is-it-from-here': html_p13,
+      'right-thing-wrong-place': html_p14,
+      'the-field-knows': html_p15,
+      'two-ways-to-name': html_p16,
+      'what-kind-of-list': html_p17,
+      'one-thought-many-lines': html_p18,
     },
     text: {
       bg: {
@@ -502,15 +631,47 @@ export const registry = {
         '1': html_bg_p0,
         '2': html_bg_p1,
         '3': html_bg_p2,
+        '4': html_bg_p3,
+        '5': html_bg_p4,
+        '6': html_bg_p5,
+        '7': html_bg_p6,
+        '8': html_bg_p7,
+        '9': html_bg_p8,
+        '10': html_bg_p9,
+        '11': html_bg_p10,
+        '12': html_bg_p11,
+        '13': html_bg_p12,
+        '14': html_bg_p13,
+        '15': html_bg_p14,
+        '16': html_bg_p15,
+        '17': html_bg_p16,
+        '18': html_bg_p17,
+        '19': html_bg_p18,
       },
       en: {
         '1': html_en_p0,
         '2': html_en_p1,
         '3': html_en_p2,
+        '4': html_en_p3,
+        '5': html_en_p4,
+        '6': html_en_p5,
+        '7': html_en_p6,
+        '8': html_en_p7,
+        '9': html_en_p8,
+        '10': html_en_p9,
+        '11': html_en_p10,
+        '12': html_en_p11,
+        '13': html_en_p12,
+        '14': html_en_p13,
+        '15': html_en_p14,
+        '16': html_en_p15,
+        '17': html_en_p16,
+        '18': html_en_p17,
+        '19': html_en_p18,
       },
     },
     locales: ["bg","en"],
   },
 };
 
-export const courseSlugs = ["html"];
+export const courseSlugs = ["css","html"];

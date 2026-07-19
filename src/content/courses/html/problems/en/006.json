@@ -1,0 +1,113 @@
+{
+  "title": "What's a Table and What Only Looks Like One",
+
+  "statement": "Empty editor. Build the page shown in the target on the right.\n\nThere is no new tag here. Everything you need, you've already learned.\n\nThe hard part is the decision. Some things on this page sit in rows and columns on screen — and only one of them is a table. The other just happens to line up.\n\nThe question from lesson 54 does all the work: take one cell and say what it means. If there's an answer, it's a table. If there isn't, it's not.",
+
+  "constraints": [
+    "The shop is called Nordic Bikes",
+    "Menu: Home, Bikes, Contact — every link goes somewhere",
+    "Main part: subheading Our range and a sentence under it",
+    "Three bikes, each with: model, number of gears, price",
+    "Mountain 21 1200 · City 7 640 · Racing 18 1850",
+    "The data has a name, and the columns have names",
+    "At the bottom: Written by Ivan. All rights reserved."
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is exactly one table",
+    "t3": "The table has at least four rows",
+    "t4": "There are three header cells",
+    "t5": "There are nine data cells",
+    "t6": "The table has a name",
+    "t7": "There is a top part",
+    "t8": "There is a main part",
+    "t9": "There is a bottom part",
+    "t10": "The table is inside the main part",
+    "t11": "There is a main heading",
+    "t12": "The menu is a list of three links",
+    "t13": "Every link has an address",
+    "t14": "There is a subheading",
+    "t15": "There is text at the bottom"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the page yourself.",
+
+    "not-closed": "Some tag is opened and never closed. The table is the usual place: every <tr> and every <td> wants closing, and there are a lot of them.",
+
+    "wrong-table-count": "There isn't exactly one table.\n\nIf there are none — the bike data is somewhere else, and that data is a real table: the cell 640 means the price of the city bike. It gets its meaning from its row and its column.\n\nIf there are two or more — you've put something in a table that isn't one. Ask about each: what is the cell at row 2, column 1, and what does it mean? No answer means no table.",
+
+    "few-rows": "The table doesn't have four rows. Three bikes make three rows, and above them sits the row with the column names. Four in total.",
+
+    "no-th": "There aren't three header cells.\n\nModel, Gears and Price aren't data. They are the NAMES of the columns. With <td> your code claims Model is a value — like 1200. It isn't.\n\nWithout them a blind visitor hears only 640 and wonders what that number is. With them they hear: Price, 640.",
+
+    "few-cells": "There aren't nine data cells. Three bikes times three things each — model, gears, price — makes nine.",
+
+    "no-caption": "The table has no name, or the name is empty.\n\nThe page heading doesn't do this job — it belongs to the page, not to the table. Lift the table out and put it somewhere else, and it still has to say what it holds and from when.",
+
+    "no-header": "There is no top part. The shop name and the menu sit up top — they are one thing and they have a tag of their own.",
+
+    "no-main": "There is no main part. The visitor came for the bikes — that's the substance. The menu and the bottom note repeat on every page.",
+
+    "no-footer": "There is no bottom part. Written by Ivan, all rights reserved — that's the fine print. It has its own tag.",
+
+    "table-outside-main": "The table isn't inside the main part. It is the substance of this page — it belongs inside the main content, not beside it.",
+
+    "no-heading": "There is no main heading, or it is empty.",
+
+    "nav-not-list": "The menu isn't a list of three links inside navigation.\n\nThree links side by side look like a menu. To a screen reader, though, they are three separate things scattered through the text. A list says: these are three choices from the same place.",
+
+    "empty-href": "There is a link with an empty address. It's blue, underlined and clickable — and it goes nowhere.",
+
+    "no-subheading": "There is no subheading, or it is empty. The main part opens with a heading of its own.",
+
+    "no-footer-text": "The bottom part is empty, or there is no paragraph in it.",
+
+    "layout-table": "You've put something into the table that isn't data.\n\nOn screen it works — a table will line up whatever you give it. That's exactly why the entire internet was built this way for twenty years.\n\nBut the screen reader announces: table, three rows, two columns. The person braces themselves — data is coming. And what they get is a menu, an article and a footnote, diced into cells. Row 2, cell 1: link Home, link Bikes.\n\nWhat does the cell at row 2, column 1 mean? Nothing. So it isn't a table."
+  },
+
+  "hints": {
+    "wrong-table-count": [
+      "Go through the things on the page one at a time and ask about each: does this have rows and columns?",
+      "Similar case: a train timetable — time, destination, platform. The cell 14:20 means the departure time of the train to Varna. There's an answer. Now a menu and an article side by side: what row do they share? There isn't one.",
+      "One thing on this page is a table. Everything else merely sits in rows on screen."
+    ],
+    "no-th": [
+      "The first row of the table isn't like the others. It isn't data.",
+      "Similar case: <tr><th>Day</th><th>Time</th></tr>. The row says what's coming below.",
+      "Three columns means three names. All three cells in the first row, closing tags included."
+    ],
+    "no-caption": [
+      "The table has a name of its own, separate from the page heading.",
+      "Its place is INSIDE the table — the first thing after the opening tag, before the first row.",
+      "Say what the table holds and from when. Prices go stale."
+    ],
+    "layout-table": [
+      "Something that isn't data has ended up inside the table.",
+      "Check the menu, the top part and the bottom one. They sit where they sit because of meaning, not because of a grid.",
+      "Arranging things on screen is the job of CSS, not of a table. It will look worse. The code will tell the truth."
+    ],
+    "nav-not-list": [
+      "A menu is an enumeration. There's a tag for exactly that, and a second one that says this is navigation.",
+      "Each link goes into its own list item."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to ask what looks like a table. On screen both the menu and the bike data come out in neat rows — both can be built with <table>, and both will look fine.\n\nBut a table isn't a grid for arranging things. A table is data that has rows and columns.\n\nThe question that settles it: take a cell from the middle and say what it means. 640 — that's the price of the city bike. There's an answer, because the cell gets its meaning from its row and its column. Now take the cell holding the menu: it's row 2, column 1 of what? Of nothing. It sits there because you put it there.\n\nOne of them is a table. The other is a layout built with the wrong tool.",
+    "steps": [
+      "Split the page into three: top, substance, bottom. Each of the three has its own tag.",
+      "The top holds the shop name and the menu. The menu is an enumeration of links — a list, inside navigation.",
+      "The substance opens with its own subheading and a sentence below it.",
+      "Now the data. Three bikes, three things each — that has rows and columns. Here a table belongs.",
+      "The first row of the table isn't a bike. It's the column names, and it wants its own tag.",
+      "Give the table a name. It goes inside the table, first, before the rows.",
+      "The fine print stays at the bottom.",
+      "Finally, go back and count the tables. There should be one. If there's a second, ask it the cell question."
+    ],
+    "code": "<body>\n  <header>\n    <h1>Nordic Bikes</h1>\n    <nav>\n      <ul>\n        <li><a href=\"index.html\">Home</a></li>\n        <li><a href=\"bikes.html\">Bikes</a></li>\n        <li><a href=\"contact.html\">Contact</a></li>\n      </ul>\n    </nav>\n  </header>\n  <main>\n    <h2>Our range</h2>\n    <p>Three frames, built in the same workshop.</p>\n    <table>\n      <caption>Bike models and prices, July 2025</caption>\n      <tr>\n        <th>Model</th>\n        <th>Gears</th>\n        <th>Price</th>\n      </tr>\n      <tr>\n        <td>Mountain</td>\n        <td>21</td>\n        <td>1200</td>\n      </tr>\n      <tr>\n        <td>City</td>\n        <td>7</td>\n        <td>640</td>\n      </tr>\n      <tr>\n        <td>Racing</td>\n        <td>18</td>\n        <td>1850</td>\n      </tr>\n    </table>\n  </main>\n  <footer>\n    <p>Written by Ivan. All rights reserved.</p>\n  </footer>\n</body>",
+    "note": "Not a single tag here was new. The hard part was deciding what goes where — and the brief deliberately didn't tell you.\n\nFrom here on, that's what the work looks like. Nobody will tell you whether this is a table. They'll hand you data and ask why it comes out crooked on a phone."
+  }
+}

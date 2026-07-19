@@ -8,8 +8,9 @@ import {
   balanced,
 } from './helpers';
 import { runAxe } from './axeCheck';
+import { runStyles } from './styleCheck';
 
-function runCheck(check, code, starter, axeMap) {
+function runCheck(check, code, starter, axeMap, styleMap) {
   const clean = removeHtmlComments(code);
   const doc = parse(code);
   const v = check.value;
@@ -101,6 +102,37 @@ function runCheck(check, code, starter, axeMap) {
     case 'text_not_contains':
       return !visibleText(code).includes(norm(v));
 
+      // ── getComputedStyle ──
+    // { id:"c1", type:"style_is", value:"h1", prop:"color", expect:"red",
+    //   err:"wrong-color", errNoMatch:"no-h1", weight:200 }
+    //
+    // Ученикът може да напише red, #f00, rgb(255,0,0) или hsl(0,100%,50%).
+    // И четирите минават — защото браузърът казва, че са едно и също.
+    //
+    // errNoMatch е ОТДЕЛЕН текст. „Цветът не е червен" е грешно съобщение
+    // за човек, който е написал `h1 ,{` и селекторът му не улучва нищо.
+    //
+    //   style_is       стойността Е тази
+    //   style_is_not   стойността НЕ е тази (за „махни подразбиращото се")
+    //   style_matches  pattern: регулярен израз върху сметнатата стойност
+    //   style_applies  само: селекторът улучва поне един елемент
+    case 'style_is':
+    case 'style_is_not':
+    case 'style_matches':
+    case 'style_applies': {
+      const r = styleMap?.[check.id];
+      if (!r) return false;                       // не се е пуснало → пада
+      if (r.ok) return true;
+      if (r.reason === 'nomatch') return { ok: false, err: check.errNoMatch ?? check.err };
+      if (r.reason === 'spec') {
+        console.error('style: невалидна проверка в урока', check.id, check);
+        return false;
+      }
+      return false;
+    }
+
+    case 'balanced':
+
     case 'balanced':
       return balanced(code);
 
@@ -135,7 +167,7 @@ export async function checkProblem(problem, code) {
     checks.filter((c) => c.type === 'axe_clean').map((c) => c.value)
   )];
 
-  let axeMap = {};
+let axeMap = {};
   if (rules.length) {
     try {
       axeMap = await runAxe(code, rules);
@@ -147,14 +179,45 @@ export async function checkProblem(problem, code) {
     }
   }
 
-  const results = checks.map((c) => ({
-    id: c.id,
-    hidden: !!c.hidden,
-    err: c.err,
-    weight: c.weight ?? 0,
-    guard: !!c.guard,
-    ok: runCheck(c, code, problem.starterCode, axeMap),
-  }));
+  // Един пуск на рамката за ВСИЧКИ style_* проверки, както при axe.
+  // Няма style_* → нула рамка, нула забавяне. Старите уроци не усещат нищо.
+  const styleSpecs = checks
+    .filter((c) => typeof c.type === 'string' && c.type.startsWith('style_'))
+    .map((c) => ({
+      id: c.id,
+      sel: c.value,
+      prop: c.prop,
+      expect: c.expect,
+      pattern: c.pattern,
+      mode:
+        c.type === 'style_is_not' ? 'not' :
+        c.type === 'style_matches' ? 'matches' :
+        c.type === 'style_applies' ? 'applies' : 'is',
+    }));
+
+  let styleMap = {};
+  if (styleSpecs.length) {
+    try {
+      styleMap = await runStyles(code, styleSpecs);
+    } catch (e) {
+      console.error('style:', e);
+      styleMap = {};
+    }
+  }
+
+  const results = checks.map((c) => {
+    const raw = runCheck(c, code, problem.starterCode, axeMap, styleMap);
+    const ok = typeof raw === 'boolean' ? raw : !!raw.ok;
+    const err = typeof raw === 'boolean' ? c.err : (raw.err ?? c.err);
+    return {
+      id: c.id,
+      hidden: !!c.hidden,
+      err,
+      weight: c.weight ?? 0,
+      guard: !!c.guard,
+      ok,
+    };
+  });
 
   const passed = results.every((r) => r.ok);
 

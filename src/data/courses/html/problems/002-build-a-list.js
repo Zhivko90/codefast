@@ -47,7 +47,5 @@ export default {
     { id: 't5', type: 'dom_count', value: 'ul', min: 3, err: 'no-sublists', weight: 150 },
     { id: 't6', type: 'dom_count', value: 'li ul', min: 2, err: 'not-nested', weight: 145 },
     { id: 't7', type: 'dom_count', value: 'li ul li', min: 6, err: 'not-nested', weight: 140 },
-
-    { id: 't8', type: 'dom_not_has', value: 'li ul li ul', err: 'too-deep', weight: 60, hidden: true },
   ],
 };

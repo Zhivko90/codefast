@@ -1,0 +1,103 @@
+{
+  "title": "Ready to Publish",
+
+  "statement": "The page on the right works. Open it on your laptop — nothing is broken. The text is there, the image is there, the link is there.\n\nTomorrow you publish it. And then: on a phone it comes out tiny and gets read two fingers at a time. Share it and a bare address appears, nothing else. A search engine lists it with no name. A blind visitor hears image and link.\n\nNone of that is visible from here.\n\nThe tests are hidden. They'll tell you which direction to look; they won't point at the line.\n\nAnd one warning: deleting is not fixing. Everything on this page stays.",
+
+  "constraints": [
+    "Don't touch the content — heading, two paragraphs, image, link",
+    "The page says what language it's in",
+    "The page has a real name, not an empty one",
+    "The alphabet is declared — otherwise non-Latin text falls apart",
+    "On a phone it displays like it's meant for a phone",
+    "Shared, it comes out with a name and a picture",
+    "The image is described",
+    "The link goes somewhere"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "t2": "You changed the code",
+    "g1": "Everything is closed",
+    "p1": "The heading is still there",
+    "p2": "Both paragraphs are still there",
+    "p3": "The paragraphs aren't empty",
+    "p4": "The image is still there",
+    "p5": "The link is still there"
+  },
+
+  "why": {
+    "empty": "The editor is empty. Deleting is not fixing. Bring the code back.",
+
+    "untouched": "The code is exactly the one I gave you. You haven't changed anything.\n\nThat's normal — the page looks fine. That's precisely what makes it hard.",
+
+    "not-closed": "Something is opened and never closed, or closed in the wrong place.",
+
+    "lost-content": "You deleted something instead of fixing it.\n\nThe content isn't the mistake. The heading, both paragraphs, the image and the link all stay to the end. The mistake is in what the page does NOT say about itself.\n\nBring back what you deleted.",
+
+    "no-lang": "The page doesn't say what language it's in, or says it empty.\n\nA screen reader has to decide how to pronounce the words. Without a language it guesses — and reads English text with the wrong rules, or the other way round. The result is nonsense, delivered confidently.\n\nAnd the browser's translator offers nothing, because it doesn't know what to translate from.",
+
+    "no-title": "The page has no name, or the name is empty.\n\nThis is the first thing anyone sees in search results, and the only thing they see in bookmarks and in the browser tab.\n\nAn empty name isn't a small omission. It's a page that isn't called anything — and nobody can find it, save it, or come back to it.",
+
+    "no-charset": "The alphabet isn't declared, or is declared empty.\n\nThe browser has to decide how to read the bytes. Get it wrong and non-Latin text falls apart into question marks and boxes.\n\nWith English text you might not notice. The first Cyrillic word will show you.",
+
+    "no-viewport": "The page doesn't say how to display on a phone, or says it empty.\n\nWithout it, a phone assumes the page was built for a wide screen and shrinks the whole thing to fit. The letters become unreadable. The visitor pinches out and drags sideways to read line by line.\n\nMore than half the people who open your page will do exactly that.",
+
+    "no-og": "The page doesn't say how it should look when shared — or says it empty.\n\nSend the address in a chat or post it on social media and a bare link shows up. No name, no picture, nothing.\n\nThe same address, shared from a prepared page, arrives as a card with a heading and an image. That difference decides whether anyone clicks.",
+
+    "no-alt": "There is an image with no description, or with an empty one.\n\nYou can see the picture. The description is for the person who can't — the blind visitor, the search engine, and you, when the file goes missing and a broken square is all that's left.",
+
+    "empty-href": "There is a link with an empty address, or with an address that doesn't lead to a page.\n\nThe browser still paints it blue and still underlines it. It looks like a link, behaves like a link, clicks like a link. And it goes nowhere."
+  },
+
+  "hints": {
+    "no-lang": [
+      "Look at the outermost tag of the page. Does it say anything about itself?",
+      "One attribute, a two-letter value. Lesson 11 gave it to you.",
+      "Careful: an empty value still counts as \"the attribute exists\". It has to say which language."
+    ],
+    "no-title": [
+      "There's a tag in the head that's present but says nothing.",
+      "It's empty. An empty tag exists — and that's exactly why it's easy to walk past.",
+      "Write what this page is, the way you'd want to see it in search results. Not just the company name."
+    ],
+    "no-charset": [
+      "The head of the page is nearly bare. What was supposed to be in it, from lesson 11?",
+      "The browser has to know how to read the letters before it can show them.",
+      "Try it yourself: put one non-Latin word in the text and load it. See what comes out."
+    ],
+    "no-viewport": [
+      "Shrink the browser window as far as it goes. Now imagine that's a phone.",
+      "Lesson 64 gave a line that tells a phone: your width is the width of the screen.",
+      "It's a line in the head, like the one for the alphabet."
+    ],
+    "no-og": [
+      "Copy the page address and send it to yourself in a chat. What shows up on the other side?",
+      "Lesson 65 gave tags that tell someone else's site how to display your page.",
+      "You need at least the two basics: what it's called and which picture to show."
+    ],
+    "no-alt": [
+      "An image has an attribute that says what can be seen in it.",
+      "Read it out loud without looking at the picture. Did the other person understand what's in it?"
+    ],
+    "empty-href": [
+      "Click the link. Where did it take you?",
+      "The attribute is there, but empty. An empty attribute passes every test for \"is there an address\"."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to load the page and look at it. It looks fine — so it is fine.\n\nBut everything broken here lives outside your screen. The language is only heard by a screen reader. The alphabet only fails on non-Latin text. The width only fails on a phone. The share picture is only seen in someone else's chat. The page name is only seen in search results.\n\nThat's the whole difference between a page that works and a page that's ready to publish. The first works for you. The second works for everyone else.\n\nWhich is why the head of a page is the most neglected part of HTML: nothing in it is visible, and every omission is paid for by somebody else.",
+    "steps": [
+      "Start with the outermost tag. It should say what language the page is in.",
+      "Go into the head. It's nearly bare — and it's the place where a page says what it is.",
+      "The alphabet first. Without it, the first non-Latin letter falls apart.",
+      "Then the width for phones. Without it the page shrinks and gets read two fingers at a time.",
+      "The name is there, but empty. Write it the way you want it read in search results.",
+      "Then add how the page should look when shared: a name and a picture.",
+      "Go down into the body. The image shows up, but it isn't described.",
+      "Finally, click the link. Does it go anywhere?"
+    ],
+    "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Nordic Coffee — small batch roastery in Dobrich</title>\n  <meta property=\"og:title\" content=\"Nordic Coffee\">\n  <meta property=\"og:image\" content=\"roastery.jpg\">\n</head>\n<body>\n  <h1>Nordic Coffee</h1>\n  <p>We roast every batch in small quantities in a workshop in Dobrich.</p>\n  <img src=\"roastery.jpg\" alt=\"Sacks of green coffee beside a drum roaster\">\n  <p>Opening hours: 8 to 18, every day.</p>\n  <a href=\"contact.html\">Find us</a>\n</body>\n</html>",
+    "note": "Not one line of the content changed. Load the page before and after — it looks absolutely identical.\n\nThis is the last lesson of the course, said in code: HTML is full of things that aren't for the eye. The first was the page name. The second was the image description. The third was the semantic tags. Now the head.\n\nA page that works for you isn't a finished page. The finished one works for someone on a phone, on slow internet, in another alphabet, and without sight."
+  }
+}

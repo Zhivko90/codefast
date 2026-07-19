@@ -1,0 +1,68 @@
+{
+  "title": "A third place: a separate file",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t6": "The link is in the head",
+  "checkLabels.t4": "The heading is dark red",
+  "checkLabels.t5": "The paragraphs are brown",
+  "checkLabels.t7": "You didn't copy the styles over",
+  "checkLabels.t8": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of adding one line. Bring the code back.",
+
+  "why.untouched": "The code is exactly as it was. The styles.css file is sitting there ready, but the page doesn't know about it.",
+  "hint2.untouched": "Look at the two tabs above the editor. One is the page, the other is the stylesheet. The line that connects them is missing.",
+
+  "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "<link> closes itself. There is no </link> — if you wrote one, remove it.",
+
+  "why.no-h1": "There is no heading. You deleted the <h1> instead of adding the link.",
+  "hint2.no-h1": "You're adding one line to the head. The body stays untouched.",
+
+  "why.no-p": "There is not a single paragraph left. You deleted them.",
+  "hint2.no-p": "The two lines of text are fine. Only the link to the file is missing.",
+
+  "why.not-linked": "The page can't find styles.css. Either there is no <link>, or the path in it points at a file that doesn't exist.",
+  "hint2.not-linked": "Look at the name on the second tab above the editor. Letter by letter. Then compare it with what you wrote in href.",
+  "hint3.not-linked": "styles.css and style.css are different files. One missing character and the browser looks for something that isn't there. It doesn't complain. It just doesn't colour anything.",
+  "hint4.not-linked": "Add the line inside <head>. In href write the exact file name — styles.css.",
+
+  "why.link-in-body": "The link is outside <head>. It works, but that isn't where it belongs — same as <style> in lesson 02.",
+  "hint2.link-in-body": "The browser needs to know the styles BEFORE it paints the text. That's why they go in the head.",
+  "hint3.link-in-body": "Put them at the end and the browser paints everything black first, then repaints. On a slow connection people see the flash.",
+  "hint4.link-in-body": "Move the line between <head> and </head>.",
+
+  "why.h1-no-color": "The heading isn't dark red. The link found the file, but the heading is still black.",
+  "hint2.h1-no-color": "Open the styles.css tab. The h1 rule is there and it's correct. So the problem isn't in it.",
+  "hint3.h1-no-color": "Have you edited the stylesheet? It's given to you finished — this lesson is about the link, not about writing CSS.",
+  "hint4.h1-no-color": "Hit the bin to restore both files as they were, and add only the <link> line.",
+
+  "why.p-no-color": "The paragraphs aren't brown. The p rule does exist in the file.",
+  "hint2.p-no-color": "The check looks at both paragraphs, not the first one.",
+
+  "why.wrote-style-tag": "You wrote a <style> block in the page. It works — but that's exactly what we're avoiding here.",
+  "hint2.wrote-style-tag": "The styles are already written, in the other file. Don't copy them — link them.",
+  "hint3.wrote-style-tag": "A copy is a duplicate. Tomorrow the owner wants a different colour, you change it in the file, and the page keeps using the old copy. That's the very problem <link> solves.",
+  "hint4.wrote-style-tag": "Remove the <style> block. Leave only the <link> line.",
+
+  "why.lost-p": "A paragraph is gone. You're adding a link, not deleting text.",
+
+  "blocks.0.text": "Look above the editor. There are two tabs now. index.html is the page. styles.css is new — inside it are the styles you wrote in lesson 02, moved out.",
+  "blocks.1.text": "Open it. You'll see rules and nothing else — not one HTML tag, no <style>. You don't write those in a CSS file. The file IS the stylesheet.",
+
+  "blocks.2.text": "One line connects them",
+  "blocks.3.text": "Right now the page has no idea that file exists. That's why it's black. One line in its head says so:",
+  "blocks.5.items.0": "rel says what this is. For styles, always stylesheet.",
+  "blocks.5.items.1": "href is the path to the file. Same paths as with links and images.",
+  "blocks.5.items.2": "The tag closes itself. There is no </link>.",
+
+  "blocks.6.text": "Why this wins",
+  "blocks.7.text": "The cafe opens a second page: the menu. A third: contact. Each writes the same one line and gets the same styles. Change the colour in the file and it changes on all three. With <style> you'd be copying it three times.",
+  "blocks.8.text": "And something you can't see: the browser keeps the file once it has downloaded it. The second page doesn't fetch it again. That's why a site with an external stylesheet opens faster than one carrying its styles every time.",
+  "blocks.9.text": "So: <link> is the normal way. <style> — for a single page or while you're experimenting. The attribute on the tag — almost never.",
+
+  "blocks.10.text": "Add the line inside <head> of index.html. Don't touch styles.css — it's finished."
+}

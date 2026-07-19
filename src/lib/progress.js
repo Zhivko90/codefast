@@ -13,6 +13,17 @@ const CODE = (course, id) => `codefast-lesson-${course}-${id}`;
 const DONE_PREFIX = (course) => `codefast-done-${course}-`;
 const CODE_PREFIX = (course) => `codefast-lesson-${course}-`;
 
+// ⚠ ПРЕФИКСЪТ НЕ СТИГА.
+// 'codefast-lesson-css-grid-5' също започва с 'codefast-lesson-css-'.
+// Без тази проверка курс `css` поглъща уроците на `css-grid`,
+// Number('grid-5') дава NaN, и в базата влиза счупен ред.
+// Днес няма такъв курс. При сто курса ще има — и това е точно моментът,
+// в който човек си прави профил и напредъкът му изчезва.
+function idAfter(key, prefix) {
+  const rest = key.slice(prefix.length);
+  return /^\d+$/.test(rest) ? Number(rest) : null;
+}
+
 // ---------- ЛОКАЛНО (когато няма профил) ----------
 
 export function localDone(course) {
@@ -21,9 +32,9 @@ export function localDone(course) {
   try {
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if (k?.startsWith(p) && localStorage.getItem(k) === '1') {
-        out.add(Number(k.slice(p.length)));
-      }
+      if (!k?.startsWith(p) || localStorage.getItem(k) !== '1') continue;
+      const id = idAfter(k, p);
+      if (id !== null) out.add(id);
     }
   } catch {}
   return out;
@@ -130,15 +141,18 @@ export async function migrateLocal(userId, course) {
       if (!k) continue;
 
       if (k.startsWith(dp) && localStorage.getItem(k) === '1') {
-        rows.push({ user_id: userId, course, lesson_id: Number(k.slice(dp.length)) });
+        const id = idAfter(k, dp);
+        if (id !== null) rows.push({ user_id: userId, course, lesson_id: id });
       }
+
       if (k.startsWith(cp)) {
+        const id = idAfter(k, cp);
         const content = localStorage.getItem(k);
-        if (content) {
+        if (id !== null && content) {
           codes.push({
             user_id: userId,
             course,
-            lesson_id: Number(k.slice(cp.length)),
+            lesson_id: id,
             content,
             updated_at: new Date().toISOString(),
           });

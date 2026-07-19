@@ -1,0 +1,91 @@
+{
+  "title": "Links That Actually Go Somewhere",
+  "statement": "Empty editor. Build the page shown in the target on the right.\n\nThe link is blue. It's underlined. The cursor turns into a hand. You click it — and nothing happens.\n\nThe image shows up. It looks good. A blind visitor lands on it and the screen reader says: \"image\". That's all.\n\nEverything here looks fine. That's what makes it hard.",
+
+  "constraints": [
+    "Heading: Nordic Coffee",
+    "A menu of three links in a list: Home, Menu, Contact",
+    "Every link points at a real address",
+    "Second part: subheading Our beans, an image and a paragraph",
+    "Every image is described",
+    "At the end, a link out — the link itself is an image"
+  ],
+
+ "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a main heading",
+    "t3": "There are at least two images",
+    "t4": "At least two images have a description",
+    "t5": "No image has an empty description",
+    "t6": "There are at least four links",
+    "t7": "At least four links have an address",
+    "t8": "No link has an empty address",
+    "t9": "Every link says its own name",
+    "t10": "The menu is a list of links",
+    "t11": "There is a link out, with a full address",
+    "t12": "There is a link that is an image",
+    "t13": "There is a subheading",
+    "t14": "There is a paragraph with text"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the page yourself.",
+    "not-closed": "Some tag is opened and never closed. An image has no closing tag, but links, lists and paragraphs do.",
+    "no-heading": "There is no main heading, or it is empty.",
+    "few-images": "There aren't two images. One is the beans, the other is the award at the end.",
+  "no-alt": "There is an image with no description.\n\nThe description isn't for you. You can see the picture. It's for the person who can't — the blind visitor, the search engine, and you in a month, when the file goes missing and all that's left is a broken square.",
+    "empty-alt": "There is an image with an EMPTY description.\n\nAn empty description is not a description. It tells the screen reader: \"this image means nothing, skip it\". For a decorative line that's true. For the beans and the award it isn't.",
+    "no-href": "There is a link that has no address at all. It isn't a link — it's text in blue.",
+    "few-links": "There aren't four links. Three in the menu and one going out makes four.",
+    "empty-href": "There is a link with no address, or with an empty one.\n\nThe browser still paints it blue and still underlines it. It looks like a link, behaves like a link, clicks like a link. And it goes nowhere.",
+    "no-link-name": "There is a link with no name.\n\nA link containing only an undescribed image is mute. The screen reader reaches it and says: \"link\". Going where? To what? It has no way of knowing.\n\nA link is named by the text inside it. If there is no text inside, only an image, then its name is that image's description.",
+    "nav-not-list": "The menu isn't a list. Three links sitting side by side look like a menu. But to a screen reader they are three separate things scattered through the text.\n\nA list says: these are three choices from the same place. And the reader announces it: \"list, three items\".",
+    "no-external": "There is no outward link with a full address. A link to someone else's site can't be just a file name — the browser will look for it inside your own folder.",
+    "no-image-link": "There is no link that is an image. The award at the end is clickable — the picture itself is the link.",
+    "no-subheading": "There is no subheading, or it is empty. The second part starts with a heading of its own.",
+    "no-text": "There is no paragraph with text, or one of the paragraphs is empty.",
+    "dead-link": "One of your links has an address, but it doesn't lead to a page.\n\nThat's the convenient way to leave a link \"for later\". It works until you forget. After that it's part of the site, it looks like everything else, and nobody finds out until they click."
+  },
+
+  "hints": {
+    "no-alt": [
+      "An image has an attribute that says what can be seen in it.",
+      "Try this: read the description out loud without looking at the picture. If the other person understood what's in it — good. If they only understood \"there is an image\" — not good.",
+      "Two images, two descriptions. One missing or empty is enough."
+    ],
+    "empty-href": [
+      "A link has an attribute that says where it goes.",
+      "Left empty, it passes every test for \"is there an address\", but the browser just loads the same page again.",
+      "Four links, four addresses. Check them one by one."
+    ],
+    "no-link-name": [
+      "How does a screen reader know where a link goes? From what sits INSIDE it.",
+      "If there's text inside, that text is the name. If there's only an image inside, the name comes from the image's description.",
+      "Look at the link that is an image. Does it have anywhere to get a name from?"
+    ],
+    "no-external": [
+      "There's a difference between an address inside your own folder and an address on another site.",
+      "The first is a file name. The second starts from far away — with the protocol and the domain."
+    ],
+    "nav-not-list": [
+      "A menu is an enumeration. There is a tag for exactly that.",
+      "Each link goes into its own list item, not all of them into one."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to write the links side by side and drop the images in. What comes out on screen is exactly what you wanted — and it works, if you have eyes and don't click.\n\nBut every failure here is silent. An empty address raises no error — the browser simply reloads. A missing description raises no error — the image is right there. A nameless link raises no error — it sits there glowing blue.\n\nThe only way to catch them is to stop looking at the screen and ask, for every single thing: what does someone who can't see it hear?",
+    "steps": [
+      "Start with the heading. It says whose page this is.",
+      "The menu is an enumeration — make it a list, and put each link in its own item.",
+      "Give every link a real address. An empty address looks like an address and isn't one.",
+      "The second part opens with its own subheading, then the image, then the paragraph.",
+      "Describe every image. Not \"image\", not \"picture\" — what can actually be seen in it.",
+      "Finally the award: wrap the image in a link and point it outward, with a full address.",
+      "Now go back to that last link. There is no text inside it. Where will it get a name from?"
+    ],
+    "code": "<body>\n  <h1>Nordic Coffee</h1>\n  <ul>\n    <li><a href=\"index.html\">Home</a></li>\n    <li><a href=\"menu.html\">Menu</a></li>\n    <li><a href=\"contact.html\">Contact</a></li>\n  </ul>\n  <h2>Our beans</h2>\n  <img src=\"beans.jpg\" alt=\"Roasted coffee beans in a burlap sack\">\n  <p>We roast every batch in small quantities.</p>\n  <a href=\"https://example.com\"><img src=\"award.png\" alt=\"Golden Bean Award 2025\"></a>\n</body>",
+    "note": "Links and images are the first place where you learn not to trust your own eyes. Load the page and look at it — it looks equally fine with empty addresses, with described images, and without. The difference only shows if you click everything and turn the screen off."
+  }
+}

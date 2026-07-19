@@ -1,65 +1,68 @@
 {
-  "title": "A list inside a list",
-  "statement": "Six things, all on one level. But they are not equal.\n\nTwo of them are categories. The other four belong under them.\n\nLook at the target on the right and make your list look like that.",
-
-  "examples": [
-    {
-      "in": "<ul>\n  <li>Fruit</li>\n  <li>Apple</li>\n  <li>Pear</li>\n</ul>",
-      "out": "<ul>\n  <li>Fruit\n    <ul>\n      <li>Apple</li>\n      <li>Pear</li>\n    </ul>\n  </li>\n</ul>",
-      "explain": "The sublist is INSIDE the item it belongs to. Not next to it."
-    }
-  ],
+  "title": "A catalogue on three levels",
+  "statement": "An empty editor. Build the catalogue from the target on the right.\n\nFourteen things, arranged on three levels. Two departments, two sections in each, and two items in each section.",
 
   "constraints": [
-    "All six things stay",
-    "Do not change the words",
-    "Do not touch the heading"
+    "Heading: Catalogue",
+    "Departments: Electronics, Clothes",
+    "Under Electronics: Phones (Samsung, Apple), Laptops (Gaming, Office)",
+    "Under Clothes: Men (Shirts, Trousers), Women (Dresses, Skirts)"
   ],
 
   "checks": {
     "t1": "There is code",
-    "t2": "You changed something",
     "g1": "Everything closed",
-    "t3": "The heading is here",
-    "t4": "All six things are here",
-    "t5": "There are sublists",
-    "t6": "The sublists are nested",
-    "t7": "The things are in the sublists"
+    "t2": "There is a heading",
+    "t3": "All fourteen things are here",
+    "t4": "The things have text",
+    "t5": "There are seven lists",
+    "t6": "The second level is nested",
+    "t7": "The third level is nested"
   },
 
   "why": {
-    "empty": "The editor is empty. You deleted everything, the page included.",
-    "untouched": "This is exactly the code I gave you. Nothing has been changed.",
-    "not-closed": "A tag is open and never closed. A nested list has two ends — and both are on the inside.",
-    "lost": "You lost the heading. It is not to be touched.",
-    "lost-items": "You lost something from the list. The six things stay six — only their place changes.",
-    "no-sublists": "There are still no sublists. All six sit on one level, as if they were equal. They are not.",
-    "not-nested": "You made a sublist, but it is NEXT TO the item, not INSIDE it. On screen it looks the same — indented, with bullets. But to the browser these are two separate lists side by side. The water is not under drinks — it is beside them."
-   
+    "empty": "The editor is empty. There is no starter code here — you build the catalogue yourself.",
+    "not-closed": "A tag is open and never closed. At three levels this is the most common mistake — you lose track of which closing belongs to which opening.",
+    "no-heading": "There is no heading, or it is empty.",
+    "few-items": "There are not fourteen things. Two departments, four sections, eight items — that makes fourteen.",
+    "empty-items": "There is a list item with no text in it. An empty box counts for nothing.",
+    "few-lists": "There are not seven lists. One outer, two for the departments, four for the sections.",
+    "level-two": "The second level is not nested. The sections sit next to the departments, not inside them.",
+    "level-three": "The third level is not nested. The items are not under their section — they are somewhere else: either on the second level, or beside it. It looks indented, but the structure is flat."
   },
 
   "hints": {
-    "not-nested": [
-      "Look at where you close the </li> of the category. Close it before the sublist and the sublist stays outside.",
-      "A similar case: <li>Fruit</li><ul><li>Apple</li></ul> — here the apple is NOT under the fruit. The right way is <li>Fruit<ul><li>Apple</li></ul></li>.",
-      "The category opens, then the whole sublist comes, and only then the category closes. A box inside a box."
+    "level-three": [
+      "Check where you close the </li> of the section. Close it before the list of items and the items stay outside.",
+      "Three levels means a box in a box in a box. A department holds a section, a section holds an item. None of the three sits beside another.",
+      "Work from the inside out: build one complete section with its two items first, then put it into the department."
     ],
-    "no-sublists": [
-      "Which two of the six are names of groups, rather than things to eat and drink?",
-      "Each of the two groups wants its own list underneath it."
+    "level-two": [
+      "The department opens, a whole list of sections comes inside, and only then the department closes.",
+      "If the section comes after the </li> of the department, it is a sibling, not a child."
+    ],
+    "not-closed": [
+      "At three levels every <li> and every <ul> has a twin. The counts must match.",
+      "Use indentation. Each level two spaces further in — then you can see with your eyes where things end.",
+      "Close as soon as you open, then fill from the inside. That way you do not forget."
+    ],
+    "few-items": [
+      "Count: two departments, four sections, eight items.",
+      "The departments and sections are list items too. They count."
     ]
   },
 
   "solution": {
-    "why": "The first instinct is to put the sublist right after the category — open a <ul>, put the things in, close it. On screen it looks exactly right: indented, with bullets.\n\nBut those are two separate lists standing next to each other. The browser does not know the water belongs under drinks. A screen reader will announce two unrelated lists. The indentation you see is an accident, not structure.",
+    "why": "At two levels you can still hold the structure in your head. At three you cannot — you lose track of which closing matches which opening, and you start gluing lists side by side.\n\nThe result looks almost right: everything is indented, everything has bullets. But half the things are not under their parent, they are next to it. The browser renders a mess that resembles a tree.",
     "steps": [
-      "Decide which two things are categories and which four belong under them.",
-      "Open the <li> of the first category, but do NOT close it right away.",
-      "Inside that open <li>, put a whole <ul> with the things from that category.",
-      "Only after the closing </ul> do you close the </li> of the category.",
-      "Repeat for the second category."
+      "Do not start from the top. Build ONE complete section first: <li>Phones<ul><li>Samsung</li><li>Apple</li></ul></li>.",
+      "That is a finished brick. Build the second section the same way.",
+      "Put the two bricks in a list — that is the contents of one department.",
+      "Wrap it: <li>Electronics<ul> ... </ul></li>. Now the department is a finished brick.",
+      "Repeat for the second department.",
+      "Finally wrap both departments in one outer list and put the heading above it."
     ],
-    "code": "<body>\n  <h2>Menu</h2>\n  <ul>\n    <li>Drinks\n      <ul>\n        <li>Water</li>\n        <li>Juice</li>\n      </ul>\n    </li>\n    <li>Food\n      <ul>\n        <li>Pizza</li>\n        <li>Salad</li>\n      </ul>\n    </li>\n  </ul>\n</body>",
-    "note": "Nesting is not indentation. Indentation is something you see. Nesting is something the code says. Two things can look identical and mean something completely different."
+    "code": "<body>\n  <h2>Catalogue</h2>\n  <ul>\n    <li>Electronics\n      <ul>\n        <li>Phones\n          <ul>\n            <li>Samsung</li>\n            <li>Apple</li>\n          </ul>\n        </li>\n        <li>Laptops\n          <ul>\n            <li>Gaming</li>\n            <li>Office</li>\n          </ul>\n        </li>\n      </ul>\n    </li>\n    <li>Clothes\n      <ul>\n        <li>Men\n          <ul>\n            <li>Shirts</li>\n            <li>Trousers</li>\n          </ul>\n        </li>\n        <li>Women\n          <ul>\n            <li>Dresses</li>\n            <li>Skirts</li>\n          </ul>\n        </li>\n      </ul>\n    </li>\n  </ul>\n</body>",
+    "note": "Deep structures are not built top down. They are built inside out — one finished brick, then another, then you put them together. That way you never hold more than one level in your head."
   }
 }

@@ -1,0 +1,118 @@
+{
+  "title": "Say What It Is",
+
+  "statement": "Empty editor. Build the page shown in the target on the right.\n\nEvery tag here is one you already know. There isn't a single new one.\n\nBut three of them look interchangeable and aren't. The article, the section about the author, and the related posts on the side — all three are boxes with text in them, and on screen they behave identically.\n\nThe test from lesson 47 settles it: take the thing out of the page and put it somewhere else. Does it still mean anything on its own?",
+
+  "constraints": [
+    "The blog is called The Slow Roast",
+    "Menu: Home, Archive",
+    "Article: Why light roast tastes sour, with a sentence under the heading",
+    "Inside the article: About the author and a sentence about Ivan",
+    "On the side: Related, with two links — Choosing a grinder, Water matters",
+    "At the bottom: Written by Ivan. All rights reserved.",
+    "Not a single nameless box"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "No plain boxes are left",
+    "t3": "There is exactly one main content",
+    "t4": "There is a top part",
+    "t5": "There is a bottom part",
+    "t6": "The navigation is in the top part",
+    "t7": "There is a standalone thing in the main content",
+    "t8": "There is a section inside it",
+    "t9": "There is something on the side",
+    "t10": "There is a main heading",
+    "t11": "The article has a heading",
+    "t12": "The section has a heading",
+    "t13": "The article has text",
+    "t14": "The menu is a list of two links",
+    "t15": "The side has a list of two links",
+    "t16": "Every link has an address",
+    "t17": "There is text at the bottom"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the page yourself.",
+
+    "not-closed": "Some tag is opened and never closed. The boxes here sit inside one another — whatever you opened last, you close first.",
+
+    "still-div": "There's a plain box left.\n\nA box is a word you made up. The browser doesn't understand it. Nothing on this page needs one — every box here has a real name available.",
+
+    "main-count": "The main content isn't exactly one.\n\nIf it's missing — everything on the page is equally important, which means nothing is.\n\nIf there are two — that's the same as none. A blind visitor hits the key to jump to the substance and gets a question back: which of the two?",
+
+    "no-header": "There is no top part. The blog name and the menu go together — they are one thing.",
+
+    "no-footer": "There is no bottom part. The copyright is the fine print the page ends with.",
+
+    "no-nav": "There is no navigation in the top part, or the menu ended up outside it.",
+
+    "no-article": "There is no standalone thing inside the main content.\n\nThe article about roasting means something on its own. Put it on another site, send it by email, show it with nothing around it — it's still clear what it is. That's what standalone means.",
+
+    "no-section": "There is no section inside the article.\n\nAbout the author isn't standalone. Take it out of the page and you're left with \"Ivan has been roasting since 2014\" — who, why, where from? It means something only here, next to this article. So it's part of it, not a second article.",
+
+    "no-aside": "There is nothing on the side inside the main content.\n\nRelated posts aren't part of the article you're reading. They sit next to it. Put them inside and your code claims the grinder links are part of the text about roasting.",
+
+    "no-h1": "There is no main heading, or it is empty. The blog name covers the whole page.",
+
+    "no-article-title": "The article has no heading, or it is empty.",
+
+    "no-section-title": "The section has no heading, or it is empty.\n\nA section without a heading is a box without a label. If you can't name it, ask yourself why it's a section at all.",
+
+    "no-article-text": "The article has no text, or one of its paragraphs is empty.",
+
+    "nav-not-list": "The menu isn't a list of two links inside navigation.",
+
+    "aside-not-list": "There's no list of two links on the side. The related posts are an enumeration — Choosing a grinder and Water matters.",
+
+    "empty-href": "There is a link with an empty address. It's blue, underlined and clickable, and it goes nowhere.",
+
+    "no-footer-text": "The bottom part is empty, or there is no paragraph in it.",
+
+    "wrong-nesting": "One box has ended up inside another where it has no business being.\n\nOn screen there is no difference at all. That's what makes it hard.\n\nBut nesting is a claim. Put the related posts INSIDE the article and your code says: these two links are part of the text about roasting. They aren't. They're beside it.\n\nThe same holds the other way: main content doesn't live inside the top or bottom part. Those repeat on every page; it doesn't."
+  },
+
+  "hints": {
+    "no-section": [
+      "Ask about each thing: if I take it out of the page, does it still mean anything?",
+      "The article — yes. Take it out and it's still an article about roasting coffee. About the author — no. Take it out and you have a sentence about someone nobody introduced.",
+      "What means something on its own is standalone. What means something only here is a section."
+    ],
+    "no-aside": [
+      "The related posts aren't in the article and aren't after the main content. They're BESIDE the content.",
+      "Lesson 47 gave a tag for exactly this: something on the side that isn't part of the main thing.",
+      "Its place is inside the main content, but outside the article."
+    ],
+    "wrong-nesting": [
+      "Run the test from lesson 47: read only the tags out loud, top to bottom, without the content.",
+      "Do you hear \"article, inside it something on the side\"? Ask yourself what that claims.",
+      "Box inside box means part of. Box next to box means next to."
+    ],
+    "main-count": [
+      "Main content is special — exactly one per page.",
+      "The menu isn't in it. The bottom line isn't. They repeat everywhere — they aren't the substance of THIS page."
+    ],
+    "still-div": [
+      "Search with Ctrl+F for div. Every hit is a box that has a real name available.",
+      "Lesson 47 gave seven tags. Six of them are what you need here."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to put everything in boxes and name them — top, content, sidebar. It works. It looks exactly right.\n\nBut you invented those names. The browser sees identical nameless boxes, and while a screen reader collects landmarks into a list, your list is empty.\n\nThe second, subtler instinct is to make everything a standalone thing. That looks identical too. The difference is in what the code claims.\n\nThe test takes a second: take the thing out of the page. The article about roasting means something on its own. The section about the author doesn't; it means something only next to this article. And the related posts aren't part of anything — they sit beside everything.",
+    "steps": [
+      "Split the page into three: top, substance, bottom.",
+      "The top holds the blog name and the menu. The menu is a list of links inside navigation.",
+      "The substance is exactly one. It doesn't contain the menu and it doesn't contain the bottom line.",
+      "Inside it goes the article — it means something even lifted out of the page.",
+      "About the author goes INSIDE the article. Take it out and you have a sentence about a stranger.",
+      "The related posts sit BESIDE the article, not in it. They're on the side.",
+      "The copyright stays at the bottom.",
+      "Finally, read only the tags out loud, top to bottom. Do you hear the structure of a page?"
+    ],
+    "code": "<body>\n  <header>\n    <h1>The Slow Roast</h1>\n    <nav>\n      <ul>\n        <li><a href=\"index.html\">Home</a></li>\n        <li><a href=\"archive.html\">Archive</a></li>\n      </ul>\n    </nav>\n  </header>\n  <main>\n    <article>\n      <h2>Why light roast tastes sour</h2>\n      <p>Shorter roasting keeps more of the original acids in the bean.</p>\n      <section>\n        <h3>About the author</h3>\n        <p>Ivan has been roasting since 2014.</p>\n      </section>\n    </article>\n    <aside>\n      <h2>Related</h2>\n      <ul>\n        <li><a href=\"grinders.html\">Choosing a grinder</a></li>\n        <li><a href=\"water.html\">Water matters</a></li>\n      </ul>\n    </aside>\n  </main>\n  <footer>\n    <p>Written by Ivan. All rights reserved.</p>\n  </footer>\n</body>",
+    "note": "Load the page before and after. There is no difference at all — not one letter moves.\n\nThat's why this work gets skipped most often, and why it can't be made up later. CSS gets redone in an hour. Meaning doesn't get added later — if you didn't write it, it was never there."
+  }
+}

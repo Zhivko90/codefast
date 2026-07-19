@@ -1,0 +1,71 @@
+{
+  "title": "One place instead of three",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The heading is still dark red",
+  "checkLabels.t4": "The paragraphs too",
+  "checkLabels.t5": "Not a single style attribute left",
+  "checkLabels.t6": "There is a style block",
+  "checkLabels.t7": "The block is in the head",
+  "checkLabels.t8": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of moving something. Bring the code back.",
+
+  "why.untouched": "The code is exactly as it was. The three style attributes are still there.",
+  "hint2.untouched": "First remove the three style attributes. The page will go black — and that's where the work starts.",
+
+  "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "<style> is closed with </style>. Like every other tag.",
+  "hint3.not-closed": "<style> p { color: teal; } — the </style> is missing here. The browser keeps reading and turns the whole page into stylesheet.",
+  "hint4.not-closed": "Check that the style block has both an opening and a closing tag.",
+
+  "why.no-h1": "There is no heading. You deleted the <h1> instead of moving its colour.",
+  "hint2.no-h1": "You're moving where the colour is written. You're not removing elements.",
+
+  "why.no-p": "There is not a single paragraph left. You deleted them.",
+  "hint2.no-p": "The two lines of text have to stay. Only their colour moves elsewhere.",
+
+  "why.h1-lost-color": "The heading isn't dark red any more. You removed the style attribute, but your new rule doesn't reach it.",
+  "hint2.h1-lost-color": "A rule starts with a name. That name says which elements to touch. If it only says p, the heading isn't one of them.",
+  "hint3.h1-lost-color": "h2 { color: navy; } colours every h2 on the page. Only those. An h3 knows nothing about it.",
+  "hint4.h1-lost-color": "You need two rules — one for h1, one for p. Or one that covers both.",
+
+  "why.p-lost-color": "A paragraph is left without colour. The check looks at both, not the first one.",
+  "hint2.p-lost-color": "The p rule isn't about one paragraph. It's about all of them.",
+  "hint3.p-lost-color": "If you singled out the first paragraph somehow, undo it. The whole point here is that one rule catches all of them at once.",
+  "hint4.p-lost-color": "One rule for p. Nothing more. Both paragraphs will colour themselves.",
+
+  "why.still-inline": "At least one style attribute is still on a tag. The target is zero — the colour should live in one place.",
+  "hint2.still-inline": "Search the code for the word style followed by an equals sign. There should be none.",
+  "hint3.still-inline": "You may have removed only one <p>. There were three attributes — the heading and both paragraphs.",
+  "hint4.still-inline": "Delete style=\"color: darkred\" from all three tags. The rest of them stays as it is.",
+
+  "why.no-style-tag": "There is no style block. You removed the attributes but never wrote the rule — that's why the page is black.",
+  "hint2.no-style-tag": "Rules live in a <style> tag. It doesn't show on the page — it says how everything else should look.",
+  "hint3.no-style-tag": "<style> h2 { color: navy; } </style> — the tag is the wrapper, the rule sits inside it.",
+  "hint4.no-style-tag": "Add a <style> inside <head> and write the rules in it.",
+
+  "why.style-in-body": "The style block is outside <head>. It works — the browser is forgiving and will run it anywhere. But that isn't where it belongs.",
+  "hint2.style-in-body": "<head> is information ABOUT the page. <body> is what people see. Styles aren't seen.",
+  "hint3.style-in-body": "Put the styles at the end of the page and the browser paints everything black first, then repaints it. On a slow connection people see the flash.",
+  "hint4.style-in-body": "Move the whole <style> block between <head> and </head>.",
+
+  "why.lost-p": "A paragraph is gone. You're moving the colour, not deleting text.",
+  "hint2.lost-p": "Both sentences under the heading should be there.",
+
+  "blocks.0.text": "Last lesson you wrote the same thing three times. Three tags, three times color: darkred.",
+  "blocks.1.text": "Now the cafe owner says she wants green. Count how many places you'd edit. Three — on a page with three elements. A real site has two hundred. And tomorrow she'll change her mind again.",
+
+  "blocks.2.text": "One place",
+  "blocks.4.text": "p is a selector — it says which elements. Inside the curly braces is the same thing you wrote in the tag: property, colon, value. A semicolon at the end.",
+  "blocks.5.text": "The difference is that this rule catches ALL paragraphs at once. One, ten, two hundred — it doesn't matter. Change the colour here and it changes everywhere.",
+
+  "blocks.6.text": "Why in the head",
+  "blocks.7.text": "<head> is information about the page. <body> is what people see. Styles aren't content — they're instructions on how content should look. That's why they belong in the head.",
+  "blocks.8.text": "Put them in the body and it will work. The browser will run them. But someone on a slow connection will see the page black first, then repainted — because the styles arrived after the text.",
+
+  "blocks.9.text": "Remove the three style attributes. Do the same job with one rule in <head> — the heading and both paragraphs stay dark red.",
+  "blocks.10.text": "The style attribute isn't forbidden. It's just almost never the right choice. There's one more place the colour can live — a whole separate file. We look at that in two lessons."
+}

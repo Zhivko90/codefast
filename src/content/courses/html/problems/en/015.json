@@ -1,0 +1,86 @@
+{
+  "title": "The Right Thing In The Wrong Place",
+
+  "statement": "The page on the right works. Open it — the heading shows, the text reads, the image is there.\n\nNothing is missing. Everything that should be there, is.\n\nAnd it's still wrong in four places.\n\nTwo of them are things written in the wrong place. The browser silently fixes one of them and you'll never know. It doesn't fix the other — and you still won't know, because it looks fine.\n\nThe remaining two are attributes that are written and say nothing.\n\nThe tests are hidden. Direction, not answer. And deleting is not fixing — everything on this page stays.",
+
+  "constraints": [
+    "Don't touch the content — heading, two paragraphs, image",
+    "Everything sits where it belongs",
+    "The page says what language it's in — really",
+    "The alphabet is declared — really",
+    "The image is described — really"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "t2": "You changed the code",
+    "g1": "Everything is closed",
+    "p1": "The heading is there",
+    "p2": "Both paragraphs are there",
+    "p3": "The paragraphs aren't empty",
+    "p4": "The image is there",
+    "p5": "The image knows which file"
+  },
+
+  "why": {
+    "empty": "The editor is empty. Deleting is not fixing. Bring the code back.",
+
+    "untouched": "The code is exactly the one I gave you. You haven't changed anything.\n\nThat's normal — the page looks fine. That's exactly what makes it hard.",
+
+    "not-closed": "Something is opened and never closed, or closed in the wrong place.",
+
+    "lost-content": "You deleted something instead of moving it.\n\nThe content isn't the mistake. The heading, both paragraphs and the image all stay to the end. The mistake is WHERE they sit and what their attributes say.",
+
+    "title-in-body": "The page's name isn't in its head.\n\nThis is a trap that catches nearly everyone: the browser fixes a lot of things on its own, but not this. Written in the body, the name stays in the body.\n\nAnd here's what happens then: the browser tab says nothing. Search results — nothing. Bookmarks — nothing. Meanwhile the name's text turns up as an ordinary word somewhere on the page, where nobody asked for it.\n\nThe head is where a page says what it is. The body is what gets seen. The name isn't seen — so it belongs upstairs.",
+
+    "h1-in-head": "The heading is written in the head of the page.\n\nHere the browser rescues you — and that's precisely the problem. It sees a heading somewhere it has no business being, and silently moves it down into the body.\n\nSo on screen everything looks fine and you'll never learn that you got it wrong.\n\nBut your code claims something other than what you meant. And next time the browser might not be so obliging.\n\nThe head takes the things a page says ABOUT ITSELF. The body takes what gets seen.",
+
+    "empty-lang": "The page has a language attribute, but it's empty.\n\nAn empty attribute exists. It passes every check for \"is it written\" — and says nothing.\n\nThe screen reader still doesn't know how to pronounce the words. The translator still offers nothing. It's as good as absent — except now it looks like you wrote it.",
+
+    "empty-charset": "The alphabet is declared empty.\n\nSame thing: the attribute is there, the value isn't. The browser still has to guess how to read the letters.\n\nWith English text you might not notice. The first non-Latin word will show you.",
+
+    "empty-alt": "The image has a description, but it's empty.\n\nAn empty description isn't a description. It tells the screen reader: \"this image means nothing, skip it\".\n\nFor a decorative line that's true and correct. For the photo people came to the page for, it isn't."
+  },
+
+  "hints": {
+    "title-in-body": [
+      "Look at the browser tab up top. What does it say?",
+      "Now find in the code where that was supposed to come from. Found it? See which part of the page it sits in.",
+      "There are two parts: upstairs is what the page says about itself, downstairs is what gets seen. Which one is the name?"
+    ],
+    "h1-in-head": [
+      "Read the code top to bottom without looking at the result. Is each thing in its own part?",
+      "One of them is written upstairs and appears downstairs. The browser moved it for you.",
+      "That's what makes it hard: the result is right, the code isn't. Move it yourself, to where it ends up anyway."
+    ],
+    "empty-lang": [
+      "Look at the outermost tag. It has an attribute — but does it have a value?",
+      "An empty attribute exists. That's why it doesn't look like something missing.",
+      "Two letters is enough. Lesson 11."
+    ],
+    "empty-charset": [
+      "The same thing in the head of the page.",
+      "Try it yourself: put one non-Latin word in a paragraph and load it. See what comes out."
+    ],
+    "empty-alt": [
+      "The image has a description. Read it.",
+      "An empty description says \"skip me, there's nothing here\". Is that true of this photo?",
+      "Describe what can be SEEN in it. Not \"image\" — the screen reader already said that."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to load the page and look at it. Heading on top, text, image. It's all there. So it's finished.\n\nBut nothing here is missing. Everything is in the wrong place — and that's harder to see than absence.\n\nThe browser is very obliging. The heading written in the head, it silently moves down and shows you exactly what you meant. Your mistake vanishes from the screen and stays in the code.\n\nAnd immediately after, it's unobliging: the page name written in the body, it does NOT move. It stays down there — and the browser tab stays empty.\n\nIt fixes one and not the other. There's no rule that tells you which it will do. So the only way to be sure is to read the code, not the result.\n\nAnd the two empty attributes are a third face of the same thing: they're written, so they look done. And they do nothing.",
+    "steps": [
+      "Read the code top to bottom and split the page in your head: what it says about itself, and what gets seen.",
+      "The page name isn't seen anywhere — so it belongs upstairs, in the head.",
+      "The heading is seen — so it belongs downstairs, in the body. Swap them.",
+      "Now go through the attributes. Does each have a value, or only a name?",
+      "The language wants two letters. The alphabet wants a name.",
+      "The image has a description, but an empty one. Write what can be seen in it.",
+      "Finally load the page again. It looks exactly as before — and that's the lesson."
+    ],
+    "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Dobrich Photo Club — meetings and photo walks</title>\n</head>\n<body>\n  <h1>Dobrich Photo Club</h1>\n  <p>We meet every Thursday at seven, in the old town.</p>\n  <img src=\"camera.jpg\" alt=\"A film camera on a wooden table\">\n  <p>Everyone is welcome, with any camera.</p>\n</body>\n</html>",
+    "note": "Compare the page before and after. Apart from the vanished line with the name, nothing on screen has changed.\n\nThis is the nastiest kind of mistake in HTML: the one the browser fixes for you. It doesn't crash, doesn't glow red and doesn't show. One day something just doesn't work — in someone else's browser, in search, for a blind visitor — and nobody knows where to start looking."
+  }
+}

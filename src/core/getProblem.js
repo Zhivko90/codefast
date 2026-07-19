@@ -31,6 +31,11 @@ export function problemTitle(course, id, lang = 'bg') {
   return c?.problemText?.[lang]?.[id]?.title ?? c?.problemText?.[FALLBACK]?.[id]?.title ?? '';
 }
 
+// задачите за конкретен урок — за моста урок → практика
+export function problemsForLesson(course, lessonId) {
+  return listProblems(course).filter((p) => String(p.lesson) === String(lessonId));
+}
+
 // задачите по таг — за моста от урока
 export function problemsByTag(course, tag) {
   return listProblems(course).filter((p) => p.tags?.includes(tag));

@@ -1,0 +1,69 @@
+{
+  "title": "CSS",
+  "desc": "Your page is bare. This is where it gets dressed. Not with a list of properties — but with understanding why the box is wider than you made it, and why your rule isn't being applied.",
+  "sections": {
+    "basics": {
+      "title": "Getting started",
+      "desc": "Where CSS lives and how you pick what to change. The first lesson gives you no property — it gives you an ugly page and the question of what to do about it.",
+      "modules": {
+        "cssintro": { "title": "What is CSS?" },
+        "selectors": { "title": "Selectors" }
+      }
+    },
+    "box": {
+      "title": "The box",
+      "desc": "Everything on a page is a box. You set the width to 300 and measure 340. This section explains why, and how to stop fixing it with mental arithmetic.",
+      "modules": {
+        "boxmodel": { "title": "The box model" },
+        "sizing": { "title": "Sizing and overflow" }
+      }
+    },
+    "text": {
+      "title": "Text and colour",
+      "desc": "Font, size, line height, colour. Plus a check most courses skip: can this actually be read, or only on your monitor.",
+      "modules": {
+        "typography": { "title": "Fonts and text" },
+        "colors": { "title": "Colour and background" }
+      }
+    },
+    "cascade": {
+      "title": "The cascade",
+      "desc": "You wrote the rule. It's correct. It isn't applied, and the browser says nothing. This is the most confusing part of CSS and I'm not going to pretend it's simple.",
+      "modules": {
+        "cascade": { "title": "Which rule wins" }
+      }
+    },
+    "layout": {
+      "title": "Layout",
+      "desc": "Three boxes side by side. Try the obvious way — it won't work. Then come the tools built for exactly this.",
+      "modules": {
+        "flow": { "title": "Normal flow" },
+        "flexbox": { "title": "Flexbox" },
+        "grid": { "title": "Grid" },
+        "position": { "title": "Positioning" }
+      }
+    },
+    "components": {
+      "title": "Interface parts",
+      "desc": "Links, lists, forms. You built them in the HTML course. Now you dress them — and find out why one field styles in a second while the dropdown next to it fights back.",
+      "modules": {
+        "uiparts": { "title": "Links, lists, forms" }
+      }
+    },
+    "responsive": {
+      "title": "Screens and states",
+      "desc": "Works on your monitor. Broken on a phone. And one more thing: the mouse can see the button, the keyboard can't.",
+      "modules": {
+        "adaptive": { "title": "Different screens" },
+        "states": { "title": "States and transitions" }
+      }
+    },
+    "final": {
+      "title": "The finish",
+      "desc": "An empty editor and one page. On your own.",
+      "modules": {
+        "finish": { "title": "The finish" }
+      }
+    }
+  }
+}

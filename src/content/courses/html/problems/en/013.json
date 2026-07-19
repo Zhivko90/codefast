@@ -1,0 +1,89 @@
+{
+  "title": "Name and Value",
+
+  "statement": "Empty editor. Build the listing shown in the target on the right.\n\nTwo parts, and on screen they look almost identical — lines listed one under another.\n\nBut in one of them every item stands on its own. In the other, every line is a PAIR: a name and a value.\n\nOne of the two is a list. The other isn't.",
+
+  "constraints": [
+    "Heading: Mountain bike",
+    "First part: What comes with it — Pump, Two keys, Bottle holder",
+    "Second part: Specification",
+    "Frame — Aluminium · Wheels — 26 inches · Gears — 21 · Weight — 12 kg",
+    "Not a single colon on the page"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a main heading",
+    "t3": "There are two subheadings",
+    "t4": "There is a list of pairs",
+    "t5": "There are four names",
+    "t6": "There are four values",
+    "t7": "No name is empty",
+    "t8": "No value is empty",
+    "t9": "There is a plain list",
+    "t10": "It has three items",
+    "t11": "No item is empty",
+    "t12": "There are no colons"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the listing yourself.",
+
+    "not-closed": "Some tag is opened and never closed.\n\nFour pairs means eight tags inside, and eight closing ones. And the list itself closes at the very end.",
+
+    "no-heading": "There is no main heading, or it is empty.",
+
+    "no-sections": "There aren't two subheadings. What comes with the bike and the specification are two separate parts.",
+
+    "no-dl": "The specification isn't a list of pairs.\n\nBuild it with a plain list and a colon and your code says: \"here are four things of one kind\". But they aren't four things. They're four pairs.\n\nThe colon is something only you understand.",
+
+    "no-dt": "There aren't four names.\n\nIn every pair the name comes first — frame, wheels, gears, weight. One for each line.",
+
+    "no-dd": "There aren't four values.\n\nEvery name wants an answer right after it. Asking without answering does no work.",
+
+    "empty-dt": "There is an empty name. An empty name asks nothing.",
+
+    "empty-dd": "There is an empty value. An empty value answers nothing.",
+
+    "no-ul": "There is no plain list.\n\nThe pump, the keys and the bottle holder aren't pairs — they're three things of one kind. None of them is the name of anything.",
+
+    "few-items": "The plain list doesn't have three items.",
+
+    "empty-items": "There is an empty item in the list.",
+
+    "kept-colon": "A colon is left over.\n\nYou needed it while you had nothing to separate a name from a value with. Now the tags do that.\n\nA colon inside the name is old thinking with new tags. There it separates nothing — it just hangs."
+  },
+
+  "hints": {
+    "no-dl": [
+      "Look at the two parts and ask both the same thing: is this item the name of something else?",
+      "A pump isn't the name of anything — it's a pump. But \"frame\" without \"aluminium\" means nothing.",
+      "Lesson 28: there's a tag for exactly a list of pairs, and inside it the name and the value alternate."
+    ],
+    "no-dt": [
+      "Every pair is two things: a question and an answer.",
+      "The name comes first — it's the term. Four lines, four names.",
+      "All four pairs live inside one shared list, not four separate ones."
+    ],
+    "kept-colon": [
+      "Read the page on screen. Do you see a colon anywhere?",
+      "Look at the names. Is there anything in them besides the name itself?",
+      "The browser already sets the value apart on its own — look at the indent. The colon is left over from the previous way."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to build both parts with the same list and add a colon where separation is needed. On screen you get exactly what you wanted.\n\nBut look at what the code claims: \"here are four things of one kind\". The specification isn't four things. It's four pairs — a name and a value, each meaningful only together.\n\n\"Pump\" means something on its own. \"Aluminium\" on its own means nothing — it's an answer to a question only the colon asks. And the colon is a sign only you can read.\n\nThe tags say it for you. And then the colon has no job left — it was standing in for something you didn't have.",
+    "steps": [
+      "Start with the heading and the two subheadings.",
+      "The first part is an enumeration of three things. Each stands on its own — a plain list.",
+      "The second part isn't an enumeration. Go through the lines and ask: is this the name of something else?",
+      "Make it a list of pairs: the name first, the value right after it.",
+      "All four pairs go into one shared list, not four separate ones.",
+      "Finally, hunt for the colons. Each of them was standing in for something you now have."
+    ],
+    "code": "<body>\n  <h1>Mountain bike</h1>\n\n  <h2>What comes with it</h2>\n  <ul>\n    <li>Pump</li>\n    <li>Two keys</li>\n    <li>Bottle holder</li>\n  </ul>\n\n  <h2>Specification</h2>\n  <dl>\n    <dt>Frame</dt>\n    <dd>Aluminium</dd>\n    <dt>Wheels</dt>\n    <dd>26 inches</dd>\n    <dt>Gears</dt>\n    <dd>21</dd>\n    <dt>Weight</dt>\n    <dd>12 kg</dd>\n  </dl>\n</body>",
+    "note": "On screen the two parts look almost the same — lines one under another.\n\nThe difference is in what isn't visible: Google reads a list of pairs and understands it's a specification. It can show it straight in the search results. From a list with colons it understands nothing."
+  }
+}

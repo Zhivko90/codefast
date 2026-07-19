@@ -1,14 +1,6 @@
 {
   "title": "The first page",
-  "statement": "An empty editor. No code, no blanks to fill in.\n\nBuild a whole page from nothing. Look at the target on the right — that is how it should end up.\n\nYou will freeze for a moment in front of the empty file. That happens to everyone, including people who have been doing this for twenty years. Start at the first line and work down.",
-
-  "examples": [
-    {
-      "in": "",
-      "out": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Bakery</title>\n  </head>\n  <body>\n    <h1>Bakery</h1>\n    <p>Bread since 1998.</p>\n  </body>\n</html>",
-      "explain": "Work top down: declare the type, open the page, head, then body."
-    }
-  ],
+  "statement": "An empty editor. Build a whole page from nothing.\n\nLook at the target on the right.",
 
   "constraints": [
     "The page declares its type, its language and its character set",
@@ -39,8 +31,8 @@
     "few-p": "There are not two paragraphs. The brief asks for at least two.",
     "empty-p": "There is a paragraph with no text in it. The check looks at all of them — one empty is enough to fail.",
     "no-doctype": "The document type declaration is missing. Without it the browser drops into an old mode and behaves oddly.",
-    "no-lang": "The page does not say what language it is in. A screen reader will read it with the wrong accent — literally.",
-    "no-charset": "No character set is declared. Anything outside plain English will come out as question marks or boxes.",
+    "no-lang": "The page does not say what language it is in, or the value is empty. A screen reader will read it with the wrong accent — literally.",
+    "no-charset": "No character set is declared, or the value is empty. Anything outside plain English will come out as question marks or boxes.",
     "title-outside": "The tab name is not in the head. The body is for what a person sees. The head is for what says what this page is.",
     "many-h1": "There is more than one big heading. It is like the title of a book — there is one."
   },
@@ -62,7 +54,7 @@
     ],
     "no-lang": [
       "The attribute goes on the tag that opens the whole page.",
-      "The value is a short code: en for English, bg for Bulgarian."
+      "The value is a short code: en for English, bg for Bulgarian. An empty value does not count."
     ],
     "no-charset": [
       "This line lives in the head and has no closing tag.",

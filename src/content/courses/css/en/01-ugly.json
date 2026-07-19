@@ -1,0 +1,55 @@
+{
+  "title": "The ugly part",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You touched the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The heading is dark red",
+  "checkLabels.t4": "Both paragraphs too",
+  "checkLabels.t5": "The heading is not empty",
+  "checkLabels.t6": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of colouring it. Bring the code back.",
+
+  "why.untouched": "The code is exactly as it was. You haven't changed anything yet.",
+  "hint2.untouched": "You need to add something inside three tags — the <h1> and both <p>.",
+
+  "why.not-closed": "A tag is open and never closed, or a quote is missing.",
+  "hint2.not-closed": "The value of style goes in quotes. One to open, one to close.",
+  "hint3.not-closed": "<p style=\"color: teal>Text</p> — the quote after teal is missing. From there on the browser reads everything as part of the value and the page falls apart.",
+  "hint4.not-closed": "Go through the three lines one by one. Every style has a quote before and a quote after.",
+
+  "why.no-h1": "There is no heading. You deleted the <h1> instead of colouring it.",
+  "hint2.no-h1": "The task is to change the colour, not to remove elements. Bring the heading back.",
+
+  "why.empty-h1": "The heading is there but empty. You colour the text, you don't delete it.",
+
+  "why.h1-not-red": "The heading is not dark red. Either you gave it no colour, or the colour is a different one.",
+  "hint2.h1-not-red": "The colour goes on the tag itself — inside the opening bracket, after its name.",
+  "hint3.h1-not-red": "<h2 style=\"color: navy\">Contact</h2> — a dark blue heading. See where style sits: inside the <h2>, before the closing bracket.",
+  "hint4.h1-not-red": "Do the same on the <h1>, but with darkred instead of navy.",
+
+  "why.no-p": "There is not a single paragraph left. You deleted them.",
+  "hint2.no-p": "The two lines under the heading have to stay. You colour them, you don't remove them.",
+
+  "why.p-not-red": "One of the paragraphs is still not dark red. The check looks at both — not just the first one.",
+  "hint2.p-not-red": "You coloured one and stopped. There are two paragraphs.",
+  "hint3.p-not-red": "Here every tag carries its own colour. Give it to the first one and the second knows nothing about it. It is a separate element.",
+  "hint4.p-not-red": "Add the same thing to the second <p>. Word for word what you wrote on the first.",
+
+  "why.lost-p": "A paragraph is gone. The task is to colour the text, not to delete lines.",
+  "hint2.lost-p": "Look at the preview. Both sentences under the heading should be there.",
+
+  "blocks.0.text": "Look at the page on the right. A cafe name, two lines of text. Black on white, a font from the nineties, everything stuck to the top left. You didn't get anything wrong — that is what a page without CSS looks like.",
+  "blocks.1.text": "So far you learned what a thing IS. <h1> is a heading. <p> is a paragraph. Not one of those tags says how it should look. There is no tag for red, no tag for bigger. That is not what HTML is for.",
+
+  "blocks.2.text": "One property",
+  "blocks.4.text": "color is a property. teal is a value. A colon between them. That is all of CSS — property, colon, value. Everything else in this course is a variation on that one line.",
+
+  "blocks.5.text": "A colour has more than one name",
+  "blocks.6.text": "darkred, #8b0000 and rgb(139, 0, 0) are the same colour. Written differently, understood identically. The check here asks the browser what the colour actually is — it does not compare the letters you typed. Write it any of the three ways and it passes.",
+  "blocks.7.text": "Courses that compare text reject your correct code because you put a space somewhere else. That cannot happen here.",
+
+  "blocks.8.text": "Make the heading and both paragraphs dark red. The colour is darkred — or however you prefer to write it.",
+  "blocks.9.text": "You will write the same thing three times. Remember how tedious it is. The next lesson starts exactly there."
+}

@@ -18,9 +18,9 @@ function LessonBadge({ lesson, t }) {
   const map = {
     concept: { key: 'label_concept', cls: 'text-fuchsia-300 border-fuchsia-500/30 bg-fuchsia-500/10' },
     example: { key: 'label_example', cls: 'text-orange-300 border-orange-500/30 bg-orange-500/10' },
-    coding:  { key: 'label_coding',  cls: 'text-sky-300 border-sky-500/30 bg-sky-500/10' },
-    mcq:     { key: 'label_mcq',     cls: 'text-violet-300 border-violet-500/30 bg-violet-500/10' },
-    pro:     { key: 'label_pro',     cls: 'text-amber-300 border-amber-500/30 bg-amber-500/10' },
+    coding: { key: 'label_coding', cls: 'text-sky-300 border-sky-500/30 bg-sky-500/10' },
+    mcq: { key: 'label_mcq', cls: 'text-violet-300 border-violet-500/30 bg-violet-500/10' },
+    pro: { key: 'label_pro', cls: 'text-amber-300 border-amber-500/30 bg-amber-500/10' },
   };
   const kind = lesson.label ?? (lesson.quiz ? 'mcq' : lesson.type === 'text' ? 'concept' : 'coding');
   const b = map[kind] ?? map.concept;
@@ -44,7 +44,7 @@ export default function LessonPage({ params }) {
   const { user } = useAuth();
   const [done, setDone] = useState(() => new Set());
 
-// Напредъкът се чете при зареждане И всеки път, когато урокът каже „минат".
+  // Напредъкът се чете при зареждане И всеки път, когато урокът каже „минат".
   // Без второто точката не позеленява, докато не презаредиш.
   const refresh = () => fetchProgress(user?.id, slug).then(setDone);
 
@@ -66,8 +66,9 @@ export default function LessonPage({ params }) {
   const atModuleEnd = moduleTotal > 0 && moduleIndex === moduleTotal - 1;
   const atModuleStart = moduleIndex === 0;
 
+
   const View = lessonViews[resolveType(lesson)] || lessonViews.text;
-  const progress = Math.round(((index + 1) / total) * 100);
+  const progress = total ? Math.round((done.size / total) * 100) : 0;
 
   return (
     // 100dvh, не 100vh: адрес-барът на телефона се свива и разпъва.
@@ -129,19 +130,20 @@ export default function LessonPage({ params }) {
           точките получават право да се плъзгат. Бутонът НАПРЕД
           не отстъпва никога — без него ученикът е заключен. */}
       <div className="sticky top-0 z-40 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
-        <div className="w-full px-3 sm:px-6 h-14 flex items-center gap-2 sm:gap-3">
+        <div className="w-full px-2 h-14 flex items-center gap-2 sm:gap-3">
           <Link href={`/course/${slug}`} aria-label={g('back')}
             className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M19 12H5" /><path d="M12 19l-7-7 7-7" /></svg>
           </Link>
 
           {/* хамбургер — отваря страничното меню */}
           <button onClick={() => setMenuOpen(true)} aria-label={c('syllabus')}
             className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-              <path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/>
+              <path d="M3 6h18" /><path d="M3 12h18" /><path d="M3 18h18" />
             </svg>
           </button>
+
 
           {/* смяна на езика — на телефон е в менюто, тук няма място */}
           <div className="hidden sm:block shrink-0">
@@ -153,23 +155,22 @@ export default function LessonPage({ params }) {
             <button onClick={() => go(prevId)} disabled={!prevId}
               title={atModuleStart ? c('prev_module') : undefined}
               className={`shrink-0 h-7 px-1.5 sm:px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${prevId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M15 18l-6-6 6-6" /></svg>
               {atModuleStart && prevId && <span className="hidden sm:inline pr-1">{c('prev_module')}</span>}
             </button>
 
             {/* точките: дълъг модул на тесен екран — плъзгат се, не изяждат бутоните */}
             <div className="flex items-center min-w-0 overflow-x-auto py-1">
-            {(module?.lessons ?? course.lessons).map((l, i) => {
+              {(module?.lessons ?? course.lessons).map((l, i) => {
                 const done = i < moduleIndex;
                 const current = i === moduleIndex;
                 return (
                   <div key={l.id} className="flex items-center shrink-0">
-                  {i > 0 && <span className={`w-3 sm:w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
+                    {i > 0 && <span className={`w-3 sm:w-4 h-[2px] transition-colors ${i <= moduleIndex ? 'bg-emerald-400/70' : 'bg-white/10'}`} />}
                     <button onClick={() => go(l.id)} title={l.title}
-                      className={`shrink-0 rounded-full transition-all duration-300 ${
-                        current ? 'lesson-dot-current w-3.5 h-3.5 bg-gradient-to-br from-sky-400 to-emerald-400'
-                        : done ? 'w-2.5 h-2.5 bg-emerald-400 hover:scale-125'
-                        : 'w-2.5 h-2.5 bg-transparent border border-white/25 hover:border-white/50'}`} />
+                      className={`shrink-0 rounded-full transition-all duration-300 ${current ? 'lesson-dot-current w-3.5 h-3.5 bg-gradient-to-br from-sky-400 to-emerald-400'
+                          : done ? 'w-2.5 h-2.5 bg-emerald-400 hover:scale-125'
+                            : 'w-2.5 h-2.5 bg-transparent border border-white/25 hover:border-white/50'}`} />
                   </div>
                 );
               })}
@@ -179,7 +180,7 @@ export default function LessonPage({ params }) {
               title={atModuleEnd ? c('next_module') : undefined}
               className={`shrink-0 h-7 px-1.5 sm:px-2 flex items-center gap-1 rounded-full border text-[11px] transition ${nextId ? 'border-white/15 text-gray-300 hover:text-white hover:border-white/40 hover:bg-white/5' : 'border-white/5 text-gray-700 cursor-not-allowed'}`}>
               {atModuleEnd && nextId && <span className="hidden sm:inline pl-1">{c('next_module')}</span>}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6" /></svg>
             </button>
 
             <span className="shrink-0 text-[11px] sm:text-xs text-gray-400 font-semibold tabular-nums ml-0.5 sm:ml-1">{moduleIndex + 1} / {moduleTotal}</span>
@@ -190,7 +191,7 @@ export default function LessonPage({ params }) {
             aria-label={t('next')}
             className={`shrink-0 flex items-center gap-1.5 px-3 sm:px-5 py-2 text-sm ${theme.button}`}>
             <span className="hidden sm:inline">{t('next')}</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M9 18l6-6-6-6" /></svg>
           </Link>
         </div>
       </div>
@@ -236,9 +237,8 @@ function ModuleBlock({ mod, t, slug, currentId, onNavigate }) {
   return (
     <div className="mb-0.5">
       <button onClick={() => setOpen((v) => !v)}
-        className={`w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-left text-sm transition ${
-          hasCurrent ? 'text-white bg-white/[0.06]' : 'text-gray-300 hover:bg-white/5'
-        }`}>
+        className={`w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-left text-sm transition ${hasCurrent ? 'text-white bg-white/[0.06]' : 'text-gray-300 hover:bg-white/5'
+          }`}>
         <span className="truncate">{mod.title}</span>
         {mod.locked && <span className="shrink-0 text-[10px] px-2 py-0.5 rounded-full border text-amber-300 border-amber-500/30 bg-amber-500/10">{t('label_pro')}</span>}
       </button>
@@ -249,9 +249,8 @@ function ModuleBlock({ mod, t, slug, currentId, onNavigate }) {
             const active = String(l.id) === String(currentId);
             return (
               <Link key={l.id} href={`/course/${slug}/lesson/${l.id}`} onClick={onNavigate}
-                className={`flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[13px] transition ${
-                  active ? 'bg-sky-500/10 text-sky-200' : 'text-gray-400 hover:text-white hover:bg-white/5'
-                }`}>
+                className={`flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-[13px] transition ${active ? 'bg-sky-500/10 text-sky-200' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}>
                 <span className="truncate">{l.title}</span>
                 <LessonBadge lesson={l} t={t} />
               </Link>

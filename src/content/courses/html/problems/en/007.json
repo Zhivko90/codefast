@@ -1,0 +1,93 @@
+{
+  "title": "The Tickets Got More Expensive",
+
+  "statement": "Empty editor. Build the listing shown in the target on the right.\n\nThe price went up from 60 to 75. You don't delete the old one — you strike it through and put the new one beside it. One glance is enough.\n\nWatch out for one thing: on screen a heading is just a bigger, blacker line. A bigger, blacker line can be made two ways. Only one of them is a heading.",
+
+  "constraints": [
+    "The festival is called Nordic Sound Festival",
+    "Second part: Tickets",
+    "A sentence: Two days, four stages, one field.",
+    "The price was 60, now it's 75 — the two side by side, on one line",
+    "At the end, in small print: Price does not include camping."
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is exactly one main heading",
+    "t3": "The heading isn't empty",
+    "t4": "There is a subheading",
+    "t5": "No heading is made out of a paragraph",
+    "t6": "There are at least three paragraphs",
+    "t7": "No paragraph is empty",
+    "t8": "There are no line breaks",
+    "t9": "The old price is struck through",
+    "t10": "The new price is marked as inserted",
+    "t11": "The old price is inside a paragraph",
+    "t12": "The new price is inside a paragraph",
+    "t13": "There is small print"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the listing yourself.",
+
+    "not-closed": "Some tag is opened and never closed, or closed in the wrong order. Whatever you opened last, you close first.",
+
+    "no-h1": "There is no main heading, or there is more than one.\n\nThe main heading is one per page. It says what the whole page is — here, the name of the festival. A second one means the page is about two things at once.",
+
+    "empty-heading": "The heading is empty. The words have to be INSIDE the tag, not next to it.",
+
+    "no-h2": "There is no subheading. Tickets isn't the name of the whole page — it's a part of it. Parts get their own level of heading.",
+
+    "fake-heading": "You have a heading made out of a paragraph.\n\nOn screen it does the job: the bold line is bigger, blacker and sits on top. You look at it and you're sure it's a heading.\n\nBut it's a paragraph dressed as one. A blind visitor pulls up a list of headings to jump straight where they need — the same way you skim with your eyes. Your line isn't in that list. To them, the page has no parts.\n\nBold is appearance. A heading is meaning.",
+
+    "few-paragraphs": "There aren't three paragraphs. The sentence about the festival, the line with the prices and the camping note are three separate things.",
+
+    "empty-paragraph": "There is an empty paragraph. An empty paragraph is a hole — it doesn't separate anything, it just takes up room.",
+
+    "br-instead": "You've used line breaks.\n\nA break breaks the line and nothing else. Three sentences split by breaks are, to a screen reader, one long paragraph chopped up by force. Separate thoughts are separate paragraphs.",
+
+    "no-del": "The old price isn't marked as removed, or the tag is empty.\n\nThere is no \"strike through\" tag. There is a \"this no longer applies\" tag — and the strike-through follows on its own.",
+
+    "no-ins": "The new price isn't marked as inserted, or the tag is empty.\n\nThe old price says what fell away. The new one says what took its place. Either without the other is half a message.",
+
+    "prices-apart": "The two prices aren't inside a paragraph.\n\nThey're part of the sentence about the price, not separate blocks. That's why their tags are inline — they don't break the line, they sit inside it.",
+
+    "no-small": "There is no small print, or it's empty. The camping note is a condition, not news — it has a tag of its own."
+  },
+
+  "hints": {
+    "fake-heading": [
+      "Look at every large line and ask: is this a heading, or just bold text?",
+      "The test is simple: if you stripped all the styling off the page tomorrow, which line would still be a heading? The one that said so with a tag.",
+      "There are two headings here — the festival name and Tickets. Neither is a paragraph."
+    ],
+    "no-del": [
+      "Lesson 21 gave you a tag for something that was there and no longer is.",
+      "Wrap only the number 60. Not the whole line around it."
+    ],
+    "no-ins": [
+      "There's an opposite tag too — for what arrived in place of what was removed.",
+      "The two sit side by side in the same paragraph: first what fell away, then what's new."
+    ],
+    "br-instead": [
+      "A line break and a new paragraph look identical on screen. They are not identical.",
+      "Search with Ctrl+F for the letters br. Every hit is a place where you meant a new paragraph."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to write the lines and bold the ones that should stand out. What comes out on screen is exactly what you wanted — big at the top, small at the bottom.\n\nBut bold isn't a heading. It's a paragraph dressed as one.\n\nHeadings are the skeleton of a page. A blind visitor pulls them up as a list and jumps straight where they need — exactly the way you skim across the large lines with your eyes. Search engines do the same. A bolded paragraph never enters that list. Your page looks structured and has no structure.\n\nThe same goes for the prices: there is no \"strike through\" tag. There is a \"this no longer applies\" tag — and the strike-through is a consequence, not the goal.",
+    "steps": [
+      "Start with the festival name. It covers the whole page, so it's the main heading. There is one.",
+      "Tickets is a part of the page, not the whole. It's a heading one level down.",
+      "The sentence about the festival is a paragraph.",
+      "The price line is a second paragraph. Inside it, the old price is marked as removed, the new one as having taken its place.",
+      "Both prices stay on one line. Their tags are inline and don't break it.",
+      "The camping note is a condition — it wants the small print.",
+      "Finally, go down the lines from the top. Is there a bold paragraph anywhere pretending to be a heading?"
+    ],
+    "code": "<body>\n  <h1>Nordic Sound Festival</h1>\n  <h2>Tickets</h2>\n  <p>Two days, four stages, one field.</p>\n  <p>Price: <del>60</del> <ins>75</ins> leva</p>\n  <p><small>Price does not include camping.</small></p>\n</body>",
+    "note": "The tag is chosen by meaning, not by appearance. Today your heading is large because the browser makes it large. Tomorrow a designer decides headings are small and widely spaced — and the bolded paragraph will still be a bolded paragraph, only now an ugly one too."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "title": "The page was never bare",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "The margin around the body is gone",
+  "checkLabels.t5": "The heading is text-sized",
+  "checkLabels.t6": "The bullets are gone",
+  "checkLabels.t7": "The link isn't underlined",
+  "checkLabels.t8": "The list is still there",
+
+  "why.empty": "The editor is empty. You deleted the file instead of adding rules. Hit the bin and start again.",
+
+  "why.untouched": "The code is exactly as it was. You haven't taken anything off yet.",
+  "hint2.untouched": "You write in the styles.css tab. index.html isn't touched in this lesson.",
+
+  "why.not-closed": "A tag is open and never closed.",
+  "hint2.not-closed": "If you've edited index.html, hit the bin. The work is only in styles.css.",
+
+  "why.unlinked": "The page can't find styles.css any more. You've edited index.html.",
+  "hint2.unlinked": "Hit the bin to restore both files, and work only in styles.css.",
+
+  "why.no-body": "There is no body. You've edited index.html.",
+  "why.no-h1": "There is no heading. You've edited index.html — the work is in the other file.",
+  "why.no-ul": "There is no list. You've edited index.html.",
+  "why.no-a": "There is no link. You've edited index.html.",
+
+  "why.margin-left": "The text still doesn't reach the edge. There's a margin you never wrote — it comes from the browser.",
+  "hint2.margin-left": "The margin is around the whole body of the page. So the rule is for body.",
+  "hint3.margin-left": "Every browser puts about 8 pixels around the content so it doesn't stick to the edge. That's why the first rule in almost every real site removes it.",
+  "hint4.margin-left": "Give body a margin of 0.",
+
+  "why.h1-still-big": "The heading is still larger than the text. Nobody wrote that it should be — the browser decided.",
+  "hint2.h1-still-big": "The paragraph is 16 pixels. Make the heading the same and see what's left of it.",
+  "hint3.h1-still-big": "A heading defaults to twice the text size. Not because h1 means large, but because someone thirty years ago picked 2em and everyone copied it.",
+  "hint4.h1-still-big": "In a rule for h1 set font-size: 16px.",
+
+  "why.bullets-left": "The list items still have discs in front of them. You didn't put those there either.",
+  "hint2.bullets-left": "The property is called list-style-type. Look for a value that means no marker.",
+  "hint3.bullets-left": "Every navigation menu on the web is a ul. Not one of them has discs — because every one removed them exactly like this.",
+  "hint4.bullets-left": "In a rule for ul set list-style-type: none.",
+
+  "why.underline-left": "The link is still underlined. That's the browser's decision too, not yours.",
+  "hint2.underline-left": "The property is text-decoration.",
+  "hint3.underline-left": "Careful here. An underline on a link isn't decoration — it's the only thing that tells a link apart from text for someone who can't tell the colours apart. Take it off and you owe them another signal.",
+  "hint4.underline-left": "In a rule for a set text-decoration: none. And remember what you lost.",
+
+  "why.lost-li": "A list item is gone. The work is in styles.css.",
+
+  "blocks.0.text": "In lesson 01 I wrote that this is what a page without CSS looks like. That wasn't true, and now you'll prove it yourself.",
+  "blocks.1.text": "The page on the right has exactly one rule — the font. And still: the heading is large, the list has discs, the link is blue and underlined, everything sits away from the edge. Who wrote that?",
+
+  "blocks.2.text": "Someone else's file",
+  "blocks.3.text": "Every browser carries its own CSS file and applies it before yours ever arrives. It decides that:",
+  "blocks.4.items.0": "h1 is twice the size of the text",
+  "blocks.4.items.1": "ul has discs in front",
+  "blocks.4.items.2": "a is blue and underlined",
+  "blocks.4.items.3": "the body sits away from the edge",
+
+  "blocks.5.text": "Why it exists at all",
+  "blocks.6.text": "So that a page whose author wrote no styles is still readable. Open a scientific document from 1998 — it has headings, paragraphs, lists. It works. That's insurance, not aesthetics.",
+  "blocks.7.text": "And something important follows: you don't start from nothing. You start from someone else's decision that you've never seen, and sometimes your first job is to take it off.",
+  "blocks.8.text": "That's why almost every real site opens with a few lines that remove the defaults. They're called a reset or a normalize. Now you'll write your own, a small one.",
+
+  "blocks.9.text": "The task",
+  "blocks.10.text": "In styles.css take off four things: the margin around the body, the large heading, the discs on the list, and the underline on the link. Don't touch index.html.",
+  "blocks.11.text": "When it passes — look at the preview. That's a page truly without styles. It's ugly in a different way, and now you know exactly why."
+}

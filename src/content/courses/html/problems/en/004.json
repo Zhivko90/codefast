@@ -1,0 +1,84 @@
+{
+  "title": "A form that actually works",
+  "statement": "An empty editor. Build the form from the target on the right.\n\nNothing here shows on screen. A field looks the same whether it is tied to its label or not. Tied — a blind person knows what goes in it. Not tied — they hear only an empty box.",
+
+  "constraints": [
+    "Heading: Sign up",
+    "Group Account: Email, Password",
+    "Group About you: Age, Country (at least three countries), Tell us about yourself",
+    "Every field has its own label, tied to it",
+    "Every field is of the right type: email, password, number",
+    "A button to submit"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything closed",
+    "t2": "There is a heading",
+    "t3": "There is a form",
+    "t4": "There are at least three fields",
+    "t5": "There is a dropdown",
+    "t6": "There is a large text field",
+    "t7": "The fields are tied to their labels",
+    "t8": "The dropdown has a label",
+    "t9": "The email field is of type email",
+    "t10": "The password field is of type password",
+    "t11": "The age field is of type number",
+    "t12": "The dropdown has at least three choices",
+    "t13": "The fields are grouped",
+    "t14": "The groups have names",
+    "t15": "There is a button"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the form yourself.",
+    "not-closed": "A tag is open and never closed. Input fields have no closing tag, but everything else does.",
+    "no-heading": "There is no heading, or it is empty.",
+    "no-form": "The fields are there, but they are not inside a form. The form is what collects them and sends them together.",
+    "few-fields": "There are not three input fields. Email, password and age make three.",
+    "no-select": "There is no dropdown. A country is not typed freely — it is picked from a ready list.",
+    "no-textarea": "There is no large text field. Telling us about yourself does not fit on one line.",
+    "no-labels": "There is a field with no label tied to it. You wrote the word next to the field — a sighted person sees it, and that fools you into thinking everything is fine.\n\nBut a label is not text next to a field. It is a LINK. A blind person focuses the field and the reader says nothing useful: \"edit box, blank\". They do not know what the page is asking for.",
+    "wrong-types": "There is a field of the wrong type. All fields look the same — a rectangle. But the type decides whether a phone shows a letter keyboard or a number one, whether the password is hidden, whether the browser offers the saved email.",
+    "few-options": "The dropdown has fewer than three choices.",
+    "no-groups": "The fields are not grouped. Six fields in a row are a wall. Groups say what belongs with what.",
+    "no-legend": "The group has no name, or it is empty. A group without a name is a box without a label — you know things are collected together, but not what they are.",
+    "no-button": "There is no button. The form can be filled in, but it cannot be sent."
+  },
+
+  "hints": {
+    "no-labels": [
+      "The label and the field are tied through a shared name. One points, the other is called that.",
+      "There are two correct ways. Either the label points at the field's name, or the label wraps the field entirely. Both work.",
+      "Check each field separately: email, password, age, country, story. Five fields, five links. One broken link is enough."
+    ],
+    "wrong-types": [
+      "An input field has an attribute that says what is expected inside.",
+      "Without it, the field is plain text. Three of your fields are not plain text.",
+      "Email, password and number are three different types. Each has its own name."
+    ],
+    "no-groups": [
+      "There is a tag that fences off several fields and says: these belong together.",
+      "Each group wants a name too — the first thing inside it."
+    ],
+    "not-closed": [
+      "Input fields have no closing tag. Everything else does.",
+      "The groups, the form, the labels, the large text field — each of those closes."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to write the word and put the field next to it. On screen it looks like a form — and it works, if you have eyes.\n\nBut a word next to a field is not a label. It is just text standing nearby. A blind person tabs to the field and the reader says: \"edit box, blank\". Nothing more. They do not know whether an email is wanted, a password, or an age.\n\nThe second omission is the type. Every field looks the same — a white rectangle. But the type decides whether a phone shows a number keyboard, whether the password is hidden, whether the browser offers the saved address.",
+    "steps": [
+      "Open the form. It collects everything and sends it together.",
+      "Split the fields into two groups and name each one. Six fields in a row are a wall.",
+      "For every field write the label BEFORE it and tie the two through a shared name.",
+      "Give every field the right type: email, password, number. Without a type a field is plain text.",
+      "The country is not a typing field — it is a dropdown with ready choices.",
+      "The story is not one line — it is a large text field.",
+      "Finally a button. Without it the form fills in but goes nowhere."
+    ],
+    "code": "<body>\n  <h2>Sign up</h2>\n  <form>\n    <fieldset>\n      <legend>Account</legend>\n      <label for=\"email\">Email</label>\n      <input id=\"email\" type=\"email\">\n      <label for=\"password\">Password</label>\n      <input id=\"password\" type=\"password\">\n    </fieldset>\n    <fieldset>\n      <legend>About you</legend>\n      <label for=\"age\">Age</label>\n      <input id=\"age\" type=\"number\">\n      <label for=\"country\">Country</label>\n      <select id=\"country\">\n        <option>Bulgaria</option>\n        <option>Germany</option>\n        <option>Japan</option>\n      </select>\n      <label for=\"about\">Tell us about yourself</label>\n      <textarea id=\"about\"></textarea>\n    </fieldset>\n    <button type=\"submit\">Sign up</button>\n  </form>\n</body>",
+    "note": "A form is where the gap between \"looks right\" and \"is right\" is widest. Everything here is invisible: the links, the types, the groups. Run it and look — you will not see a single one of the mistakes you just fixed."
+  }
+}

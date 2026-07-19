@@ -1,0 +1,104 @@
+{
+  "title": "The Field Knows What It Wants",
+
+  "statement": "Empty editor. Build the form shown in the target on the right.\n\nThree fields. On screen all three are the same white rectangle — there's no way to tell them apart by looking.\n\nBut one is waiting for a name, another for an email, the third for a phone number. And all three can say so themselves.",
+
+  "constraints": [
+    "Heading: Photo walk",
+    "A sentence below it",
+    "Three fields: Your name, Email, Phone",
+    "Every field has its own label, tied to it",
+    "Every field is of the right kind and has a name",
+    "Without an email the form doesn't go",
+    "A submit button"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a heading",
+    "t3": "There is a form",
+    "t4": "There are three fields",
+    "t5": "There is an email field",
+    "t6": "There is a phone field",
+    "t7": "There is a free text field",
+    "t8": "The fields are tied to their labels",
+    "t9": "There are three labels",
+    "t10": "No label is empty",
+    "t11": "Every field has a name",
+    "t12": "No name is empty",
+    "t13": "The email is required",
+    "t14": "There is a button",
+    "t15": "There is a sentence below the heading"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the form yourself.",
+
+    "not-closed": "Some tag is opened and never closed.\n\nInput fields have no closing tag. The form, the labels and the button do.",
+
+    "no-heading": "There is no heading, or it is empty.",
+
+    "no-form": "The fields are there, but not inside a form. The form is what gathers them and sends them together.",
+
+    "few-fields": "There aren't three fields in the form. Name, email and phone make three.",
+
+    "no-email-type": "There is no email field.\n\nLeft as free text, it accepts anything — including \"dunno\". And you get rubbish.\n\nOnce the field says what it wants, the browser checks it for you, and a phone opens a keyboard with the @ sign in plain view.",
+
+    "no-tel-type": "There is no phone field.\n\nOn a phone the visitor gets a letter keyboard and has to hunt for the digits. Three letters save them that.",
+
+    "no-text-type": "There is no free text field.\n\nA name is a name — it has no fixed shape and shouldn't be checked by anyone.",
+
+    "no-labels": "There is a field with no label tied to it.\n\nYou've written the word next to the field — a sighted person sees it, and that misleads you into thinking all is well.\n\nBut a label isn't text next to a field. It's a LINK. A blind visitor focuses the field and the screen reader stays silent: \"edit field, blank\".",
+
+    "few-labels": "There aren't three labels. Every field wants its own.",
+
+    "empty-label": "There is an empty label. The word has to be inside it.",
+
+    "no-name": "There is a field with no name, or with an empty one.\n\nData travels as name-value pairs. A field with no name arrives nowhere — the server drops it silently.\n\nNote: this isn't the same as the label. The label is for the person, the name is for the server.",
+
+    "no-required": "The email isn't required.\n\nWithout that, someone sends an empty form and you get nothing — and then you have no way to reply.\n\nOne attribute with no value stops the submission, and the browser points at the field itself.",
+
+    "no-button": "There is no button. The form can be filled in, but not sent.",
+
+    "no-text": "There is no sentence below the heading, or it is empty."
+  },
+
+  "hints": {
+    "no-email-type": [
+      "An input field has an attribute that says what's expected inside it.",
+      "Look at each field's name to tell which is which. The kind follows the meaning, not the order.",
+      "Lesson 57: email wants a five-letter word."
+    ],
+    "no-tel-type": [
+      "The phone has its own kind too.",
+      "Three letters. Not telephone and not phone."
+    ],
+    "no-labels": [
+      "A label and a field are tied through a shared name. One points, the other is called that.",
+      "There are two correct ways: either the label points at the field's name, or it wraps the field entirely.",
+      "Three fields, three links. One broken is enough."
+    ],
+    "no-required": [
+      "There's an attribute with no value — it simply exists or it doesn't.",
+      "You don't write it with a value of \"true\". Its presence is the value.",
+      "It goes on the email field — without that you can't reply to the person."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to drop in three fields and write a word above each. On screen you get exactly what you wanted — a form.\n\nBut the three fields are identical only in appearance. One waits for a name, another for an email, the third for a phone — and each of them can say so itself.\n\nOnce it does, you get three things at once without writing a line: the browser validates for you, the phone opens the right keyboard, and the visitor sees their mistake before sending.\n\nAnd the second invisible thing: the word above a field isn't a label. It's text standing nearby. A label is a link — and without it the screen reader says only \"edit field\".",
+    "steps": [
+      "Start with the heading and the sentence below it.",
+      "Open the form — it gathers the fields and sends them together.",
+      "For each field, write the label before it and tie the two through a shared name.",
+      "Now go through the fields and ask about each: what exactly is it waiting for?",
+      "Give each one the right kind. Follow the meaning, not the order.",
+      "Give each one a name too — that's for the server, not for the person.",
+      "The email is required. The attribute is one word, with no value.",
+      "Finally the button. Without it the form fills in but never leaves."
+    ],
+    "code": "<body>\n  <h1>Photo walk</h1>\n  <p>Sign up and we will send you the meeting point.</p>\n  <form>\n    <label for=\"name\">Your name</label>\n    <input id=\"name\" name=\"name\" type=\"text\">\n    <label for=\"email\">Email</label>\n    <input id=\"email\" name=\"email\" type=\"email\" required>\n    <label for=\"phone\">Phone</label>\n    <input id=\"phone\" name=\"phone\" type=\"tel\">\n    <button type=\"submit\">Sign up</button>\n  </form>\n</body>",
+    "note": "And a warning: the validation you just got for free is a CONVENIENCE, not protection.\n\nAnyone can remove it with two clicks in their own browser. It protects the person from their own mistake — it doesn't protect you from a bad one. The server checks again, always."
+  }
+}

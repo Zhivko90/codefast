@@ -1,0 +1,64 @@
+{
+  "title": "Wreck: three broken rules",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The background is cream",
+  "checkLabels.t4": "The font is Georgia",
+  "checkLabels.t5": "The heading is dark red",
+  "checkLabels.t6": "The paragraphs are brown",
+  "checkLabels.t7": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted the page instead of fixing it. Bring the code back.",
+
+  "why.untouched": "The code is exactly as it was. All three broken things are still there.",
+  "hint2.untouched": "Look at the preview. None of the four rules works. One at a time.",
+
+  "why.not-closed": "An HTML tag is open and never closed.",
+  "hint2.not-closed": "Check <style> and </style>. What's broken is the CSS, not the HTML — leave the other tags alone.",
+
+  "why.no-h1": "There is no heading. You deleted the <h1> instead of fixing the rule for it.",
+  "hint2.no-h1": "You're fixing styles. The HTML below is fine and stays untouched.",
+
+  "why.no-p": "There is not a single paragraph left. You deleted them.",
+  "hint2.no-p": "The two lines of text are fine. What's broken is above, between <style> and </style>.",
+
+  "why.no-background": "The background isn't cream. The body rule is there, it looks fine — and it doesn't work.",
+  "hint2.no-background": "Look at the end of the background-color line. Compare it with the end of the line below.",
+  "hint3.no-background": "A semicolon isn't decoration. It says \"this declaration is done\". Without it the browser reads the next line as a continuation of the same value — and throws both away. That's why the font doesn't work either.",
+  "hint4.no-background": "Add a semicolon after cornsilk.",
+
+  "why.no-font": "The font isn't Georgia. That rule is written correctly — it dies with the line above it.",
+  "hint2.no-font": "This line isn't broken on its own. The one before it is.",
+  "hint3.no-font": "The browser doesn't stop on an error. It quietly discards what it can't parse and moves on. That's how one mistake kills two lines while you only see the result.",
+  "hint4.no-font": "Fix the line above and this one fixes itself.",
+
+  "why.h1-not-red": "The heading isn't dark red. The rule is exact, the colour exists — and still nothing.",
+  "hint2.h1-not-red": "Count the curly braces on the h1 rule. Opening and closing.",
+  "hint3.h1-not-red": "Without a closing brace the browser thinks the rule continues. The next rule becomes part of it — and is lost along with it.",
+  "hint4.h1-not-red": "Close the h1 rule before the p rule starts.",
+
+  "why.p-not-brown": "The paragraphs aren't brown. This one is a different mistake — not punctuation, but the value itself.",
+  "hint2.p-not-brown": "Read what comes after color. Is that a colour?",
+  "hint3.p-not-brown": "Every property accepts a certain kind of value. color wants a colour. font-size wants a size. Give a size to a colour and the browser throws the whole line away — silently, without a word.",
+  "hint4.p-not-brown": "Change the value to a colour. The paragraphs should be saddlebrown.",
+
+  "why.lost-p": "A paragraph is gone. You're fixing styles, not deleting text.",
+
+  "blocks.0.text": "So far you've seen what a rule looks like. Now you'll see what a BROKEN rule looks like — and why that's the more useful skill.",
+
+  "blocks.1.text": "The rule",
+  "blocks.3.text": "Selector — which elements. Curly braces — how far it reaches. Inside: property, colon, value, semicolon. Four parts, and every one of them breaks in its own way.",
+
+  "blocks.4.text": "The silence",
+  "blocks.5.text": "Here's the important part of this lesson. The browser does NOT stop on a CSS error. No red, no message, no line number. It discards what it can't understand and carries on as if nothing happened.",
+  "blocks.6.items.0": "Missing semicolon — you lose that line AND the next one.",
+  "blocks.6.items.1": "Missing curly brace — you lose the entire following rule.",
+  "blocks.6.items.2": "Wrong kind of value — you lose just that line, quietly.",
+  "blocks.7.text": "The silence isn't malicious. It's deliberate: a page with one broken character should still render rather than go black. You're the one who pays for it, while you hunt.",
+
+  "blocks.8.text": "The task",
+  "blocks.9.text": "There are four rules on the right and not one of them works. Three different broken things are keeping them dead. Fix them.",
+  "blocks.10.text": "The background should be cornsilk, the font Georgia, the heading darkred, the paragraphs saddlebrown. Nobody will tell you where the mistake is — exactly like tomorrow, in real work."
+}

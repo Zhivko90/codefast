@@ -1,0 +1,116 @@
+{
+  "title": "What Kind Of List",
+
+  "statement": "Empty editor. Build the page shown in the target on the right.\n\nThis brief does NOT tell you what to make from what. It gives you the content — you decide.\n\nFour parts. Three of them are enumerations and on screen they'll look nearly identical. But one is just a set of things, the second is steps, and the third is pairs.\n\nThe fourth isn't a list at all, however much you'd like it to be.\n\nThe questions that settle it: does the order mean anything? And is this thing the name of another thing?",
+
+  "constraints": [
+    "Heading: Fix a puncture",
+    "Part What you need: tyre levers, a patch kit, a pump",
+    "Part How to do it: take the wheel off · lever the tyre away from the rim · pull the tube out and find the hole · sand it, glue it, press the patch on · put everything back and pump it up",
+    "Part The patch kit: patches 6 · glue 5 ml · weight 40 g",
+    "Part One last thing: a patch holds for years if the tube is clean and dry before you glue it",
+    "No hand-written numbering, no dashes"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "There is a main heading",
+    "t3": "There are four subheadings",
+    "t4": "There is an unordered list",
+    "t5": "It has three items",
+    "t6": "There is an ordered list",
+    "t7": "It has five steps",
+    "t8": "There is a list of pairs",
+    "t9": "There are three names",
+    "t10": "There are three values",
+    "t11": "No name is empty",
+    "t12": "No value is empty",
+    "t13": "No list item is empty",
+    "t14": "There is a paragraph",
+    "t15": "The paragraph isn't empty",
+    "t16": "There are no line breaks"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the page yourself.",
+
+    "not-closed": "Some tag is opened and never closed, or closed in the wrong order.\n\nIn lists that happens easily: every item wants closing, and the list itself too — at the very end, after the last item.",
+
+    "no-heading": "There is no main heading, or it is empty.",
+
+    "no-sections": "There aren't four subheadings. The four parts are separate and each opens with its own heading.",
+
+    "no-ul": "There is no unordered list.\n\nThe levers, the patch kit and the pump are three things of one kind. None comes before another — you take them out of the drawer all at once.\n\nWhen the order means nothing, the list says so.",
+
+    "few-tools": "There aren't three items in the unordered list.",
+
+    "no-ol": "There is no ordered list.\n\nThe steps aren't a set of things. They're a sequence — swap two of them and the instructions become wrong. You can't glue a hole before you've found it.\n\nAnd beware the temptation to write the numbers by hand. On screen it comes out the same. But a written number is text: swap two lines and the numbers stay as they were and start lying.\n\nOnce the list says it has an order, the browser numbers it — and renumbers it.",
+
+    "few-steps": "There aren't five steps in the ordered list.",
+
+    "no-dl": "There is no list of pairs.\n\nThe contents of the kit aren't three things. They're three pairs: a name and a value. \"Glue\" without \"5 ml\" means nothing, and the other way round.\n\nPut them in a plain list with a colon and your code says \"here are three things of one kind\" — and they aren't.",
+
+    "few-dt": "There aren't three names in the list of pairs.",
+
+    "few-dd": "There aren't three values in the list of pairs.",
+
+    "empty-dt": "There is an empty name. It asks nothing.",
+
+    "empty-dd": "There is an empty value. It answers nothing.",
+
+    "empty-li": "There is an empty list item. An empty item isn't an item.",
+
+    "no-p": "There is no paragraph.\n\nThe last part is a single sentence. It isn't an enumeration — there's nothing to enumerate from one thing.\n\nA list of one is a list by tag only. The screen reader announces \"list, one item\" and the visitor wonders where the others are.",
+
+    "empty-p": "The paragraph is empty.",
+
+    "br-instead": "You've used line breaks.\n\nA break breaks the line and nothing else. Every list item takes its own line — it doesn't need telling.",
+
+    "list-in-p": "A list has ended up inside a paragraph.\n\nA paragraph is a container for text, not for a list. The browser force-closes it before the list, and turns your closing tag into a second, empty paragraph.\n\nOn screen it may not show. In your code there's now something you didn't write.",
+
+    "list-of-one": "There's a list with only one thing in it.\n\nOne thing isn't an enumeration. The screen reader announces \"list, one item\" and the visitor wonders where the rest are.\n\nIf there's only one, it's a paragraph."
+  },
+
+  "hints": {
+    "no-ol": [
+      "Go through the four parts and ask each: if I swap two lines, does it break?",
+      "With the tools it doesn't. With the steps it does — you can't patch a hole you haven't found yet.",
+      "Lesson 26: when the order matters, the list is a different one. And the numbers are written by the browser, not by you."
+    ],
+    "no-dl": [
+      "Look at the contents of the kit. How many things is each line made of?",
+      "Two: a name and a value. \"Weight\" alone means nothing, and so does \"40 g\".",
+      "Lesson 28: there's a tag for exactly a list of pairs, and inside it the name and the value alternate."
+    ],
+    "no-p": [
+      "How many things is the last part made of?",
+      "One. An enumeration of one thing isn't an enumeration.",
+      "A single sentence is a paragraph."
+    ],
+    "no-ul": [
+      "Does the order of the tools mean anything?",
+      "It doesn't — you take them all at once. So the list is the unordered one."
+    ],
+    "list-of-one": [
+      "Count the items in each of your lists.",
+      "Is there one with only a single item? Then it isn't a list.",
+      "A list of one is a promise that isn't kept — the reader announces how many items there are, and the visitor waits for the second."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct is to build everything with the same list. Four tidy blocks come out on screen and it looks finished.\n\nBut the three enumerations here say three different things, and the fourth isn't an enumeration at all.\n\nThe tools have no order. You take them all at once and none is first.\n\nThe steps do. They're the one place on this page where swapping two lines makes the instructions WRONG rather than merely shuffled. And if you write the numbers yourself, that's exactly what you lose: they become text and stop renumbering.\n\nThe kit isn't an enumeration but pairs. \"5 ml\" is an answer to a question only the colon asks — and the colon is something only you can read.\n\nThe last sentence is one sentence. A list of one is a promise that isn't kept.\n\nSo there's no correct tag here on its own. There's a correct question: what is this thing?",
+    "steps": [
+      "Start with the heading and the four subheadings. They're the skeleton.",
+      "Go through each part and ask it: does the order mean anything here?",
+      "The tools: it doesn't. Nobody is first — a plain list.",
+      "The steps: it does. You can't patch a hole you haven't found. An ordered list, and you leave the numbering to the browser.",
+      "The kit: here the question is different — is this the name of something else? Yes. So, pairs.",
+      "The last part is a single sentence. It isn't a list, however much you'd like it to be.",
+      "Finally go through the code and check: is there a list with only one thing inside?"
+    ],
+    "code": "<body>\n  <h1>Fix a puncture</h1>\n\n  <h2>What you need</h2>\n  <ul>\n    <li>Tyre levers</li>\n    <li>A patch kit</li>\n    <li>A pump</li>\n  </ul>\n\n  <h2>How to do it</h2>\n  <ol>\n    <li>Take the wheel off.</li>\n    <li>Lever the tyre away from the rim.</li>\n    <li>Pull the tube out and find the hole.</li>\n    <li>Sand it, glue it, press the patch on.</li>\n    <li>Put everything back and pump it up.</li>\n  </ol>\n\n  <h2>The patch kit</h2>\n  <dl>\n    <dt>Patches</dt>\n    <dd>6</dd>\n    <dt>Glue</dt>\n    <dd>5 ml</dd>\n    <dt>Weight</dt>\n    <dd>40 g</dd>\n  </dl>\n\n  <h2>One last thing</h2>\n  <p>A patch holds for years if the tube is clean and dry before you glue it.</p>\n</body>",
+    "note": "Load the page. The three enumerations look nearly identical — lines one under another with bullets or numbers in front.\n\nThe difference is in what the code claims. And it shows in one single moment: when tomorrow you add a sixth step in the middle. In an ordered list the numbers renumber themselves. Hand-written ones don't.\n\nFrom then on your instructions lie, and you haven't touched a thing."
+  }
+}
