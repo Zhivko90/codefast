@@ -357,15 +357,19 @@ async function start(student, course, files, pro) {
         break;
       } catch {}
     }
-    if (!ready) return;
+   if (!ready) { console.log('socket never appeared for ' + name); return; }
+    console.log('socket ready for ' + name + ', files: ' + ordered.join(', '));
 
    // ⚠ Сокетът се появява преди VS Code да е готов да отваря файлове.
     // Извикването минава, но нищо не се случва.
     await new Promise((r) => setTimeout(r, 6000));
     for (const n of ordered) {
-      try {
+   try {
         await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/workspace/' + n]);
-      } catch {}
+        console.log('opened ' + n);
+      } catch (e) {
+        console.log('open FAIL ' + n + ' ' + String(e?.message ?? e));
+      }
       await new Promise((r) => setTimeout(r, 1200));
     }
   })();
