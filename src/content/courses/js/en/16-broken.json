@@ -1,0 +1,87 @@
+{
+  "title": "The receipt lies",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The typed text is untouched",
+  "checkLabels.t6": "The signs are not reversed",
+  "checkLabels.t7": "You trim the spaces",
+  "checkLabels.t8": "No joining with plus",
+  "checkLabels.t9": "The cups are 4",
+  "checkLabels.t10": "The total is 14",
+  "checkLabels.t11": "The missing tip is spotted",
+  "checkLabels.t12": "The name comes out in capitals",
+  "checkLabels.t13": "The line is right",
+  "checkLabels.t14": "Five lines come out",
+  "checkLabels.t15": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Five lines, five broken things. The first is already on the cups line — the console shows NaN.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below. Fix one thing, submit, look at the next.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.erased-source": "You changed what the person typed.",
+  "hint2.erased-source": "That is what is in the field. The code has to cope with it.",
+
+  "why.reversed-signs": "The plus and equals signs are reversed somewhere.",
+  "hint2.reversed-signs": "Reversed, they do not accumulate, they replace.",
+
+  "why.no-trim": "You are not removing the spaces at the ends anywhere.",
+  "hint2.no-trim": "Both the name and the tip arrive with spaces around them.",
+
+  "why.still-glued": "You are still joining text with plus.",
+  "hint2.still-glued": "Template strings make it readable.",
+
+  "why.wrong-cups": "The cups are not 4.",
+  "hint2.wrong-cups": "It says 4 cups. Number wants the whole text to be a number.",
+  "hint3.wrong-cups": "If NaN comes out here, every following sum becomes NaN too. The mistake spreads downwards.",
+
+  "why.wrong-total": "The total is not 14.",
+  "hint2.wrong-total": "Four cups at three is twelve, plus two for service. Three things along the way spoil it.",
+  "hint3.wrong-total": "One is the reversed signs. Another is the division, which happens before the addition. The third is the rounding, which is missing.",
+
+  "why.wrong-tip": "The missing tip is not spotted.",
+  "hint2.wrong-tip": "The field contains only spaces. Remove them and see whether anything is left.",
+  "hint3.wrong-tip": "Number of empty text gives 0, not NaN. That is why the check here is on the text itself, not the number.",
+
+  "why.not-called": "The name does not come out in capitals.",
+  "hint2.not-called": "The brackets are missing. And the spaces at the front and back have to go too.",
+
+  "why.wrong-line": "The line does not come out right.",
+  "hint2.wrong-line": "It should read: Cups: 4 Total: 14",
+
+  "why.wrong-count": "There are not five lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "A receipt for a customer. Cups, total, tip, name, a line to print.",
+  "blocks.1.text": "The code runs from start to finish. Nothing breaks. And all five lines in the console are wrong.",
+
+  "blocks.2.text": "What it is supposed to do",
+  "blocks.3.text": "The customer typed 4 cups with spaces. The price is 3 lev, the service charge 2.",
+  "blocks.4.items.0": "the cups are 4",
+  "blocks.4.items.1": "the total is 14 — four times three plus two",
+  "blocks.4.items.2": "the tip is missing and that is recognised",
+  "blocks.4.items.3": "the name comes out as 4 CUPS, with no spaces",
+  "blocks.4.items.4": "the line reads Cups: 4 Total: 14",
+
+  "blocks.5.text": "One at a time",
+  "blocks.6.text": "The first mistake is already on the cups line. Fix that one first — almost every other number depends on it.",
+  "blocks.7.text": "Then submit and see what comes out. The heaviest failure is shown, not all of them at once.",
+  "blocks.8.text": "Code that does not break is not the same as code that works.",
+
+  "blocks.9.text": "The task",
+  "blocks.10.text": "Fix everything. Do not touch what the customer typed, or the prices.",
+  "blocks.11.text": "Each of the five broken things comes from a lesson in this section. If you cannot place one, the hint ladder is under every failed check."
+}

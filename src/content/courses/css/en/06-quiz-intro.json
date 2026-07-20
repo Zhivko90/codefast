@@ -1,0 +1,35 @@
+{
+  "title": "Check yourself",
+
+  "questions.0.q": "You wrote two rules, one under the other. The first works. The second doesn't. The browser says nothing — no error, no red. Where do you look first?",
+  "questions.0.options.0": "At the second rule's name — the selector probably matches nothing",
+  "questions.0.options.1": "At the second rule's value — it's probably invalid",
+  "questions.0.options.2": "At the END of the line above it — a missing semicolon kills both",
+  "questions.0.options.3": "Nowhere — the second property just isn't supported",
+  "questions.0.hint": "A rule that doesn't work isn't always broken on its own. Sometimes it dies with its neighbour.",
+  "questions.0.explain": "The semicolon ends a declaration. Without it the browser reads the next line as a continuation of the same value — and throws both away. So it looks like the second rule is broken when the broken one is the first. Look at the line ABOVE the problem, not at the problem.",
+
+  "questions.1.q": "A colleague tells you your code is wrong because you wrote color: #8b0000 instead of color: darkred. Who's right?",
+  "questions.1.options.0": "The colleague — colour names are the only reliable way",
+  "questions.1.options.1": "You — that's the same colour written differently",
+  "questions.1.options.2": "The colleague — hex only works with background-color",
+  "questions.1.options.3": "You're both wrong — it has to be rgb()",
+  "questions.1.hint": "Ask what actually reaches the browser. The characters you typed, or the colour they mean?",
+  "questions.1.explain": "darkred, #8b0000 and rgb(139, 0, 0) are the same value. The browser understands them identically and stores them identically — ask it what the colour is and all three return rgb(139, 0, 0). A course that rejects one of them is comparing characters instead of results. You write for the browser, not for someone counting letters.",
+
+  "questions.2.q": "You put the <style> block at the end of <body>. The page looks exactly as you want. Is there a problem?",
+  "questions.2.options.0": "No — it works, so it's fine",
+  "questions.2.options.1": "Yes — the browser won't run it there at all",
+  "questions.2.options.2": "Yes — <style> is forbidden outside <head> and the page is invalid",
+  "questions.2.options.3": "Yes — on a slow connection people see the page unstyled first, then repainted",
+  "questions.2.hint": "It works on your machine, in milliseconds. Think about someone on a slower connection than yours.",
+  "questions.2.explain": "The browser is forgiving and will run the styles anywhere. The problem isn't whether it works but WHEN they arrive: placed at the end, they come after the text, and people see the flash. This is your first lesson of the kind \"the code works, it looks right, and it's still wrong\". There will be more.",
+
+  "questions.3.q": "You removed the underline from every link. The page looks cleaner and everything works. What did you break?",
+  "questions.3.options.0": "Someone who can't tell colours apart can no longer see what's a link",
+  "questions.3.options.1": "Nothing — the links are still clickable",
+  "questions.3.options.2": "Google will stop indexing them",
+  "questions.3.options.3": "Links will stop changing colour once visited",
+  "questions.3.hint": "Ask what the underline was actually doing. Was it decoration, or was it saying something?",
+  "questions.3.explain": "Blue and underlined are two separate signals for the same thing. Remove the underline and only the colour is left — and around eight percent of men don't distinguish colours well. For them the link becomes ordinary text. Removing it isn't forbidden. Removing it without giving another signal is: a bottom border, a different weight, an arrow. Take something away, owe a replacement."
+}

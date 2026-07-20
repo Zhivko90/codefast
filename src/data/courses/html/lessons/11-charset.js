@@ -19,7 +19,11 @@ export default {
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
     { id: "t1", type: "code_contains", value: "lang=", err: "no-lang", weight: 60 },
     { id: "t2", type: "dom_attr", value: "html", attr: "lang", err: "empty-lang", weight: 50 },
-    { id: "t3", type: "code_contains", value: "<meta", err: "lost-meta", weight: 30 },
+    { id: "t3", type: "dom_count", value: "meta[charset]", min: 1, err: "lost-meta", weight: 30 },
+    { id: "t3b", type: "dom_attr", value: "meta[charset]", attr: "charset", err: "lost-meta", weight: 28 },
+    { id: "t4", type: "dom_text_not_empty", value: "title", err: "lost-content", weight: 25 },
+    { id: "t5", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 22 },
+    { id: "t6", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 20 },
   ],
   blocks: [
     { type: "text" },

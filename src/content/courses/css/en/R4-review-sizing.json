@@ -1,0 +1,28 @@
+{
+  "title": "Sizing",
+  "assignment": "Look through the ideas from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "How each one behaves",
+  "groups.0.items.0.term": "Block, inline, inline-block",
+  "groups.0.items.0.def": "A block takes the whole row and accepts sizes. An inline element sits inside the text and does NOT accept width, height or vertical margins. Its vertical padding is drawn but pushes nothing — you see a border over the neighbouring text and assume it works. Inline-block stays on the line but accepts sizes. That is why a link meant to be a button needs inline-block.",
+  "groups.0.items.1.term": "The two ways of hiding",
+  "groups.0.items.1.def": "display: none removes the element entirely — it takes no room and screen readers skip it. Hide something meaningful that way and a blind reader never learns it exists. visibility: hidden leaves the space and makes the element invisible. One closes the gap, the other keeps it.",
+  "groups.0.items.2.term": "The tag does not decide",
+  "groups.0.items.2.def": "A div is not a block by nature — it is a block because the browser's stylesheet makes it one. Any element can be switched. That is why the question of why a width does not stick is almost never about the tag but about display.",
+
+  "groups.1.title": "The number and the limit",
+  "groups.1.items.0.term": "A ceiling instead of a width",
+  "groups.1.items.0.def": "A block element with no width already fills the row — it needs no number. The number is for making it NARROWER. But a fixed width does not fit a narrow screen. max-width means at most that: on a wide screen it stops, on a narrow one it shrinks. One number covers both without asking how wide the screen is.",
+  "groups.1.items.1.term": "A floor instead of a height",
+  "groups.1.items.1.def": "Height comes from the content. Set height and you promise how long the text will be — and you cannot. Tomorrow one more sentence and the text leaves the border with nobody complaining. min-height gives the same confidence about shape without the cutting: at least this tall, growing when it must.",
+  "groups.1.items.2.term": "When height is right",
+  "groups.1.items.2.def": "When the size is part of the shape rather than a guess about content: a round badge, a square photo, an element with one word. There the number describes the figure. The simple rule: min is for things that must not be squashed, max is for things that must not spread.",
+
+  "groups.2.title": "Overflow and centring",
+  "groups.2.items.0.term": "The four values of overflow",
+  "groups.2.items.0.def": "visible is the default and the text runs out. hidden cuts and the content disappears without a trace. scroll shows a bar always. auto shows one only when there is something to scroll, and is usually the right choice. And one awkward detail from MDN: a scrolling area does not receive keyboard focus in some browsers — it needs tabindex zero, a role and a name.",
+  "groups.2.items.1.term": "An ellipsis needs three properties",
+  "groups.2.items.1.def": "text-overflow alone does nothing. First you forbid wrapping so the text stays on one line. Then you hide what does not fit. Only then does the third have something to replace with three dots. That is why people write only the last one and wonder at the silence. And remember that truncated text is hidden text: fine for a list, not for something a person has to read.",
+  "groups.2.items.2.term": "The four centrings",
+  "groups.2.items.2.def": "A box horizontally — auto on the left and right, with a width or ceiling set. Text horizontally — text-align. One line vertically — line-height equal to the box height, which falls apart at two lines. A box vertically — for a long time there was no decent answer and we waited for flexbox. Four different questions, four different properties, hence the reputation for being impossible."
+}

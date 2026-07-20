@@ -1,0 +1,66 @@
+{
+  "title": "The font that is not there",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "There is a generic name at the end",
+  "checkLabels.t7": "The first choice is kept",
+  "checkLabels.t8": "The prices use a monospace font",
+  "checkLabels.t9": "The column is not broken",
+  "checkLabels.t10": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "One line extended in body, one line added in .price.",
+
+  "why.not-closed": "A closing brace or quote is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-body": "There is no body.",
+  "why.no-price": "There is no element with the price class.",
+  "why.no-page": "There is no element with the page class.",
+
+  "why.no-fallback": "There is no generic name at the end of the list.",
+  "hint2.no-fallback": "If none of the listed fonts exists, the browser has to know what KIND to pick.",
+  "hint3.no-fallback": "Generic names are not fonts but kinds: sans-serif, serif, monospace, cursive. Every machine resolves them to something it has.",
+  "hint4.no-fallback": "Add sans-serif at the very end, after a comma.",
+
+  "why.lost-first": "The first font in the list is no longer Brandon Grotesque.",
+  "hint2.lost-first": "It stays first — it is simply no longer alone. Its name is two words, so it needs quotes.",
+
+  "why.price-not-mono": "The prices still use the body font.",
+  "hint2.price-not-mono": "Numbers stacked one under another read more easily when every character is the same width.",
+  "hint3.price-not-mono": "That kind is called monospace. It goes last, after a specific name.",
+  "hint4.price-not-mono": "font-family: \"Courier New\", monospace;",
+
+  "why.page-broken": "The column from the previous section is broken.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The body rule says font-family: Brandon Grotesque. Open the preview: the text is not in that font. No error, no warning, the console is silent. You are looking at the browser's default font and nobody tells you why.",
+
+  "blocks.1.text": "The list is not a choice, it is a ladder",
+  "blocks.2.text": "The value of font-family is almost never one name. It is a sequence:",
+  "blocks.4.text": "The browser reads left to right and stops at the first name it finds on the machine. Brandon Grotesque is a paid font that almost nobody has installed — so it drops to Helvetica, then Arial, and finally to whatever the system calls sans-serif. It never complains along the way, because this is not a failure: it is exactly what the list is for.",
+  "blocks.5.text": "You are not setting a font. You are setting a row of wishes, in order of preference.",
+
+  "blocks.6.text": "How to write it properly",
+  "blocks.7.items.0": "The specific one you want first. A two-word name needs quotes: \"Brandon Grotesque\".",
+  "blocks.7.items.1": "Then common stand-ins that look similar. Helvetica and Arial exist almost everywhere.",
+  "blocks.7.items.2": "At the end, ALWAYS a generic name: sans-serif, serif, monospace, cursive.",
+  "blocks.7.items.3": "The separator is a comma. Without it the names read as one.",
+  "blocks.8.text": "A generic name is not a font but a kind. Every machine resolves it to something it has, which is why it is the only entry that never fails. Leave it out and, if the specific fonts are missing, you land in the browser's default — usually a serif and rarely what you wanted.",
+
+  "blocks.9.text": "Which kind when",
+  "blocks.10.text": "A serif has small strokes at the ends of the letters and reads as more bookish. A sans-serif has none and is the usual choice on screen. A monospace gives every character the same width — which is why it is used for code and for numbers stacked in a column that need to line up. The argument about which reads better on screen is old and unsettled; size and line spacing matter more than the strokes.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Make the page font work even when Brandon Grotesque is missing — with two common stand-ins and a generic name at the end. And give the prices a monospace font so the numbers line up."
+}

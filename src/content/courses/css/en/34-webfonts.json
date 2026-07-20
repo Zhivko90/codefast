@@ -1,0 +1,72 @@
+{
+  "title": "A font that travels",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The font declaration is there",
+  "checkLabels.t6": "No third-party server",
+  "checkLabels.t7": "The text does not vanish while loading",
+  "checkLabels.t8": "There is a generic name at the end",
+  "checkLabels.t9": "The first choice is kept",
+  "checkLabels.t10": "The column is not broken",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Three things: one line out, one line in, one line extended.",
+
+  "why.not-closed": "A closing brace or quote is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.no-body": "There is no body.",
+  "why.no-page": "There is no element with the page class.",
+
+  "why.face-deleted": "You deleted the block that declares the font.",
+  "hint2.face-deleted": "Without it the browser does not know where the file is. It stays.",
+
+  "why.third-party": "You are still pulling a font from someone else's server.",
+  "hint2.third-party": "The first line of the file fetches a font from Google. You do not need it — your own font is declared below.",
+  "hint3.third-party": "Every visitor sends their address to a foreign machine before saying a word. There is a court ruling about this — the lesson covers it.",
+  "hint4.third-party": "Delete the whole import line at the top.",
+
+  "why.no-display": "Nothing says what to show while the font is travelling.",
+  "hint2.no-display": "By default the browser waits and the text is INVISIBLE during that time.",
+  "hint3.no-display": "There is a value that says: draw immediately with the fallback and swap when the real one arrives.",
+  "hint4.no-display": "font-display: swap; inside the font block.",
+
+  "why.no-fallback": "There is no generic name at the end of the list.",
+  "hint2.no-fallback": "The file may never arrive at all. Then what?",
+
+  "why.lost-first": "Your own font is no longer first in the list.",
+  "why.page-broken": "The column is broken.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "So far you have been choosing between fonts already on the reader's machine. Now you can send your own. That changes two things: the page looks like yours, and it starts depending on a file travelling over the network.",
+
+  "blocks.1.text": "How it is declared",
+  "blocks.2.text": "The block applies nothing. It only tells the browser: if anyone asks for this font, the file is here.",
+  "blocks.4.text": "The name inside is yours — it is not stored in the file, and it is how you will call the font later. The woff2 format is compressed for the web and has been supported everywhere for years; other formats are no longer needed.",
+
+  "blocks.5.text": "The empty period",
+  "blocks.6.text": "The file only starts downloading once the browser knows some text will use it. Until then there is a choice: show something else, or show nothing. By default it waits — on a slow connection the reader stares at a blank page with missing headings for up to three seconds.",
+  "blocks.8.text": "swap means: draw immediately with the fallback and switch when the real font arrives. The cost is that the text jumps — the letters reflow in front of the reader. The choice is between invisible text and text that flickers. The second is almost always the lesser evil, because the first cannot even be read.",
+  "blocks.9.text": "Invisible text is not better than the wrong font.",
+
+  "blocks.10.text": "Where the file comes from",
+  "blocks.11.text": "The easiest way is one line pointing at Google Fonts. But that means every visitor's browser connects to someone else's server and hands over its address before the person has clicked anything.",
+  "blocks.12.text": "In January 2022 a court in Munich awarded a hundred euros in damages against a site for exactly this — case 3 O 17493/20. It is a first-instance decision on a small claim, not a European rule, and lawyers disagree about how much it weighs. But there is a way to make the question moot: download the file and put it with your own. Then nothing is sent anywhere, and the page does not wait on someone else's server.",
+
+  "blocks.13.text": "Three things that save time",
+  "blocks.14.items.0": "woff2 only. The other formats are for browsers nobody uses any more.",
+  "blocks.14.items.1": "Only the weights you actually use. Each one is a separate file — four weights means four downloads.",
+  "blocks.14.items.2": "If the font is needed for something visible at the top, say so in advance with preload in the head. Otherwise the browser learns about it late.",
+
+  "blocks.15.text": "The task",
+  "blocks.16.text": "Remove the external font from the third-party server. Make the text visible while your own font travels. And give the list fallbacks — the file may never arrive."
+}

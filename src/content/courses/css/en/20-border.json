@@ -1,0 +1,71 @@
+{
+  "title": "The border that never shows",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The card border is visible",
+  "checkLabels.t7": "The width is 2",
+  "checkLabels.t8": "The colour is brown",
+  "checkLabels.t9": "The note has a line",
+  "checkLabels.t10": "The line is 4 pixels",
+  "checkLabels.t11": "The line is on the left only",
+  "checkLabels.t12": "The padding is kept",
+  "checkLabels.t13": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The border is still missing.",
+  "hint2.untouched": "The .card rule has a width and a colour. The third part is missing.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-note": "There is no element with the note class.",
+
+  "why.no-style": "The card border is still not visible.",
+  "hint2.no-style": "The width and the colour are set. What is missing is the kind of line.",
+  "hint3.no-style": "Without border-style the browser treats the style as none, and with none the width counts as zero. That is why the other two do nothing — they are not wrong, there is simply no line for them to describe.",
+  "hint4.no-style": "Replace the two lines with one: border: 2px solid saddlebrown;",
+
+  "why.wrong-width": "The border is not 2 pixels.",
+  "why.wrong-color": "The border is not brown.",
+  "hint2.wrong-color": "In the shorthand the order of the three does not matter, but the values do: width, style, colour.",
+
+  "why.note-no-line": "The note at the bottom has no line on the left.",
+  "hint2.note-no-line": "You do not need a border on all sides. There is a form for one side.",
+  "hint3.note-no-line": "border-left takes the same three values as border but applies only to the left edge.",
+  "hint4.note-no-line": "border-left: 4px solid gray;",
+
+  "why.note-thin": "The left line is not 4 pixels.",
+  "why.note-boxed": "You boxed the note in on all sides. Only a line on the left is asked for.",
+  "hint2.note-boxed": "border covers all four edges. For one edge you write border-left.",
+
+  "why.padding-cut": "You deleted the card padding.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The card rule has two lines about a border. Two pixels wide, brown. Open the preview: there is no border. There is no error either.",
+
+  "blocks.1.text": "Three parts, not two",
+  "blocks.2.text": "Here is what is written:",
+  "blocks.4.text": "The third part is missing — the kind of line. And without it the other two do nothing, because the default style is none, and with none the width counts as zero. Nothing is wrong. There is simply no line to be two pixels wide and brown.",
+
+  "blocks.5.text": "The shorthand",
+  "blocks.6.text": "The three go on one line:",
+  "blocks.8.text": "Width, style, colour. Their order does not matter — the browser can tell which value is which because the three are different kinds of value. Leave out the colour and it takes the colour of the text. Leave out the width and it becomes medium. Leave out the style and there is no border.",
+  "blocks.9.text": "A border with no style is not thin. It does not exist.",
+
+  "blocks.10.text": "One side only",
+  "blocks.11.text": "You rarely want a line on all four sides. Far more often you want one — a bar to the left of a quote, a rule under a heading, a divider between two rows. Each side has its own form:",
+  "blocks.13.text": "There are several styles: solid is a plain line, dashed is broken, dotted is dots, double is two lines. There are more, but they are rarely used and look different across browsers. For a divider that should stay discreet, a thin solid line works better than a dashed one.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Make the card border visible — 2 pixels, solid, brown. And give the note at the bottom a line on the left only: 4 pixels, solid, gray. The padding stays."
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Selecting by attribute",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "All five links are there",
+  "checkLabels.t6": "The HTML is untouched",
+  "checkLabels.t7": "The dead rule is gone",
+  "checkLabels.t8": "External links are teal",
+  "checkLabels.t9": "Internal links are still brown",
+  "checkLabels.t10": "The mail link is bold",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. Every link still looks the same.",
+  "hint2.untouched": "You only work in styles.css. The HTML stays as it is.",
+
+  "why.not-closed": "A closing brace, quote or square bracket is missing.",
+  "hint2.not-closed": "An attribute selector has two brackets, [ and ], and two quotes around the value.",
+
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+
+  "why.lost-links": "There are no longer five links. You write a rule, you do not delete content.",
+
+  "why.added-class": "You added a class label in the HTML. That is exactly what this lesson avoids.",
+  "hint2.added-class": "No link has a class and none will get one. It is all solved in styles.css.",
+  "hint3.added-class": "Think about what separates the outside links from the internal ones. It is already written in the HTML, inside the href itself.",
+  "hint4.added-class": "Remove the class attributes. Ask about href instead of a label.",
+
+  "why.dead-rule-left": "The .external rule is still in styles.css. It matches nothing and never will.",
+  "hint2.dead-rule-left": "The task is to REPLACE it, not to add a second rule beside it.",
+  "hint3.dead-rule-left": "A dead rule is worse than a missing one. In a month you read it and assume elements with that class exist somewhere. You go looking. They do not.",
+  "hint4.dead-rule-left": "Delete the whole .external { } block.",
+
+  "why.no-external": "No link points to another site. The HTML has been rearranged.",
+  "why.external-not-teal": "The links to other sites are not teal. The check looks at both.",
+  "hint2.external-not-teal": "Ask about href, not about a label. The bracket selector goes right after the a.",
+  "hint3.external-not-teal": "Both outside addresses begin with https. There is a sign that means starts with — and it catches both http and https, because it compares the beginning of the string.",
+  "hint4.external-not-teal": "a[href^=\"http\"] — the start sign after href, then the value in quotes.",
+
+  "why.no-internal": "There is no link to a section of this page.",
+  "why.internal-changed": "The internal links changed too. They must stay saddlebrown.",
+  "hint2.internal-changed": "The a rule covers every link. Change it and you change the internal ones as well.",
+  "hint3.internal-changed": "The general a rule stays brown. The more precise rule comes on top of it, only for hrefs that begin with http.",
+
+  "why.no-mail": "There is no mail link.",
+  "why.mail-not-bold": "The mail link is not bold.",
+  "hint2.mail-not-bold": "Its address begins with mailto: — same question, same start sign.",
+  "hint4.mail-not-bold": "a[href^=\"mailto:\"] with font-weight: bold inside.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red. You deleted the h1 rule.",
+
+  "blocks.0.text": "Bean Street now has links. Some point to sections of the page, some lead off the site.",
+
+  "blocks.1.text": "The problem",
+  "blocks.2.text": "You want the outside links to look different, so it is clear they lead away. You think in classes, and styles.css already holds this:",
+  "blocks.4.text": "The rule is written correctly and does nothing. No link carries the external label. You can add it by hand to each one — and forget it on the next link you add a month from now. But the answer is already on the page: href says where the link goes. Do not label something that is already written.",
+
+  "blocks.5.text": "Ask the attribute itself",
+  "blocks.6.text": "Square brackets ask about an attribute of the element.",
+  "blocks.8.text": "Three signs for three questions: the beginning, the end, anywhere inside. The value goes in quotes. And this is not only for links — it works with any attribute: input by type, img by alt, a by target.",
+  "blocks.9.text": "A class is a label you attach. An attribute is a fact already there.",
+
+  "blocks.10.text": "The small print",
+  "blocks.11.text": "Matching the start of http catches both http and https, because https begins with http. It also catches your own links if you wrote the full address of your site somewhere. And the comparison is letter by letter, capitals included: HTTP does not match http. There is a flag for that, before the closing bracket:",
+  "blocks.13.text": "The i flag turns off the difference between capitals and small letters, for Latin letters. With addresses you rarely need it. With values typed by hand by several people it sometimes saves you.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Delete the dead .external rule. Make the links to other sites teal and the mail link bold with font-weight: bold. Links to sections of this page stay saddlebrown. Do not touch the HTML."
+}

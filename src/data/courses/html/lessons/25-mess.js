@@ -6,6 +6,7 @@ export default {
   id: 25,
   type: "web",
   label: "coding",
+  freeform: true,   // „опитай и се провали“ — без balanced, без строги пазачи. Одитът да мълчи.
   starterCode: `<!DOCTYPE html>
 <html>
   <head>

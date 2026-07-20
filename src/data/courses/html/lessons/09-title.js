@@ -12,6 +12,7 @@ export default {
   </body>
 </html>`,
   checks: [
+    { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
     { id: "t1", type: "code_contains", value: "<title", err: "no-title", weight: 60 },
     { id: "t2", type: "raw_head_contains", value: "<title", err: "title-not-in-head", weight: 50 },

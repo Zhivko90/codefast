@@ -1,0 +1,68 @@
+{
+  "title": "Why the width does not stick",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The buttons are no longer inline",
+  "checkLabels.t7": "The width applies",
+  "checkLabels.t8": "The padding is kept",
+  "checkLabels.t9": "The print note is hidden",
+  "checkLabels.t10": "No underline",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The buttons are still not buttons.",
+  "hint2.untouched": "One new line in each of the two rules.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-btn": "There is no element with the btn class.",
+  "why.no-note": "There is no element with the print-note class.",
+
+  "why.still-inline": "The buttons still behave like text.",
+  "hint2.still-inline": "A link is an inline element. Inline elements do not accept a width.",
+  "hint3.still-inline": "You need something that accepts sizes but stays on the same line — otherwise the three buttons will each take a row.",
+  "hint4.still-inline": "display: inline-block;",
+
+  "why.width-lost": "The buttons are not 120 wide.",
+  "hint2.width-lost": "The number has been there all along. The question is whether the element accepts it.",
+
+  "why.padding-cut": "You deleted the button padding.",
+  "why.underline-back": "The link underline is back.",
+
+  "why.note-visible": "The print note is still showing.",
+  "hint2.note-visible": "There is a display value that removes the element completely.",
+  "hint4.note-visible": "display: none;",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The three links are meant to be buttons. Their rule gives them a width of 120, padding of 12 and a border. Open the preview: the width is gone — each button is exactly as wide as the word inside it. The top padding is drawn but pushes nothing, so the borders overlap the text above. The numbers are correct. They simply do not apply.",
+
+  "blocks.1.text": "Every element is either a block or a line",
+  "blocks.2.text": "The browser lays content out in two ways and every element belongs to one of them:",
+  "blocks.3.items.0": "Block — takes the whole row and pushes what follows below it. div, p, h1, ul are blocks. They accept width, height and margins on every side.",
+  "blocks.3.items.1": "Inline — sits inside the text and takes exactly as much room as its content. a, span, strong, em are inline. They do not accept width or height.",
+  "blocks.3.items.2": "Inline-block — sits on the line like an inline element but accepts sizes like a block.",
+  "blocks.4.text": "That is why the numbers in the rule do not apply: a link is inline. Width and height are ignored. So are top and bottom margins. Top and bottom padding is DRAWN but takes up no room: the neighbours do not move away and the border runs into the text above. That is the most confusing of the four, because you can see it and assume it works.",
+  "blocks.5.text": "The tag does not decide how an element behaves. display does.",
+
+  "blocks.6.text": "The third state",
+  "blocks.7.text": "You need an element that stays on the line but accepts sizes:",
+  "blocks.9.text": "Now the three buttons sit side by side, the width applies, the padding pushes properly. You will notice a small gap between them that you never asked for — that is the whitespace between the tags in the HTML, which counts as text for inline elements. An annoying detail with several awkward fixes; flex removes it entirely, which is why buttons are laid out with it today. Until then inline-block does the job.",
+
+  "blocks.10.text": "And none",
+  "blocks.11.text": "display: none removes the element completely: it is not in the layout, takes no room, as if it were not in the document. Screen readers skip it too. That also makes it dangerous: hide something meaningful this way and a blind reader does not merely miss it — they never learn it exists.",
+  "blocks.12.text": "There is a second kind of hiding: visibility: hidden leaves the space empty and simply makes the element invisible. The two solve different problems. If you want something gone and the neighbours to close the gap — none. If you want it hidden without the page jumping — hidden.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Make the three links accept their width and stay on one row. And hide the print note — it is for the printer, not the screen."
+}

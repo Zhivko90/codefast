@@ -1,0 +1,92 @@
+{
+  "title": "The Soup",
+
+  "statement": "Load the code on the right. It works. It comes out exactly as it should.\n\nAnd it's one of the worst pieces of code in this course. Count the boxes — nearly everything on this page is one.\n\nRead the code out loud, tags only. Box, box, box. You can't tell what the page is.\n\nYour job is to fix it. But beware of overdoing it: the rule from lesson 46 isn't \"no boxes\". It's something else — ask what a thing IS, and the box stays where there's no suitable tag.\n\nOne place on this page is exactly that. Find it and leave it alone.\n\nThe tests are hidden. And deleting is not fixing — every word stays.",
+
+  "constraints": [
+    "Nothing gets deleted — every word and every link stays",
+    "Every thing says what it IS",
+    "The page has a top part, a substance and a bottom part",
+    "Exactly one main heading",
+    "Exactly one box remains — the one there's no tag for"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "t2": "You changed the code",
+    "g1": "Everything is closed",
+    "p1": "All three links are there",
+    "p2": "The links have addresses",
+    "p3": "The content is intact"
+  },
+
+  "why": {
+    "empty": "The editor is empty. Deleting is not fixing. Bring the code back.",
+
+    "untouched": "The code is exactly the one I gave you. You haven't changed anything.\n\nThat's normal — it works and it looks fine. That's what makes it insidious.",
+
+    "not-closed": "Some tag is opened and never closed.\n\nWhen you change a box into something else, change its closing tag too. A leftover closing slash is the commonest mistake here.",
+
+    "lost-content": "You deleted content instead of changing tags.\n\nThe words aren't the mistake. Every sentence, all three links and both headings stay to the end.\n\nThe mistake is that not one of them says what it IS.",
+
+    "no-h1": "There isn't exactly one real main heading with text in it.\n\nThe shop's name is written as a box with a label. The label is a word you invented — the browser doesn't understand it.\n\nGoogle looks for the heading and finds a box. A blind visitor tries to jump by headings and finds none.\n\nAnd careful the other way too: the main heading is ONE per page.",
+
+    "no-h2": "There is no real subheading with text in it.\n\nThe winter sale is a part of the page, not the whole. It's a heading one level down.",
+
+    "no-p": "There aren't four real paragraphs.\n\nA box that contains text isn't text. There are four sentences on this page: the sale, the city bikes, the mountain bikes and the copyright.\n\nAnd careful: it isn't just the label that goes. A box without a label is still a box — the tag is wrong, not the name.",
+
+    "menu-not-list": "The menu isn't a list inside navigation.\n\nThree boxes one under another aren't a list. The screen reader doesn't say \"list, three items\", it says \"box, box, box\".\n\nAnd it doesn't know this is a menu at all — so it can't be skipped.",
+
+    "no-landmarks": "The page has no top part, substance and bottom part.\n\nThree boxes labelled top, content and bottom describe where things sit on screen. To a screen reader they mean nothing.\n\nAll three have real tags from lesson 47. The substance is exactly one.",
+
+    "wrong-place": "Something isn't in the part it belongs to.\n\nThe shop's name and the menu go together — they're the top part. The copyright is the bottom one.",
+
+    "div-count": "There isn't exactly one box.\n\nIf there are none — you've overdone it. The rule isn't \"no boxes\"; it's \"ask what a thing IS\". On this page there's one thing that is neither a heading, nor a paragraph, nor a list, nor a section: the wrapper around the two prices. It's there only to hold them together.\n\nThere is NO tag for that. That's exactly why boxes exist.\n\nIf there's more than one — somewhere a box is still dressed up as a heading, a paragraph or a list item.",
+
+    "div-empty": "The box you kept doesn't contain the two price paragraphs.\n\nIt has one job: to hold the two prices together. Empty or alone, it means nothing."
+  },
+
+  "hints": {
+    "no-h1": [
+      "Read the page and find which line is the name of the whole page.",
+      "It's written as a box with a label. You invented the label — change the tag itself.",
+      "And check: how many main headings do you end up with? It should be one."
+    ],
+    "no-p": [
+      "Go through the sentences one at a time. Each of them is text, not a container of text.",
+      "It isn't just the label that goes. A box without a label is still a box.",
+      "Four sentences, four paragraphs."
+    ],
+    "menu-not-list": [
+      "The three links are three things of one kind. What's that called, from lesson 26?",
+      "And one more: say that this list is a menu. Lesson 47 gave the tag.",
+      "Each link goes into its own list item."
+    ],
+    "no-landmarks": [
+      "The three big boxes describe PLACES on screen: top, middle, bottom.",
+      "Lesson 47 gave tags that say what those parts are, rather than where they sit.",
+      "The substance is exactly one per page. The menu and the bottom line aren't in it."
+    ],
+    "div-count": [
+      "Count the boxes you have left.",
+      "If there are none, go back and ask: what IS the wrapper around the two prices? A heading? A paragraph? A list? A section?",
+      "It's none of those. It simply holds two things together — and that's exactly what a box is for."
+    ]
+  },
+
+  "solution": {
+    "why": "The first instinct, seeing that many boxes, is to delete them all. And almost everywhere that's right.\n\nAlmost.\n\nThe rule from lesson 46 isn't \"no boxes\". It's one sentence: ask what a thing IS, not how it looks. Is it a heading? A paragraph? A menu? For nearly everything there's a tag.\n\nA box is what you use WHEN THERE ISN'T ONE.\n\nAnd here there's exactly one such place: the wrapper around the two prices. It isn't a heading, isn't a paragraph, isn't a list and isn't a standalone thing. It exists only to hold two things together — so that tomorrow someone can line them up side by side.\n\nThere's no tag for that. Which is why here the box is the right answer — and the one time it isn't laziness.\n\nNotice something else too: after all this work the preview looks almost identical. The difference is seen by Google, by the screen reader, and by you in six months. The three who don't look at the screen.",
+    "steps": [
+      "Read the code top to bottom and ask of each thing: what IS this?",
+      "The shop's name is the heading of the whole page. There's one.",
+      "The winter sale is a part of it — a heading one level down.",
+      "Every sentence is a paragraph. A box that contains text isn't text.",
+      "The three links are three things of one kind — a list, and a menu at that.",
+      "The three big boxes describe places on screen. Replace them with tags that say what the parts are.",
+      "Finally you reach the wrapper around the two prices. Ask it the same thing: what IS it?",
+      "It's none of the above. So it stays a box — and that's the right answer."
+    ],
+    "code": "<body>\n  <header>\n    <h1>Nordic Bikes</h1>\n    <nav>\n      <ul>\n        <li><a href=\"index.html\">Home</a></li>\n        <li><a href=\"bikes.html\">Bikes</a></li>\n        <li><a href=\"contact.html\">Contact</a></li>\n      </ul>\n    </nav>\n  </header>\n  <main>\n    <h2>Winter sale</h2>\n    <p>Every bike in the shop is down until the end of February.</p>\n    <div class=\"prices\">\n      <p>City bikes from 420 leva.</p>\n      <p>Mountain bikes from 690 leva.</p>\n    </div>\n  </main>\n  <footer>\n    <p>Written by Ivan. All rights reserved.</p>\n  </footer>\n</body>",
+    "note": "Eleven boxes became one. And that one isn't left over by accident — it's there because for its job there genuinely is no tag.\n\nThat's the difference between \"delete all the boxes\" and \"ask what each thing is\". The first is a rule you learn in a minute. The second is a question you'll keep asking for the rest of your working life."
+  }
+}

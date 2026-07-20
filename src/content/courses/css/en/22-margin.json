@@ -1,0 +1,66 @@
+{
+  "title": "The space outside",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The cards no longer touch",
+  "checkLabels.t7": "The width is unchanged",
+  "checkLabels.t8": "The padding is kept",
+  "checkLabels.t9": "The cards are centred",
+  "checkLabels.t10": "You centred the box, not the text",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The cards still touch.",
+  "hint2.untouched": "One new line in the .card rule.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. There are two cards and there stay two.",
+  "why.no-card": "There is no element with the card class.",
+
+  "why.cards-touch": "The two cards still touch.",
+  "hint2.cards-touch": "You do not need more room INSIDE. You need room OUTSIDE the box.",
+  "hint3.cards-touch": "Padding widens the box itself — the border moves outward with it. A margin does not touch the box, it pushes the neighbour.",
+  "hint4.cards-touch": "margin-bottom: 16px;",
+
+  "why.width-changed": "You changed the width. It stays 248.",
+  "hint2.width-changed": "A margin does not count towards the size of the box, so nothing needs recalculating.",
+
+  "why.padding-cut": "You deleted the padding. It is for the inside, the margin is for the outside — one does not replace the other.",
+
+  "why.not-centered": "The cards still sit against the left edge.",
+  "hint2.not-centered": "There is a value that tells the browser to split the leftover space itself.",
+  "hint3.not-centered": "auto on the left and right means: take whatever space is left over and divide it evenly between the two sides. It only works when the element has a width — otherwise there is no leftover to divide.",
+  "hint4.not-centered": "margin: 0 auto 16px;",
+
+  "why.used-text-align": "You used text-align: center. That centres the text INSIDE the box while the box stays where it was.",
+  "hint2.used-text-align": "Look at the preview: the letters moved to the middle but the border did not budge. The box itself has to move.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Two cards, one under the other. They are stuck together, their borders merge into one thick line and you cannot see where the first one ends. Padding does not help — that gives room inside, between the text and the border, and the problem is between the two borders.",
+
+  "blocks.1.text": "Inside and outside",
+  "blocks.2.text": "Padding is space INSIDE the element: increase it and the box grows, pushing the border outward. A margin is space OUTSIDE it: the box stays the same and the neighbours move away. That is why a margin does not count towards the size of the box, and why nothing needs recalculating when you add one.",
+  "blocks.3.text": "padding grows inward and pushes the border. margin leaves the box alone and pushes the neighbour.",
+
+  "blocks.4.text": "Same notation",
+  "blocks.5.text": "One, two or four numbers, exactly like padding — and the same order: top, right, bottom, left. Or one side at a time:",
+  "blocks.7.text": "There is one difference you will need: a margin accepts negative numbers. margin-top: -8px pulls the element up, over its neighbour. It is rare and usually a sign that something else is wrong, but it exists. Negative padding is simply not accepted.",
+
+  "blocks.8.text": "Centring",
+  "blocks.9.text": "This is the margin's second job:",
+  "blocks.11.text": "auto means: let the browser work it out. On the left and right that means take the leftover space and split it evenly. It only works when the element has a width — otherwise it fills everything and there is no leftover to split. And do not confuse it with text-align: center, which arranges the letters inside the box and does not move the box. The two look similar at first glance and solve different problems.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Put 16 pixels between the two cards and centre them horizontally. The width, padding and border stay as they are — nothing needs recalculating."
+}

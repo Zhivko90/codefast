@@ -9,21 +9,126 @@ import css_l1 from './css/lessons/02-where.js';
 import css_l2 from './css/lessons/03-rule.js';
 import css_l3 from './css/lessons/04-stylesheet.js';
 import css_l4 from './css/lessons/05-defaults.js';
-import css_l5 from './css/lessons/R1-review-intro.js';
+import css_l5 from './css/lessons/06-quiz-intro.js';
+import css_l6 from './css/lessons/07-first-code.js';
+import css_l7 from './css/lessons/08-select-tag.js';
+import css_l8 from './css/lessons/09-class.js';
+import css_l9 from './css/lessons/10-id.js';
+import css_l10 from './css/lessons/11-descendant.js';
+import css_l11 from './css/lessons/12-attribute.js';
+import css_l12 from './css/lessons/13-pseudo-class.js';
+import css_l13 from './css/lessons/14-pseudo-element.js';
+import css_l14 from './css/lessons/15-broken-selectors.js';
+import css_l15 from './css/lessons/16-quiz-selectors.js';
+import css_l16 from './css/lessons/17-freehand-selectors.js';
+import css_l17 from './css/lessons/18-size-lie.js';
+import css_l18 from './css/lessons/19-padding.js';
+import css_l19 from './css/lessons/20-border.js';
+import css_l20 from './css/lessons/21-radius.js';
+import css_l21 from './css/lessons/22-margin.js';
+import css_l22 from './css/lessons/23-border-box.js';
+import css_l23 from './css/lessons/24-margin-collapse.js';
+import css_l24 from './css/lessons/25-quiz-box.js';
+import css_l25 from './css/lessons/26-display.js';
+import css_l26 from './css/lessons/27-width-height.js';
+import css_l27 from './css/lessons/28-min-max.js';
+import css_l28 from './css/lessons/29-overflow.js';
+import css_l29 from './css/lessons/30-center.js';
+import css_l30 from './css/lessons/31-broken-box.js';
+import css_l31 from './css/lessons/32-freehand-box.js';
+import css_l32 from './css/lessons/33-font-family.js';
+import css_l33 from './css/lessons/34-webfonts.js';
+import css_l34 from './css/lessons/35-font-size.js';
+import css_l35 from './css/lessons/36-line-height.js';
+import css_l36 from './css/lessons/37-font-weight.js';
+import css_l37 from './css/lessons/R1-review-intro.js';
+import css_l38 from './css/lessons/R2-review-selectors.js';
+import css_l39 from './css/lessons/R3-review-box.js';
+import css_l40 from './css/lessons/R4-review-sizing.js';
 import css_bg_course from '@/content/courses/css/bg/_course.json';
 import css_bg_0 from '@/content/courses/css/bg/01-ugly.json';
 import css_bg_1 from '@/content/courses/css/bg/02-where.json';
 import css_bg_2 from '@/content/courses/css/bg/03-rule.json';
 import css_bg_3 from '@/content/courses/css/bg/04-stylesheet.json';
 import css_bg_4 from '@/content/courses/css/bg/05-defaults.json';
-import css_bg_5 from '@/content/courses/css/bg/R1-review-intro.json';
+import css_bg_5 from '@/content/courses/css/bg/06-quiz-intro.json';
+import css_bg_6 from '@/content/courses/css/bg/07-first-code.json';
+import css_bg_7 from '@/content/courses/css/bg/08-select-tag.json';
+import css_bg_8 from '@/content/courses/css/bg/09-class.json';
+import css_bg_9 from '@/content/courses/css/bg/10-id.json';
+import css_bg_10 from '@/content/courses/css/bg/11-descendant.json';
+import css_bg_11 from '@/content/courses/css/bg/12-attribute.json';
+import css_bg_12 from '@/content/courses/css/bg/13-pseudo-class.json';
+import css_bg_13 from '@/content/courses/css/bg/14-pseudo-element.json';
+import css_bg_14 from '@/content/courses/css/bg/15-broken-selectors.json';
+import css_bg_15 from '@/content/courses/css/bg/16-quiz-selectors.json';
+import css_bg_16 from '@/content/courses/css/bg/17-freehand-selectors.json';
+import css_bg_17 from '@/content/courses/css/bg/18-size-lie.json';
+import css_bg_18 from '@/content/courses/css/bg/19-padding.json';
+import css_bg_19 from '@/content/courses/css/bg/20-border.json';
+import css_bg_20 from '@/content/courses/css/bg/21-radius.json';
+import css_bg_21 from '@/content/courses/css/bg/22-margin.json';
+import css_bg_22 from '@/content/courses/css/bg/23-border-box.json';
+import css_bg_23 from '@/content/courses/css/bg/24-margin-collapse.json';
+import css_bg_24 from '@/content/courses/css/bg/25-quiz-box.json';
+import css_bg_25 from '@/content/courses/css/bg/26-display.json';
+import css_bg_26 from '@/content/courses/css/bg/27-width-height.json';
+import css_bg_27 from '@/content/courses/css/bg/28-min-max.json';
+import css_bg_28 from '@/content/courses/css/bg/29-overflow.json';
+import css_bg_29 from '@/content/courses/css/bg/30-center.json';
+import css_bg_30 from '@/content/courses/css/bg/31-broken-box.json';
+import css_bg_31 from '@/content/courses/css/bg/32-freehand-box.json';
+import css_bg_32 from '@/content/courses/css/bg/33-font-family.json';
+import css_bg_33 from '@/content/courses/css/bg/34-webfonts.json';
+import css_bg_34 from '@/content/courses/css/bg/35-font-size.json';
+import css_bg_35 from '@/content/courses/css/bg/36-line-height.json';
+import css_bg_36 from '@/content/courses/css/bg/37-font-weight.json';
+import css_bg_37 from '@/content/courses/css/bg/R1-review-intro.json';
+import css_bg_38 from '@/content/courses/css/bg/R2-review-selectors.json';
+import css_bg_39 from '@/content/courses/css/bg/R3-review-box.json';
+import css_bg_40 from '@/content/courses/css/bg/R4-review-sizing.json';
 import css_en_course from '@/content/courses/css/en/_course.json';
 import css_en_0 from '@/content/courses/css/en/01-ugly.json';
 import css_en_1 from '@/content/courses/css/en/02-where.json';
 import css_en_2 from '@/content/courses/css/en/03-rule.json';
 import css_en_3 from '@/content/courses/css/en/04-stylesheet.json';
 import css_en_4 from '@/content/courses/css/en/05-defaults.json';
-import css_en_5 from '@/content/courses/css/en/R1-review-intro.json';
+import css_en_5 from '@/content/courses/css/en/06-quiz-intro.json';
+import css_en_6 from '@/content/courses/css/en/07-first-code.json';
+import css_en_7 from '@/content/courses/css/en/08-select-tag.json';
+import css_en_8 from '@/content/courses/css/en/09-class.json';
+import css_en_9 from '@/content/courses/css/en/10-id.json';
+import css_en_10 from '@/content/courses/css/en/11-descendant.json';
+import css_en_11 from '@/content/courses/css/en/12-attribute.json';
+import css_en_12 from '@/content/courses/css/en/13-pseudo-class.json';
+import css_en_13 from '@/content/courses/css/en/14-pseudo-element.json';
+import css_en_14 from '@/content/courses/css/en/15-broken-selectors.json';
+import css_en_15 from '@/content/courses/css/en/16-quiz-selectors.json';
+import css_en_16 from '@/content/courses/css/en/17-freehand-selectors.json';
+import css_en_17 from '@/content/courses/css/en/18-size-lie.json';
+import css_en_18 from '@/content/courses/css/en/19-padding.json';
+import css_en_19 from '@/content/courses/css/en/20-border.json';
+import css_en_20 from '@/content/courses/css/en/21-radius.json';
+import css_en_21 from '@/content/courses/css/en/22-margin.json';
+import css_en_22 from '@/content/courses/css/en/23-border-box.json';
+import css_en_23 from '@/content/courses/css/en/24-margin-collapse.json';
+import css_en_24 from '@/content/courses/css/en/25-quiz-box.json';
+import css_en_25 from '@/content/courses/css/en/26-display.json';
+import css_en_26 from '@/content/courses/css/en/27-width-height.json';
+import css_en_27 from '@/content/courses/css/en/28-min-max.json';
+import css_en_28 from '@/content/courses/css/en/29-overflow.json';
+import css_en_29 from '@/content/courses/css/en/30-center.json';
+import css_en_30 from '@/content/courses/css/en/31-broken-box.json';
+import css_en_31 from '@/content/courses/css/en/32-freehand-box.json';
+import css_en_32 from '@/content/courses/css/en/33-font-family.json';
+import css_en_33 from '@/content/courses/css/en/34-webfonts.json';
+import css_en_34 from '@/content/courses/css/en/35-font-size.json';
+import css_en_35 from '@/content/courses/css/en/36-line-height.json';
+import css_en_36 from '@/content/courses/css/en/37-font-weight.json';
+import css_en_37 from '@/content/courses/css/en/R1-review-intro.json';
+import css_en_38 from '@/content/courses/css/en/R2-review-selectors.json';
+import css_en_39 from '@/content/courses/css/en/R3-review-box.json';
+import css_en_40 from '@/content/courses/css/en/R4-review-sizing.json';
 
 // ── html ──
 import { meta as html_meta } from './html/meta.js';
@@ -124,6 +229,8 @@ import html_p15 from './html/problems/016-the-field-knows.js';
 import html_p16 from './html/problems/017-two-ways-to-name.js';
 import html_p17 from './html/problems/018-what-kind-of-list.js';
 import html_p18 from './html/problems/019-one-thought-many-lines.js';
+import html_p19 from './html/problems/020-div-soup.js';
+import html_p20 from './html/problems/021-put-it-in-the-world.js';
 import html_bg_course from '@/content/courses/html/bg/_course.json';
 import html_bg_0 from '@/content/courses/html/bg/01-intro.json';
 import html_bg_1 from '@/content/courses/html/bg/02-structure.json';
@@ -221,6 +328,8 @@ import html_bg_p15 from '@/content/courses/html/problems/bg/016.json';
 import html_bg_p16 from '@/content/courses/html/problems/bg/017.json';
 import html_bg_p17 from '@/content/courses/html/problems/bg/018.json';
 import html_bg_p18 from '@/content/courses/html/problems/bg/019.json';
+import html_bg_p19 from '@/content/courses/html/problems/bg/020.json';
+import html_bg_p20 from '@/content/courses/html/problems/bg/021.json';
 import html_en_course from '@/content/courses/html/en/_course.json';
 import html_en_0 from '@/content/courses/html/en/01-intro.json';
 import html_en_1 from '@/content/courses/html/en/02-structure.json';
@@ -318,6 +427,83 @@ import html_en_p15 from '@/content/courses/html/problems/en/016.json';
 import html_en_p16 from '@/content/courses/html/problems/en/017.json';
 import html_en_p17 from '@/content/courses/html/problems/en/018.json';
 import html_en_p18 from '@/content/courses/html/problems/en/019.json';
+import html_en_p19 from '@/content/courses/html/problems/en/020.json';
+import html_en_p20 from '@/content/courses/html/problems/en/021.json';
+
+// ── js ──
+import { meta as js_meta } from './js/meta.js';
+import js_outline from './js/outline.js';
+import js_l0 from './js/lessons/01-hello.js';
+import js_l1 from './js/lessons/02-values.js';
+import js_l2 from './js/lessons/03-variable.js';
+import js_l3 from './js/lessons/04-const.js';
+import js_l4 from './js/lessons/05-var.js';
+import js_l5 from './js/lessons/06-plus.js';
+import js_l6 from './js/lessons/07-swap.js';
+import js_l7 from './js/lessons/08-broken.js';
+import js_l8 from './js/lessons/09-quiz.js';
+import js_l9 from './js/lessons/10-maths.js';
+import js_l10 from './js/lessons/11-shorthand.js';
+import js_l11 from './js/lessons/12-template.js';
+import js_l12 from './js/lessons/13-strings.js';
+import js_l13 from './js/lessons/14-nan.js';
+import js_l14 from './js/lessons/15-math.js';
+import js_l15 from './js/lessons/16-broken.js';
+import js_l16 from './js/lessons/17-quiz.js';
+import js_l17 from './js/lessons/18-if.js';
+import js_l18 from './js/lessons/19-else.js';
+import js_l19 from './js/lessons/20-equality.js';
+import js_bg_course from '@/content/courses/js/bg/_course.json';
+import js_bg_0 from '@/content/courses/js/bg/01-hello.json';
+import js_bg_1 from '@/content/courses/js/bg/02-values.json';
+import js_bg_2 from '@/content/courses/js/bg/03-variable.json';
+import js_bg_3 from '@/content/courses/js/bg/04-const.json';
+import js_bg_4 from '@/content/courses/js/bg/05-var.json';
+import js_bg_5 from '@/content/courses/js/bg/06-plus.json';
+import js_bg_6 from '@/content/courses/js/bg/07-swap.json';
+import js_bg_7 from '@/content/courses/js/bg/08-broken.json';
+import js_bg_8 from '@/content/courses/js/bg/09-quiz.json';
+import js_bg_9 from '@/content/courses/js/bg/10-maths.json';
+import js_bg_10 from '@/content/courses/js/bg/11-shorthand.json';
+import js_bg_11 from '@/content/courses/js/bg/12-template.json';
+import js_bg_12 from '@/content/courses/js/bg/13-strings.json';
+import js_bg_13 from '@/content/courses/js/bg/14-nan.json';
+import js_bg_14 from '@/content/courses/js/bg/15-math.json';
+import js_bg_15 from '@/content/courses/js/bg/16-broken.json';
+import js_bg_16 from '@/content/courses/js/bg/17-quiz.json';
+import js_bg_17 from '@/content/courses/js/bg/18-if.json';
+import js_bg_18 from '@/content/courses/js/bg/19-else.json';
+import js_bg_19 from '@/content/courses/js/bg/20-equality.json';
+import js_en_course from '@/content/courses/js/en/_course.json';
+import js_en_0 from '@/content/courses/js/en/01-hello.json';
+import js_en_1 from '@/content/courses/js/en/02-values.json';
+import js_en_2 from '@/content/courses/js/en/03-variable.json';
+import js_en_3 from '@/content/courses/js/en/04-const.json';
+import js_en_4 from '@/content/courses/js/en/05-var.json';
+import js_en_5 from '@/content/courses/js/en/06-plus.json';
+import js_en_6 from '@/content/courses/js/en/07-swap.json';
+import js_en_7 from '@/content/courses/js/en/08-broken.json';
+import js_en_8 from '@/content/courses/js/en/09-quiz.json';
+import js_en_9 from '@/content/courses/js/en/10-maths.json';
+import js_en_10 from '@/content/courses/js/en/11-shorthand.json';
+import js_en_11 from '@/content/courses/js/en/12-template.json';
+import js_en_12 from '@/content/courses/js/en/13-strings.json';
+import js_en_13 from '@/content/courses/js/en/14-nan.json';
+import js_en_14 from '@/content/courses/js/en/15-math.json';
+import js_en_15 from '@/content/courses/js/en/16-broken.json';
+import js_en_16 from '@/content/courses/js/en/17-quiz.json';
+import js_en_17 from '@/content/courses/js/en/18-if.json';
+import js_en_18 from '@/content/courses/js/en/19-else.json';
+import js_en_19 from '@/content/courses/js/en/20-equality.json';
+
+// ── webproject ──
+import { meta as webproject_meta } from './webproject/meta.js';
+import webproject_outline from './webproject/outline.js';
+import webproject_l0 from './webproject/lessons/01-one-line.js';
+import webproject_bg_course from '@/content/courses/webproject/bg/_course.json';
+import webproject_bg_0 from '@/content/courses/webproject/bg/01-one-line.json';
+import webproject_en_course from '@/content/courses/webproject/en/_course.json';
+import webproject_en_0 from '@/content/courses/webproject/en/01-one-line.json';
 
 export const registry = {
   'css': {
@@ -329,7 +515,42 @@ export const registry = {
       '03-rule': css_l2,
       '04-stylesheet': css_l3,
       '05-defaults': css_l4,
-      'R1-review-intro': css_l5,
+      '06-quiz-intro': css_l5,
+      '07-first-code': css_l6,
+      '08-select-tag': css_l7,
+      '09-class': css_l8,
+      '10-id': css_l9,
+      '11-descendant': css_l10,
+      '12-attribute': css_l11,
+      '13-pseudo-class': css_l12,
+      '14-pseudo-element': css_l13,
+      '15-broken-selectors': css_l14,
+      '16-quiz-selectors': css_l15,
+      '17-freehand-selectors': css_l16,
+      '18-size-lie': css_l17,
+      '19-padding': css_l18,
+      '20-border': css_l19,
+      '21-radius': css_l20,
+      '22-margin': css_l21,
+      '23-border-box': css_l22,
+      '24-margin-collapse': css_l23,
+      '25-quiz-box': css_l24,
+      '26-display': css_l25,
+      '27-width-height': css_l26,
+      '28-min-max': css_l27,
+      '29-overflow': css_l28,
+      '30-center': css_l29,
+      '31-broken-box': css_l30,
+      '32-freehand-box': css_l31,
+      '33-font-family': css_l32,
+      '34-webfonts': css_l33,
+      '35-font-size': css_l34,
+      '36-line-height': css_l35,
+      '37-font-weight': css_l36,
+      'R1-review-intro': css_l37,
+      'R2-review-selectors': css_l38,
+      'R3-review-box': css_l39,
+      'R4-review-sizing': css_l40,
     },
     problems: {
     },
@@ -341,7 +562,42 @@ export const registry = {
         '03-rule': css_bg_2,
         '04-stylesheet': css_bg_3,
         '05-defaults': css_bg_4,
-        'R1-review-intro': css_bg_5,
+        '06-quiz-intro': css_bg_5,
+        '07-first-code': css_bg_6,
+        '08-select-tag': css_bg_7,
+        '09-class': css_bg_8,
+        '10-id': css_bg_9,
+        '11-descendant': css_bg_10,
+        '12-attribute': css_bg_11,
+        '13-pseudo-class': css_bg_12,
+        '14-pseudo-element': css_bg_13,
+        '15-broken-selectors': css_bg_14,
+        '16-quiz-selectors': css_bg_15,
+        '17-freehand-selectors': css_bg_16,
+        '18-size-lie': css_bg_17,
+        '19-padding': css_bg_18,
+        '20-border': css_bg_19,
+        '21-radius': css_bg_20,
+        '22-margin': css_bg_21,
+        '23-border-box': css_bg_22,
+        '24-margin-collapse': css_bg_23,
+        '25-quiz-box': css_bg_24,
+        '26-display': css_bg_25,
+        '27-width-height': css_bg_26,
+        '28-min-max': css_bg_27,
+        '29-overflow': css_bg_28,
+        '30-center': css_bg_29,
+        '31-broken-box': css_bg_30,
+        '32-freehand-box': css_bg_31,
+        '33-font-family': css_bg_32,
+        '34-webfonts': css_bg_33,
+        '35-font-size': css_bg_34,
+        '36-line-height': css_bg_35,
+        '37-font-weight': css_bg_36,
+        'R1-review-intro': css_bg_37,
+        'R2-review-selectors': css_bg_38,
+        'R3-review-box': css_bg_39,
+        'R4-review-sizing': css_bg_40,
       },
       en: {
         _course: css_en_course,
@@ -350,7 +606,42 @@ export const registry = {
         '03-rule': css_en_2,
         '04-stylesheet': css_en_3,
         '05-defaults': css_en_4,
-        'R1-review-intro': css_en_5,
+        '06-quiz-intro': css_en_5,
+        '07-first-code': css_en_6,
+        '08-select-tag': css_en_7,
+        '09-class': css_en_8,
+        '10-id': css_en_9,
+        '11-descendant': css_en_10,
+        '12-attribute': css_en_11,
+        '13-pseudo-class': css_en_12,
+        '14-pseudo-element': css_en_13,
+        '15-broken-selectors': css_en_14,
+        '16-quiz-selectors': css_en_15,
+        '17-freehand-selectors': css_en_16,
+        '18-size-lie': css_en_17,
+        '19-padding': css_en_18,
+        '20-border': css_en_19,
+        '21-radius': css_en_20,
+        '22-margin': css_en_21,
+        '23-border-box': css_en_22,
+        '24-margin-collapse': css_en_23,
+        '25-quiz-box': css_en_24,
+        '26-display': css_en_25,
+        '27-width-height': css_en_26,
+        '28-min-max': css_en_27,
+        '29-overflow': css_en_28,
+        '30-center': css_en_29,
+        '31-broken-box': css_en_30,
+        '32-freehand-box': css_en_31,
+        '33-font-family': css_en_32,
+        '34-webfonts': css_en_33,
+        '35-font-size': css_en_34,
+        '36-line-height': css_en_35,
+        '37-font-weight': css_en_36,
+        'R1-review-intro': css_en_37,
+        'R2-review-selectors': css_en_38,
+        'R3-review-box': css_en_39,
+        'R4-review-sizing': css_en_40,
       },
     },
     problemText: {
@@ -463,6 +754,8 @@ export const registry = {
       'two-ways-to-name': html_p16,
       'what-kind-of-list': html_p17,
       'one-thought-many-lines': html_p18,
+      'div-soup': html_p19,
+      'put-it-in-the-world': html_p20,
     },
     text: {
       bg: {
@@ -647,6 +940,8 @@ export const registry = {
         '17': html_bg_p16,
         '18': html_bg_p17,
         '19': html_bg_p18,
+        '20': html_bg_p19,
+        '21': html_bg_p20,
       },
       en: {
         '1': html_en_p0,
@@ -668,10 +963,121 @@ export const registry = {
         '17': html_en_p16,
         '18': html_en_p17,
         '19': html_en_p18,
+        '20': html_en_p19,
+        '21': html_en_p20,
+      },
+    },
+    locales: ["bg","en"],
+  },
+  'js': {
+    meta: js_meta,
+    outline: js_outline,
+    logic: {
+      '01-hello': js_l0,
+      '02-values': js_l1,
+      '03-variable': js_l2,
+      '04-const': js_l3,
+      '05-var': js_l4,
+      '06-plus': js_l5,
+      '07-swap': js_l6,
+      '08-broken': js_l7,
+      '09-quiz': js_l8,
+      '10-maths': js_l9,
+      '11-shorthand': js_l10,
+      '12-template': js_l11,
+      '13-strings': js_l12,
+      '14-nan': js_l13,
+      '15-math': js_l14,
+      '16-broken': js_l15,
+      '17-quiz': js_l16,
+      '18-if': js_l17,
+      '19-else': js_l18,
+      '20-equality': js_l19,
+    },
+    problems: {
+    },
+    text: {
+      bg: {
+        _course: js_bg_course,
+        '01-hello': js_bg_0,
+        '02-values': js_bg_1,
+        '03-variable': js_bg_2,
+        '04-const': js_bg_3,
+        '05-var': js_bg_4,
+        '06-plus': js_bg_5,
+        '07-swap': js_bg_6,
+        '08-broken': js_bg_7,
+        '09-quiz': js_bg_8,
+        '10-maths': js_bg_9,
+        '11-shorthand': js_bg_10,
+        '12-template': js_bg_11,
+        '13-strings': js_bg_12,
+        '14-nan': js_bg_13,
+        '15-math': js_bg_14,
+        '16-broken': js_bg_15,
+        '17-quiz': js_bg_16,
+        '18-if': js_bg_17,
+        '19-else': js_bg_18,
+        '20-equality': js_bg_19,
+      },
+      en: {
+        _course: js_en_course,
+        '01-hello': js_en_0,
+        '02-values': js_en_1,
+        '03-variable': js_en_2,
+        '04-const': js_en_3,
+        '05-var': js_en_4,
+        '06-plus': js_en_5,
+        '07-swap': js_en_6,
+        '08-broken': js_en_7,
+        '09-quiz': js_en_8,
+        '10-maths': js_en_9,
+        '11-shorthand': js_en_10,
+        '12-template': js_en_11,
+        '13-strings': js_en_12,
+        '14-nan': js_en_13,
+        '15-math': js_en_14,
+        '16-broken': js_en_15,
+        '17-quiz': js_en_16,
+        '18-if': js_en_17,
+        '19-else': js_en_18,
+        '20-equality': js_en_19,
+      },
+    },
+    problemText: {
+      bg: {
+      },
+      en: {
+      },
+    },
+    locales: ["bg","en"],
+  },
+  'webproject': {
+    meta: webproject_meta,
+    outline: webproject_outline,
+    logic: {
+      '01-one-line': webproject_l0,
+    },
+    problems: {
+    },
+    text: {
+      bg: {
+        _course: webproject_bg_course,
+        '01-one-line': webproject_bg_0,
+      },
+      en: {
+        _course: webproject_en_course,
+        '01-one-line': webproject_en_0,
+      },
+    },
+    problemText: {
+      bg: {
+      },
+      en: {
       },
     },
     locales: ["bg","en"],
   },
 };
 
-export const courseSlugs = ["css","html"];
+export const courseSlugs = ["css","html","js","webproject"];

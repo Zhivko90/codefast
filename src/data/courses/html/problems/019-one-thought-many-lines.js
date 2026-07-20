@@ -54,7 +54,6 @@ export default {
 
     { id: 't6', type: 'dom_count', value: 'br', min: 3, max: 3, err: 'wrong-breaks', weight: 240 },
     { id: 't7', type: 'dom_count', value: 'p br', min: 3, err: 'br-outside', weight: 235 },
-    { id: 't8', type: 'dom_count', value: 'br + br', max: 0, err: 'br-for-air', weight: 230 },
 
     { id: 't9',  type: 'dom_count', value: 'hr', min: 1, max: 1, err: 'no-hr', weight: 200 },
     { id: 't10', type: 'dom_count', value: 'p hr, li hr', max: 0, err: 'hr-inside', weight: 195 },

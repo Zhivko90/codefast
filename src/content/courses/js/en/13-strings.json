@@ -1,0 +1,84 @@
+{
+  "title": "Text has parts",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The typed text is untouched",
+  "checkLabels.t6": "The length is not typed in",
+  "checkLabels.t7": "The spaces are gone",
+  "checkLabels.t8": "The length is 10",
+  "checkLabels.t9": "The first letter is F",
+  "checkLabels.t10": "The capitals come out",
+  "checkLabels.t11": "It is not a latte",
+  "checkLabels.t12": "Five lines come out",
+  "checkLabels.t13": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Five lines in the console, four of them wrong. Look at them one at a time.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.erased-source": "You removed the spaces from the typed text.",
+  "hint2.erased-source": "That is how people type into a field. The task is for the code to cope with it, not to pretend it does not happen.",
+
+  "why.typed-answer": "You typed the length in.",
+  "hint2.typed-answer": "It is counted from the text itself. Tomorrow the order will be different.",
+
+  "why.not-trimmed": "The spaces at the front and back are still there.",
+  "hint2.not-trimmed": "There is a method that removes spaces at both ends and leaves the ones in the middle alone.",
+  "hint3.not-trimmed": "Methods are called with a dot and brackets after the name. Without the brackets nothing happens.",
+
+  "why.wrong-size": "The length is not 10.",
+  "hint2.wrong-size": "Flat White is ten characters including the space between the words. If you are counting something else, you have not removed the outer spaces yet.",
+
+  "why.wrong-initial": "The first letter is not F.",
+  "hint2.wrong-initial": "Counting starts at zero, not one.",
+  "hint3.wrong-initial": "Position 1 is the second letter. The first is at position 0.",
+
+  "why.not-called": "The capitals do not come out. The function itself does.",
+  "hint2.not-called": "You forgot the brackets. Without them you are not asking for the result — you are asking for the method itself.",
+  "hint3.not-called": "This is a quiet mistake: nothing breaks, but instead of text you get something you cannot use.",
+
+  "why.wrong-includes": "The latte check does not answer correctly.",
+  "hint2.wrong-includes": "Flat White is not a latte. If you get something else, you are comparing the wrong things.",
+  "hint3.wrong-includes": "Searching tells capitals and lowercase apart. \"Latte\" and \"latte\" are different to it.",
+  "hint4.wrong-includes": "Bring the text down to lowercase before searching. Methods chain: first one, then the other.",
+
+  "why.wrong-count": "There are not five lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Somebody typed their order into a field. They typed it with spaces at the front and back, because that is what people do.",
+  "blocks.1.text": "Five lines process that text. Four of the five return something that is not what it should be — and not one of them breaks.",
+
+  "blocks.2.text": "A string counts",
+  "blocks.3.text": "Every piece of text knows how long it is and has an address for each letter. Counting starts at zero.",
+  "blocks.5.text": "The length is 4. Position 0 is B, position 3 is n. Position 4 does not exist and returns undefined, with no error.",
+
+  "blocks.6.text": "Methods are called",
+  "blocks.7.text": "Text has ready-made actions — remove the spaces, make it capitals, look for something inside. They are written with a dot after the name.",
+  "blocks.8.text": "And always with brackets at the end. The brackets mean do it. Without them you get the action itself, unperformed.",
+  "blocks.9.text": "This is one of the few mistakes nothing gives away. The result is something that looks meaningless, and the code carries on running.",
+
+  "blocks.10.text": "Chaining",
+  "blocks.11.text": "Every method returns a new piece of text. So you can call the next one on it, and another. It is written one after the other, left to right.",
+  "blocks.12.text": "The original never changes. String methods always make something new and leave the old one as it was.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix the five lines. Do not touch what the person typed.",
+  "blocks.15.items.0": "remove the spaces from both ends",
+  "blocks.15.items.1": "the length should be 10",
+  "blocks.15.items.2": "the first letter is F",
+  "blocks.15.items.3": "the latte check should work with capitals too"
+}

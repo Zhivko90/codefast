@@ -1,0 +1,65 @@
+{
+  "title": "A ceiling and a floor, not a number",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The card has a ceiling",
+  "checkLabels.t7": "The fixed width is gone",
+  "checkLabels.t8": "The badge has a floor",
+  "checkLabels.t9": "The fixed height is gone",
+  "checkLabels.t10": "The padding is kept",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "One property in each of the two rules. Both are replaced, not added to.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-badge": "There is no element with the badge class.",
+
+  "why.no-ceiling": "The card has no ceiling on its width.",
+  "hint2.no-ceiling": "You do not want an exact number. You want at most that much.",
+  "hint3.no-ceiling": "There is a property that means upper limit: this wide if there is room, narrower if there is not.",
+  "hint4.no-ceiling": "max-width: 320px; instead of the width line.",
+
+  "why.still-fixed": "The fixed width is still there.",
+  "hint2.still-fixed": "The two together do not help. The task is to swap one for the other.",
+
+  "why.no-floor": "The badge has no lower limit on its height.",
+  "hint2.no-floor": "You want at least this tall, but free to grow when the text is long.",
+  "hint4.no-floor": "min-height: 56px; instead of the height line.",
+
+  "why.height-left": "The fixed height is still there.",
+  "hint2.height-left": "Read the text in the badge — it is longer than one line and does not fit in 40 pixels.",
+
+  "why.padding-cut": "You deleted the padding.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The last lesson ended with an awkward choice. Remove the width and the card spreads across the whole screen until the text is unreadable. Keep it and the box sticks out on a phone. The choice looks like too wide against too narrow, and it is a false one.",
+
+  "blocks.1.text": "Not a number, a limit",
+  "blocks.2.text": "Some properties do not set a size — they set a limit:",
+  "blocks.4.text": "Read it as a sentence: at most 320 pixels. On a wide screen the card stops at 320 and does not spread. On a screen narrower than 320 it takes whatever room there is and nothing sticks out. One number covers both cases without asking how wide the screen is.",
+  "blocks.5.text": "width is a promise. max-width is a ceiling — which is why it survives a screen you have never seen.",
+
+  "blocks.6.text": "And the other way round",
+  "blocks.7.text": "On the other side sits the lower limit:",
+  "blocks.9.text": "At least 56 pixels tall, growing if the content asks. That is what was missing in the last lesson: there we removed the height because a hard number cuts text off. min-height gives the same confidence about shape without the cutting — the box is never shorter than you want and never shorter than it needs to be.",
+
+  "blocks.10.text": "Which one when",
+  "blocks.11.text": "The simple rule: min is for things that must not be squashed, max is for things that must not spread. That is why max-width is the common one for width — screens vary and are narrower than you expect. And min-height is the common one for height — content varies and is longer than you expect. There is a ceiling for height too, max-height, but it cuts text off and is used rarely, usually together with scrolling.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Give the card a ceiling of 320 pixels instead of a fixed width. Give the badge a floor of 56 pixels instead of a fixed height. The padding and borders stay."
+}

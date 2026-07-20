@@ -7,6 +7,8 @@
   "checkLabels.t3": "title must have text in it",
   "checkLabels.t4": "The heading must still be there",
   "checkLabels.t5": "The sentence must still be there",
+  "checkLabels.t0": "There is code",
+  "why.empty": "The editor is empty. You deleted the page instead of naming it. Bring the code back.",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
   "why.no-title": "The tab still says \"index.html\". Nobody bookmarks a tab like that. Give the page a name.",

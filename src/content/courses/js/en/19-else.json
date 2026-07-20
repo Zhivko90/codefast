@@ -1,0 +1,71 @@
+{
+  "title": "Or else",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "There are three conditions",
+  "checkLabels.t7": "They are joined with else",
+  "checkLabels.t8": "The tier is Silver",
+  "checkLabels.t9": "The discount is 5",
+  "checkLabels.t10": "Two lines come out",
+  "checkLabels.t11": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "At 12 cups it says Silver — correct. Change it to 30 and see what happens.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the number of cups.",
+  "hint2.changed-data": "The data stays at 12. You can change it while testing, but put it back at the end.",
+
+  "why.wrong-shape": "There are not three conditions.",
+  "hint2.wrong-shape": "The three tiers stay. What changes is how they are joined, not how many there are.",
+
+  "why.no-else": "The conditions are not joined.",
+  "hint2.no-else": "Three separate checks all run. They should be one decision with three outcomes.",
+  "hint3.no-else": "else means otherwise. It attaches to the previous if and only runs if that one did not.",
+  "hint4.no-else": "Join the three with else if, and add one else at the end for someone with fewer than five cups.",
+
+  "why.wrong-tier": "The tier is not Silver.",
+  "hint2.wrong-tier": "Twelve cups is between ten and twenty-five.",
+  "hint3.wrong-tier": "Joined conditions are checked top to bottom and stop at the first true one. So their order matters — the highest tier has to be at the top.",
+
+  "why.wrong-discount": "The discount is not 5.",
+  "hint2.wrong-discount": "It goes with the tier. Fix the tier and it will fix itself.",
+
+  "why.wrong-count": "There are not two lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three loyalty tiers. Five cups gives Bronze, ten gives Silver, twenty-five gives Gold.",
+  "blocks.1.text": "At twelve cups it says Silver. Correct. Change it to 30 and it says Gold — also correct. It looks like the code works.",
+
+  "blocks.2.text": "It works by accident",
+  "blocks.3.text": "The three conditions are not joined. Each is checked separately, and at 30 cups all three pass — Bronze, then Silver, then Gold, one on top of the other.",
+  "blocks.4.text": "The right answer comes out only because Gold is last and overwrites the others. Swap the order and everything falls apart: a customer with thirty cups gets Bronze, because that was written at the bottom.",
+
+  "blocks.5.text": "else",
+  "blocks.6.text": "It joins conditions into one decision. They are checked top to bottom, it stops at the first true one, and the rest are never even looked at.",
+  "blocks.8.text": "Here one of the two definitely runs. Not both, and not neither.",
+
+  "blocks.9.text": "Order is now part of the logic",
+  "blocks.10.text": "With joined conditions, order is not a matter of tidiness. It is part of the meaning.",
+  "blocks.11.text": "The condition for five cups is also true at thirty. If it comes first, it stops there and nobody ever reaches Gold.",
+  "blocks.12.quote": "The narrowest condition goes at the top.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Join the three conditions into one decision and add the case for someone with fewer than five cups: tier None, discount zero.",
+  "blocks.15.text": "Test with 30, with 12, with 7 and with 2. All four should be right. Then put the cups back to 12."
+}

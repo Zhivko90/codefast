@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import WorkBench from '@/components/WorkBench';
 import { Link } from '@/i18n/navigation';
-import { problemsForLesson } from '@/core/getProblem';
+import { problemsForLesson, problemTitle } from '@/core/getProblem';
 import { Blocks } from './shared';
 import { useAuth } from '@/lib/auth';
 import { checkProblem } from '@/core/checkProblem';
@@ -57,17 +57,17 @@ export default function WebLesson({ lesson, lang, course, onDone }) {
     [multi, starterFiles, entry, lesson.starterCode]
   );
 
-  // имената за лентата. Един файл → празно, рамката показва стария надпис.
+const [files, setFiles] = useState(starterFiles);
+
   const fileList = useMemo(() => {
     if (!multi) return [];
-    return Object.keys(starterFiles).map((name) => ({
+    return Object.keys(files).map((name) => ({
       name,
       language: name.endsWith('.css') ? 'css' : name.endsWith('.js') ? 'javascript' : 'html',
     }));
-  }, [multi, starterFiles]);
+  }, [multi, files]);
 
-  const [files, setFiles] = useState(starterFiles);
-  const [active, setActive] = useState(entry);
+const [active, setActive] = useState(entry);
   const [preview, setPreview] = useState(starterAssembled);
   const [result, setResult] = useState(null);
   const [ready, setReady] = useState(false);
@@ -79,7 +79,24 @@ export default function WebLesson({ lesson, lang, course, onDone }) {
 
   const setCode = (v) => setFiles((f) => ({ ...f, [active]: v }));
   const getFile = (name) => files[name] ?? '';
-  const setFile = (name, v) => setFiles((f) => ({ ...f, [name]: v }));
+ const setFile = (name, v) => setFiles((f) => ({ ...f, [name]: v }));
+
+  const createFile = (name) => setFiles((f) => ({ ...f, [name]: '' }));
+
+  const renameFile = (from, to) => {
+    setFiles((f) => Object.fromEntries(
+      Object.entries(f).map(([k, v]) => [k === from ? to : k, v])
+    ));
+    setActive((a) => (a === from ? to : a));
+  };
+
+  const deleteFile = (name) => {
+    setFiles((f) => {
+      const { [name]: _gone, ...rest } = f;
+      setActive((a) => (a === name ? Object.keys(rest)[0] : a));
+      return rest;
+    });
+  };
 
   // зареждане
   useEffect(() => {
@@ -222,6 +239,12 @@ export default function WebLesson({ lesson, lang, course, onDone }) {
       onFile={setActive}
       getFile={getFile}
       setFile={setFile}
+      entry={entry}
+      freeFiles={lesson.freeFiles === true}
+      ide={lesson.ide === true}
+      onCreateFile={createFile}
+      onRenameFile={renameFile}
+      onDeleteFile={deleteFile}
       onRun={() => setPreview(assembled)}
       onSubmit={submit}
       onReset={reset}
@@ -232,6 +255,11 @@ export default function WebLesson({ lesson, lang, course, onDone }) {
       why={why}
       hints={hints}
       lang={lang}
+      course={course}
+      itemId={lesson.id}
+      // ⚠ Конзолата се пали САМА при JS урок. Няма .js файл → няма таб,
+      // и 77-те HTML урока плюс CSS курсът не усещат нищо.
+      hasConsole={fileList.some((f) => f.language === 'javascript')}
     >
       {tab === 'previous' && previous ? (
         <>
@@ -273,7 +301,7 @@ export default function WebLesson({ lesson, lang, course, onDone }) {
                       </svg>
                     </span>
                     <span className="flex-1 min-w-0 text-[14px] text-gray-200 group-hover:text-white transition truncate">
-                      {x.slug}
+                      {problemTitle(course, x.id, lang) || x.slug}
                     </span>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
                       className="shrink-0 text-emerald-500/60 group-hover:text-emerald-300 transition">

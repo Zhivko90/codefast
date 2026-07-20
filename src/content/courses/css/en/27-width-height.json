@@ -1,0 +1,66 @@
+{
+  "title": "The height you should not set",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No height is set",
+  "checkLabels.t7": "The card keeps its width",
+  "checkLabels.t8": "The strip has no fixed width",
+  "checkLabels.t9": "The padding is kept",
+  "checkLabels.t10": "The border is kept",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The text still spills out of the card.",
+  "hint2.untouched": "Two lines come out. Nothing goes in.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-strip": "There is no element with the strip class.",
+
+  "why.height-left": "There is still a height set.",
+  "hint2.height-left": "The height of a block comes from its content. Set it and you promise something you cannot keep.",
+  "hint3.height-left": "Tomorrow the text is two lines longer and it spills past the border. Nobody warns you — it just looks broken.",
+  "hint4.height-left": "Delete the height line from .card.",
+
+  "why.card-width-lost": "The card is no longer 320 wide.",
+  "hint2.card-width-lost": "The width stays. Only the height goes — the two are not the same decision.",
+
+  "why.strip-fixed": "The strip still has a fixed width.",
+  "hint2.strip-fixed": "900 pixels is wider than a phone screen. And wider than this preview.",
+  "hint3.strip-fixed": "A block element with no width already takes exactly as much room as it has. It needs no number to do that.",
+  "hint4.strip-fixed": "Delete the width line from .strip.",
+
+  "why.padding-cut": "You deleted the padding. Only the width goes.",
+  "why.border-cut": "You deleted the border.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Two mistakes that look like attention to detail. The card has a height of 120 — read its text in the preview and see where it ends. The strip below has a width of 900 and runs off the screen. Both numbers were written on purpose, by someone who wanted to control the result.",
+
+  "blocks.1.text": "Height comes from the content",
+  "blocks.2.text": "A block element grows downwards as much as it needs. That is not a flaw to be fixed — it is the basic behaviour of a page whose content you do not know in advance. Set a height and you freeze the box, and the text simply leaves it. Tomorrow you add a sentence, the day after someone opens the site on a narrower screen and the same text is two lines taller. Nobody complains, nothing crashes — it just looks broken.",
+  "blocks.3.text": "Setting a height is promising how long the text will be. You cannot promise that.",
+
+  "blocks.4.text": "When you do set it",
+  "blocks.5.text": "There are cases where the height is known in advance: a round badge, a square photo, an element with a single word in it. There the number is part of the shape, not a guess about content. The badge from lesson 21 is exactly that — 64 by 64, because it has to be a circle.",
+  "blocks.6.text": "If you want a minimum height without cutting anything off, there is min-height: the box is at least that tall but grows if the content asks. That is almost always the right choice over height.",
+
+  "blocks.7.text": "Width without a number",
+  "blocks.8.text": "The second mistake is the opposite one. A block element with no width already fills the row available — it needs no number for that. Write 900 and you get a box that does not fit most screens and causes sideways scrolling. So:",
+  "blocks.9.items.0": "Do not set a width when you want the element to fill the row. It already does.",
+  "blocks.9.items.1": "Do set one when you want it NARROWER than the row — a card, a column, a page with a readable measure.",
+  "blocks.9.items.2": "When you do set it, think about narrow screens. max-width: 320px means at most that, and less when there is no room. The number stops being a promise and becomes a ceiling.",
+
+  "blocks.10.text": "The task",
+  "blocks.11.text": "Remove the card's height so the text can set it. Remove the strip's width so it fits the screen. The padding, borders and the card's width all stay."
+}

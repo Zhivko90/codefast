@@ -1,0 +1,82 @@
+{
+  "title": "On your own, from an empty file",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "The file is no longer empty",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "All four items are there",
+  "checkLabels.t7": "The page has its own font",
+  "checkLabels.t8": "The heading is coloured",
+  "checkLabels.t9": "You used the intro class",
+  "checkLabels.t10": "The intro paragraph stands out",
+  "checkLabels.t11": "The note stands out",
+  "checkLabels.t12": "There is a mark before the items",
+  "checkLabels.t13": "The outside link stands out",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "styles.css still holds only the comment. The whole file is yours — start at the top.",
+  "hint2.untouched": "The first rule is always for body. A font and some padding, so the text does not stick to the edge.",
+
+  "why.not-closed": "A closing brace or quote is missing.",
+  "hint2.not-closed": "Every rule has an opening and a closing curly brace. The counts match.",
+
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+
+  "why.touched-html": "You edited the HTML. Here you only write styles.",
+  "hint2.touched-html": "The three classes in the document are intro, menu and note. They are enough for everything asked.",
+
+  "why.lost-items": "There are no longer four menu items.",
+
+  "why.no-body": "There is no body.",
+  "why.no-font": "The page still uses the browser font.",
+  "hint2.no-font": "A rule for body with font-family. Which font is up to you.",
+
+  "why.no-h1": "There is no heading.",
+  "why.no-heading": "The heading is still black.",
+  "hint2.no-heading": "Which colour is up to you. Brown or dark red suits a coffee shop, but decide for yourself.",
+
+  "why.no-class-used": "The intro class appears nowhere in your styles.",
+  "hint2.no-class-used": "The first paragraph carries a label. It is there precisely so it can be called.",
+
+  "why.no-intro": "There is no paragraph with the intro class.",
+  "why.intro-plain": "The intro paragraph looks like any other text.",
+  "hint2.intro-plain": "Give it a colour different from the general one. Which one is up to you.",
+
+  "why.no-note": "There is no item with the note class.",
+  "why.note-plain": "The tax note looks like a price.",
+  "hint2.note-plain": "It is not a price but an aside. Italic is the usual way to show that.",
+
+  "why.no-items": "There are no menu items.",
+  "why.no-pseudo": "There is no mark before the items.",
+  "hint2.no-pseudo": "A pseudo-element makes a piece that is not in the HTML. Do not forget content — without it nothing appears.",
+  "hint3.no-pseudo": "An arrow, a dash, a dot — the mark is your choice. What matters is that it comes from the CSS, not typed into the document.",
+
+  "why.no-link": "There is no link to another site.",
+  "why.link-plain": "The outside link looks like any other.",
+  "hint2.link-plain": "It has no class. It has something else that sets it apart — its address.",
+  "hint3.link-plain": "An attribute selector: ask about href and the start of its value. A heavier weight is enough.",
+
+  "blocks.0.text": "Eight lessons of selectors. Until now there was always starter code to fix. Not this time. styles.css is empty, the page is bare, and everything that shows up comes from you.",
+
+  "blocks.1.text": "What is asked",
+  "blocks.2.text": "Five things. How they look is your call. The colours, the font and the mark before the prices are yours to choose; the check looks at whether you touched them, not at what you picked.",
+  "blocks.3.items.0": "The page has its own font and does not stick to the edge.",
+  "blocks.3.items.1": "The headings are coloured.",
+  "blocks.3.items.2": "The intro paragraph stands apart from ordinary text.",
+  "blocks.3.items.3": "The tax note does not read as a price.",
+  "blocks.3.items.4": "A mark stands before every price, and the outside link shows that it leads away.",
+
+  "blocks.4.text": "How to start from nothing",
+  "blocks.5.text": "Top down, general before specific. First body — font and padding. Then the headings. Then the text. Only at the end the special cases: the class, the note, the link. Start from the details and you will write the same rule three times and then wonder which one cancels which. An empty file is uncomfortable exactly because nobody tells you where to begin — and the order is always this one.",
+  "blocks.6.text": "The general rule you write once. The exception only where it truly is one.",
+
+  "blocks.7.text": "The task",
+  "blocks.8.text": "Write styles.css from scratch. Do not touch the HTML — its three classes are intro, menu and note. There is no single right answer; there are five things that must be visible."
+}

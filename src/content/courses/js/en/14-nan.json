@@ -1,0 +1,75 @@
+{
+  "title": "Not a number",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The typed text is untouched",
+  "checkLabels.t6": "You do not compare with NaN",
+  "checkLabels.t7": "The total is 15",
+  "checkLabels.t8": "3 cups gives 3",
+  "checkLabels.t9": "It spots the broken one",
+  "checkLabels.t10": "bad is still NaN",
+  "checkLabels.t11": "Three lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The first number is right. The other two are not.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.erased-source": "You changed what the person typed.",
+  "hint2.erased-source": "People write 3 cups. The task is for the code to cope, not for the text to change.",
+
+  "why.compared-nan": "You are still comparing with NaN using equality.",
+  "hint2.compared-nan": "That is never true. There is a separate way to check.",
+
+  "why.wrong-total": "The total is not 15.",
+  "hint2.wrong-total": "Three cups at five lev. That line was correct to begin with.",
+
+  "why.wrong-messy": "3 cups does not give 3.",
+  "hint2.wrong-messy": "Number wants the whole text to be a number. There is another way that reads from the front and stops at the first thing it does not understand.",
+  "hint3.wrong-messy": "parseInt(\"12 lv\") gives 12. It reads from the left while there are digits, then stops.",
+  "hint4.wrong-messy": "Use it on the typed text itself, not on the already converted value.",
+
+  "why.wrong-check": "The broken-value check does not answer correctly.",
+  "hint2.wrong-check": "Comparing with equality does not work here. There is a ready-made function for exactly this.",
+  "hint3.wrong-check": "Number.isNaN(something) says whether it is NaN. It is the only reliable way.",
+
+  "why.bad-changed": "bad is no longer NaN. Do not change the line that creates it.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three different things typed into a field for the number of cups. One normal, one careless, one impossible.",
+  "blocks.1.text": "Number handles the first. The other two it does not — and in two different ways.",
+
+  "blocks.2.text": "NaN",
+  "blocks.3.text": "When Number cannot pull a number out, it returns NaN. Short for not a number.",
+  "blocks.4.text": "NaN is not an error and stops nothing. It is a value, of type number, meaning there should have been a number here and there is not. Calculate with it and every following sum becomes NaN too. It spreads quietly through the whole code.",
+
+  "blocks.5.text": "parseInt reads from the front",
+  "blocks.6.text": "Number wants the whole text to be a number. One stray letter and the answer is NaN.",
+  "blocks.8.text": "The first gives NaN, the second gives 3, the third NaN again. parseInt reads from the left while it sees digits and stops at the first thing that is not one. No digit at the very start and it gives up.",
+
+  "blocks.9.text": "NaN is not equal to itself",
+  "blocks.10.text": "This is the only value in the language with that property. It is not a bug and not an oversight — it is written into the number standard that every language uses.",
+  "blocks.11.quote": "NaN === NaN gives false. Always.",
+  "blocks.12.text": "The logic: NaN means the result of a failed calculation. Two failed calculations are not the same thing just because both of them failed.",
+  "blocks.14.text": "The first gives false, the second true. That is why Number.isNaN exists — comparing does not do the job.",
+
+  "blocks.15.text": "The task",
+  "blocks.16.text": "Fix the two lines. 3 cups should give 3, and the check should recognise that three did not produce a number.",
+  "blocks.17.text": "Do not touch the lines that create good, messy and bad. They show what Number does and have to stay."
+}

@@ -9,6 +9,8 @@
   "checkLabels.t5": "The heading must still be there",
   "checkLabels.t6": "The sentence must still be there",
   "checkLabels.t0": "There is code",
+  "checkLabels.t2b": "The alphabet isn't empty",
+  "why.empty-charset": "The alphabet is declared, but empty. An empty attribute exists — it passes every check for \"is it written\" and says nothing. The browser still has to guess how to read the letters.",
   "why.empty": "The editor is empty. You are adding two lines, and you deleted the whole page. Bring the code back.",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",

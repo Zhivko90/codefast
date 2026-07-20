@@ -1,0 +1,72 @@
+{
+  "title": "A name instead of a number",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "There is a name sold holding 1247",
+  "checkLabels.t6": "There is a name price holding 3",
+  "checkLabels.t7": "The number is not repeated",
+  "checkLabels.t8": "The total is right",
+  "checkLabels.t9": "All four lines are kept",
+  "checkLabels.t10": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted everything instead of rewriting it.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The four lines stay, but the numbers in them become names.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "hint2.not-closed": "index.html is not part of this lesson.",
+
+  "why.not-linked": "The script never reaches the page.",
+  "hint2.not-linked": "The last line in index.html links script.js.",
+
+  "why.crashed": "Your code stopped with an error before it reached the end.",
+  "hint2.crashed": "Look at the Console panel below. The red line says what it did not like.",
+  "hint3.crashed": "A name is created before it is used. Use it on line 1 and create it on line 5, and you get an error.",
+
+  "why.nothing-written": "script.js is empty.",
+
+  "why.frozen": "Your code never stops. It loops forever and was cut off.",
+
+  "why.no-sold": "There is no name sold holding 1247.",
+  "hint2.no-sold": "A name is created with let, then an equals sign, then the value.",
+  "hint3.no-sold": "let cups = 12; creates the name cups, pointing at 12. From then on you write cups instead of 12.",
+  "hint4.no-sold": "Do the same with 1247 and the name sold. Exactly that name — the check looks for it letter by letter.",
+
+  "why.no-price": "There is no name price holding 3.",
+  "hint2.no-price": "The second number needs a name too. Exactly price, lowercase.",
+
+  "why.still-repeating": "The number 1247 is still sitting in one of the sums.",
+  "hint2.still-repeating": "You created the name but did not use it everywhere. Go through all four lines.",
+  "hint3.still-repeating": "The point is that the number appears EXACTLY ONCE — where the name is created. Leave it in a second place and tomorrow you will change one and forget the other.",
+
+  "why.wrong-total": "The total is no longer 3741.",
+  "hint2.wrong-total": "The sums do not change. Only the numbers inside them become names.",
+
+  "why.wrong-count": "There are not four lines. The task is to rewrite the same ones, not to add or remove.",
+
+  "why.lost-p": "A line has disappeared from the page. index.html is not part of this lesson.",
+
+  "blocks.0.text": "Look at script.js. The number 1247 appears on four lines. The number 3 appears on two.",
+  "blocks.1.text": "Now imagine the price goes up to 4. You edit two lines. Miss one and the total is wrong, and nothing breaks. You find out when somebody tells you the numbers do not add up.",
+
+  "blocks.2.text": "Give it a name",
+  "blocks.3.text": "Instead of repeating the value, you name it once and use the name after that.",
+  "blocks.5.text": "let creates the name. The equals sign says what it points at. From then on cups means 12 everywhere in the code.",
+
+  "blocks.6.text": "Not a box",
+  "blocks.7.text": "You will meet the explanation that a variable is a box you put a value into. Forget it. A box implies the value is inside, and yours alone.",
+  "blocks.8.text": "A name points at a value. Nothing more.",
+  "blocks.9.text": "The difference will matter in section six, when two names point at the same array and you wonder why changing one shows up through the other. Boxes do not explain that. Names that point do.",
+
+  "blocks.10.text": "A name is used like the value",
+  "blocks.12.text": "Anywhere a number can stand, a name can stand too. The computer first looks at what it points to, then does the maths.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Name the two numbers: sold for 1247 and price for 3. Exactly those names — the checks look for them letter by letter.",
+  "blocks.15.text": "Then rewrite the four lines using the names. The number 1247 should remain in the code in only one place: where the name is created."
+}

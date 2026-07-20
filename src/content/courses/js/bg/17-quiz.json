@@ -1,0 +1,31 @@
+{
+  "title": "Проверка",
+
+  "questions.0.text": "Брояч трупа продажби: let sum = 0; после sum += 10; после sum =+ 5; после sum += 3. Колко е sum накрая?",
+  "questions.0.options.0": "18",
+  "questions.0.options.1": "15",
+  "questions.0.options.2": "8",
+  "questions.0.options.3": "Кодът гърми на разменените знаци",
+  "questions.0.why": "Редът със sum =+ 5 не трупа, а замества — десетката изчезва и броенето започва от 5. После се прибавят 3. Валиден код, тиха загуба.",
+
+  "questions.1.text": "Полето за брой съдържа \"12 бр\". Кое връща числото 12?",
+  "questions.1.options.0": "parseInt(\"12 бр\")",
+  "questions.1.options.1": "Number(\"12 бр\")",
+  "questions.1.options.2": "\"12 бр\".trim()",
+  "questions.1.options.3": "И трите",
+  "questions.1.why": "parseInt чете отляво, докато вижда цифри, и спира. Number иска целият текст да е число и връща NaN. trim маха само интервалите — резултатът пак е текст.",
+
+  "questions.2.text": "const n = Number(\"кафе\"); Кое е вярно за n?",
+  "questions.2.options.0": "n === NaN дава true",
+  "questions.2.options.1": "Кодът е гръмнал още на Number",
+  "questions.2.options.2": "n е равно на 0",
+  "questions.2.options.3": "n * 2 дава NaN, без нищо да се оплаче",
+  "questions.2.why": "NaN не е грешка, а стойност. Всяка сметка с него дава пак NaN и се разпространява надолу тихо. Сравняването с равенство никога не работи — за това е Number.isNaN.",
+
+  "questions.3.text": "Сметка от 20 лева, чаша струва 3. Кое пресмята колко ЦЕЛИ чаши могат да се купят?",
+  "questions.3.options.0": "Math.round(20 / 3)",
+  "questions.3.options.1": "Math.floor(20 / 3)",
+  "questions.3.options.2": "Math.ceil(20 / 3)",
+  "questions.3.options.3": "20 / 3",
+  "questions.3.why": "20 разделено на 3 дава 6.67. Закръглянето до най-близкото и нагоре дават 7 — а седмата чаша няма с какво да се плати. Надолу отрязва остатъка и дава 6."
+}

@@ -4,26 +4,29 @@ import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react
 import { useTranslations } from 'next-intl';
 import Editor from '@monaco-editor/react';
 import EditorGrid from '@/components/EditorGrid';
+import ResultPanel, { HistoryPanel } from './workbench/ResultPanel';
+import PreviewPane from './workbench/PreviewPane';
+import ConsolePane, { useConsole } from './workbench/ConsolePane';
+import FeedbackDialog from './workbench/FeedbackDialog';
+import { RailBtn, MTab, IcoStatement, IcoPreview, IcoResult, IcoTrash, IcoBug, IcoFile } from './workbench/Buttons';
 
 // ============================================
-// ОБЩАТА РАМКА за урок и за задача.
+// ОБЩАТА РАМКА за урок и за задача. САМО ПОДРЕДБАТА.
 //
-// ДЕСКТОП — ТРИ КОЛОНИ:  Условие | Редактор | Преглед
-//   Вертикалната лента вляво пали и гаси колоните. Разделители с мишка.
+// Съдържанието живее в ./workbench/:
+//   ResultPanel     — проверки, „Защо не мина", стълбата, наставникът
+//   PreviewPane     — прегледът (един прозорец при урок, два при задача)
+//   ConsolePane     — console.log и грешките по време на изпълнение
+//   FeedbackDialog  — докладът за грешка
+//   Buttons         — бутоните на двете ленти + иконите
+//   guard           — обезвредява връзките + прихваща конзолата
 //
-// ТЕЛЕФОН (< md) — ЕДИН ПАНЕЛ наведнъж, сменян от таб лента:
-//   Условие · файл · Преглед · Резултат.
-//   Три колони не се събират в 380px. Тъч не влачи разделители.
-//   Затова: показва се само активният панел, на цял екран.
+// Беше 800 реда в един файл. Всеки курс минава оттук — файл, който
+// не се чете наведнъж, е файл, в който се страхуваш да пипаш.
 //
-// ★ СТЪЛБАТА НА ПОДСКАЗКИТЕ (Cognitive Tutor, 4 нива):
-//   1. `why`    — симптомът. Показва се сам. Посока, не отговор.
-//   2. hints[0] — къде да гледаш.
-//   3. hints[1] — разработен пример. Подобен случай, не твоят.
-//   4. hints[2] — bottom-out. Какво да направиш. Но не готовият код.
-//
-// Ученикът дърпа стълбата сам. Не му се сипва отгоре.
-// Липсва ли ниво — бутонът изчезва. Не гърми.
+// ДЕСКТОП — ТРИ КОЛОНИ: Условие | Редактор | Преглед
+//   Долният панел има два таба: Резултат и Конзола.
+// ТЕЛЕФОН (< md) — ЕДИН ПАНЕЛ наведнъж, сменян от таб лента.
 // ============================================
 
 const RAIL = 48;      // вертикалната лента
@@ -31,44 +34,13 @@ const SPLIT = 10;     // делителят между колоните
 const MIN_LEFT = 260;
 const MIN_EDITOR = 320;
 
-function guard(html) {
-  return `${html}
-<script>
-document.addEventListener('click', function (e) {
-  const a = e.target.closest('a');
-  if (!a) return;
-  e.preventDefault();
-  const href = a.getAttribute('href') || '';
-  if (/^https?:\\/\\//i.test(href)) window.open(href, '_blank');
-  else if (href && href !== '#') alert('Link -> ' + href + '\\n\\nThis page does not exist in the preview.');
-}, true);
-</script>`;
-}
-
-// бутон във вертикалната лента (десктоп)
-function RailBtn({ on, onClick, title, children, dot }) {
-  return (
-    <button onClick={onClick} title={title}
-      className={`relative w-9 h-9 rounded-lg flex items-center justify-center transition ${on ? 'bg-sky-500/15 text-sky-300' : 'text-gray-500 hover:text-white hover:bg-white/5'
-        }`}>
-      {children}
-      {dot && <span className={`absolute top-1 right-1 w-1.5 h-1.5 rounded-full ${dot}`} />}
-    </button>
-  );
-}
-
-// таб в мобилната лента
-function MTab({ active, onClick, label, dot, children }) {
-  return (
-    <button onClick={onClick}
-      className={`relative shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12.5px] font-medium transition ${active ? 'bg-sky-500/15 text-sky-300' : 'text-gray-500 hover:text-gray-300'
-        }`}>
-      {children}
-      <span className="max-w-[90px] truncate">{label}</span>
-      {dot && <span className={`absolute top-0.5 right-1 w-1.5 h-1.5 rounded-full ${dot}`} />}
-    </button>
-  );
-}
+// ⚠ Иконата стои ТУК, не в Buttons.js — за да не се пипа общ файл заради
+// един курс. Премести я, ако потрябва някъде другаде.
+const IcoConsole = ({ size = 17 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 17l6-6-6-6" /><path d="M12 19h8" />
+  </svg>
+);
 
 export default function WorkBench({
   backHref, BackLink,
@@ -83,52 +55,63 @@ export default function WorkBench({
   // files: [{ name, language }] — САМО имената. Рамката не знае съдържанието.
   // Празно → всичко работи както преди. 77-те HTML урока не усещат нищо.
 files = [], activeFile, onFile, getFile, setFile,
+  entry, freeFiles = false, ide = false, onCreateFile, onRenameFile, onDeleteFile,
 
   onRun, onSubmit, onReset, canSubmit = true,
 
   preview, target, result, checkLabels = {}, why, hints = [], history = [], lang = 'bg',
   onTutor,
+
+  // ── КОНЗОЛА ──
+  // JS уроците я палят. HTML и CSS я оставят изключена — нищо не се променя.
+  hasConsole = false,
+
+  // ── ДОКЛАД ЗА ГРЕШКА ──
+  course, itemId,
 }) {
   const t = useTranslations('practice');
 
   const hasPreview = preview != null;
-  const hasTarget = target != null;
 
   const [showLeft, setShowLeft] = useState(true);
-  const [showPrev, setShowPrev] = useState(target != null);   // има ли цел — прегледът е отворен
-  const [pane, setPane] = useState('mine');                   // 'mine' | 'target'
-  const [showBot, setShowBot] = useState(false);       // резултат/история — изскача отдолу
+// Превюто е отворено по подразбиране. При JS урок то е и изпълнителят —
+  // затворено превю значи мълчаща конзола.
+  const [showPrev, setShowPrev] = useState(true);
+  const [showBot, setShowBot] = useState(false);
   const [bottom, setBottom] = useState('result');
 
-  const [leftW, setLeftW] = useState(null);            // null = още не е измерено
+  const [leftW, setLeftW] = useState(null);   // null = още не е измерено
   const [prevW, setPrevW] = useState(null);
   const [botH, setBotH] = useState(340);
-  const [rungs, setRungs] = useState(0);               // колко стъпала от стълбата е дръпнал
 
-  // ★ AI НАСТАВНИКЪТ — идва СЛЕД стълбата. Не я заменя.
-  const [ai, setAi] = useState(null);
-  const [aiBusy, setAiBusy] = useState(false);
+  const [showFb, setShowFb] = useState(false);
+  const [confirmReset, setConfirmReset] = useState(false);
 
-  const askTutor = async (mode) => {
-    setAiBusy(true);
-    setAi(null);
-    try {
-      setAi(await onTutor(mode, rungs));
-    } catch {
-      setAi({ error: true });
-    }
-    setAiBusy(false);
-  };
-
-  // ── ТЕЛЕФОН ──
   const [isMobile, setIsMobile] = useState(false);
-  const [mobileView, setMobileView] = useState('statement'); // 'statement'|'code'|'preview'|'result'
+  const [mobileView, setMobileView] = useState('statement');
 
   const wrap = useRef(null);
   const drag = useRef(null);
   const touched = useRef({ l: false, p: false });
   const [dragging, setDragging] = useState(false);
-  const [confirmReset, setConfirmReset] = useState(false);
+
+  // ⚠ Слуша ВИНАГИ, но панелът се показва само при hasConsole.
+  // Куката се чисти при всяка промяна на preview — иначе човек гледа
+  // изход от код, който вече не съществува.
+  const cons = useConsole(preview);
+
+  const multi = files.length > 1;
+  const activeName = multi ? (activeFile ?? files[0].name) : fileName;
+  const activeLang = multi
+    ? (files.find((f) => f.name === activeName)?.language ?? language)
+    : language;
+
+  // При няколко файла докладът носи ВСИЧКИТЕ, с имена — иначе не се разбира
+  // кой файл е бил счупен.
+  const collectCode = () =>
+    multi && getFile
+      ? files.map((f) => `/* ===== ${f.name} ===== */\n${getFile(f.name) ?? ''}`).join('\n\n')
+      : (code ?? '');
 
   // тесен екран → един панел наведнъж
   useEffect(() => {
@@ -140,8 +123,6 @@ files = [], activeFile, onFile, getFile, setFile,
   }, []);
 
   // ── Условие и Редактор тръгват с еднаква ширина (само десктоп) ──
-  // Мери се преди рисуване, за да няма подскачане.
-  // Дръпне ли ученикът разделителя, ръчната ширина остава.
   useLayoutEffect(() => {
     const el = wrap.current;
     if (!el) return;
@@ -151,8 +132,6 @@ files = [], activeFile, onFile, getFile, setFile,
       const total = el.getBoundingClientRect().width;
       if (!total) return;
 
-      // Три колони при задача (има цел), две при урок.
-      // Иначе условието грабва половината, а редактор и преглед се смачкват.
       const cols = target != null ? 3 : 2;
       const avail = total - RAIL - SPLIT * cols;
       let w = Math.round(avail / cols);
@@ -168,11 +147,24 @@ files = [], activeFile, onFile, getFile, setFile,
     return () => ro.disconnect();
   }, [target]);
 
-  // при предаване долният панел изскача, а стълбата се прибира
-  // на телефон — прескачаме на панела „Резултат", за да види обратната връзка
+  // При предаване долният панел изскача.
   useEffect(() => {
-    if (result) { setShowBot(true); setBottom('result'); setRungs(0); setMobileView('result'); setAi(null); }
+    if (result) { setShowBot(true); setBottom('result'); setMobileView('result'); }
   }, [result]);
+
+  // ⚠ Грешка по време на изпълнение → конзолата се ОТВАРЯ САМА, веднъж.
+  // Ученикът вижда бяло превю и не знае къде да търси. Не го карай да
+  // отваря панел, за да разбере, че кодът му е паднал.
+  const popped = useRef(false);
+  useEffect(() => {
+    if (!hasConsole) return;
+    if (cons.errors > 0 && !popped.current) {
+      popped.current = true;
+      setShowBot(true);
+      setBottom('console');
+    }
+    if (cons.errors === 0) popped.current = false;
+  }, [cons.errors, hasConsole]);
 
   const start = (which) => (e) => {
     e.preventDefault();
@@ -213,14 +205,7 @@ files = [], activeFile, onFile, getFile, setFile,
     document.body.style.userSelect = '';
   };
 
-  const run = () => {
-    if (hasPreview) { setShowPrev(true); setMobileView('preview'); }
-    onRun?.();
-  };
-
-  // ─────────────────────────────────────────────
-  // ПАРЧЕТАТА — един източник, десктоп и телефон ги ползват еднакво.
-  // ─────────────────────────────────────────────
+  // ── ПАРЧЕТАТА: един източник, десктоп и телефон ги ползват еднакво ──
 
   const statementInner = (
     <>
@@ -229,10 +214,11 @@ files = [], activeFile, onFile, getFile, setFile,
           {tabs.map((tb) => (
             <button key={tb.id} onClick={() => !tb.locked && onTab(tb.id)} disabled={tb.locked}
               title={tb.locked ? t('locked_hint') : undefined}
-              className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12.5px] transition ${activeTab === tb.id ? 'bg-white/[0.07] text-white'
-                  : tb.locked ? 'text-gray-700 cursor-not-allowed'
-                    : 'text-gray-500 hover:text-gray-300'
-                }`}>
+              className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12.5px] transition ${
+                activeTab === tb.id ? 'bg-white/[0.07] text-white'
+                : tb.locked ? 'text-gray-700 cursor-not-allowed'
+                : 'text-gray-500 hover:text-gray-300'
+              }`}>
               {tb.locked && '🔒'} {tb.label}
             </button>
           ))}
@@ -242,28 +228,22 @@ files = [], activeFile, onFile, getFile, setFile,
     </>
   );
 
-// Няколко файла → мрежата поема лентата и редактора наведнъж.
-  // Един файл → всичко както преди: надпис + един редактор.
-  const multi = files.length > 1;
-  const activeName = multi ? (activeFile ?? files[0].name) : fileName;
-  const activeLang = multi
-    ? (files.find((f) => f.name === activeName)?.language ?? language)
-    : language;
-
   const fileBar = multi ? null : (
     <div className="shrink-0 h-9 flex items-center justify-between px-3 bg-black/20 border-b border-white/[0.08] text-[12px] text-gray-500">
       <span className="flex items-center gap-2">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e0884a" strokeWidth="1.8">
-          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M13 2v7h7"/>
-        </svg>
+        <IcoFile size={13} />
         {fileName}
       </span>
       <span className="px-2 py-0.5 rounded-md bg-white/[0.06] border border-white/10 text-gray-300 uppercase">{language}</span>
     </div>
   );
 
-const editorEl = multi ? (
-    <EditorGrid files={files} getFile={getFile} setFile={setFile} onActive={onFile} />
+ const editorEl = multi ? (
+    <EditorGrid
+      files={files} getFile={getFile} setFile={setFile} onActive={onFile}
+      entry={entry} freeFiles={freeFiles} ide={ide}
+      onCreate={onCreateFile} onRename={onRenameFile} onDelete={onDeleteFile}
+    />
   ) : (
     <Editor
       height="100%" language={activeLang} theme="vs-dark"
@@ -276,127 +256,24 @@ const editorEl = multi ? (
     />
   );
 
-  const previewInner = (
-    <>
-      {!hasTarget && (
-        <div className="shrink-0 flex items-center gap-2 px-3 h-9 bg-[#2a2b31] border-b border-white/10">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-          <div className="flex-1 mx-1 px-3 py-0.5 rounded-full bg-[#1a1b20] text-[10px] text-gray-500 truncate">
-            codefast.local
-          </div>
-        </div>
-      )}
-      {hasTarget ? (
-        <div className="flex-1 min-h-0 flex flex-col">
-          <div className="shrink-0 px-3 py-1 text-[10px] font-bold tracking-widest text-gray-500 bg-black/20 border-b border-white/[0.06]">
-            {t('pane_mine')}
-          </div>
-          <iframe title="preview" srcDoc={guard(preview)} className="flex-1 bg-white w-full border-0" />
-          <div className="shrink-0 px-3 py-1 text-[10px] font-bold tracking-widest text-emerald-500/70 bg-black/20 border-y border-white/[0.06]">
-            {t('pane_target')}
-          </div>
-          <iframe title="target" srcDoc={guard(target)} className="flex-1 bg-white w-full border-0" />
-        </div>
-      ) : (
-        <iframe title="preview" srcDoc={guard(preview)} className="flex-1 bg-white w-full border-0" />
-      )}
-    </>
+  const resultBody = (
+    <ResultPanel result={result} checkLabels={checkLabels} why={why} hints={hints} onTutor={onTutor} />
   );
 
-  // ЗАЩО НЕ МИНА — стълбата: ученикът я дърпа, не му се сипва отгоре.
-  const resultBody = !result ? (
-    <p className="text-[13px] text-gray-600">{t('not_run')}</p>
-  ) : (
-    <>
-      {result.results.map((r) => (
-        <div key={r.id} className="flex items-center gap-3 py-2 text-[13px] border-b border-white/[0.05] last:border-0">
-          <span className={`w-4 shrink-0 ${r.ok ? 'text-emerald-400' : 'text-rose-400'}`}>{r.ok ? '✓' : '✕'}</span>
-          <span className={`flex-1 ${r.hidden ? 'italic text-gray-500' : 'text-gray-300'}`}>
-            {r.hidden ? t('hidden_test') : checkLabels[r.id] ?? r.id}
-          </span>
-          <span className="text-[11px] text-gray-600">{r.ok ? t('test_pass') : t('test_fail')}</span>
-        </div>
-      ))}
+ const consoleBody = <ConsolePane lines={cons.lines} onClear={cons.clear} />;
 
-      {!result.passed && why && (
-        <div className="mt-4 rounded-xl border border-rose-500/30 bg-rose-500/[0.07] p-4">
-          <p className="flex items-center gap-2 text-[13px] font-semibold text-rose-300 mb-2">
-            <span>✕</span> {t('why_failed')}
-          </p>
-          <p className="text-[13px] text-rose-100/80 leading-relaxed">{why}</p>
+  const dot = result ? (result.passed ? 'bg-emerald-400' : 'bg-rose-400') : null;
+ const consDot = cons.errors > 0 ? 'bg-rose-400' : (cons.lines.length ? 'bg-sky-400' : null);
 
-          {hints.slice(0, rungs).map((h, i) => (
-            <p key={i} className="mt-3 pt-3 border-t border-rose-500/20 text-[13px] text-gray-300 leading-relaxed">
-              {h}
-            </p>
-          ))}
-
-          {rungs < hints.length && (
-            <button onClick={() => setRungs((n) => n + 1)}
-              className="mt-3 text-[12px] font-semibold text-sky-300 hover:text-sky-200 transition">
-              {t('more_hint')} ({hints.length - rungs})
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* ★ НАСТАВНИКЪТ — само ако страницата го е подала */}
-      {onTutor && result && (
-        <div className="mt-4">
-          <div className="flex flex-wrap gap-2">
-            {!result.passed && (
-              <>
-                <button onClick={() => askTutor('stuck')} disabled={aiBusy}
-                  className="px-3 py-1.5 rounded-lg border border-violet-500/30 bg-violet-500/[0.08] text-[12px] font-semibold text-violet-200 hover:bg-violet-500/[0.15] transition disabled:opacity-40">
-                  Защо моят код не работи
-                </button>
-                <button onClick={() => askTutor('explain')} disabled={aiBusy}
-                  className="px-3 py-1.5 rounded-lg border border-white/10 text-[12px] text-gray-400 hover:text-white hover:bg-white/5 transition disabled:opacity-40">
-                  Обясни с други думи
-                </button>
-              </>
-            )}
-            {result.passed && (
-              <button onClick={() => askTutor('review')} disabled={aiBusy}
-                className="px-3 py-1.5 rounded-lg border border-violet-500/30 bg-violet-500/[0.08] text-[12px] font-semibold text-violet-200 hover:bg-violet-500/[0.15] transition disabled:opacity-40">
-                Разбор на моето решение
-              </button>
-            )}
-          </div>
-
-          {aiBusy && <p className="mt-3 text-[13px] text-gray-500">Чете кода ти…</p>}
-
-          {ai?.error && (
-            <p className="mt-3 text-[13px] text-rose-300/80">Наставникът не отговори. Пробвай пак.</p>
-          )}
-
-          {ai?.locked && (
-            <div className="mt-3 rounded-xl border border-violet-500/25 bg-violet-500/[0.06] p-4">
-              <p className="text-[13px] text-violet-200 font-semibold mb-1">Наставникът е в Pro.</p>
-              <p className="text-[13px] text-gray-400 leading-relaxed">
-                Подсказките отгоре остават безплатни. Винаги.
-              </p>
-            </div>
-          )}
-
-          {ai?.text && (
-            <div className="mt-3 rounded-xl border border-violet-500/25 bg-violet-500/[0.06] p-4">
-              {ai.text.split('\n').filter(Boolean).map((p, i) => (
-                <p key={i} className="text-[13.5px] text-gray-200 leading-relaxed mb-2 last:mb-0">{p}</p>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </>
-  );
+  // ⚠ Хардкоднат български, като бутоните на наставника. Трябва да мине
+  // през src/messages/{bg,en}/practice.json преди пускане на английски —
+  // английският фолбек МЪЛЧИ и никой няма да забележи.
+  const L_CONSOLE = t('console');
 
   return (
     <div className="h-full flex flex-col min-h-0">
 
-      {/* ── ЛЕНТА ── */}
+      {/* ── ГОРНА ЛЕНТА ── */}
       <div className="shrink-0 h-13 py-2.5 flex items-center gap-2.5 px-2 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
         {BackLink && (
           <BackLink href={backHref}
@@ -409,9 +286,7 @@ const editorEl = multi ? (
 
         {beforeTitle}
         <span className="font-semibold text-white truncate max-w-[35%]">{title}</span>
-        {badge && (
-          <span className={`text-[11px] px-2 py-0.5 rounded-md border shrink-0 ${badge.cls}`}>{badge.text}</span>
-        )}
+        {badge && <span className={`text-[11px] px-2 py-0.5 rounded-md border shrink-0 ${badge.cls}`}>{badge.text}</span>}
 
         {extra}
         {!extra && <div className="flex-1" />}
@@ -429,49 +304,47 @@ const editorEl = multi ? (
       {isMobile ? (
         <div className="relative flex-1 flex flex-col min-h-0 overflow-hidden bg-[var(--bg-elevated)]">
 
-          {/* таб лента */}
           <div className="shrink-0 flex items-center gap-1 px-1.5 py-1.5 bg-black/30 border-b border-white/10 overflow-x-auto">
             <MTab active={mobileView === 'statement'} onClick={() => setMobileView('statement')} label={t('statement')}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-              </svg>
+              <IcoStatement size={15} />
             </MTab>
 
-           <MTab active={mobileView === 'code'} onClick={() => setMobileView('code')} label={activeName}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e0884a" strokeWidth="1.8">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><path d="M13 2v7h7" />
-              </svg>
+            <MTab active={mobileView === 'code'} onClick={() => setMobileView('code')} label={activeName}>
+              <IcoFile size={14} />
             </MTab>
 
             {hasPreview && (
               <MTab active={mobileView === 'preview'} onClick={() => setMobileView('preview')} label={t('preview')}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <rect x="2" y="4" width="20" height="16" rx="2" /><path d="M2 9h20" />
-                </svg>
+                <IcoPreview size={15} />
               </MTab>
             )}
 
-            <MTab active={mobileView === 'result'} onClick={() => setMobileView('result')} label={t('result')}
-              dot={result ? (result.passed ? 'bg-emerald-400' : 'bg-rose-400') : null}>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-              </svg>
+            {hasConsole && (
+              <MTab active={mobileView === 'console'} onClick={() => setMobileView('console')} label={L_CONSOLE} dot={consDot}>
+                <IcoConsole size={15} />
+              </MTab>
+            )}
+
+            <MTab active={mobileView === 'result'} onClick={() => setMobileView('result')} label={t('result')} dot={dot}>
+              <IcoResult size={15} />
             </MTab>
+
+            {/* кошчето — до работните табове */}
+            <button onClick={() => setConfirmReset(true)} title={t('reset')}
+              className="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition">
+              <IcoTrash size={15} />
+            </button>
 
             <div className="flex-1" />
 
-            <button onClick={() => setConfirmReset(true)} title={t('reset')}
+            {/* докладът — най-накрая, отделен */}
+            <button onClick={() => setShowFb(true)} title={t('report_bug')}
               className="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" />
-              </svg>
+              <IcoBug size={15} />
             </button>
           </div>
 
-          {/* активният панел — цял екран */}
-          {mobileView === 'statement' && (
-            <div className="flex-1 min-h-0 flex flex-col">{statementInner}</div>
-          )}
+          {mobileView === 'statement' && <div className="flex-1 min-h-0 flex flex-col">{statementInner}</div>}
 
           {mobileView === 'code' && (
             <div className="flex-1 min-h-0 flex flex-col">
@@ -480,13 +353,20 @@ const editorEl = multi ? (
             </div>
           )}
 
-          {mobileView === 'preview' && hasPreview && (
-            <div className="flex-1 min-h-0 flex flex-col">{previewInner}</div>
+          {/* ⚠ Превюто ОСТАВА в дървото, само се скрива. Махне ли се,
+              рамката се пресъздава, конзолата се чисти и логовете изчезват
+              при всяко превключване на таб. */}
+          {hasPreview && (
+            <div className={`flex-1 min-h-0 flex flex-col ${mobileView === 'preview' ? '' : 'hidden'}`}>
+              <PreviewPane preview={preview} target={target} />
+            </div>
           )}
 
-          {mobileView === 'result' && (
-            <div className="flex-1 min-h-0 overflow-y-auto p-4">{resultBody}</div>
+          {mobileView === 'console' && hasConsole && (
+            <div className="flex-1 min-h-0">{consoleBody}</div>
           )}
+
+          {mobileView === 'result' && <div className="flex-1 min-h-0 overflow-y-auto p-4">{resultBody}</div>}
         </div>
       ) : (
 
@@ -498,41 +378,39 @@ const editorEl = multi ? (
           {/* ═══ ВЕРТИКАЛНАТА ЛЕНТА ═══ */}
           <div className="shrink-0 w-12 flex flex-col items-center gap-1 py-3 bg-black/30 border-r border-white/10">
             <RailBtn on={showLeft} onClick={() => setShowLeft((v) => !v)} title={t('statement')}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <path d="M14 2v6h6" />
-                <path d="M8 13h8" /><path d="M8 17h5" />
-              </svg>
+              <IcoStatement />
             </RailBtn>
 
             {hasPreview && (
               <RailBtn on={showPrev} onClick={() => setShowPrev((v) => !v)} title={t('preview')}>
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M2 9h20" />
-                  <circle cx="5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
-                  <circle cx="7.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
-                  <circle cx="10" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
-                </svg>
+                <IcoPreview />
               </RailBtn>
             )}
 
             <RailBtn on={showBot && bottom === 'result'}
               onClick={() => { setShowBot(!(showBot && bottom === 'result')); setBottom('result'); }}
-              title={t('result')}
-              dot={result ? (result.passed ? 'bg-emerald-400' : 'bg-rose-400') : null}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-              </svg>
+              title={t('result')} dot={dot}>
+              <IcoResult />
             </RailBtn>
 
+            {hasConsole && (
+              <RailBtn on={showBot && bottom === 'console'}
+                onClick={() => { setShowBot(!(showBot && bottom === 'console')); setBottom('console'); }}
+                title={L_CONSOLE} dot={consDot}>
+                <IcoConsole />
+              </RailBtn>
+            )}
+
+            {/* кошчето — горе, до резултата */}
+            <RailBtn on={false} onClick={() => setConfirmReset(true)} title={t('reset')}>
+              <IcoTrash />
+            </RailBtn>
 
             <div className="flex-1" />
 
-            <RailBtn on={false} onClick={() => setConfirmReset(true)} title={t('reset')}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" />
-              </svg>
+            {/* докладът — най-долу, отделен от работните бутони */}
+            <RailBtn on={showFb} onClick={() => setShowFb(true)} title={t('report_bug')}>
+              <IcoBug />
             </RailBtn>
           </div>
 
@@ -556,12 +434,8 @@ const editorEl = multi ? (
           {/* ═══ 2. РЕДАКТОР (+ долен панел) ═══ */}
           <div className="flex-1 min-w-0 flex flex-col">
             {fileBar}
+            <div className="flex-1 min-h-[120px]">{editorEl}</div>
 
-            <div className="flex-1 min-h-[120px]">
-              {editorEl}
-            </div>
-
-            {/* ДОЛЕН ПАНЕЛ — изскача при предаване */}
             {showBot && (
               <>
                 <div onMouseDown={start('b')}
@@ -573,9 +447,23 @@ const editorEl = multi ? (
 
                 <div className="shrink-0 flex flex-col border-t border-white/10 bg-black/25" style={{ height: botH }}>
                   <div className="shrink-0 flex items-center gap-1 px-2 py-1.5 border-b border-white/[0.08]">
-                    <span className="text-[11px] font-bold tracking-wider text-gray-500 px-2">
+                    <button onClick={() => setBottom('result')}
+                      className={`text-[11px] font-bold tracking-wider px-2 py-0.5 rounded transition ${
+                        bottom === 'result' ? 'text-gray-300 bg-white/[0.07]' : 'text-gray-600 hover:text-gray-400'
+                      }`}>
                       {t('result')}
-                    </span>
+                    </button>
+
+                    {hasConsole && (
+                      <button onClick={() => setBottom('console')}
+                        className={`flex items-center gap-1.5 text-[11px] font-bold tracking-wider px-2 py-0.5 rounded transition ${
+                          bottom === 'console' ? 'text-gray-300 bg-white/[0.07]' : 'text-gray-600 hover:text-gray-400'
+                        }`}>
+                        {L_CONSOLE}
+                        {consDot && <span className={`w-1.5 h-1.5 rounded-full ${consDot}`} />}
+                      </button>
+                    )}
+
                     <div className="flex-1" />
                     {result && bottom === 'result' && (
                       <span className={`text-[12px] font-semibold px-2 ${result.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
@@ -588,53 +476,60 @@ const editorEl = multi ? (
                       className="w-6 h-6 flex items-center justify-center rounded text-gray-600 hover:text-white transition">✕</button>
                   </div>
 
-                  <div className="flex-1 overflow-y-auto p-4">
-                    {bottom === 'result' && resultBody}
-
-                    {bottom === 'history' && (
-                      history.length === 0 ? (
-                        <p className="text-[13px] text-gray-600">{t('no_history')}</p>
-                      ) : (
-                        history.map((h) => (
-                          <div key={h.id} className="flex items-center gap-3 py-2 text-[13px] border-b border-white/[0.05] last:border-0">
-                            <span className={`w-4 shrink-0 ${h.passed ? 'text-emerald-400' : 'text-rose-400'}`}>{h.passed ? '✓' : '✕'}</span>
-                            <span className="flex-1 text-gray-400">
-                              {h.passed ? t('attempt_ok') : (checkLabels[h.failed_check] ?? t('attempt_no'))}
-                            </span>
-                            <span className="text-[11px] text-gray-600">
-                              {new Date(h.created_at).toLocaleDateString(lang === 'bg' ? 'bg-BG' : 'en-GB', {
-                                day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
-                              })}
-                            </span>
-                          </div>
-                        ))
-                      )
-                    )}
-                  </div>
+                  {/* Конзолата си върти собственото скролиране — затова е ИЗВЪН
+                      общата обвивка с p-4. */}
+                  {bottom === 'console' ? (
+                    <div className="flex-1 min-h-0">{consoleBody}</div>
+                  ) : (
+                    <div className="flex-1 overflow-y-auto p-4">
+                      {bottom === 'result' && resultBody}
+                      {bottom === 'history' && (
+                        <HistoryPanel history={history} checkLabels={checkLabels} lang={lang} />
+                      )}
+                    </div>
+                  )}
                 </div>
               </>
             )}
           </div>
 
           {/* ═══ 3. ПРЕГЛЕД ═══ */}
-          {hasPreview && showPrev && (
+          {/* ═══ 3. ПРЕГЛЕД ═══ */}
+          {/* ⚠ РАМКАТА ОСТАВА В ДЪРВЕТО, САМО СЕ СКРИВА.
+              Затворена колона = размонтирана рамка = скриптът не се изпълнява
+              = конзолата мълчи. Рамка с display:none пак се зарежда и пак
+              изпълнява — затова тук се крие, а не се маха. */}
+          {hasPreview && (
             <>
-              <div onMouseDown={start('p')}
-                className="shrink-0 w-2.5 cursor-col-resize flex items-center justify-center bg-white/[0.03] hover:bg-sky-500/20 transition-colors group">
-                <div className="flex flex-col gap-1 pointer-events-none">
-                  {[0, 1, 2, 3].map((i) => <span key={i} className="w-1 h-1 rounded-full bg-gray-700 group-hover:bg-sky-300 transition-colors" />)}
+              {showPrev && (
+                <div onMouseDown={start('p')}
+                  className="shrink-0 w-2.5 cursor-col-resize flex items-center justify-center bg-white/[0.03] hover:bg-sky-500/20 transition-colors group">
+                  <div className="flex flex-col gap-1 pointer-events-none">
+                    {[0, 1, 2, 3].map((i) => <span key={i} className="w-1 h-1 rounded-full bg-gray-700 group-hover:bg-sky-300 transition-colors" />)}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div className="shrink-0 flex flex-col min-w-0 border-l border-white/10" style={{ width: prevW ?? 320 }}>
-                {previewInner}
+              <div className={`shrink-0 flex flex-col min-w-0 border-l border-white/10 ${showPrev ? '' : 'hidden'}`}
+                style={{ width: showPrev ? (prevW ?? 320) : 0 }}>
+                <PreviewPane preview={preview} target={target} />
               </div>
             </>
           )}
         </div>
       )}
 
-      {/* потвърждение за нулиране */}
+      {/* ── ДОКЛАД ЗА ГРЕШКА ── */}
+      <FeedbackDialog
+        open={showFb}
+        onClose={() => setShowFb(false)}
+        course={course}
+        itemId={itemId}
+        lang={lang}
+        collectCode={collectCode}
+      />
+
+      {/* ── ПОТВЪРЖДЕНИЕ ЗА НУЛИРАНЕ ── */}
       {confirmReset && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4">
           <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">

@@ -1,0 +1,72 @@
+{
+  "title": "Three kinds of things",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "You printed the name",
+  "checkLabels.t6": "You printed the number",
+  "checkLabels.t7": "You printed yes or no",
+  "checkLabels.t8": "The number is not in double quotes",
+  "checkLabels.t9": "The number is not in single quotes",
+  "checkLabels.t10": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted everything instead of adding lines.",
+
+  "why.untouched": "script.js is exactly as it was. You have not added anything yet.",
+  "hint2.untouched": "The line from the last lesson stays. You write below it.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "hint2.not-closed": "index.html is not part of this lesson.",
+
+  "why.not-linked": "The script never reaches the page.",
+  "hint2.not-linked": "The last line in index.html links script.js. Check that it is there.",
+
+  "why.crashed": "Your code stopped with an error before it reached the end.",
+  "hint2.crashed": "Look at the Console panel below. The red line says what it did not like.",
+"hint3.crashed": "Two errors, one root. SyntaxError means the line cannot be read at all. ReferenceError means it can be read, but the word was taken as the name of something that does not exist. Both say the same thing: text needs quotes.",
+
+  "why.nothing-written": "script.js is empty.",
+
+  "why.frozen": "Your code never stops. It loops forever and was cut off.",
+
+  "why.no-name": "The name of the shop does not appear in the console.",
+  "hint2.no-name": "Text goes in quotes. Without them the computer goes looking for something called Bean.",
+  "hint3.no-name": "console.log(\"Filter coffee\"); prints Filter coffee. The quotes say: this is text, do not look for anything.",
+  "hint4.no-name": "Do the same with the name of the shop.",
+
+  "why.no-number": "The number 1247 does not appear on a line of its own.",
+  "hint2.no-number": "The three things go on three separate lines, each with its own console.log.",
+  "hint3.no-number": "Put them together in one console.log and they come out on one line, and the check does not find the number on its own.",
+
+  "why.no-boolean": "You have not printed yes or no.",
+  "hint2.no-boolean": "The third kind of value is written true or false. No quotes, lowercase.",
+
+  "why.quoted-number": "The number is in quotes. On screen it looks the same — which is exactly what makes it dangerous.",
+  "hint2.quoted-number": "Quotes make text. Give them to a number and it stops being a number.",
+  "hint3.quoted-number": "\"5\" + 1 gives \"51\", while 5 + 1 gives 6. One joins, the other adds. The difference is two quote marks.",
+  "hint4.quoted-number": "Remove the quotes around the number. Text wants them, a number does not.",
+
+  "why.lost-p": "A line has disappeared from the page. index.html is not part of this lesson.",
+
+  "blocks.0.text": "Last lesson you printed a number. Now try a word — the name of the shop.",
+  "blocks.1.text": "It looks reasonable. It does not work.",
+  "blocks.3.text": "ReferenceError: Bean is not defined. The computer did not see text. It saw a name and went looking for something called Bean. It found nothing. And if you write the full name without quotes, it breaks even earlier — SyntaxError, because two words side by side cannot be read as code at all.",
+
+  "blocks.4.text": "Quotes",
+  "blocks.5.text": "Quotes do not decorate text. They tell the computer: stop searching, these are just letters. Without them every word is the name of something.",
+  "blocks.7.text": "A number is the opposite. 1247 is written bare. It is not the name of anything — it is the number itself.",
+
+  "blocks.8.text": "A third kind",
+  "blocks.9.text": "true and false. Open or closed. Yes or no. Only two values, nothing else, and no quotes. They look useless right now. From section three onward, every decision in your code runs through them.",
+
+  "blocks.11.text": "On screen they look the same",
+  "blocks.12.text": "console.log(1247) and console.log(\"1247\") produce the same line. The console cannot tell them apart. The computer can. One is a number it can do maths with. The other is four characters that happen to look like a number.",
+  "blocks.13.text": "This lesson looks simple, and the most common mistake in the whole language comes out of it. You will meet it in lesson 06, and ten times after that.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Below the line from the last lesson, print three things, each on its own line: the name of the shop, the number of coffees sold, and whether it is open.",
+  "blocks.16.text": "Three separate console.log calls. Watch which one needs quotes and which does not."
+}

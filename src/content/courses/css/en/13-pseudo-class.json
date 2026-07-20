@@ -1,0 +1,79 @@
+{
+  "title": "Pseudo-class: where the element stands",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "All five list items are there",
+  "checkLabels.t6": "Both paragraphs are there",
+  "checkLabels.t7": "The HTML is untouched",
+  "checkLabels.t8": "The first item is bold",
+  "checkLabels.t9": "The last item is italic",
+  "checkLabels.t10": "The first paragraph is teal",
+  "checkLabels.t11": "The second paragraph is brown",
+  "checkLabels.t12": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. Every line of the list still looks the same.",
+  "hint2.untouched": "You only work in styles.css. The HTML stays as it is.",
+
+  "why.not-closed": "A closing curly or round bracket is missing after the pseudo-class.",
+  "hint2.not-closed": "nth-child and not bring their own round brackets. Open one, close one.",
+
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+
+  "why.lost-items": "There are no longer five list items. You write a rule, you do not delete content.",
+  "why.lost-p": "There are no longer two paragraphs.",
+
+  "why.added-class": "You added a class label in the HTML. That is exactly what this lesson avoids.",
+  "hint2.added-class": "First and last change on their own the moment you add a line. A label does not.",
+  "hint3.added-class": "Tomorrow Bean Street adds a new tea. If the first line is marked by hand, you have to move the label. If it is picked by position, you do not.",
+  "hint4.added-class": "Remove the class attributes. Ask where the element stands among its siblings.",
+
+  "why.no-first": "There is no list item at all.",
+  "why.first-not-bold": "The first item is not bold.",
+  "hint2.first-not-bold": "The condition attaches to the selector with a colon, no space.",
+  "hint4.first-not-bold": "li:first-child with font-weight: bold inside.",
+
+  "why.no-last": "There is no last list item.",
+  "why.last-not-italic": "The note at the bottom is not italic.",
+  "hint2.last-not-italic": "Same question, turned around.",
+
+ "why.no-intro": "There is no paragraph at all. The HTML has been rearranged.",
+
+  "why.intro-not-teal": "The first paragraph is not teal. If you wrote a rule and nothing happened, it matches nothing.",
+  "hint2.intro-not-teal": "Check which element is the FIRST child of body. Not the first paragraph — the first child.",
+  "hint3.intro-not-teal": "The first child of body is the h1. Then an h2. The paragraph is only fourth. So p:first-child is an empty set. The browser never complains about a rule that matches nothing — it just walks past it.",
+  "hint4.intro-not-teal": "You are not asking for the first child, but for the first of its kind. The condition is called first-of-type.",
+
+  "why.no-second-p": "There is no second paragraph.",
+  "why.second-p-changed": "The second paragraph changed too. It stays saddlebrown.",
+  "hint2.second-p-changed": "The p rule covers both. Change it and you change both.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red. You deleted the h1 rule.",
+
+  "blocks.0.text": "The Bean Street menu is a list. The last line is not a price — it is a note saying tax is included.",
+
+  "blocks.1.text": "The problem",
+  "blocks.2.text": "You want the first line bold and the note at the bottom italic. You write a rule for li and get this:",
+  "blocks.4.text": "All five lines turn bold. A class would work again, but think about what follows: tomorrow you add a new tea at the top and you have to move the label by hand. First and last are not properties of the line. They are its position — and position changes on its own.",
+
+  "blocks.5.text": "Ask about position",
+  "blocks.6.text": "A colon attaches a condition to the selector you already wrote.",
+  "blocks.8.text": "A pseudo-class is not a new selector. It is a condition about the same element — not what it is, but where it stands. That is why it is written with no space: a space already means something else.",
+  "blocks.9.text": "A class says what the element is. A pseudo-class says where it stands.",
+
+  "blocks.10.text": "The trap in the word child",
+  "blocks.11.text": "first-child means the first child of its parent, whatever tag that is. It does not mean the first paragraph. If a heading comes before the paragraph, the heading is the first child and the paragraph rule matches nothing. No error, no warning — nothing happens:",
+  "blocks.13.text": "For the first of a given kind there is a separate condition: first-of-type. Both count elements only — blank lines and text between tags do not count. There are also pseudo-classes for state, like hover and focus. They get their own section later.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Three things, all in styles.css. The first menu line becomes bold with font-weight: bold. The last line becomes italic with font-style: italic. The first paragraph at the top becomes teal, the second stays saddlebrown. Do not touch the HTML."
+}

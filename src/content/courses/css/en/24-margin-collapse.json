@@ -1,0 +1,70 @@
+{
+  "title": "Two margins that become one",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No two margins facing each other",
+  "checkLabels.t7": "The gap is 50",
+  "checkLabels.t8": "The leak is stopped",
+  "checkLabels.t9": "The paragraph margin is kept",
+  "checkLabels.t10": "The card padding is kept",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The numbers still do not match the gaps.",
+  "hint2.untouched": "Two rules change: .card and .box.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. There are two cards and there stay two.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-box": "There is no element with the box class.",
+  "why.no-first": "There is no paragraph with the first class.",
+
+  "why.still-doubled": "The cards still have a margin both above and below.",
+  "hint2.still-doubled": "Between them 20 below meets 30 above. The result is not 50.",
+  "hint3.still-doubled": "The two collapse into the larger one: you get 30. So the numbers in the code do not describe the gap on screen, only one of them does.",
+  "hint4.still-doubled": "Keep the margin in one direction only: margin-top: 0 and the whole gap in margin-bottom.",
+
+  "why.wrong-gap": "The gap between the cards is not 50 pixels.",
+  "hint2.wrong-gap": "With a margin in one direction only, nothing collapses and the number is exactly what you see.",
+
+  "why.leak-not-stopped": "The paragraph margin still leaks through the box.",
+  "hint2.leak-not-stopped": "Look at where the empty space ended up. It is ABOVE the box, not inside it.",
+  "hint3.leak-not-stopped": "When there is nothing between a parent and its first child — no border, no padding — their top margins collapse together and escape outside. The parent moves down and no room opens up inside.",
+  "hint4.leak-not-stopped": "Give .box some padding on top, even one pixel. It stands between the two edges and separates them.",
+
+  "why.margin-deleted": "You deleted the paragraph margin. The task is to keep it inside, not to remove it.",
+  "why.padding-cut": "You deleted the card padding.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The two cards have 20 pixels of margin below and 30 above. Between them, 20 meets 30. Measure the gap in the preview: it is 30, not 50.",
+
+  "blocks.1.text": "They do not add, they collapse",
+  "blocks.2.text": "When two vertical margins meet, the browser does not add them. It takes the larger one and discards the other. This is not a bug — it is a rule as old as CSS itself. It comes from print: if every heading carries space above and every paragraph space below, what should sit between them is one sensible gap, not the sum of two.",
+  "blocks.3.text": "The number in your code is a proposal. What you see is the larger of the two proposals.",
+
+  "blocks.4.text": "When it happens",
+  "blocks.5.text": "Vertically only, and only in certain places:",
+  "blocks.6.items.0": "Between siblings — the bottom margin of one and the top margin of the next.",
+  "blocks.6.items.1": "Between a parent and its first or last child, when nothing sits between them.",
+  "blocks.6.items.2": "Inside an empty element — its own top and bottom margins collapse into each other.",
+
+  "blocks.7.text": "Horizontally it never happens",
+  "blocks.8.text": "Left and right margins always add up. So two columns with 20 on each side give 40 between them, while two rows with 20 above and below give 20. Same property, different behaviour on the two axes. Nobody remembers this the first time.",
+  "blocks.9.text": "It also does not happen inside flex or grid — those have their own rules for spacing and a dedicated property for gaps. That is why collapsing shows up less often than it did ten years ago, but it has not gone away: it lives exactly where you stack ordinary blocks one under another.",
+
+  "blocks.10.text": "Leaking through the parent",
+  "blocks.11.text": "Look at the box at the top. The paragraph inside has a 40 pixel top margin, and the empty space appeared ABOVE the box, not inside it. The margin escaped and pushed the whole parent down. The reason: between the top edge of the box and the top edge of the paragraph there is nothing — no border, no padding — so the two edges are treated as one. Anything between them stops it: one pixel of padding, a border, or switching the parent to a different layout mode.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Make the gap between the two cards exactly 50 pixels — in a way where the number in the code means the same as what you see. And keep the paragraph's margin inside the box, without deleting it."
+}

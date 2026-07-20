@@ -1,0 +1,219 @@
+{
+  "title": "Put It In The World",
+
+  "statement": "Empty editor. The last task in the course.\n\nThere isn't a single new tag here. Everything you need, you've covered.\n\nThe hard part is the scope: until now each task asked you about one thing. This one asks about all of them at once — and it won't tell you which it's checking.\n\nThe page sits in the main folder. There's a subfolder pages with more pages, and a subfolder images with the photo.\n\nBuild it so you could publish it tomorrow.",
+
+  "constraints": [
+    "The club is called Dobrich Photo Club",
+    "Menu: Home (index.html) · Walks (in pages) · Gallery (another site)",
+    "Main part: What we do, a sentence, a photo from images",
+    "Bring with you: a camera, comfortable shoes, water",
+    "Meeting times: a table with meeting Thursday 19:00, walk Sunday 07:00, darkroom Saturday 10:00",
+    "A note on gear: a sentence where the words aperture and shutter are VISIBLE in angle brackets",
+    "On the side, Nearby: two links into pages",
+    "Join us: a form with name and email, email required, a button",
+    "At the bottom: Written by Ivan. All rights reserved.",
+    "The page is ready to publish — it says everything about itself"
+  ],
+
+  "checks": {
+    "t1": "There is code",
+    "g1": "Everything is closed",
+    "t2": "The document type is declared",
+    "t3": "There is a language",
+    "t4": "The language isn't empty",
+    "t5": "There is an alphabet",
+    "t6": "The alphabet isn't empty",
+    "t7": "The page has a name",
+    "t8": "There is a phone setting",
+    "t9": "The setting isn't empty",
+    "t10": "There is a share appearance",
+    "t11": "The values aren't empty",
+    "t12": "There is a top part",
+    "t13": "There is exactly one main content",
+    "t14": "There is a bottom part",
+    "t15": "The navigation is in the top part",
+    "t16": "There is a standalone thing",
+    "t17": "There is something on the side",
+    "t18": "The nesting is correct",
+    "t19": "There is exactly one main heading",
+    "t20": "The heading isn't empty",
+    "t21": "There are three subheadings",
+    "t22": "There are three sub-subheadings",
+    "t23": "The headings are in order",
+    "t24": "The menu is a list of three links",
+    "t25": "There are at least five links",
+    "t26": "Every link has an address",
+    "t27": "There is a link out",
+    "t28": "There is a link into a subfolder",
+    "t29": "Every link says its own name",
+    "t30": "The image is described",
+    "t31": "The description isn't empty",
+    "t32": "The image knows which file",
+    "t33": "There are three lists",
+    "t34": "No list item is empty",
+    "t35": "There are no line breaks",
+    "t36": "There is exactly one table",
+    "t37": "The table has four rows",
+    "t38": "There are six header cells",
+    "t39": "Every row starts with a header cell",
+    "t40": "The table has a name",
+    "t41": "There is a form",
+    "t42": "There are two fields",
+    "t43": "The fields are tied to their labels",
+    "t44": "There is an email field",
+    "t45": "Something is required",
+    "t46": "Every field has a name",
+    "t47": "There is a button",
+    "t48": "The opening bracket is visible",
+    "t49": "The closing bracket is visible",
+    "t50": "No paragraph is empty",
+    "t51": "There is text at the bottom"
+  },
+
+  "why": {
+    "empty": "The editor is empty. There is no starter code here — you build the page yourself.",
+
+    "not-closed": "Some tag is opened and never closed, or closed in the wrong order.\n\nThe page is large: the table, the form and the nested parts are where this happens most easily.",
+
+    "no-doctype": "The page doesn't say what kind of document it is. The first line of every HTML file.",
+
+    "no-lang": "The page doesn't say what language it's in, or says it empty.\n\nA screen reader has to decide how to pronounce the words. Without a language it guesses — and reads nonsense confidently.",
+
+    "no-charset": "The alphabet isn't declared, or it's empty. The first non-Latin letter will show you.",
+
+    "no-title": "The page has no name, or it's empty.\n\nThis is the first thing in search results and the only thing in bookmarks.",
+
+    "no-viewport": "The page doesn't say how to display on a phone.\n\nWithout it the phone shrinks the whole thing and the visitor reads with two fingers. More than half of them will open it exactly that way.",
+
+    "no-og": "The page doesn't say how it should look when shared, or the values are empty.\n\nSend the address in a chat and a bare link shows up. You need at least the two basics: what it's called and which picture.",
+
+    "no-landmarks": "The top part, the substance or the bottom part is missing. The substance is exactly one.",
+
+    "no-nav": "There is no navigation in the top part.",
+
+    "no-article": "There is no standalone thing in the main content.\n\nThe description of the club means something even lifted out of the page.",
+
+    "no-aside": "There is nothing on the side in the main content.\n\nThe neighbouring pages aren't part of the club's description. They sit beside it.",
+
+    "wrong-nesting": "The nesting isn't right, or a nameless box is left over.\n\nThe thing on the side doesn't live inside the article — that would claim the neighbouring pages are part of the text about the club.\n\nAnd every box here has a real name available. You don't need a nameless one.",
+
+    "h1-count": "There isn't exactly one main heading, or the heading is empty.\n\nOne per page. Two means the page is about two things at once.",
+
+    "few-h2": "There aren't three subheadings. What we do, the neighbouring pages and joining are three separate parts.",
+
+    "few-h3": "There aren't three sub-subheadings. What to bring, the times and the note on gear are parts INSIDE the description.",
+
+    "heading-order": "The headings skip a level.\n\nFrom the main one you step down to the next, not over it. A blind visitor reads the page like a table of contents — skip a level and they wonder what they missed.",
+
+    "nav-not-list": "The menu isn't a list of three links inside navigation.",
+
+    "few-links": "There aren't five links with addresses. Three in the menu and two on the side make five.",
+
+    "empty-href": "There is a link with an empty address.",
+
+    "no-external": "There is no link to another site with a full address.\n\nThe gallery isn't your file — its address starts with a protocol and a domain.",
+
+    "no-subfolder": "There is no link into a file in a subfolder.\n\nThe pages for the walks, the darkroom and the archive are in pages. You're in the main folder — so first you step into it.",
+
+    "no-link-name": "There is a link with no name.",
+
+    "no-alt": "The image has no description, or it is empty.",
+
+    "no-src": "The image doesn't say which file, or the address is empty.\n\nIt's in the images folder, and you're in the main one.",
+
+    "few-lists": "There aren't three lists. The menu, what to bring and the neighbouring pages make three.",
+
+    "empty-li": "There is an empty list item.",
+
+    "br-instead": "You've used line breaks. Every list item takes its own line.",
+
+    "table-count": "There isn't exactly one table.",
+
+    "few-rows": "The table doesn't have four rows. Three meetings and the row with the column names.",
+
+    "few-th": "There aren't six header cells.\n\nThree along the top and one at the start of each row. Meeting isn't a value — it's the name of the row.",
+
+    "no-row-names": "The rows don't start with a header cell.\n\nTake the cell 19:00 and name it. You need two addresses: the column above and the row to the left.",
+
+    "no-caption": "The table has no name, or it's empty. Times change — say when these apply.",
+
+    "no-form": "There is no form.",
+
+    "few-fields": "There aren't two fields in the form.",
+
+    "no-labels": "There is a field with no label tied to it.\n\nA word next to a field isn't a label. A label is a link.",
+
+    "no-email-type": "There is no email field. Left as free text, it accepts anything.",
+
+    "no-required": "Nothing is required. Someone sends an empty form and you get nothing.",
+
+    "no-name": "There is a field with no name, or an empty one. A field with no name arrives nowhere.",
+
+    "no-button": "There is no button. The form fills in but never leaves.",
+
+    "no-entities": "The angle brackets aren't visible on the page.\n\nThe note talks ABOUT settings in brackets — so the brackets have to be there in the text. Written the way your hand wants to, they aren't text: the browser takes them for the start of a tag and runs them.\n\nAnd don't forget that every character name ends with a semicolon.",
+
+    "empty-p": "There is an empty paragraph.",
+
+    "no-footer-text": "The bottom part is empty.",
+
+    "autoplay": "You've left something to start on its own.\n\nYour browser blocks it — which is why it looks fine. On someone else's it won't.",
+
+    "layout-table": "You've put something into the table that isn't data.\n\nA table isn't a grid for arranging things. Ask about the cell: what does it MEAN?",
+
+    "fake-heading": "You have a heading made out of a bolded paragraph.\n\nOn screen it does the job. But a blind visitor pulls up a list of headings and your line isn't in it."
+  },
+
+  "hints": {
+    "no-og": [
+      "Copy the page address and send it to yourself in a chat. What shows up on the other side?",
+      "Lesson 65 gave tags that tell someone else's site how to display your page.",
+      "You need at least the two basics: what it's called and which picture to show."
+    ],
+    "heading-order": [
+      "Read only the headings, top to bottom. Is a level skipped anywhere?",
+      "The main one is one. Below it are the three big parts. Below those are the parts inside the description.",
+      "Three levels, in order, no skipping."
+    ],
+    "no-subfolder": [
+      "Look at where you are and where the other pages are.",
+      "You're in the main folder. The walks, the darkroom and the archive are in a subfolder.",
+      "So first you step into it: its name, a slash, then the file."
+    ],
+    "no-row-names": [
+      "Take any cell with a time and say it out loud: what is this?",
+      "You need two things — the column and the row. So both of them name something.",
+      "Meeting, Photo walk, Darkroom aren't values. They're row names."
+    ],
+    "no-entities": [
+      "Read the note on gear on screen. Is all of it there?",
+      "What's missing wasn't deleted — it ran. The browser took it for a tag.",
+      "Lesson 23: you don't write the character, you write its name. And it ends with a semicolon."
+    ],
+    "wrong-nesting": [
+      "Read only the tags out loud, top to bottom.",
+      "Do you hear \"article, inside it something on the side\"? Ask what that claims.",
+      "And count the nameless boxes. There's nothing here you need one for."
+    ]
+  },
+
+  "solution": {
+    "why": "There's no single solution here. There are twenty small ones you already know separately.\n\nAnd that's the exam. Until now every task told you what it was about: paths, tables, forms. You knew where to look.\n\nNow you don't. The page is large and everything invisible you have to remember yourself — the language, the alphabet, the width for phones, the picture when shared, the image description, the label-to-field link, the header cell at the start of every row.\n\nNot one of those things shows on screen. Every one of them is paid for by somebody else: the person on a phone, the blind visitor, the search engine, whoever you sent the link to in a chat.\n\nThat's why this course was about them, not about the tags. There are thirty tags and they take a week. The question \"who can't use this\" takes longer.",
+    "steps": [
+      "Start with the head. It's where the page says what it is: language, alphabet, name, width for phones, picture when shared.",
+      "Split the body into three: top, substance, bottom.",
+      "The top holds the club's name and the menu. The menu is a list of links in navigation — one to a file beside you, one in a subfolder, one out.",
+      "The substance is one. Inside it, the club's description is a standalone thing.",
+      "In it: a sentence, a described photo, a list of what to bring, a table of times, a note on gear.",
+      "In the table, remember that names run in two directions, and that it has a name of its own.",
+      "In the note, the brackets have to be VISIBLE — so they aren't written as characters.",
+      "The neighbouring pages sit BESIDE the description, not in it.",
+      "Joining is a section of this page: a form with two labels tied to their fields, correct kinds, a required email, a button.",
+      "The copyright stays at the bottom.",
+      "Finally read only the headings top to bottom. Is a level skipped anywhere?"
+    ],
+    "code": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Dobrich Photo Club — meetings, walks and darkroom</title>\n  <meta property=\"og:title\" content=\"Dobrich Photo Club\">\n  <meta property=\"og:image\" content=\"images/club.jpg\">\n</head>\n<body>\n  <header>\n    <h1>Dobrich Photo Club</h1>\n    <nav>\n      <ul>\n        <li><a href=\"index.html\">Home</a></li>\n        <li><a href=\"pages/walks.html\">Walks</a></li>\n        <li><a href=\"https://example.com/gallery\">Gallery</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>\n    <article>\n      <h2>What we do</h2>\n      <p>We meet every Thursday, walk on Sundays and print on the first Saturday of the month.</p>\n      <img src=\"images/club.jpg\" alt=\"Six people with cameras on a bridge at sunrise\">\n\n      <h3>Bring with you</h3>\n      <ul>\n        <li>A camera, any camera</li>\n        <li>Comfortable shoes</li>\n        <li>Water</li>\n      </ul>\n\n      <h3>Meeting times</h3>\n      <table>\n        <caption>Regular meetings, autumn 2025</caption>\n        <tr>\n          <th>What</th>\n          <th>Day</th>\n          <th>Time</th>\n        </tr>\n        <tr>\n          <th>Meeting</th>\n          <td>Thursday</td>\n          <td>19:00</td>\n        </tr>\n        <tr>\n          <th>Photo walk</th>\n          <td>Sunday</td>\n          <td>07:00</td>\n        </tr>\n        <tr>\n          <th>Darkroom</th>\n          <td>Saturday</td>\n          <td>10:00</td>\n        </tr>\n      </table>\n\n      <h3>A note on gear</h3>\n      <p>Write your settings as &lt;aperture&gt; and &lt;shutter&gt; in the shared sheet.</p>\n    </article>\n\n    <aside>\n      <h2>Nearby</h2>\n      <ul>\n        <li><a href=\"pages/darkroom.html\">The darkroom</a></li>\n        <li><a href=\"pages/archive.html\">Old photos</a></li>\n      </ul>\n    </aside>\n\n    <section>\n      <h2>Join us</h2>\n      <form>\n        <label for=\"name\">Your name</label>\n        <input id=\"name\" name=\"name\" type=\"text\">\n        <label for=\"email\">Email</label>\n        <input id=\"email\" name=\"email\" type=\"email\" required>\n        <button type=\"submit\">Send</button>\n      </form>\n    </section>\n  </main>\n\n  <footer>\n    <p>Written by Ivan. All rights reserved.</p>\n  </footer>\n</body>\n</html>",
+    "note": "This is a page you can publish.\n\nBefore you do, run it through the validator from lesson 67, then press F12. The first will tell you what you wrote wrong; the second will show you what the browser fixed on your behalf.\n\nThen open it on your phone. All the invisible things you just wrote suddenly become visible: the name in the tab, the width, the picture when shared.\n\nThat's why they were there."
+  }
+}

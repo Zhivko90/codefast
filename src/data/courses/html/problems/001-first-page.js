@@ -39,8 +39,10 @@ export default {
     { id: 't5', type: 'dom_text_not_empty', value: 'p',    err: 'empty-p',   weight: 185 },
 
     { id: 't6', type: 'code_contains', value: '<!doctype', err: 'no-doctype', weight: 150 },
-    { id: 't7', type: 'dom_has', value: 'html[lang]',    err: 'no-lang',    weight: 145 },
-    { id: 't8', type: 'dom_has', value: 'meta[charset]', err: 'no-charset', weight: 140 },
+  { id: 't7',  type: 'dom_count', value: 'html[lang]', min: 1, err: 'no-lang', weight: 145 },
+    { id: 't7b', type: 'dom_attr', value: 'html', attr: 'lang', err: 'no-lang', weight: 144 },
+    { id: 't8',  type: 'dom_count', value: 'meta[charset]', min: 1, err: 'no-charset', weight: 140 },
+    { id: 't8b', type: 'dom_attr', value: 'meta[charset]', attr: 'charset', err: 'no-charset', weight: 139 },
 
     { id: 't9',  type: 'dom_has',   value: 'head title', err: 'title-outside', weight: 110 },
     { id: 't10', type: 'dom_count', value: 'h1', min: 1, max: 1, err: 'many-h1', weight: 100 }

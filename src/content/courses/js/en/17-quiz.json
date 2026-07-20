@@ -1,0 +1,31 @@
+{
+  "title": "Check yourself",
+
+  "questions.0.text": "A counter accumulates sales: let sum = 0; then sum += 10; then sum =+ 5; then sum += 3. What is sum at the end?",
+  "questions.0.options.0": "18",
+  "questions.0.options.1": "15",
+  "questions.0.options.2": "8",
+  "questions.0.options.3": "The code breaks on the reversed signs",
+  "questions.0.why": "The line sum =+ 5 does not accumulate, it replaces — the ten disappears and counting restarts from 5. Then 3 is added. Valid code, silent loss.",
+
+  "questions.1.text": "The quantity field contains \"12 pcs\". Which one returns the number 12?",
+  "questions.1.options.0": "parseInt(\"12 pcs\")",
+  "questions.1.options.1": "Number(\"12 pcs\")",
+  "questions.1.options.2": "\"12 pcs\".trim()",
+  "questions.1.options.3": "All three",
+  "questions.1.why": "parseInt reads from the left while it sees digits, then stops. Number wants the whole text to be a number and returns NaN. trim only removes spaces — the result is still text.",
+
+  "questions.2.text": "const n = Number(\"coffee\"); Which is true about n?",
+  "questions.2.options.0": "n === NaN gives true",
+  "questions.2.options.1": "The code already broke at Number",
+  "questions.2.options.2": "n equals 0",
+  "questions.2.options.3": "n * 2 gives NaN, with nothing complaining",
+  "questions.2.why": "NaN is not an error, it is a value. Every sum with it gives NaN again and spreads downwards quietly. Comparing with equality never works — that is what Number.isNaN is for.",
+
+  "questions.3.text": "You have 20 lev, a cup costs 3. Which one works out how many WHOLE cups you can buy?",
+  "questions.3.options.0": "Math.round(20 / 3)",
+  "questions.3.options.1": "Math.floor(20 / 3)",
+  "questions.3.options.2": "Math.ceil(20 / 3)",
+  "questions.3.options.3": "20 / 3",
+  "questions.3.why": "20 divided by 3 gives 6.67. Rounding to the nearest and rounding up both give 7 — and there is nothing to pay for the seventh cup with. Rounding down cuts off the remainder and gives 6."
+}

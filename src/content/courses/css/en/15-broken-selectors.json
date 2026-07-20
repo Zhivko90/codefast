@@ -1,0 +1,85 @@
+{
+  "title": "Five rules that say nothing",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "All four items are there",
+  "checkLabels.t6": "Both paragraphs are there",
+  "checkLabels.t7": "The HTML is untouched",
+  "checkLabels.t8": "The id rule is gone",
+  "checkLabels.t9": "The first paragraph is teal",
+  "checkLabels.t10": "The list is brown",
+  "checkLabels.t11": "The note is italic",
+  "checkLabels.t12": "The arrow shows up",
+  "checkLabels.t13": "The outside link is bold",
+  "checkLabels.t14": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The five rules are still silent.",
+  "hint2.untouched": "You only work in styles.css. The rules are there, none of them matches.",
+
+  "why.not-closed": "A closing brace, quote or square bracket is missing.",
+
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+
+  "why.lost-items": "There are no longer four items.",
+  "why.lost-p": "There are no longer two paragraphs.",
+
+  "why.touched-html": "You edited the HTML. Here you fix the CSS, not the document.",
+  "hint2.touched-html": "The three classes in the HTML are the correct ones: intro, menu, note. The mistakes are in the other file.",
+  "hint3.touched-html": "The temptation is to rewrite the HTML until it matches the CSS. On a real site the HTML comes from somewhere else and is not yours to move. You fix the rule.",
+
+  "why.id-rule-left": "The rule with the hash is still there. The list has no id, it has a class.",
+  "hint2.id-rule-left": "A hash looks for an id. The HTML says class. One character apart.",
+
+  "why.no-intro": "There is no paragraph with the class intro.",
+  "why.intro-silent": "The first paragraph is not teal. Its rule says nothing.",
+  "hint2.intro-silent": "Compare the class name in the CSS with the one in the HTML. Letter by letter.",
+  "hint3.intro-silent": "Class names are case-sensitive. Intro and intro are two different names — the browser does not guess what you meant, and it does not complain.",
+
+  "why.no-menu": "There is no list with the class menu.",
+  "why.menu-silent": "The list is not brown.",
+  "hint2.menu-silent": "Look at the character the rule starts with and the attribute in the HTML.",
+
+  "why.no-note": "There is no item with the class note.",
+  "why.note-silent": "The tax note is not italic.",
+  "hint2.note-silent": "There is a space between li and .note. It means something.",
+  "hint3.note-silent": "With a space, the rule looks for an element with the class note INSIDE the item. There is none — the class is on the item itself. Without the space, both conditions describe the same element.",
+
+  "why.no-items": "There is no list item at all.",
+  "why.arrow-silent": "There is no arrow before the items, even though the rule is there.",
+  "hint2.arrow-silent": "Look at the value of content. Compare it with what you wrote in lesson 14.",
+  "hint3.arrow-silent": "Text in content goes in quotes. Without them the value is invalid and the browser throws the whole declaration away — quietly, as it does with every value it cannot read.",
+
+  "why.no-link": "There is no link to another site.",
+  "why.link-silent": "The outside link is not bold.",
+  "hint2.link-silent": "The rule asks whether href IS http. It is a whole address.",
+  "hint3.link-silent": "The equals sign means the entire value, letter by letter. You are looking for a beginning, not a match.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The Bean Street page is finished. Someone wrote five rules for it — for the intro paragraph, the list, the note, the arrows and the outside link. Open the preview: not one of the five works. The console is clean. There is not a single warning.",
+
+  "blocks.1.text": "Five rules, zero errors",
+  "blocks.2.text": "Each of the five is written correctly. Braces closed, properties real, values sensible. That is why the browser says nothing — as far as it is concerned there is no problem. It looks for an element, finds none, and moves on. A rule that matches nothing is not an error to it.",
+  "blocks.3.text": "A syntax error shouts at you. A selector that matches nothing says nothing.",
+
+  "blocks.4.text": "How to hunt a silent rule",
+  "blocks.5.text": "No tools, just reading. Four questions, in this order:",
+  "blocks.6.items.0": "Does such an element exist at all? Open the HTML and look for the name. Letter by letter — capitals and small letters are different names.",
+  "blocks.6.items.1": "Is the character right? A hash means id. A dot means class. The HTML says which one is there.",
+  "blocks.6.items.2": "Is there a space where there should not be one? A space means inside. Without it both conditions describe the same element.",
+  "blocks.6.items.3": "Is the value valid? An invalid value throws the whole declaration away without a word. Text needs quotes.",
+  "blocks.7.text": "Every one of the five mistakes below you have already met in the last six lessons. Not one of them is new.",
+
+  "blocks.8.text": "The task",
+  "blocks.9.text": "Fix the five rules in styles.css. Do not touch the HTML — it is correct. The intro paragraph becomes teal, the list saddlebrown, the note italic, an arrow appears before every item, and the outside link becomes bold."
+}

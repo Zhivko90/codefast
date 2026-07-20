@@ -102,8 +102,12 @@ for (const file of files) {
     add(slug, 'wrong-empty-msg', 'няма changed с value: "" — празният редактор ще покаже ГРЕШНОТО съобщение (не „празно е", а „няма заглавие").');
   }
 
+// ⚠ freeform: урок „опитай и се провали“ (25). Ученикът пише каша нарочно.
+  //    balanced и строгите пазачи биха наказали самия експеримент.
+  const freeform = L.freeform === true;
+
   // ── 2. Пазачът на синтаксиса ──
-  if (starterHasTags) {
+  if (starterHasTags && !freeform) {
     const hasGuard = checks.some((c) => c.type === 'balanced' && c.guard);
     if (!hasGuard) {
       const hasBalanced = checks.some((c) => c.type === 'balanced');
@@ -125,27 +129,52 @@ for (const file of files) {
   // ── 4. ТРИЕНЕТО. Най-важното. ──
   const contentGuards = checks.filter((c) => CONTENT_TYPES.has(c.type) || isCountGuard(c));
 
-  if (starterHasTags && contentGuards.length === 0) {
+ if (starterHasTags && contentGuards.length === 0) {
     add(slug, 'no-content-guard', '⚠ УРОКЪТ СЕ МИНАВА С ТРИЕНЕ. Нищо не пази съдържанието на стартовия код.');
-  } else if (starterHasTags && contentGuards.length < 2) {
+  } else if (starterHasTags && contentGuards.length < 2 && !freeform) {
     add(slug, 'weak-content-guard', `само 1 пазач на съдържанието (${contentGuards[0].id}). Обикновено трябват 2-3.`);
   }
 
-  // ── 5. Слабите проверки ──
+ // ⚠ DOMParser СЪЗДАВА html/head/body сам, дори при празен код.
+  //    За тях dom_has минава ВИНАГИ → code_contains е единственият начин
+  //    да провериш дали ученикът наистина ги е написал. Не е слабост.
+  const PARSER_MAKES = new Set(['html', 'head', 'body']);
+
   for (const c of checks) {
     if (c.type !== 'code_contains') continue;
     const v = String(c.value ?? '');
 
-    if (/^<[a-z]/i.test(v)) {
-      add(slug, 'weak-check', `${c.id}: code_contains "${v}" — празният таг минава. Ползвай dom_text_not_empty или dom_has.`);
+    const tag = v.match(/^<\/?([a-z][a-z0-9]*)/i)?.[1]?.toLowerCase();
+
+    if (tag && !PARSER_MAKES.has(tag)) {
+      // Има ли ИСТИНСКИ пазач за същия таг? Тогава слабата е за съобщението.
+      const guarded = checks.some(
+        (o) =>
+          (o.type === 'dom_text_not_empty' || o.type === 'dom_attr' || isCountGuard(o)) &&
+          String(o.value ?? '').toLowerCase().includes(tag)
+      );
+      if (!guarded) {
+        add(slug, 'weak-check', `${c.id}: code_contains "${v}" — празният таг минава и НЯМА dom_ пазач за <${tag}>.`);
+      }
     }
+
     if (/=$|=""/.test(v)) {
-      add(slug, 'weak-check', `${c.id}: code_contains "${v}" — празният атрибут минава. Ползвай dom_attr.`);
+      const attr = v.match(/([a-z-]+)=/i)?.[1];
+      const guarded = checks.some((o) => o.type === 'dom_attr' && o.attr === attr);
+      if (!guarded) {
+        add(slug, 'weak-check', `${c.id}: code_contains "${v}" — празният атрибут минава и НЯМА dom_attr за ${attr}.`);
+      }
     }
   }
 
+// ⚠ Затварящ таг на празен елемент (</img>, </br>) НЕ СЪЩЕСТВУВА в DOM-а —
+  //    браузърът го изхвърля мълчаливо. dom_not_has не може да го види.
+  //    За него code_not_contains е единственият начин. Не е крехкост.
+  const VOID_CLOSE = /^<\/\s*(img|br|hr|input|meta|link|source|area|base|col|embed|track|wbr)\s*>$/i;
+
   for (const c of checks) {
     if (c.type !== 'code_not_contains') continue;
+    if (VOID_CLOSE.test(String(c.value ?? ''))) continue;
     add(slug, 'brittle-check', `${c.id}: code_not_contains "${c.value}" — заобикаля се с интервал. Ползвай dom_not_has с CSS селектор.`);
   }
 

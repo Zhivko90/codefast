@@ -19,6 +19,8 @@
     "t6": "Document type declared",
     "t7": "Language declared",
     "t8": "Character set declared",
+    "t7b": "The language isn't empty",
+    "t8b": "The alphabet isn't empty",
     "t9": "The name is in the head",
     "t10": "Exactly one big heading"
   },

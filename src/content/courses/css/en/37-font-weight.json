@@ -1,0 +1,68 @@
+{
+  "title": "The weight of the type",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The body text is normal",
+  "checkLabels.t7": "The heading is bold, not heavier",
+  "checkLabels.t8": "The prices stand out moderately",
+  "checkLabels.t9": "The note is not hairline",
+  "checkLabels.t10": "The line spacing is kept",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Four numbers change. Nothing is added and nothing removed.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-body": "There is no body.",
+  "why.no-h1": "There is no heading.",
+  "why.no-price": "There is no element with the price class.",
+  "why.no-note": "There is no element with the note class.",
+
+  "why.body-thin": "The body text is not at normal weight.",
+  "hint2.body-thin": "300 is thinner than normal and tires the eye over a long text.",
+  "hint4.body-thin": "font-weight: 400;",
+
+  "why.h1-heavy": "The heading is not 700.",
+  "hint2.h1-heavy": "900 is the heaviest there is. Spend the heaviest on an ordinary heading and you have nothing left for something that really matters.",
+
+  "why.price-weight": "The prices are not 600.",
+  "hint2.price-weight": "They should stand out from the text without competing with the heading. There is a step between normal and bold.",
+
+  "why.note-hairline": "The note is still at hairline weight.",
+  "hint2.note-hairline": "100 is for large display type, not for text somebody has to read.",
+  "hint3.note-hairline": "It is already grey and small. Make it thin as well and it becomes something a reader with failing eyesight simply cannot see.",
+
+  "why.line-broken": "The line spacing is broken.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Open the preview. The heading is as heavy as type gets, the prices are bold, the body text is thinned out and the note at the bottom is barely visible. Every rule is written correctly. The result is a page where the eye has nowhere to settle.",
+
+  "blocks.1.text": "Numbers, not words",
+  "blocks.2.text": "Weight is set with a number from 100 to 900, in hundreds. There are two words as well, but they are only other names for two of the numbers:",
+  "blocks.4.text": "400 is normal, 700 is bold. Anything below 400 is thinner than ordinary text, anything above 700 is heavier than bold. Variable fonts accept any number from 1 to 1000, so 450 or 620 are valid with them.",
+  "blocks.5.text": "When everything is bold, nothing is.",
+
+  "blocks.6.text": "The font may not have that weight",
+  "blocks.7.text": "The number is a wish, not a command. A font contains certain weights — usually two or three. Ask for 600 when there is none and the browser takes the nearest. And if you ask for bold when the font has no bold, it can MAKE one: it thickens the letters artificially.",
+  "blocks.8.text": "Synthetic bold is recognisable — the letters look smeared and the spacing between them shifts. If that bothers you, it can be forbidden with font-synthesis. The better answer is to load the real weight of the font, and the best is to use only weights you actually have.",
+
+  "blocks.9.text": "What is meant for reading",
+  "blocks.10.text": "MDN says it plainly: 100 and 200 are hard for people with low vision, especially when the contrast is also weak. Thin type looks elegant on a large heading in a mockup and falls apart in a nine-word grey note. For text that will really be read, 400 is the floor.",
+
+  "blocks.11.text": "And one difference that is not about CSS",
+  "blocks.12.text": "font-weight says how the text LOOKS. The strong tag in HTML says the content IS important — and that reaches a screen reader, while weight does not. If something is bold only because it should catch the eye, CSS is the right tool. If it matters by meaning, it belongs in the HTML.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Build a hierarchy that reads: normal body text, a bold heading instead of the heaviest one, prices that stand out moderately at 600, and a note that is not thin."
+}

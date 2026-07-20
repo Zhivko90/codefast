@@ -1,0 +1,84 @@
+{
+  "title": "Six mistakes on one page",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The switch is on",
+  "checkLabels.t7": "No frozen height",
+  "checkLabels.t8": "The page fits the screen",
+  "checkLabels.t9": "There is a 480 ceiling",
+  "checkLabels.t10": "The page is centred",
+  "checkLabels.t11": "The borders are visible",
+  "checkLabels.t12": "The margins do not collapse",
+  "checkLabels.t13": "The gap is 24",
+  "checkLabels.t14": "The button accepts a size",
+  "checkLabels.t15": "Its width is 160",
+  "checkLabels.t16": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Six fixes. Start at the top: the switch first, then the page, the button last.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. It is correct — the mistakes are in the styles.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-page": "There is no element with the page class.",
+  "why.no-btn": "There is no element with the btn class.",
+
+  "why.no-switch": "The counting switch is missing.",
+  "hint2.no-switch": "The cards are at a hundred percent and have padding. So they take more room than their parent.",
+  "hint4.no-switch": "The four lines with the asterisk, at the top of the file.",
+
+  "why.height-left": "The cards still have a frozen height.",
+  "hint2.height-left": "Read the text in the first card and see where the border ends.",
+
+  "why.page-too-wide": "The page still has a fixed width larger than the screen.",
+  "why.no-ceiling": "The page has no 480 pixel ceiling.",
+  "hint2.no-ceiling": "Not a number but an upper limit. Then it shrinks by itself on a narrow screen.",
+
+  "why.not-centered": "The page sits against the left edge.",
+  "hint2.not-centered": "There is a ceiling, so there is leftover. auto divides it.",
+
+  "why.no-border": "The card borders are not visible.",
+  "hint2.no-border": "A width and a colour are set. The third part is missing.",
+  "hint3.no-border": "Without a line style the default is none, and with none the width counts as zero.",
+
+  "why.still-collapsing": "The cards have a margin both above and below.",
+  "hint2.still-collapsing": "Between them 12 meets 12. The result is 12, not 24 — they collapse.",
+  "hint4.still-collapsing": "Keep the margin in one direction: margin-top: 0 and margin-bottom: 24px.",
+
+  "why.wrong-gap": "The gap between the cards is not 24 pixels.",
+
+  "why.btn-inline": "The button does not accept a width.",
+  "hint2.btn-inline": "A link is inline. Width and height are ignored.",
+
+  "why.btn-width": "The button is not 160 wide.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The page is finished and it looks bad in six different ways. Nothing crashes, the console is clean, every rule is written correctly. Open the preview and look before you read on: what exactly is wrong, and why.",
+
+  "blocks.1.text": "What it should be",
+  "blocks.2.text": "Here is what the author intended. Six things differ between the intent and the screen:",
+  "blocks.3.items.0": "The content sits in a column at most 480 pixels wide, centred on the page.",
+  "blocks.3.items.1": "The column shrinks on a narrow screen instead of running off it.",
+  "blocks.3.items.2": "The cards have a visible border.",
+  "blocks.3.items.3": "The cards grow with their text instead of cutting it off.",
+  "blocks.3.items.4": "There are exactly 24 pixels between the cards.",
+  "blocks.3.items.5": "The button is 160 pixels wide with its text centred.",
+  "blocks.4.text": "Each of the six mistakes has a lesson behind it. Not one of them is new.",
+
+  "blocks.5.text": "How to approach it",
+  "blocks.6.text": "Top down, general before specific. First what applies to the whole page — the counting switch. Then the frame of the page: width and centring. Then the blocks inside. The small things last. Start from the button and you will get it right, then change the page width and it will be off again.",
+
+  "blocks.7.text": "The task",
+  "blocks.8.text": "Fix the six things in styles.css only. Do not touch the HTML — it is correct."
+}

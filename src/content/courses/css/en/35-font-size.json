@@ -1,0 +1,75 @@
+{
+  "title": "The size the reader chose",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No hard-coded 16 pixels",
+  "checkLabels.t7": "Body text is 1rem",
+  "checkLabels.t8": "The heading is 2rem",
+  "checkLabels.t9": "The subheading is 1.5rem",
+  "checkLabels.t10": "Nested items do not shrink",
+  "checkLabels.t11": "The column is not broken",
+  "checkLabels.t12": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Every font size changes. And one whole block comes out.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-body": "There is no body.",
+  "why.no-h1": "There is no heading.",
+  "why.no-h2": "There is no subheading.",
+  "why.no-deep": "There is no list nested three levels deep.",
+  "why.no-page": "There is no element with the page class.",
+
+  "why.root-in-px": "There is still a size hard-coded in pixels.",
+  "hint2.root-in-px": "Set 16 pixels on the root and you overrule the reader — they chose 20 or 24 and you hand them back 16.",
+  "hint3.root-in-px": "The simplest answer is to set nothing on html. Then 1rem is exactly what the reader picked.",
+  "hint4.root-in-px": "Delete the whole html block and write the sizes in rem.",
+
+  "why.body-size": "The body text is not 1rem.",
+  "hint2.body-size": "1rem means exactly the root size — that is, whatever the reader chose.",
+
+  "why.h1-size": "The heading is not twice the body text.",
+  "hint2.h1-size": "32 pixels at a root of 16 is 2rem.",
+
+  "why.h2-size": "The subheading is not 1.5rem.",
+
+  "why.compounding": "The innermost list item is smaller than it should be.",
+  "hint2.compounding": "The rule for items says 0.9. Check the RESULT three levels in.",
+  "hint3.compounding": "em is measured against the parent. Nest three lists and 0.9 multiplies three times: 0.9 by 0.9 by 0.9 gives 0.73. The text shrinks on its own, without anyone asking.",
+  "hint4.compounding": "Change em to rem. It is measured against the root and does not accumulate.",
+
+  "why.page-broken": "The column is broken.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Open the preview and look at the nested list. The first level is slightly smaller than the text, the second smaller still, the third barely readable. There is only one number in the code: 0.9. Nobody asked for the third level to be a third smaller.",
+
+  "blocks.1.text": "Relative to what",
+  "blocks.2.text": "A pixel is absolute: 16 pixels are 16 pixels, always. The other two units are relative and differ in WHAT they are measured against. em looks at the parent. rem looks at the root of the document, the html element.",
+  "blocks.3.text": "The difference does not show at one level. It shows when elements nest: em multiplies at every step down. A list in a list in a list at 0.9 gives 0.73 of the original size. Nowhere does it say 0.73 — it simply happens.",
+  "blocks.4.text": "em is measured against the parent. rem against the root. That is why em accumulates and rem does not.",
+
+  "blocks.5.text": "The two units",
+  "blocks.6.text": "The choice is simple once you know the question each one answers:",
+  "blocks.8.text": "rem is predictable: 1.5rem is the same size anywhere on the page, however deeply nested. em is useful exactly where you want something to follow the text around it — padding in a button that grows with its label, or a mark before a line that should match the letters.",
+
+  "blocks.9.text": "Why not pixels",
+  "blocks.10.text": "Browser settings include a default font size. It is 16 pixels, but someone with failing eyesight raises it to 20 or 24. That setting changes the value of 1rem — and changes nothing written in pixels. So a page written entirely in pixels politely ignores the choice a person made for the sake of their eyes.",
+  "blocks.11.items.0": "Do not set a pixel size on html. That freezes 1rem and defeats the whole setting.",
+  "blocks.11.items.1": "Write text sizes in rem. Then the page grows along with the reader's choice.",
+  "blocks.11.items.2": "Pixels remain good for things that should not grow: border width, radius, shadow.",
+  "blocks.12.text": "One clarification so you do not walk away with the wrong idea: zooming with Ctrl and plus works on pixels too. The problem is only with the font size setting, which is more hidden and therefore used by exactly the people who really need it.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Remove the hard-coded size from the root. Write the text sizes in rem: body text at the root size, the heading twice that, the subheading one and a half. And fix the list so it stops shrinking at every level."
+}

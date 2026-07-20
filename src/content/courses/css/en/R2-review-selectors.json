@@ -1,0 +1,28 @@
+{
+  "title": "Selectors",
+  "assignment": "Look through the ideas from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "Which element",
+  "groups.0.items.0.term": "Tag: all of them at once",
+  "groups.0.items.0.def": "The simplest selector catches every element of that kind on the page. That is also its limit: three paragraphs, three identical colours. To tell them apart you need something that separates them.",
+  "groups.0.items.1.term": "A class is a name",
+  "groups.0.items.1.def": "A name you attach so you can call it later. One class on as many elements as you like, one rule for all of them. Written without a dot in the HTML, with a dot in the CSS. Case matters: Note and note are two different names, and the browser does not guess what you meant.",
+  "groups.0.items.2.term": "An id is an address, not a label",
+  "groups.0.items.2.def": "One per page. Its real job is to be a link anchor, to tie a label to a form field, to let JavaScript find one element. For styling it is barely used: a rule by id covers exactly one element, and tomorrow, when there are two, you write a second rule. It also beats a class in the cascade — convenient until it becomes the reason you cannot work out why your style is ignored.",
+
+  "groups.1.title": "Not what it is, but where it is",
+  "groups.1.items.0.term": "A space means inside",
+  "groups.1.items.0.def": "Between two selectors a space is not formatting but a condition about kinship. Read it right to left: every paragraph that has .menu somewhere above it. And it means anywhere inside, not one level down — wrap the elements in another block and the rule still catches them. The > sign narrows it to a direct child.",
+  "groups.1.items.1.term": "An attribute is a fact already there",
+  "groups.1.items.1.def": "Square brackets ask the attribute itself instead of relying on a label you must remember to attach. Three signs for three questions: the start, the end, anywhere inside. The value is compared letter by letter, capitals included — unless you add the i flag before the closing bracket.",
+  "groups.1.items.2.term": "Pseudo-class: position among siblings",
+  "groups.1.items.2.def": "A colon attaches a condition about the same element — not what it is, but where it stands. And here is the most common trap in the whole section: first-child means the first child of its parent, whatever tag that is. If a heading comes before the paragraph, a rule for the first paragraph matches nothing. For the first of a kind there is a separate condition: first-of-type.",
+
+  "groups.2.title": "When nothing happens",
+  "groups.2.items.0.term": "Pseudo-element: a piece that is not there",
+  "groups.2.items.0.def": "Two colons make a piece that does not exist in the document. That is why content is required: without it nothing appears. And that is why decoration goes there and meaning does not — text from content is not in the document, screen readers treat it differently, and it does not travel when someone copies the page.",
+  "groups.2.items.1.term": "A rule that matches nothing",
+  "groups.2.items.1.def": "No error, no warning, nothing red. The browser looks for an element, finds none, and moves on. Four questions, in this order: does such an element exist, is the character before the name right, is there a space where there should not be one, and is the value valid. A silent rule is worse than a broken one, because it looks like finished work.",
+  "groups.2.items.2.term": "An invalid value falls quietly",
+  "groups.2.items.2.def": "Text in content goes in quotes. Without them the value cannot be read and the browser throws the whole declaration away — only that one; the other lines in the rule survive. That is where the feeling comes from that a rule half works."
+}

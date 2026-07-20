@@ -41,6 +41,9 @@ function hydrate(course, slug, lang) {
     put(out, path, value);
   }
   out.slug = slug;
+  out.runtime = logic.runtime ?? c.meta?.runtime ?? 'html';
+  out.freeFiles = logic.freeFiles ?? c.meta?.freeFiles ?? false;
+  out.ide = logic.ide ?? c.meta?.ide ?? false;
   return out;
 }
 

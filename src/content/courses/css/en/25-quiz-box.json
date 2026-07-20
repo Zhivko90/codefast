@@ -1,0 +1,43 @@
+{
+  "title": "Check yourself",
+
+  "questions.0.q": "You build two columns, each with width: 50% and padding: 20px. The second drops below the first instead of sitting beside it. Why?",
+  "questions.0.options.0": "Percentages cannot be combined with padding",
+  "questions.0.options.1": "The columns should be 49 percent to leave room between them",
+  "questions.0.options.2": "Padding is added outside the width, so the total goes over 100 percent",
+  "questions.0.options.3": "The browser rounds percentages up and causes an overflow",
+  "questions.0.hint": "Add up what each column really takes.",
+  "questions.0.explain": "width measures the content. At 50 percent plus 20 pixels of padding on each side, every column takes half the row plus 40 pixels, and together they exceed the line. So the second one moves down. This is the most common way the old box model breaks a layout — and exactly what box-sizing: border-box fixes.",
+
+  "questions.1.q": "The first card has margin-bottom: 20px, the second margin-top: 30px. How large is the gap between them?",
+  "questions.1.options.0": "50 pixels — the two add up",
+  "questions.1.options.1": "30 pixels — they collapse into the larger one",
+  "questions.1.options.2": "20 pixels — the first one declared wins",
+  "questions.1.options.3": "25 pixels — the browser takes the average",
+  "questions.1.hint": "Vertical margins do not behave like horizontal ones.",
+  "questions.1.explain": "Two vertical margins that touch do not add up. The browser takes the larger and discards the other — you get 30. Horizontally the same thing does not happen: there 20 and 30 give 50. If you want the number in your code to mean the gap on screen, keep the margin in one direction only.",
+
+  "questions.2.q": "A box with no border and no padding contains a paragraph with margin-top: 40px. The empty space appears ABOVE the box, not inside it. What stops that?",
+  "questions.2.options.0": "margin-top: 0 on the paragraph — there is no other way",
+  "questions.2.options.1": "Nothing, it is a browser bug",
+  "questions.2.options.2": "A negative margin on the parent to compensate",
+  "questions.2.options.3": "One pixel of padding or a border on the parent",
+  "questions.2.hint": "The two top edges are treated as one. What can stand between them?",
+  "questions.2.explain": "When nothing sits between a parent and its first child, their top margins collapse and escape outside: the parent moves down and no room opens inside. Anything between the two edges stops it — one pixel of padding, a border, or switching the parent to a different layout mode. Deleting the margin also removes the symptom, along with the space you wanted.",
+
+  "questions.3.q": "You wrote border-width: 2px and border-color: red. No border appears and there is no error. Why?",
+  "questions.3.options.0": "border-style is missing, and without it the width counts as zero",
+  "questions.3.options.1": "The two properties only work inside the shorthand",
+  "questions.3.options.2": "The colour must come before the width",
+  "questions.3.options.3": "The border is there but hidden by the padding",
+  "questions.3.hint": "A border needs three things. You gave two.",
+  "questions.3.explain": "The default border style is none, and with none the width counts as zero. So you have a line that is 2 pixels wide and red but does not exist. The reverse holds too: border-style: solid on its own gives a visible border of medium width in the colour of the text.",
+
+  "questions.4.q": "You want the card to sit in the middle of the page. You put text-align: center on it and nothing moved except the letters. What is missing?",
+  "questions.4.options.0": "text-align: center belongs on body, not on the card",
+  "questions.4.options.1": "The card must be inline to be centred",
+  "questions.4.options.2": "A margin with auto on the left and right, with a width set",
+  "questions.4.options.3": "padding: 0 auto on the card",
+  "questions.4.hint": "One arranges the content inside. The other moves the box itself.",
+  "questions.4.explain": "text-align arranges the content inside the box — which is why the letters moved and the border did not. To move the box, the empty space on the left and right has to be split evenly, and that is what auto does. It only works with a width set: without one the element fills the row and there is no leftover to split. And padding does not accept auto — the value is simply discarded."
+}

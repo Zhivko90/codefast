@@ -1,0 +1,81 @@
+{
+  "title": "Rounding and chance",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "You use rounding",
+  "checkLabels.t6": "You use rounding down",
+  "checkLabels.t7": "You use rounding up",
+  "checkLabels.t8": "You use a random number",
+  "checkLabels.t9": "Each person pays 8",
+  "checkLabels.t10": "Enough for 6 cups",
+  "checkLabels.t11": "7 bags needed",
+  "checkLabels.t12": "The dice give 1 to 6",
+  "checkLabels.t13": "Five lines come out",
+  "checkLabels.t14": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Four of the five numbers come out with a fractional part. Money, cups and bags do not come in pieces.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-round": "You are not using rounding to the nearest.",
+  "why.no-floor": "You are not using rounding down.",
+  "why.no-ceil": "You are not using rounding up.",
+  "why.no-random": "You are not using a random number.",
+  "hint2.no-random": "The dice should not give the same thing every time.",
+
+  "why.wrong-rounded": "Each person does not pay 8.",
+  "hint2.wrong-rounded": "47 divided by 6 is 7.83. The nearest whole number is 8.",
+
+  "why.wrong-cups": "It is not 6 cups.",
+  "hint2.wrong-cups": "20 lev, at 3 a cup. That gives 6.67 — but there is nothing to pay for the seventh cup with.",
+  "hint3.wrong-cups": "When the remainder is not enough, you round DOWN. The fractional part is simply cut off.",
+
+  "why.wrong-beans": "It is not 7 bags.",
+  "hint2.wrong-beans": "20 kilos of coffee, 3 to a bag. That gives 6.67 — but the remainder has to go somewhere too.",
+  "hint3.wrong-beans": "When the remainder needs another whole one, you round UP. The same numbers, the opposite direction.",
+
+  "why.wrong-dice": "The dice do not give a number from 1 to 6.",
+  "hint2.wrong-dice": "The random number comes out between zero and one, with a fractional part. It has to be stretched and rounded.",
+  "hint3.wrong-dice": "Multiplied by 6 it gives between 0 and almost 6. Rounded down it gives a whole number from 0 to 5. Plus one moves it to 1 through 6.",
+
+  "why.wrong-count": "There are not five lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "A bill of 47 for six people. Twenty lev of coffee at three a cup. Twenty kilos of beans in bags of three. And some dice.",
+  "blocks.1.text": "Every division comes out with a fractional part. But money is paid in whole units, cups are counted in whole units, and bags are bought in whole units. Nowhere can 6.67 remain.",
+
+  "blocks.2.text": "Three directions",
+  "blocks.3.text": "Math holds the mathematical operations. Three of them turn a fractional number into a whole one, in different ways.",
+  "blocks.5.text": "The first gives 8 — the nearest. The second gives 7 — always down. The third gives 8 — always up.",
+
+  "blocks.6.text": "Which one when",
+  "blocks.7.text": "Down, when the remainder is not enough for another one. Six whole cups and sixty-seven stotinki that buy nothing.",
+  "blocks.8.text": "Up, when the remainder has to fit somewhere. Six full bags and a few more beans that need a seventh bag.",
+
+  "blocks.9.text": "Chance",
+  "blocks.10.text": "Math.random gives a number between zero and one. Never exactly one. On its own it is useless — it has to be stretched to the range you want.",
+  "blocks.12.items.0": "the random number is between 0 and almost 1",
+  "blocks.12.items.1": "times 6 it becomes between 0 and almost 6",
+  "blocks.12.items.2": "rounded down it gives 0 to 5, plus 1 moves it to 1 through 6",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix the four lines. The first one, showing the exact division, stays as it is.",
+  "blocks.15.items.0": "each of the six pays 8",
+  "blocks.15.items.1": "twenty lev buys 6 cups",
+  "blocks.15.items.2": "twenty kilos needs 7 bags",
+  "blocks.15.items.3": "the dice give a whole number from 1 to 6"
+}

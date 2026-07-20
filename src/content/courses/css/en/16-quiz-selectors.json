@@ -1,0 +1,43 @@
+{
+  "title": "Check yourself",
+
+  "questions.0.q": "You wrote .Intro { color: teal }. The HTML says class=\"intro\". Nothing turns teal and the console stays quiet. Why?",
+  "questions.0.options.0": "Class names are case-sensitive — Intro and intro are two different names",
+  "questions.0.options.1": "Class names in CSS must be lowercase or it is a syntax error",
+  "questions.0.options.2": "A dot before a capital letter is not allowed in a selector",
+  "questions.0.options.3": "The rule is fine — something else in the file is broken",
+  "questions.0.hint": "The browser does not guess what you meant. It compares letter by letter.",
+  "questions.0.explain": "Class and id names are matched exactly, capitals included — that holds for any page with a DOCTYPE, which in practice means always. Intro is not intro. And since a rule that matches nothing is not an error, you get no warning at all. That is where half an hour of looking in the wrong place comes from.",
+
+  "questions.1.q": "The page is: an h1, then an h2, then a paragraph. You wrote p:first-child { color: teal }. The paragraph does not change.",
+  "questions.1.options.0": "The paragraph must be wrapped in a div to be a first child",
+  "questions.1.options.1": "first-child does not work on paragraphs",
+  "questions.1.options.2": "A second colon is missing — it should be p::first-child",
+  "questions.1.options.3": "The first child of body is the heading; for the first of a kind you write p:first-of-type",
+  "questions.1.hint": "Read the condition literally: the first child of what?",
+  "questions.1.explain": "first-child does not mean the first paragraph. It means an element that is the first child of its parent, whatever tag it is. The first child of body is the h1, so the condition holds for no paragraph at all. This is the most common mistake in the section, and it is sneaky because on a page that starts with a paragraph the same code works.",
+
+  "questions.2.q": "You want an arrow before every menu item. You wrote li::before { color: teal } and nothing appears.",
+  "questions.2.options.0": "before is written with one colon",
+  "questions.2.options.1": "Without content the pseudo-element is never created",
+  "questions.2.options.2": "It should be after — before does not show on lists",
+  "questions.2.options.3": "Colour cannot be set on a pseudo-element",
+  "questions.2.hint": "The pseudo-element does not exist in the document. Something has to say what is in it.",
+  "questions.2.explain": "before and after make a piece that is not in the HTML. That is why content is required — without it there is nothing to appear and nothing for the rule to work on. Even empty content does the job when you only need the piece for decoration. One colon still works for backwards compatibility, but the modern form uses two.",
+
+  "questions.3.q": "The note is <p class=\"note\">. You wrote p .note { font-style: italic }. Nothing goes italic.",
+  "questions.3.options.0": "The class must be on a span inside the paragraph",
+  "questions.3.options.1": "The class value needs quotes in the CSS too",
+  "questions.3.options.2": "The space means inside — the rule looks for .note INSIDE a paragraph, but the class is on the paragraph itself",
+  "questions.3.options.3": "A tag and a class cannot appear in the same selector",
+  "questions.3.hint": "One character apart. And it is not formatting.",
+  "questions.3.explain": "A space between two selectors is a condition about kinship. With it you say: an element with the class note, somewhere inside a paragraph. There is none. Without it, both conditions describe the same element: a paragraph carrying that class. One character, two different questions, zero warnings.",
+
+  "questions.4.q": "The link is <a href=\"https://maps.example.com/beanstreet\">. You wrote a[href=\"http\"] { font-weight: bold }. It does not go bold.",
+  "questions.4.options.0": "href cannot be used in an attribute selector",
+  "questions.4.options.1": "The address uses https and you asked for http — you must write both",
+  "questions.4.options.2": "The i flag for capitals is missing",
+  "questions.4.options.3": "The equals sign means the whole value; for the start of the string you write ^=",
+  "questions.4.hint": "You are asking whether href IS this. It is a whole address.",
+  "questions.4.explain": "Equals compares the entire value, letter by letter. The caret asks about the beginning — and it catches http and https at once, because https begins with http. So you do not need two rules. The comparison stays case-sensitive, but with addresses that is rarely a problem."
+}

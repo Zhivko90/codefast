@@ -59,6 +59,32 @@ const CASES = [
 
   // ── грешка на АВТОРА, не на ученика. Крещи в конзолата — така трябва. ──
   { name: 'невалидна стойност в урока', css: 'h1{color:red}', type: 'style_is', sel: 'h1', prop: 'color', expect: 'червеничко', want: false, tag: 'wrong' },
+
+  // ── ПСЕВДОЕЛЕМЕНТИ ──
+  // Не са възли в DOM. querySelectorAll("h1::before") ГЪРМИ, затова
+  // селекторът е за носещия елемент, а псевдоелементът върви отделно.
+  { name: 'content на ::before',        css: 'h1::before{content:"→ "}',   type: 'style_is', sel: 'h1', pseudo: '::before', prop: 'content', expect: '→', want: true },
+  { name: 'content с други кавички',    css: "h1::before{content:'→'}",    type: 'style_is', sel: 'h1', pseudo: '::before', prop: 'content', expect: '→', want: true },
+  { name: 'няма ::before',              css: '',                           type: 'style_is', sel: 'h1', pseudo: '::before', prop: 'content', expect: '→', want: false, tag: 'wrong' },
+  { name: 'цвят на ::first-letter',     css: 'p::first-letter{color:red}', type: 'style_is', sel: 'p',  pseudo: '::first-letter', prop: 'color', expect: 'red', want: true },
+  { name: '::first-letter наследява',   css: 'p{color:red}',               type: 'style_is', sel: 'p',  pseudo: '::first-letter', prop: 'color', expect: 'red', want: true },
+  { name: 'носителят го няма',          css: '.card::before{content:"→"}', type: 'style_is', sel: '.card', pseudo: '::before', prop: 'content', expect: '→', want: false, tag: 'nomatch' },
+  
+
+  // ── РАМКАТА НЕ МИНАВА ПРЕЗ ПРОБА ──
+  // Пробата е гол елемент: border-style там е none, а при none широчината
+  // се смята за 0. Значи style_is върху border-*-width пада на верен код.
+  // Хванато в урок 18. За рамки се ползва образец.
+
+  { name: 'border-box връща зададеното', css: 'h1{box-sizing:border-box;width:300px;padding:20px;border:2px solid red}', type: 'style_is', sel: 'h1', prop: 'width', expect: '300px', want: true },
+  { name: 'content-box връща съдържанието', css: 'h1{width:300px;padding:20px;border:2px solid red}', type: 'style_is', sel: 'h1', prop: 'width', expect: '300px', want: true },
+
+  { name: 'рамка с образец',            css: 'h1{border:2px solid red}', type: 'style_matches', sel: 'h1', prop: 'border-left-width', pattern: '^2px$', want: true },
+  { name: 'махната рамка пада',         css: 'h1{color:red}',           type: 'style_matches', sel: 'h1', prop: 'border-left-width', pattern: '^2px$', want: false, tag: 'wrong' },
+  { name: 'рамка през проба ЛЪЖЕ',      css: 'h1{border:2px solid red}', type: 'style_is', sel: 'h1', prop: 'border-left-width', expect: '2px', want: false, tag: 'wrong' },
+  
+
+
 ];
 
 export default function StyleTest() {
@@ -72,7 +98,8 @@ export default function StyleTest() {
         const check = {
           id: 'c1',
           type: c.type,
-          value: c.sel,
+      value: c.sel,
+          pseudo: c.pseudo,
           prop: c.prop,
           expect: c.expect,
           pattern: c.pattern,

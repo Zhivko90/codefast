@@ -1,0 +1,74 @@
+{
+  "title": "The plus sign has two jobs",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is still text",
+  "checkLabels.t6": "The price too",
+  "checkLabels.t7": "The total is a number",
+  "checkLabels.t8": "The sum is 1250",
+  "checkLabels.t9": "You printed 3741",
+  "checkLabels.t10": "You printed 1250",
+  "checkLabels.t11": "Both lines are kept",
+  "checkLabels.t12": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Look at the second number in the console. It is five characters long.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.erased-source": "You removed the quotes from the data.",
+  "hint2.erased-source": "The numbers arrive as text and that does not change. The task is to convert them, not to rewrite where they come from.",
+  "hint3.erased-source": "Every form field returns text. You type 42, you get \"42\". You cannot fix that at the source — you fix it where you use it.",
+
+  "why.total-is-text": "The total is still not a real number.",
+  "hint2.total-is-text": "The multiplication already works, but the result has to be a number, not text that looks like one.",
+  "hint3.total-is-text": "Number(\"42\") returns 42 — a real number. Number takes text and pulls the number out of it.",
+  "hint4.total-is-text": "Wrap both names in Number before multiplying them.",
+
+  "why.still-glued": "The sum still joins instead of adding.",
+  "hint2.still-glued": "1247 and 3 added together make 1250. If you get 12473, the plus sign has joined two pieces of text.",
+  "hint3.still-glued": "The plus sign looks at what you give it. Two numbers — it adds. Text on either side — it joins. The other signs do not have this double life.",
+  "hint4.still-glued": "Number on both sides of the plus.",
+
+  "why.no-total": "You have not printed 3741.",
+  "why.no-sum": "You have not printed 1250.",
+  "why.wrong-count": "There are not two lines in the console.",
+  "why.lost-p": "A line has disappeared from the page.",
+
+  "blocks.0.text": "Look at script.js. This time the numbers are in quotes — the way they arrive from any form field. Type 42 into a field and you get the text \"42\".",
+  "blocks.1.text": "The multiplication gives 3741. Correct. The addition gives 12473.",
+
+  "blocks.2.text": "The number is not wrong, the plus is",
+  "blocks.3.text": "The plus sign does two different jobs. Between two numbers it adds. The moment there is text on one side, it joins.",
+  "blocks.4.text": "\"1247\" + \"3\" is not a sum. Those are two pieces of text stuck together. The result is five characters, not a number.",
+
+  "blocks.5.text": "The other signs do not have this problem",
+  "blocks.6.text": "Multiplication, subtraction and division have no second job. They cannot join anything, so they turn the text into a number and calculate.",
+  "blocks.8.text": "20, then 102, then 8. The same text three times, three different attitudes towards it.",
+  "blocks.9.text": "That is why the multiplication above works and the addition does not. It is not an accident and not a bug. The plus sign is busy.",
+
+  "blocks.10.text": "Number",
+  "blocks.11.text": "Do not rely on the language guessing. Say explicitly what you want.",
+  "blocks.13.text": "Number takes text and pulls out the number. Give it something that is not a number and it returns NaN — but that has a whole lesson of its own in the next section.",
+
+  "blocks.14.text": "Why this is the most common mistake",
+  "blocks.15.text": "Everything that comes from outside is text. Forms, addresses, files, answers from a server. The numbers in them look like numbers and behave like numbers in every operation but one.",
+  "blocks.16.text": "So your code will work until somebody tries to add. Then the sum becomes a join, and nothing breaks.",
+
+  "blocks.17.text": "The task",
+  "blocks.18.text": "Make both sums correct: the total should be 3741, and the two numbers added together should be 1250.",
+  "blocks.19.text": "Do not touch the quotes on the first two lines. The data arrives that way, and the task is to work with it, not rewrite it."
+}

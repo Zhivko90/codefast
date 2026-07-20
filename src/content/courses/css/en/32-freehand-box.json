@@ -1,0 +1,81 @@
+{
+  "title": "The whole page, from an empty file",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "The file is no longer empty",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No frozen height",
+  "checkLabels.t7": "The switch is on",
+  "checkLabels.t8": "The column has a ceiling",
+  "checkLabels.t9": "The column is centred",
+  "checkLabels.t10": "The cards have a border",
+  "checkLabels.t11": "The text does not touch the border",
+  "checkLabels.t12": "The cards do not touch",
+  "checkLabels.t13": "The margin runs one way only",
+  "checkLabels.t14": "The button accepts a size",
+  "checkLabels.t15": "A width is set",
+  "checkLabels.t16": "No underline",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "styles.css still holds only the comment. The whole file is yours.",
+  "hint2.untouched": "Start at the top: the counting switch, then body, then the column.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you only write styles.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-page": "There is no element with the page class.",
+  "why.no-btn": "There is no element with the btn class.",
+
+  "why.froze-height": "You set a height. It comes from the text, not from you.",
+  "hint2.froze-height": "The two cards hold text of different length. A hard number will cut one of them.",
+
+  "why.no-switch": "The counting switch is missing.",
+  "hint2.no-switch": "The four lines with the asterisk. Written once, at the top.",
+
+  "why.no-ceiling": "The column has no ceiling and the text spreads.",
+  "hint2.no-ceiling": "A long line reads badly. Somewhere between 400 and 600 pixels is sensible.",
+
+  "why.not-centered": "The column sits against the left edge.",
+  "hint2.not-centered": "There is a ceiling, so there is leftover. auto divides it.",
+
+  "why.no-border": "The cards have no visible border.",
+  "hint2.no-border": "Three parts: width, style, colour. Without the style the other two stay silent.",
+
+  "why.no-padding": "The text in the cards touches the border.",
+  "why.cards-touch": "The two cards touch.",
+
+  "why.collapsing": "You gave a margin both above and below.",
+  "hint2.collapsing": "Between the cards the two collapse into the larger one and the number in your code no longer means the gap on screen.",
+  "hint3.collapsing": "Keep the margin running one way. Then what you write is what you see.",
+
+  "why.btn-inline": "The button does not accept sizes.",
+  "hint2.btn-inline": "A link is inline. It needs inline-block.",
+
+  "why.btn-no-width": "The button is exactly as wide as its text.",
+  "why.btn-underlined": "The button is still underlined like a link.",
+  "hint2.btn-underlined": "Take the underline away and you owe another signal — the border and the button shape do that job.",
+
+  "blocks.0.text": "Fifteen lessons about the box. Now the page is bare: the HTML is there, styles.css is empty, and everything that shows up comes from you.",
+
+  "blocks.1.text": "What is asked",
+  "blocks.2.items.0": "The page has its own font and does not touch the edge of the screen.",
+  "blocks.2.items.1": "The content sits in a column that does not spread on a wide screen and shrinks on a narrow one.",
+  "blocks.2.items.2": "The column is centred.",
+  "blocks.2.items.3": "The cards have a visible border and air around the text.",
+  "blocks.2.items.4": "There is a gap between the cards that does not collapse.",
+  "blocks.2.items.5": "The link at the bottom looks like a button: a width, a border and centred text.",
+
+  "blocks.3.text": "The order to write in",
+  "blocks.4.text": "Top down, general before specific. First the counting switch, which covers everything. Then body — the font and space from the edge. Then the column. Then the blocks inside. The button last. Start from the button and you will size it against a width you are about to change.",
+  "blocks.5.text": "The numbers are yours. The check looks at whether the box behaves, not at whether you picked 480 or 520.",
+
+  "blocks.6.text": "The task",
+  "blocks.7.text": "Write styles.css from scratch. Do not touch the HTML — its classes are page, card and btn. There is no single right answer; there are six things that have to behave correctly."
+}

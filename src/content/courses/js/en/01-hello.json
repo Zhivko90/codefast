@@ -1,0 +1,66 @@
+{
+  "title": "The page does not calculate",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "Something came out",
+  "checkLabels.t6": "The number is right",
+  "checkLabels.t7": "The sum is in the code",
+  "checkLabels.t8": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted everything instead of adding a line. Put the code back.",
+
+  "why.untouched": "script.js is still empty. That is where you write in this lesson.",
+  "hint2.untouched": "Open the script.js tab. The other two files stay as they are.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "hint2.not-closed": "index.html is not part of this lesson. If you edited it, put it back the way it was.",
+
+  "why.not-linked": "The script never reaches the page. The file exists, but nothing calls it.",
+  "hint2.not-linked": "The last line in index.html, right before the end of body, links script.js. Check that it is there and that the name matches letter for letter.",
+  "hint3.not-linked": "If the file is called script.js and the line asks for scripts.js, the browser finds nothing and says nothing. One letter is enough.",
+
+  "why.crashed": "Your code stopped with an error before it reached the end.",
+  "hint2.crashed": "Look at the Console panel below. The red line says what it did not like, and where.",
+  "hint3.crashed": "The most common one on day one is a missing bracket or quote. A line that starts with console.log(42 and never closes the bracket stops everything after it.",
+
+  "why.nothing-written": "script.js is empty. There is nothing to run.",
+
+  "why.frozen": "Your code never stops. It loops forever and was cut off.",
+  "hint2.frozen": "One line is enough for this lesson. If you wrote a loop, remove it. You do not need it yet.",
+
+  "why.no-output": "The code ran, but nothing came out. The console is empty.",
+  "hint2.no-output": "console.log is the part that shows. Without it the sum is calculated and thrown away.",
+  "hint3.no-output": "Write only 12 + 30 and the computer works out 42, then forgets it immediately. Nobody asked it to show anything.",
+
+  "why.wrong-number": "A number came out, but not this one. The total is different.",
+  "hint2.wrong-number": "The multiplication sign in JavaScript is not x. The letter x is a name, not an action.",
+  "hint3.wrong-number": "console.log(6 * 7) prints 42. The star multiplies.",
+  "hint4.wrong-number": "Do the same with the two numbers from the page — how many coffees, and at what price.",
+
+  "why.typed-answer": "The number is right, but you typed it by hand. The computer calculated nothing. It only repeated something you already knew.",
+  "hint2.typed-answer": "The point of the lesson is that the sum lives in the code. Leave the two numbers and the sign between them, not the result.",
+
+  "why.lost-p": "A line has disappeared from the page. index.html is not part of this lesson.",
+
+  "blocks.0.text": "Look at the page on the right. Coffees sold: 1247. Price: 3. Total: 1247 x 3. That is not a sum. Those are characters. The page shows exactly what you typed into it, letter for letter.",
+  "blocks.1.text": "HTML repeats. It does not calculate. There is no tag for multiply, no tag for remember, no tag for if. CSS will not help either — it decides how the text looks, not what it says.",
+
+  "blocks.2.text": "The third language",
+  "blocks.3.text": "JavaScript performs actions. It does not describe the page, it does things to it. It lives in a separate file, script.js, and runs from top to bottom, line by line, the moment the page opens.",
+
+  "blocks.5.text": "console.log shows. Inside the brackets you put whatever you want to see. Here it is 12 + 30 — but 12 + 30 is not what appears. 42 appears. The sum happens before the showing.",
+
+  "blocks.6.text": "Where it appears",
+  "blocks.7.text": "Not on the page. Open the Console panel below. The preview and the console are two different places: the preview is what a visitor sees, the console is what you see while you write.",
+  "blocks.8.text": "That is why the console comes first in this course. From here on, every error goes through it.",
+
+  "blocks.9.text": "The computer does not guess. It does not work anything out in its head and does nothing you have not told it explicitly. That sounds like a flaw. It is the only reason code is predictable.",
+
+  "blocks.10.text": "The task",
+  "blocks.11.text": "Open script.js. Print the total: 1247 coffees at 3 each. The number should appear in the console.",
+  "blocks.12.text": "Do not work it out in your head and type the answer. The sum has to be in the code — that is the only thing that matters in this lesson, and the checks look for it."
+}

@@ -1,0 +1,69 @@
+{
+  "title": "The space between lines",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No hard-coded line height",
+  "checkLabels.t7": "The body text breathes",
+  "checkLabels.t8": "The heading scales with its font",
+  "checkLabels.t9": "The note is tighter",
+  "checkLabels.t10": "The column is not broken",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The heading lines still overlap.",
+  "hint2.untouched": "One number changes, one is added.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-body": "There is no body.",
+  "why.no-h1": "There is no heading.",
+  "why.no-note": "There is no element with the note class.",
+  "why.no-page": "There is no element with the page class.",
+
+  "why.fixed-line": "There is still a line height set in pixels.",
+  "hint2.fixed-line": "That number is inherited as a number of pixels, not as a ratio. That is where the heading problem comes from.",
+  "hint4.fixed-line": "Change 24px to 1.5 — no unit.",
+
+  "why.body-line": "The body text has no sensible line spacing.",
+  "hint2.body-line": "One and a half times the font size is the usual figure for reading on screen.",
+
+  "why.not-scaling": "The heading lines still overlap.",
+  "hint2.not-scaling": "Its font is 32 pixels and the room for a line is 24. The letters have nowhere to fit.",
+  "hint3.not-scaling": "The heading sets nothing of its own — it inherits. The question is WHAT it inherits: a finished pixel value, or a ratio it works out itself.",
+  "hint4.not-scaling": "A number with no unit is inherited as a ratio and every element multiplies it by ITS OWN size.",
+
+  "why.note-loose": "The note has far too much space between its lines.",
+  "hint2.note-loose": "It uses a larger font and is short. One and a half is too much for it.",
+  "hint4.note-loose": "line-height: 1.2; in the .note rule.",
+
+  "why.page-broken": "The column is broken.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Open the preview. The heading runs to two lines and the letters nearly touch — the top line sits on the bottom one. Its rule says nothing about spacing. The culprit is in body, four lines above.",
+
+  "blocks.1.text": "A number or a length",
+  "blocks.2.text": "Line height can be set two ways, and the difference is only in how it is inherited:",
+  "blocks.4.text": "With a unit, descendants inherit the finished value: 24 pixels, however large their own font is. The heading uses a 32 pixel font and gets a 24 pixel line — hence the overlap. With no unit, descendants inherit the RATIO and each multiplies it by its own size: the heading works out 32 times 1.5 and gets 48.",
+  "blocks.5.text": "With a unit you inherit the result. Without one you inherit the rule.",
+
+  "blocks.6.text": "What is sensible",
+  "blocks.7.text": "There is no single right number, but there are limits beyond which reading suffers:",
+  "blocks.8.items.0": "Body text: between 1.4 and 1.6. The browser default is around 1.2 and is cramped for long text.",
+  "blocks.8.items.1": "Headings: between 1.1 and 1.3. A large font needs less air, or the lines fall apart into separate strips.",
+  "blocks.8.items.2": "Never below 1.4 for paragraphs somebody will actually read.",
+
+  "blocks.9.text": "Why this is accessibility, not taste",
+  "blocks.10.text": "One of the WCAG criteria says a page must stay readable when a reader raises the line spacing to at least 1.5 times the font size themselves. People with dyslexia and failing eyesight really do this — there are extensions and user stylesheets for exactly that. If you have nailed the spacing down in pixels, their setting fights yours and usually loses. A unitless number does not resist.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Give the page line spacing that grows with the font instead of being nailed down. The body text should breathe, and the note in the larger font should be tighter — 1.2."
+}

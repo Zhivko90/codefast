@@ -1,0 +1,77 @@
+{
+  "title": "The space between two selectors",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "All five paragraphs are there",
+  "checkLabels.t6": "The HTML is untouched",
+  "checkLabels.t7": "The three prices are in the menu",
+  "checkLabels.t8": "The prices are green",
+  "checkLabels.t9": "The intro paragraph is brown",
+  "checkLabels.t10": "The address line is brown",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. Everything is still green.",
+  "hint2.untouched": "You only work in styles.css. The HTML stays as it is.",
+
+  "why.not-closed": "A closing brace or a semicolon is missing.",
+  "hint2.not-closed": "Every rule has an opening and a closing curly brace.",
+
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+
+  "why.lost-p": "There are no longer five paragraphs. You write a rule, you do not delete content.",
+
+  "why.added-class": "You added a new class label in the HTML. The task is to reach them WITHOUT one.",
+  "hint2.added-class": "The only class on the page is menu, on the block. The prices inside need none.",
+  "hint3.added-class": "The prices are already grouped — they sit inside the menu. CSS can use that as it is.",
+  "hint4.added-class": "Remove the class attributes you added. Solve it with a rule in styles.css only.",
+
+  "why.menu-broken": "The three price paragraphs are no longer inside the menu block. You changed the HTML structure.",
+
+  "why.no-prices": "There is no paragraph inside menu. The HTML has been rearranged.",
+  "why.prices-not-green": "The prices are not green. The check looks at all three.",
+  "hint2.prices-not-green": "Read the selector right to left: which p, and where it sits.",
+  "hint3.prices-not-green": "If you wrote only .menu { color: seagreen; }, the color travels down by inheritance — but the p { } rule catches it and overwrites it. An inherited color loses to a rule that points straight at the element.",
+  "hint4.prices-not-green": "The rule starts with .menu, then a space, then p. Both in one selector, not two.",
+
+  "why.no-intro": "There is no paragraph outside the menu and the footer.",
+  "why.intro-still-green": "The intro sentence is still green. It is not part of the menu.",
+  "hint2.intro-still-green": "The general p rule still says seagreen. It covers every paragraph on the page.",
+  "hint3.intro-still-green": "Two rules: a general one for all paragraphs, a more precise one for those in the menu. The precise one wins.",
+  "hint4.intro-still-green": "Change seagreen to saddlebrown in the p rule. Green stays only in the rule with menu.",
+
+  "why.no-footer": "There is no paragraph in the footer.",
+  "why.footer-still-green": "The address line at the bottom is still green.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red. You deleted the h1 rule.",
+
+  "blocks.0.text": "The Bean Street menu now sits in its own block. Three price lines, each in its own paragraph.",
+
+  "blocks.1.text": "The problem",
+  "blocks.2.text": "You want the prices green. Prices are paragraphs. So you write the paragraph rule:",
+  "blocks.4.text": "They are green. So is the intro sentence, and so is the address line at the bottom. The rule is not wrong — you simply have no way to say WHICH paragraphs. A class would work, but that is three new labels for something already grouped: those paragraphs sit inside the menu.",
+
+  "blocks.5.text": "The space is a selector",
+  "blocks.6.text": "Between two selectors, a space is not formatting. It means inside.",
+  "blocks.8.text": "Read it right to left: every p that has .menu somewhere above it. These are not two selectors side by side. It is one condition — about kinship. The element is picked for where it sits on the page, not for a label somebody attached to it.",
+  "blocks.9.text": "A class is a name. A space is an address.",
+
+  "blocks.10.text": "How deep",
+  "blocks.11.text": "Descendant means anywhere inside, not one level down. Wrap the prices in another block tomorrow and the rule still catches them. Five levels down — still. That is convenient until it is a surprise: the rule also catches things you never put there.",
+  "blocks.13.text": "The > sign means direct child only. It gets its own lesson.",
+
+  "blocks.14.text": "The space changes everything",
+  "blocks.16.text": "One space, two different questions. The first is one element with two qualities. The second is two elements, one inside the other. You get no error. You get a page where nothing changed, and you go looking for the cause in the color.",
+
+  "blocks.17.text": "The task",
+  "blocks.18.text": "The p rule paints everything green. Leave only the three menu prices green. The intro paragraph and the address line become saddlebrown. Do not touch the HTML — no new classes."
+}

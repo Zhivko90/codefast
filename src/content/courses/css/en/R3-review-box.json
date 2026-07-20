@@ -1,0 +1,28 @@
+{
+  "title": "The box",
+  "assignment": "Look through the ideas from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "The number and the box",
+  "groups.0.items.0.term": "width measures the content",
+  "groups.0.items.0.def": "By default width is the width of the content, and padding and border are added outside. The code above takes 344 pixels, not 300. Nobody warns you — the number simply does not mean what you expect. That is where half the questions about collapsed layouts come from.",
+  "groups.0.items.1.term": "The four layers",
+  "groups.0.items.1.def": "From the inside out: content, padding, border, margin. The first three make the box and count towards its size. The margin sits outside — it does not grow the box, it pushes the neighbours. That is why adding padding means recalculating and adding a margin does not.",
+  "groups.0.items.2.term": "The order of the numbers",
+  "groups.0.items.2.def": "One number covers all four sides. Two numbers: top and bottom first, then left and right — not the other way round, as half the world remembers it. Four numbers: clockwise from the top, so top, right, bottom, left. The third one is BOTTOM. When in doubt, write the sides separately.",
+
+  "groups.1.title": "Border, corners, centring",
+  "groups.1.items.0.term": "A border needs three things",
+  "groups.1.items.0.def": "Width, style, colour. Without the style the other two do nothing: the default style is none, and with none the width counts as zero. A border with no style is not thin — it does not exist. For a single side there is a separate form: border-left and the other three.",
+  "groups.1.items.1.term": "Rounding needs no border",
+  "groups.1.items.1.def": "border-radius cuts the corner of the whole box and works the same without a border. With percentages the radius is measured against the sides: 50 percent makes a circle out of a square and an ellipse out of a rectangle. With four numbers the order is clockwise again, but starting from the top left corner.",
+  "groups.1.items.2.term": "auto splits the leftover",
+  "groups.1.items.2.def": "On the left and right, auto means take the space that is left and divide it evenly. That is how a box is centred. It only works with a width set — without one the element fills everything and there is no leftover. This is not text-align: center, which arranges the letters inside and does not move the box.",
+
+  "groups.2.title": "The two traps",
+  "groups.2.items.0.term": "The switch that fixes the arithmetic",
+  "groups.2.items.0.def": "border-box makes width mean the whole box, padding and border included. You write 300, you get 300. It removes nothing — it only changes where the counting starts. Written once, at the top, for everything on the page; pseudo-elements are not covered by the asterisk and are added. It sits at the start of nearly every modern project.",
+  "groups.2.items.1.term": "Vertical margins collapse",
+  "groups.2.items.1.def": "When two vertical margins meet, the browser does not add them — it takes the larger and discards the other. 20 and 30 give 30. Horizontally this never happens: there they always add up. It also does not happen inside flex or grid. If you want the number in your code to mean the gap on screen, keep the margin in one direction only.",
+  "groups.2.items.2.term": "A margin leaks through its parent",
+  "groups.2.items.2.def": "When nothing sits between a parent and its first child — no border, no padding — their top edges are treated as one and the child's margin escapes outside. The parent moves down and no room opens up inside. Anything between the two edges stops it: one pixel of padding or a border."
+}

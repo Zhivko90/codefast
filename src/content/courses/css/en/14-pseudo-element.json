@@ -1,0 +1,73 @@
+{
+  "title": "Pseudo-element: a piece that is not there",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "All four items are there",
+  "checkLabels.t6": "The HTML is untouched",
+  "checkLabels.t7": "The arrow is not typed in the HTML",
+  "checkLabels.t8": "An arrow sits before every item",
+  "checkLabels.t9": "The first letter is teal",
+  "checkLabels.t10": "The paragraph stays brown",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The items still have no arrow.",
+  "hint2.untouched": "You only work in styles.css. The HTML stays as it is.",
+
+  "why.not-closed": "A closing brace or a quote around the text is missing.",
+  "hint2.not-closed": "The value of content goes in quotes. Open one, close one.",
+
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+
+  "why.lost-items": "There are no longer four items. You write a rule, you do not delete content.",
+
+  "why.added-class": "You added a class label in the HTML. You do not need one here.",
+
+  "why.typed-arrow": "You typed the arrow into the HTML. It is decoration — decoration is written in CSS.",
+  "hint2.typed-arrow": "Delete the arrows from index.html. One rule does the same for every item.",
+  "hint3.typed-arrow": "Typed into the HTML, the arrow is four places to fix. Change it to a dot tomorrow and you open four lines. And it travels along when someone copies the price.",
+
+  "why.no-items": "There is no list item at all.",
+  "why.no-arrow": "There is no arrow before the items.",
+  "hint2.no-arrow": "A pseudo-element attaches to the selector with TWO colons.",
+  "hint3.no-arrow": "The rule is written for li, and the two colons say which part of it. The arrow itself is the value of content.",
+  "hint4.no-arrow": "li::before with content and the arrow in quotes. Without content nothing appears at all — even empty, the content is required.",
+
+  "why.no-p": "There is no paragraph.",
+  "why.no-drop-cap": "The first letter of the paragraph is not teal.",
+  "hint2.no-drop-cap": "Same notation, another name: you ask for the first letter of the paragraph.",
+  "hint3.no-drop-cap": "You do not need a span around the letter. It is already a piece of the paragraph — CSS can reach it without help from the HTML.",
+  "hint4.no-drop-cap": "p::first-letter with color: teal inside.",
+
+  "why.p-changed": "The whole paragraph turned teal. Only the first letter should be.",
+  "hint2.p-changed": "The p rule covers the whole text. The first letter is a separate piece.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red. You deleted the h1 rule.",
+
+  "blocks.0.text": "The Bean Street menu is a plain list of prices. You want a small arrow before each line — decoration, nothing more.",
+
+  "blocks.1.text": "The problem",
+  "blocks.2.text": "The first thought is to type it. You open index.html and put it in four times:",
+  "blocks.4.text": "It looks exactly right. And you have made four places to fix. Tomorrow you decide the arrow should be a dot and you open four lines. Next year the menu is twenty lines. And the arrow is not content: it is not part of the price, it is a drawing. Put it in the HTML and it travels with the text every time someone copies it.",
+
+  "blocks.5.text": "Two colons",
+  "blocks.6.text": "A pseudo-element makes a piece that is not in the HTML.",
+  "blocks.8.text": "The rule is for li, and the two colons say which part of it. before is a piece the browser adds at the very front, inside the element. It is not in the document — you cannot find it with JavaScript, you cannot click it. That is why content is required: without it the piece never appears.",
+  "blocks.9.text": "A pseudo-class asks where the element stands. A pseudo-element makes a piece that is not there.",
+
+  "blocks.10.text": "The small print",
+  "blocks.11.text": "Not every pseudo-element is invented out of nothing. Some are pieces of text that is already there:",
+  "blocks.13.text": "marker accepts only some properties — font, color, content. Background and padding do not work on it. And one honest note: text from content is not in the document. Screen readers treat it differently and support is not guaranteed. So decoration goes there, meaning does not. The price of the coffee is never written in content.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "In styles.css only. Put an arrow → before every menu line. Make the first letter of the paragraph teal without changing the rest of the text. Do not touch the HTML — the arrow does not go there."
+}

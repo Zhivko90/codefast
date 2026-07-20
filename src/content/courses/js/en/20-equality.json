@@ -1,0 +1,75 @@
+{
+  "title": "Two kinds of equal",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "Three signs everywhere",
+  "checkLabels.t6b": "No loose comparison",
+  "checkLabels.t7": "The warning comes out",
+  "checkLabels.t8": "The missing code is spotted",
+  "checkLabels.t9": "The zero is spotted",
+  "checkLabels.t10": "Three lines come out",
+  "checkLabels.t11": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The code gives the right answers. All three comparisons use two equals signs.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed what was typed.",
+  "hint2.changed-data": "That is how it arrives from the field. The code has to cope, not the data change.",
+
+  "why.loose-left": "Somewhere you are still comparing with two signs.",
+  "hint2.loose-left": "All three places get rewritten. Where the types differ, convert explicitly.",
+
+  "why.wrong-warning": "The warning does not come out.",
+  "hint2.wrong-warning": "The customer typed zero cups. With three signs the text \"0\" and the number 0 are not the same thing.",
+  "hint3.wrong-warning": "Convert the text to a number before comparing. Then the comparison is between two numbers and it is honest.",
+
+  "why.wrong-code": "The missing code is not spotted.",
+  "hint2.wrong-code": "The field is empty. Compare it with empty text, not with false.",
+  "hint3.wrong-code": "\"\" == false is true, but by accident. Empty text is not falsehood — it is empty text.",
+
+  "why.wrong-empty": "The zero is not spotted.",
+  "hint2.wrong-empty": "cups is already a number. Compare it with a number.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three checks on what a customer typed. All three give the right answer.",
+  "blocks.1.text": "And all three are written in a way that will betray you the moment the data changes slightly.",
+
+  "blocks.2.text": "Two signs convert",
+  "blocks.3.text": "When the two sides are different types, two equals signs bring them to a common type and only then compare. Three signs do not do that — a different type means different, full stop.",
+  "blocks.5.text": "All three give true. The first compares text with a number. The second compares text with a boolean. The third compares two different things that both mean no value.",
+
+  "blocks.6.text": "It is not a bug",
+  "blocks.7.text": "You will meet the claim that two signs are broken, banned, or a leftover mistake. They are not. Their rules are written into the language standard and every browser has followed them identically for thirty years.",
+  "blocks.8.text": "The problem is not that they lie. The problem is that their rules are a long table nobody remembers — and code that relies on an unremembered table is code that will surprise you.",
+
+  "blocks.9.text": "null == undefined",
+  "blocks.10.text": "This is the special case, and it is DELIBERATE, not an oversight. The standard explicitly says the two are equal to each other and to nothing else.",
+  "blocks.11.text": "There is logic to it: both mean there is no value here, for different reasons. undefined means nobody ever put anything. null means somebody explicitly put nothing.",
+  "blocks.12.quote": "The one place two signs are useful: checking whether something is missing, either way.",
+
+  "blocks.13.text": "The rule",
+  "blocks.14.text": "Write three signs everywhere. Not because two are evil, but because three signs mean one thing and two signs mean a table.",
+  "blocks.15.text": "If the types differ — convert yourself, explicitly, before comparing. Then the code shows what is happening instead of hiding it in a rule.",
+
+  "blocks.16.text": "The task",
+  "blocks.17.text": "Rewrite the three comparisons with three signs. The answers must stay the same.",
+  "blocks.18.text": "In one place you will have to convert. In another — compare with the right thing, rather than with false."
+}

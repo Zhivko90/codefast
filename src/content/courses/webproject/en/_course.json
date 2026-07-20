@@ -1,0 +1,13 @@
+{
+  "title": "HTML/CSS/JS Projects",
+  "desc": "One site, from the first tag to a working cart. Not five separate exercises — one project that grows.",
+  "sections": {
+    "skeleton": {
+      "title": "Skeleton",
+      "desc": "The page still looks like nothing. But it already says what it is.",
+      "modules": {
+        "start": { "title": "The first files" }
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "title": "The number that is not the number",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The card is there",
+  "checkLabels.t7": "You solved it by doing the maths",
+  "checkLabels.t8": "The card ends at 300",
+  "checkLabels.t9": "The padding is kept",
+  "checkLabels.t10": "The border is kept",
+  "checkLabels.t11": "The ruler was not moved",
+  "checkLabels.t12": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The card still sticks out past the ruler.",
+  "hint2.untouched": "One number in the .card rule. Nothing else changes.",
+
+  "why.not-closed": "A closing brace is missing.",
+
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-ruler": "There is no ruler.",
+
+  "why.used-border-box": "You used box-sizing. That switch exists and it does solve this — but not yet.",
+  "hint2.used-border-box": "Here you are asked to work it out yourself. The tool arrives five lessons later and will mean more once you have seen what it fixes.",
+  "hint3.used-border-box": "The arithmetic is not a punishment. It is how you remember what a box is made of — and you still need that after you flip the switch, because the border and the padding do not disappear, they are simply counted from the inside.",
+
+  "why.wrong-width": "The card still does not end at 300 pixels.",
+  "hint2.wrong-width": "Add up what the box takes: content, padding left and right, border left and right.",
+  "hint3.wrong-width": "The padding is 20 on each side, the border 2 on each side. So there are 44 pixels around the content that width does not count. With width: 300 the box takes 344.",
+  "hint4.wrong-width": "Subtract 44 from 300 and use the result as width. The padding and border stay as they are.",
+
+  "why.padding-cut": "You deleted the padding. It is not spare — it is why the text does not touch the border.",
+  "hint2.padding-cut": "The task is to calculate, not to remove. The padding stays 20.",
+
+  "why.border-cut": "You deleted the border. It is part of the setup.",
+  "hint2.border-cut": "The border stays 2. It goes into the sum, it does not come out of it.",
+
+  "why.ruler-moved": "The ruler is no longer 300 pixels. It is the measure — it does not move.",
+  "hint2.ruler-moved": "If the ruler moves, everything lines up and nothing is learned.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Open the preview. At the top there is a line exactly 300 pixels long. Below it is the opening-hours card — and the card says width: 300px. The two do not line up. The card visibly sticks out to the right.",
+
+  "blocks.1.text": "The number that is not the number",
+  "blocks.2.text": "Here is the rule for the card:",
+  "blocks.4.text": "Three numbers. One is 300. The other two are 20 and 2 — and they do not fit inside the 300, they are added to it. The padding is 20 left and 20 right. The border is 2 left and 2 right. The box takes 300 plus 40 plus 4, which is 344 pixels. You wrote 300 and got 344, and nobody warned you.",
+
+  "blocks.5.text": "A box is four layers",
+  "blocks.6.text": "Every element on the page is a rectangle of four nested layers, from the inside out:",
+  "blocks.7.items.0": "Content — the text or the image. That is exactly what width measures.",
+  "blocks.7.items.1": "Padding — the empty space INSIDE, between the content and the border.",
+  "blocks.7.items.2": "Border — the line around the padding.",
+  "blocks.7.items.3": "Margin — the empty space OUTSIDE, which pushes the neighbours away. It does not count towards the size of the box and has a lesson of its own.",
+  "blocks.8.text": "width is not the width of the box. It is the width of the content.",
+
+  "blocks.9.text": "So do I calculate every time",
+  "blocks.10.text": "For now, yes. There is one line of CSS that changes this behaviour and makes width mean the whole box — nearly every project today puts it in the first few lines. It comes five lessons from here. That placement is deliberate: hand it to you now and you will switch it on and never learn what it switched off. And it does not remove the border or the padding — it only counts them from the inside.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Make the card end exactly at the ruler, that is, take up 300 pixels. The padding stays 20, the border stays 2, the ruler does not move. One number changes."
+}

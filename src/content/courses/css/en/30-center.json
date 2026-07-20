@@ -1,0 +1,69 @@
+{
+  "title": "Centring is not one thing",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The page is centred",
+  "checkLabels.t7": "The ceiling is kept",
+  "checkLabels.t8": "The badge text is centred",
+  "checkLabels.t9": "Vertically too",
+  "checkLabels.t10": "The badge was not resized",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "One line in .page and two in .badge.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-page": "There is no element with the page class.",
+  "why.no-badge": "There is no element with the badge class.",
+
+  "why.page-left": "The content still sits against the left edge.",
+  "hint2.page-left": "There is a ceiling on the width, so there is leftover space to divide.",
+  "hint4.page-left": "margin: 0 auto;",
+
+  "why.page-width-lost": "The 480 ceiling is gone. Without it there is no leftover and centring does nothing.",
+
+  "why.badge-text-left": "The word in the badge sits against the left edge.",
+  "hint2.badge-text-left": "This arranges content inside the box, it does not move the box.",
+  "hint4.badge-text-left": "text-align: center;",
+
+  "why.badge-text-top": "The word sits at the top rather than in the middle.",
+  "hint2.badge-text-top": "For a single line there is an old approach: make the line height equal to the height of the box.",
+  "hint3.badge-text-top": "The box is 64 with a 2 pixel border on each side, so 60 remain inside. The line height must be exactly that.",
+  "hint4.badge-text-top": "line-height: 60px;",
+
+  "why.badge-resized": "You changed the size of the badge. It stays 64 by 64.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The content sits against the left edge, and the word in the round badge sits in its top left corner. Both look like the same problem. They are not.",
+
+  "blocks.1.text": "Four different questions",
+  "blocks.2.items.0": "Text inside a box, horizontally — you arrange the content inside.",
+  "blocks.2.items.1": "A box inside its parent, horizontally — you move the box itself.",
+  "blocks.2.items.2": "Text inside a box, vertically — there is a trick for one line and nothing for more.",
+  "blocks.2.items.3": "A box inside its parent, vertically — the hardest, and for a long time there was no decent answer.",
+  "blocks.3.text": "Each of the four needs a different property. That is exactly why centring has a reputation for being impossible: you learn one, try it on another, and it does nothing.",
+
+  "blocks.4.text": "The box, horizontally",
+  "blocks.5.text": "You already know this from lesson 22:",
+  "blocks.7.text": "auto on the left and right means: split the leftover evenly. It only works with a width or a ceiling — otherwise the box fills the row and there is no leftover. Here the ceiling is 480, so on a wide screen there is empty space and it gets divided.",
+
+  "blocks.8.text": "The text inside the box",
+  "blocks.9.text": "Horizontally that is text-align. Vertically, for a SINGLE line, there is an old approach: make the line height equal to the height of the box and the line lands in the middle of it.",
+  "blocks.11.text": "It works perfectly for one line and falls apart at two: two lines of 60 make 120 and the text leaves the circle. So it is a trick, not a solution — used for buttons, badges and labels, where the content is one word and you are sure it will stay one.",
+  "blocks.12.text": "Horizontal centring was solved in 1996. Vertical centring waited for flexbox, which is about twenty years.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Centre the page content horizontally and put the word in the badge exactly in its middle — both ways. The badge stays 64 by 64."
+}

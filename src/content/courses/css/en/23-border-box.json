@@ -1,0 +1,76 @@
+{
+  "title": "The switch that fixes the arithmetic",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The card counts from the inside",
+  "checkLabels.t7": "And so does the note",
+  "checkLabels.t8": "The rule covers everything",
+  "checkLabels.t9": "The card ends at 300",
+  "checkLabels.t10": "The note ends at 300",
+  "checkLabels.t11": "The padding is kept",
+  "checkLabels.t12": "The ruler was not moved",
+  "checkLabels.t13": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The numbers are still worked out by hand.",
+  "hint2.untouched": "One new rule at the top, then the honest numbers in the other two.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-note": "There is no element with the note class.",
+  "why.no-ruler": "There is no ruler.",
+
+  "why.no-switch": "The card still counts its width the old way.",
+  "hint2.no-switch": "The property is box-sizing and it takes two values.",
+  "hint4.no-switch": "box-sizing: border-box;",
+
+  "why.only-card": "You switched it on for the card only.",
+  "hint2.only-card": "Tomorrow you add a third block and you are calculating again. The switch is thrown once, for the whole page.",
+  "hint3.only-card": "The asterisk is a selector for every element. Pseudo-elements are not included and are added separately.",
+
+  "why.not-universal": "The rule does not cover everything on the page.",
+  "hint2.not-universal": "The selector for every element is an asterisk. It goes at the top of the file.",
+  "hint4.not-universal": "See the form in the lesson — the three selectors separated by commas.",
+
+  "why.card-wrong": "The card does not end at the ruler.",
+  "hint2.card-wrong": "With the switch on you write the number you want to see. You subtract nothing from it.",
+  "hint4.card-wrong": "width: 300px;",
+
+  "why.note-wrong": "The note does not end at the ruler.",
+  "hint2.note-wrong": "The same number as the card, even though its padding and border differ. That is exactly what the switch does.",
+
+  "why.padding-cut": "You deleted the padding. The switch removes nothing — it only counts differently.",
+  "why.ruler-moved": "The ruler is no longer 300 pixels.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Look at the two blocks. The card is 248, the note is 264, and both end at 300. The numbers are correct and neither of them means anything. Change the padding by two pixels and you have to count again — in both rules, differently each time.",
+
+  "blocks.1.text": "Why it works this way at all",
+  "blocks.2.text": "In early CSS, width means the width of the content, and padding and border are added outside. That is reasonable if you think of a printed page. It is not reasonable if you are building two columns at fifty percent each with padding — the total goes over a hundred and the second column drops below. This model is behind half the questions about collapsed layouts from the last twenty years.",
+
+  "blocks.3.text": "The switch",
+  "blocks.4.text": "One property changes what width means:",
+  "blocks.6.text": "With it, width is the width of the whole box, padding and border included. The content shrinks to make room for them. You write 300 and you get 300. Change the padding and nothing needs recalculating — the outside number stays.",
+  "blocks.7.text": "border-box does not remove the border or the padding. It only counts them from the inside.",
+
+  "blocks.8.text": "Written once",
+  "blocks.9.text": "It does not go on each block separately but at the top of the file, for the whole page:",
+  "blocks.11.text": "The asterisk means every element. Pseudo-elements are not covered by it, which is why they are added — otherwise the arrow from lesson 14 keeps counting the old way and you will not know why. These four lines sit at the start of nearly every modern project and are rarely discussed: they are treated as the default, although they are not.",
+
+  "blocks.12.text": "Why only now",
+  "blocks.13.text": "You could have had this in lesson 18 and saved three lessons of arithmetic. But then you would know one line, not what it does. The switch does not cancel the box — the border and the padding are still there, still pushing neighbours, still part of the total width. Only the place you count from changed. On the day something does not add up, it is the first kind of knowledge you will need, not the line.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Put the rule at the top of styles.css, for everything on the page. Then change both widths to the honest number: the card and the note must both end at 300. The padding and borders stay as they are."
+}

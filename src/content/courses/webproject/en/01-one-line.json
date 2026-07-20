@@ -1,0 +1,49 @@
+{
+  "title": "All on one line",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t2": "There is a main heading",
+  "checkLabels.t3": "The heading is the cafe name",
+  "checkLabels.t4": "One main heading",
+  "checkLabels.t5": "There is a paragraph",
+  "checkLabels.t6": "The paragraph holds the sentence",
+  "checkLabels.t7": "The menu is still there",
+
+  "why.empty": "The editor is empty. You deleted everything instead of adding tags. Put the code back.",
+
+  "why.not-closed": "Some tag is open and never closed.",
+  "hint2.not-closed": "Look at the last tag you added. Every opening tag has a twin with a slash.",
+
+  "why.no-h1": "There is no main heading. The cafe name is still bare text.",
+  "hint2.no-h1": "Wrap the first line in body in a first-level heading tag.",
+
+  "why.h1-wrong-text": "There is a heading, but the cafe name is not inside it.",
+  "hint2.h1-wrong-text": "The heading must contain Bean Street Coffee, exactly as in the starting text.",
+
+  "why.many-h1": "There is more than one first-level heading.",
+  "hint2.many-h1": "A page has one main heading. It says what the WHOLE page is, not what one of its lines is.",
+
+  "why.no-p": "There is no paragraph. The sentence under the name is still bare text.",
+  "hint2.no-p": "The second line is a sentence. A sentence is a paragraph.",
+
+  "why.p-wrong-text": "There is a paragraph, but the sentence from the starting text is not inside it.",
+  "hint2.p-wrong-text": "The paragraph must contain Coffee worth the second visit.",
+
+  "why.lost-menu": "The coffee lines are gone. You deleted them.",
+  "hint2.lost-menu": "A tag goes AROUND the text, not instead of it. Put the three priced lines back — they are the next lesson's job.",
+
+  "blocks.0.text": "The owner of Bean Street sent the menu in an email. You put it in the page exactly as it arrived: name, sentence, three coffees with prices. Each on its own line.",
+  "blocks.1.text": "Look at the preview on the right. Everything is glued into one line. You did nothing wrong — the file looks exactly the way you wrote it.",
+
+  "blocks.2.text": "What the browser sees",
+  "blocks.3.text": "The browser does not read whitespace. A new line, two spaces, a tab — to it they are the same thing: a separator between two words. It makes no difference how many times you pressed Enter.",
+
+  "blocks.5.text": "To the browser these two lines are four words and two numbers, one after another. Nothing in them says they are separate things. You know it. It does not.",
+
+  "blocks.6.text": "Whitespace is not structure. Structure is written.",
+
+  "blocks.7.text": "The task",
+  "blocks.8.text": "Make the first two lines real. The cafe name is the main heading of the page. The sentence below it is a paragraph.",
+  "blocks.9.text": "Leave the three coffees as they are. They are a list, and the list is the next lesson."
+}

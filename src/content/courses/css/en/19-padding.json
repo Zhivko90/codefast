@@ -1,0 +1,79 @@
+{
+  "title": "The space inside",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "You did the maths yourself",
+  "checkLabels.t7": "There is padding on top",
+  "checkLabels.t8": "Top and bottom match",
+  "checkLabels.t9": "There is padding on the sides",
+  "checkLabels.t10": "Left and right match",
+  "checkLabels.t11": "The card still ends at 300",
+  "checkLabels.t12": "The border is kept",
+  "checkLabels.t13": "The ruler was not moved",
+  "checkLabels.t14": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The text still touches the border.",
+  "hint2.untouched": "One new line in the .card rule, and one number changed.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-ruler": "There is no ruler.",
+
+  "why.used-border-box": "You used box-sizing. It arrives in lesson 23 — until then you do the maths.",
+  "hint2.used-border-box": "The sum is the same as in the last lesson, only with more numbers in it.",
+
+  "why.no-padding-top": "The text still touches the border at the top.",
+  "hint2.no-padding-top": "The property is padding. It goes in the .card rule.",
+  "hint3.no-padding-top": "With two numbers: the first covers top and bottom, the second left and right.",
+  "hint4.no-padding-top": "padding: 16px 24px;",
+
+  "why.uneven-vertical": "The padding on top and at the bottom is not the same.",
+  "hint2.uneven-vertical": "With two numbers the first covers both horizontal edges at once. If you wrote four, the order runs clockwise: top, right, bottom, left.",
+
+  "why.no-padding-side": "The text touches the border on the sides.",
+  "hint2.no-padding-side": "The second number in the two-value form covers left and right.",
+
+  "why.uneven-sides": "Left and right padding are not the same.",
+  "hint2.uneven-sides": "Check the order of the numbers. With four values the third one is BOTTOM, not left.",
+
+  "why.wrong-width": "The card no longer ends at the ruler.",
+  "hint2.wrong-width": "Padding is counted outside width. Adding it grew the box by 48.",
+  "hint3.wrong-width": "300 minus the border on both sides, minus the padding on both sides. What is left is for the content.",
+  "hint4.wrong-width": "300 - 4 - 48 = 248. Change width to 248px.",
+
+  "why.border-cut": "You deleted the border. It stays.",
+  "why.ruler-moved": "The ruler is no longer 300 pixels. It is the measure and it does not move.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Open the preview and read the card. The text runs right up to the border on every side. Nothing is broken, everything is where it should be, and it is still hard to read — the eye has nowhere to rest between the line and the letters.",
+
+  "blocks.1.text": "The space inside",
+  "blocks.2.text": "You can leave empty space between the content and the border. It is called padding and it is written like this:",
+  "blocks.4.text": "Two numbers, four sides. The first covers top and bottom, the second left and right. The result is 16 pixels of air above and below the text and 24 on the left and right.",
+
+  "blocks.5.text": "Four ways to write it",
+  "blocks.6.items.0": "One number — all four sides the same: padding: 20px",
+  "blocks.6.items.1": "Two numbers — top and bottom, then left and right: padding: 16px 24px",
+  "blocks.6.items.2": "Four numbers — clockwise from the top: top, right, bottom, left",
+  "blocks.6.items.3": "One side at a time, when that is all you need: padding-left: 12px",
+  "blocks.7.text": "There is a three-number form too, but almost nobody uses it and almost everybody misreads it. If you need three different values, write four.",
+  "blocks.8.text": "padding is not distance. It is space inside the element.",
+
+  "blocks.9.text": "The trap with two numbers",
+  "blocks.10.text": "Half the people remember padding: 16px 24px as horizontal then vertical, and get it backwards. The order is the other way round: vertical first, horizontal second. With four numbers it runs clockwise from the top — top, right, bottom, left. The third number is BOTTOM, not left, and that is the one people mix up. When in doubt write the sides separately; nobody gets points for a short form.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Give the card 16 pixels of padding on top and bottom and 24 on the left and right. And bring it back so it ends exactly at the ruler — padding is counted outside width, so the number from the last lesson no longer holds. The border stays 2, the ruler does not move."
+}

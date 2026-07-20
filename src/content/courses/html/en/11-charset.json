@@ -6,6 +6,11 @@
   "checkLabels.t2": "lang must not be empty",
   "checkLabels.t3": "The encoding must still be there",
   "checkLabels.t0": "There is code",
+  "checkLabels.t3b": "The alphabet isn't empty",
+  "checkLabels.t4": "The page name is still there",
+  "checkLabels.t5": "The heading is still there",
+  "checkLabels.t6": "The sentence is still there",
+  "why.lost-content": "Content vanished from the page. The task is to add the language, not to delete things.",
   "why.empty": "The editor is empty. You are adding one attribute, and you deleted the whole page. Bring the code back.",
 
   "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",

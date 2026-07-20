@@ -1,0 +1,69 @@
+{
+  "title": "When it does not fit",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The card scrolls",
+  "checkLabels.t7": "The title stays on one line",
+  "checkLabels.t8": "The overflow is clipped",
+  "checkLabels.t9": "There is an ellipsis",
+  "checkLabels.t10": "The padding is kept",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The text still leaves the box.",
+  "hint2.untouched": "One line in .card and three lines in .title.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-title": "There is no element with the title class.",
+
+  "why.no-scroll": "The text still spills out of the card.",
+  "hint2.no-scroll": "The property is overflow. It has four values and one of them shows a scrollbar only when it is needed.",
+  "hint3.no-scroll": "hidden cuts and the text is lost. scroll shows a bar always, even with nothing to scroll. You want the third one.",
+  "hint4.no-scroll": "overflow: auto;",
+
+  "why.title-wraps": "The title still wraps onto a second line.",
+  "hint2.title-wraps": "An ellipsis only works on text kept to one line. First you have to forbid wrapping.",
+  "hint4.title-wraps": "white-space: nowrap;",
+
+  "why.title-not-clipped": "The title runs outside the box instead of being cut off.",
+  "hint2.title-not-clipped": "The ellipsis only appears where the overflow is hidden.",
+
+  "why.no-dots": "The title is cut off but there is no ellipsis.",
+  "hint2.no-dots": "The third property is missing. It says HOW to show that the text goes on.",
+  "hint4.no-dots": "text-overflow: ellipsis;",
+
+  "why.padding-cut": "You deleted the padding.",
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "The card has a height of 140 and text that does not fit inside it. Open the preview: the letters run past the border and lie on top of the page. Nobody complains. The browser hides nothing of its own accord — by default content simply spills out.",
+
+  "blocks.1.text": "Four answers",
+  "blocks.2.text": "The property is called overflow and it takes four values:",
+  "blocks.3.items.0": "visible — the default. The text runs out and sits over its neighbours.",
+  "blocks.3.items.1": "hidden — cuts off what does not fit. No bar, no scrolling, the content simply disappears.",
+  "blocks.3.items.2": "scroll — a scrollbar ALWAYS, even when everything fits.",
+  "blocks.3.items.3": "auto — a bar only when there is something to scroll. Usually the right choice.",
+  "blocks.4.text": "hidden does not hide temporarily. It throws the text away and leaves no sign there ever was any.",
+
+  "blocks.5.text": "The awkward detail",
+  "blocks.6.text": "A scrolling area does not receive keyboard focus in some browsers. So someone who does not use a mouse can see the bar and cannot move it. MDN gives the fix: put tabindex with zero on the box so it can be reached by tabbing, plus a role and a name so a screen reader knows what it is. That is why this lesson's HTML already carries tabindex, role and aria-label — they are not decoration and they do not come out.",
+
+  "blocks.7.text": "The ellipsis",
+  "blocks.8.text": "The long title wraps onto two lines and breaks the layout. The usual answer is to cut it with three dots, but that takes three properties together, and each of them alone does nothing:",
+  "blocks.10.text": "The first forbids wrapping so the text stays on one line. The second hides what does not fit. Only then does the third have something to replace with an ellipsis. That is why people often write only the last one and wonder why nothing happens.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Make the card scroll when the text does not fit, without a bar when it does. And cut the long title to one line with an ellipsis at the end."
+}

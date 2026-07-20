@@ -1,0 +1,85 @@
+{
+  "title": "What changes and what does not",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The reassignment is gone",
+  "checkLabels.t6": "sold is const",
+  "checkLabels.t7": "price is const",
+  "checkLabels.t8": "vat is not const",
+  "checkLabels.t9": "sold is 1247",
+  "checkLabels.t10": "price is 3",
+  "checkLabels.t11": "The tax is correct",
+  "checkLabels.t12": "The last number is right",
+  "checkLabels.t13": "All four lines are kept",
+  "checkLabels.t14": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty. You deleted everything instead of fixing it.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The code runs and does not break. That is exactly the problem — look at the last two numbers.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "hint2.not-closed": "index.html is not part of this lesson.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error before it reached the end.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "TypeError: Assignment to constant variable means you are trying to change something declared with const. That is exactly what const does — it refuses.",
+
+  "why.nothing-written": "script.js is empty.",
+
+  "why.frozen": "Your code never stops. It loops forever and was cut off.",
+
+  "why.reassign-left": "The line price = 4 is still there. The price changes halfway through and the last sum lies.",
+  "hint2.reassign-left": "That line should never have existed. Delete it.",
+  "hint3.reassign-left": "The first two lines calculate with a price of 3. After price = 4 the rest calculate with 4. Nobody complains — the numbers are simply different.",
+
+  "why.sold-not-const": "sold is still let.",
+  "hint2.sold-not-const": "The number of coffees sold does not change in this code. So it should not be able to.",
+  "hint3.sold-not-const": "const cups = 12; creates a name that cannot point at anything else. Try it and the code breaks on the spot instead of quietly calculating with a wrong value.",
+
+  "why.price-not-const": "price is still let.",
+  "hint2.price-not-const": "The price should not change either. Make it const and see what happens.",
+
+  "why.vat-const": "vat is declared with const and changed on the next line. That cannot work.",
+  "hint2.vat-const": "Not everything should be const. The tax is calculated later — it changes on purpose.",
+  "hint3.vat-const": "The rule is not const always. The rule is const until something proves it has to change.",
+
+  "why.no-sold": "There is no name sold holding 1247.",
+  "why.no-price": "There is no name price holding 3.",
+
+  "why.no-vat": "The tax is not right. It should be twenty percent of the total.",
+  "hint2.no-vat": "vat is calculated from sold and price. If the price changed in between, the number will be different.",
+
+  "why.wrong-last": "The last number is wrong. It is being calculated with the wrong price.",
+  "hint2.wrong-last": "1247 times 3 minus 400 is 3341. Anything else means the price is 4 somewhere.",
+
+  "why.wrong-count": "There are not four lines.",
+
+  "why.lost-p": "A line has disappeared from the page.",
+
+  "blocks.0.text": "Look at script.js. The code runs. Nothing breaks, the console is clean, all four numbers come out.",
+  "blocks.1.text": "And two of them are wrong.",
+
+  "blocks.2.text": "Find it yourself",
+  "blocks.3.text": "Somewhere in the middle the price changes from 3 to 4. The first two sums use the old price, the last one uses the new one. No error, no warning. Just numbers that do not add up.",
+  "blocks.4.text": "This is the most common kind of bug in programming, and it has nothing to do with syntax. The code is correct. What it means is not.",
+
+  "blocks.5.text": "const",
+  "blocks.6.text": "let creates a name that can point at something else. const creates one that cannot. Try to change it and the code stops right there.",
+  "blocks.8.text": "TypeError: Assignment to constant variable. An error that appears immediately and points at the exact line.",
+  "blocks.9.text": "Compare that with the alternative: a silent change you discover two months later, because somebody tells you the report does not add up.",
+
+  "blocks.10.text": "When to use which",
+  "blocks.11.text": "const is the sensible default for everything. You write let only when the value genuinely has to change — a loop counter, a running total, something that depends on what the user picks.",
+  "blocks.12.text": "The opposite rule — let everywhere, just in case — is exactly what allowed the bug above to exist.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Delete the line that changes the price. Then make sold and price constants.",
+  "blocks.15.text": "vat stays let — it is calculated after it is created and has to be able to change. Make it const too and the code will break, and you will see why."
+}

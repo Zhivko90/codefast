@@ -1,0 +1,78 @@
+{
+  "title": "Accumulating",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The number is not typed in",
+  "checkLabels.t6": "The cups use the short form",
+  "checkLabels.t7": "The stock too",
+  "checkLabels.t8": "The orders count with ++",
+  "checkLabels.t9": "The cups are 40",
+  "checkLabels.t10": "10 are left",
+  "checkLabels.t11": "The orders are 2",
+  "checkLabels.t12": "Three lines come out",
+  "checkLabels.t13": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The sales are 12, 8, 15 and 5. Add them up in your head and look at what the console shows.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.typed-answer": "You typed the total in instead of accumulating it.",
+  "hint2.typed-answer": "Tomorrow the sales will be different. The lines have to add up, not announce the result.",
+
+  "why.long-cups": "The cups are still added the long way.",
+  "hint2.long-cups": "cups = cups + 12 can be written shorter. The plus sign goes in front of the equals sign.",
+
+  "why.long-stock": "The stock is still calculated the long way.",
+  "hint2.long-stock": "The same works for subtraction.",
+
+  "why.long-orders": "The orders are still counted the long way.",
+  "hint2.long-orders": "Adding one has a sign of its own. Two pluses stuck together.",
+
+  "why.wrong-cups": "The cups are not 40.",
+  "hint2.wrong-cups": "12 plus 8 plus 15 plus 5 makes 40. Read the four lines one at a time and find the one that does not add.",
+  "hint3.wrong-cups": "One of the lines does not accumulate, it replaces. Everything gathered before it disappears and the counting starts over.",
+  "hint4.wrong-cups": "Look very closely at the line with 15. The two signs are the wrong way round.",
+
+  "why.wrong-stock": "There are not 10 cups left.",
+  "hint2.wrong-stock": "The stock starts at 50 and the sales are taken off it. If the sales are wrong, the remainder is wrong too.",
+
+  "why.wrong-orders": "The orders are not 2.",
+  "hint2.wrong-orders": "Two lines, each adding one.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A line has disappeared from the page.",
+
+  "blocks.0.text": "Four sales are added into a total. Then the sales are taken off the stock, and the orders are counted one at a time.",
+  "blocks.1.text": "The code runs. The console shows three numbers and not one of them is right. Add the four sales up in your head and compare.",
+
+  "blocks.2.text": "Accumulating is everywhere",
+  "blocks.3.text": "Take the value, add something, put it back under the same name. This happens so often in code that it has its own form.",
+  "blocks.5.text": "Both lines do the same thing. The second is not read left to right like a sentence — it is read as an action: add twelve to the cups.",
+
+  "blocks.6.text": "Counting",
+  "blocks.7.text": "Adding one is even more common. It has a sign of its own, and you will need it in every loop from section four onwards.",
+  "blocks.9.text": "One up, one down. Nothing more.",
+
+  "blocks.10.text": "The trap",
+  "blocks.11.text": "The plus sign goes BEFORE the equals sign. The other way round is still valid code — but it means something completely different.",
+  "blocks.12.text": "Reversed, they do not add. They replace. Everything gathered so far disappears and nobody complains, because the line is perfectly correct — it just does not do what you thought.",
+  "blocks.13.text": "Two signs, swapped around. That is the difference between a correct total and a silent loss.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Rewrite everything with the short form: the adding, the subtracting and the counting. You will have to read each line separately.",
+  "blocks.16.text": "That is the point. One of them hides the bug, and you will only see it if you read slowly."
+}

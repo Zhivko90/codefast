@@ -1,0 +1,70 @@
+{
+  "title": "What gets calculated first",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The income is not typed in",
+  "checkLabels.t6": "The profit either",
+  "checkLabels.t7": "The income is 420",
+  "checkLabels.t8": "The profit is 220",
+  "checkLabels.t9": "The average is 4.2",
+  "checkLabels.t10": "Three lines come out",
+  "checkLabels.t11": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The income comes out right. The other two numbers are not what they should be.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.typed-answer": "You typed the answer in instead of calculating it.",
+  "hint2.typed-answer": "Tomorrow the prices will be different. The sum has to work with any numbers.",
+
+  "why.wrong-income": "The income is not 420.",
+  "hint2.wrong-income": "That line was correct to begin with. If you changed it, put it back.",
+
+  "why.wrong-profit": "The profit is not 220.",
+  "hint2.wrong-profit": "The rent is 200 lev, all of it. Read the line slowly and see what happens to it before it gets subtracted.",
+  "hint3.wrong-profit": "Division happens before subtraction. 420 - 200 / 2 is not (420 - 200) / 2. The first gives 320, the second gives 110.",
+
+  "why.wrong-average": "The average is not 4.2.",
+  "hint2.wrong-average": "The average is the income divided by all the cups sold. There are 100 cups.",
+  "hint3.wrong-average": "Division happens before addition, so the income is divided by one number only, and the other gets stuck on top. Brackets say what happens first.",
+  "hint4.wrong-average": "Put brackets around the two quantities being added.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A line has disappeared from the page.",
+
+  "blocks.0.text": "Three sums. Income, profit, average price per cup.",
+  "blocks.1.text": "The income comes out right: 420. The other two are wrong, and nothing breaks. The profit shows 320 on a rent of 200, and the average price is 70 lev a cup.",
+
+  "blocks.2.text": "The signs are not equal",
+  "blocks.3.text": "Multiplication and division happen before addition and subtraction. Not left to right — the strong ones first, then the weak ones.",
+  "blocks.5.text": "The first gives 14, the second gives 20. The same numbers, the same signs, a different order.",
+
+  "blocks.6.text": "Brackets say what comes first",
+  "blocks.7.text": "Whatever is inside brackets is calculated before everything else. That is the only way to impose your own order.",
+  "blocks.8.items.0": "brackets first",
+  "blocks.8.items.1": "then multiplication and division, left to right",
+  "blocks.8.items.2": "then addition and subtraction, left to right",
+  "blocks.9.text": "The rule is the same as at school. The difference is that there the mistake is visible, and here the number simply comes out different.",
+
+  "blocks.10.text": "Write brackets even when you do not need them",
+  "blocks.11.text": "Nobody remembers the whole order by heart, and the list is far longer than the three lines above. Brackets do not slow the code down and cost nothing.",
+  "blocks.12.text": "Code you read without hesitating is better than code that is correct and makes you think.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix the two wrong sums. The profit is the income minus the whole rent. The average is the income divided by all the cups sold.",
+  "blocks.15.text": "The numbers 420 and 220 should not appear in the code. They are results, not data."
+}

@@ -1,0 +1,85 @@
+{
+  "title": "The hash you won't use",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "You didn't use style on the tag",
+  "checkLabels.t5": "All four paragraphs are there",
+  "checkLabels.t6": "The link's anchor still works",
+  "checkLabels.t7": "Two paragraphs have the class",
+  "checkLabels.t8": "The right two are marked",
+  "checkLabels.t9": "The notes are grey",
+  "checkLabels.t10": "The notes are italic",
+  "checkLabels.t11": "The id rule is gone",
+  "checkLabels.t12": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start again.",
+
+  "why.untouched": "The code is exactly as it was. The second note still isn't grey.",
+  "hint2.untouched": "You work in both files. The class goes in index.html, the rule changes in styles.css.",
+
+  "why.not-closed": "A tag is open and never closed, or a quote is missing.",
+  "hint2.not-closed": "id and class values go in quotes. One to open, one to close.",
+
+  "why.unlinked": "The page can't find styles.css. You've edited the link line.",
+  "hint2.unlinked": "Hit the bin and start again.",
+
+  "why.no-h1": "There is no heading.",
+  "why.h1-broken": "The heading isn't dark red any more. You deleted the h1 rule.",
+  "hint2.h1-broken": "You're only changing the rule for the notes. The others stay as they are.",
+
+  "why.used-inline": "You used style on the tag. You have a class — that's the tool.",
+
+  "why.lost-p": "There aren't four paragraphs any more. You're adding a label, not deleting.",
+  "hint2.lost-p": "All four sentences stay. The two notes get a class.",
+
+  "why.no-anchor": "You deleted id=\"hours\". The link at the top points there — without it, it leads nowhere.",
+  "hint2.no-anchor": "The id stays. It isn't for the colour, it's for the anchor.",
+  "hint3.no-anchor": "<a href=\"#hours\"> looks for an element with id=\"hours\". Remove it and clicking does nothing. That's exactly what id is for.",
+  "hint4.no-anchor": "Put id=\"hours\" back on the opening-hours paragraph. Add a class to it as well, separately.",
+
+  "why.wrong-count": "The class is on the wrong number of paragraphs. There are two notes.",
+  "hint2.wrong-count": "Opening hours and Christmas — those are the two pieces of extra information.",
+  "hint3.wrong-count": "One element can carry both an id and a class: <p id=\"hours\" class=\"note\">. They don't exclude each other.",
+  "hint4.wrong-count": "Put class=\"note\" on the opening-hours paragraph and the Christmas one. Only those.",
+
+  "why.wrong-ones": "The class is on the wrong paragraphs. One of the notes is the Christmas one.",
+
+  "why.no-note": "There's no element with the class note. You haven't added it.",
+  "hint2.no-note": "In HTML: class=\"note\". In CSS: .note { }. No dot in the first, a dot in the second.",
+
+  "why.note-not-gray": "A note is left without colour. The check looks at both.",
+  "hint2.note-not-gray": "The rule starts with a dot: .note { }",
+  "hint3.note-not-gray": "If you left #hours and added .note next to it — the first note is grey from two rules, the second from one. It works, but you've written the same thing twice.",
+  "hint4.note-not-gray": "Change #hours to .note. Don't add a second rule — change the first.",
+
+  "why.note-not-italic": "The notes are grey, but not all of them are italic.",
+
+  "why.id-rule-left": "The #hours rule is still in styles.css. It works — and that's exactly the problem.",
+  "hint2.id-rule-left": "The task is to CHANGE it, not to add a second one beside it.",
+  "hint3.id-rule-left": "Two rules doing the same thing: tomorrow you decide the notes should be blue and change one. The other keeps painting the first note grey. Half a day of hunting.",
+  "hint4.id-rule-left": "Delete the whole #hours { } block. Leave only .note { }.",
+
+  "blocks.0.text": "There's a second way to attach a label. It's called id and it's written almost like a class — except in CSS you call it with a hash instead of a dot.",
+
+  "blocks.1.text": "It looks like a class",
+  "blocks.2.text": "In HTML: id=\"hours\". In CSS:",
+  "blocks.4.text": "It works. It does exactly what you'd expect. And almost nobody uses it for styling — here's why.",
+
+  "blocks.5.text": "One per page",
+  "blocks.6.text": "id means \"this one, the only one\". Not two, not five. One name, one element, across the whole page. The browser won't stop you from using two — it'll just behave oddly and say nothing.",
+  "blocks.7.text": "So every id rule applies to exactly one element. Tomorrow you want another note — the rule doesn't cover it. You write a second one. Then a third. You're back exactly where you started in lesson 08.",
+  "blocks.8.text": "A class is the opposite: as many elements as you like, one rule.",
+
+  "blocks.9.text": "So what is it for",
+  "blocks.10.text": "id isn't useless. Its job is just a different one — it's an ADDRESS, not a label:",
+  "blocks.11.items.0": "A link anchor: <a href=\"#hours\"> jumps to the element with id=\"hours\". A class can't do that.",
+  "blocks.11.items.1": "It ties a <label> to its field in a form — you saw that in the HTML course.",
+  "blocks.11.items.2": "JavaScript uses it to find that exact element.",
+  "blocks.12.text": "And one more thing that gets a whole lesson of its own: an id rule beats a class rule, even if the class is written further down. That sounds convenient until it becomes the reason you can't work out why your style isn't applying. The \"Cascade\" section is about that.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "The page on the right uses an id for styling and that's stopped working — there are two notes now. Change the rule from id to class and put the class on both. id=\"hours\" STAYS — the link at the top uses it as an anchor."
+}

@@ -6,7 +6,7 @@
 // code_contains: "color: red" отхвърля #f00. Това е грешката на SoloLearn.
 // Тук питаме браузъра какъв Е цветът, не какво е НАПИСАНО.
 //
-// ⚠ ЧЕТИРИ КАПАНА:
+// ⚠ ПЕТ КАПАНА:
 //
 //   1. Стойността НЕ Е низът на ученика.
 //      MDN: цветовете излизат в легаси синтаксис със запетаи — rgb(255, 0, 0).
@@ -23,6 +23,12 @@
 //   4. getComputedStyle на чужд документ се вика през НЕГОВИЯ прозорец.
 //      frame.contentWindow.getComputedStyle, не window.getComputedStyle.
 //
+//   5. ПСЕВДОЕЛЕМЕНТЪТ НЕ Е ВЪЗЕЛ В DOM.
+//      querySelectorAll("li::before") ХВЪРЛЯ SyntaxError — не връща празен
+//      списък, а гърми. Затова селекторът в проверката е за истинския елемент,
+//      а псевдоелементът се подава отделно: spec.pseudo = "::before".
+//      MDN: вторият аргумент на getComputedStyle приема точно това.
+//
 // Ползвай ДЪЛГИ свойства: border-top-width, не border. Съкратените
 // се сериализират различно по браузъри.
 // ============================================
@@ -31,6 +37,21 @@ const FRAME_CSS =
   'position:fixed;top:0;left:-99999px;width:1024px;height:768px;border:0;';
 
 const clean = (v) => String(v ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
+
+const cleanContent = (v) => {
+  let s = String(v ?? '').trim();
+  if (s.length >= 2 && (s[0] === '"' || s[0] === "'") && s[s.length - 1] === s[0]) {
+    s = s.slice(1, -1);
+  }
+  // ⚠ Подрязва се СЛЕД кавичките. content: "→ " идва с интервала вътре.
+  // Иначе урокът чака → а получава →_ и пада на невидим знак.
+  return s.replace(/\s+/g, ' ').trim();
+};
+
+const readValue = (win, el, prop, pseudo) => {
+  const raw = win.getComputedStyle(el, pseudo || null).getPropertyValue(prop);
+  return prop === 'content' ? cleanContent(raw) : clean(raw);
+};
 
 // Чака рамката да е сметнала оформлението. Два кадъра — първият пуска
 // стиловете, вторият гарантира, че оформлението е минало.
@@ -46,16 +67,34 @@ function ready(frame) {
 // Капан 1 и 2: браузърът нормализира и двете страни.
 // Връща null, ако стойността в УРОКА е невалидна — това е грешка на автора,
 // не на ученика, и трябва да се вижда.
-function normalize(win, doc, el, prop, expect) {
+//
+// ⚠ ПРИ ПСЕВДОЕЛЕМЕНТ пробата не може да е псевдоелемент — вграденият стил
+// не стига до него. Слага се истински елемент ВЪТРЕ в носещия, защото
+// псевдоелементът наследява точно от него. Така em, % и currentColor излизат
+// същите. За content проба няма — той се сравнява като текст.
+function normalize(win, doc, el, prop, expect, pseudo) {
+  if (prop === 'content') return cleanContent(expect);
+
   const root = el === doc.documentElement || el === doc.body;
-  const probe = doc.createElement(root ? 'div' : el.tagName);
+  let probe;
+  let parent;
+  let before;
+
+  if (pseudo) {
+    probe = doc.createElement('span');
+    parent = el;
+    before = el.firstChild;
+  } else {
+    probe = doc.createElement(root ? 'div' : el.tagName);
+    parent = root ? (doc.body ?? doc.documentElement) : el.parentNode;
+    before = root ? null : el.nextSibling;
+  }
 
   probe.style.setProperty(prop, expect, 'important');
   if (probe.style.getPropertyValue(prop) === '') return null;
 
-  const parent = root ? (doc.body ?? doc.documentElement) : el.parentNode;
   if (!parent) return null;
-  parent.insertBefore(probe, root ? null : el.nextSibling);
+  parent.insertBefore(probe, before);
 
   const v = clean(win.getComputedStyle(probe).getPropertyValue(prop));
   probe.remove();
@@ -84,7 +123,7 @@ export async function runStyles(code, specs) {
     const win = frame.contentWindow;
     const out = {};
 
-   for (const s of specs) {
+    for (const s of specs) {
       // ⚠ ВСИЧКИ, не първият. Три заглавия, оцветено само първото — това не е ✓.
       // Същото правило като при dom_text_not_empty. Не го чупи.
       let els = [];
@@ -106,6 +145,17 @@ export async function runStyles(code, specs) {
         continue;
       }
 
+      // ⚠ Невалиден псевдоелемент гърми в getComputedStyle. Това е грешка
+      // на автора на урока, не на ученика — проверява се веднъж, тук.
+      if (s.pseudo) {
+        try {
+          win.getComputedStyle(els[0], s.pseudo);
+        } catch {
+          out[s.id] = { ok: false, reason: 'spec' };
+          continue;
+        }
+      }
+
       let re = null;
       if (s.mode === 'matches') {
         try {
@@ -122,7 +172,7 @@ export async function runStyles(code, specs) {
       let authorError = false;
 
       for (const el of els) {
-        const v = clean(win.getComputedStyle(el).getPropertyValue(s.prop));
+        const v = readValue(win, el, s.prop, s.pseudo);
         let pass;
 
         if (re) {
@@ -130,7 +180,7 @@ export async function runStyles(code, specs) {
         } else {
           // Пробата е за ВСЕКИ елемент отделно — 2em е различно число
           // под h1 и под p. Един общ еталон би лъгал.
-          const want = normalize(win, doc, el, s.prop, s.expect);
+          const want = normalize(win, doc, el, s.prop, s.expect, s.pseudo);
           if (want === null) {
             authorError = true;
             got = v;

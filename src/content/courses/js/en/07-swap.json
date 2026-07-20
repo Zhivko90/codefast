@@ -1,0 +1,68 @@
+{
+  "title": "The swap",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The eight appears once",
+  "checkLabels.t6": "The twelve too",
+  "checkLabels.t7": "There is a third name",
+  "checkLabels.t8": "Morning is 12",
+  "checkLabels.t9": "Evening is 8",
+  "checkLabels.t10": "Both lines are kept",
+  "checkLabels.t11": "The paragraphs are still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The console shows two identical numbers. They were supposed to be swapped, not identical.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.typed-answer": "You typed the number by hand instead of swapping.",
+  "hint2.typed-answer": "The eight and the twelve appear only on the first two lines, where the names are created.",
+  "hint3.typed-answer": "Tomorrow the shifts will be 40 and 55. If you typed the answer by hand, your code will lie. The swap has to work with any numbers.",
+
+  "why.no-third": "You have no third name.",
+  "hint2.no-third": "Two names are not enough. One of the values has to be kept somewhere before it gets overwritten.",
+
+  "why.morning-wrong": "morning is not 12.",
+  "hint2.morning-wrong": "The first line of the swap destroys the old value of morning. It has to be saved before that.",
+  "hint3.morning-wrong": "Think of two cups with different liquids. You cannot swap them by pouring directly. You need a third, empty one.",
+  "hint4.morning-wrong": "Create a third name, give it the value of morning, then swap the two, and finally take back what you saved.",
+
+  "why.evening-wrong": "evening is not 8.",
+  "hint2.evening-wrong": "The eight has disappeared somewhere along the way. Check which line overwrote it.",
+
+  "why.wrong-count": "There are not two lines in the console.",
+  "why.lost-p": "A line has disappeared from the page.",
+
+  "blocks.0.text": "The morning shift sold 8 cups, the evening shift 12. It turns out the numbers were swapped and have to change places.",
+  "blocks.1.text": "The code in script.js does exactly that. Or so it looks. The console shows 12 and 12.",
+
+  "blocks.2.text": "Read the two lines slowly",
+  "blocks.3.text": "The first line says: morning now points at whatever evening points at. That is, at 12.",
+  "blocks.4.text": "And at that moment the eight is already gone. Nothing is holding it. Nothing points at it.",
+  "blocks.5.text": "The second line says: let evening point at whatever morning points at. And morning already points at 12. So both become 12.",
+
+  "blocks.6.text": "Assignment is not equality",
+  "blocks.7.text": "The equals sign in maths says the two sides are the same thing. In code it says something else: take the right-hand side and make the left-hand one point at it.",
+  "blocks.9.text": "Here a becomes 2. But b does not become 1. It only goes one way.",
+
+  "blocks.10.text": "Order starts to matter",
+  "blocks.11.text": "Until now the lines in your code could be shuffled without consequence. From here on they cannot.",
+  "blocks.12.text": "Every line changes the state, and the next one works on the changed version. That is also why code is hard to read — to understand line 40 you need to know what the first 39 did.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Swap the two values. Afterwards morning should be 12 and evening should be 8.",
+  "blocks.15.text": "The numbers 8 and 12 appear only where the names are created. The swap has to work even if the numbers change tomorrow."
+}

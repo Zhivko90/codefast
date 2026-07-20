@@ -1,0 +1,64 @@
+{
+  "title": "Only if",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "There is a condition",
+  "checkLabels.t6": "The data is untouched",
+  "checkLabels.t7": "The total is 31",
+  "checkLabels.t8": "The message is right",
+  "checkLabels.t9": "Two lines come out",
+  "checkLabels.t10": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The discount is given every time. Try changing the cups to 3 and see what happens.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-if": "There is no condition anywhere.",
+  "hint2.no-if": "The two lines with the discount should only run sometimes.",
+
+  "why.changed-data": "You changed the number of cups.",
+  "hint2.changed-data": "The data stays at 12. The code has to work at 3 and at 100 without being edited.",
+
+  "why.wrong-total": "The total is not 31.",
+  "hint2.wrong-total": "Twelve cups at three is thirty-six, minus five discount.",
+
+  "why.wrong-message": "The message is not right.",
+  "hint2.wrong-message": "At ten cups or more it should say Free cup earned.",
+
+  "why.wrong-count": "There are not two lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "A loyalty card. At ten cups or more the customer gets five lev off and a note saying they have earned a free coffee.",
+  "blocks.1.text": "The code gives the discount. Every time. Change the cups to 3 and it will still give it — and three cups is not ten.",
+
+  "blocks.2.text": "The condition",
+  "blocks.3.text": "Until now every line ran. Every time, without exception. From here on a line might not run at all.",
+  "blocks.5.text": "Inside the round brackets is a question whose answer is yes or no. If yes — the lines inside the curly braces run. If no — they are skipped, as if they were not there.",
+
+  "blocks.6.text": "The question is a value",
+  "blocks.7.text": "Remember true and false from lesson two? This is where they are needed. Whatever is inside the round brackets works out to one of the two, and that decides.",
+  "blocks.8.text": "stock === 0 is not an instruction. It is a question: is the stock zero? The answer is true or false, and nothing else.",
+  "blocks.9.text": "Code is no longer a sequence of actions. It is a sequence of decisions.",
+
+  "blocks.10.text": "The curly braces",
+  "blocks.11.text": "They say how far the condition reaches. Everything between them is inside, everything after the closing one is outside and always runs.",
+  "blocks.12.text": "If you leave the braces out, only the first line goes into the condition. The second stays outside and runs in every case. The code does not break and looks right — it simply does something else.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Make the discount and the message happen only at ten cups or more.",
+  "blocks.15.text": "Do not touch the data. Check your solution by changing the cups to 3 — then the total should be 9 and the message Thank you. Then put it back to 12."
+}

@@ -9,13 +9,34 @@ import {
 } from './helpers';
 import { runAxe } from './axeCheck';
 import { runStyles } from './styleCheck';
+import { getRunner, hasRunner } from './runners';
+import { assemble } from './bundle';
 
-function runCheck(check, code, starter, axeMap, styleMap) {
+// ⚠ КАКВО ВЛИЗА ТУК: ЕДИН низ HTML, сглобен от bundle.js.
+// <script src="script.js"> вече е <script data-from="script.js">…</script>.
+
+// Старите имена продължават да работят. Урок 01 и 02 не се пипат.
+const ALIAS = {
+  js_runs: 'runs',
+  js_contains: 'src_contains',
+  js_not_contains: 'src_not_contains',
+  js_changed: 'src_changed',
+};
+const kind = (t) => ALIAS[t] ?? t;
+
+// ⚠ ГРУБО. Ползва се САМО за src_contains / src_not_contains.
+function stripComments(js) {
+  return String(js ?? '')
+    .replace(/\/\*[\s\S]*?\*\//g, ' ')
+    .replace(/(^|[^:])\/\/[^\n]*/g, '$1 ');
+}
+
+function runCheck(check, code, starter, axeMap, styleMap, js) {
   const clean = removeHtmlComments(code);
   const doc = parse(code);
   const v = check.value;
 
-  switch (check.type) {
+  switch (kind(check.type)) {
     case 'code_contains':
       return norm(clean).includes(norm(v));
 
@@ -31,9 +52,6 @@ function runCheck(check, code, starter, axeMap, styleMap) {
       return els.length > 0 && els.every((el) => el.textContent.trim() !== '');
     }
 
-    // „КЪДЕ е този текст." Не в кода — в елемента.
-    // code_contains: "<p>i started" пада, ако ученикът е сложил интервал.
-    // Тук интервалите не се наказват — norm ги изяжда.
     case 'dom_text_contains':
       return Array.from(doc.querySelectorAll(v)).some(
         (el) => norm(el.textContent).includes(norm(check.text))
@@ -42,16 +60,8 @@ function runCheck(check, code, starter, axeMap, styleMap) {
     case 'dom_not_has':
       return !doc.querySelector(v);
 
-    // min и max.
-    //
-    // ⚠ Подразбиращият се min зависи от това има ли max.
-    //
-    //   { value: "h1" }            → min 1. „Поне едно."
-    //   { value: "h1", min: 2 }    → min 2.
-    //   { value: "br", max: 0 }    → min 0, max 0. „Нито едно."
-    //
-    // Ако min падаше на 1 винаги, { max: 0 } искаше n >= 1 && n <= 0 —
-    // невъзможно. Пет урока бяха непроходими месеци наред.
+    // Подразбиращият се min зависи от това има ли max.
+    //   { value: "h1" } → min 1.   { value: "br", max: 0 } → min 0, max 0.
     case 'dom_count': {
       const n = doc.querySelectorAll(v).length;
       const min = check.min ?? (check.max === undefined ? 1 : 0);
@@ -64,20 +74,8 @@ function runCheck(check, code, starter, axeMap, styleMap) {
         (el) => (el.getAttribute(check.attr) ?? '').trim() !== ''
       );
 
-    // ── axe-core ──
-    // { type: "axe_clean", value: "label", err: "blind-cant-see", weight: 200 }
-    //
-    // ⚠ axe е ДОБАВКА, не заместител.
-    // image-alt ПРОПУСКА alt="" — за axe това е ПРАВИЛНИЯТ запис за
-    // декоративна снимка. dom_attr е ПО-СТРОГ: иска непразен alt.
-    // Не махай dom_attr от урок 37. Двете вървят заедно.
-    //
-    // Печалбата е там, където ядрото НЕ МОЖЕ:
-    //   label         — връзката for ↔ id. Урок 58. Ядрото не я вижда.
-    //   heading-order — h1 → h3. Ядрото не мери РЕД.
-    //   link-name     — <a></a> без достъпно име.
-    //
-    // Сметнато е ВЕДНЪЖ за целия урок, в checkProblem. Тук само се чете.
+    // axe е ДОБАВКА, не заместител. Печели там, където ядрото не може:
+    // label (for ↔ id), heading-order, link-name.
     case 'axe_clean':
       return axeMap[v] === true;
 
@@ -86,7 +84,7 @@ function runCheck(check, code, starter, axeMap, styleMap) {
 
     case 'raw_head_not_contains': {
       const head = rawHead(code);
-      if (!head && !/<head[^>]*>/i.test(code)) return false;  // няма head → не е ✓
+      if (!head && !/<head[^>]*>/i.test(code)) return false;
       return !norm(removeHtmlComments(head)).includes(norm(v));
     }
 
@@ -102,26 +100,15 @@ function runCheck(check, code, starter, axeMap, styleMap) {
     case 'text_not_contains':
       return !visibleText(code).includes(norm(v));
 
-      // ── getComputedStyle ──
-    // { id:"c1", type:"style_is", value:"h1", prop:"color", expect:"red",
-    //   err:"wrong-color", errNoMatch:"no-h1", weight:200 }
-    //
-    // Ученикът може да напише red, #f00, rgb(255,0,0) или hsl(0,100%,50%).
-    // И четирите минават — защото браузърът казва, че са едно и също.
-    //
-    // errNoMatch е ОТДЕЛЕН текст. „Цветът не е червен" е грешно съобщение
-    // за човек, който е написал `h1 ,{` и селекторът му не улучва нищо.
-    //
-    //   style_is       стойността Е тази
-    //   style_is_not   стойността НЕ е тази (за „махни подразбиращото се")
-    //   style_matches  pattern: регулярен израз върху сметнатата стойност
-    //   style_applies  само: селекторът улучва поне един елемент
+    // getComputedStyle. red, #f00 и rgb(255,0,0) минават еднакво.
+    // errNoMatch е ОТДЕЛЕН текст: селектор, който не улучва нищо,
+    // не е „грешен цвят".
     case 'style_is':
     case 'style_is_not':
     case 'style_matches':
     case 'style_applies': {
       const r = styleMap?.[check.id];
-      if (!r) return false;                       // не се е пуснало → пада
+      if (!r) return false;
       if (r.ok) return true;
       if (r.reason === 'nomatch') return { ok: false, err: check.errNoMatch ?? check.err };
       if (r.reason === 'spec') {
@@ -132,21 +119,101 @@ function runCheck(check, code, starter, axeMap, styleMap) {
     }
 
     case 'balanced':
-
-    case 'balanced':
       return balanced(code);
 
-    // Няма value → сравнява СЪС СКЕЛЕТА И С ПРАЗНОТО.
-    //
-    // ⚠ Празният редактор е различен от скелета — значи "changed" сам по себе си
-    // го пропуска. А празният редактор НЕ Е решение, никога.
-    //
-    //   { type: "changed" }             → пипнал си кода И не си го изтрил
-    //   { type: "changed", value: "" }  → само: не е празно
-    //   { type: "changed", value: "X" } → само: различно е от X
+    // ── ИЗПЪЛНИМ КОД ──
+    // Всичко оттук гледа САМО изходния код (js.src), не целия документ.
+
+    // ⚠ src_contains: "function" минава винаги. Питай се МОЖЕ ЛИ ДА ПАДНЕ.
+    case 'src_contains':
+      return norm(stripComments(js.src)).includes(norm(v));
+
+ case 'src_not_contains':
+      return !norm(stripComments(js.src)).includes(norm(v));
+
+    // „Това се среща точно N пъти." min/max както при dom_count.
+    // За уроци, в които стойността трябва да се напише ЕДИН път.
+    case 'src_count': {
+      const hay = norm(stripComments(js.src));
+      const needle = norm(v);
+      if (!needle) return false;
+      let n = 0;
+      let i = 0;
+      while ((i = hay.indexOf(needle, i)) !== -1) { n++; i += needle.length; }
+      const min = check.min ?? (check.max === undefined ? 1 : 0);
+      const max = check.max ?? Infinity;
+      return n >= min && n <= max;
+    }
+
+    // „Изпълнява ли се изобщо." Стои НАД всяка проверка за резултат.
+    // Три различни провала → три различни съобщения.
+    case 'runs': {
+      if (!js.ran) return { ok: false, err: check.errEmpty ?? check.err };
+      if (js.res.timedOut) return { ok: false, err: check.errTimeout ?? check.err };
+      if (js.res.err) return { ok: false, err: check.err };
+      return true;
+    }
+
+    // await: true — за async. БЕЗ него забравеният await е ВИДИМ.
+    // Сравнението е дълбоко и минава през Object.is: NaN === NaN тук е вярно.
+    case 'returns': {
+      if (!js.ran || js.res.timedOut || js.res.err) {
+        return { ok: false, err: check.errCrash ?? check.err };
+      }
+      const r = js.res.calls[check.id];
+      if (!r) return false;
+      if (!r.ok) return { ok: false, err: check.errThrows ?? check.err };
+      return js.eq(r.value, check.expect);
+    }
+
+    case 'throws': {
+      if (!js.ran || js.res.timedOut || js.res.err) {
+        return { ok: false, err: check.errCrash ?? check.err };
+      }
+      const r = js.res.calls[check.id];
+      if (!r || r.ok) return false;
+      if (check.errorName) return r.thrown?.name === check.errorName;
+      return true;
+    }
+
+    // mode: 'contains' | 'equals' | 'matches' | 'count'
+    case 'logs': {
+      if (!js.ran || js.res.timedOut || js.res.err) {
+        return { ok: false, err: check.errCrash ?? check.err };
+      }
+      const lines = js.res.logs
+        .filter((l) => !check.level || l.lvl === check.level)
+        .map((l) => l.args.map((a) => js.fmt(a)).join(' '));
+
+      const mode = check.mode ?? 'contains';
+
+      if (mode === 'count') {
+        const min = check.min ?? (check.max === undefined ? 1 : 0);
+        const max = check.max ?? Infinity;
+        return lines.length >= min && lines.length <= max;
+      }
+      if (mode === 'equals') return lines.some((l) => norm(l) === norm(v));
+      if (mode === 'matches') {
+        let re;
+        try { re = new RegExp(check.pattern, 'i'); }
+        catch { console.error('logs: счупен pattern в урока', check.id); return false; }
+        return lines.some((l) => re.test(l));
+      }
+      return lines.some((l) => norm(l).includes(norm(v)));
+    }
+
+    // ⚠ Празният редактор НЕ Е решение, никога.
     case 'changed': {
       if (v !== undefined) return norm(code) !== norm(v);
       return norm(code) !== '' && norm(code) !== norm(starter ?? '');
+    }
+
+    // Пазач: изходният код да не е изтрит. „changed" минава, ако е трил в HTML-а.
+    case 'src_changed': {
+      const now = stripComments(js.src);
+      if (norm(now) === '') return false;
+      if (check.value !== undefined) return norm(now) !== norm(check.value);
+      return norm(now) !== norm(stripComments(js.starterSrc ?? ''));
     }
 
     default:
@@ -154,38 +221,45 @@ function runCheck(check, code, starter, axeMap, styleMap) {
   }
 }
 
-// ⚠ ASYNC — заради axe. Всеки, който я вика, слага await.
+// ⚠ ASYNC. Всеки, който я вика, слага await.
 //   src/app/[locale]/practice/[slug]/page.js   ред ~63
 //   src/components/lessons/WebLesson.js        ред ~108
 export async function checkProblem(problem, code) {
   const checks = problem.checks ?? [];
 
-  // Един пуск на axe за целия урок, не по един на проверка.
-  // Няма axe_clean → нула мрежа, нула рамка, нула забавяне.
-  // Всичките 67 стари урока работят точно както преди.
+  // ⚠ Многофайловите уроци нямат starterCode. Без това „не си пипал скелета"
+  // не пада никога и е украса, не проверка.
+  let starter = problem.starterCode;
+  if (!starter && problem.starterFiles) {
+    starter = assemble(problem.starterFiles, problem.entry ?? 'index.html');
+    if (!norm(starter)) starter = Object.values(problem.starterFiles).join('\n');
+  }
+
+  // Един пуск на axe за целия урок.
   const rules = [...new Set(
     checks.filter((c) => c.type === 'axe_clean').map((c) => c.value)
   )];
 
-let axeMap = {};
+  let axeMap = {};
   if (rules.length) {
     try {
       axeMap = await runAxe(code, rules);
     } catch (e) {
-      // Счупен axe → проверките ПАДАТ. Не минават тихо.
-      // По-добре ✕ на верен код, отколкото ✓ на грешен.
+      // Счупен axe → проверките ПАДАТ. По-добре ✕ на верен код, отколкото ✓ на грешен.
       console.error('axe:', e);
       axeMap = {};
     }
   }
 
-  // Един пуск на рамката за ВСИЧКИ style_* проверки, както при axe.
-  // Няма style_* → нула рамка, нула забавяне. Старите уроци не усещат нищо.
+  // Един пуск на рамката за ВСИЧКИ style_* проверки.
   const styleSpecs = checks
     .filter((c) => typeof c.type === 'string' && c.type.startsWith('style_'))
-    .map((c) => ({
+   .map((c) => ({
       id: c.id,
       sel: c.value,
+      // ⚠ Псевдоелементът НЕ влиза в sel — querySelectorAll гърми на "li::before".
+      // Върви отделно и стига до втория аргумент на getComputedStyle.
+      pseudo: c.pseudo,
       prop: c.prop,
       expect: c.expect,
       pattern: c.pattern,
@@ -205,8 +279,54 @@ let axeMap = {};
     }
   }
 
+  // ── Един пуск на изпълнителя за ВСИЧКИ проверки на код ──
+  // Няма такива проверки → изпълнител не се зарежда изобщо.
+  // HTML и CSS курсовете не усещат нищо.
+ const CODE_TYPES = new Set([
+    'src_contains', 'src_not_contains', 'src_count', 'runs', 'src_changed', 'returns', 'throws', 'logs',
+  ]);
+  const NEEDS_RUN = new Set(['runs', 'returns', 'throws', 'logs']);
+
+  const js = {
+    src: '',
+    starterSrc: '',
+    ran: false,
+    res: { timedOut: false, err: null, logs: [], calls: {} },
+    eq: () => false,
+    fmt: () => '',
+  };
+
+  const codeChecks = checks.filter((c) => CODE_TYPES.has(kind(c.type)));
+  if (codeChecks.length) {
+    const runtime = problem.runtime;
+    const runner = hasRunner(runtime) ? await getRunner(runtime) : null;
+
+    if (!runner) {
+      console.error('няма изпълнител за runtime:', runtime, '— провери meta.js');
+    } else {
+      js.eq = runner.eq;
+      js.fmt = runner.fmt;
+      js.src = runner.extract(code);
+      js.starterSrc = starter ? runner.extract(starter) : '';
+
+      if (codeChecks.some((c) => NEEDS_RUN.has(kind(c.type))) && norm(js.src) !== '') {
+        const calls = checks
+          .filter((c) => c.type === 'returns' || c.type === 'throws')
+          .map((c) => ({ id: c.id, expr: c.call, await: !!c.await }));
+
+        try {
+          js.res = await runner.run(js.src, calls, { timeout: problem.jsTimeout ?? 2000 });
+          js.ran = true;
+        } catch (e) {
+          console.error('изпълнител:', e);
+          js.ran = false;
+        }
+      }
+    }
+  }
+
   const results = checks.map((c) => {
-    const raw = runCheck(c, code, problem.starterCode, axeMap, styleMap);
+    const raw = runCheck(c, code, starter, axeMap, styleMap, js);
     const ok = typeof raw === 'boolean' ? raw : !!raw.ok;
     const err = typeof raw === 'boolean' ? c.err : (raw.err ?? c.err);
     return {
@@ -222,8 +342,10 @@ let axeMap = {};
   const passed = results.every((r) => r.ok);
 
   // Не първата паднала — НАЙ-ТЕЖКАТА паднала.
-  // Счупен синтаксис бие всичко. Няма смисъл да говориш за семантика,
-  // докато таговете не се затварят.
+  //
+  // ★ СТЪЛБАТА НА ТЕЖЕСТИТЕ:
+  //   1000 празно · 950 непипнат скелет · 900 синтаксис (guard)
+  //   800 кодът ГЪРМИ или ЗАМРЪЗНА · 300 резултат · 200 структура · 60 остатъци
   const worst = results
     .filter((r) => !r.ok)
     .sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0))[0];

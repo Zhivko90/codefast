@@ -1,0 +1,29 @@
+{
+  "title": "JavaScript",
+  "desc": "HTML says what a thing is. CSS says how it looks. Neither one calculates, remembers, or decides. That is where the third language comes in — and with it, every mistake that works nine times and breaks on the tenth.",
+  "sections": {
+    "nothing": {
+      "title": "The computer knows nothing",
+      "desc": "The first lesson gives you no syntax. It gives you a page that shows the characters instead of the answer, and asks why.",
+      "modules": {
+        "firstrun": { "title": "The first run" }
+      }
+    },
+    "numbers": {
+      "title": "Numbers and text",
+      "desc": "Data arrives as text and behaves like numbers everywhere except one place. This section is about that place, and about everything you do with the two.",
+      "modules": {
+        "arithmetic": { "title": "Arithmetic" },
+        "strings": { "title": "Text" }
+      }
+    },
+    "decisions": {
+      "title": "Decisions",
+      "desc": "So far the code did the same thing every time. Here it starts asking — and with that come the mistakes that work nine times and break on the tenth.",
+      "modules": {
+        "branching": { "title": "If" },
+        "comparing": { "title": "Comparing" }
+      }
+    }
+  }
+}
