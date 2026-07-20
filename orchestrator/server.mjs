@@ -24,8 +24,6 @@ const PORT_MAX = 9200;
 const SETTINGS = {
   'workbench.colorTheme': 'Default Dark Modern',
   'workbench.activityBar.location': 'hidden',
-  'workbench.editor.editorActionsLocation': 'titleBar',
-  'window.titleBarStyle': 'custom',
   'workbench.statusBar.visible': false,
   'workbench.startupEditor': 'none',
   'workbench.layoutControl.enabled': false,
@@ -180,11 +178,11 @@ async function start(student, course, files, pro) {
   const port = await freePort();
   if (!port) throw new Error('no-free-port');
 
-  // Пътищата след папката се отварят като табове. Иначе редакторът е празен
-  // и ученикът трябва сам да намери откъде се започва.
-  const open = Object.keys(files ?? {}).length
-    ? Object.keys(files)
-    : (await readdir(dir).catch(() => [])).filter((n) => !n.startsWith('.'));
+// Чете се от ДИСКА, не от подадените имена. Папката може вече да носи
+  // работа на ученика, различна от стартовите файлове.
+  const open = (await readdir(dir).catch(() => []))
+    .filter((n) => !n.startsWith('.'))
+    .filter((n) => /\.(html|css|js|json|md|txt|svg)$/i.test(n));
 
   await docker([
     'run', '-d',
