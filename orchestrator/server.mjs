@@ -157,8 +157,10 @@ function activate() {
 
   // ⚠ fs.watch реагира в мига на записа. Проверка на интервал добавя
   // цяло забавяне отгоре и се усеща като няколко секунди.
-  try { fs.writeFileSync(flag, '0'); } catch (e) {}
-  let last = '0';
+ // ⚠ Началната стойност се ЧЕТЕ, не се записва. Запис при старт се хваща
+  // от fs.watch и изяжда първия клик.
+  let last = '';
+  try { last = fs.readFileSync(flag, 'utf8'); } catch (e) { try { fs.writeFileSync(flag, '0'); last = '0'; } catch (e2) {} }
   const read = () => {
     try {
       const now = fs.readFileSync(flag, 'utf8');
