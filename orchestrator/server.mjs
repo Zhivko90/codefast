@@ -149,9 +149,13 @@ function activate() {
   const write = () => { try { fs.writeFileSync(state, open ? '1' : '0'); } catch (e) {} };
   write();
 
+// ⚠ БЕЗ toggle. closeSidebar при старта не обновява вътрешното състояние
+  // на VS Code, затова първият toggle затваря вече затворена лента — празен ход.
   const toggle = () => {
     open = !open;
-    vscode.commands.executeCommand('workbench.action.toggleSidebarVisibility');
+    vscode.commands.executeCommand(
+      open ? 'workbench.view.explorer' : 'workbench.action.closeSidebar'
+    );
     write();
   };
 
