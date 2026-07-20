@@ -23,7 +23,7 @@ const PORT_MAX = 9200;
 
 const SETTINGS = {
   'workbench.colorTheme': 'Default Dark Modern',
-  'workbench.activityBar.location': 'hidden',
+  'workbench.activityBar.location': 'default',
   'workbench.statusBar.visible': false,
   'workbench.startupEditor': 'none',
   'workbench.layoutControl.enabled': false,
@@ -199,7 +199,7 @@ await docker([
     .filter((n) => !n.startsWith('.'))
     .filter((n) => /\.(html|css|js|json|md|txt|svg)$/i.test(n));
 
-  const payload = JSON.stringify(open.map((n) => ['openFile', 'vscode-remote:///home/coder/project/' + n]));
+  const payload = JSON.stringify(open.map((n) => ['openFile', 'file:///home/coder/project/' + n]));
   const query = '?folder=/home/coder/project&payload=' + encodeURIComponent(payload);
 
   const now = Date.now();
