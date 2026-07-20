@@ -138,7 +138,7 @@ async function writeExtension(home) {
     publisher: 'codefast',
     version: '1.0.0',
     engines: { vscode: '^1.60.0' },
-    activationEvents: ['*'],
+    activationEvents: ['onStartupFinished'],
     main: './extension.js',
     contributes: {},
   }, null, 2));
