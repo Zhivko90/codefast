@@ -140,6 +140,7 @@ function activate() {
   const dir = path.join(process.env.HOME, '.local/share/code-server');
   const flag = path.join(dir, 'cf-toggle');
   const state = path.join(dir, 'cf-tree');
+  try { fs.writeFileSync(path.join(dir, 'cf-log'), 'activate\\n'); } catch (e) {}
 
   vscode.commands.executeCommand('workbench.action.closeSidebar');
   // Чатът живее във вторичната лента. Настройките не го спират — командата да.
@@ -151,10 +152,15 @@ function activate() {
 
 // ⚠ БЕЗ toggle. closeSidebar при старта не обновява вътрешното състояние
   // на VS Code, затова първият toggle затваря вече затворена лента — празен ход.
+const log = (m) => { try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date().toISOString() + ' ' + m + '\\n'); } catch (e) {} };
+
   const toggle = () => {
     open = !open;
-    vscode.commands.executeCommand(
-      open ? 'workbench.view.explorer' : 'workbench.action.closeSidebar'
+    const cmd = open ? 'workbench.view.explorer' : 'workbench.action.closeSidebar';
+    log('toggle -> open=' + open + ' cmd=' + cmd);
+    vscode.commands.executeCommand(cmd).then(
+      () => log('cmd ok ' + cmd),
+      (e) => log('cmd FAIL ' + cmd + ' ' + String(e))
     );
     write();
   };
