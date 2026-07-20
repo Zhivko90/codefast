@@ -345,32 +345,25 @@ async function start(student, course, files, pro) {
   // Входният файл се отваря пак накрая — само за да е избран, без да мести таба.
   const ordered = sorted.length ? [...sorted, sorted[0]] : [];
 
-  // Сокетът не е готов веднага. Чака се да се появи, вместо да се гадае време.
+// ⚠ Сокетът иска ОТВОРЕН БРАУЗЪР. Без свързана рамка връща
+  // "No opened code-server instances found". Затова се чака cf-ready —
+  // сигналът, че разширението се е активирало, тоест браузърът е вътре.
   (async () => {
-    const sock = '/home/coder/.local/share/code-server/code-server-ipc.sock';
+    const readyFlag = join(csDir(key), 'cf-ready');
     let ready = false;
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 120; i++) {
       await new Promise((r) => setTimeout(r, 500));
-      try {
-        await docker(['exec', name, 'test', '-S', sock]);
-        ready = true;
-        break;
-      } catch {}
+      try { await readFile(readyFlag, 'utf8'); ready = true; break; } catch {}
     }
-   if (!ready) { console.log('socket never appeared for ' + name); return; }
-    console.log('socket ready for ' + name + ', files: ' + ordered.join(', '));
+    if (!ready) { console.log('browser never connected: ' + name); return; }
 
-   // ⚠ Сокетът се появява преди VS Code да е готов да отваря файлове.
-    // Извикването минава, но нищо не се случва.
-    await new Promise((r) => setTimeout(r, 6000));
     for (const n of ordered) {
-   try {
+      try {
         await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/workspace/' + n]);
-        console.log('opened ' + n);
       } catch (e) {
         console.log('open FAIL ' + n + ' ' + String(e?.message ?? e));
       }
-      await new Promise((r) => setTimeout(r, 1200));
+      await new Promise((r) => setTimeout(r, 600));
     }
   })();
 
