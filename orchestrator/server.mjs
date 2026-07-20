@@ -116,17 +116,15 @@ async function writeExtension(home) {
     publisher: 'codefast',
     version: '1.0.0',
     engines: { vscode: '^1.60.0' },
-    activationEvents: ['onStartupFinished'],
+    activationEvents: ['*'],
     main: './extension.js',
     contributes: {},
   }, null, 2), 'utf8');
 
-  await writeFile(join(ext, 'extension.js'), `
+await writeFile(join(ext, 'extension.js'), `
 const vscode = require('vscode');
 function activate() {
-  setTimeout(() => {
-    vscode.commands.executeCommand('workbench.action.closeSidebar');
-  }, 300);
+  vscode.commands.executeCommand('workbench.action.closeSidebar');
 }
 exports.activate = activate;
 exports.deactivate = function () {};

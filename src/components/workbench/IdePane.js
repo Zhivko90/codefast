@@ -86,5 +86,32 @@ export default function IdePane({ course, files, onReady }) {
     );
   }
 
-  return <iframe title="ide" src={url} className="w-full h-full border-0 bg-[#1e1e1e]" />;
+  return <IdeFrame url={url} />;
+}
+
+// Рамката се показва след кратко забавяне. Разширението, което скрива
+// страничната лента, се зарежда след първото рисуване — иначе тя мига.
+function IdeFrame({ url }) {
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => setShown(true), 2500);
+    return () => clearTimeout(id);
+  }, [url]);
+
+  return (
+    <div className="relative w-full h-full bg-[#1e1e1e]">
+      <iframe
+        title="ide"
+        src={url}
+        className="w-full h-full border-0"
+        style={{ opacity: shown ? 1 : 0, transition: 'opacity .2s' }}
+      />
+      {!shown && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <p className="text-[13px] text-gray-500">Средата се подрежда…</p>
+        </div>
+      )}
+    </div>
+  );
 }
