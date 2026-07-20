@@ -23,7 +23,7 @@ const PORT_MAX = 9200;
 
 const SETTINGS = {
   'workbench.colorTheme': 'Default Dark Modern',
-  'workbench.activityBar.location': 'default',
+  'workbench.activityBar.location': 'hidden',
   'workbench.statusBar.visible': false,
   'workbench.startupEditor': 'none',
   'workbench.layoutControl.enabled': false,
@@ -201,9 +201,8 @@ await docker([
 
 const query = '?folder=/home/coder/project';
 
-  // ⚠ Табовете се отварят през сокета на code-server, не през адреса.
-  // payload посочва файла, но не го отваря — изпробвано, не работи.
-  // Входният файл е ПОСЛЕДЕН, за да остане отгоре.
+ // ⚠ Без пауза между извикванията се отваря само последното.
+  // Входният файл е последен, за да остане на преден план.
   const ordered = [...open].sort((a, b) => (a === 'index.html' ? 1 : b === 'index.html' ? -1 : 0));
   (async () => {
     await new Promise((r) => setTimeout(r, 4000));
@@ -211,6 +210,7 @@ const query = '?folder=/home/coder/project';
       try {
         await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/project/' + n]);
       } catch {}
+      await new Promise((r) => setTimeout(r, 700));
     }
   })();
 
