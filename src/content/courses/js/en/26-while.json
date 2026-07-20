@@ -1,0 +1,76 @@
+{
+  "title": "While",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "You use a loop",
+  "checkLabels.t7": "The water is written once",
+  "checkLabels.t8": "The answer is not typed in",
+  "checkLabels.t9": "12 are brewed",
+  "checkLabels.t10": "The water is 3000",
+  "checkLabels.t11": "Two lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Three cups are brewed. The batch is twelve.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+
+  "why.frozen": "Your code never stops. It looped forever and was cut off.",
+  "hint2.frozen": "The condition never becomes false. Check that the counter really grows inside the loop.",
+  "hint3.frozen": "If you leave out the line that changes the counter, the condition stays true forever and the loop can never end.",
+
+  "why.changed-data": "You changed the size of the batch.",
+  "hint2.changed-data": "Twelve stays. The code has to work at two hundred without being edited.",
+
+  "why.no-while": "There is no loop.",
+  "hint2.no-while": "Twelve repetitions are not written by hand.",
+
+  "why.still-repeating": "The code still repeats itself.",
+  "hint2.still-repeating": "The two repeated lines are written ONCE — inside the loop.",
+
+  "why.typed-answer": "You typed the answer in.",
+  "hint2.typed-answer": "The number has to accumulate from the repetitions, not be declared.",
+
+  "why.wrong-brewed": "The brewed count is not 12.",
+  "hint2.wrong-brewed": "The loop should run while the brewed count is less than the batch.",
+  "hint3.wrong-brewed": "If you get 13, the condition allows one repetition too many. Check whether it is less than, or less than or equal.",
+
+  "why.wrong-water": "The water is not 3000.",
+  "hint2.wrong-water": "Twelve cups at 250 millilitres.",
+
+  "why.wrong-count": "There are not two lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "The morning batch is twelve cups. Each one needs 250 millilitres of water.",
+  "blocks.1.text": "The code brews three. For twelve you will write the same two lines nine more times. Tomorrow the batch is two hundred — then what.",
+
+  "blocks.2.text": "The loop",
+  "blocks.3.text": "You write the action once and say how long it should repeat.",
+  "blocks.5.text": "The condition in the brackets is checked BEFORE every repetition. If it is true, the body runs and it is checked again. If it is false, the loop ends and the code carries on below.",
+
+  "blocks.6.text": "Three parts, not one",
+  "blocks.7.text": "Every loop has three things and all three are required.",
+  "blocks.8.items.0": "a starting value — the counter begins somewhere",
+  "blocks.8.items.1": "a condition — how long to carry on",
+  "blocks.8.items.2": "a change inside the body — something moving towards the end",
+  "blocks.9.text": "The first two are visible immediately. The third is inside the body, and that is exactly the one that gets forgotten.",
+
+  "blocks.10.text": "The forgotten third part",
+  "blocks.11.text": "If the counter does not grow, the condition stays true forever. The loop spins until something stops it from outside — and there is nothing outside to do it.",
+  "blocks.12.quote": "This is the one way to freeze your own page. The next lesson is about exactly that.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Rewrite the brewing with a loop. The two lines are written only once.",
+  "blocks.15.text": "Then change the batch to 200 and see that the code works without being edited. Put it back to 12."
+}

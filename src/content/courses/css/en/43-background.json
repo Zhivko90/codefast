@@ -1,0 +1,72 @@
+{
+  "title": "The background and what lies under it",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No shorthand with an image",
+  "checkLabels.t7": "There is a colour under the image",
+  "checkLabels.t8": "The image covers the block",
+  "checkLabels.t9": "The image does not repeat",
+  "checkLabels.t10": "The card has its own background",
+  "checkLabels.t11": "The hero text is white",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The hero text is still invisible.",
+  "hint2.untouched": "One line breaks into several, and the card gets a background.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-hero": "There is no element with the hero class.",
+  "why.no-card": "There is no element with the card class.",
+
+  "why.shorthand-left": "You are still using the shorthand with the image.",
+  "hint2.shorthand-left": "The shorthand resets everything you did not mention in it. Put a colour on the line above and it disappears.",
+  "hint3.shorthand-left": "Write it out as separate properties: colour, image, size, position, repeat. Then each one is visible and nothing is quietly erased.",
+
+  "why.no-fallback": "There is no colour under the image.",
+  "hint2.no-fallback": "The image may not load — a slow connection, a wrong path, a deleted file. Then white text is left over nothing.",
+  "hint4.no-fallback": "background-color: var(--brand-dark);",
+
+  "why.no-cover": "The image does not cover the block.",
+  "hint2.no-cover": "There is a value that stretches it until it fills the whole block and crops what is left over.",
+  "hint4.no-cover": "background-size: cover;",
+
+  "why.tiled": "The image repeats like tiles.",
+  "hint2.tiled": "That is the default behaviour. One word stops it.",
+
+  "why.card-plain": "The card has no background of its own.",
+  "hint2.card-plain": "A very pale version of the brown separates it from the page without competing with the text.",
+
+  "why.hero-text": "The hero text is no longer white.",
+
+  "blocks.0.text": "Open the preview. The hero block looks empty — it holds a heading and a sentence, but you cannot see them. The text is white, the image behind it did not load, and white letters lie on a white page. No error is shown.",
+
+  "blocks.1.text": "A background is a stack, not an image",
+  "blocks.2.text": "Every element has a background made of several things on top of each other: a colour at the bottom, one or more images above it. If the image loads, the colour stays hidden beneath it. If it does not load — or while it is loading — the colour is what the reader sees.",
+  "blocks.3.text": "The colour under the image is not spare. It is what remains when the network fails.",
+
+  "blocks.4.text": "The shorthand erases quietly",
+  "blocks.5.text": "background is shorthand for seven properties. Write it and everything you did not mention returns to its initial value — including a colour set on the line before. That is why the line below wipes the line above:",
+  "blocks.6.items.0": "background-color — the colour at the bottom.",
+  "blocks.6.items.1": "background-image — one or more images, separated by commas.",
+  "blocks.6.items.2": "background-size — cover fills the block and crops the excess, contain fits the whole image and leaves empty space.",
+  "blocks.6.items.3": "background-position and background-repeat — where it sits and whether it tiles. By default it tiles.",
+
+  "blocks.7.text": "cover or contain",
+  "blocks.8.text": "cover stretches the image until it covers the whole block and cuts off what hangs over. It is for hero blocks, where the point is that no gap shows and exactly what you see matters less. contain fits the entire image inside and leaves space at the sides — for a logo or a product shot, where nothing may be cropped.",
+
+  "blocks.9.text": "What does NOT belong in a background",
+  "blocks.10.text": "Screen readers do not see background images. To them such an image simply does not exist — there is no way to give it a description as you would a real image. So only decoration goes in a background. If the image carries meaning — a product photo, a chart, a logo with text — it belongs in the HTML, with a description.",
+  "blocks.11.text": "And second: text over an image is almost always a contrast problem, because the image differs from place to place. That is why a solid colour goes underneath, and often a darkening layer on top. The requirement is that text be at least four and a half times more contrasted than its background — there is a lesson of its own for that.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Write the hero background out as separate properties: a dark brown colour underneath, the image on top, covering the whole block, centred and not repeating. And give the card a very pale background so it separates from the page."
+}

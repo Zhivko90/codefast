@@ -26,6 +26,8 @@ const SETTINGS = {
   'workbench.activityBar.location': 'hidden',
   'workbench.statusBar.visible': false,
   'workbench.startupEditor': 'none',
+  'workbench.editor.enablePreview': false,
+  'workbench.editor.enablePreviewFromQuickOpen': false,
   'workbench.layoutControl.enabled': false,
   'workbench.secondarySideBar.defaultVisibility': 'hidden',
   'chat.commandCenter.enabled': false,
