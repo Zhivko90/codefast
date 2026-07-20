@@ -129,7 +129,7 @@ body {
     { id: "t5", type: "dom_count", value: "[class]", min: 3, max: 3, err: "touched-html", weight: 600 },
     { id: "t6", type: "style_matches", value: ".hero", prop: "background-image", pattern: "linear-gradient", err: "no-overlay", errNoMatch: "no-hero", weight: 300 },
     { id: "t7", type: "style_matches", value: ".hero", prop: "background-image", pattern: "url", err: "image-lost", errNoMatch: "no-hero", weight: 290 },
-    { id: "t8", type: "style_is", value: ".hero", prop: "background-size", expect: "cover", err: "cover-lost", errNoMatch: "no-hero", weight: 280 },
+   { id: "t8", type: "style_matches", value: ".hero", prop: "background-size", pattern: "^cover(, ?cover)*$", err: "cover-lost", errNoMatch: "no-hero", weight: 280 },
     { id: "t9", type: "style_matches", value: ".divider", prop: "background-image", pattern: "linear-gradient", err: "divider-flat", errNoMatch: "no-divider", weight: 270 },
     { id: "t10", type: "style_is", value: ".divider", prop: "height", expect: "2px", err: "divider-height", errNoMatch: "no-divider", weight: 260 },
     { id: "t11", type: "style_is", value: ".hero", prop: "background-color", expect: "hsl(25 76% 20%)", err: "fallback-lost", errNoMatch: "no-hero", weight: 250 },

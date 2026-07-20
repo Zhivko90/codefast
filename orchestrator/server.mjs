@@ -34,7 +34,6 @@ const SETTINGS = {
   'chat.agent.enabled': false,
   'window.commandCenter': false,
   'window.menuBarVisibility': 'hidden',
-  'window.sidebar.visible': false,
   'breadcrumbs.enabled': false,
   'editor.minimap.enabled': false,
   'editor.fontSize': 14,
@@ -106,12 +105,41 @@ function room(pro) {
   return pro ? used < MAX_LIVE : used < MAX_LIVE - PRO_RESERVED;
 }
 
+// ⚠ Страничната лента НЯМА настройка. Единственият начин е командата
+// workbench.action.closeSidebar, а тя се пуска само от разширение.
+async function writeExtension(home) {
+  const ext = join(home, '.local', 'share', 'code-server', 'extensions', 'cf-layout');
+  await mkdir(ext, { recursive: true });
+
+  await writeFile(join(ext, 'package.json'), JSON.stringify({
+    name: 'cf-layout',
+    publisher: 'codefast',
+    version: '1.0.0',
+    engines: { vscode: '^1.60.0' },
+    activationEvents: ['onStartupFinished'],
+    main: './extension.js',
+    contributes: {},
+  }, null, 2), 'utf8');
+
+  await writeFile(join(ext, 'extension.js'), `
+const vscode = require('vscode');
+function activate() {
+  setTimeout(() => {
+    vscode.commands.executeCommand('workbench.action.closeSidebar');
+  }, 300);
+}
+exports.activate = activate;
+exports.deactivate = function () {};
+`.trim(), 'utf8');
+}
+
 async function prepare(home) {
   const cs = join(home, '.local', 'share', 'code-server');
   await mkdir(join(cs, 'User'), { recursive: true });
   await writeFile(join(cs, 'User', 'settings.json'), JSON.stringify(SETTINGS, null, 2), 'utf8');
   // Слепен път в coder.json прави „Workspace does not exist" при всяко отваряне.
   try { await rm(join(cs, 'coder.json')); } catch {}
+  await writeExtension(home);
 }
 
 async function writeFiles(dir, files) {
@@ -209,13 +237,26 @@ const query = '?folder=/home/coder/project';
   const sorted = [...open].sort((a, b) => (RANK[a] ?? 9) - (RANK[b] ?? 9));
   // Входният файл се отваря пак накрая — само за да е избран, без да мести таба.
   const ordered = sorted.length ? [...sorted, sorted[0]] : [];
+// Сокетът не е готов веднага. Чака се да се появи, вместо да се гадае време.
   (async () => {
-    await new Promise((r) => setTimeout(r, 4000));
+    const sock = '/home/coder/.local/share/code-server/code-server-ipc.sock';
+    let ready = false;
+    for (let i = 0; i < 40; i++) {
+      await new Promise((r) => setTimeout(r, 500));
+      try {
+        await docker(['exec', name, 'test', '-S', sock]);
+        ready = true;
+        break;
+      } catch {}
+    }
+    if (!ready) return;
+
+    await new Promise((r) => setTimeout(r, 2000));
     for (const n of ordered) {
       try {
         await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/project/' + n]);
       } catch {}
-      await new Promise((r) => setTimeout(r, 700));
+      await new Promise((r) => setTimeout(r, 1200));
     }
   })();
 

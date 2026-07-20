@@ -83,6 +83,8 @@ const CASES = [
   { name: 'махната рамка пада',         css: 'h1{color:red}',           type: 'style_matches', sel: 'h1', prop: 'border-left-width', pattern: '^2px$', want: false, tag: 'wrong' },
   { name: 'рамка през проба ЛЪЖЕ',      css: 'h1{border:2px solid red}', type: 'style_is', sel: 'h1', prop: 'border-left-width', expect: '2px', want: false, tag: 'wrong' },
   
+{ name: 'много слоя фон: размер', css: 'h1{background-image:linear-gradient(black,black),url("a.jpg");background-size:cover}', type: 'style_is', sel: 'h1', prop: 'background-size', expect: 'cover', want: false, tag: 'wrong' },
+  { name: 'много слоя фон: с образец', css: 'h1{background-image:linear-gradient(black,black),url("a.jpg");background-size:cover}', type: 'style_matches', sel: 'h1', prop: 'background-size', pattern: '^cover(, ?cover)*$', want: true },
 
 
 ];
