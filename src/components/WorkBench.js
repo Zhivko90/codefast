@@ -10,6 +10,7 @@ import ConsolePane, { useConsole } from './workbench/ConsolePane';
 import FeedbackDialog from './workbench/FeedbackDialog';
 import { RailBtn, MTab, IcoStatement, IcoPreview, IcoResult, IcoTrash, IcoBug, IcoFile } from './workbench/Buttons';
 import IdePane from './workbench/IdePane';
+import { toggleTree } from '@/lib/ide';
 
 // ============================================
 // ОБЩАТА РАМКА за урок и за задача. САМО ПОДРЕДБАТА.
@@ -40,6 +41,12 @@ const MIN_EDITOR = 320;
 const IcoConsole = ({ size = 17 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4 17l6-6-6-6" /><path d="M12 19h8" />
+  </svg>
+);
+
+const IcoTree = ({ size = 17 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
   </svg>
 );
 
@@ -309,9 +316,15 @@ const editorEl = ide ? (
         <div className="relative flex-1 flex flex-col min-h-0 overflow-hidden bg-[var(--bg-elevated)]">
 
           <div className="shrink-0 flex items-center gap-1 px-1.5 py-1.5 bg-black/30 border-b border-white/10 overflow-x-auto">
-            <MTab active={mobileView === 'statement'} onClick={() => setMobileView('statement')} label={t('statement')}>
+           <MTab active={mobileView === 'statement'} onClick={() => setMobileView('statement')} label={t('statement')}>
               <IcoStatement size={15} />
             </MTab>
+
+            {ide && (
+              <MTab active={false} onClick={() => toggleTree(course)} label={t('files')}>
+                <IcoTree size={15} />
+              </MTab>
+            )}
 
             <MTab active={mobileView === 'code'} onClick={() => setMobileView('code')} label={activeName}>
               <IcoFile size={14} />
@@ -381,9 +394,15 @@ const editorEl = ide ? (
 
           {/* ═══ ВЕРТИКАЛНАТА ЛЕНТА ═══ */}
           <div className="shrink-0 w-12 flex flex-col items-center gap-1 py-3 bg-black/30 border-r border-white/10">
-            <RailBtn on={showLeft} onClick={() => setShowLeft((v) => !v)} title={t('statement')}>
+           <RailBtn on={showLeft} onClick={() => setShowLeft((v) => !v)} title={t('statement')}>
               <IcoStatement />
             </RailBtn>
+
+            {ide && (
+              <RailBtn on={false} onClick={() => toggleTree(course)} title={t('files')}>
+                <IcoTree />
+              </RailBtn>
+            )}
 
             {hasPreview && (
               <RailBtn on={showPrev} onClick={() => setShowPrev((v) => !v)} title={t('preview')}>

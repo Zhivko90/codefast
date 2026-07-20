@@ -1,0 +1,71 @@
+{
+  "title": "The shadow you do not see",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The hard shadow is gone",
+  "checkLabels.t7": "There is a near layer",
+  "checkLabels.t8": "There is a far layer",
+  "checkLabels.t9": "The heading has a shadow",
+  "checkLabels.t10": "The padding is kept",
+  "checkLabels.t11": "The card background is kept",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "One line changes, one is added.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-hero-h1": "There is no heading in the hero block.",
+
+  "why.hard-shadow": "The hard black shadow is still there.",
+  "hint2.hard-shadow": "Solid black with no blur does not read as a shadow. It reads as a second rectangle shifted sideways.",
+
+  "why.no-near-layer": "The near layer of the shadow is missing.",
+  "hint2.no-near-layer": "Four numbers: sideways, down, blur, spread. Then a colour.",
+  "hint3.no-near-layer": "The near layer is small and almost invisible: one pixel down, two pixels of blur, very low opacity.",
+  "hint4.no-near-layer": "0 1px 2px rgb(0 0 0 / 0.06)",
+
+  "why.no-far-layer": "The far layer is missing.",
+  "hint2.no-far-layer": "The second shadow goes after a comma in the same property.",
+  "hint4.no-far-layer": "0 4px 12px rgb(0 0 0 / 0.1)",
+
+  "why.no-text-shadow": "The heading over the photo has no shadow.",
+  "hint2.no-text-shadow": "The property is text-shadow and takes three numbers and a colour — there is no spread.",
+  "hint4.no-text-shadow": "text-shadow: 0 1px 3px rgb(0 0 0 / 0.6);",
+
+  "why.padding-cut": "You deleted the card padding.",
+  "why.card-bg": "The card background has changed.",
+
+  "blocks.0.text": "The card has a shadow: five pixels right, five down, solid black. It looks like it was cut out of 1998. Not because the shadow is wrong, but because no shadow in nature looks like that.",
+
+  "blocks.1.text": "Four numbers and a colour",
+  "blocks.2.text": "A shadow is written as: offset sideways, offset down, blur, spread, colour. The first two are required, the rest are not:",
+  "blocks.3.items.0": "Offset — which way the shadow falls. Light comes from above, so the shadow falls down: zero sideways, a small number down.",
+  "blocks.3.items.1": "Blur — how soft it is. Zero means a hard edge that reads as a second rectangle.",
+  "blocks.3.items.2": "Spread — makes the shadow larger or smaller than the element. Rarely used, except for solid outlines.",
+  "blocks.3.items.3": "Colour — almost always black at low opacity, not solid black.",
+
+  "blocks.4.text": "A real shadow is several shadows",
+  "blocks.5.text": "One layer looks artificial, because a real shadow has two parts: dark and tight near the object, wide and pale further out. In CSS you write several shadows, separated by commas:",
+  "blocks.7.text": "The first is the near one: almost invisible, but it creates the sense that the card rests on the page. The second is the far one: wide and very pale, giving the height. Together they make something the eye accepts without noticing.",
+  "blocks.8.text": "A good shadow is not seen. All that is seen is that something sits ABOVE the page.",
+
+  "blocks.9.text": "A shadow takes no space",
+  "blocks.10.text": "It is painted outside the box and does not affect layout. Neighbours do not move away, the page does not grow, no scrollbar appears. That makes a shadow a safe way to lift an element apart — unlike a border, which adds pixels and upsets the arithmetic from the box section.",
+
+  "blocks.11.text": "And for text",
+  "blocks.12.text": "text-shadow works the same way but takes three numbers — there is no spread. Its main job today is not decoration but legibility: white text over a photo gets a light dark shadow and stays readable even over the bright parts of the image. That is the second line of defence after the darkening layer from the last lesson.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Replace the hard shadow on the card with two soft shadows — a near one and a far one, both black at low opacity. And give the heading over the photo a light shadow so it reads over a bright frame too."
+}

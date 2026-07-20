@@ -1,0 +1,73 @@
+{
+  "title": "Three parts in one place",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "You use for",
+  "checkLabels.t7": "No while left",
+  "checkLabels.t8": "The income is 840",
+  "checkLabels.t9": "The seats are 20",
+  "checkLabels.t10": "The counter does not leak out",
+  "checkLabels.t11": "Three lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The code works. The three parts of each loop are scattered across three different places.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops. Check the third part — does the counter change.",
+
+  "why.changed-data": "You changed the data.",
+
+  "why.no-for": "You are not using for.",
+  "hint2.no-for": "Both loops get rewritten.",
+
+  "why.while-left": "There is a while left.",
+  "hint2.while-left": "Both of them, not just one.",
+
+  "why.wrong-income": "The income is not 840.",
+  "hint2.wrong-income": "Seven days at forty cups at three lev.",
+  "hint3.wrong-income": "If you get 960, the loop runs eight times. Check where the counter starts and where it stops.",
+
+  "why.wrong-seats": "The seats are not 20.",
+  "hint2.wrong-seats": "Five tables at four seats.",
+
+  "why.day-leaked": "The counter still exists after the loop.",
+  "hint2.day-leaked": "Declared inside the brackets of for, it lives only in the loop. Declared outside, it stays forever.",
+  "hint3.day-leaked": "typeof day should give undefined. If it gives number, the counter is declared in the wrong place.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Two loops, both working. The week's income and the seats in the shop.",
+  "blocks.1.text": "Each has a start, a condition and a change — but the three are in three different places. The start above the loop, the condition in the brackets, the change somewhere in the body.",
+
+  "blocks.2.text": "for",
+  "blocks.3.text": "The same loop, but the three parts sit together, in the order they happen.",
+  "blocks.5.items.0": "where it starts — runs once, before anything",
+  "blocks.5.items.1": "how long it continues — checked before every repetition",
+  "blocks.5.items.2": "what changes — runs after every repetition",
+
+  "blocks.6.text": "Why this matters",
+  "blocks.7.text": "With while the third part is inside the body, among the other lines. If the body is twenty lines, it gets lost among them — and it is exactly what causes infinite loops.",
+  "blocks.8.text": "With for it cannot be forgotten. Its place is visible, and empty if it is missing.",
+  "blocks.9.quote": "You see the whole loop on one line and know exactly how many times it will run.",
+
+  "blocks.10.text": "The counter lives inside",
+  "blocks.11.text": "Declared with let inside the brackets, it exists only for the duration of the loop. After the closing brace it is gone.",
+  "blocks.12.text": "That is a good thing. The counter is the loop's internal business and has no reason to outlive it. With while it is declared outside and stays forever — one more name hanging around.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Rewrite both loops with for. The answers stay the same.",
+  "blocks.15.text": "The last line checks whether the counter leaked out. After the rewrite it should give undefined."
+}

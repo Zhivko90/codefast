@@ -45,6 +45,7 @@ const SETTINGS = {
 };
 
 const live = new Map();
+let sweeps = 0;
 
 const keyOf = (student, course) => student + '__' + course;
 const nameOf = (key) => 'cs-' + key.replace(/[^a-zA-Z0-9_-]/g, '');
@@ -78,7 +79,7 @@ async function adopt() {
       live.set(key, {
         key, name, port: Number(m[1]), pro: false,
         dir: join(ROOT, key, 'workspace'),
-        url: 'http://' + HOST + ':' + m[1],
+        url: 'http://' + HOST + ':' + m[1] + '?folder=/home/coder/project',
         beat: now, born: now,
       });
     }
@@ -99,10 +100,9 @@ async function kill(key) {
   live.delete(key);
 }
 
-// Свободни места. Безплатните не пипат запазените за Pro.
+// Безплатните не пипат местата, запазени за Pro.
 function room(pro) {
-  const used = live.size;
-  return pro ? used < MAX_LIVE : used < MAX_LIVE - PRO_RESERVED;
+  return pro ? live.size < MAX_LIVE : live.size < MAX_LIVE - PRO_RESERVED;
 }
 
 // ⚠ Страничната лента НЯМА настройка. Единственият начин е командата
@@ -121,15 +121,26 @@ async function writeExtension(home) {
     contributes: {},
   }, null, 2), 'utf8');
 
-await writeFile(join(ext, 'extension.js'), `
+  await writeFile(join(ext, 'extension.js'), `
 const vscode = require('vscode');
+const fs = require('fs');
+const path = require('path');
+
 function activate() {
   vscode.commands.executeCommand('workbench.action.closeSidebar');
-  // Предупреждението за http се маха само със сертификат. Дотогава
-  // известията се затварят наум, на няколко пъти — идват със закъснение.
-  const shut = () => vscode.commands.executeCommand('notifications.clearAll');
-  shut();
-  for (const ms of [500, 1500, 3000, 6000]) setTimeout(shut, ms);
+
+  // Оркестраторът пипва файла; разширението го вижда и превключва дървото.
+  // По-просто от втори порт или сокет към контейнера.
+  const flag = path.join(process.env.HOME, '.local/share/code-server/cf-toggle');
+  try { fs.writeFileSync(flag, ''); } catch (e) {}
+  let last = 0;
+  setInterval(() => {
+    try {
+      const t = fs.statSync(flag).mtimeMs;
+      if (last && t > last) vscode.commands.executeCommand('workbench.action.toggleSidebarVisibility');
+      last = t;
+    } catch (e) {}
+  }, 400);
 }
 exports.activate = activate;
 exports.deactivate = function () {};
@@ -202,8 +213,8 @@ async function start(student, course, files, pro) {
 
   try { await docker(['rm', '-f', name]); } catch {}
 
-  // Работата на ученика не се презаписва. Стартовите файлове влизат
-  // само в празна папка — иначе изгасналият контейнер би изтрил всичко.
+  // Работата на ученика не се презаписва. Стартовите файлове влизат само
+  // в празна папка — иначе изгасналият контейнер би изтрил всичко.
   if (await isEmpty(dir)) await writeFiles(dir, files ?? {});
 
   await prepare(home);
@@ -212,7 +223,7 @@ async function start(student, course, files, pro) {
   const port = await freePort();
   if (!port) throw new Error('no-free-port');
 
-await docker([
+  await docker([
     'run', '-d',
     '--name', name,
     '-p', port + ':8080',
@@ -227,20 +238,21 @@ await docker([
     '--disable-update-check',
   ]);
 
-  // Папката и файловете се задават през АДРЕСА, не през аргументи.
-  // Аргументите се записват в coder.json и се разминават при повторно отваряне.
+  // Папката се задава през АДРЕСА. Подадена като аргумент, тя се записва
+  // в coder.json слепена и после дава „Workspace does not exist".
+  const query = '?folder=/home/coder/project';
+
+  // ⚠ Режимът на преглед заменя таба вместо да добавя — изключен е в SETTINGS.
   const open = (await readdir(dir).catch(() => []))
     .filter((n) => !n.startsWith('.'))
     .filter((n) => /\.(html|css|js|json|md|txt|svg)$/i.test(n));
 
-const query = '?folder=/home/coder/project';
-
- // ⚠ Режимът на преглед заменя таба вместо да добавя — изключен е в SETTINGS.
   const RANK = { 'index.html': 0, 'style.css': 1, 'script.js': 2 };
   const sorted = [...open].sort((a, b) => (RANK[a] ?? 9) - (RANK[b] ?? 9));
   // Входният файл се отваря пак накрая — само за да е избран, без да мести таба.
   const ordered = sorted.length ? [...sorted, sorted[0]] : [];
-// Сокетът не е готов веднага. Чака се да се появи, вместо да се гадае време.
+
+  // Сокетът не е готов веднага. Чака се да се появи, вместо да се гадае време.
   (async () => {
     const sock = '/home/coder/.local/share/code-server/code-server-ipc.sock';
     let ready = false;
@@ -273,8 +285,7 @@ const query = '?folder=/home/coder/project';
   return session;
 }
 
-let sweeps = 0;
-
+// Пулсът мери присъствие, born мери таван на живота.
 setInterval(async () => {
   sweeps++;
   const now = Date.now();
@@ -319,6 +330,17 @@ createServer(async (req, res) => {
         if (e.full) return send(res, 503, { error: 'full', used: live.size, max: MAX_LIVE });
         throw e;
       }
+    }
+
+    if (req.method === 'POST' && req.url === '/toggle-tree') {
+      const { student, course } = await body(req);
+      const s = live.get(keyOf(String(student), String(course)));
+      if (!s) return send(res, 404, { error: 'no-session' });
+      s.beat = Date.now();
+      try {
+        await docker(['exec', s.name, 'touch', '/home/coder/.local/share/code-server/cf-toggle']);
+      } catch {}
+      return send(res, 200, { ok: true });
     }
 
     if (req.method === 'POST' && req.url === '/beat') {

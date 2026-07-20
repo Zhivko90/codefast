@@ -1,0 +1,69 @@
+{
+  "title": "The grey that cannot be read",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The pale grey is gone",
+  "checkLabels.t7": "The body text is readable",
+  "checkLabels.t8": "So is the note",
+  "checkLabels.t9": "The button background is dark enough",
+  "checkLabels.t10": "The button text is white",
+  "checkLabels.t11": "The page background is white",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Three colours change. The shapes stay.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-body": "There is no body.",
+  "why.no-muted": "There is no element with the muted class.",
+  "why.no-btn": "There is no element with the btn class.",
+
+  "why.body-grey": "The body text is still pale grey.",
+  "hint2.body-grey": "That grey on white gives about three to one. The requirement for normal text is four and a half.",
+
+  "why.body-contrast": "The body text does not have enough contrast.",
+  "hint2.body-contrast": "The darker the grey, the higher the contrast against white.",
+  "hint4.body-contrast": "color: #444444;",
+
+  "why.muted-contrast": "The note does not have enough contrast.",
+  "hint2.muted-contrast": "It should read as quieter than the body text and still be readable.",
+  "hint3.muted-contrast": "There is a line below which grey on white fails the requirement. Around 59 percent grey is the last one that passes with room to spare.",
+  "hint4.muted-contrast": "color: #595959;",
+
+  "why.btn-contrast": "The button background is too light for white text.",
+  "hint2.btn-contrast": "White on light brown is about two to one. It looks fine on your screen and vanishes in sunlight.",
+  "hint4.btn-contrast": "background-color: var(--brand-dark);",
+
+  "why.btn-text": "The button text is no longer white.",
+  "why.bg-changed": "The page background has changed. It stays white.",
+
+  "blocks.0.text": "This page looks clean and modern. Light grey text, a light button, everything quiet and airy. Open it on a phone outdoors in the sun and nothing can be read. Or open it with sixty-year-old eyes.",
+
+  "blocks.1.text": "Contrast is a number",
+  "blocks.2.text": "The difference between two colours is measured as a ratio — from one to one, meaning identical, to twenty-one to one, meaning black on white. The standard sets thresholds:",
+  "blocks.3.items.0": "Normal text: at least 4.5 to 1.",
+  "blocks.3.items.1": "Large text — from 24 pixels, or from 19 pixels when bold: at least 3 to 1. Large letters read at lower contrast.",
+  "blocks.3.items.2": "Interface parts and meaningful graphics — a field border, an icon, a chart line: at least 3 to 1.",
+  "blocks.4.text": "You do not work the number out in your head. There are free checkers — the WebAIM Contrast Checker is the best known, and browser developer tools show the ratio in the colour picker. Here the platform runs axe on every check and catches some of this by itself.",
+  "blocks.5.text": "You see the colour on a good screen in a room with blinds. The reader sees it on an old phone, at a bus stop, at midday.",
+
+  "blocks.6.text": "The most common failure on the web",
+  "blocks.7.text": "WebAIM checks the home pages of one million sites every year. Low-contrast text is found on about eighty percent of them — the most common accessibility failure by a wide margin. Not because people are indifferent, but because pale grey looks more refined in the mockup and nobody checks it afterwards.",
+
+  "blocks.8.text": "What counts and what does not",
+  "blocks.9.text": "Not everything has to meet the threshold. Logos, purely decorative text and disabled controls are exempt. Everything else — including text in a button, a label in an input and text over a photo — counts.",
+  "blocks.10.text": "And three common traps. First: placeholder text in a field counts too, even though it is grey by default. Second: over a gradient or a photo the contrast differs from place to place — measure the worst point. Third: a dark theme is not the light one reversed — a grey that passes on white often fails on dark grey and has to be checked separately.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Make the three colours readable: the body text, the note and the button. The note should stay quieter than the text while passing the threshold. The button keeps its white letters — what changes is the background under them."
+}

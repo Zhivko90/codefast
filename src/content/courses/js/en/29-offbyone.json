@@ -1,0 +1,73 @@
+{
+  "title": "Off by one",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "There are three loops",
+  "checkLabels.t7": "The answer is not typed in",
+  "checkLabels.t8": "The letters are 4",
+  "checkLabels.t9": "The first letter is B",
+  "checkLabels.t10": "The stamps are 10",
+  "checkLabels.t11": "Three lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was. All three loops are off by one.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the data.",
+
+  "why.wrong-shape": "There are not three loops.",
+
+  "why.typed-answer": "You typed the answer in.",
+  "hint2.typed-answer": "The letter count is worked out from the name. Tomorrow the name will be different.",
+
+  "why.wrong-letters": "The letters are not 4.",
+  "hint2.wrong-letters": "Bean is four letters. If you get five, the loop runs one time too many.",
+  "hint3.wrong-letters": "The length is 4, but the indexes are 0, 1, 2 and 3. There is no index 4.",
+  "hint4.wrong-letters": "Start at zero and run while you are BELOW the length, not up to it.",
+
+  "why.wrong-first": "The first letter is not B.",
+  "hint2.wrong-first": "The first letter is at position zero, not position one.",
+
+  "why.wrong-stamps": "The stamps are not 10.",
+  "hint2.wrong-stamps": "From zero to ten inclusive is eleven numbers, not ten.",
+  "hint3.wrong-stamps": "Either start at zero and run below ten, or start at one and run up to ten. Mix the two and you count one too many.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three loops. The number of letters in the name, the first letter, and ten stamps for the loyalty card.",
+  "blocks.1.text": "All three are off by exactly one. Nothing breaks.",
+
+  "blocks.2.text": "The most common mistake in programming",
+  "blocks.3.text": "It has a name. Off-by-one. It happens so often that the name is standard everywhere.",
+  "blocks.4.text": "The reason is simple: people count from one, computers count from zero. The two systems meet in every loop.",
+  "blocks.5.quote": "Bean has four letters, but the last one is at position three.",
+
+  "blocks.6.text": "The standard form",
+  "blocks.7.text": "There is one form used all over the world, and it reads without thinking.",
+  "blocks.9.text": "From zero, while you are BELOW the length. Not up to it, not less than or equal. Exactly this.",
+  "blocks.10.items.0": "starts at 0, because the first element is there",
+  "blocks.10.items.1": "stops BELOW the length, because the last index is one less",
+  "blocks.10.items.2": "runs exactly as many times as the length",
+
+  "blocks.11.text": "The two systems do not mix",
+  "blocks.12.text": "Either count from zero and run below the limit. Or count from one and run up to the limit inclusive.",
+  "blocks.13.text": "Mix them — from zero up to the limit inclusive — and you count one too many. That is exactly what the third loop does, and the stamps become eleven.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Fix the three loops. Use the standard form everywhere.",
+  "blocks.16.text": "Change the name to something longer and check that the letter count still comes out right."
+}

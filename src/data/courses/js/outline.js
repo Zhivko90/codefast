@@ -23,7 +23,7 @@ export default {
     {
       id: 'repeating',
       modules: [
-        { id: 'loops', lessons: ['26-while', '27-infinite'] },
+       { id: 'loops', lessons: ['26-while', '27-infinite', '28-for', '29-offbyone'] },
       ],
     },
   ],
