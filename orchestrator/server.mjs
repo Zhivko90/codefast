@@ -343,13 +343,13 @@ createServer(async (req, res) => {
  // ⚠ Пише се ДИРЕКТНО на диска, не през docker exec. Той вдига процес
       // в контейнера и бави отговора с няколко секунди.
       s.tick = (s.tick ?? 0) + 1;
+      const flagPath = join(ROOT, s.key, '.local', 'share', 'code-server', 'cf-toggle');
       try {
-        await writeFile(
-          join(ROOT, s.key, '.local', 'share', 'code-server', 'cf-toggle'),
-          String(s.tick),
-          'utf8'
-        );
-      } catch {}
+        await writeFile(flagPath, String(s.tick), 'utf8');
+        console.log('toggle ok', flagPath, s.tick);
+      } catch (e) {
+        console.error('toggle FAIL', flagPath, String(e));
+      }
       return send(res, 200, { ok: true });
     }
 
