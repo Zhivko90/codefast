@@ -1,0 +1,68 @@
+{
+  "title": "The answer comes out",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "Every function returns",
+  "checkLabels.t6": "Four small gives 12",
+  "checkLabels.t7": "Two large gives 10",
+  "checkLabels.t8": "With tip gives 33",
+  "checkLabels.t9": "The price is a number",
+  "checkLabels.t10": "Three lines come out",
+  "checkLabels.t11": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The console shows five lines, but three of them are undefined. The numbers are coming from somewhere else.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-return": "Some function returns nothing.",
+  "hint2.no-return": "All three functions have to return. The first one already does.",
+
+  "why.no-total": "The total is not returned.",
+  "hint2.no-total": "The function prints the number instead of returning it. On screen it looks the same, but the result goes nowhere.",
+  "hint3.no-total": "console.log shows. return sends the value back. The two have nothing in common.",
+  "hint4.no-total": "Replace the printing with returning. The printing happens outside, where the function is called.",
+
+  "why.no-tip": "The total with tip is not returned.",
+  "hint2.no-tip": "The line calculates, but the result is thrown away immediately. Nobody asked for it back.",
+  "hint3.no-tip": "total + tip on its own is an expression with no address. It is worked out and forgotten.",
+
+  "why.price-broken": "The price is no longer a number.",
+  "hint2.price-broken": "The first function was correct. If you changed it, put it back.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "hint2.wrong-count": "The printing happens only at the end, three times. The functions do not print.",
+
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three functions. The first returns a price by size. The second works out a total. The third adds a tip.",
+  "blocks.1.text": "The console shows the numbers — 12, 10 — and then undefined three times. The numbers come from somewhere, but not from where they should.",
+
+  "blocks.2.text": "It prints, but does not return",
+  "blocks.3.text": "The second function calculates correctly and displays the result. That is exactly why it looks like it works.",
+  "blocks.4.text": "But nothing comes out of it. Try to store the answer in a name and you get undefined. A function with no return always returns undefined.",
+  "blocks.5.quote": "console.log shows you. return gives to the code. One is for your eyes, the other is for work.",
+
+  "blocks.6.text": "It calculates and throws away",
+  "blocks.7.text": "The third function is nastier still. It calculates and does not even print — the line just sits there.",
+  "blocks.9.text": "shout works out the capitals and forgets them immediately. result becomes undefined. Nothing breaks, nothing warns.",
+
+  "blocks.10.text": "Why this matters",
+  "blocks.11.text": "A function that prints does exactly one thing, and that thing is displaying. It cannot be used in a sum, cannot be passed to another function, cannot be stored.",
+  "blocks.12.text": "A function that returns can do all of those. Displaying is one option — and it is decided outside, by whoever calls it.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix the second and third functions so they return instead of printing or throwing away.",
+  "blocks.15.text": "The printing stays only in the three lines at the end. The functions print nothing."
+}

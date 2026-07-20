@@ -187,8 +187,10 @@ const log = (m) => { try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date(
     } catch (e) {}
   };
 
+ // ⚠ Следи се ПАПКАТА, не файлът. writeFile пресъздава файла с нов inode
+  // и наблюдение върху самия файл умира след първия запис.
   try {
-    fs.watch(flag, read);
+    fs.watch(dir, function (ev, name) { if (name === 'cf-toggle') read(); });
   } catch (e) {
     setInterval(read, 250);
   }

@@ -39,7 +39,13 @@ export default function IdePane({ course, files, onReady }) {
     return () => clearInterval(id);
   }, [state, course]);
 
-if (state === 'loading') return <Spinner />;
+if (state === 'loading') {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-[#1e1e1e]">
+        <Spinner staged />
+      </div>
+    );
+  }
 
   if (state === 'signin') {
     return (
@@ -116,24 +122,47 @@ function IdeFrame({ url, course }) {
         style={{ opacity: shown ? 1 : 0, transition: 'opacity .25s' }}
       />
       {!shown && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#1e1e1e]">
-          <Spinner />
+      <div className="absolute inset-0 flex items-center justify-center bg-[#1e1e1e]">
+          <Spinner staged />
         </div>
       )}
     </div>
   );
 }
 
-function Spinner() {
+// Надписите са на английски и в сегашно време, като при Codespaces.
+// Сменят се по време, не по истински етап — ученикът вижда напредък,
+// вместо да гледа един и същ ред десет секунди.
+const STAGES = [
+  'Starting your workspace',
+  'Preparing the editor',
+  'Loading your files',
+  'Almost ready',
+];
+
+function Spinner({ staged = false }) {
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    if (!staged) return;
+    const id = setInterval(() => setStep((s) => Math.min(s + 1, STAGES.length - 1)), 2600);
+    return () => clearInterval(id);
+  }, [staged]);
+
   return (
-    <div className="flex items-center justify-center gap-1.5">
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className="w-2 h-2 rounded-full bg-sky-400/70"
-          style={{ animation: `cf-pulse 1.1s ${i * 0.16}s infinite ease-in-out` }}
-        />
-      ))}
+    <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex items-center gap-1.5">
+        {[0, 1, 2].map((i) => (
+          <span
+            key={i}
+            className="w-2 h-2 rounded-full bg-sky-400/70"
+            style={{ animation: `cf-pulse 1.1s ${i * 0.16}s infinite ease-in-out` }}
+          />
+        ))}
+      </div>
+      {staged && (
+        <p className="text-[12.5px] text-gray-500 tracking-wide">{STAGES[step]}…</p>
+      )}
       <style>{`
         @keyframes cf-pulse {
           0%, 80%, 100% { opacity: .2; transform: scale(.7); }

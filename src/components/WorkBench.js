@@ -105,6 +105,7 @@ files = [], activeFile, onFile, getFile, setFile,
   const touched = useRef({ l: false, p: false });
   const [dragging, setDragging] = useState(false);
   const [treeOpen, setTreeOpen] = useState(false);
+  const [treeBusy, setTreeBusy] = useState(false);
 
   // ⚠ Слуша ВИНАГИ, но панелът се показва само при hasConsole.
   // Куката се чисти при всяка промяна на preview — иначе човек гледа
@@ -401,8 +402,15 @@ const editorEl = ide ? (
             </RailBtn>
 
             {ide && (
-          <RailBtn on={treeOpen}
-                onClick={async () => { setShowLeft(false); const r = await toggleTree(course); if (r?.ok) setTreeOpen(!!r.tree); }}
+         <RailBtn on={treeOpen}
+                onClick={async () => {
+                  if (treeBusy) return;
+                  setTreeBusy(true);
+                  setShowLeft(false);
+                  const r = await toggleTree(course);
+                  if (r?.ok) setTreeOpen(!!r.tree);
+                  setTreeBusy(false);
+                }}
                 title={t('files')}>
                 <IcoTree />
               </RailBtn>

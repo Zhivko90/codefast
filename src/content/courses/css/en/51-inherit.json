@@ -1,0 +1,71 @@
+{
+  "title": "What travels down",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The field uses the page font",
+  "checkLabels.t7": "So does the button",
+  "checkLabels.t8": "The field text is normal size",
+  "checkLabels.t9": "The link in the dark block is white",
+  "checkLabels.t10": "The block text is white",
+  "checkLabels.t11": "The body colour is kept",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "One new rule and two lines in an existing one.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-input": "There is no input field.",
+  "why.no-button": "There is no button.",
+  "why.no-hero": "There is no element with the hero class.",
+  "why.no-hero-link": "There is no link in the dark block.",
+  "why.no-body": "There is no body.",
+
+  "why.input-font": "The field still uses a foreign font.",
+  "hint2.input-font": "Fields and buttons do NOT inherit the font. They have their own, set by the browser.",
+  "hint3.input-font": "There is a keyword that says: take the value from the parent, whatever it is.",
+  "hint4.input-font": "font-family: inherit;",
+
+  "why.button-font": "The button still uses a foreign font.",
+  "why.input-size": "The text size in the field does not match the page.",
+  "hint2.input-size": "Font and size are two separate properties. Both need the same treatment.",
+
+  "why.link-blue": "The link in the dark block is still blue.",
+  "hint2.link-blue": "The browser stylesheet gives it a colour of its own, which beats inheritance — it does not inherit because it already has a set colour.",
+  "hint3.link-blue": "Blue on dark brown is below any contrast threshold. Here the right colour is the one of the text around it.",
+  "hint4.link-blue": "color: inherit; in a rule for links in the block.",
+
+  "why.hero-text": "The text in the dark block is no longer white.",
+  "why.body-color": "The body text colour has changed.",
+
+  "blocks.0.text": "Two things on this page behave oddly. The field and the button use a different font, even though body is set to Georgia. And the link in the dark block is blue on dark brown and barely visible.",
+
+  "blocks.1.text": "Half the properties travel down",
+  "blocks.2.text": "Set a colour on body and it reaches every paragraph inside. Set a border and it stays on body alone. That is not arbitrary — the split follows common sense:",
+  "blocks.3.items.0": "Text things travel down: colour, font, size, line height, alignment, visibility, cursor.",
+  "blocks.3.items.1": "Box things do not: padding, margin, border, background, width, display.",
+  "blocks.3.items.2": "Otherwise every parent border would repeat around every paragraph inside it.",
+
+  "blocks.4.text": "The two exceptions that bite",
+  "blocks.5.text": "The first is fields and buttons. They do NOT inherit the font — the browser stylesheet gives them their own, usually the system one. That is why a form in the middle of a page with careful typography looks pasted in from outside. One word fixes it:",
+  "blocks.7.text": "The second is links. They do not inherit colour, because the browser has set one for them. Over a dark background that means blue on brown — unreadable. The same word solves this case too.",
+  "blocks.8.text": "inherit does not mean be inherited. It means take whatever the parent has, whatever that is.",
+
+  "blocks.9.text": "Three more words",
+  "blocks.10.text": "Besides inherit there are a few more keywords that work on every property:",
+  "blocks.11.items.0": "initial — the initial value from the specification, whatever is around it. Careful: for display that is inline, not block.",
+  "blocks.11.items.1": "unset — the smart mix: behaves like inherit for inherited properties and like initial for the rest.",
+  "blocks.11.items.2": "revert — restores the value the browser would have given. Usually more useful than initial, because it gives back the sensible value rather than the bare one.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Make the field and the button use the page font and size. And make the link in the dark block take the colour of the text around it."
+}

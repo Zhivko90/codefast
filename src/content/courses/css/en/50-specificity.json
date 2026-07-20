@@ -1,0 +1,70 @@
+{
+  "title": "Who wins",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No important",
+  "checkLabels.t7": "The id rule is gone",
+  "checkLabels.t8": "The offer is red",
+  "checkLabels.t9": "The other links are brown",
+  "checkLabels.t10": "The underline is kept",
+  "checkLabels.t11": "The offer is bold",
+  "checkLabels.t12": "The heading is brown",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The offer is still not red.",
+  "hint2.untouched": "One selector gets rewritten. Nothing is added.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-sale": "There is no element with the sale class.",
+  "why.no-nav-links": "There are no links in the navigation.",
+  "why.no-h1": "There is no heading.",
+
+  "why.used-important": "You used important.",
+  "hint2.used-important": "It does solve this case — and creates the next one. It gets a lesson of its own, two steps from here.",
+  "hint3.used-important": "Here you are asked to lower the strength of the rule in the way, not to shout over it.",
+
+  "why.id-left": "The rule is still keyed to an id.",
+  "hint2.id-left": "One id weighs more than any number of classes. Even ten classes do not catch it.",
+  "hint3.id-left": "The navigation carries both a class and an id. Nothing stops the rule from using the class.",
+
+  "why.sale-not-red": "The offer is not red.",
+  "hint2.sale-not-red": "Its rule exists and is valid. So the other one is stronger.",
+  "hint3.sale-not-red": "Three things are counted: ids, classes, tags. One rule is one id and one tag. The other is one class. The first wins on the id.",
+  "hint4.sale-not-red": "Wrap the navigation class in :where. That zeroes its weight and leaves only the tag.",
+
+  "why.nav-lost": "The other links are no longer brown.",
+  "hint2.nav-lost": "The rule must still MATCH the same elements. Only its weight changes, not its reach.",
+
+  "why.underline-lost": "The underline on the links is gone.",
+  "why.sale-weight": "The offer is no longer bold.",
+  "why.h1-broken": "The heading is no longer brown.",
+
+  "blocks.0.text": "The third link is an offer and should be red. Its rule is written, it is valid, and it sits BELOW the other one in the file. It is still brown.",
+
+  "blocks.1.text": "Three numbers",
+  "blocks.2.items.0": "How many ids the selector has.",
+  "blocks.2.items.1": "How many classes, attributes and pseudo-classes it has.",
+  "blocks.2.items.2": "How many tags and pseudo-elements it has.",
+  "blocks.3.text": "They are compared left to right, and the more important position decides on its own. One id beats any number of classes — they do not add up and they do not trade. Here one rule is one id and one tag, the other is one class. The first wins at the first position and the order in the file does not matter at all.",
+  "blocks.4.text": "Order decides only between equals. When they are not equal, order is never asked.",
+
+  "blocks.5.text": "What does not count",
+  "blocks.6.text": "The asterisk weighs nothing. The characters between selectors — a space, a greater-than, a tilde — weigh nothing either: they change what is matched, not how strongly. The pseudo-classes :is and :not weigh nothing by themselves but take the weight of the strongest selector inside them. So :not(.sale) weighs as much as one class.",
+
+  "blocks.7.text": "The zero",
+  "blocks.8.text": "There is one pseudo-class whose weight is always zero, whatever sits inside it:",
+  "blocks.10.text": "It matches exactly the same elements but carries no weight — only the weight of the tag outside it remains. That is why it is used for base styles that must stay easy to override: in libraries, in themes, in the shared foundation of a project. Here it does exactly that: it lowers the strength of the navigation rule so the offer class can beat it fairly.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Make the offer red without using important and without touching the HTML. The other links stay brown and underlined. You are asked to lower the strength of the rule in the way, not to shout over it."
+}

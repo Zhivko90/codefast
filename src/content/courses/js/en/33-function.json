@@ -1,0 +1,68 @@
+{
+  "title": "Input and output",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "There is a function",
+  "checkLabels.t6": "The rounding is written once",
+  "checkLabels.t7": "The tax too",
+  "checkLabels.t8": "12 gives 14",
+  "checkLabels.t9": "30 gives 36",
+  "checkLabels.t10": "It works with any number",
+  "checkLabels.t11": "Three lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The same two lines, written three times with a different number.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "ReferenceError: withVat is not defined means the function either does not exist or is called something else. The name has to be exactly withVat.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-function": "There is no function.",
+  "hint2.no-function": "The sum is written once and given a name. Then it is called with different numbers.",
+
+  "why.still-repeating": "The sum is still repeated.",
+  "hint2.still-repeating": "Both lines go inside the function, and only once.",
+
+  "why.wrong-function": "The function does not give the right answer.",
+  "hint2.wrong-function": "Twelve with twenty percent tax is 14.4, rounded 14.",
+  "hint3.wrong-function": "If you get undefined, the function calculates but does not return. The result has to come back out.",
+  "hint4.wrong-function": "return sends the value back to whoever called the function.",
+
+  "why.wrong-general": "The function does not work with an arbitrary number.",
+  "hint2.wrong-general": "The number should not be written inside. It comes from outside, through the brackets.",
+  "hint3.wrong-general": "The name in the function's brackets is a blank space. It is filled with whatever you pass when calling it.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three totals with tax. The same two lines, written three times with a different number.",
+  "blocks.1.text": "Now imagine the tax becomes nineteen percent. Or that there are a hundred totals. Or that somebody asks for rounding down instead.",
+
+  "blocks.2.text": "The function",
+  "blocks.3.text": "You write the sum once, give it a name, and then call it as many times as you like with different numbers.",
+  "blocks.5.text": "price in the brackets is a blank space. It is filled with the number you pass when you call it.",
+
+  "blocks.6.text": "Not a piece of code",
+  "blocks.7.text": "You will meet the explanation that a function is a piece of code you saved for later. That is true, and useless.",
+  "blocks.8.text": "A function is something that takes an input and returns an output. Give it 12, get 14. Give it 30, get 36. What it does inside is its own business.",
+  "blocks.9.quote": "Think of it as a machine with a funnel on top and a spout underneath.",
+
+  "blocks.10.text": "Calling it",
+  "blocks.11.text": "Writing a function does not run it. It sits and waits. It runs only when you call it — with its name and brackets.",
+  "blocks.13.text": "The brackets mean do it now. Without them you get the function itself, unperformed — the same mistake as with string methods in lesson thirteen.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Make a function called withVat that takes a price and returns the price with tax, rounded. Exactly that name — the checks look for it.",
+  "blocks.16.text": "Then call it three times with the numbers 12, 30 and 7. The two lines with the sum should exist in only one place in the whole file."
+}
