@@ -144,6 +144,10 @@ function activate() {
 
 // ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
   // Затова рамката НЕ се показва по таймер, а чака сигнал оттук.
+// ⚠ Сигналът се трие ПРИ ВСЯКО активиране. Остане ли от предишното
+  // зареждане, рамката се показва, преди лентите да са скрити.
+  try { fs.unlinkSync(path.join(dir, 'cf-ready')); } catch (e) {}
+
   Promise.all([
     vscode.commands.executeCommand('workbench.action.closeSidebar'),
     vscode.commands.executeCommand('workbench.action.closeAuxiliaryBar'),
@@ -249,10 +253,11 @@ async function start(student, course, files, pro) {
   const home = join(ROOT, key);
   const dir = join(home, 'workspace');
 
-  const existing = live.get(key);
+ const existing = live.get(key);
   if (existing && await alive(name)) {
     existing.beat = Date.now();
     existing.pro = pro;
+    // Контейнерът върви — средата е вече подредена, сигналът важи.
     return existing;
   }
   // Сесията сочи към мъртъв контейнер — забравя се и се вдига наново.
