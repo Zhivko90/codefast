@@ -148,8 +148,9 @@ vscode.commands.executeCommand('workbench.action.closeSidebar');
 
   // ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
   // Празно извикване го подгрява, докато ученикът чете условието.
-  vscode.commands.executeCommand('workbench.view.explorer')
-    .then(function () { return vscode.commands.executeCommand('workbench.action.closeSidebar'); });
+ // ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
+  // Подгрява се с команда, която НЕ пипа изгледа.
+  vscode.commands.getCommands(true);
 
   let open = false;
   const write = () => { try { fs.writeFileSync(state, open ? '1' : '0'); } catch (e) {} };
