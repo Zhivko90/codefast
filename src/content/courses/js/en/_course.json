@@ -31,6 +31,14 @@
       "modules": {
         "loops": { "title": "Loops" }
       }
+    },
+    "functions": {
+      "title": "Functions",
+      "desc": "The most important section in the course. A function is not a piece of code — it takes an input and returns an output. Do not rush through it.",
+      "modules": {
+        "basics": { "title": "Input and output" },
+        "scope": { "title": "Scope and forms" }
+      }
     }
   }
 }

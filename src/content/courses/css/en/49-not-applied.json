@@ -1,0 +1,67 @@
+{
+  "title": "Why the style is not applied",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The misspelled name is gone",
+  "checkLabels.t7": "The lead sentence is brown",
+  "checkLabels.t8": "The card has a border",
+  "checkLabels.t9": "The card text is larger",
+  "checkLabels.t10": "The card has padding",
+  "checkLabels.t11": "The heading is brown",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Three fixes, three different reasons.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. It is correct.",
+  "why.no-lead": "There is no element with the lead class.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-card-p": "There is no paragraph inside the card.",
+  "why.no-h1": "There is no heading.",
+
+  "why.typo-left": "The misspelled class name is still there.",
+  "hint2.typo-left": "The rule is written correctly and matches nothing. Compare its name with the one in the HTML.",
+
+  "why.lead-overridden": "The lead sentence is not brown.",
+  "hint2.lead-overridden": "Its rule exists and its value is valid. So something is taking it away.",
+  "hint3.lead-overridden": "Look for a SECOND rule for the same class. At equal strength the last one written wins — and the bottom one is the bottom one, even when you forgot it was there.",
+  "hint4.lead-overridden": "Delete the second .lead rule at the bottom.",
+
+  "why.card-plain": "The card has no border and no padding.",
+  "hint2.card-plain": "Its rule exists but matches no element at all.",
+
+  "why.size-wrong": "The card text is not larger than the rest.",
+  "hint2.size-wrong": "Check the unit. The course insisted that text sizes be written in rem.",
+  "hint4.size-wrong": "font-size: 1.125rem;",
+
+  "why.no-padding": "The card has no padding.",
+  "why.h1-broken": "The heading is no longer brown.",
+
+  "blocks.0.text": "Three things on this page do not look right. All three rules are in the file, all written without error, and the console is silent. But for three different reasons.",
+
+  "blocks.1.text": "Three reasons, not one",
+  "blocks.2.items.0": "The rule matches nothing. The selector is valid as syntax, but no such element exists — a misspelling, a missing dot, an extra space.",
+  "blocks.2.items.1": "The value is invalid. The browser steps over the line and keeps the previous value — a missing percent sign, the wrong unit, a variable name that does not exist.",
+  "blocks.2.items.2": "The rule works, but another one beats it. Both apply, one wins, and what you see on screen is the other value.",
+
+  "blocks.3.text": "How to tell them apart",
+  "blocks.4.text": "You already know the first two from the broken-code lessons. The third is the new one and the most confusing, because your rule is NOT wrong — it simply is not the last word. You recognise it like this: if the element has some definite value, just not yours, then someone else is speaking louder or later.",
+  "blocks.5.text": "For now one rule is enough: at equal strength the last one written wins. That is exactly why a second rule for the same class, forgotten at the end of the file, cancels the first without leaving a trace. Who wins at DIFFERENT strengths is the next lesson and a longer story.",
+  "blocks.6.text": "A style that is not applied is one of three cases. Ask which one before you touch anything.",
+
+  "blocks.7.text": "The order of the questions",
+  "blocks.8.text": "First: does such an element exist at all — open the HTML and look for the name letter by letter. Second: is the value valid — does it have a unit, does the variable exist. Third: is there a rule further down for the same thing. Those three questions cover almost everything you will meet, and they go in that order because the first two take seconds to check.",
+
+  "blocks.9.text": "The task",
+  "blocks.10.text": "Fix the three things: the lead sentence should be brown, the card should have a border and padding, and its text should be larger than the rest. Each of the three is a different reason."
+}

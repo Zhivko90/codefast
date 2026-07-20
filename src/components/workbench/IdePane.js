@@ -83,25 +83,24 @@ if (state === 'loading') return <Spinner />;
   return <IdeFrame url={url} />;
 }
 
-// Рамката се показва след кратко забавяне. Разширението, което скрива
-// страничната лента, се зарежда след първото рисуване — иначе тя мига.
+// ⚠ Брои се от ЗАРЕЖДАНЕТО на рамката, не от получаването на адреса.
+// Между двете минават секунди, през които code-server още се вдига —
+// таймер от адреса изтича твърде рано и страничната лента мига.
 function IdeFrame({ url }) {
   const [shown, setShown] = useState(false);
 
-  useEffect(() => {
-    const id = setTimeout(() => setShown(true), 2500);
-    return () => clearTimeout(id);
-  }, [url]);
+  useEffect(() => { setShown(false); }, [url]);
 
   return (
     <div className="relative w-full h-full bg-[#1e1e1e]">
       <iframe
         title="ide"
         src={url}
+        onLoad={() => setTimeout(() => setShown(true), 2200)}
         className="w-full h-full border-0"
-        style={{ opacity: shown ? 1 : 0, transition: 'opacity .2s' }}
+        style={{ opacity: shown ? 1 : 0, transition: 'opacity .25s' }}
       />
-    {!shown && (
+      {!shown && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#1e1e1e]">
           <Spinner />
         </div>

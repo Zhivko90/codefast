@@ -1,0 +1,74 @@
+{
+  "title": "Four loops, four bugs",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The orders are untouched",
+  "checkLabels.t6": "The beans are untouched",
+  "checkLabels.t7": "You use break",
+  "checkLabels.t8": "The letters are 5",
+  "checkLabels.t9": "8 were checked",
+  "checkLabels.t10": "The income is 32",
+  "checkLabels.t11": "The scoops are 14",
+  "checkLabels.t12": "Four lines come out",
+  "checkLabels.t13": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was. The last loop is infinite — submit and see.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+
+  "why.frozen": "Your code never stops. It looped forever and was cut off.",
+  "hint2.frozen": "Two hundred grams in scoops of fifteen. Check whether the number lands exactly on zero.",
+  "hint3.frozen": "200 minus 15 repeatedly gets to 5, then minus 10, then minus 25. The condition for exactly zero never comes true.",
+
+  "why.changed-data": "You changed the data.",
+
+  "why.no-break": "You are not using break.",
+  "hint2.no-break": "The coffee runs out at the eighth customer. There is no point walking the remaining twenty-two.",
+
+  "why.wrong-letters": "The letters are not 5.",
+  "hint2.wrong-letters": "Latte is five letters. If you get six, the loop runs one time too many.",
+  "hint3.wrong-letters": "From zero, while you are BELOW the length.",
+
+  "why.wrong-checked": "The checked count is not 8.",
+  "hint2.wrong-checked": "The stock is eight cups, and the loop walks thirty orders.",
+
+  "why.wrong-income": "The income is not 32.",
+  "hint2.wrong-income": "Eight cups at four lev.",
+  "hint3.wrong-income": "The equals sign replaces. Every turn wipes the previous one, and what survives is the price of one cup.",
+
+  "why.wrong-scoops": "The scoops are not 14.",
+  "hint2.wrong-scoops": "Two hundred grams in scoops of fifteen. Fourteen scoops, the last one incomplete.",
+  "hint3.wrong-scoops": "Make the exit condition a range, not a point. Ask whether anything is left, not whether it ran out exactly.",
+
+  "why.wrong-count": "There are not four lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "An end-of-day report. Four loops, each from a different lesson in this section.",
+  "blocks.1.text": "One of them is infinite. Submit the code as it is and see what happens — submitting is protected and will tell you it froze.",
+
+  "blocks.2.text": "What it is supposed to do",
+  "blocks.3.text": "Product Latte, thirty orders, eight cups in stock, price four lev, two hundred grams of beans in scoops of fifteen.",
+  "blocks.4.items.0": "the letters in the name are 5",
+  "blocks.4.items.1": "only 8 customers are checked, because the coffee runs out",
+  "blocks.4.items.2": "the income is 32 — eight cups at four",
+  "blocks.4.items.3": "the scoops are 14",
+
+  "blocks.5.text": "First make it finish",
+  "blocks.6.text": "The infinite loop is the first bug to fix, wherever it sits. While it spins, nothing below it runs and you cannot check the rest.",
+  "blocks.7.text": "Then come the quiet ones. The numbers appear, they look plausible, and they are wrong.",
+  "blocks.8.quote": "Code that never finishes is easier to find than code that finishes with the wrong answer.",
+
+  "blocks.9.text": "The task",
+  "blocks.10.text": "Fix the four loops. Do not touch the data.",
+  "blocks.11.text": "Each bug comes from a lesson in this section. If you cannot place one, the hint ladder is under every failed check."
+}

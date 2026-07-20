@@ -18,7 +18,13 @@ export default {
       id: 'text',
       modules: [
         { id: 'typography', lessons: ['33-font-family', '34-webfonts', '35-font-size', '36-line-height', '37-font-weight', '38-text-align', '39-text-decoration', 'R5-review-typography', '40-quiz-typography'] },
-        { id: 'colors', lessons: ['41-color-units', '42-variables', '43-background', '44-gradient', '45-shadow', '46-contrast', '47-broken-color', 'R6-review-colors'] },
+        { id: 'colors', lessons: ['41-color-units', '42-variables', '43-background', '44-gradient', '45-shadow', '46-contrast', '47-broken-color', 'R6-review-colors', '48-freehand-text'] },
+      ],
+    },
+    {
+      id: 'cascade',
+      modules: [
+        { id: 'cascade', lessons: ['49-not-applied'] },
       ],
     },
   ],

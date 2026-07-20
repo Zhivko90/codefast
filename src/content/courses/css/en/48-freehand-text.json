@@ -1,0 +1,80 @@
+{
+  "title": "Type and colour, from an empty file",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "The file is no longer empty",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The colours live in variables",
+  "checkLabels.t7": "The font list has a generic name",
+  "checkLabels.t8": "The lines breathe",
+  "checkLabels.t9": "The heading is tighter",
+  "checkLabels.t10": "The prices use a monospace font",
+  "checkLabels.t11": "The prices are right-aligned",
+  "checkLabels.t12": "The note is readable",
+  "checkLabels.t13": "The button accepts a size",
+  "checkLabels.t14": "The button is not underlined",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "styles.css still holds only the comment. The whole file is yours.",
+  "hint2.untouched": "Start at the top: the variables, then body, then the blocks.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you only write styles.",
+  "why.no-body": "There is no body.",
+  "why.no-hero-h1": "There is no heading in the hero block.",
+  "why.no-price": "There is no element with the price class.",
+  "why.no-muted": "There is no element with the muted class.",
+  "why.no-btn": "There is no element with the btn class.",
+
+  "why.no-vars": "The colours are not pulled into variables.",
+  "hint2.no-vars": "You will need the brown in at least three places. Declare it once at the top.",
+
+  "why.no-generic": "The font list has no generic name at the end.",
+  "hint2.no-generic": "The last name should be a kind, not a specific font — it is the only one that cannot be missing.",
+
+  "why.no-leading": "The lines are too tight.",
+  "hint2.no-leading": "One and a half times the font size. With no unit, so it is inherited as a ratio.",
+
+  "why.heading-loose": "The heading lines are too far apart.",
+  "hint2.heading-loose": "A large font needs less air. Between 1.1 and 1.3.",
+  "hint4.heading-loose": "line-height: 1.2;",
+
+  "why.price-not-mono": "The prices do not use a monospace font.",
+  "hint2.price-not-mono": "Numbers in a column read more easily when every character is the same width.",
+
+  "why.price-align": "The prices are not right-aligned.",
+
+  "why.muted-contrast": "The note does not have enough contrast.",
+  "hint2.muted-contrast": "It should be quieter than the text and still pass 4.5 to 1 on white.",
+  "hint4.muted-contrast": "color: #595959;",
+
+  "why.btn-inline": "The button does not accept sizes.",
+  "hint2.btn-inline": "A link is inline. It needs inline-block.",
+
+  "why.btn-underlined": "The button is still underlined like a link.",
+  "hint2.btn-underlined": "The button shape and background already say it is clickable. The underline is redundant here.",
+
+  "blocks.0.text": "Sixteen lessons about text and colour. The page opposite is bare: the HTML is there, styles.css is empty. This time it is not enough that it works — it has to read.",
+
+  "blocks.1.text": "What is asked",
+  "blocks.2.items.0": "The colours live in variables at the top, not scattered through the file.",
+  "blocks.2.items.1": "The font has fallbacks and ends with a generic name.",
+  "blocks.2.items.2": "The body text breathes and the headings are tighter than it.",
+  "blocks.2.items.3": "The prices use a monospace font and are right-aligned so the numbers read.",
+  "blocks.2.items.4": "The note is quieter than the text but passes the contrast threshold.",
+  "blocks.2.items.5": "The link at the bottom looks and behaves like a button.",
+
+  "blocks.3.text": "The order to write in",
+  "blocks.4.text": "Variables first — they are the decisions. Then body: font, size, line height, colour. Then the headings. The special cases last: prices, note, button. Start from the button and you will paint it a colour you then have to change in three places.",
+  "blocks.5.text": "The numbers and colours are yours. The check looks at whether the text reads, not at whether you picked that exact brown.",
+
+  "blocks.6.text": "The task",
+  "blocks.7.text": "Write styles.css from scratch. Do not touch the HTML. There is no single right answer; there are eight things that have to behave correctly."
+}

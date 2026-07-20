@@ -23,7 +23,14 @@ export default {
     {
       id: 'repeating',
       modules: [
-      { id: 'loops', lessons: ['26-while', '27-infinite', '28-for', '29-offbyone', '30-break', '31-nested'] },
+        { id: 'loops', lessons: ['26-while', '27-infinite', '28-for', '29-offbyone', '30-break', '31-nested', '32-broken'] },
+      ],
+    },
+    {
+      id: 'functions',
+      modules: [
+        { id: 'basics', lessons: [] },
+        { id: 'scope', lessons: [] },
       ],
     },
   ],
