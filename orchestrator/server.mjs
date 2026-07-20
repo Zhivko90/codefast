@@ -125,6 +125,11 @@ await writeFile(join(ext, 'extension.js'), `
 const vscode = require('vscode');
 function activate() {
   vscode.commands.executeCommand('workbench.action.closeSidebar');
+  // Предупреждението за http се маха само със сертификат. Дотогава
+  // известията се затварят наум, на няколко пъти — идват със закъснение.
+  const shut = () => vscode.commands.executeCommand('notifications.clearAll');
+  shut();
+  for (const ms of [500, 1500, 3000, 6000]) setTimeout(shut, ms);
 }
 exports.activate = activate;
 exports.deactivate = function () {};
