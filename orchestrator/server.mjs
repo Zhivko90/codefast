@@ -204,14 +204,19 @@ function activate() {
   catch (e) { try { fs.writeFileSync(flag, '0'); last = '0'; } catch (e2) {} }
 
   // Флагът носи и действието: "12:tree" или "13:term".
+// ⚠ fs.watch изстрелва по НЯКОЛКО събития за един запис. Без потискане
+  // едно кликване задейства и дървото, и терминала.
+  let busy = false;
   const read = function () {
-    try {
-      const now = fs.readFileSync(flag, 'utf8');
-      if (now === last) return;
-      last = now;
-      if (now.indexOf(':term') !== -1) term();
-      else toggle();
-    } catch (e) {}
+    if (busy) return;
+    let now;
+    try { now = fs.readFileSync(flag, 'utf8'); } catch (e) { return; }
+    if (now === last) return;
+    last = now;
+    busy = true;
+    setTimeout(function () { busy = false; }, 120);
+    if (now.indexOf(':term') !== -1) term();
+    else toggle();
   };
 
   // ⚠ Следи се ПАПКАТА, не файлът. writeFile пресъздава файла с нов inode
