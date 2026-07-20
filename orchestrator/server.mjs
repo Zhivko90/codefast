@@ -7,6 +7,7 @@ import { join } from 'node:path';
 const run = promisify(execFile);
 
 const PORT = Number(process.env.PORT ?? 3100);
+const HOST = process.env.PUBLIC_HOST ?? '77.42.123.202';
 const BASE = process.env.IDE_BASE ?? 'https://ide.codymaster.com';
 const ROOT = process.env.STUDENTS_ROOT ?? '/srv/students';
 const IMAGE = process.env.IDE_IMAGE ?? 'codercom/code-server:latest';
@@ -83,7 +84,7 @@ async function adopt() {
       live.set(key, {
         key, name, port: Number(m[1]), pro: false, tree: false, term: false,
         dir: join(ROOT, key, 'workspace'),
-       url: BASE + '/s/' + m[1] + '/?folder=/home/coder/workspace',
+        url: BASE + '/s/' + m[1] + '/?folder=/home/coder/workspace',
         beat: now, born: now,
       });
     }
@@ -137,7 +138,7 @@ async function writeExtension(home) {
     name: 'cf-layout',
     publisher: 'codefast',
     version: '1.0.0',
-engines: { vscode: '^1.60.0' },
+    engines: { vscode: '^1.60.0' },
     activationEvents: ['*'],
     main: './extension.js',
     contributes: {},
@@ -230,16 +231,6 @@ function activate() {
 exports.activate = activate;
 exports.deactivate = function () {};
 `.trim());
-// ⚠ VS Code чете списъка от extensions.json. Папка без запис там се
-  // пропуска мълчаливо — разширението изобщо не се сканира.
-  const list = join(home, '.local', 'share', 'code-server', 'extensions', 'extensions.json');
-  await writeIfChanged(list, JSON.stringify([{
-    identifier: { id: 'codefast.cf-layout' },
-    version: '1.0.0',
-    location: { $mid: 1, path: '/home/coder/.local/share/code-server/extensions/cf-layout', scheme: 'file' },
-    relativeLocation: 'cf-layout',
-    metadata: { installedTimestamp: Date.now(), pinned: true, source: 'vsix' },
-  }], null, 2));
 }
 
 async function prepare(home) {
@@ -332,7 +323,7 @@ async function start(student, course, files, pro) {
     '-v', join(home, '.local') + ':/home/coder/.local',
     '--memory=512m', '--cpus=0.5',
     '--pids-limit=256',
-  IMAGE,
+    IMAGE,
     '--auth', 'none',
     '--disable-telemetry',
     '--disable-workspace-trust',
@@ -353,25 +344,26 @@ async function start(student, course, files, pro) {
   // Входният файл се отваря пак накрая — само за да е избран, без да мести таба.
   const ordered = sorted.length ? [...sorted, sorted[0]] : [];
 
-// ⚠ Сокетът иска ОТВОРЕН БРАУЗЪР. Без свързана рамка връща
-  // "No opened code-server instances found". Затова се чака cf-ready —
-  // сигналът, че разширението се е активирало, тоест браузърът е вътре.
+  // Сокетът не е готов веднага. Чака се да се появи, вместо да се гадае време.
   (async () => {
-    const readyFlag = join(csDir(key), 'cf-ready');
+    const sock = '/home/coder/.local/share/code-server/code-server-ipc.sock';
     let ready = false;
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 40; i++) {
       await new Promise((r) => setTimeout(r, 500));
-      try { await readFile(readyFlag, 'utf8'); ready = true; break; } catch {}
+      try {
+        await docker(['exec', name, 'test', '-S', sock]);
+        ready = true;
+        break;
+      } catch {}
     }
-    if (!ready) { console.log('browser never connected: ' + name); return; }
+    if (!ready) return;
 
+    await new Promise((r) => setTimeout(r, 2000));
     for (const n of ordered) {
       try {
         await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/workspace/' + n]);
-      } catch (e) {
-        console.log('open FAIL ' + n + ' ' + String(e?.message ?? e));
-      }
-      await new Promise((r) => setTimeout(r, 600));
+      } catch {}
+      await new Promise((r) => setTimeout(r, 1200));
     }
   })();
 
