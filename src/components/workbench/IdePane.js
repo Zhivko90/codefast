@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { startIde, beatIde } from '@/lib/ide';
 
-export default function IdePane({ course, files, onReady }) {
+export default function IdePane({ course, files, onReady, onState }) {
   const [url, setUrl] = useState(null);
   const [state, setState] = useState('loading');
   const [busy, setBusy] = useState(null);
@@ -34,7 +34,10 @@ export default function IdePane({ course, files, onReady }) {
   // Пулсът казва „разделът е отворен". Спре ли, контейнерът умира за минута.
   useEffect(() => {
     if (state !== 'ready') return;
-    const id = setInterval(() => beatIde(course), 20000);
+   const id = setInterval(async () => {
+      const r = await beatIde(course);
+      if (r?.ok) onState?.({ tree: !!r.tree, term: !!r.term });
+    }, 20000);
     return () => clearInterval(id);
   }, [state, course]);
 
@@ -104,7 +107,7 @@ function IdeFrame({ url, course, onReady }) {
       const r = await beatIde(course);
       if (!alive) return;
       // Ако сигналът не дойде до 20 сек, показваме я въпреки всичко.
-     if (r?.ready || tries > 40) { setShown(true); onReady?.(); }
+    if (r?.ready || tries > 40) { setShown(true); onReady?.(r); }
       else setTimeout(tick, 500);
     };
 

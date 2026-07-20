@@ -260,7 +260,11 @@ files = [], activeFile, onFile, getFile, setFile,
   );
 
 const editorEl = ide ? (
-    <IdePane course={course} files={ideFiles} onReady={() => { setIdeReady(true); onIdeReady?.(); }} />
+    <IdePane
+      course={course} files={ideFiles}
+      onReady={() => { setIdeReady(true); onIdeReady?.(); }}
+      onState={(st) => { setTreeOpen(st.tree); setTermOpen(st.term); }}
+    />
   ) : multi ? (
     <EditorGrid
       files={files} getFile={getFile} setFile={setFile} onActive={onFile}

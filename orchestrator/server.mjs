@@ -52,6 +52,7 @@ let sweeps = 0;
 
 const keyOf = (student, course) => student + '__' + course;
 const nameOf = (key) => 'cs-' + key.replace(/[^a-zA-Z0-9_-]/g, '');
+const csDir = (key) => join(ROOT, key, '.local', 'share', 'code-server');
 
 async function docker(args) {
   const { stdout } = await run('docker', args, { maxBuffer: 8 * 1024 * 1024 });
@@ -80,7 +81,7 @@ async function adopt() {
       const key = name.slice(3);
       const now = Date.now();
       live.set(key, {
-        key, name, port: Number(m[1]), pro: false, tree: false,
+        key, name, port: Number(m[1]), pro: false, tree: false, term: false,
         dir: join(ROOT, key, 'workspace'),
         url: 'http://' + HOST + ':' + m[1] + '?folder=/home/coder/workspace',
         beat: now, born: now,
@@ -105,6 +106,17 @@ async function kill(key) {
 
 function room(pro) {
   return pro ? live.size < MAX_LIVE : live.size < MAX_LIVE - PRO_RESERVED;
+}
+
+// ⚠ ЕДИН ИЗТОЧНИК НА ИСТИНА. Разширението пише състоянието, след като
+// командата наистина е минала. Тук само се чете.
+async function panelState(key) {
+  try {
+    const st = JSON.parse(await readFile(join(csDir(key), 'cf-tree'), 'utf8'));
+    return { tree: !!st.tree, term: !!st.term };
+  } catch {
+    return { tree: false, term: false };
+  }
 }
 
 // Пише само при разлика. Презаписването на същото съдържание кара VS Code
@@ -140,62 +152,59 @@ function activate() {
   const dir = path.join(process.env.HOME, '.local/share/code-server');
   const flag = path.join(dir, 'cf-toggle');
   const state = path.join(dir, 'cf-tree');
+  const log = function (m) {
+    try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date().toISOString() + ' ' + m + '\\n'); } catch (e) {}
+  };
   try { fs.writeFileSync(path.join(dir, 'cf-log'), 'activate\\n'); } catch (e) {}
 
-// ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
-  // Затова рамката НЕ се показва по таймер, а чака сигнал оттук.
-// ⚠ Сигналът се трие ПРИ ВСЯКО активиране. Остане ли от предишното
+  // Сигналът се трие ПРИ ВСЯКО активиране. Остане ли от предишното
   // зареждане, рамката се показва, преди лентите да са скрити.
   try { fs.unlinkSync(path.join(dir, 'cf-ready')); } catch (e) {}
 
- Promise.all([
+  let open = false;
+  let termOpen = false;
+
+  const save = function () {
+    try { fs.writeFileSync(state, JSON.stringify({ tree: open, term: termOpen })); } catch (e) {}
+  };
+  save();
+
+  Promise.all([
     vscode.commands.executeCommand('workbench.action.closeSidebar'),
     vscode.commands.executeCommand('workbench.action.closeAuxiliaryBar'),
     // ⚠ VS Code помни отворения терминал между зарежданията и го връща.
     vscode.commands.executeCommand('workbench.action.closePanel'),
   ]).then(function () {
+    save();
     try { fs.writeFileSync(path.join(dir, 'cf-ready'), '1'); } catch (e) {}
   });
 
-  let open = false;
-  const write = () => { try { fs.writeFileSync(state, open ? '1' : '0'); } catch (e) {} };
-  write();
-
-// ⚠ БЕЗ toggle. closeSidebar при старта не обновява вътрешното състояние
-  // на VS Code, затова първият toggle затваря вече затворена лента — празен ход.
-const log = (m) => { try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date().toISOString() + ' ' + m + '\\n'); } catch (e) {} };
-// ⚠ БЕЗ toggle. closePanel при зареждане затваря панела, без вътрешното
-  // състояние да се обнови — първият toggle тогава е празен ход.
-  var termOpen = false;
-  const term = () => {
-    termOpen = !termOpen;
-    const cmd = termOpen ? 'workbench.action.terminal.focus' : 'workbench.action.closePanel';
-    log('terminal -> ' + termOpen + ' cmd=' + cmd);
-    vscode.commands.executeCommand(cmd).then(
-      function () { log('terminal ok'); },
-      function (e) { log('terminal FAIL ' + String(e)); }
-    );
-  };
-
-  const toggle = () => {
+  // ⚠ БЕЗ toggle. Затварянето при старта не обновява вътрешното състояние
+  // на VS Code — първият toggle тогава е празен ход.
+  const toggle = function () {
     open = !open;
     const cmd = open ? 'workbench.view.explorer' : 'workbench.action.closeSidebar';
-    log('toggle -> open=' + open + ' cmd=' + cmd);
-    vscode.commands.executeCommand(cmd).then(
-      () => log('cmd ok ' + cmd),
-      (e) => log('cmd FAIL ' + cmd + ' ' + String(e))
-    );
-    write();
+    log('tree -> ' + open);
+    vscode.commands.executeCommand(cmd).then(save, function (e) {
+      open = !open; save(); log('tree FAIL ' + String(e));
+    });
   };
 
-  // ⚠ fs.watch реагира в мига на записа. Проверка на интервал добавя
-  // цяло забавяне отгоре и се усеща като няколко секунди.
- // ⚠ Началната стойност се ЧЕТЕ, не се записва. Запис при старт се хваща
-  // от fs.watch и изяжда първия клик.
+  const term = function () {
+    termOpen = !termOpen;
+    const cmd = termOpen ? 'workbench.action.terminal.focus' : 'workbench.action.closePanel';
+    log('term -> ' + termOpen);
+    vscode.commands.executeCommand(cmd).then(save, function (e) {
+      termOpen = !termOpen; save(); log('term FAIL ' + String(e));
+    });
+  };
+
   let last = '';
-  try { last = fs.readFileSync(flag, 'utf8'); } catch (e) { try { fs.writeFileSync(flag, '0'); last = '0'; } catch (e2) {} }
-// Флагът носи и действието: "12:tree" или "13:term".
-  const read = () => {
+  try { last = fs.readFileSync(flag, 'utf8'); }
+  catch (e) { try { fs.writeFileSync(flag, '0'); last = '0'; } catch (e2) {} }
+
+  // Флагът носи и действието: "12:tree" или "13:term".
+  const read = function () {
     try {
       const now = fs.readFileSync(flag, 'utf8');
       if (now === last) return;
@@ -205,7 +214,7 @@ const log = (m) => { try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date(
     } catch (e) {}
   };
 
- // ⚠ Следи се ПАПКАТА, не файлът. writeFile пресъздава файла с нов inode
+  // ⚠ Следи се ПАПКАТА, не файлът. writeFile пресъздава файла с нов inode
   // и наблюдение върху самия файл умира след първия запис.
   try {
     fs.watch(dir, function (ev, name) { if (name === 'cf-toggle') read(); });
@@ -217,10 +226,6 @@ exports.activate = activate;
 exports.deactivate = function () {};
 `.trim());
 }
-
-// Старият сигнал се маха — иначе рамката се показва, преди новата среда
-  // да е подредена.
-  try { await rm(join(home, '.local', 'share', 'code-server', 'cf-ready')); } catch {}
 
 async function prepare(home) {
   const cs = join(home, '.local', 'share', 'code-server');
@@ -273,13 +278,13 @@ async function start(student, course, files, pro) {
   const home = join(ROOT, key);
   const dir = join(home, 'workspace');
 
- const existing = live.get(key);
+  const existing = live.get(key);
   if (existing && await alive(name)) {
     existing.beat = Date.now();
     existing.pro = pro;
     // ⚠ Сигналът се трие и при жив контейнер. Рамката се зарежда наново
     // при всяко отваряне на страницата — старият сигнал я показва рано.
-    try { await rm(join(home, '.local', 'share', 'code-server', 'cf-ready')); } catch {}
+    try { await rm(join(csDir(key), 'cf-ready')); } catch {}
     return existing;
   }
   // Сесията сочи към мъртъв контейнер — забравя се и се вдига наново.
@@ -297,6 +302,7 @@ async function start(student, course, files, pro) {
   // в празна папка — иначе изгасналият контейнер би изтрил всичко.
   if (await isEmpty(dir)) await writeFiles(dir, files ?? {});
 
+  try { await rm(join(csDir(key), 'cf-ready')); } catch {}
   await prepare(home);
   await run('chown', ['-R', '1000:1000', home]);
 
@@ -357,7 +363,7 @@ async function start(student, course, files, pro) {
 
   const now = Date.now();
   const session = {
-    key, name, port, dir, pro, tree: false,
+    key, name, port, dir, pro, tree: false, term: false,
     url: 'http://' + HOST + ':' + port + query,
     beat: now, born: now,
   };
@@ -405,51 +411,58 @@ createServer(async (req, res) => {
       if (!student || !course) return send(res, 400, { error: 'student-and-course-required' });
       try {
         const s = await start(String(student), String(course), files, !!pro);
-        return send(res, 200, { url: s.url, port: s.port, tree: !!s.tree });
+        return send(res, 200, { url: s.url, port: s.port });
       } catch (e) {
         if (e.full) return send(res, 503, { error: 'full', used: live.size, max: MAX_LIVE });
         throw e;
       }
     }
 
-   if (req.method === 'POST' && (req.url === '/toggle-tree' || req.url === '/toggle-terminal')) {
+    if (req.method === 'POST' && (req.url === '/toggle-tree' || req.url === '/toggle-terminal')) {
       const { student, course } = await body(req);
-      const s = live.get(keyOf(String(student), String(course)));
+      const key = keyOf(String(student), String(course));
+      const s = live.get(key);
       if (!s) return send(res, 404, { error: 'no-session' });
       s.beat = Date.now();
 
       const isTerm = req.url === '/toggle-terminal';
-      if (isTerm) s.term = !s.term; else s.tree = !s.tree;
 
       // ⚠ Пише се ДИРЕКТНО на диска. docker exec вдига процес в контейнера
       // и бави отговора с няколко секунди.
       s.tick = (s.tick ?? 0) + 1;
       try {
         await writeFile(
-          join(ROOT, s.key, '.local', 'share', 'code-server', 'cf-toggle'),
+          join(csDir(key), 'cf-toggle'),
           s.tick + (isTerm ? ':term' : ':tree'),
           'utf8'
         );
       } catch (e) {
         return send(res, 500, { error: String(e?.message ?? e) });
       }
-      return send(res, 200, { ok: true, tree: s.tree, term: s.term });
+
+      // Състоянието се чете от разширението, СЛЕД като командата мине.
+      await new Promise((r) => setTimeout(r, 250));
+      const st = await panelState(key);
+      s.tree = st.tree; s.term = st.term;
+      return send(res, 200, { ok: true, ...st });
     }
 
-   if (req.method === 'POST' && req.url === '/beat') {
+    if (req.method === 'POST' && req.url === '/beat') {
       const { student, course } = await body(req);
       const key = keyOf(String(student), String(course));
       const s = live.get(key);
       if (s) s.beat = Date.now();
 
-      // Средата е готова чак когато разширението е скрило лентите.
       let ready = false;
       try {
-        await readFile(join(ROOT, key, '.local', 'share', 'code-server', 'cf-ready'), 'utf8');
+        await readFile(join(csDir(key), 'cf-ready'), 'utf8');
         ready = true;
       } catch {}
 
-      return send(res, 200, { ok: !!s, tree: !!s?.tree, ready });
+      const st = await panelState(key);
+      if (s) { s.tree = st.tree; s.term = st.term; }
+
+      return send(res, 200, { ok: !!s, ready, ...st });
     }
 
     if (req.method === 'POST' && req.url === '/files') {
@@ -478,6 +491,7 @@ createServer(async (req, res) => {
           pro: s.pro,
           port: s.port,
           tree: !!s.tree,
+          term: !!s.term,
           sinceBeat: Math.round((now - s.beat) / 1000),
           age: Math.round((now - s.born) / 1000),
         })),
