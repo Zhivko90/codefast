@@ -73,7 +73,7 @@ h1 {
     { id: "t3", type: "dom_has", value: 'script[data-from="script.js"]', err: "not-linked", weight: 850 },
     { id: "t4", type: "runs", err: "crashed", errEmpty: "nothing-written", errTimeout: "frozen", weight: 800 },
     { id: "t5", type: "src_count", value: "stock = 0", min: 1, max: 1, err: "changed-data", weight: 750 },
-    { id: "t6", type: "src_count", value: "==", min: 4, max: 4, err: "loose-left", weight: 700 },
+    { id: "t6", type: "src_count", value: "==", min: 3, max: 3, err: "loose-left", weight: 700 },
     { id: "t7", type: "src_count", value: "else", min: 3, max: 3, err: "not-joined", weight: 690 },
     { id: "t8", type: "src_contains", value: "||", err: "no-or", weight: 680 },
     { id: "t9", type: "returns", call: "stockLine", expect: "In stock: 0", err: "wrong-stock", weight: 500 },

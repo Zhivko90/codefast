@@ -23,7 +23,9 @@ const PORT_MAX = 9200;
 
 const SETTINGS = {
   'workbench.colorTheme': 'Default Dark Modern',
-  'workbench.activityBar.location': 'top',
+  'workbench.activityBar.location': 'hidden',
+  'workbench.editor.editorActionsLocation': 'titleBar',
+  'window.titleBarStyle': 'custom',
   'workbench.statusBar.visible': false,
   'workbench.startupEditor': 'none',
   'workbench.layoutControl.enabled': false,
