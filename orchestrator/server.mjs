@@ -105,8 +105,6 @@ function room(pro) {
   return pro ? live.size < MAX_LIVE : live.size < MAX_LIVE - PRO_RESERVED;
 }
 
-// ⚠ Страничната лента НЯМА настройка. Единственият начин е командата
-// workbench.action.closeSidebar, а тя се пуска само от разширение.
 async function writeExtension(home) {
   const ext = join(home, '.local', 'share', 'code-server', 'extensions', 'cf-layout');
   await mkdir(ext, { recursive: true });
@@ -129,16 +127,18 @@ const path = require('path');
 function activate() {
   vscode.commands.executeCommand('workbench.action.closeSidebar');
 
-  // Оркестраторът пипва файла; разширението го вижда и превключва дървото.
-  // По-просто от втори порт или сокет към контейнера.
+  // ⚠ Сравнява се СЪДЪРЖАНИЕТО, не времето. mtimeMs има ниска точност
+  // и две бързи промени изглеждат еднакви.
   const flag = path.join(process.env.HOME, '.local/share/code-server/cf-toggle');
-  try { fs.writeFileSync(flag, ''); } catch (e) {}
-  let last = 0;
+  try { fs.writeFileSync(flag, '0'); } catch (e) {}
+  let last = '0';
   setInterval(() => {
     try {
-      const t = fs.statSync(flag).mtimeMs;
-      if (last && t > last) vscode.commands.executeCommand('workbench.action.toggleSidebarVisibility');
-      last = t;
+      const now = fs.readFileSync(flag, 'utf8');
+      if (now !== last) {
+        last = now;
+        vscode.commands.executeCommand('workbench.action.toggleSidebarVisibility');
+      }
     } catch (e) {}
   }, 400);
 }
@@ -337,8 +337,10 @@ createServer(async (req, res) => {
       const s = live.get(keyOf(String(student), String(course)));
       if (!s) return send(res, 404, { error: 'no-session' });
       s.beat = Date.now();
+   s.tick = (s.tick ?? 0) + 1;
       try {
-        await docker(['exec', s.name, 'touch', '/home/coder/.local/share/code-server/cf-toggle']);
+        await docker(['exec', s.name, 'sh', '-c',
+          'echo ' + s.tick + ' > /home/coder/.local/share/code-server/cf-toggle']);
       } catch {}
       return send(res, 200, { ok: true });
     }
