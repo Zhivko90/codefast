@@ -230,6 +230,16 @@ function activate() {
 exports.activate = activate;
 exports.deactivate = function () {};
 `.trim());
+// ⚠ VS Code чете списъка от extensions.json. Папка без запис там се
+  // пропуска мълчаливо — разширението изобщо не се сканира.
+  const list = join(home, '.local', 'share', 'code-server', 'extensions', 'extensions.json');
+  await writeIfChanged(list, JSON.stringify([{
+    identifier: { id: 'codefast.cf-layout' },
+    version: '1.0.0',
+    location: { $mid: 1, path: '/home/coder/.local/share/code-server/extensions/cf-layout', scheme: 'file' },
+    relativeLocation: 'cf-layout',
+    metadata: { installedTimestamp: Date.now(), pinned: true, source: 'vsix' },
+  }], null, 2));
 }
 
 async function prepare(home) {
