@@ -178,13 +178,7 @@ async function start(student, course, files, pro) {
   const port = await freePort();
   if (!port) throw new Error('no-free-port');
 
-// Чете се от ДИСКА, не от подадените имена. Папката може вече да носи
-  // работа на ученика, различна от стартовите файлове.
-  const open = (await readdir(dir).catch(() => []))
-    .filter((n) => !n.startsWith('.'))
-    .filter((n) => /\.(html|css|js|json|md|txt|svg)$/i.test(n));
-
-  await docker([
+await docker([
     'run', '-d',
     '--name', name,
     '-p', port + ':8080',
@@ -197,14 +191,21 @@ async function start(student, course, files, pro) {
     '--disable-telemetry',
     '--disable-workspace-trust',
     '--disable-update-check',
-    '/home/coder/project',
-    ...open.map((n) => '/home/coder/project/' + n),
   ]);
+
+  // Папката и файловете се задават през АДРЕСА, не през аргументи.
+  // Аргументите се записват в coder.json и се разминават при повторно отваряне.
+  const open = (await readdir(dir).catch(() => []))
+    .filter((n) => !n.startsWith('.'))
+    .filter((n) => /\.(html|css|js|json|md|txt|svg)$/i.test(n));
+
+  const payload = JSON.stringify(open.map((n) => ['openFile', 'vscode-remote:///home/coder/project/' + n]));
+  const query = '?folder=/home/coder/project&payload=' + encodeURIComponent(payload);
 
   const now = Date.now();
   const session = {
     key, name, port, dir, pro,
-    url: 'http://' + HOST + ':' + port,
+    url: 'http://' + HOST + ':' + port + query,
     beat: now, born: now,
   };
   live.set(key, session);

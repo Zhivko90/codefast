@@ -1,0 +1,31 @@
+{
+  "title": "Check yourself",
+
+  "questions.0.text": "A stock counter: const stock = 0; then if (stock) { line = \"In stock \" + stock; } else { line = \"Not counted\"; } What is line?",
+  "questions.0.options.0": "In stock 0",
+  "questions.0.options.1": "Not counted",
+  "questions.0.options.2": "Empty text",
+  "questions.0.options.3": "The code breaks, because stock is not a boolean",
+  "questions.0.why": "Zero is one of the six falsy values. The condition asks whether the value is truthy, not whether it exists. So a known fact — zero cups — is reported as missing information.",
+
+  "questions.1.text": "Three separate ifs check whether the total is over 10, over 25 and over 50, and each sets tier. At a total of 60, what comes out?",
+  "questions.1.options.0": "The first match",
+  "questions.1.options.1": "The code breaks on the second assignment",
+  "questions.1.options.2": "Nothing, because they are not joined with else",
+  "questions.1.options.3": "The last match, because it overwrites the previous ones",
+  "questions.1.why": "Unjoined conditions all run. Each overwrites the previous one, so whatever is written last wins. The code looks correct until somebody swaps two blocks.",
+
+  "questions.2.text": "A switch on size: case small sets 150, case medium sets 250 but has NO break, case large sets 400 with a break. At size medium, what comes out?",
+  "questions.2.options.0": "400",
+  "questions.2.options.1": "250",
+  "questions.2.options.2": "150",
+  "questions.2.options.3": "The code breaks on the missing break",
+  "questions.2.why": "Without a break, execution does not stop at its own case and carries on down through the following ones. medium sets 250, then immediately 400. No error, no warning.",
+
+  "questions.3.text": "Which condition checks whether a value is MISSING, without confusing zero with absence?",
+  "questions.3.options.0": "if (!value)",
+  "questions.3.options.1": "if (value === false)",
+  "questions.3.options.2": "if (value === null || value === undefined)",
+  "questions.3.options.3": "if (value == 0)",
+  "questions.3.why": "Missing means null or undefined. Negation also catches zero and empty text. Comparing with false misses both kinds of absence. And two signs with zero also match empty text and false."
+}

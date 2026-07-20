@@ -44,11 +44,12 @@ import css_l36 from './css/lessons/37-font-weight.js';
 import css_l37 from './css/lessons/38-text-align.js';
 import css_l38 from './css/lessons/39-text-decoration.js';
 import css_l39 from './css/lessons/40-quiz-typography.js';
-import css_l40 from './css/lessons/R1-review-intro.js';
-import css_l41 from './css/lessons/R2-review-selectors.js';
-import css_l42 from './css/lessons/R3-review-box.js';
-import css_l43 from './css/lessons/R4-review-sizing.js';
-import css_l44 from './css/lessons/R5-review-typography.js';
+import css_l40 from './css/lessons/41-color-units.js';
+import css_l41 from './css/lessons/R1-review-intro.js';
+import css_l42 from './css/lessons/R2-review-selectors.js';
+import css_l43 from './css/lessons/R3-review-box.js';
+import css_l44 from './css/lessons/R4-review-sizing.js';
+import css_l45 from './css/lessons/R5-review-typography.js';
 import css_bg_course from '@/content/courses/css/bg/_course.json';
 import css_bg_0 from '@/content/courses/css/bg/01-ugly.json';
 import css_bg_1 from '@/content/courses/css/bg/02-where.json';
@@ -90,11 +91,12 @@ import css_bg_36 from '@/content/courses/css/bg/37-font-weight.json';
 import css_bg_37 from '@/content/courses/css/bg/38-text-align.json';
 import css_bg_38 from '@/content/courses/css/bg/39-text-decoration.json';
 import css_bg_39 from '@/content/courses/css/bg/40-quiz-typography.json';
-import css_bg_40 from '@/content/courses/css/bg/R1-review-intro.json';
-import css_bg_41 from '@/content/courses/css/bg/R2-review-selectors.json';
-import css_bg_42 from '@/content/courses/css/bg/R3-review-box.json';
-import css_bg_43 from '@/content/courses/css/bg/R4-review-sizing.json';
-import css_bg_44 from '@/content/courses/css/bg/R5-review-typography.json';
+import css_bg_40 from '@/content/courses/css/bg/41-color-units.json';
+import css_bg_41 from '@/content/courses/css/bg/R1-review-intro.json';
+import css_bg_42 from '@/content/courses/css/bg/R2-review-selectors.json';
+import css_bg_43 from '@/content/courses/css/bg/R3-review-box.json';
+import css_bg_44 from '@/content/courses/css/bg/R4-review-sizing.json';
+import css_bg_45 from '@/content/courses/css/bg/R5-review-typography.json';
 import css_en_course from '@/content/courses/css/en/_course.json';
 import css_en_0 from '@/content/courses/css/en/01-ugly.json';
 import css_en_1 from '@/content/courses/css/en/02-where.json';
@@ -136,11 +138,12 @@ import css_en_36 from '@/content/courses/css/en/37-font-weight.json';
 import css_en_37 from '@/content/courses/css/en/38-text-align.json';
 import css_en_38 from '@/content/courses/css/en/39-text-decoration.json';
 import css_en_39 from '@/content/courses/css/en/40-quiz-typography.json';
-import css_en_40 from '@/content/courses/css/en/R1-review-intro.json';
-import css_en_41 from '@/content/courses/css/en/R2-review-selectors.json';
-import css_en_42 from '@/content/courses/css/en/R3-review-box.json';
-import css_en_43 from '@/content/courses/css/en/R4-review-sizing.json';
-import css_en_44 from '@/content/courses/css/en/R5-review-typography.json';
+import css_en_40 from '@/content/courses/css/en/41-color-units.json';
+import css_en_41 from '@/content/courses/css/en/R1-review-intro.json';
+import css_en_42 from '@/content/courses/css/en/R2-review-selectors.json';
+import css_en_43 from '@/content/courses/css/en/R3-review-box.json';
+import css_en_44 from '@/content/courses/css/en/R4-review-sizing.json';
+import css_en_45 from '@/content/courses/css/en/R5-review-typography.json';
 
 // ── html ──
 import { meta as html_meta } from './html/meta.js';
@@ -469,6 +472,7 @@ import js_l20 from './js/lessons/21-truthy.js';
 import js_l21 from './js/lessons/22-logic.js';
 import js_l22 from './js/lessons/23-switch.js';
 import js_l23 from './js/lessons/24-broken.js';
+import js_l24 from './js/lessons/25-quiz.js';
 import js_bg_course from '@/content/courses/js/bg/_course.json';
 import js_bg_0 from '@/content/courses/js/bg/01-hello.json';
 import js_bg_1 from '@/content/courses/js/bg/02-values.json';
@@ -494,6 +498,7 @@ import js_bg_20 from '@/content/courses/js/bg/21-truthy.json';
 import js_bg_21 from '@/content/courses/js/bg/22-logic.json';
 import js_bg_22 from '@/content/courses/js/bg/23-switch.json';
 import js_bg_23 from '@/content/courses/js/bg/24-broken.json';
+import js_bg_24 from '@/content/courses/js/bg/25-quiz.json';
 import js_en_course from '@/content/courses/js/en/_course.json';
 import js_en_0 from '@/content/courses/js/en/01-hello.json';
 import js_en_1 from '@/content/courses/js/en/02-values.json';
@@ -519,6 +524,7 @@ import js_en_20 from '@/content/courses/js/en/21-truthy.json';
 import js_en_21 from '@/content/courses/js/en/22-logic.json';
 import js_en_22 from '@/content/courses/js/en/23-switch.json';
 import js_en_23 from '@/content/courses/js/en/24-broken.json';
+import js_en_24 from '@/content/courses/js/en/25-quiz.json';
 
 // ── webproject ──
 import { meta as webproject_meta } from './webproject/meta.js';
@@ -574,11 +580,12 @@ export const registry = {
       '38-text-align': css_l37,
       '39-text-decoration': css_l38,
       '40-quiz-typography': css_l39,
-      'R1-review-intro': css_l40,
-      'R2-review-selectors': css_l41,
-      'R3-review-box': css_l42,
-      'R4-review-sizing': css_l43,
-      'R5-review-typography': css_l44,
+      '41-color-units': css_l40,
+      'R1-review-intro': css_l41,
+      'R2-review-selectors': css_l42,
+      'R3-review-box': css_l43,
+      'R4-review-sizing': css_l44,
+      'R5-review-typography': css_l45,
     },
     problems: {
     },
@@ -625,11 +632,12 @@ export const registry = {
         '38-text-align': css_bg_37,
         '39-text-decoration': css_bg_38,
         '40-quiz-typography': css_bg_39,
-        'R1-review-intro': css_bg_40,
-        'R2-review-selectors': css_bg_41,
-        'R3-review-box': css_bg_42,
-        'R4-review-sizing': css_bg_43,
-        'R5-review-typography': css_bg_44,
+        '41-color-units': css_bg_40,
+        'R1-review-intro': css_bg_41,
+        'R2-review-selectors': css_bg_42,
+        'R3-review-box': css_bg_43,
+        'R4-review-sizing': css_bg_44,
+        'R5-review-typography': css_bg_45,
       },
       en: {
         _course: css_en_course,
@@ -673,11 +681,12 @@ export const registry = {
         '38-text-align': css_en_37,
         '39-text-decoration': css_en_38,
         '40-quiz-typography': css_en_39,
-        'R1-review-intro': css_en_40,
-        'R2-review-selectors': css_en_41,
-        'R3-review-box': css_en_42,
-        'R4-review-sizing': css_en_43,
-        'R5-review-typography': css_en_44,
+        '41-color-units': css_en_40,
+        'R1-review-intro': css_en_41,
+        'R2-review-selectors': css_en_42,
+        'R3-review-box': css_en_43,
+        'R4-review-sizing': css_en_44,
+        'R5-review-typography': css_en_45,
       },
     },
     problemText: {
@@ -1033,6 +1042,7 @@ export const registry = {
       '22-logic': js_l21,
       '23-switch': js_l22,
       '24-broken': js_l23,
+      '25-quiz': js_l24,
     },
     problems: {
     },
@@ -1063,6 +1073,7 @@ export const registry = {
         '22-logic': js_bg_21,
         '23-switch': js_bg_22,
         '24-broken': js_bg_23,
+        '25-quiz': js_bg_24,
       },
       en: {
         _course: js_en_course,
@@ -1090,6 +1101,7 @@ export const registry = {
         '22-logic': js_en_21,
         '23-switch': js_en_22,
         '24-broken': js_en_23,
+        '25-quiz': js_en_24,
       },
     },
     problemText: {

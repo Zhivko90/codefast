@@ -1,0 +1,71 @@
+{
+  "title": "How a colour is written",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The light colour is not guessed",
+  "checkLabels.t7": "The brand brown is unchanged",
+  "checkLabels.t8": "The light one is the same, only lighter",
+  "checkLabels.t9": "The divider is semi-transparent",
+  "checkLabels.t10": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Three colours get rewritten. One of them looks identical on screen.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-brand": "There is no element with the brand class.",
+  "why.no-light": "There is no element with the brand-light class.",
+  "why.no-divider": "There is no divider.",
+
+  "why.guessed-light": "The light brown is still a hex code picked by eye.",
+  "hint2.guessed-light": "That colour was chosen by guesswork and has nothing to do with the main one. Change the main one tomorrow and it is left stranded.",
+  "hint3.guessed-light": "In hsl the three numbers are hue, saturation and lightness. For a lighter variant only the third one changes.",
+
+  "why.brand-changed": "The brand brown has changed.",
+  "hint2.brand-changed": "It must look exactly as before. The notation changes, not the colour.",
+  "hint4.brand-changed": "hsl(25 76% 31%) is the same colour as #8B4513.",
+
+  "why.light-wrong": "The light variant is not the right one.",
+  "hint2.light-wrong": "Same hue, same saturation, higher lightness.",
+  "hint4.light-wrong": "hsl(25 76% 55%)",
+
+  "why.divider-hard": "The divider is still solid black.",
+  "hint2.divider-hard": "A solid black line on white is stronger than anything around it and pulls the eye.",
+  "hint3.divider-hard": "After a slash comes the opacity: 1 is solid, 0 is invisible.",
+  "hint4.divider-hard": "rgb(0 0 0 / 0.15)",
+
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "This file holds four colours written three different ways. One is a name, three are hex codes. It all works. The problem only shows when you ask for something simple: the same brown, but lighter.",
+
+  "blocks.1.text": "The four ways",
+  "blocks.2.items.0": "A name — red, saddlebrown, gray. There are about 140 of them. Convenient but arbitrary: there is no system between them.",
+  "blocks.2.items.1": "A hex code — #8B4513. Three pairs: red, green, blue. Compact and unreadable to a human.",
+  "blocks.2.items.2": "rgb — the same three numbers, but visible: rgb(139 69 19). The modern form uses spaces, no commas.",
+  "blocks.2.items.3": "hsl — hue, saturation, lightness. The numbers answer questions a person actually asks.",
+  "blocks.3.text": "All four describe the same thing. The browser reduces them to one internal representation — which is why red, #f00 and rgb(255 0 0) are indistinguishable to it. The only difference is whether YOU can work with the numbers.",
+
+  "blocks.4.text": "Why hsl helps",
+  "blocks.5.text": "Ask for a lighter version of #8B4513. In hex there is no way to work it out in your head — you nudge the numbers by eye and end up in a different hue. In hsl it is one number:",
+  "blocks.7.text": "A colour is not a point but a family. hsl shows the family; a hex code hides it.",
+
+  "blocks.8.text": "Transparency",
+  "blocks.9.text": "All four notations take a fourth number — how solid the colour is. It goes after a slash:",
+  "blocks.11.text": "Zero point one five means fifteen percent opacity: a line you can see that does not shout. A divider in solid black is darker than the text around it and pulls the eye towards nothing. Semi-transparent black takes on the colour of whatever it lies over, which is why it looks right on any background.",
+
+  "blocks.12.text": "And the newer one",
+  "blocks.13.text": "Since 2023 oklch works everywhere — a notation whose lightness matches human perception. In hsl, yellow and blue at the same lightness look differently bright; in oklch they do not. That matters when you build a ladder of shades and want the steps to look even. You do not need it today, but when you get to a colour system, start there.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Write the brand brown in hsl without changing the colour. Make the light variant from it by changing only the lightness to 55 percent. And make the divider black at fifteen percent opacity."
+}

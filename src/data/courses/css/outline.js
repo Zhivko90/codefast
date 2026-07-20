@@ -18,6 +18,7 @@ export default {
       id: 'text',
       modules: [
         { id: 'typography', lessons: ['33-font-family', '34-webfonts', '35-font-size', '36-line-height', '37-font-weight', '38-text-align', '39-text-decoration', 'R5-review-typography', '40-quiz-typography'] },
+        { id: 'colors', lessons: ['41-color-units'] },
       ],
     },
   ],
