@@ -259,7 +259,9 @@ async function start(student, course, files, pro) {
   if (existing && await alive(name)) {
     existing.beat = Date.now();
     existing.pro = pro;
-    // Контейнерът върви — средата е вече подредена, сигналът важи.
+    // ⚠ Сигналът се трие и при жив контейнер. Рамката се зарежда наново
+    // при всяко отваряне на страницата — старият сигнал я показва рано.
+    try { await rm(join(home, '.local', 'share', 'code-server', 'cf-ready')); } catch {}
     return existing;
   }
   // Сесията сочи към мъртъв контейнер — забравя се и се вдига наново.
