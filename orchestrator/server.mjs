@@ -327,8 +327,6 @@ async function start(student, course, files, pro) {
     '--disable-telemetry',
     '--disable-workspace-trust',
     '--disable-update-check',
-    // Живее под /s/<порт>/ зад Caddy. Без това всички пътища сочат в корена.
-    '--abs-proxy-base-path', '/s/' + port,
   ]);
 
   // Папката се задава през АДРЕСА. Подадена като аргумент, тя се записва
