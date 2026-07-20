@@ -20,3 +20,4 @@ export const beatIde = (course) => call('beat', course);
 export const stopIde = (course) => call('stop', course);
 export const toggleTree = (course) => call('toggle-tree', course);
 export const readIde = async (course) => (await call('files', course))?.files ?? null;
+export const toggleTerminal = (course) => call('toggle-terminal', course);

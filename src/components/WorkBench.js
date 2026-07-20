@@ -10,7 +10,7 @@ import ConsolePane, { useConsole } from './workbench/ConsolePane';
 import FeedbackDialog from './workbench/FeedbackDialog';
 import { RailBtn, MTab, IcoStatement, IcoPreview, IcoResult, IcoTrash, IcoBug, IcoFile } from './workbench/Buttons';
 import IdePane from './workbench/IdePane';
-import { toggleTree } from '@/lib/ide';
+import { toggleTree, toggleTerminal } from '@/lib/ide';
 
 // ============================================
 // ОБЩАТА РАМКА за урок и за задача. САМО ПОДРЕДБАТА.
@@ -106,6 +106,7 @@ files = [], activeFile, onFile, getFile, setFile,
   const [dragging, setDragging] = useState(false);
   const [treeOpen, setTreeOpen] = useState(false);
   const [treeBusy, setTreeBusy] = useState(false);
+  const [termOpen, setTermOpen] = useState(false);
 
   // ⚠ Слуша ВИНАГИ, но панелът се показва само при hasConsole.
   // Куката се чисти при всяка промяна на preview — иначе човек гледа
@@ -401,18 +402,17 @@ const editorEl = ide ? (
               <IcoStatement />
             </RailBtn>
 
-            {ide && (
-         <RailBtn on={treeOpen}
+        {ide && (
+              <RailBtn on={termOpen}
                 onClick={async () => {
                   if (treeBusy) return;
                   setTreeBusy(true);
-                  setShowLeft(false);
-                  const r = await toggleTree(course);
-                  if (r?.ok) setTreeOpen(!!r.tree);
+                  const r = await toggleTerminal(course);
+                  if (r?.ok) setTermOpen(!!r.term);
                   setTreeBusy(false);
                 }}
-                title={t('files')}>
-                <IcoTree />
+                title={L_CONSOLE}>
+                <IcoConsole />
               </RailBtn>
             )}
 
@@ -428,7 +428,7 @@ const editorEl = ide ? (
               <IcoResult />
             </RailBtn>
 
-            {hasConsole && (
+           {hasConsole && !ide && (
               <RailBtn on={showBot && bottom === 'console'}
                 onClick={() => { setShowBot(!(showBot && bottom === 'console')); setBottom('console'); }}
                 title={L_CONSOLE} dot={consDot}>

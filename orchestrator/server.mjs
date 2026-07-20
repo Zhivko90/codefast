@@ -162,6 +162,13 @@ function activate() {
 // ⚠ БЕЗ toggle. closeSidebar при старта не обновява вътрешното състояние
   // на VS Code, затова първият toggle затваря вече затворена лента — празен ход.
 const log = (m) => { try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date().toISOString() + ' ' + m + '\\n'); } catch (e) {} };
+const term = () => {
+    log('terminal');
+    vscode.commands.executeCommand('workbench.action.terminal.toggleTerminal').then(
+      function () { log('terminal ok'); },
+      function (e) { log('terminal FAIL ' + String(e)); }
+    );
+  };
 
   const toggle = () => {
     open = !open;
@@ -180,10 +187,14 @@ const log = (m) => { try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date(
   // от fs.watch и изяжда първия клик.
   let last = '';
   try { last = fs.readFileSync(flag, 'utf8'); } catch (e) { try { fs.writeFileSync(flag, '0'); last = '0'; } catch (e2) {} }
+// Флагът носи и действието: "12:tree" или "13:term".
   const read = () => {
     try {
       const now = fs.readFileSync(flag, 'utf8');
-      if (now !== last) { last = now; toggle(); }
+      if (now === last) return;
+      last = now;
+      if (now.indexOf(':term') !== -1) term();
+      else toggle();
     } catch (e) {}
   };
 
@@ -394,26 +405,28 @@ createServer(async (req, res) => {
       }
     }
 
-    if (req.method === 'POST' && req.url === '/toggle-tree') {
+   if (req.method === 'POST' && (req.url === '/toggle-tree' || req.url === '/toggle-terminal')) {
       const { student, course } = await body(req);
       const s = live.get(keyOf(String(student), String(course)));
       if (!s) return send(res, 404, { error: 'no-session' });
       s.beat = Date.now();
 
+      const isTerm = req.url === '/toggle-terminal';
+      if (isTerm) s.term = !s.term; else s.tree = !s.tree;
+
       // ⚠ Пише се ДИРЕКТНО на диска. docker exec вдига процес в контейнера
       // и бави отговора с няколко секунди.
       s.tick = (s.tick ?? 0) + 1;
-      s.tree = !s.tree;
       try {
         await writeFile(
           join(ROOT, s.key, '.local', 'share', 'code-server', 'cf-toggle'),
-          String(s.tick),
+          s.tick + (isTerm ? ':term' : ':tree'),
           'utf8'
         );
       } catch (e) {
         return send(res, 500, { error: String(e?.message ?? e) });
       }
-      return send(res, 200, { ok: true, tree: s.tree });
+      return send(res, 200, { ok: true, tree: s.tree, term: s.term });
     }
 
    if (req.method === 'POST' && req.url === '/beat') {

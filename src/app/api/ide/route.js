@@ -38,7 +38,8 @@ export async function POST(req) {
       action === 'files' ? '/files' :
       action === 'stop' ? '/stop' :
       action === 'beat' ? '/beat' :
-      action === 'toggle-tree' ? '/toggle-tree' : '/session';
+      action === 'toggle-tree' ? '/toggle-tree' :
+      action === 'toggle-terminal' ? '/toggle-terminal' : '/session';
 
     const r = await fetch(URL + path, {
       method: 'POST',
