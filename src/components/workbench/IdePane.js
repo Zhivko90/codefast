@@ -1,54 +1,87 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { supabase } from '@/lib/supabase';
+import { startIde, beatIde } from '@/lib/ide';
 
 export default function IdePane({ course, files, onReady }) {
   const [url, setUrl] = useState(null);
-  const [error, setError] = useState(null);
+  const [state, setState] = useState('loading');
+  const [busy, setBusy] = useState(null);
   const started = useRef(false);
+
+  const open = async () => {
+    setState('loading');
+    const r = await startIde(course, files);
+
+    if (!r) { setState('signin'); return; }
+    if (r.status === 503 && r.error === 'full') {
+      setBusy({ used: r.used, max: r.max });
+      setState('full');
+      return;
+    }
+    if (!r.ok || !r.url) { setState('failed'); return; }
+
+    setUrl(r.url);
+    setState('ready');
+    onReady?.();
+  };
 
   useEffect(() => {
     if (started.current) return;
     started.current = true;
-
-    (async () => {
-      const { data } = await supabase.auth.getSession();
-      const accessToken = data?.session?.access_token;
-      if (!accessToken) { setError('signin'); return; }
-
-      try {
-        const r = await fetch('/api/ide', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ action: 'session', accessToken, course, files }),
-        });
-        const j = await r.json();
-        if (!r.ok || !j.url) { setError(j.error ?? 'failed'); console.error('IDE:', j); return; }
-        setUrl(j.url);
-        onReady?.();
-      } catch {
-        setError('failed');
-      }
-    })();
+    open();
   }, [course]);
 
-  if (error) {
+  // Пулсът казва „разделът е отворен". Спре ли, контейнерът умира за минута.
+  useEffect(() => {
+    if (state !== 'ready') return;
+    const id = setInterval(() => beatIde(course), 20000);
+    return () => clearInterval(id);
+  }, [state, course]);
+
+  if (state === 'loading') {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <p className="text-[13px] text-gray-500">Средата се вдига…</p>
+      </div>
+    );
+  }
+
+  if (state === 'signin') {
     return (
       <div className="w-full h-full flex items-center justify-center p-6">
-        <p className="text-[13px] text-rose-300/80 text-center max-w-xs leading-relaxed">
-          {error === 'signin'
-            ? 'Влез в профила си, за да отвориш работната среда.'
-            : 'Работната среда не тръгна: ' + error}
+        <p className="text-[13px] text-gray-400 text-center max-w-xs leading-relaxed">
+          Влез в профила си, за да отвориш работната среда.
         </p>
       </div>
     );
   }
 
-  if (!url) {
+  if (state === 'full') {
     return (
-      <div className="w-full h-full flex items-center justify-center">
-        <p className="text-[13px] text-gray-500">Работната среда се вдига…</p>
+      <div className="w-full h-full flex flex-col items-center justify-center gap-3 p-6 text-center">
+        <p className="text-[14px] text-amber-200">Всички места са заети.</p>
+        <p className="text-[13px] text-gray-500 max-w-xs leading-relaxed">
+          {busy?.used} от {busy?.max} среди работят в момента. Опитай пак след няколко минути.
+        </p>
+        <button onClick={open}
+          className="mt-1 px-4 py-1.5 rounded-lg border border-white/15 text-[13px] text-gray-300 hover:text-white hover:bg-white/5 transition">
+          Опитай пак
+        </button>
+      </div>
+    );
+  }
+
+  if (state === 'failed') {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center gap-3 p-6 text-center">
+        <p className="text-[13px] text-rose-300/80 max-w-xs leading-relaxed">
+          Средата не тръгна.
+        </p>
+        <button onClick={open}
+          className="px-4 py-1.5 rounded-lg border border-white/15 text-[13px] text-gray-300 hover:text-white hover:bg-white/5 transition">
+          Опитай пак
+        </button>
       </div>
     );
   }

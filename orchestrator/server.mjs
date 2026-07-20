@@ -204,12 +204,17 @@ async function start(student, course, files, pro) {
   return session;
 }
 
-// Пулсът мери присъствие, born мери таван на живота.
+let sweeps = 0;
+
 setInterval(async () => {
+  sweeps++;
   const now = Date.now();
   for (const [key, s] of live) {
     const life = s.pro ? LIFE_PRO_MS : LIFE_FREE_MS;
-    if (now - s.beat > NO_BEAT_MS || now - s.born > life) await kill(key);
+    if (now - s.beat > NO_BEAT_MS || now - s.born > life) {
+      console.log('killing ' + key + ' sinceBeat=' + Math.round((now - s.beat) / 1000));
+      await kill(key);
+    }
   }
 }, 15000);
 
@@ -269,11 +274,19 @@ createServer(async (req, res) => {
     }
 
     if (req.method === 'GET' && req.url === '/health') {
+      const now = Date.now();
       return send(res, 200, {
         live: live.size,
         max: MAX_LIVE,
         reserved: PRO_RESERVED,
-        sessions: [...live.values()].map((s) => ({ key: s.key, pro: s.pro, port: s.port })),
+        sweeps,
+        sessions: [...live.values()].map((s) => ({
+          key: s.key,
+          pro: s.pro,
+          port: s.port,
+          sinceBeat: Math.round((now - s.beat) / 1000),
+          age: Math.round((now - s.born) / 1000),
+        })),
       });
     }
 

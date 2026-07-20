@@ -1,0 +1,76 @@
+{
+  "title": "Zero is not absence",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "The checks are explicit",
+  "checkLabels.t7": "The stock is 0, not missing",
+  "checkLabels.t8": "The empty note is spotted",
+  "checkLabels.t9": "The discount is 0, not missing",
+  "checkLabels.t10": "Three lines come out",
+  "checkLabels.t11": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The stock is zero — that is a known number, not missing information. And the code claims it was never counted.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the data.",
+  "hint2.changed-data": "The zero stays. It is the reason this lesson exists.",
+
+  "why.no-explicit": "The checks are still not explicit.",
+  "hint2.no-explicit": "A condition with just a name asks whether it is truthy. It should ask something specific.",
+
+  "why.wrong-stock": "The stock is reported as missing.",
+  "hint2.wrong-stock": "Zero cups is a known fact. It is not the same as we never counted.",
+  "hint3.wrong-stock": "A missing value means null or undefined. Ask for those exactly.",
+
+  "why.wrong-note": "The empty note is not spotted.",
+  "hint2.wrong-note": "The note is empty text. Compare it with empty text explicitly.",
+  "hint3.wrong-note": "Here the shorthand check happens to give the right answer. But with a note of three spaces it would still claim there is a note.",
+
+  "why.wrong-price": "The discount is reported as not set.",
+  "hint2.wrong-price": "A zero percent discount is a decision. No discount is the absence of a decision. The two are not the same.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three checks. Stock of zero cups, an empty note, a discount of zero percent.",
+  "blocks.1.text": "The code claims the stock was never counted and that no discount was set. Both are untrue — we counted, and we decided. The answer just happens to be zero.",
+
+  "blocks.2.text": "A condition does not need true",
+  "blocks.3.text": "Anything can sit inside the brackets, not just a comparison. Whatever you put there, the language reduces to truthy or falsy before deciding.",
+  "blocks.4.text": "That is why if (stock) runs. The question is what it actually asks — and it asks something quite different from what it looks like.",
+
+  "blocks.5.text": "Six falsy values",
+  "blocks.6.text": "Only six values count as falsy. Everything else, absolutely everything, is truthy.",
+  "blocks.7.items.0": "false",
+  "blocks.7.items.1": "zero",
+  "blocks.7.items.2": "empty text",
+  "blocks.7.items.3": "null",
+  "blocks.7.items.4": "undefined",
+  "blocks.7.items.5": "NaN",
+  "blocks.8.text": "An empty array is truthy. An empty object is truthy. The text \"false\" is truthy, because it is five characters of text. A negative number too, because it is not zero.",
+
+  "blocks.9.text": "This is where the bug comes from",
+  "blocks.10.text": "if (stock) looks like is there stock. But it asks whether the value is truthy — and zero is not.",
+  "blocks.11.text": "So the code works while the stock is fifteen. The moment it hits zero it starts claiming it was never counted. Exactly when the answer matters most.",
+  "blocks.12.quote": "Zero is a known answer. Absence is the lack of an answer. The shorthand check cannot tell them apart.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Make the three checks explicit. Missing means null or undefined. An empty note means empty text.",
+  "blocks.15.text": "After that, zero cups should read In stock: 0, and a zero discount should read Discount: 0."
+}

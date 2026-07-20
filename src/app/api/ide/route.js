@@ -11,34 +11,43 @@ export async function POST(req) {
     }
 
     const { action, accessToken, course, files } = await req.json();
-
-    if (!accessToken) {
-      return NextResponse.json({ error: 'no-token' }, { status: 401 });
-    }
+    if (!accessToken) return NextResponse.json({ error: 'no-token' }, { status: 401 });
 
     const sb = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL,
       process.env.SUPABASE_SERVICE_ROLE_KEY
     );
-    const { data, error: authErr } = await sb.auth.getUser(accessToken);
-    if (authErr) {
-      return NextResponse.json({ error: 'auth:' + authErr.message }, { status: 401 });
+
+    const { data: u, error: authErr } = await sb.auth.getUser(accessToken);
+    if (authErr || !u?.user?.id) {
+      return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
     }
+    const student = u.user.id;
 
-    const student = data?.user?.id;
-    if (!student) return NextResponse.json({ error: 'no-user' }, { status: 401 });
+    // Същата логика като usePlan. Винаги пада надолу, никога нагоре.
+    const { data: p } = await sb
+      .from('plans')
+      .select('tier, expires_at')
+      .eq('user_id', student)
+      .maybeSingle();
 
-    const path = action === 'files' ? '/files' : action === 'stop' ? '/stop' : '/session';
+    const pro = p?.tier === 'pro'
+      && (!p.expires_at || new Date(p.expires_at) > new Date());
+
+    const path =
+      action === 'files' ? '/files' :
+      action === 'stop' ? '/stop' :
+      action === 'beat' ? '/beat' : '/session';
 
     const r = await fetch(URL + path, {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'x-token': TOKEN },
-      body: JSON.stringify({ student, course, files }),
+      body: JSON.stringify({ student, course, files, pro }),
     });
 
     const text = await r.text();
     let json;
-    try { json = JSON.parse(text); } catch { json = { error: 'bad-response', text }; }
+    try { json = JSON.parse(text); } catch { json = { error: 'bad-response' }; }
 
     return NextResponse.json(json, { status: r.status });
   } catch (e) {

@@ -1,0 +1,68 @@
+{
+  "title": "Aligning the text",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "No justified text",
+  "checkLabels.t7": "The text starts at the left edge",
+  "checkLabels.t8": "The prices are right-aligned",
+  "checkLabels.t9": "The heading is centred",
+  "checkLabels.t10": "The line spacing is kept",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "One line changes, two are added.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-body": "There is no body.",
+  "why.no-price": "There is no element with the price class.",
+  "why.no-h1": "There is no heading.",
+
+  "why.still-justified": "The text is still stretched to both edges.",
+  "hint2.still-justified": "Look at the spaces between the words in the first paragraph. They are not equal.",
+  "hint3.still-justified": "The browser cannot hyphenate, so it stretches the spaces instead. In a narrow column the gaps become enormous.",
+  "hint4.still-justified": "Change justify to left.",
+
+  "why.body-align": "The body text does not start at the left edge.",
+  "why.price-align": "The prices are not right-aligned.",
+  "hint2.price-align": "Numbers are easier to compare when their units line up one under another.",
+  "hint4.price-align": "text-align: right; in the .price rule.",
+
+  "why.h1-align": "The heading is not centred.",
+  "hint2.h1-align": "One or two lines in the middle read fine. The problem is with long text, not with headings.",
+
+  "why.line-broken": "The line spacing is broken.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Open the preview and look at the first paragraph. Both its edges line up and it looks tidy — until you look at the spaces between the words. On one line they are barely visible, on the next they gape. Pale streaks run down the paragraph.",
+
+  "blocks.1.text": "The four values",
+  "blocks.2.items.0": "left — the text starts at the left edge and the right stays ragged. The default, and almost always the right choice.",
+  "blocks.2.items.1": "right — the opposite. For numbers in a column, for captions, for languages written right to left.",
+  "blocks.2.items.2": "center — for headings and short labels.",
+  "blocks.2.items.3": "justify — lines up both edges by stretching the spaces between words.",
+
+  "blocks.3.text": "Why justified text is a trap",
+  "blocks.4.text": "It looks good in books because print software has hyphenation and hundreds of small spacing controls. The browser has none of that: it simply stretches the spaces until the line reaches the edge. The narrower the column, the uglier the gaps — and when gaps on several lines stack up, a white river runs through the text.",
+  "blocks.5.text": "One of the WCAG criteria says it outright: text should not be justified. The reason is not aesthetic — for people with dyslexia the uneven spacing makes tracking a line hard and sometimes impossible. The criterion is at the highest level and is not required everywhere, but the reasoning behind it always holds.",
+  "blocks.6.text": "The straight edge is for the printer. The reader gains from even spaces between words.",
+
+  "blocks.7.text": "And centring long text",
+  "blocks.8.text": "A centred paragraph has a ragged left edge. The eye finishes a line and has to SEARCH for where the next one starts, instead of returning to the same place. For three lines that is bearable, for ten it is tiring. So centring is for headings and short labels, not for text somebody will read.",
+
+  "blocks.9.text": "start instead of left",
+  "blocks.10.text": "There are two newer values as well: start and end. They mean the beginning and the end of the line ACCORDING to the writing direction. In English that makes start the left. In Arabic and Hebrew it is the right. If the page will ever have a version in such a language, start and end work unchanged, while left has to be flipped by hand.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Remove the justification — the text should start at the left edge. Centre the heading. And align the prices to the right so the numbers read one under another."
+}

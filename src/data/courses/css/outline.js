@@ -17,7 +17,7 @@ export default {
     {
       id: 'text',
       modules: [
-        { id: 'typography', lessons: ['33-font-family', '34-webfonts', '35-font-size', '36-line-height', '37-font-weight'] },
+        { id: 'typography', lessons: ['33-font-family', '34-webfonts', '35-font-size', '36-line-height', '37-font-weight', '38-text-align'] },
       ],
     },
   ],

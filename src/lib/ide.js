@@ -10,10 +10,12 @@ async function call(action, course, files) {
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ action, accessToken, course, files }),
   });
-  if (!r.ok) return null;
-  return r.json();
+
+  const json = await r.json().catch(() => null);
+  return { ok: r.ok, status: r.status, ...json };
 }
 
 export const startIde = (course, files) => call('session', course, files);
-export const readIde = async (course) => (await call('files', course))?.files ?? null;
+export const beatIde = (course) => call('beat', course);
 export const stopIde = (course) => call('stop', course);
+export const readIde = async (course) => (await call('files', course))?.files ?? null;

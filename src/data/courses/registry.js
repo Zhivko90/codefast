@@ -41,10 +41,11 @@ import css_l33 from './css/lessons/34-webfonts.js';
 import css_l34 from './css/lessons/35-font-size.js';
 import css_l35 from './css/lessons/36-line-height.js';
 import css_l36 from './css/lessons/37-font-weight.js';
-import css_l37 from './css/lessons/R1-review-intro.js';
-import css_l38 from './css/lessons/R2-review-selectors.js';
-import css_l39 from './css/lessons/R3-review-box.js';
-import css_l40 from './css/lessons/R4-review-sizing.js';
+import css_l37 from './css/lessons/38-text-align.js';
+import css_l38 from './css/lessons/R1-review-intro.js';
+import css_l39 from './css/lessons/R2-review-selectors.js';
+import css_l40 from './css/lessons/R3-review-box.js';
+import css_l41 from './css/lessons/R4-review-sizing.js';
 import css_bg_course from '@/content/courses/css/bg/_course.json';
 import css_bg_0 from '@/content/courses/css/bg/01-ugly.json';
 import css_bg_1 from '@/content/courses/css/bg/02-where.json';
@@ -83,10 +84,11 @@ import css_bg_33 from '@/content/courses/css/bg/34-webfonts.json';
 import css_bg_34 from '@/content/courses/css/bg/35-font-size.json';
 import css_bg_35 from '@/content/courses/css/bg/36-line-height.json';
 import css_bg_36 from '@/content/courses/css/bg/37-font-weight.json';
-import css_bg_37 from '@/content/courses/css/bg/R1-review-intro.json';
-import css_bg_38 from '@/content/courses/css/bg/R2-review-selectors.json';
-import css_bg_39 from '@/content/courses/css/bg/R3-review-box.json';
-import css_bg_40 from '@/content/courses/css/bg/R4-review-sizing.json';
+import css_bg_37 from '@/content/courses/css/bg/38-text-align.json';
+import css_bg_38 from '@/content/courses/css/bg/R1-review-intro.json';
+import css_bg_39 from '@/content/courses/css/bg/R2-review-selectors.json';
+import css_bg_40 from '@/content/courses/css/bg/R3-review-box.json';
+import css_bg_41 from '@/content/courses/css/bg/R4-review-sizing.json';
 import css_en_course from '@/content/courses/css/en/_course.json';
 import css_en_0 from '@/content/courses/css/en/01-ugly.json';
 import css_en_1 from '@/content/courses/css/en/02-where.json';
@@ -125,10 +127,11 @@ import css_en_33 from '@/content/courses/css/en/34-webfonts.json';
 import css_en_34 from '@/content/courses/css/en/35-font-size.json';
 import css_en_35 from '@/content/courses/css/en/36-line-height.json';
 import css_en_36 from '@/content/courses/css/en/37-font-weight.json';
-import css_en_37 from '@/content/courses/css/en/R1-review-intro.json';
-import css_en_38 from '@/content/courses/css/en/R2-review-selectors.json';
-import css_en_39 from '@/content/courses/css/en/R3-review-box.json';
-import css_en_40 from '@/content/courses/css/en/R4-review-sizing.json';
+import css_en_37 from '@/content/courses/css/en/38-text-align.json';
+import css_en_38 from '@/content/courses/css/en/R1-review-intro.json';
+import css_en_39 from '@/content/courses/css/en/R2-review-selectors.json';
+import css_en_40 from '@/content/courses/css/en/R3-review-box.json';
+import css_en_41 from '@/content/courses/css/en/R4-review-sizing.json';
 
 // ── html ──
 import { meta as html_meta } from './html/meta.js';
@@ -453,6 +456,7 @@ import js_l16 from './js/lessons/17-quiz.js';
 import js_l17 from './js/lessons/18-if.js';
 import js_l18 from './js/lessons/19-else.js';
 import js_l19 from './js/lessons/20-equality.js';
+import js_l20 from './js/lessons/21-truthy.js';
 import js_bg_course from '@/content/courses/js/bg/_course.json';
 import js_bg_0 from '@/content/courses/js/bg/01-hello.json';
 import js_bg_1 from '@/content/courses/js/bg/02-values.json';
@@ -474,6 +478,7 @@ import js_bg_16 from '@/content/courses/js/bg/17-quiz.json';
 import js_bg_17 from '@/content/courses/js/bg/18-if.json';
 import js_bg_18 from '@/content/courses/js/bg/19-else.json';
 import js_bg_19 from '@/content/courses/js/bg/20-equality.json';
+import js_bg_20 from '@/content/courses/js/bg/21-truthy.json';
 import js_en_course from '@/content/courses/js/en/_course.json';
 import js_en_0 from '@/content/courses/js/en/01-hello.json';
 import js_en_1 from '@/content/courses/js/en/02-values.json';
@@ -495,6 +500,7 @@ import js_en_16 from '@/content/courses/js/en/17-quiz.json';
 import js_en_17 from '@/content/courses/js/en/18-if.json';
 import js_en_18 from '@/content/courses/js/en/19-else.json';
 import js_en_19 from '@/content/courses/js/en/20-equality.json';
+import js_en_20 from '@/content/courses/js/en/21-truthy.json';
 
 // ── webproject ──
 import { meta as webproject_meta } from './webproject/meta.js';
@@ -547,10 +553,11 @@ export const registry = {
       '35-font-size': css_l34,
       '36-line-height': css_l35,
       '37-font-weight': css_l36,
-      'R1-review-intro': css_l37,
-      'R2-review-selectors': css_l38,
-      'R3-review-box': css_l39,
-      'R4-review-sizing': css_l40,
+      '38-text-align': css_l37,
+      'R1-review-intro': css_l38,
+      'R2-review-selectors': css_l39,
+      'R3-review-box': css_l40,
+      'R4-review-sizing': css_l41,
     },
     problems: {
     },
@@ -594,10 +601,11 @@ export const registry = {
         '35-font-size': css_bg_34,
         '36-line-height': css_bg_35,
         '37-font-weight': css_bg_36,
-        'R1-review-intro': css_bg_37,
-        'R2-review-selectors': css_bg_38,
-        'R3-review-box': css_bg_39,
-        'R4-review-sizing': css_bg_40,
+        '38-text-align': css_bg_37,
+        'R1-review-intro': css_bg_38,
+        'R2-review-selectors': css_bg_39,
+        'R3-review-box': css_bg_40,
+        'R4-review-sizing': css_bg_41,
       },
       en: {
         _course: css_en_course,
@@ -638,10 +646,11 @@ export const registry = {
         '35-font-size': css_en_34,
         '36-line-height': css_en_35,
         '37-font-weight': css_en_36,
-        'R1-review-intro': css_en_37,
-        'R2-review-selectors': css_en_38,
-        'R3-review-box': css_en_39,
-        'R4-review-sizing': css_en_40,
+        '38-text-align': css_en_37,
+        'R1-review-intro': css_en_38,
+        'R2-review-selectors': css_en_39,
+        'R3-review-box': css_en_40,
+        'R4-review-sizing': css_en_41,
       },
     },
     problemText: {
@@ -993,6 +1002,7 @@ export const registry = {
       '18-if': js_l17,
       '19-else': js_l18,
       '20-equality': js_l19,
+      '21-truthy': js_l20,
     },
     problems: {
     },
@@ -1019,6 +1029,7 @@ export const registry = {
         '18-if': js_bg_17,
         '19-else': js_bg_18,
         '20-equality': js_bg_19,
+        '21-truthy': js_bg_20,
       },
       en: {
         _course: js_en_course,
@@ -1042,6 +1053,7 @@ export const registry = {
         '18-if': js_en_17,
         '19-else': js_en_18,
         '20-equality': js_en_19,
+        '21-truthy': js_en_20,
       },
     },
     problemText: {
