@@ -7,7 +7,7 @@ import { join } from 'node:path';
 const run = promisify(execFile);
 
 const PORT = Number(process.env.PORT ?? 3100);
-const HOST = process.env.PUBLIC_HOST ?? '77.42.123.202';
+const BASE = process.env.IDE_BASE ?? 'https://ide.codymaster.com';
 const ROOT = process.env.STUDENTS_ROOT ?? '/srv/students';
 const IMAGE = process.env.IDE_IMAGE ?? 'codercom/code-server:latest';
 const TOKEN = (await readFile(process.env.TOKEN_FILE ?? '/srv/orchestrator/.token', 'utf8')).trim();
@@ -83,7 +83,7 @@ async function adopt() {
       live.set(key, {
         key, name, port: Number(m[1]), pro: false, tree: false, term: false,
         dir: join(ROOT, key, 'workspace'),
-        url: 'http://' + HOST + ':' + m[1] + '?folder=/home/coder/workspace',
+       url: BASE + '/s/' + m[1] + '/?folder=/home/coder/workspace',
         beat: now, born: now,
       });
     }
@@ -322,11 +322,13 @@ async function start(student, course, files, pro) {
     '-v', join(home, '.local') + ':/home/coder/.local',
     '--memory=512m', '--cpus=0.5',
     '--pids-limit=256',
-    IMAGE,
+  IMAGE,
     '--auth', 'none',
     '--disable-telemetry',
     '--disable-workspace-trust',
     '--disable-update-check',
+    // Живее под /s/<порт>/ зад Caddy. Без това всички пътища сочат в корена.
+    '--abs-proxy-base-path', '/s/' + port,
   ]);
 
   // Папката се задава през АДРЕСА. Подадена като аргумент, тя се записва
@@ -369,7 +371,7 @@ async function start(student, course, files, pro) {
   const now = Date.now();
   const session = {
     key, name, port, dir, pro, tree: false, term: false,
-    url: 'http://' + HOST + ':' + port + query,
+    url: BASE + '/s/' + port + '/' + query,
     beat: now, born: now,
   };
   live.set(key, session);
