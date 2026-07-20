@@ -148,9 +148,11 @@ function activate() {
   // зареждане, рамката се показва, преди лентите да са скрити.
   try { fs.unlinkSync(path.join(dir, 'cf-ready')); } catch (e) {}
 
-  Promise.all([
+ Promise.all([
     vscode.commands.executeCommand('workbench.action.closeSidebar'),
     vscode.commands.executeCommand('workbench.action.closeAuxiliaryBar'),
+    // ⚠ VS Code помни отворения терминал между зарежданията и го връща.
+    vscode.commands.executeCommand('workbench.action.closePanel'),
   ]).then(function () {
     try { fs.writeFileSync(path.join(dir, 'cf-ready'), '1'); } catch (e) {}
   });

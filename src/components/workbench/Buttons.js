@@ -2,11 +2,12 @@
 
 // Бутоните на двете ленти: вертикалната (десктоп) и таб лентата (телефон).
 
-export function RailBtn({ on, onClick, title, children, dot }) {
+export function RailBtn({ on, onClick, title, children, dot, disabled }) {
   return (
-    <button onClick={onClick} title={title}
+    <button onClick={onClick} title={title} disabled={disabled}
       className={`relative w-9 h-9 rounded-lg flex items-center justify-center transition ${
-        on ? 'bg-sky-500/15 text-sky-300' : 'text-gray-500 hover:text-white hover:bg-white/5'
+        disabled ? 'text-gray-700 cursor-not-allowed'
+        : on ? 'bg-sky-500/15 text-sky-300' : 'text-gray-500 hover:text-white hover:bg-white/5'
       }`}>
       {children}
       {dot && <span className={`absolute top-1 right-1 w-1.5 h-1.5 rounded-full ${dot}`} />}
@@ -14,11 +15,12 @@ export function RailBtn({ on, onClick, title, children, dot }) {
   );
 }
 
-export function MTab({ active, onClick, label, dot, children }) {
+export function MTab({ active, onClick, label, dot, children, disabled }) {
   return (
-    <button onClick={onClick}
+    <button onClick={onClick} disabled={disabled}
       className={`relative shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12.5px] font-medium transition ${
-        active ? 'bg-sky-500/15 text-sky-300' : 'text-gray-500 hover:text-gray-300'
+        disabled ? 'text-gray-700 cursor-not-allowed'
+        : active ? 'bg-sky-500/15 text-sky-300' : 'text-gray-500 hover:text-gray-300'
       }`}>
       {children}
       <span className="max-w-[90px] truncate">{label}</span>

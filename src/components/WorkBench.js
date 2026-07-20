@@ -50,6 +50,13 @@ const IcoTree = ({ size = 17 }) => (
   </svg>
 );
 
+const IcoTerminal = ({ size = 17 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2.5" y="4" width="19" height="16" rx="2" />
+    <path d="M7 9.5l2.5 2.5L7 14.5" /><path d="M12.5 15h4.5" />
+  </svg>
+);
+
 export default function WorkBench({
   backHref, BackLink,
   title, badge, extra, beforeTitle,
@@ -105,6 +112,7 @@ files = [], activeFile, onFile, getFile, setFile,
   const touched = useRef({ l: false, p: false });
   const [dragging, setDragging] = useState(false);
   const [treeOpen, setTreeOpen] = useState(false);
+  const [ideReady, setIdeReady] = useState(false);
   const [treeBusy, setTreeBusy] = useState(false);
   const [termOpen, setTermOpen] = useState(false);
 
@@ -252,7 +260,7 @@ files = [], activeFile, onFile, getFile, setFile,
   );
 
 const editorEl = ide ? (
-    <IdePane course={course} files={ideFiles} onReady={onIdeReady} />
+    <IdePane course={course} files={ideFiles} onReady={() => { setIdeReady(true); onIdeReady?.(); }} />
   ) : multi ? (
     <EditorGrid
       files={files} getFile={getFile} setFile={setFile} onActive={onFile}
@@ -315,19 +323,43 @@ const editorEl = ide ? (
         )}
       </div>
 
-      {/* ══════════════════ ТЕЛЕФОН ══════════════════ */}
+   {/* ══════════════════ ТЕЛЕФОН ══════════════════ */}
       {isMobile ? (
         <div className="relative flex-1 flex flex-col min-h-0 overflow-hidden bg-[var(--bg-elevated)]">
 
           <div className="shrink-0 flex items-center gap-1 px-1.5 py-1.5 bg-black/30 border-b border-white/10 overflow-x-auto">
-           <MTab active={mobileView === 'statement'} onClick={() => setMobileView('statement')} label={t('statement')}>
+            <MTab active={mobileView === 'statement'} onClick={() => setMobileView('statement')} label={t('statement')}>
               <IcoStatement size={15} />
             </MTab>
 
             {ide && (
-              <MTab active={treeOpen}
-                onClick={async () => { setMobileView('code'); const r = await toggleTree(course); if (r?.ok) setTreeOpen(!!r.tree); }}
-                label={t('files')}></MTab>
+              <MTab active={treeOpen} disabled={!ideReady}
+                onClick={async () => {
+                  if (treeBusy || !ideReady) return;
+                  setTreeBusy(true);
+                  setMobileView('code');
+                  const r = await toggleTree(course);
+                  if (r?.ok) setTreeOpen(!!r.tree);
+                  setTreeBusy(false);
+                }}
+                label={t('files')}>
+                <IcoTree size={15} />
+              </MTab>
+            )}
+
+            {ide && (
+              <MTab active={termOpen} disabled={!ideReady}
+                onClick={async () => {
+                  if (treeBusy || !ideReady) return;
+                  setTreeBusy(true);
+                  setMobileView('code');
+                  const r = await toggleTerminal(course);
+                  if (r?.ok) setTermOpen(!!r.term);
+                  setTreeBusy(false);
+                }}
+                label="Terminal">
+                <IcoTerminal size={15} />
+              </MTab>
             )}
 
             <MTab active={mobileView === 'code'} onClick={() => setMobileView('code')} label={activeName}>
@@ -340,25 +372,26 @@ const editorEl = ide ? (
               </MTab>
             )}
 
-            {hasConsole && (
+            {hasConsole && !ide && (
               <MTab active={mobileView === 'console'} onClick={() => setMobileView('console')} label={L_CONSOLE} dot={consDot}>
                 <IcoConsole size={15} />
               </MTab>
             )}
 
-            <MTab active={mobileView === 'result'} onClick={() => setMobileView('result')} label={t('result')} dot={dot}>
-              <IcoResult size={15} />
-            </MTab>
+            {!ide && (
+              <MTab active={mobileView === 'result'} onClick={() => setMobileView('result')} label={t('result')} dot={dot}>
+                <IcoResult size={15} />
+              </MTab>
+            )}
 
-            {/* кошчето — до работните табове */}
+            <div className="flex-1" />
+
+            {/* кошчето и докладът — накрая, отделени от работните табове */}
             <button onClick={() => setConfirmReset(true)} title={t('reset')}
               className="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition">
               <IcoTrash size={15} />
             </button>
 
-            <div className="flex-1" />
-
-            {/* докладът — най-накрая, отделен */}
             <button onClick={() => setShowFb(true)} title={t('report_bug')}
               className="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition">
               <IcoBug size={15} />
@@ -383,7 +416,7 @@ const editorEl = ide ? (
             </div>
           )}
 
-          {mobileView === 'console' && hasConsole && (
+          {mobileView === 'console' && hasConsole && !ide && (
             <div className="flex-1 min-h-0">{consoleBody}</div>
           )}
 
@@ -391,28 +424,43 @@ const editorEl = ide ? (
         </div>
       ) : (
 
-        /* ══════════════════ ДЕСКТОП ══════════════════ */
+    /* ══════════════════ ДЕСКТОП ══════════════════ */
         <div ref={wrap} onMouseMove={move} onMouseUp={stop} onMouseLeave={stop}
           className="relative flex-1 flex items-stretch min-h-0 overflow-hidden bg-[var(--bg-elevated)]">
           {dragging && <div className="absolute inset-0 z-50" />}
 
           {/* ═══ ВЕРТИКАЛНАТА ЛЕНТА ═══ */}
           <div className="shrink-0 w-12 flex flex-col items-center gap-1 py-3 bg-black/30 border-r border-white/10">
-           <RailBtn on={showLeft} onClick={() => setShowLeft((v) => !v)} title={t('statement')}>
+            <RailBtn on={showLeft} onClick={() => setShowLeft((v) => !v)} title={t('statement')}>
               <IcoStatement />
             </RailBtn>
 
-        {ide && (
-              <RailBtn on={termOpen}
+            {ide && (
+              <RailBtn on={treeOpen} disabled={!ideReady}
                 onClick={async () => {
-                  if (treeBusy) return;
+                  if (treeBusy || !ideReady) return;
+                  setTreeBusy(true);
+                  setShowLeft(false);
+                  const r = await toggleTree(course);
+                  if (r?.ok) setTreeOpen(!!r.tree);
+                  setTreeBusy(false);
+                }}
+                title={t('files')}>
+                <IcoTree />
+              </RailBtn>
+            )}
+
+            {ide && (
+              <RailBtn on={termOpen} disabled={!ideReady}
+                onClick={async () => {
+                  if (treeBusy || !ideReady) return;
                   setTreeBusy(true);
                   const r = await toggleTerminal(course);
                   if (r?.ok) setTermOpen(!!r.term);
                   setTreeBusy(false);
                 }}
-                title={L_CONSOLE}>
-                <IcoConsole />
+                title="Terminal">
+                <IcoTerminal />
               </RailBtn>
             )}
 
@@ -422,13 +470,15 @@ const editorEl = ide ? (
               </RailBtn>
             )}
 
-            <RailBtn on={showBot && bottom === 'result'}
-              onClick={() => { setShowBot(!(showBot && bottom === 'result')); setBottom('result'); }}
-              title={t('result')} dot={dot}>
-              <IcoResult />
-            </RailBtn>
+            {!ide && (
+              <RailBtn on={showBot && bottom === 'result'}
+                onClick={() => { setShowBot(!(showBot && bottom === 'result')); setBottom('result'); }}
+                title={t('result')} dot={dot}>
+                <IcoResult />
+              </RailBtn>
+            )}
 
-           {hasConsole && !ide && (
+            {hasConsole && !ide && (
               <RailBtn on={showBot && bottom === 'console'}
                 onClick={() => { setShowBot(!(showBot && bottom === 'console')); setBottom('console'); }}
                 title={L_CONSOLE} dot={consDot}>
@@ -436,14 +486,13 @@ const editorEl = ide ? (
               </RailBtn>
             )}
 
-            {/* кошчето — горе, до резултата */}
+            <div className="flex-1" />
+
+            {/* кошчето и докладът — долу, отделени от работните бутони */}
             <RailBtn on={false} onClick={() => setConfirmReset(true)} title={t('reset')}>
               <IcoTrash />
             </RailBtn>
 
-            <div className="flex-1" />
-
-            {/* докладът — най-долу, отделен от работните бутони */}
             <RailBtn on={showFb} onClick={() => setShowFb(true)} title={t('report_bug')}>
               <IcoBug />
             </RailBtn>
@@ -489,7 +538,7 @@ const editorEl = ide ? (
                       {t('result')}
                     </button>
 
-                    {hasConsole && (
+                    {hasConsole && !ide && (
                       <button onClick={() => setBottom('console')}
                         className={`flex items-center gap-1.5 text-[11px] font-bold tracking-wider px-2 py-0.5 rounded transition ${
                           bottom === 'console' ? 'text-gray-300 bg-white/[0.07]' : 'text-gray-600 hover:text-gray-400'
@@ -528,7 +577,6 @@ const editorEl = ide ? (
             )}
           </div>
 
-          {/* ═══ 3. ПРЕГЛЕД ═══ */}
           {/* ═══ 3. ПРЕГЛЕД ═══ */}
           {/* ⚠ РАМКАТА ОСТАВА В ДЪРВЕТО, САМО СЕ СКРИВА.
               Затворена колона = размонтирана рамка = скриптът не се изпълнява

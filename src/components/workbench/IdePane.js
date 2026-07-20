@@ -23,7 +23,6 @@ export default function IdePane({ course, files, onReady }) {
 
     setUrl(r.url);
     setState('ready');
-    onReady?.();
   };
 
   useEffect(() => {
@@ -86,12 +85,12 @@ if (state === 'loading') {
     );
   }
 
-  return <IdeFrame url={url} course={course} />;
+ return <IdeFrame url={url} course={course} onReady={onReady} />;
 }
 
 // ⚠ Рамката чака СИГНАЛ от разширението, не таймер. Времето, за което
 // VS Code се подрежда, не е постоянно — таймерът улучва през път.
-function IdeFrame({ url, course }) {
+function IdeFrame({ url, course, onReady }) {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -105,7 +104,7 @@ function IdeFrame({ url, course }) {
       const r = await beatIde(course);
       if (!alive) return;
       // Ако сигналът не дойде до 20 сек, показваме я въпреки всичко.
-      if (r?.ready || tries > 40) setShown(true);
+     if (r?.ready || tries > 40) { setShown(true); onReady?.(); }
       else setTimeout(tick, 500);
     };
 
