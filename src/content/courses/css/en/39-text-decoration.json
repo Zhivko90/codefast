@@ -1,0 +1,67 @@
+{
+  "title": "Lines on the text",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The links are underlined",
+  "checkLabels.t7": "The line is offset from the letters",
+  "checkLabels.t8": "The old price is struck through",
+  "checkLabels.t9": "The notice no longer looks like a link",
+  "checkLabels.t10": "The link colour is kept",
+  "checkLabels.t11": "The heading is still dark red",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Three rules change: a, .shout and .old.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-link": "There is no link.",
+  "why.no-old": "There is no element with the old class.",
+  "why.no-shout": "There is no element with the shout class.",
+
+  "why.links-bare": "The links are still not underlined.",
+  "hint2.links-bare": "There are two links in the text. Only colour tells them apart from the rest.",
+  "hint3.links-bare": "Eight percent of men do not distinguish colours well. For them a link without an underline is ordinary text.",
+  "hint4.links-bare": "text-decoration-line: underline; in the a rule.",
+
+  "why.no-offset": "The line sits right against the letters.",
+  "hint2.no-offset": "There is a property that pushes it down. It is not part of the shorthand and is written separately.",
+  "hint4.no-offset": "text-underline-offset: 3px;",
+
+  "why.old-not-struck": "The old price is not struck through.",
+  "hint2.old-not-struck": "Same property, different value.",
+  "hint4.old-not-struck": "text-decoration-line: line-through;",
+
+  "why.shout-underlined": "The notice at the top is still underlined.",
+  "hint2.shout-underlined": "It is not a link. Underlined text that goes nowhere makes people click on it.",
+  "hint3.shout-underlined": "It is already bold — that is enough to set it apart.",
+
+  "why.link-color": "The link colour has changed.",
+  "why.h1-broken": "The heading is no longer dark red.",
+
+  "blocks.0.text": "Three things on this page are the wrong way round. The links have no underline and read as ordinary text. The notice at the top is underlined but leads nowhere. And the old price sits beside the new one with nothing saying it is old.",
+
+  "blocks.1.text": "Four properties, not one",
+  "blocks.2.text": "For a long time there was only text-decoration with a single value. Today the parts are separate and controlled individually:",
+  "blocks.4.text": "The first says what kind of line: underline, overline, line-through or none. There is a colour and a line style too — wavy, dotted, double. The thickness is part of the shorthand, but the offset is NOT and is always written separately. It is a small detail that trips people up: you write everything on one line and the offset does not apply.",
+
+  "blocks.5.text": "A child cannot remove its parent's line",
+  "blocks.6.text": "The line is drawn across all the content below. If a paragraph is underlined and an italic inside it says text-decoration: none, nothing changes — the italic stays underlined. That is not a bug but how it works: the line belongs to the element that declared it and simply runs through everything under it. The only way out is not to set the line on the parent.",
+  "blocks.7.text": "An underline is not a property of the letters. It is a line drawn through them by someone above.",
+
+  "blocks.8.text": "Underlined text that is not a link",
+  "blocks.9.text": "For thirty years an underline on the web has meant one thing: this can be clicked. Underline an ordinary sentence for emphasis and people will try to click it and wonder why nothing happens. For emphasis you have bold, colour, size, a background. Leave the underline to links.",
+  "blocks.10.text": "The reverse holds too. Take the underline off your links and only colour is left — and eight percent of men do not distinguish colours well. If the underline really bothers you visually, make it finer: a thin line pushed slightly away from the letters. That looks good and takes nothing from anyone.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Give the links their underline back, but refined: a thin line offset 3 pixels from the letters. Strike through the old price. And remove the underline from the notice at the top — it is not a link."
+}

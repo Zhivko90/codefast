@@ -1,0 +1,81 @@
+{
+  "title": "One question, many answers",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "You use switch",
+  "checkLabels.t7": "Every case has a break",
+  "checkLabels.t8": "There is a default",
+  "checkLabels.t9": "No if left",
+  "checkLabels.t10": "The volume is 250",
+  "checkLabels.t11": "The word is cups",
+  "checkLabels.t12": "Two lines come out",
+  "checkLabels.t13": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The code works. It writes size === four times, and uses five lines to check one number.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the data.",
+
+  "why.no-switch": "You are not using switch.",
+  "hint2.no-switch": "When the same thing is compared against several values, there is a better-suited construction.",
+
+  "why.no-break": "A break is missing somewhere.",
+  "hint2.no-break": "Without it execution does not stop and carries on into the next case.",
+  "hint3.no-break": "This is the most common mistake with switch. A forgotten break means the medium size also gets the large volume.",
+
+  "why.no-default": "The default is missing.",
+  "hint2.no-default": "It is the case when nothing matches. Without it ml stays whatever it was.",
+
+  "why.if-left": "There is still an if left.",
+  "hint2.if-left": "Both places get rewritten. The second one wants something other than switch.",
+  "hint3.if-left": "A two-outcome check that only assigns a value is written on one line with a question mark and a colon.",
+
+  "why.wrong-ml": "The volume is not 250.",
+  "hint2.wrong-ml": "Medium is 250 millilitres. If you get 400, a break is missing somewhere.",
+
+  "why.wrong-word": "The word is not cups.",
+  "hint2.wrong-word": "Three cups is plural.",
+
+  "why.wrong-count": "There are not two lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Two checks. Cup size in millilitres, and a word in singular or plural.",
+  "blocks.1.text": "The code works. The first check writes size === four times in a row. The second takes five lines to choose between two words.",
+
+  "blocks.2.text": "switch",
+  "blocks.3.text": "When the same thing is compared against several values, it can be written shorter. You say what you are comparing once, then list the cases.",
+  "blocks.5.text": "The comparison is strict, like three signs. The text \"3\" will not match the case for the number 3.",
+
+  "blocks.6.text": "break is not decoration",
+  "blocks.7.text": "Without it execution does not stop at its own case. It carries on down through the following ones, as if they had matched too.",
+  "blocks.8.text": "Medium gets 250, then immediately 400, and 400 is what comes out. No error, no warning.",
+  "blocks.9.quote": "A forgotten break is the most common mistake with switch, and it does not show until you compare the numbers.",
+
+  "blocks.10.text": "When switch and when if",
+  "blocks.11.text": "switch compares one thing against several exact values. If the conditions are different in kind — one about size, another about distance — switch does not help.",
+  "blocks.12.text": "Ranges also stay with if. You cannot write a case for over twenty-five.",
+
+  "blocks.13.text": "The ternary",
+  "blocks.14.text": "A two-outcome check that only picks a value is written on one line.",
+  "blocks.16.text": "The question, then a question mark, then the value for yes, a colon, and the value for no. It reads like a sentence and lets you use const instead of let.",
+
+  "blocks.17.text": "The task",
+  "blocks.18.text": "Rewrite the first check with switch, and the second with a ternary operator.",
+  "blocks.19.text": "Test by changing the size to large and the cups to 1. Then it should give 400 and cup."
+}

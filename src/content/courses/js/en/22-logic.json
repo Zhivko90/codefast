@@ -1,0 +1,86 @@
+{
+  "title": "And, or, not",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "There are three conditions",
+  "checkLabels.t7": "You use and",
+  "checkLabels.t8": "You use or",
+  "checkLabels.t9": "You use not",
+  "checkLabels.t10": "Delivery is free",
+  "checkLabels.t11": "Ordering is possible",
+  "checkLabels.t12": "No priority",
+  "checkLabels.t13": "Three lines come out",
+  "checkLabels.t14": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The answers are correct. They are written with six more lines than they need.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the data.",
+  "hint2.changed-data": "You can change it while testing, but put it back at the end.",
+
+  "why.too-many-ifs": "There are not three conditions.",
+  "hint2.too-many-ifs": "Five conditions become three. The nested one merges, and the two for priority become one.",
+
+  "why.no-and": "You are not using and.",
+  "hint2.no-and": "One condition inside another means both. There is a sign for exactly that.",
+  "hint3.no-and": "Two ampersands. It runs only if the left and the right are both true.",
+
+  "why.no-or": "You are not using or.",
+  "hint2.no-or": "Two separate conditions doing the same thing mean either one or the other.",
+  "hint3.no-or": "Two vertical bars. It runs if at least one is true.",
+
+  "why.no-not": "You are not using not.",
+  "hint2.no-not": "isClosed === false can be written shorter. An exclamation mark in front of the name flips the answer.",
+  "hint3.no-not": "!isClosed reads as not closed. Short, and no comparison needed.",
+
+  "why.wrong-delivery": "Delivery is not free.",
+  "hint2.wrong-delivery": "Thirty lev at two kilometres. Both conditions pass.",
+
+  "why.wrong-order": "Ordering is not possible.",
+  "hint2.wrong-order": "The shop is not closed. So it is possible.",
+
+  "why.wrong-priority": "The priority is wrong.",
+  "hint2.wrong-priority": "The customer is not a member and the total is thirty, not fifty. Neither condition passes.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three checks on an order. Free delivery for a total over twenty-five within three kilometres. Whether ordering is possible at all. And whether it gets priority.",
+  "blocks.1.text": "All three answers are correct. They are written with five conditions, nested and repeated, for something that needs three lines.",
+
+  "blocks.2.text": "And",
+  "blocks.3.text": "A condition inside a condition means both. There is a sign for exactly that, and it saves the nesting.",
+  "blocks.5.text": "The two ampersands want both sides to be true. If the left one fails, the right is never even looked at.",
+
+  "blocks.6.text": "Or",
+  "blocks.7.text": "Two separate conditions doing the same thing mean one or the other.",
+  "blocks.9.text": "The two vertical bars want at least one side to be true. If the left one passes, the right is not looked at.",
+
+  "blocks.10.text": "Not",
+  "blocks.11.text": "The exclamation mark flips the answer. Truthy becomes falsy and the other way round.",
+  "blocks.12.text": "isClosed === false and !isClosed are the same thing. The second reads like a sentence: not closed.",
+
+  "blocks.13.text": "The right side is sometimes skipped",
+  "blocks.14.text": "This is not an optimisation, it is part of the rules. With and, if the left side is falsy the answer is already known and the right is skipped. With or it is the other way round.",
+  "blocks.15.quote": "You will need this in section six, when the left side protects the right one from breaking.",
+
+  "blocks.16.text": "The task",
+  "blocks.17.text": "Rewrite the three checks with logical operators. The answers must stay the same.",
+  "blocks.18.text": "Five conditions become three. Test with other numbers — at a total of fifty the priority should become true."
+}

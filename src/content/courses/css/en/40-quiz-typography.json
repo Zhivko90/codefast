@@ -1,0 +1,43 @@
+{
+  "title": "Check yourself",
+
+  "questions.0.q": "You wrote font-family: Bean Sans. The visitor's machine does not have that font. What do they see, and what does the console say?",
+  "questions.0.options.0": "Blank space instead of the text, with a console warning",
+  "questions.0.options.1": "The browser's default font, with no warning at all",
+  "questions.0.options.2": "An error that stops the CSS file from loading",
+  "questions.0.options.3": "The closest matching font the browser finds on its own",
+  "questions.0.hint": "A font list is not a promise. It is a row of wishes.",
+  "questions.0.explain": "The browser walks the list and stops at the first name it finds. If it finds none it drops to its own default — usually a serif. That is not a failure to it but the whole point of the list, so it stays silent. Hence the rule: a generic name like sans-serif goes last, because that one cannot be missing.",
+
+  "questions.1.q": "A list in a list in a list, each with font-size: 0.9em. The body text is 16 pixels. How large is the third level?",
+  "questions.1.options.0": "14.4 pixels — 0.9 applies once",
+  "questions.1.options.1": "13 pixels — the browser rounds down",
+  "questions.1.options.2": "16 pixels — nesting changes nothing",
+  "questions.1.options.3": "About 11.7 pixels — 0.9 multiplies three times",
+  "questions.1.hint": "What is em measured against?",
+  "questions.1.explain": "em is measured against the parent, so it multiplies again at every level: 0.9 by 0.9 by 0.9 gives 0.73, about 11.7 pixels. Nowhere in the code does it say 0.73 — it simply happens and is hard to trace. rem is measured against the root and is identical at every level.",
+
+  "questions.2.q": "body has line-height: 24px. The heading uses a 32 pixel font and sets nothing of its own. What happens?",
+  "questions.2.options.0": "Its lines overlap — it inherits the finished 24 pixels",
+  "questions.2.options.1": "Nothing — headings ignore inherited line height",
+  "questions.2.options.2": "The browser raises 24 to 48 so the font fits",
+  "questions.2.options.3": "The heading automatically gets 1.5 times its own size",
+  "questions.2.hint": "What exactly is inherited: a pixel value or a rule?",
+  "questions.2.explain": "A value with a unit is inherited as a finished result — 24 pixels, however large the descendant's font is. At 32 pixels that means a line shorter than the letters, and they overlap. A number with no unit is inherited as a ratio and each element multiplies it by ITS OWN size: 32 times 1.5 gives 48. That is why it is written without a unit.",
+
+  "questions.3.q": "You removed the underline from your links because you do not like it. What is lost?",
+  "questions.3.options.0": "Nothing, as long as the colour is different enough",
+  "questions.3.options.1": "Only aesthetics — this is a matter of taste",
+  "questions.3.options.2": "The only signal for a link that does not rely on colour",
+  "questions.3.options.3": "The ability to activate the link from the keyboard",
+  "questions.3.hint": "Blue and the underline are two separate signals for the same thing.",
+  "questions.3.explain": "With only colour left, the link disappears for someone who does not distinguish colours well — around eight percent of men. The link is still clickable, but nothing shows that it is a link. Removing the underline is not forbidden; removing it without a replacement is. If it bothers you visually, make it finer: a thin line offset slightly from the letters.",
+
+  "questions.4.q": "A paragraph is underlined. Inside it an <em> has text-decoration: none. How does the italic look?",
+  "questions.4.options.0": "Not underlined — the more specific rule wins",
+  "questions.4.options.1": "Underlined — the parent's line runs through it",
+  "questions.4.options.2": "Not underlined, but only in some browsers",
+  "questions.4.options.3": "Double underlined — the two rules add up",
+  "questions.4.hint": "Whose line is it really?",
+  "questions.4.explain": "The line belongs to the element that declared it and is drawn through all the content below. A descendant cannot remove it — none only says that it adds no line of its own. The only way out is not to set the line on the parent. This is not the cascade and not specificity; it is how decorations are drawn."
+}

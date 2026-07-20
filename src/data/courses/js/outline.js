@@ -17,7 +17,7 @@ export default {
       id: 'decisions',
       modules: [
       { id: 'branching', lessons: ['18-if', '19-else'] },
-        { id: 'comparing', lessons: ['20-equality', '21-truthy'] },
+        { id: 'comparing', lessons: ['20-equality', '21-truthy', '22-logic', '23-switch', '24-broken'] },
       ],
     },
   ],

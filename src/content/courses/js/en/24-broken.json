@@ -1,0 +1,80 @@
+{
+  "title": "Four decisions, four traps",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.g1": "Everything closed",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "The comparisons are strict",
+  "checkLabels.t7": "The tiers are joined",
+  "checkLabels.t8": "Priority is one condition",
+  "checkLabels.t9": "The stock is 0, not missing",
+  "checkLabels.t10": "Ordering is possible",
+  "checkLabels.t11": "The tier is Silver",
+  "checkLabels.t12": "No priority",
+  "checkLabels.t13": "Four lines come out",
+  "checkLabels.t14": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Three of the four lines are wrong. The first claims the stock was never counted — and it is zero.",
+
+  "why.not-closed": "A tag in index.html is open and never closed.",
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the data.",
+  "hint2.changed-data": "You can change it while testing, but put it back at the end.",
+
+  "why.loose-left": "Somewhere you are still comparing with two signs.",
+  "hint2.loose-left": "The number of cups arrives as text. Convert it before comparing it with a number.",
+
+  "why.not-joined": "The tiers are still not joined.",
+  "hint2.not-joined": "Two separate checks both pass. They should be one decision, with the highest tier at the top.",
+  "hint3.not-joined": "Add the case for under ten lev too — tier None.",
+
+  "why.no-or": "Priority is still two separate checks.",
+  "hint2.no-or": "One or the other is written with two vertical bars.",
+
+  "why.wrong-stock": "The stock is reported as missing.",
+  "hint2.wrong-stock": "Zero cups is a known fact. A condition with just a name asks whether it is truthy, and zero is not.",
+
+  "why.wrong-order": "Ordering is not possible.",
+  "hint2.wrong-order": "Two cups were typed. With three signs the text \"2\" is not the number 2.",
+
+  "why.wrong-tier": "The tier is not Silver.",
+  "hint2.wrong-tier": "Thirty lev passes both conditions. The right answer comes out by accident, because Silver is written at the bottom.",
+
+  "why.wrong-priority": "The priority is wrong.",
+  "hint2.wrong-priority": "The customer is not a member and the total is thirty, not fifty.",
+
+  "why.wrong-count": "There are not four lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Four decisions on one order. Nothing breaks, everything runs from start to finish.",
+  "blocks.1.text": "Three of the four answers are wrong. The fourth is right by accident and will become wrong the moment somebody moves two lines.",
+
+  "blocks.2.text": "What it is supposed to do",
+  "blocks.3.text": "Stock of zero cups, two ordered, a customer with no membership, a total of thirty lev.",
+  "blocks.4.items.0": "the stock is known and it is zero",
+  "blocks.4.items.1": "two cups can be ordered",
+  "blocks.4.items.2": "thirty lev gives tier Silver",
+  "blocks.4.items.3": "no priority",
+
+  "blocks.5.text": "The right answer is not proof",
+  "blocks.6.text": "The tier comes out Silver and that is correct. But not because the code is right — because Silver is written below Bronze and overwrites it.",
+  "blocks.7.text": "Swap the two blocks and the same code gives Bronze for thirty lev. Nothing changes in the logic — only the order.",
+  "blocks.8.quote": "Code whose correctness depends on the order of its lines is not correct code yet.",
+
+  "blocks.9.text": "The task",
+  "blocks.10.text": "Fix the four decisions. Do not touch the data.",
+  "blocks.11.text": "Each broken thing comes from a lesson in this section. If you cannot place one, the hint ladder is under every failed check."
+}

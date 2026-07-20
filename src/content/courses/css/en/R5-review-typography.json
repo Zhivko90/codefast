@@ -1,0 +1,28 @@
+{
+  "title": "Typography",
+  "assignment": "Look through the ideas from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "Where the font comes from",
+  "groups.0.items.0.term": "The list is a ladder, not a choice",
+  "groups.0.items.0.def": "The browser starts on the left and stops at the first name it finds on the machine. It never complains when it fails to find one — which is how a font can go missing with nobody noticing. A two-word name needs quotes. At the end there must ALWAYS be a generic name: sans-serif, serif, monospace. That is not a font but a kind, and every machine resolves it to something it has — the only entry that never fails.",
+  "groups.0.items.1.term": "Your own font over the network",
+  "groups.0.items.1.def": "The block only declares: if anyone asks for this name, the file is here. The format is woff2 and only woff2. font-display: swap says draw immediately with the fallback and switch when the real font arrives — otherwise the browser waits and the text is INVISIBLE for up to three seconds. The cost is a flicker on the swap, the lesser evil next to an unreadable page.",
+  "groups.0.items.2.term": "Someone else's server",
+  "groups.0.items.2.def": "One line to Google Fonts means every visitor's browser contacts a foreign machine and hands over its address before the person clicks anything. In January 2022 a court in Munich awarded a hundred euros in damages for exactly that. It is a first-instance ruling on a small claim and lawyers disagree about its weight — but a file hosted with your own makes the question moot and stops the page waiting on someone else's server.",
+
+  "groups.1.title": "The three numbers",
+  "groups.1.items.0.term": "rem against em",
+  "groups.1.items.0.def": "em is measured against the parent and ACCUMULATES: a list in a list in a list at 0.9 gives 0.73, with 0.73 written nowhere. rem is measured against the root and is the same everywhere. And more importantly: browser settings carry a default size that someone with failing eyesight raises to 20 or 24. That changes the value of rem and changes nothing set in pixels. So never set a pixel size on html.",
+  "groups.1.items.1.term": "Line height with no unit",
+  "groups.1.items.1.def": "With a unit, descendants inherit a finished pixel value — a heading at 32 pixels gets a 24 pixel line and the letters overlap. With no unit they inherit the RATIO and each multiplies it by its own size. Sensible values are 1.4 to 1.6 for body text and 1.1 to 1.3 for headings. WCAG expects a page to stay readable when the reader raises spacing to 1.5 — nailed down in pixels, it resists.",
+  "groups.1.items.2.term": "Weight from 100 to 900",
+  "groups.1.items.2.def": "400 is normal, 700 is bold; the words normal and bold are just other names for those two numbers. The number is a wish: if the font has no such weight the browser takes the nearest or thickens the letters artificially, which shows. MDN warns that 100 and 200 are hard for readers with low vision. And one distinction: font-weight says how it LOOKS, while strong in HTML says the content IS important — the second reaches a screen reader, the first does not.",
+
+  "groups.2.title": "Alignment and lines",
+  "groups.2.items.0.term": "Why text is not justified",
+  "groups.2.items.0.def": "The browser cannot hyphenate and simply stretches the spaces until the line reaches the edge. In a narrow column the gaps stack up and a white river runs through the text. WCAG says plainly that text should not be justified — for people with dyslexia the uneven spacing makes tracking hard. Centring long text is a related problem: the ragged left edge makes the eye hunt for each new line.",
+  "groups.2.items.1.term": "Lines on the text",
+  "groups.2.items.1.def": "The line, colour, style and thickness are set separately, but the offset is NOT part of the shorthand and is written on its own. For thirty years an underline on the web has meant one thing: this can be clicked. Underlined text that is not a link makes people click it; a link without an underline vanishes for someone who cannot tell colours apart.",
+  "groups.2.items.2.term": "A child cannot remove the line",
+  "groups.2.items.2.def": "The line belongs to the element that declared it and is drawn through all the content below. text-decoration: none on a nested element does nothing while the parent is underlined. The only way out is not to set the line on the parent."
+}

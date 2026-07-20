@@ -9,6 +9,7 @@ import PreviewPane from './workbench/PreviewPane';
 import ConsolePane, { useConsole } from './workbench/ConsolePane';
 import FeedbackDialog from './workbench/FeedbackDialog';
 import { RailBtn, MTab, IcoStatement, IcoPreview, IcoResult, IcoTrash, IcoBug, IcoFile } from './workbench/Buttons';
+import IdePane from './workbench/IdePane';
 
 // ============================================
 // ОБЩАТА РАМКА за урок и за задача. САМО ПОДРЕДБАТА.
@@ -56,6 +57,7 @@ export default function WorkBench({
   // Празно → всичко работи както преди. 77-те HTML урока не усещат нищо.
 files = [], activeFile, onFile, getFile, setFile,
   entry, freeFiles = false, ide = false, onCreateFile, onRenameFile, onDeleteFile,
+  ideFiles, onIdeReady,
 
   onRun, onSubmit, onReset, canSubmit = true,
 
@@ -228,7 +230,7 @@ files = [], activeFile, onFile, getFile, setFile,
     </>
   );
 
-  const fileBar = multi ? null : (
+  const fileBar = (multi || ide) ? null : (
     <div className="shrink-0 h-9 flex items-center justify-between px-3 bg-black/20 border-b border-white/[0.08] text-[12px] text-gray-500">
       <span className="flex items-center gap-2">
         <IcoFile size={13} />
@@ -238,10 +240,12 @@ files = [], activeFile, onFile, getFile, setFile,
     </div>
   );
 
- const editorEl = multi ? (
+const editorEl = ide ? (
+    <IdePane course={course} files={ideFiles} onReady={onIdeReady} />
+  ) : multi ? (
     <EditorGrid
       files={files} getFile={getFile} setFile={setFile} onActive={onFile}
-      entry={entry} freeFiles={freeFiles} ide={ide}
+      entry={entry} freeFiles={freeFiles}
       onCreate={onCreateFile} onRename={onRenameFile} onDelete={onDeleteFile}
     />
   ) : (

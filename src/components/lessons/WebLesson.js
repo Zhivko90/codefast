@@ -11,30 +11,8 @@ import { checkProblem } from '@/core/checkProblem';
 import { assemble, packFiles, unpackFiles } from '@/core/bundle';
 import { fetchCode, saveCode, removeCode, markDone } from '@/lib/progress';
 import { fetchProject, saveProject } from '@/lib/project';
+import { readIde } from '@/lib/ide';
 
-// ============================================
-// Урокът идва СГЛОБЕН за езика. Курсът идва отвън.
-//
-// ★ ЕДНО ЯДРО за уроци и задачи.
-//   Урок с `checks` минава през checkProblem — както задачите.
-//   Урок БЕЗ `checks` пада на старото: едно `expected`, едно съобщение.
-//
-// ★ СТЪЛБАТА НА ПОДСКАЗКИТЕ
-//   why.<err> · hint2.<err> · hint3.<err> · hint4.<err>
-//   Ученикът дърпа стъпалата сам. Липсва ли ниво — просто го няма.
-//
-// ★ НЯКОЛКО ФАЙЛА (lesson.starterFiles)
-//   starterFiles: { 'index.html': '…', 'styles.css': '…' }
-//   entry: 'index.html'
-//
-//   ⚠ ВСИЧКО НАДОЛУ ПОЛУЧАВА ЕДИН НИЗ. bundle.assemble слепва файловете,
-//   преди да ги подаде на превюто и на checkProblem. Затова styleCheck,
-//   axeCheck и ядрото не се пипат — за тях нищо не се е променило.
-//
-//   Урок БЕЗ starterFiles работи буквално както преди. Не го чупи.
-//
-// ПРОЕКТНИ УРОЦИ (lesson.project): редакторът е празен, това е упражнението.
-// ============================================
 export default function WebLesson({ lesson, lang, course, onDone }) {
   const t = useTranslations('lesson');
   const { user } = useAuth();
@@ -146,17 +124,16 @@ const [active, setActive] = useState(entry);
     return () => clearTimeout(id);
   }, [files, code, ready, user?.id, course, lesson.id, multi, starterFiles, lesson.starterCode]);
 
-  // ── СТАРАТА проверка: едно expected, едно съобщение ──
-  const legacyCheck = () => {
+const legacyCheck = (built = assembled) => {
     const expected = (lesson.expected ?? '').trim();
-    const body = assembled.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-    const visible = (body ? body[1] : assembled).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const body = built.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    const visible = (body ? body[1] : built).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
     const ok =
-      expected === ''
-        ? assembled.trim() !== starterAssembled.trim()
+    expected === ''
+        ? built.trim() !== starterAssembled.trim()
         : lesson.checkCode
-          ? assembled.toLowerCase().replace(/\s+/g, ' ').includes(expected.toLowerCase())
+          ? built.toLowerCase().replace(/\s+/g, ' ').includes(expected.toLowerCase())
           : visible.toLowerCase() === expected.toLowerCase();
 
     return {
@@ -166,24 +143,32 @@ const [active, setActive] = useState(entry);
     };
   };
 
-  const submit = async () => {
-    // ★ има checks → минава през ядрото на задачите.
-    // Подава се СГЛОБЕНОТО. Ядрото не знае за файлове и не трябва да знае.
-    const r = hasChecks
-      ? await checkProblem({ ...lesson, starterCode: starterAssembled }, assembled)
-      : legacyCheck();
+ const submit = async () => {
+    // При среда истината е в контейнера, не в паметта на браузъра.
+    let current = files;
+    if (lesson.ide === true) {
+      const fromIde = await readIde(course);
+      if (!fromIde) { setResult({ passed: false, results: [], errorTag: 'ide-unreachable' }); return; }
+      current = fromIde;
+      setFiles(fromIde);
+    }
 
-    setResult(r);
-    setPreview(assembled);
+    const built = assemble(current, entry);
+
+    const r = hasChecks
+      ? await checkProblem({ ...lesson, starterCode: starterAssembled }, built)
+      : legacyCheck(built);
+
+setResult(r);
+    setPreview(built);
 
     if (r.passed) {
       await markDone(user?.id, course, lesson.id);
       onDone?.();
 
-      // проектът поема новото
       if (isProject) {
-        await saveProject(user?.id, course, { content: assembled });
-        setPrevious(assembled);
+        await saveProject(user?.id, course, { content: built });
+        setPrevious(built);
         removeCode(user?.id, course, lesson.id);
       }
     }
@@ -242,6 +227,7 @@ const [active, setActive] = useState(entry);
       entry={entry}
       freeFiles={lesson.freeFiles === true}
       ide={lesson.ide === true}
+      ideFiles={starterFiles}
       onCreateFile={createFile}
       onRenameFile={renameFile}
       onDeleteFile={deleteFile}
