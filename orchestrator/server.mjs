@@ -199,8 +199,11 @@ await docker([
     .filter((n) => !n.startsWith('.'))
     .filter((n) => /\.(html|css|js|json|md|txt|svg)$/i.test(n));
 
-  const payload = JSON.stringify(open.map((n) => ['openFile', 'file:///home/coder/project/' + n]));
-  const query = '?folder=/home/coder/project&payload=' + encodeURIComponent(payload);
+// ⚠ payload приема ЕДИН файл. Няколко не са документирани и не работят.
+  // Останалите се отварят от дървото; code-server ги помни за следващия път.
+  const first = open.includes('index.html') ? 'index.html' : open[0];
+  const query = '?folder=/home/coder/project'
+    + (first ? '&payload=' + encodeURIComponent(JSON.stringify([['openFile', 'file:///home/coder/project/' + first]])) : '');
 
   const now = Date.now();
   const session = {
