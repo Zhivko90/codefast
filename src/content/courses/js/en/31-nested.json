@@ -1,0 +1,72 @@
+{
+  "title": "Accumulating",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "Wednesday is included",
+  "checkLabels.t7": "The check is written once",
+  "checkLabels.t8": "The cups are 300",
+  "checkLabels.t9": "The income is 900",
+  "checkLabels.t10": "The best day is 80",
+  "checkLabels.t11": "Three lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Five days at three shifts at twenty cups. The console shows sixty.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the data.",
+
+  "why.forgot-wednesday": "Wednesday is never checked at all.",
+  "hint2.forgot-wednesday": "Three days, two checks. The third is forgotten.",
+
+  "why.still-repeating": "The check is still repeated.",
+  "hint2.still-repeating": "Put the three days in a list and walk it with a loop. Then the check is written once.",
+  "hint3.still-repeating": "Square brackets make a list: [monday, tuesday, wednesday]. It has a length and is indexed like a string.",
+
+  "why.wrong-cups": "The cups are not 300.",
+  "hint2.wrong-cups": "Five days at sixty cups a day.",
+  "hint3.wrong-cups": "The equals sign replaces. Every turn wipes the previous one, and only the last survives.",
+  "hint4.wrong-cups": "It has to accumulate, not replace.",
+
+  "why.wrong-income": "The income is not 900.",
+  "hint2.wrong-income": "The inner loop works out one day correctly. The outer one replaces it instead of adding it.",
+
+  "why.wrong-best": "The best day is not 80.",
+  "hint2.wrong-best": "Tuesday is eighty. If you get something else, a day is being skipped.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three sums. Total cups for the week, total income, and the strongest day.",
+  "blocks.1.text": "The first two show the numbers for ONE day, not five. The third skips Wednesday.",
+
+  "blocks.2.text": "Replacing instead of accumulating",
+  "blocks.3.text": "The equals sign puts a new value in. Every turn wipes out what was accumulated and starts again.",
+  "blocks.4.text": "Only the last turn survives. The number looks plausible — it is simply for one day, not a week.",
+  "blocks.5.quote": "A counter outside the loop starts at zero and grows inside. It is never assigned.",
+
+  "blocks.6.text": "A loop inside a loop",
+  "blocks.7.text": "The second loop is nested: for each day, all the shifts are walked. The outer one turns five times, the inner one three times per outer turn — fifteen in total.",
+  "blocks.8.text": "The inner loop has its own counter, which starts fresh on every turn of the outer one. That is why dayIncome is reset at the top — it is the total for ONE day.",
+
+  "blocks.9.text": "The list",
+  "blocks.10.text": "The third sum checks the days one at a time. Add a fourth day and you have to write another condition. Forget it, and the result quietly excludes that day.",
+  "blocks.12.text": "Square brackets gather values into a list. It has a length and is indexed like a string, so the same loop walks it.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix the two accumulations and rewrite the search for the best day using a list and a loop.",
+  "blocks.15.text": "Lists come in detail in section six. Here you only need that they are made with square brackets and walked like a string."
+}

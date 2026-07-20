@@ -56,6 +56,7 @@ import css_l48 from './css/lessons/R2-review-selectors.js';
 import css_l49 from './css/lessons/R3-review-box.js';
 import css_l50 from './css/lessons/R4-review-sizing.js';
 import css_l51 from './css/lessons/R5-review-typography.js';
+import css_l52 from './css/lessons/R6-review-colors.js';
 import css_bg_course from '@/content/courses/css/bg/_course.json';
 import css_bg_0 from '@/content/courses/css/bg/01-ugly.json';
 import css_bg_1 from '@/content/courses/css/bg/02-where.json';
@@ -109,6 +110,7 @@ import css_bg_48 from '@/content/courses/css/bg/R2-review-selectors.json';
 import css_bg_49 from '@/content/courses/css/bg/R3-review-box.json';
 import css_bg_50 from '@/content/courses/css/bg/R4-review-sizing.json';
 import css_bg_51 from '@/content/courses/css/bg/R5-review-typography.json';
+import css_bg_52 from '@/content/courses/css/bg/R6-review-colors.json';
 import css_en_course from '@/content/courses/css/en/_course.json';
 import css_en_0 from '@/content/courses/css/en/01-ugly.json';
 import css_en_1 from '@/content/courses/css/en/02-where.json';
@@ -162,6 +164,7 @@ import css_en_48 from '@/content/courses/css/en/R2-review-selectors.json';
 import css_en_49 from '@/content/courses/css/en/R3-review-box.json';
 import css_en_50 from '@/content/courses/css/en/R4-review-sizing.json';
 import css_en_51 from '@/content/courses/css/en/R5-review-typography.json';
+import css_en_52 from '@/content/courses/css/en/R6-review-colors.json';
 
 // ── html ──
 import { meta as html_meta } from './html/meta.js';
@@ -496,6 +499,7 @@ import js_l26 from './js/lessons/27-infinite.js';
 import js_l27 from './js/lessons/28-for.js';
 import js_l28 from './js/lessons/29-offbyone.js';
 import js_l29 from './js/lessons/30-break.js';
+import js_l30 from './js/lessons/31-nested.js';
 import js_bg_course from '@/content/courses/js/bg/_course.json';
 import js_bg_0 from '@/content/courses/js/bg/01-hello.json';
 import js_bg_1 from '@/content/courses/js/bg/02-values.json';
@@ -527,6 +531,7 @@ import js_bg_26 from '@/content/courses/js/bg/27-infinite.json';
 import js_bg_27 from '@/content/courses/js/bg/28-for.json';
 import js_bg_28 from '@/content/courses/js/bg/29-offbyone.json';
 import js_bg_29 from '@/content/courses/js/bg/30-break.json';
+import js_bg_30 from '@/content/courses/js/bg/31-nested.json';
 import js_en_course from '@/content/courses/js/en/_course.json';
 import js_en_0 from '@/content/courses/js/en/01-hello.json';
 import js_en_1 from '@/content/courses/js/en/02-values.json';
@@ -558,6 +563,7 @@ import js_en_26 from '@/content/courses/js/en/27-infinite.json';
 import js_en_27 from '@/content/courses/js/en/28-for.json';
 import js_en_28 from '@/content/courses/js/en/29-offbyone.json';
 import js_en_29 from '@/content/courses/js/en/30-break.json';
+import js_en_30 from '@/content/courses/js/en/31-nested.json';
 
 // ── webproject ──
 import { meta as webproject_meta } from './webproject/meta.js';
@@ -625,6 +631,7 @@ export const registry = {
       'R3-review-box': css_l49,
       'R4-review-sizing': css_l50,
       'R5-review-typography': css_l51,
+      'R6-review-colors': css_l52,
     },
     problems: {
     },
@@ -683,6 +690,7 @@ export const registry = {
         'R3-review-box': css_bg_49,
         'R4-review-sizing': css_bg_50,
         'R5-review-typography': css_bg_51,
+        'R6-review-colors': css_bg_52,
       },
       en: {
         _course: css_en_course,
@@ -738,6 +746,7 @@ export const registry = {
         'R3-review-box': css_en_49,
         'R4-review-sizing': css_en_50,
         'R5-review-typography': css_en_51,
+        'R6-review-colors': css_en_52,
       },
     },
     problemText: {
@@ -1099,6 +1108,7 @@ export const registry = {
       '28-for': js_l27,
       '29-offbyone': js_l28,
       '30-break': js_l29,
+      '31-nested': js_l30,
     },
     problems: {
     },
@@ -1135,6 +1145,7 @@ export const registry = {
         '28-for': js_bg_27,
         '29-offbyone': js_bg_28,
         '30-break': js_bg_29,
+        '31-nested': js_bg_30,
       },
       en: {
         _course: js_en_course,
@@ -1168,6 +1179,7 @@ export const registry = {
         '28-for': js_en_27,
         '29-offbyone': js_en_28,
         '30-break': js_en_29,
+        '31-nested': js_en_30,
       },
     },
     problemText: {

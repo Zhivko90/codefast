@@ -22,7 +22,10 @@ const PORT_MIN = 9000;
 const PORT_MAX = 9200;
 
 const SETTINGS = {
-  'workbench.colorTheme': 'Default Dark Modern',
+  'workbench.colorTheme': 'Dark Modern',
+  'workbench.view.alwaysShowHeaderActions': true,
+  'extensions.autoCheckUpdates': false,
+  'extensions.autoUpdate': false,
   'workbench.activityBar.location': 'hidden',
   'workbench.statusBar.visible': false,
   'workbench.startupEditor': 'none',
@@ -337,10 +340,15 @@ createServer(async (req, res) => {
       const s = live.get(keyOf(String(student), String(course)));
       if (!s) return send(res, 404, { error: 'no-session' });
       s.beat = Date.now();
-   s.tick = (s.tick ?? 0) + 1;
+ // ⚠ Пише се ДИРЕКТНО на диска, не през docker exec. Той вдига процес
+      // в контейнера и бави отговора с няколко секунди.
+      s.tick = (s.tick ?? 0) + 1;
       try {
-        await docker(['exec', s.name, 'sh', '-c',
-          'echo ' + s.tick + ' > /home/coder/.local/share/code-server/cf-toggle']);
+        await writeFile(
+          join(ROOT, s.key, '.local', 'share', 'code-server', 'cf-toggle'),
+          String(s.tick),
+          'utf8'
+        );
       } catch {}
       return send(res, 200, { ok: true });
     }

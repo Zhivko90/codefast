@@ -1,0 +1,28 @@
+{
+  "title": "Colours",
+  "assignment": "Look through the ideas from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "How it is written and kept",
+  "groups.0.items.0.term": "The notation changes you, not the colour",
+  "groups.0.items.0.def": "A name, a hex code, rgb and hsl all describe the same thing — the browser reduces them to one internal representation. The difference is whether YOU can work with the numbers. In hex a lighter variant is guessed by eye and lands in a different hue. In hsl it is one number: same hue, same saturation, higher lightness. A colour is not a point but a family, and hsl shows the family.",
+  "groups.0.items.1.term": "Transparency after a slash",
+  "groups.0.items.1.def": "Every notation takes a fourth value: 1 is solid, 0 is invisible. Semi-transparent black takes on the colour it lies over and therefore looks right on any background — unlike solid black, which is darker than the surrounding text and pulls the eye towards nothing.",
+  "groups.0.items.2.term": "A variable is a name for a decision",
+  "groups.0.items.2.def": "Declared on :root it covers the whole page, because it is passed down by inheritance. It obeys the cascade — redefined on a lower element it swaps everything inside, which is exactly where dark themes come from. The second value in var is a fallback used when the variable is missing. And one detail: variables do NOT work in the condition of a media query, only inside one.",
+
+  "groups.1.title": "Layers",
+  "groups.1.items.0.term": "A background is a stack, not an image",
+  "groups.1.items.0.def": "A colour at the bottom, images above. The colour is not spare — it is what remains when the network fails or while the image is travelling. The background shorthand resets everything it does not mention, including a colour from the line before. That is why the longhand properties are written out.",
+  "groups.1.items.1.term": "A gradient is an image",
+  "groups.1.items.1.def": "So it goes in background-image and can sit beside a real image, separated by a comma — the first layer is on top. A gradient with identical ends is not a gradient but a translucent layer you did not need an extra element for: that is exactly how white text stays readable over any photo. A muddy middle between two saturated colours is fixed by naming the colour space explicitly.",
+  "groups.1.items.2.term": "A shadow is several shadows",
+  "groups.1.items.2.def": "A real shadow has a tight near part and a wide pale one. A single layer looks artificial. The numbers are: sideways, down, blur, spread, colour — almost always black at low opacity, not solid black. A shadow is painted outside the box and takes NO space, unlike a border. text-shadow works the same but without spread, and today serves legibility more than decoration.",
+
+  "groups.2.title": "When colour is not enough",
+  "groups.2.items.0.term": "Contrast is a number, not a taste",
+  "groups.2.items.0.def": "Normal text needs at least 4.5 to 1. Large text — from 24 pixels, or 19 when bold — needs 3 to 1. Interface parts and meaningful graphics also 3 to 1. You do not work it out in your head: there are free checkers and browser tools show the ratio. WebAIM finds low contrast on about eighty percent of the home pages of a million sites — the most common accessibility failure there is.",
+  "groups.2.items.1.term": "The three contrast traps",
+  "groups.2.items.1.def": "Placeholder text in a field counts too, even though it is grey by default. Over a gradient or a photo the contrast differs from place to place — measure the worst point. And a dark theme is not the light one reversed: a grey that passes on white often fails on dark grey and is checked separately.",
+  "groups.2.items.2.term": "An invalid value says nothing",
+  "groups.2.items.2.def": "A missing percent sign, an image in a colour property, a variable name that does not exist — the browser simply steps over the line. No error, no warning. With a missing variable there is a twist: the value becomes invalid AFTER the cascade, so the browser does not fall back to an earlier rule but takes the inherited value instead."
+}
