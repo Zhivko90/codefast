@@ -359,7 +359,9 @@ async function start(student, course, files, pro) {
     }
     if (!ready) return;
 
-    await new Promise((r) => setTimeout(r, 2000));
+   // ⚠ Сокетът се появява преди VS Code да е готов да отваря файлове.
+    // Извикването минава, но нищо не се случва.
+    await new Promise((r) => setTimeout(r, 6000));
     for (const n of ordered) {
       try {
         await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/workspace/' + n]);
