@@ -39,13 +39,7 @@ export default function IdePane({ course, files, onReady }) {
     return () => clearInterval(id);
   }, [state, course]);
 
-  if (state === 'loading') {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        <p className="text-[13px] text-gray-500">Средата се вдига…</p>
-      </div>
-    );
-  }
+if (state === 'loading') return <Spinner />;
 
   if (state === 'signin') {
     return (
@@ -107,11 +101,31 @@ function IdeFrame({ url }) {
         className="w-full h-full border-0"
         style={{ opacity: shown ? 1 : 0, transition: 'opacity .2s' }}
       />
-      {!shown && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <p className="text-[13px] text-gray-500">Средата се подрежда…</p>
+    {!shown && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#1e1e1e]">
+          <Spinner />
         </div>
       )}
+    </div>
+  );
+}
+
+function Spinner() {
+  return (
+    <div className="flex items-center justify-center gap-1.5">
+      {[0, 1, 2].map((i) => (
+        <span
+          key={i}
+          className="w-2 h-2 rounded-full bg-sky-400/70"
+          style={{ animation: `cf-pulse 1.1s ${i * 0.16}s infinite ease-in-out` }}
+        />
+      ))}
+      <style>{`
+        @keyframes cf-pulse {
+          0%, 80%, 100% { opacity: .2; transform: scale(.7); }
+          40% { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
     </div>
   );
 }

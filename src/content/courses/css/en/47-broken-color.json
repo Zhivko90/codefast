@@ -1,0 +1,72 @@
+{
+  "title": "Six colours that say nothing",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "The shorthand is gone",
+  "checkLabels.t7": "The hero has a colour underneath",
+  "checkLabels.t8": "The badge has a gradient",
+  "checkLabels.t9": "The brand line is brown",
+  "checkLabels.t10": "The card has a border",
+  "checkLabels.t11": "The shadow is soft",
+  "checkLabels.t12": "The note is readable",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Six fixes. Each one comes from the last six lessons.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. It is correct — the mistakes are in the styles.",
+  "why.no-hero": "There is no element with the hero class.",
+  "why.no-badge": "There is no element with the badge class.",
+  "why.no-brand": "There is no element with the brand class.",
+  "why.no-card": "There is no element with the card class.",
+  "why.no-muted": "There is no element with the muted class.",
+
+  "why.shorthand-left": "The shorthand is still there.",
+  "hint2.shorthand-left": "It resets everything it does not mention — including the colour on the line above it.",
+
+  "why.hero-wiped": "There is no colour under the hero image.",
+  "hint2.hero-wiped": "The colour is set, but the next line erases it. Use the property for the image only.",
+
+  "why.badge-flat": "The badge has no gradient.",
+  "hint2.badge-flat": "A gradient is an image, and it has been put in the property for a colour. So the value is invalid and gets thrown away.",
+
+  "why.brand-missing": "The brand line is not brown.",
+  "hint2.brand-missing": "You are calling a variable by a name that does not exist. Check what it is called in :root.",
+  "hint3.brand-missing": "There is a detail here that surprises people: when the variable is missing, the value becomes invalid AFTER the cascade. The browser does not fall back to an earlier rule; it takes the inherited value instead. That is why the text is not the default black but the colour of its parent.",
+
+  "why.border-gone": "The card has no border.",
+  "hint2.border-gone": "Look at the numbers in its colour. One of them has no unit.",
+  "hint3.border-gone": "Saturation and lightness in hsl are written as percentages. Without the sign the value cannot be read and the whole declaration is dropped — border and all.",
+
+  "why.hard-shadow": "The shadow is hard and black.",
+  "why.muted-pale": "The note is in too pale a grey.",
+  "hint2.muted-pale": "On white that falls below the required ratio. The threshold for normal text is 4.5 to 1.",
+
+  "blocks.0.text": "The page is finished and almost none of the colours work. The console is clean. Every rule is written without a syntax error, and half the values never reach the screen.",
+
+  "blocks.1.text": "Six things",
+  "blocks.2.text": "Here is what was intended. Each of the six is a mistake from the last six lessons:",
+  "blocks.3.items.0": "The hero has a dark brown colour under the image so white text is never left over nothing.",
+  "blocks.3.items.1": "The NEW badge fades from brown to dark brown.",
+  "blocks.3.items.2": "The brand line is in the brand brown.",
+  "blocks.3.items.3": "The card has a thin brown border.",
+  "blocks.3.items.4": "Its shadow is soft, made of two layers.",
+  "blocks.3.items.5": "The note is quieter than the text but readable.",
+  "blocks.4.text": "An invalid value is not an error to the browser. It is a line it simply steps over.",
+
+  "blocks.5.text": "How to hunt them",
+  "blocks.6.text": "Three questions, in this order. First: is the value valid at all — a missing percent sign, an image in a colour property, a variable name that does not exist. Second: is something below erasing it — shorthands reset everything they do not mention. Third: if the value does reach the screen, does it have enough contrast.",
+
+  "blocks.7.text": "The task",
+  "blocks.8.text": "Fix the six things in styles.css only. Do not touch the HTML — it is correct."
+}

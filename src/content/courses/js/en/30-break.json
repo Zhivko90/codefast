@@ -1,0 +1,75 @@
+{
+  "title": "Stop and skip",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The data is untouched",
+  "checkLabels.t6": "You use break",
+  "checkLabels.t7": "You use continue",
+  "checkLabels.t8": "12 were served",
+  "checkLabels.t9": "Only 12 were checked",
+  "checkLabels.t10": "16 are paying",
+  "checkLabels.t11": "4 are free",
+  "checkLabels.t12": "Four lines come out",
+  "checkLabels.t13": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The served count is right. Check the number checked — the coffee runs out at the twelfth, and the queue is walked to the fortieth.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.changed-data": "You changed the data.",
+
+  "why.no-break": "You are not using break.",
+  "hint2.no-break": "Once the coffee runs out there is no point walking the rest of the queue.",
+
+  "why.no-continue": "You are not using continue.",
+  "hint2.no-continue": "The second condition is the negation of the first. There is a way to write only one of them.",
+
+  "why.wrong-served": "The served count is not 12.",
+  "hint2.wrong-served": "The stock is twelve cups.",
+
+  "why.wrong-checked": "The checked count is not 12.",
+  "hint2.wrong-checked": "The loop walks all forty people, even though the coffee ran out at the twelfth.",
+  "hint3.wrong-checked": "break stops the whole loop on the spot. Execution carries on after the closing brace.",
+  "hint4.wrong-checked": "At the top of the body, check whether the coffee has run out, and if so — stop.",
+
+  "why.wrong-paying": "The paying count is not 16.",
+  "hint2.wrong-paying": "Twenty people, every fifth one is free. So sixteen pay.",
+
+  "why.wrong-skipped": "The free count is not 4.",
+  "hint2.wrong-skipped": "Every fifth of twenty is four.",
+
+  "why.wrong-count": "There are not four lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "A queue of forty people, and coffee for twelve. Plus a promotion: every fifth person drinks free.",
+  "blocks.1.text": "The code gives the right number served. But it walks all forty people, even though the coffee ran out at the twelfth. Twenty-eight checks for nothing.",
+
+  "blocks.2.text": "break stops everything",
+  "blocks.3.text": "When the end condition is not known in advance but depends on something inside the loop, you stop it from within.",
+  "blocks.5.text": "break leaves the loop immediately. The remaining repetitions do not happen, and execution carries on after the closing brace.",
+
+  "blocks.6.text": "continue skips one",
+  "blocks.7.text": "Sometimes you do not want to stop, only to skip the current repetition.",
+  "blocks.9.text": "continue ends just this turn and moves to the next. The lines below it do not run this time.",
+
+  "blocks.10.text": "Why it reads better",
+  "blocks.11.text": "The code today writes one condition and then its negation. The two always change together — forget one and you get a case that falls into neither.",
+  "blocks.12.text": "With continue you write only the exception, and the normal case stays below, with no nesting.",
+  "blocks.13.quote": "Leave early on the exceptions and keep the usual case at the bottom, where it reads most easily.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Make the first loop stop as soon as the coffee runs out. Make the second use continue instead of the two opposite conditions.",
+  "blocks.16.text": "Afterwards the checked count should be twelve, not forty."
+}

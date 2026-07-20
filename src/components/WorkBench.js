@@ -85,7 +85,8 @@ files = [], activeFile, onFile, getFile, setFile,
   const [showLeft, setShowLeft] = useState(true);
 // Превюто е отворено по подразбиране. При JS урок то е и изпълнителят —
   // затворено превю значи мълчаща конзола.
-  const [showPrev, setShowPrev] = useState(true);
+  // При среда екранът тръгва чист: само условие и редактор.
+  const [showPrev, setShowPrev] = useState(!ide);
   const [showBot, setShowBot] = useState(false);
   const [bottom, setBottom] = useState('result');
 
@@ -321,7 +322,7 @@ const editorEl = ide ? (
             </MTab>
 
             {ide && (
-              <MTab active={false} onClick={() => toggleTree(course)} label={t('files')}>
+              <MTab active={false} onClick={() => { setMobileView('code'); toggleTree(course); }} label={t('files')}>
                 <IcoTree size={15} />
               </MTab>
             )}
@@ -399,7 +400,7 @@ const editorEl = ide ? (
             </RailBtn>
 
             {ide && (
-              <RailBtn on={false} onClick={() => toggleTree(course)} title={t('files')}>
+           <RailBtn on={false} onClick={() => { setShowLeft(false); toggleTree(course); }} title={t('files')}>
                 <IcoTree />
               </RailBtn>
             )}

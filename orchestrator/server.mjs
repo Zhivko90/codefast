@@ -79,7 +79,7 @@ async function adopt() {
       live.set(key, {
         key, name, port: Number(m[1]), pro: false,
         dir: join(ROOT, key, 'workspace'),
-        url: 'http://' + HOST + ':' + m[1] + '?folder=/home/coder/project',
+       url: 'http://' + HOST + ':' + m[1] + '?folder=/home/coder/workspace',
         beat: now, born: now,
       });
     }
@@ -227,7 +227,7 @@ async function start(student, course, files, pro) {
     'run', '-d',
     '--name', name,
     '-p', port + ':8080',
-    '-v', dir + ':/home/coder/project',
+    '-v', dir + ':/home/coder/workspace',
     '-v', join(home, '.local') + ':/home/coder/.local',
     '--memory=512m', '--cpus=0.5',
     '--pids-limit=256',
@@ -240,7 +240,7 @@ async function start(student, course, files, pro) {
 
   // Папката се задава през АДРЕСА. Подадена като аргумент, тя се записва
   // в coder.json слепена и после дава „Workspace does not exist".
-  const query = '?folder=/home/coder/project';
+ const query = '?folder=/home/coder/workspace';
 
   // ⚠ Режимът на преглед заменя таба вместо да добавя — изключен е в SETTINGS.
   const open = (await readdir(dir).catch(() => []))
@@ -269,7 +269,7 @@ async function start(student, course, files, pro) {
     await new Promise((r) => setTimeout(r, 2000));
     for (const n of ordered) {
       try {
-        await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/project/' + n]);
+       await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/workspace/' + n]);
       } catch {}
       await new Promise((r) => setTimeout(r, 1200));
     }

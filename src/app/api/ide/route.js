@@ -34,10 +34,11 @@ export async function POST(req) {
     const pro = p?.tier === 'pro'
       && (!p.expires_at || new Date(p.expires_at) > new Date());
 
-    const path =
+   const path =
       action === 'files' ? '/files' :
       action === 'stop' ? '/stop' :
-      action === 'beat' ? '/beat' : '/session';
+      action === 'beat' ? '/beat' :
+      action === 'toggle-tree' ? '/toggle-tree' : '/session';
 
     const r = await fetch(URL + path, {
       method: 'POST',
