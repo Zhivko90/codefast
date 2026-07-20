@@ -142,9 +142,14 @@ function activate() {
   const state = path.join(dir, 'cf-tree');
   try { fs.writeFileSync(path.join(dir, 'cf-log'), 'activate\\n'); } catch (e) {}
 
-  vscode.commands.executeCommand('workbench.action.closeSidebar');
+vscode.commands.executeCommand('workbench.action.closeSidebar');
   // Чатът живее във вторичната лента. Настройките не го спират — командата да.
   vscode.commands.executeCommand('workbench.action.closeAuxiliaryBar');
+
+  // ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
+  // Празно извикване го подгрява, докато ученикът чете условието.
+  vscode.commands.executeCommand('workbench.view.explorer')
+    .then(function () { return vscode.commands.executeCommand('workbench.action.closeSidebar'); });
 
   let open = false;
   const write = () => { try { fs.writeFileSync(state, open ? '1' : '0'); } catch (e) {} };
