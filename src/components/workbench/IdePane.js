@@ -80,23 +80,38 @@ if (state === 'loading') return <Spinner />;
     );
   }
 
-  return <IdeFrame url={url} />;
+  return <IdeFrame url={url} course={course} />;
 }
 
-// ⚠ Брои се от ЗАРЕЖДАНЕТО на рамката, не от получаването на адреса.
-// Между двете минават секунди, през които code-server още се вдига —
-// таймер от адреса изтича твърде рано и страничната лента мига.
-function IdeFrame({ url }) {
+// ⚠ Рамката чака СИГНАЛ от разширението, не таймер. Времето, за което
+// VS Code се подрежда, не е постоянно — таймерът улучва през път.
+function IdeFrame({ url, course }) {
   const [shown, setShown] = useState(false);
 
-  useEffect(() => { setShown(false); }, [url]);
+  useEffect(() => {
+    setShown(false);
+    let alive = true;
+    let tries = 0;
+
+    const tick = async () => {
+      if (!alive) return;
+      tries++;
+      const r = await beatIde(course);
+      if (!alive) return;
+      // Ако сигналът не дойде до 20 сек, показваме я въпреки всичко.
+      if (r?.ready || tries > 40) setShown(true);
+      else setTimeout(tick, 500);
+    };
+
+    const id = setTimeout(tick, 800);
+    return () => { alive = false; clearTimeout(id); };
+  }, [url, course]);
 
   return (
     <div className="relative w-full h-full bg-[#1e1e1e]">
       <iframe
         title="ide"
         src={url}
-        onLoad={() => setTimeout(() => setShown(true), 2200)}
         className="w-full h-full border-0"
         style={{ opacity: shown ? 1 : 0, transition: 'opacity .25s' }}
       />

@@ -142,15 +142,14 @@ function activate() {
   const state = path.join(dir, 'cf-tree');
   try { fs.writeFileSync(path.join(dir, 'cf-log'), 'activate\\n'); } catch (e) {}
 
-vscode.commands.executeCommand('workbench.action.closeSidebar');
-  // Чатът живее във вторичната лента. Настройките не го спират — командата да.
-  vscode.commands.executeCommand('workbench.action.closeAuxiliaryBar');
-
-  // ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
-  // Празно извикване го подгрява, докато ученикът чете условието.
- // ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
-  // Подгрява се с команда, която НЕ пипа изгледа.
-  vscode.commands.getCommands(true);
+// ⚠ Първата команда след активиране отнема ~2 сек — хостът се събужда.
+  // Затова рамката НЕ се показва по таймер, а чака сигнал оттук.
+  Promise.all([
+    vscode.commands.executeCommand('workbench.action.closeSidebar'),
+    vscode.commands.executeCommand('workbench.action.closeAuxiliaryBar'),
+  ]).then(function () {
+    try { fs.writeFileSync(path.join(dir, 'cf-ready'), '1'); } catch (e) {}
+  });
 
   let open = false;
   const write = () => { try { fs.writeFileSync(state, open ? '1' : '0'); } catch (e) {} };
@@ -194,6 +193,10 @@ exports.activate = activate;
 exports.deactivate = function () {};
 `.trim());
 }
+
+// Старият сигнал се маха — иначе рамката се показва, преди новата среда
+  // да е подредена.
+  try { await rm(join(home, '.local', 'share', 'code-server', 'cf-ready')); } catch {}
 
 async function prepare(home) {
   const cs = join(home, '.local', 'share', 'code-server');
@@ -404,11 +407,20 @@ createServer(async (req, res) => {
       return send(res, 200, { ok: true, tree: s.tree });
     }
 
-    if (req.method === 'POST' && req.url === '/beat') {
+   if (req.method === 'POST' && req.url === '/beat') {
       const { student, course } = await body(req);
-      const s = live.get(keyOf(String(student), String(course)));
+      const key = keyOf(String(student), String(course));
+      const s = live.get(key);
       if (s) s.beat = Date.now();
-      return send(res, 200, { ok: !!s, tree: !!s?.tree });
+
+      // Средата е готова чак когато разширението е скрило лентите.
+      let ready = false;
+      try {
+        await readFile(join(ROOT, key, '.local', 'share', 'code-server', 'cf-ready'), 'utf8');
+        ready = true;
+      } catch {}
+
+      return send(res, 200, { ok: !!s, tree: !!s?.tree, ready });
     }
 
     if (req.method === 'POST' && req.url === '/files') {
