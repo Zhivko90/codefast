@@ -137,8 +137,8 @@ async function writeExtension(home) {
     name: 'cf-layout',
     publisher: 'codefast',
     version: '1.0.0',
-    engines: { vscode: '*' },
-    activationEvents: ['onStartupFinished'],
+engines: { vscode: '^1.60.0' },
+    activationEvents: ['*'],
     main: './extension.js',
     contributes: {},
   }, null, 2));
