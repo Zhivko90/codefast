@@ -1,0 +1,75 @@
+{
+  "title": "The loop that never ends",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The stock is untouched",
+  "checkLabels.t6": "The beans are untouched",
+  "checkLabels.t7": "There are two loops",
+  "checkLabels.t8": "10 were served",
+  "checkLabels.t9": "The stock reached zero",
+  "checkLabels.t10": "There are 17 batches",
+  "checkLabels.t11": "Two lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was. Both loops are infinite.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+
+  "why.frozen": "Your code never stops. It looped forever and was cut off.",
+  "hint2.frozen": "Check both loops. The first never changes the stock. The second changes it, but never lands on zero.",
+  "hint3.frozen": "500 minus 30 repeatedly gives 20, then minus 10, then minus 40. Never exactly zero.",
+
+  "why.changed-data": "You changed the data.",
+  "hint2.changed-data": "The numbers stay. The loops get fixed, not the input.",
+
+  "why.wrong-shape": "There are not two loops.",
+  "hint2.wrong-shape": "Both stay loops. The task is to make them end, not to remove them.",
+
+  "why.wrong-served": "The served count is not 10.",
+  "hint2.wrong-served": "The first loop increases the served count but never reduces the stock. The condition stays true forever.",
+  "hint3.wrong-served": "The three parts of a loop: start, condition, change. The third is missing here — nothing moves towards the end.",
+
+  "why.stock-untouched": "The stock has not reached zero.",
+  "hint2.stock-untouched": "Every cup served should reduce the stock.",
+
+  "why.wrong-batches": "There are not 17 batches.",
+  "hint2.wrong-batches": "500 grams in batches of 30. Seventeen batches, the last one incomplete.",
+  "hint3.wrong-batches": "The condition for exactly zero never comes true. Check whether beans are left, not whether they ran out exactly.",
+  "hint4.wrong-batches": "Change the comparison from not equal to greater than.",
+
+  "why.wrong-count": "There are not two lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Two loops. One counts customers served while there is stock. The other divides beans into batches.",
+  "blocks.1.text": "Both are infinite. Submit them as they are and see what happens.",
+
+  "blocks.2.text": "You will freeze",
+  "blocks.3.text": "The first time it is alarming. The page stops responding, buttons do nothing, the browser asks whether to stop it.",
+  "blocks.4.text": "This happens to everyone. Including people who have worked with code for twenty years. The difference is that they recognise it in two seconds and know where to look.",
+  "blocks.5.text": "Here submitting is protected — the code runs separately and is cut off after two seconds. The preview beside it is not, and it really will freeze. Change the code and it comes back.",
+
+  "blocks.6.text": "The first kind: nothing moves",
+  "blocks.7.text": "The condition checks the stock. The body increases the served count. The stock is never touched anywhere.",
+  "blocks.8.text": "The condition is true at the start and stays true forever, because nothing changes the thing being checked.",
+  "blocks.9.quote": "Check one thing and change another, and the loop can never end.",
+
+  "blocks.10.text": "The second kind: it moves, but overshoots",
+  "blocks.11.text": "Here something does change. It simply never lands on the value being checked.",
+  "blocks.13.text": "500 minus 30 gets down to 20. Then 20 minus 30 gives minus 10. Then minus 40. The number walks straight past zero and carries on down forever.",
+  "blocks.14.text": "This kind is nastier, because with other numbers it works. Put 480 instead of 500 and the loop ends beautifully. The code is wrong either way — it just does not show in one of them.",
+
+  "blocks.15.text": "The rule",
+  "blocks.16.text": "Make the exit condition a range, not a point. Do not ask whether it hit exactly zero, ask whether anything is left.",
+  "blocks.17.items.0": "greater than or less than, instead of equal and not equal",
+  "blocks.17.items.1": "and check that something in the condition really changes inside the body"
+}

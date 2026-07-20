@@ -34,6 +34,7 @@ const SETTINGS = {
   'chat.agent.enabled': false,
   'window.commandCenter': false,
   'window.menuBarVisibility': 'hidden',
+  'window.sidebar.visible': false,
   'breadcrumbs.enabled': false,
   'editor.minimap.enabled': false,
   'editor.fontSize': 14,
@@ -203,9 +204,11 @@ await docker([
 
 const query = '?folder=/home/coder/project';
 
- // ⚠ Без пауза между извикванията се отваря само последното.
-  // Входният файл е последен, за да остане на преден план.
-  const ordered = [...open].sort((a, b) => (a === 'index.html' ? 1 : b === 'index.html' ? -1 : 0));
+ // ⚠ Режимът на преглед заменя таба вместо да добавя — изключен е в SETTINGS.
+  const RANK = { 'index.html': 0, 'style.css': 1, 'script.js': 2 };
+  const sorted = [...open].sort((a, b) => (RANK[a] ?? 9) - (RANK[b] ?? 9));
+  // Входният файл се отваря пак накрая — само за да е избран, без да мести таба.
+  const ordered = sorted.length ? [...sorted, sorted[0]] : [];
   (async () => {
     await new Promise((r) => setTimeout(r, 4000));
     for (const n of ordered) {

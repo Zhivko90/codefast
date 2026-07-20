@@ -1,0 +1,65 @@
+{
+  "title": "A gradient is an image",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "There is a darkening layer",
+  "checkLabels.t7": "The image is kept",
+  "checkLabels.t8": "The cover is kept",
+  "checkLabels.t9": "The divider fades",
+  "checkLabels.t10": "The divider is visible",
+  "checkLabels.t11": "The colour underneath is kept",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "One line gets longer, one line changes.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-hero": "There is no element with the hero class.",
+  "why.no-divider": "There is no divider.",
+
+  "why.no-overlay": "There is no darkening layer over the image.",
+  "hint2.no-overlay": "A gradient is an image, so it goes in the same property, separated by a comma.",
+  "hint3.no-overlay": "If both ends of the gradient are the same semi-transparent colour, you get even darkening — simple and predictable.",
+  "hint4.no-overlay": "linear-gradient(rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.55)), url(\"hero.jpg\")",
+
+  "why.image-lost": "The image is gone.",
+  "hint2.image-lost": "Both live in one property, separated by a comma. The first one is on top.",
+
+  "why.cover-lost": "The image no longer covers the block.",
+
+  "why.divider-flat": "The divider is still a solid line.",
+  "hint2.divider-flat": "A solid line ends abruptly. A gradient to transparent lets it fade out.",
+  "hint4.divider-flat": "background-image: linear-gradient(to right, var(--brand), transparent);",
+
+  "why.divider-height": "The divider has no height and cannot be seen.",
+  "hint2.divider-height": "An empty block with no height is zero pixels tall. The gradient has nowhere to draw.",
+
+  "why.fallback-lost": "The colour under the image has been deleted.",
+
+  "blocks.0.text": "The hero block has white text over a photo. While the photo is dark, it reads. Swap it tomorrow for a light one and the text disappears. You cannot control the photo — but you can put something between it and the text.",
+
+  "blocks.1.text": "A gradient is not a colour",
+  "blocks.2.text": "This is the first thing to understand: a gradient is an IMAGE drawn by the browser. That is why it does not go in background-color but in background-image — and why it can sit beside a real image, separated by a comma:",
+  "blocks.4.text": "Layers stack from top to bottom: the first in the list is on top. Here black at fifty-five percent opacity sits on top, the photo below it, and the solid brown at the very bottom. The result is a photo that is always dark enough to carry white text, whatever the photo happens to be.",
+  "blocks.5.text": "A gradient with identical ends is not a gradient. It is a translucent layer you did not need an extra element for.",
+
+  "blocks.6.text": "Direction and stops",
+  "blocks.7.text": "A gradient takes a direction and a list of colours. The direction is written as to right, to bottom, to left top, or as an angle in degrees. Each colour can also take a position in percent — that is how you make hard edges instead of smooth blends. Transparent is a colour too:",
+  "blocks.9.text": "A line that starts solid and fades out, instead of stopping abruptly. A small difference that makes a page look considered.",
+
+  "blocks.10.text": "The muddy middle",
+  "blocks.11.text": "A gradient between two saturated colours often passes through a greyish band in the middle. The reason is which colour space the browser blends the two ends in. Sources disagree about what the default is, so the sensible move is to say it outright: linear-gradient(in oklch, ...). In oklch the transition keeps its saturation and the middle does not go muddy. If you ever make a gradient that looks dirty halfway, that is why.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Put an even darkening layer over the photo in the hero so white text stays readable whatever the photo is. The image and the cover stay. And make the divider fade from brown to transparent towards the right."
+}
