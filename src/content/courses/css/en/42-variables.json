@@ -1,0 +1,68 @@
+{
+  "title": "One place for one colour",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.t6": "There is a home for the variables",
+  "checkLabels.t7": "The colour is called by name",
+  "checkLabels.t8": "There is a fallback value",
+  "checkLabels.t9": "The heading uses the brand colour",
+  "checkLabels.t10": "So does the button border",
+  "checkLabels.t11": "The notice uses the fallback colour",
+  "checkLabels.t12": "The divider is semi-transparent",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was. The colour still sits in five places.",
+  "hint2.untouched": "First a new rule at the top, then the five places get rewritten.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.no-h1": "There is no heading.",
+  "why.no-btn": "There is no element with the btn class.",
+  "why.no-sale": "There is no element with the sale class.",
+  "why.no-divider": "There is no divider.",
+
+  "why.no-root": "There is nowhere for the variables to live.",
+  "hint2.no-root": "They are declared on an element and then apply to it and everything inside it. The topmost element is html.",
+  "hint4.no-root": "A :root rule at the top of the file.",
+
+  "why.no-var": "The colour is still written out at every place.",
+  "hint2.no-var": "The value is called with var and the name in brackets.",
+  "hint4.no-var": "color: var(--brand);",
+
+  "why.no-fallback": "The notice does not use a fallback value.",
+  "hint2.no-fallback": "The second value in the brackets is used when the variable does not exist.",
+  "hint4.no-fallback": "color: var(--accent, hsl(0 60% 35%));",
+
+  "why.h1-color": "The heading is not in the brand colour.",
+  "why.btn-border": "The button border is not in the brand colour.",
+  "why.divider-color": "The divider is not semi-transparent.",
+  "why.sale-color": "The notice is not in the fallback colour.",
+  "hint2.sale-color": "The --accent variable is declared nowhere. So the second argument is used.",
+
+  "blocks.0.text": "The same brown sits in five places in this file. Tomorrow Bean Street rebrands to green. Five replacements if you are careful. Six if you forgot the divider, which is the same colour with transparency.",
+
+  "blocks.1.text": "A name instead of a value",
+  "blocks.2.text": "CSS can remember a value under a name and then call it back:",
+  "blocks.4.text": "The two dashes in front are not decoration — that is how your own name is told apart from a real property. :root is the root of the document, the html element. Declare a variable there and it covers the whole page, because it is passed down by inheritance like any other inherited property.",
+  "blocks.5.text": "A variable is not an abbreviation. It is a name for a decision you made once.",
+
+  "blocks.6.text": "When the variable is missing",
+  "blocks.7.text": "var takes a second value as well — used if the first is not declared:",
+  "blocks.9.text": "This helps when something is optional: a theme somebody may switch on later, or a colour coming from outside. Here --accent exists nowhere, so the notice will be dark red. Declare it tomorrow and the notice picks it up on its own.",
+
+  "blocks.10.text": "Two things that surprise people",
+  "blocks.11.text": "First: variables are inherited and obey the cascade. So you can redefine them on a lower element and everything inside it uses the new value. That is exactly where dark themes come from — one class on body swaps ten colours at once without touching a single rule.",
+  "blocks.12.text": "Second: they do NOT work in the condition of a media query. You can change them inside one, but you cannot use one to say at how many pixels it should fire. The reason is that the condition is checked before it is even clear which element we are talking about. That will save you half an hour when you reach the responsive section.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Pull the brown and its semi-transparent variant into variables at the top and call them by name everywhere. The colours on screen do not change. And give the notice a colour from an --accent variable that does not exist yet, with dark red as the fallback."
+}

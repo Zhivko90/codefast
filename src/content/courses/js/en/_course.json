@@ -24,6 +24,13 @@
         "branching": { "title": "If" },
         "comparing": { "title": "Comparing" }
       }
+    },
+    "repeating": {
+      "title": "Repeating",
+      "desc": "Write it a hundred times. You will not manage — and that is exactly the point. This is also where you first freeze your own page.",
+      "modules": {
+        "loops": { "title": "Loops" }
+      }
     }
   }
 }

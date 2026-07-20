@@ -199,11 +199,20 @@ await docker([
     .filter((n) => !n.startsWith('.'))
     .filter((n) => /\.(html|css|js|json|md|txt|svg)$/i.test(n));
 
-// ⚠ payload приема ЕДИН файл. Няколко не са документирани и не работят.
-  // Останалите се отварят от дървото; code-server ги помни за следващия път.
-  const first = open.includes('index.html') ? 'index.html' : open[0];
-  const query = '?folder=/home/coder/project'
-    + (first ? '&payload=' + encodeURIComponent(JSON.stringify([['openFile', 'file:///home/coder/project/' + first]])) : '');
+const query = '?folder=/home/coder/project';
+
+  // ⚠ Табовете се отварят през сокета на code-server, не през адреса.
+  // payload посочва файла, но не го отваря — изпробвано, не работи.
+  // Входният файл е ПОСЛЕДЕН, за да остане отгоре.
+  const ordered = [...open].sort((a, b) => (a === 'index.html' ? 1 : b === 'index.html' ? -1 : 0));
+  (async () => {
+    await new Promise((r) => setTimeout(r, 4000));
+    for (const n of ordered) {
+      try {
+        await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/project/' + n]);
+      } catch {}
+    }
+  })();
 
   const now = Date.now();
   const session = {
