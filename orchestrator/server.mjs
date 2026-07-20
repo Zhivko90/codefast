@@ -80,9 +80,9 @@ async function adopt() {
       const key = name.slice(3);
       const now = Date.now();
       live.set(key, {
-        key, name, port: Number(m[1]), pro: false,
+        key, name, port: Number(m[1]), pro: false, tree: false,
         dir: join(ROOT, key, 'workspace'),
-       url: 'http://' + HOST + ':' + m[1] + '?folder=/home/coder/workspace',
+        url: 'http://' + HOST + ':' + m[1] + '?folder=/home/coder/workspace',
         beat: now, born: now,
       });
     }
@@ -103,16 +103,25 @@ async function kill(key) {
   live.delete(key);
 }
 
-// Безплатните не пипат местата, запазени за Pro.
 function room(pro) {
   return pro ? live.size < MAX_LIVE : live.size < MAX_LIVE - PRO_RESERVED;
 }
 
+// Пише само при разлика. Презаписването на същото съдържание кара VS Code
+// да отвори файла вместо тези на урока.
+async function writeIfChanged(path, content) {
+  let current = null;
+  try { current = await readFile(path, 'utf8'); } catch {}
+  if (current !== content) await writeFile(path, content, 'utf8');
+}
+
+// ⚠ Страничната лента НЯМА настройка. Единственият начин е командата
+// workbench.action.closeSidebar, а тя се пуска само от разширение.
 async function writeExtension(home) {
   const ext = join(home, '.local', 'share', 'code-server', 'extensions', 'cf-layout');
   await mkdir(ext, { recursive: true });
 
-  await writeFile(join(ext, 'package.json'), JSON.stringify({
+  await writeIfChanged(join(ext, 'package.json'), JSON.stringify({
     name: 'cf-layout',
     publisher: 'codefast',
     version: '1.0.0',
@@ -120,40 +129,58 @@ async function writeExtension(home) {
     activationEvents: ['*'],
     main: './extension.js',
     contributes: {},
-  }, null, 2), 'utf8');
+  }, null, 2));
 
-  await writeFile(join(ext, 'extension.js'), `
+  await writeIfChanged(join(ext, 'extension.js'), `
 const vscode = require('vscode');
 const fs = require('fs');
 const path = require('path');
 
 function activate() {
-  vscode.commands.executeCommand('workbench.action.closeSidebar');
+  const dir = path.join(process.env.HOME, '.local/share/code-server');
+  const flag = path.join(dir, 'cf-toggle');
+  const state = path.join(dir, 'cf-tree');
 
-  // ⚠ Сравнява се СЪДЪРЖАНИЕТО, не времето. mtimeMs има ниска точност
-  // и две бързи промени изглеждат еднакви.
-  const flag = path.join(process.env.HOME, '.local/share/code-server/cf-toggle');
+  vscode.commands.executeCommand('workbench.action.closeSidebar');
+  // Чатът живее във вторичната лента. Настройките не го спират — командата да.
+  vscode.commands.executeCommand('workbench.action.closeAuxiliaryBar');
+
+  let open = false;
+  const write = () => { try { fs.writeFileSync(state, open ? '1' : '0'); } catch (e) {} };
+  write();
+
+  const toggle = () => {
+    open = !open;
+    vscode.commands.executeCommand('workbench.action.toggleSidebarVisibility');
+    write();
+  };
+
+  // ⚠ fs.watch реагира в мига на записа. Проверка на интервал добавя
+  // цяло забавяне отгоре и се усеща като няколко секунди.
   try { fs.writeFileSync(flag, '0'); } catch (e) {}
   let last = '0';
-  setInterval(() => {
+  const read = () => {
     try {
       const now = fs.readFileSync(flag, 'utf8');
-      if (now !== last) {
-        last = now;
-        vscode.commands.executeCommand('workbench.action.toggleSidebarVisibility');
-      }
+      if (now !== last) { last = now; toggle(); }
     } catch (e) {}
-  }, 400);
+  };
+
+  try {
+    fs.watch(flag, read);
+  } catch (e) {
+    setInterval(read, 250);
+  }
 }
 exports.activate = activate;
 exports.deactivate = function () {};
-`.trim(), 'utf8');
+`.trim());
 }
 
 async function prepare(home) {
   const cs = join(home, '.local', 'share', 'code-server');
   await mkdir(join(cs, 'User'), { recursive: true });
-  await writeFile(join(cs, 'User', 'settings.json'), JSON.stringify(SETTINGS, null, 2), 'utf8');
+  await writeIfChanged(join(cs, 'User', 'settings.json'), JSON.stringify(SETTINGS, null, 2));
   // Слепен път в coder.json прави „Workspace does not exist" при всяко отваряне.
   try { await rm(join(cs, 'coder.json')); } catch {}
   await writeExtension(home);
@@ -207,6 +234,8 @@ async function start(student, course, files, pro) {
     existing.pro = pro;
     return existing;
   }
+  // Сесията сочи към мъртъв контейнер — забравя се и се вдига наново.
+  if (existing) live.delete(key);
 
   if (!room(pro)) {
     const e = new Error('full');
@@ -243,7 +272,7 @@ async function start(student, course, files, pro) {
 
   // Папката се задава през АДРЕСА. Подадена като аргумент, тя се записва
   // в coder.json слепена и после дава „Workspace does not exist".
- const query = '?folder=/home/coder/workspace';
+  const query = '?folder=/home/coder/workspace';
 
   // ⚠ Режимът на преглед заменя таба вместо да добавя — изключен е в SETTINGS.
   const open = (await readdir(dir).catch(() => []))
@@ -272,7 +301,7 @@ async function start(student, course, files, pro) {
     await new Promise((r) => setTimeout(r, 2000));
     for (const n of ordered) {
       try {
-       await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/workspace/' + n]);
+        await docker(['exec', name, 'code-server', '--reuse-window', '/home/coder/workspace/' + n]);
       } catch {}
       await new Promise((r) => setTimeout(r, 1200));
     }
@@ -280,7 +309,7 @@ async function start(student, course, files, pro) {
 
   const now = Date.now();
   const session = {
-    key, name, port, dir, pro,
+    key, name, port, dir, pro, tree: false,
     url: 'http://' + HOST + ':' + port + query,
     beat: now, born: now,
   };
@@ -328,7 +357,7 @@ createServer(async (req, res) => {
       if (!student || !course) return send(res, 400, { error: 'student-and-course-required' });
       try {
         const s = await start(String(student), String(course), files, !!pro);
-        return send(res, 200, { url: s.url, port: s.port });
+        return send(res, 200, { url: s.url, port: s.port, tree: !!s.tree });
       } catch (e) {
         if (e.full) return send(res, 503, { error: 'full', used: live.size, max: MAX_LIVE });
         throw e;
@@ -340,24 +369,28 @@ createServer(async (req, res) => {
       const s = live.get(keyOf(String(student), String(course)));
       if (!s) return send(res, 404, { error: 'no-session' });
       s.beat = Date.now();
- // ⚠ Пише се ДИРЕКТНО на диска, не през docker exec. Той вдига процес
-      // в контейнера и бави отговора с няколко секунди.
+
+      // ⚠ Пише се ДИРЕКТНО на диска. docker exec вдига процес в контейнера
+      // и бави отговора с няколко секунди.
       s.tick = (s.tick ?? 0) + 1;
-      const flagPath = join(ROOT, s.key, '.local', 'share', 'code-server', 'cf-toggle');
+      s.tree = !s.tree;
       try {
-        await writeFile(flagPath, String(s.tick), 'utf8');
-        console.log('toggle ok', flagPath, s.tick);
+        await writeFile(
+          join(ROOT, s.key, '.local', 'share', 'code-server', 'cf-toggle'),
+          String(s.tick),
+          'utf8'
+        );
       } catch (e) {
-        console.error('toggle FAIL', flagPath, String(e));
+        return send(res, 500, { error: String(e?.message ?? e) });
       }
-      return send(res, 200, { ok: true });
+      return send(res, 200, { ok: true, tree: s.tree });
     }
 
     if (req.method === 'POST' && req.url === '/beat') {
       const { student, course } = await body(req);
       const s = live.get(keyOf(String(student), String(course)));
       if (s) s.beat = Date.now();
-      return send(res, 200, { ok: !!s });
+      return send(res, 200, { ok: !!s, tree: !!s?.tree });
     }
 
     if (req.method === 'POST' && req.url === '/files') {
@@ -385,6 +418,7 @@ createServer(async (req, res) => {
           key: s.key,
           pro: s.pro,
           port: s.port,
+          tree: !!s.tree,
           sinceBeat: Math.round((now - s.beat) / 1000),
           age: Math.round((now - s.born) / 1000),
         })),

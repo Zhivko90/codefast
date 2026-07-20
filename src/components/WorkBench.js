@@ -104,6 +104,7 @@ files = [], activeFile, onFile, getFile, setFile,
   const drag = useRef(null);
   const touched = useRef({ l: false, p: false });
   const [dragging, setDragging] = useState(false);
+  const [treeOpen, setTreeOpen] = useState(false);
 
   // ⚠ Слуша ВИНАГИ, но панелът се показва само при hasConsole.
   // Куката се чисти при всяка промяна на preview — иначе човек гледа
@@ -322,9 +323,9 @@ const editorEl = ide ? (
             </MTab>
 
             {ide && (
-              <MTab active={false} onClick={() => { setMobileView('code'); toggleTree(course); }} label={t('files')}>
-                <IcoTree size={15} />
-              </MTab>
+              <MTab active={treeOpen}
+                onClick={async () => { setMobileView('code'); const r = await toggleTree(course); if (r?.ok) setTreeOpen(!!r.tree); }}
+                label={t('files')}></MTab>
             )}
 
             <MTab active={mobileView === 'code'} onClick={() => setMobileView('code')} label={activeName}>
@@ -400,7 +401,9 @@ const editorEl = ide ? (
             </RailBtn>
 
             {ide && (
-           <RailBtn on={false} onClick={() => { setShowLeft(false); toggleTree(course); }} title={t('files')}>
+          <RailBtn on={treeOpen}
+                onClick={async () => { setShowLeft(false); const r = await toggleTree(course); if (r?.ok) setTreeOpen(!!r.tree); }}
+                title={t('files')}>
                 <IcoTree />
               </RailBtn>
             )}

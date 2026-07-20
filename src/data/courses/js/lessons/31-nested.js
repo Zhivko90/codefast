@@ -69,7 +69,7 @@ h1 {
     { id: "t4", type: "runs", err: "crashed", errEmpty: "nothing-written", errTimeout: "frozen", weight: 800 },
     { id: "t5", type: "src_count", value: "days = 5", min: 1, max: 1, err: "changed-data", weight: 750 },
     { id: "t6", type: "src_count", value: "wednesday", min: 2, err: "forgot-wednesday", weight: 700 },
-    { id: "t7", type: "src_count", value: "if", min: 1, max: 1, err: "still-repeating", weight: 690 },
+   { id: "t7", type: "src_count", value: "if(", min: 1, max: 1, err: "still-repeating", weight: 690 },
     { id: "t8", type: "returns", call: "cups", expect: 300, err: "wrong-cups", weight: 500 },
     { id: "t9", type: "returns", call: "income", expect: 900, err: "wrong-income", weight: 490 },
     { id: "t10", type: "returns", call: "best", expect: 80, err: "wrong-best", weight: 480 },
