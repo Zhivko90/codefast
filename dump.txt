@@ -1,0 +1,561 @@
+
+
+===== D:\Proekti\codefast\src\data\courses\js\meta.js =====
+// Обща информация за JS курса.
+// НУЛА ДУМИ. Заглавието и описанието са в src/content/courses/js/{bg,en}/_course.json
+// Числата за уроци и секции се смятат от самия курс — не се пишат тук.
+export const meta = {
+  slug: 'js',
+  category: 'web',
+  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+  level: 'beginner',
+  runtime: 'js-worker',
+};
+
+===== D:\Proekti\codefast\src\data\courses\js\outline.js =====
+export default {
+  sections: [
+    {
+      id: 'nothing',
+      modules: [
+        { id: 'firstrun', lessons: ['01-hello', '02-values', '03-variable', '04-const', '05-var', '06-plus', '07-swap', '08-broken', '09-quiz'] },
+      ],
+    },
+    {
+      id: 'numbers',
+      modules: [
+        { id: 'arithmetic', lessons: ['10-maths', '11-shorthand', '12-template'] },
+        { id: 'strings', lessons: ['13-strings', '14-nan', '15-math', '16-broken', '17-quiz'] },
+      ],
+    },
+    {
+      id: 'decisions',
+      modules: [
+        { id: 'branching', lessons: ['18-if', '19-else'] },
+        { id: 'comparing', lessons: ['20-equality', '21-truthy', '22-logic', '23-switch', '24-broken', '25-quiz'] },
+      ],
+    },
+    {
+      id: 'repeating',
+      modules: [
+        { id: 'loops', lessons: ['26-while', '27-infinite', '28-for', '29-offbyone', '30-break', '31-nested', '32-broken'] },
+      ],
+    },
+    {
+      id: 'functions',
+      modules: [
+        { id: 'basics', lessons: ['33-function', '34-return'] },
+        { id: 'scope', lessons: [] },
+      ],
+    },
+  ],
+};
+
+===== D:\Proekti\codefast\src\data\courses\js\lessons\33-function.js =====
+export default {
+  id: 33,
+  type: "web",
+  label: "coding",
+  entry: "index.html",
+  starterFiles: {
+    "index.html": `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bean Street Coffee</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Bean Street Coffee</h1>
+    <p>Three receipts</p>
+    <script src="script.js"></script>
+  </body>
+</html>`,
+    "styles.css": `body {
+  font-family: Georgia, serif;
+  margin: 0;
+  padding: 24px;
+  color: saddlebrown;
+}
+
+h1 {
+  color: darkred;
+}`,
+    "script.js": [
+      'const vat = 0.2;',
+      '',
+      'const priceA = 12;',
+      'let totalA = priceA + priceA * vat;',
+      'totalA = Math.round(totalA);',
+      '',
+      'const priceB = 30;',
+      'let totalB = priceB + priceB * vat;',
+      'totalB = Math.round(totalB);',
+      '',
+      'const priceC = 7;',
+      'let totalC = priceC + priceC * vat;',
+      'totalC = Math.round(totalC);',
+      '',
+      'console.log(totalA);',
+      'console.log(totalB);',
+      'console.log(totalC);',
+    ].join('\n')
+  },
+  checks: [
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "src_changed", err: "untouched", weight: 950 },
+    { id: "t3", type: "dom_has", value: 'script[data-from="script.js"]', err: "not-linked", weight: 850 },
+    { id: "t4", type: "runs", err: "crashed", errEmpty: "nothing-written", errTimeout: "frozen", weight: 800 },
+    { id: "t5", type: "src_contains", value: "function", err: "no-function", weight: 700 },
+    { id: "t6", type: "src_count", value: "Math.round", min: 1, max: 1, err: "still-repeating", weight: 690 },
+    { id: "t7", type: "src_count", value: "* vat", min: 1, max: 1, err: "still-repeating", weight: 680 },
+    { id: "t8", type: "returns", call: "withVat(12)", expect: 14, err: "wrong-function", weight: 500 },
+    { id: "t9", type: "returns", call: "withVat(30)", expect: 36, err: "wrong-function", weight: 490 },
+    { id: "t10", type: "returns", call: "withVat(100)", expect: 120, err: "wrong-general", weight: 480 },
+    { id: "t11", type: "logs", mode: "count", min: 3, max: 3, err: "wrong-count", weight: 280 },
+    { id: "t12", type: "dom_count", value: "p", min: 1, err: "lost-p", weight: 60 },
+  ],
+  solution: [
+    'const vat = 0.2;',
+    '',
+    'function withVat(price) {',
+    '  const total = price + price * vat;',
+    '  return Math.round(total);',
+    '}',
+    '',
+    'console.log(withVat(12));',
+    'console.log(withVat(30));',
+    'console.log(withVat(7));',
+  ].join('\n'),
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    {
+      type: "code",
+      code: `function withVat(price) {
+  const total = price + price * vat;
+  return Math.round(total);
+}`
+    },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    {
+      type: "code",
+      code: `console.log(withVat(12));`
+    },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "33-function"
+};
+
+===== D:\Proekti\codefast\src\data\courses\js\lessons\34-return.js =====
+export default {
+  id: 34,
+  type: "web",
+  label: "coding",
+  entry: "index.html",
+  starterFiles: {
+    "index.html": `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bean Street Coffee</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Bean Street Coffee</h1>
+    <p>Order totals</p>
+    <script src="script.js"></script>
+  </body>
+</html>`,
+    "styles.css": `body {
+  font-family: Georgia, serif;
+  margin: 0;
+  padding: 24px;
+  color: saddlebrown;
+}
+
+h1 {
+  color: darkred;
+}`,
+    "script.js": [
+      'function cupPrice(size) {',
+      '  if (size === "large") {',
+      '    return 5;',
+      '  }',
+      '  return 3;',
+      '}',
+      '',
+      'function orderTotal(cups, size) {',
+      '  const price = cupPrice(size);',
+      '  console.log(cups * price);',
+      '}',
+      '',
+      'function withTip(total) {',
+      '  const tip = total * 0.1;',
+      '  total + tip;',
+      '}',
+      '',
+      'const small = orderTotal(4, "small");',
+      'const large = orderTotal(2, "large");',
+      'const tipped = withTip(30);',
+      '',
+      'console.log(small);',
+      'console.log(large);',
+      'console.log(tipped);',
+    ].join('\n')
+  },
+  checks: [
+    { id: "t1", type: "changed", value: "", err: "empty", weight: 1000 },
+    { id: "t2", type: "src_changed", err: "untouched", weight: 950 },
+    { id: "t3", type: "dom_has", value: 'script[data-from="script.js"]', err: "not-linked", weight: 850 },
+    { id: "t4", type: "runs", err: "crashed", errEmpty: "nothing-written", errTimeout: "frozen", weight: 800 },
+    { id: "t5", type: "src_count", value: "return", min: 4, err: "no-return", weight: 700 },
+    { id: "t6", type: "returns", call: "orderTotal(4, 'small')", expect: 12, err: "no-total", weight: 500 },
+    { id: "t7", type: "returns", call: "orderTotal(2, 'large')", expect: 10, err: "no-total", weight: 490 },
+    { id: "t8", type: "returns", call: "withTip(30)", expect: 33, err: "no-tip", weight: 480 },
+    { id: "t9", type: "returns", call: "typeof cupPrice('large')", expect: "number", err: "price-broken", weight: 470 },
+    { id: "t10", type: "logs", mode: "count", min: 3, max: 3, err: "wrong-count", weight: 280 },
+    { id: "t11", type: "dom_count", value: "p", min: 1, err: "lost-p", weight: 60 },
+  ],
+  solution: [
+    'function cupPrice(size) {',
+    '  if (size === "large") {',
+    '    return 5;',
+    '  }',
+    '  return 3;',
+    '}',
+    '',
+    'function orderTotal(cups, size) {',
+    '  const price = cupPrice(size);',
+    '  return cups * price;',
+    '}',
+    '',
+    'function withTip(total) {',
+    '  const tip = total * 0.1;',
+    '  return total + tip;',
+    '}',
+    '',
+    'const small = orderTotal(4, "small");',
+    'const large = orderTotal(2, "large");',
+    'const tipped = withTip(30);',
+    '',
+    'console.log(small);',
+    'console.log(large);',
+    'console.log(tipped);',
+  ].join('\n'),
+  blocks: [
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "quote" },
+    { type: "heading" },
+    { type: "text" },
+    {
+      type: "code",
+      code: `function shout(text) {
+  const loud = text.toUpperCase();
+}
+
+const result = shout("hello");`
+    },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+  ],
+  slug: "34-return"
+};
+
+===== D:\Proekti\codefast\src\content\courses\js\bg\33-function.json =====
+{
+  "title": "Вход и изход",
+
+  "checkLabels.t1": "Написа нещо",
+  "checkLabels.t2": "Пипна script.js",
+  "checkLabels.t3": "Скриптът е свързан",
+  "checkLabels.t4": "Кодът се изпълнява",
+  "checkLabels.t5": "Има функция",
+  "checkLabels.t6": "Закръглянето се пише веднъж",
+  "checkLabels.t7": "Данъкът също",
+  "checkLabels.t8": "12 дава 14",
+  "checkLabels.t9": "30 дава 36",
+  "checkLabels.t10": "Работи с всяко число",
+  "checkLabels.t11": "Трите реда излизат",
+  "checkLabels.t12": "Абзацът си е на мястото",
+
+  "why.empty": "Редакторът е празен.",
+
+  "why.untouched": "script.js е точно такъв, какъвто беше.",
+  "hint2.untouched": "Едни и същи два реда, написани три пъти с различно число.",
+
+  "why.not-linked": "Скриптът не стига до страницата.",
+
+  "why.crashed": "Кодът ти спря с грешка.",
+  "hint2.crashed": "Виж панела Конзола отдолу.",
+  "hint3.crashed": "ReferenceError: withVat is not defined значи, че функцията или не съществува, или се казва другояче. Името трябва да е точно withVat.",
+
+  "why.nothing-written": "script.js е празен.",
+  "why.frozen": "Кодът ти не спира.",
+
+  "why.no-function": "Няма функция.",
+  "hint2.no-function": "Сметката се пише веднъж и се дава име. После се вика с различни числа.",
+
+  "why.still-repeating": "Сметката още се повтаря.",
+  "hint2.still-repeating": "И двата реда влизат вътре във функцията, и то само веднъж.",
+
+  "why.wrong-function": "Функцията не дава верния отговор.",
+  "hint2.wrong-function": "Дванайсет с двайсет на сто данък прави 14.4, закръглено 14.",
+  "hint3.wrong-function": "Ако получаваш undefined, функцията смята, но не връща. Резултатът трябва да излезе навън.",
+  "hint4.wrong-function": "return изпраща стойността обратно на този, който е извикал функцията.",
+
+  "why.wrong-general": "Функцията не работи с произволно число.",
+  "hint2.wrong-general": "Числото не бива да е записано вътре. То идва отвън, през скобите.",
+  "hint3.wrong-general": "Името в скобите на функцията е празно място. То се запълва с това, което подадеш при извикването.",
+
+  "why.wrong-count": "Редовете в конзолата не са три.",
+  "why.lost-p": "Изчезнал е абзац от страницата.",
+
+  "blocks.0.text": "Три сметки с данък. Едни и същи два реда, написани три пъти с различно число.",
+  "blocks.1.text": "Сега си представи, че данъкът става деветнайсет на сто. Или че сметките станат сто. Или че някой поиска и закръгляне надолу.",
+
+  "blocks.2.text": "Функцията",
+  "blocks.3.text": "Пишеш сметката веднъж, даваш ѝ име, и после я викаш колкото пъти искаш с различни числа.",
+  "blocks.5.text": "price в скобите е празно място. То се запълва с числото, което подадеш при извикването.",
+
+  "blocks.6.text": "Не е парче код",
+  "blocks.7.text": "Ще срещнеш обяснението, че функцията е парче код, което си запазил за после. Това е вярно, но безполезно.",
+  "blocks.8.text": "Функцията е нещо, което взима вход и връща изход. Даваш ѝ 12, получаваш 14. Даваш ѝ 30, получаваш 36. Какво прави вътре е нейна работа.",
+  "blocks.9.quote": "Мисли за нея като за машина с фуния отгоре и чучур отдолу.",
+
+  "blocks.10.text": "Извикването",
+  "blocks.11.text": "Написването на функцията не я изпълнява. Тя стои и чака. Изпълнява се чак когато я извикаш — с името ѝ и скоби.",
+  "blocks.13.text": "Скобите значат направи го сега. Без тях получаваш самата функция, неизвършена — същата грешка като при методите на текста в тринайсети урок.",
+
+  "blocks.14.text": "Задачата",
+  "blocks.15.text": "Направи функция на име withVat, която взима цена и връща цената с данък, закръглена. Точно това име — проверката го търси.",
+  "blocks.16.text": "После извикай я три пъти с числата 12, 30 и 7. Двата реда със сметката трябва да съществуват само на едно място в целия файл."
+}
+
+===== D:\Proekti\codefast\src\content\courses\js\bg\34-return.json =====
+{
+  "title": "Отговорът излиза навън",
+
+  "checkLabels.t1": "Написа нещо",
+  "checkLabels.t2": "Пипна script.js",
+  "checkLabels.t3": "Скриптът е свързан",
+  "checkLabels.t4": "Кодът се изпълнява",
+  "checkLabels.t5": "Всяка функция връща",
+  "checkLabels.t6": "Четири малки дават 12",
+  "checkLabels.t7": "Две големи дават 10",
+  "checkLabels.t8": "С бакшиш дава 33",
+  "checkLabels.t9": "Цената е число",
+  "checkLabels.t10": "Трите реда излизат",
+  "checkLabels.t11": "Абзацът си е на мястото",
+
+  "why.empty": "Редакторът е празен.",
+
+  "why.untouched": "script.js е точно такъв, какъвто беше.",
+  "hint2.untouched": "Конзолата показва пет реда, но три от тях са undefined. Числата излизат отнякъде другаде.",
+
+  "why.not-linked": "Скриптът не стига до страницата.",
+
+  "why.crashed": "Кодът ти спря с грешка.",
+  "hint2.crashed": "Виж панела Конзола отдолу.",
+
+  "why.nothing-written": "script.js е празен.",
+  "why.frozen": "Кодът ти не спира.",
+
+  "why.no-return": "Някоя функция не връща нищо.",
+  "hint2.no-return": "И трите функции трябва да връщат. Първата вече го прави.",
+
+  "why.no-total": "Сметката не се връща.",
+  "hint2.no-total": "Функцията печата числото, вместо да го върне. На екрана изглежда еднакво, но резултатът никъде не отива.",
+  "hint3.no-total": "console.log показва. return изпраща стойността обратно. Двете нямат нищо общо.",
+  "hint4.no-total": "Смени печатането с връщане. Печатането става отвън, където се вика функцията.",
+
+  "why.no-tip": "Сборът с бакшиша не се връща.",
+  "hint2.no-tip": "Редът смята, но резултатът се изхвърля веднага. Никой не го е поискал обратно.",
+  "hint3.no-tip": "total + tip само по себе си е израз без адрес. Пресмята се и се забравя.",
+
+  "why.price-broken": "Цената вече не е число.",
+  "hint2.price-broken": "Първата функция беше вярна. Ако си я пипал, върни я.",
+
+  "why.wrong-count": "Редовете в конзолата не са три.",
+  "hint2.wrong-count": "Печатането става само накрая, три пъти. Функциите не печатат.",
+
+  "why.lost-p": "Изчезнал е абзац от страницата.",
+
+  "blocks.0.text": "Три функции. Първата връща цена по размер. Втората смята сметка. Третата добавя бакшиш.",
+  "blocks.1.text": "Конзолата показва числата — 12, 10 — и после три пъти undefined. Числата идват отнякъде, но не от там, откъдето трябва.",
+
+  "blocks.2.text": "Печата, но не връща",
+  "blocks.3.text": "Втората функция смята вярно и показва резултата. Точно затова изглежда, че работи.",
+  "blocks.4.text": "Но нищо не излиза от нея. Опиташ ли да запазиш отговора в име, получаваш undefined. Функция без return връща undefined винаги.",
+  "blocks.5.quote": "console.log показва на теб. return дава на кода. Едното е за очите, другото е за работа.",
+
+  "blocks.6.text": "Смята и изхвърля",
+  "blocks.7.text": "Третата функция е още по-коварна. Тя смята и дори не печата — редът просто виси там.",
+  "blocks.9.text": "shout смята големите букви и ги забравя веднага. result става undefined. Нищо не гърми, нищо не предупреждава.",
+
+  "blocks.10.text": "Защо това е важно",
+  "blocks.11.text": "Функция, която печата, върши точно едно нещо и то е показването. Не може да се ползва в сметка, не може да се подаде на друга функция, не може да се запази.",
+  "blocks.12.text": "Функция, която връща, може всичко това. Показването е една от опциите — и то се решава отвън, от този, който я вика.",
+
+  "blocks.13.text": "Задачата",
+  "blocks.14.text": "Поправи втората и третата функция да връщат вместо да печатат или да изхвърлят.",
+  "blocks.15.text": "Печатането остава само в трите реда накрая. Функциите не печатат нищо."
+}
+
+===== D:\Proekti\codefast\src\content\courses\js\en\33-function.json =====
+{
+  "title": "Input and output",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "There is a function",
+  "checkLabels.t6": "The rounding is written once",
+  "checkLabels.t7": "The tax too",
+  "checkLabels.t8": "12 gives 14",
+  "checkLabels.t9": "30 gives 36",
+  "checkLabels.t10": "It works with any number",
+  "checkLabels.t11": "Three lines come out",
+  "checkLabels.t12": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The same two lines, written three times with a different number.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "ReferenceError: withVat is not defined means the function either does not exist or is called something else. The name has to be exactly withVat.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-function": "There is no function.",
+  "hint2.no-function": "The sum is written once and given a name. Then it is called with different numbers.",
+
+  "why.still-repeating": "The sum is still repeated.",
+  "hint2.still-repeating": "Both lines go inside the function, and only once.",
+
+  "why.wrong-function": "The function does not give the right answer.",
+  "hint2.wrong-function": "Twelve with twenty percent tax is 14.4, rounded 14.",
+  "hint3.wrong-function": "If you get undefined, the function calculates but does not return. The result has to come back out.",
+  "hint4.wrong-function": "return sends the value back to whoever called the function.",
+
+  "why.wrong-general": "The function does not work with an arbitrary number.",
+  "hint2.wrong-general": "The number should not be written inside. It comes from outside, through the brackets.",
+  "hint3.wrong-general": "The name in the function's brackets is a blank space. It is filled with whatever you pass when calling it.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three totals with tax. The same two lines, written three times with a different number.",
+  "blocks.1.text": "Now imagine the tax becomes nineteen percent. Or that there are a hundred totals. Or that somebody asks for rounding down instead.",
+
+  "blocks.2.text": "The function",
+  "blocks.3.text": "You write the sum once, give it a name, and then call it as many times as you like with different numbers.",
+  "blocks.5.text": "price in the brackets is a blank space. It is filled with the number you pass when you call it.",
+
+  "blocks.6.text": "Not a piece of code",
+  "blocks.7.text": "You will meet the explanation that a function is a piece of code you saved for later. That is true, and useless.",
+  "blocks.8.text": "A function is something that takes an input and returns an output. Give it 12, get 14. Give it 30, get 36. What it does inside is its own business.",
+  "blocks.9.quote": "Think of it as a machine with a funnel on top and a spout underneath.",
+
+  "blocks.10.text": "Calling it",
+  "blocks.11.text": "Writing a function does not run it. It sits and waits. It runs only when you call it — with its name and brackets.",
+  "blocks.13.text": "The brackets mean do it now. Without them you get the function itself, unperformed — the same mistake as with string methods in lesson thirteen.",
+
+  "blocks.14.text": "The task",
+  "blocks.15.text": "Make a function called withVat that takes a price and returns the price with tax, rounded. Exactly that name — the checks look for it.",
+  "blocks.16.text": "Then call it three times with the numbers 12, 30 and 7. The two lines with the sum should exist in only one place in the whole file."
+}
+
+===== D:\Proekti\codefast\src\content\courses\js\en\34-return.json =====
+{
+  "title": "The answer comes out",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "Every function returns",
+  "checkLabels.t6": "Four small gives 12",
+  "checkLabels.t7": "Two large gives 10",
+  "checkLabels.t8": "With tip gives 33",
+  "checkLabels.t9": "The price is a number",
+  "checkLabels.t10": "Three lines come out",
+  "checkLabels.t11": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The console shows five lines, but three of them are undefined. The numbers are coming from somewhere else.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-return": "Some function returns nothing.",
+  "hint2.no-return": "All three functions have to return. The first one already does.",
+
+  "why.no-total": "The total is not returned.",
+  "hint2.no-total": "The function prints the number instead of returning it. On screen it looks the same, but the result goes nowhere.",
+  "hint3.no-total": "console.log shows. return sends the value back. The two have nothing in common.",
+  "hint4.no-total": "Replace the printing with returning. The printing happens outside, where the function is called.",
+
+  "why.no-tip": "The total with tip is not returned.",
+  "hint2.no-tip": "The line calculates, but the result is thrown away immediately. Nobody asked for it back.",
+  "hint3.no-tip": "total + tip on its own is an expression with no address. It is worked out and forgotten.",
+
+  "why.price-broken": "The price is no longer a number.",
+  "hint2.price-broken": "The first function was correct. If you changed it, put it back.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "hint2.wrong-count": "The printing happens only at the end, three times. The functions do not print.",
+
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three functions. The first returns a price by size. The second works out a total. The third adds a tip.",
+  "blocks.1.text": "The console shows the numbers — 12, 10 — and then undefined three times. The numbers come from somewhere, but not from where they should.",
+
+  "blocks.2.text": "It prints, but does not return",
+  "blocks.3.text": "The second function calculates correctly and displays the result. That is exactly why it looks like it works.",
+  "blocks.4.text": "But nothing comes out of it. Try to store the answer in a name and you get undefined. A function with no return always returns undefined.",
+  "blocks.5.quote": "console.log shows you. return gives to the code. One is for your eyes, the other is for work.",
+
+  "blocks.6.text": "It calculates and throws away",
+  "blocks.7.text": "The third function is nastier still. It calculates and does not even print — the line just sits there.",
+  "blocks.9.text": "shout works out the capitals and forgets them immediately. result becomes undefined. Nothing breaks, nothing warns.",
+
+  "blocks.10.text": "Why this matters",
+  "blocks.11.text": "A function that prints does exactly one thing, and that thing is displaying. It cannot be used in a sum, cannot be passed to another function, cannot be stored.",
+  "blocks.12.text": "A function that returns can do all of those. Displaying is one option — and it is decided outside, by whoever calls it.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix the second and third functions so they return instead of printing or throwing away.",
+  "blocks.15.text": "The printing stays only in the three lines at the end. The functions print nothing."
+}

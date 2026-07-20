@@ -25,7 +25,7 @@ const SETTINGS = {
   'workbench.colorTheme': 'Dark Modern',
   'workbench.view.alwaysShowHeaderActions': true,
   'extensions.autoCheckUpdates': false,
-  'extensions.autoUpdate': false,
+  'extensions.autoUpdate': 'off',
   'workbench.activityBar.location': 'hidden',
   'workbench.statusBar.visible': false,
   'workbench.startupEditor': 'none',
