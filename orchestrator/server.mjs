@@ -164,9 +164,14 @@ function activate() {
 // ⚠ БЕЗ toggle. closeSidebar при старта не обновява вътрешното състояние
   // на VS Code, затова първият toggle затваря вече затворена лента — празен ход.
 const log = (m) => { try { fs.appendFileSync(path.join(dir, 'cf-log'), new Date().toISOString() + ' ' + m + '\\n'); } catch (e) {} };
-const term = () => {
-    log('terminal');
-    vscode.commands.executeCommand('workbench.action.terminal.toggleTerminal').then(
+// ⚠ БЕЗ toggle. closePanel при зареждане затваря панела, без вътрешното
+  // състояние да се обнови — първият toggle тогава е празен ход.
+  var termOpen = false;
+  const term = () => {
+    termOpen = !termOpen;
+    const cmd = termOpen ? 'workbench.action.terminal.focus' : 'workbench.action.closePanel';
+    log('terminal -> ' + termOpen + ' cmd=' + cmd);
+    vscode.commands.executeCommand(cmd).then(
       function () { log('terminal ok'); },
       function (e) { log('terminal FAIL ' + String(e)); }
     );
