@@ -435,15 +435,16 @@ const editorEl = ide ? (
 
           {/* ═══ ВЕРТИКАЛНАТА ЛЕНТА ═══ */}
           <div className="shrink-0 w-12 flex flex-col items-center gap-1 py-3 bg-black/30 border-r border-white/10">
-  <RailBtn on={showLeft}
-              onClick={() => {
+<RailBtn on={showLeft} disabled={ide && treeBusy}
+              onClick={async () => {
+                if (ide && treeBusy) return;
                 const next = !showLeft;
-                // ⚠ БЕЗ await. VS Code няма анимация на лентата — мигновено е.
-                // Чакането на отговора от сървъра прави дупка на екрана.
-                if (next && ide && treeOpen && !treeBusy) {
-                  setTreeOpen(false);
+                if (next && ide && treeOpen) {
                   setTreeBusy(true);
-                  toggleTree(course).then((r) => { if (r?.ok) setTreeOpen(!!r.tree); setTreeBusy(false); });
+                  setTreeOpen(false);
+                  const r = await toggleTree(course);
+                  if (r?.ok) setTreeOpen(!!r.tree);
+                  setTreeBusy(false);
                 }
                 setShowLeft(next);
               }}

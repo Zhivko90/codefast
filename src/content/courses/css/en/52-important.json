@@ -1,0 +1,68 @@
+{
+  "title": "The word that ends the argument",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.g2": "No important rules left",
+  "checkLabels.t6": "The sold out button is grey",
+  "checkLabels.t7": "The third button is white",
+  "checkLabels.t8": "Its text is dark",
+  "checkLabels.t9": "The first button is brown",
+  "checkLabels.t10": "Its text is white",
+  "checkLabels.t11": "The cards are untouched",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Here you remove, you do not add.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+
+  "why.still-important": "There is still an !important in the code.",
+  "hint2.still-important": "The only thing that beats an important declaration is another important one. That is the trap, and that is why the answer here is not one more.",
+  "hint3.still-important": "Both important declarations sit in the base .btn rule. Because of them the variants below achieve nothing.",
+  "hint4.still-important": "Remove them instead of outbidding them.",
+
+  "why.no-sold": "There is no button with the sold-out class.",
+  "why.no-ghost": "There is no button with the ghost class.",
+  "why.no-btn": "There is no button with the btn class.",
+  "why.no-card": "There is no element with the card class.",
+
+  "why.sold-bg": "The sold out button is still not grey.",
+  "hint2.sold-bg": "The .btn.sold-out rule is more specific than .btn and comes after it. It still loses. So the argument is not settled by specificity.",
+  "hint3.sold-bg": "Look at the base .btn rule. There is a word there that takes the comparison out of play.",
+  "hint4.sold-bg": "Remove it. Do not add another one.",
+
+  "why.ghost-bg": "The third button is still not white.",
+  "why.ghost-color": "The text of the third button is still not dark.",
+  "why.btn-bg": "The first button is no longer brown. You deleted more than needed.",
+  "why.btn-color": "The text of the first button is no longer white.",
+  "why.card-gone": "The cards lost their inner spacing. You touched that too.",
+
+  "blocks.0.text": "The button for the sold out coffee should be grey. The rule is there, it is more specific than the base one and it comes after it. The button is brown. The third button should be white with dark text. It is brown as well.",
+
+  "blocks.1.text": "One word takes the comparison out of play",
+  "blocks.2.text": "Put !important after a value and that declaration beats every normal declaration from the same source. No matter how heavy the other selector is. Here the second rule wins:",
+  "blocks.4.text": "The first selector has three ids, two classes and a tag. The second has one class. Specificity never enters the count — importance is considered before it.",
+
+  "blocks.5.text": "The price",
+  "blocks.6.text": "!important does not switch the cascade off. It moves the argument one floor up. Between two important declarations from the same source specificity decides again, and when that ties, the order in the file. This is why the first !important almost never stays alone. The next person who has to override something has no move left but one more. And so on, until everything in the file is important, which means nothing has an edge again.",
+  "blocks.7.text": "!important does not settle the argument. It raises it one floor, where the same rules apply.",
+
+  "blocks.8.text": "When it really belongs",
+  "blocks.9.text": "It is not always bad. The word exists for the reader, not for you. Three places where it makes sense:",
+  "blocks.10.items.0": "In user stylesheets. For important declarations the order of sources is reversed: an important declaration in the reader's styles beats an important one in yours. That is how someone who needs large text or their own colours can override your design.",
+  "blocks.10.items.1": "Against a foreign file you cannot edit — a plugin or a widget with heavy selectors. For that case MDN now advises something else: import the foreign file into a first cascade layer instead of fighting it with !important.",
+  "blocks.10.items.2": "To pin a style that has to survive every later override. Sparingly, and in one place.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Make the grey button grey and the white one white. Without adding a single new !important."
+}

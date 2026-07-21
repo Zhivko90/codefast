@@ -1,0 +1,72 @@
+{
+  "title": "The arrow",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "Four arrow functions",
+  "checkLabels.t6": "No old form left",
+  "checkLabels.t7": "Large is 5",
+  "checkLabels.t8": "Small is 3",
+  "checkLabels.t9": "Four small gives 12",
+  "checkLabels.t10": "12 with tax gives 14",
+  "checkLabels.t11": "The small receipt is 14",
+  "checkLabels.t12": "The large receipt is 12",
+  "checkLabels.t13": "Three lines come out",
+  "checkLabels.t14": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The code works. The task is to rewrite it the other way, and see what breaks.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "Cannot access before initialization means you are calling the function above the line where it is declared.",
+  "hint4.crashed": "The calls have to move below the declarations. An arrow function does not work before its own line.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-arrow": "There are not enough arrow functions.",
+  "hint2.no-arrow": "All four have to be rewritten.",
+  "hint3.no-arrow": "Name, equals, brackets with the parameters, arrow, body. And a semicolon at the end — this is a constant being declared.",
+
+  "why.still-declared": "There is still a function in the old form.",
+  "hint2.still-declared": "The word function should not be left anywhere in the file.",
+
+  "why.wrong-price": "cupPrice does not give the right numbers.",
+  "hint2.wrong-price": "Large is 5, everything else is 3.",
+  "hint3.wrong-price": "This function has an if inside. It keeps its curly brackets and its returns.",
+
+  "why.no-body-return": "The function does not return a value.",
+  "hint2.no-body-return": "If you get undefined, the body is in curly brackets but there is no return.",
+  "hint3.no-body-return": "An arrow straight to an expression returns that expression. An arrow to curly brackets returns nothing on its own — return has to be written inside.",
+  "hint4.no-body-return": "For the one-liners, drop the brackets. Or keep them and write return inside. The two are equivalent.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "The same four functions from the last lesson. They work. The console shows 14, 12 and 5.",
+  "blocks.1.text": "Three of them take three lines to do work that is one line. Declaration, curly brackets, return, closing.",
+
+  "blocks.2.text": "The other form",
+  "blocks.3.text": "A function can also be declared as a value — name, equals, parameters, arrow, body. Then it is a value bound to a name, exactly like a number or a piece of text.",
+  "blocks.4.text": "If the body is a single expression, the brackets and the return fall away. The expression returns itself.",
+  "blocks.5.quote": "The arrow is not a shorter way to write the same thing. It is a different thing that in many cases looks like the same thing.",
+
+  "blocks.6.text": "The brackets eat the answer",
+  "blocks.7.text": "Here is the first real difference. Adding curly brackets changes what the body means.",
+  "blocks.9.text": "double gives 10. twice gives undefined. One bracket in one place, no error, no warning at all. You will meet exactly this for years.",
+
+  "blocks.10.text": "Not visible from above",
+  "blocks.11.text": "A function declared with function can be called above the line where it is written. An arrow function cannot — it is a constant, and a constant does not exist before its own line.",
+  "blocks.12.text": "There is a third difference, more important than these two. It is about the word this, and it comes in the section on objects. Until then, just remember that the two are not interchangeable.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Rewrite all four functions with an arrow. cupPrice has an if inside — it keeps its curly brackets. The other three become one line each.",
+  "blocks.15.text": "Then move the three calls to where they belong. The word function should not be left anywhere."
+}

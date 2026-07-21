@@ -30,7 +30,7 @@ export default {
       id: 'functions',
       modules: [
        { id: 'basics', lessons: ['33-function', '34-return', '35-compose'] },
-        { id: 'scope', lessons: [] },
+       { id: 'scope', lessons: ['36-scope', '37-arrow', '38-default', '39-pure'] },
       ],
     },
   ],

@@ -55,12 +55,15 @@ import css_l47 from './css/lessons/48-freehand-text.js';
 import css_l48 from './css/lessons/49-not-applied.js';
 import css_l49 from './css/lessons/50-specificity.js';
 import css_l50 from './css/lessons/51-inherit.js';
-import css_l51 from './css/lessons/R1-review-intro.js';
-import css_l52 from './css/lessons/R2-review-selectors.js';
-import css_l53 from './css/lessons/R3-review-box.js';
-import css_l54 from './css/lessons/R4-review-sizing.js';
-import css_l55 from './css/lessons/R5-review-typography.js';
-import css_l56 from './css/lessons/R6-review-colors.js';
+import css_l51 from './css/lessons/52-important.js';
+import css_l52 from './css/lessons/53-order.js';
+import css_l53 from './css/lessons/54-semicolon.js';
+import css_l54 from './css/lessons/R1-review-intro.js';
+import css_l55 from './css/lessons/R2-review-selectors.js';
+import css_l56 from './css/lessons/R3-review-box.js';
+import css_l57 from './css/lessons/R4-review-sizing.js';
+import css_l58 from './css/lessons/R5-review-typography.js';
+import css_l59 from './css/lessons/R6-review-colors.js';
 import css_bg_course from '@/content/courses/css/bg/_course.json';
 import css_bg_0 from '@/content/courses/css/bg/01-ugly.json';
 import css_bg_1 from '@/content/courses/css/bg/02-where.json';
@@ -113,12 +116,15 @@ import css_bg_47 from '@/content/courses/css/bg/48-freehand-text.json';
 import css_bg_48 from '@/content/courses/css/bg/49-not-applied.json';
 import css_bg_49 from '@/content/courses/css/bg/50-specificity.json';
 import css_bg_50 from '@/content/courses/css/bg/51-inherit.json';
-import css_bg_51 from '@/content/courses/css/bg/R1-review-intro.json';
-import css_bg_52 from '@/content/courses/css/bg/R2-review-selectors.json';
-import css_bg_53 from '@/content/courses/css/bg/R3-review-box.json';
-import css_bg_54 from '@/content/courses/css/bg/R4-review-sizing.json';
-import css_bg_55 from '@/content/courses/css/bg/R5-review-typography.json';
-import css_bg_56 from '@/content/courses/css/bg/R6-review-colors.json';
+import css_bg_51 from '@/content/courses/css/bg/52-important.json';
+import css_bg_52 from '@/content/courses/css/bg/53-order.json';
+import css_bg_53 from '@/content/courses/css/bg/54-semicolon.json';
+import css_bg_54 from '@/content/courses/css/bg/R1-review-intro.json';
+import css_bg_55 from '@/content/courses/css/bg/R2-review-selectors.json';
+import css_bg_56 from '@/content/courses/css/bg/R3-review-box.json';
+import css_bg_57 from '@/content/courses/css/bg/R4-review-sizing.json';
+import css_bg_58 from '@/content/courses/css/bg/R5-review-typography.json';
+import css_bg_59 from '@/content/courses/css/bg/R6-review-colors.json';
 import css_en_course from '@/content/courses/css/en/_course.json';
 import css_en_0 from '@/content/courses/css/en/01-ugly.json';
 import css_en_1 from '@/content/courses/css/en/02-where.json';
@@ -171,12 +177,15 @@ import css_en_47 from '@/content/courses/css/en/48-freehand-text.json';
 import css_en_48 from '@/content/courses/css/en/49-not-applied.json';
 import css_en_49 from '@/content/courses/css/en/50-specificity.json';
 import css_en_50 from '@/content/courses/css/en/51-inherit.json';
-import css_en_51 from '@/content/courses/css/en/R1-review-intro.json';
-import css_en_52 from '@/content/courses/css/en/R2-review-selectors.json';
-import css_en_53 from '@/content/courses/css/en/R3-review-box.json';
-import css_en_54 from '@/content/courses/css/en/R4-review-sizing.json';
-import css_en_55 from '@/content/courses/css/en/R5-review-typography.json';
-import css_en_56 from '@/content/courses/css/en/R6-review-colors.json';
+import css_en_51 from '@/content/courses/css/en/52-important.json';
+import css_en_52 from '@/content/courses/css/en/53-order.json';
+import css_en_53 from '@/content/courses/css/en/54-semicolon.json';
+import css_en_54 from '@/content/courses/css/en/R1-review-intro.json';
+import css_en_55 from '@/content/courses/css/en/R2-review-selectors.json';
+import css_en_56 from '@/content/courses/css/en/R3-review-box.json';
+import css_en_57 from '@/content/courses/css/en/R4-review-sizing.json';
+import css_en_58 from '@/content/courses/css/en/R5-review-typography.json';
+import css_en_59 from '@/content/courses/css/en/R6-review-colors.json';
 
 // ── html ──
 import { meta as html_meta } from './html/meta.js';
@@ -516,6 +525,10 @@ import js_l31 from './js/lessons/32-broken.js';
 import js_l32 from './js/lessons/33-function.js';
 import js_l33 from './js/lessons/34-return.js';
 import js_l34 from './js/lessons/35-compose.js';
+import js_l35 from './js/lessons/36-scope.js';
+import js_l36 from './js/lessons/37-arrow.js';
+import js_l37 from './js/lessons/38-default.js';
+import js_l38 from './js/lessons/39-pure.js';
 import js_bg_course from '@/content/courses/js/bg/_course.json';
 import js_bg_0 from '@/content/courses/js/bg/01-hello.json';
 import js_bg_1 from '@/content/courses/js/bg/02-values.json';
@@ -552,6 +565,10 @@ import js_bg_31 from '@/content/courses/js/bg/32-broken.json';
 import js_bg_32 from '@/content/courses/js/bg/33-function.json';
 import js_bg_33 from '@/content/courses/js/bg/34-return.json';
 import js_bg_34 from '@/content/courses/js/bg/35-compose.json';
+import js_bg_35 from '@/content/courses/js/bg/36-scope.json';
+import js_bg_36 from '@/content/courses/js/bg/37-arrow.json';
+import js_bg_37 from '@/content/courses/js/bg/38-default.json';
+import js_bg_38 from '@/content/courses/js/bg/39-pure.json';
 import js_en_course from '@/content/courses/js/en/_course.json';
 import js_en_0 from '@/content/courses/js/en/01-hello.json';
 import js_en_1 from '@/content/courses/js/en/02-values.json';
@@ -588,6 +605,10 @@ import js_en_31 from '@/content/courses/js/en/32-broken.json';
 import js_en_32 from '@/content/courses/js/en/33-function.json';
 import js_en_33 from '@/content/courses/js/en/34-return.json';
 import js_en_34 from '@/content/courses/js/en/35-compose.json';
+import js_en_35 from '@/content/courses/js/en/36-scope.json';
+import js_en_36 from '@/content/courses/js/en/37-arrow.json';
+import js_en_37 from '@/content/courses/js/en/38-default.json';
+import js_en_38 from '@/content/courses/js/en/39-pure.json';
 
 // ── webproject ──
 import { meta as webproject_meta } from './webproject/meta.js';
@@ -654,12 +675,15 @@ export const registry = {
       '49-not-applied': css_l48,
       '50-specificity': css_l49,
       '51-inherit': css_l50,
-      'R1-review-intro': css_l51,
-      'R2-review-selectors': css_l52,
-      'R3-review-box': css_l53,
-      'R4-review-sizing': css_l54,
-      'R5-review-typography': css_l55,
-      'R6-review-colors': css_l56,
+      '52-important': css_l51,
+      '53-order': css_l52,
+      '54-semicolon': css_l53,
+      'R1-review-intro': css_l54,
+      'R2-review-selectors': css_l55,
+      'R3-review-box': css_l56,
+      'R4-review-sizing': css_l57,
+      'R5-review-typography': css_l58,
+      'R6-review-colors': css_l59,
     },
     problems: {
     },
@@ -717,12 +741,15 @@ export const registry = {
         '49-not-applied': css_bg_48,
         '50-specificity': css_bg_49,
         '51-inherit': css_bg_50,
-        'R1-review-intro': css_bg_51,
-        'R2-review-selectors': css_bg_52,
-        'R3-review-box': css_bg_53,
-        'R4-review-sizing': css_bg_54,
-        'R5-review-typography': css_bg_55,
-        'R6-review-colors': css_bg_56,
+        '52-important': css_bg_51,
+        '53-order': css_bg_52,
+        '54-semicolon': css_bg_53,
+        'R1-review-intro': css_bg_54,
+        'R2-review-selectors': css_bg_55,
+        'R3-review-box': css_bg_56,
+        'R4-review-sizing': css_bg_57,
+        'R5-review-typography': css_bg_58,
+        'R6-review-colors': css_bg_59,
       },
       en: {
         _course: css_en_course,
@@ -777,12 +804,15 @@ export const registry = {
         '49-not-applied': css_en_48,
         '50-specificity': css_en_49,
         '51-inherit': css_en_50,
-        'R1-review-intro': css_en_51,
-        'R2-review-selectors': css_en_52,
-        'R3-review-box': css_en_53,
-        'R4-review-sizing': css_en_54,
-        'R5-review-typography': css_en_55,
-        'R6-review-colors': css_en_56,
+        '52-important': css_en_51,
+        '53-order': css_en_52,
+        '54-semicolon': css_en_53,
+        'R1-review-intro': css_en_54,
+        'R2-review-selectors': css_en_55,
+        'R3-review-box': css_en_56,
+        'R4-review-sizing': css_en_57,
+        'R5-review-typography': css_en_58,
+        'R6-review-colors': css_en_59,
       },
     },
     problemText: {
@@ -1149,6 +1179,10 @@ export const registry = {
       '33-function': js_l32,
       '34-return': js_l33,
       '35-compose': js_l34,
+      '36-scope': js_l35,
+      '37-arrow': js_l36,
+      '38-default': js_l37,
+      '39-pure': js_l38,
     },
     problems: {
     },
@@ -1190,6 +1224,10 @@ export const registry = {
         '33-function': js_bg_32,
         '34-return': js_bg_33,
         '35-compose': js_bg_34,
+        '36-scope': js_bg_35,
+        '37-arrow': js_bg_36,
+        '38-default': js_bg_37,
+        '39-pure': js_bg_38,
       },
       en: {
         _course: js_en_course,
@@ -1228,6 +1266,10 @@ export const registry = {
         '33-function': js_en_32,
         '34-return': js_en_33,
         '35-compose': js_en_34,
+        '36-scope': js_en_35,
+        '37-arrow': js_en_36,
+        '38-default': js_en_37,
+        '39-pure': js_en_38,
       },
     },
     problemText: {

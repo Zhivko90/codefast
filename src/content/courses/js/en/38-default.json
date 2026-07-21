@@ -1,0 +1,77 @@
+{
+  "title": "When you pass nothing",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "No || left",
+  "checkLabels.t6": "There is a default value",
+  "checkLabels.t7": "Zero cups gives 0",
+  "checkLabels.t8": "A zero tip is respected",
+  "checkLabels.t9": "An empty order is not charged",
+  "checkLabels.t10": "With nothing passed it gives 4",
+  "checkLabels.t11": "Four large gives 26",
+  "checkLabels.t12": "null is not replaced",
+  "checkLabels.t13": "Three lines come out",
+  "checkLabels.t14": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The third line in the console should be 0. It is not.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "A default value is written in the function's brackets, at the parameter itself. Not on a separate line.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.still-or": "There is still a ||.",
+  "hint2.still-or": "All three lines with it go away. They are replaced by something written above, in the brackets.",
+
+  "why.no-default": "There is no default value in the brackets.",
+  "hint2.no-default": "The parameter gets its value right where it is declared.",
+  "hint3.no-default": "Name, equals, value — between the commas in the function's brackets.",
+
+  "why.zero-eaten": "The zero is being eaten.",
+  "hint2.zero-eaten": "An order of zero cups has to cost 0. An explicitly stated zero tip has to stay zero.",
+  "hint3.zero-eaten": "|| looks at whether the value is truthy, not at whether it was passed. Zero is not truthy, so it gets replaced.",
+  "hint4.zero-eaten": "A default value in the brackets only kicks in when nothing was passed. Zero goes through untouched.",
+
+  "why.wrong-empty": "The empty call does not give 4.",
+  "hint2.wrong-empty": "One small cup is 3. With tax and a ten percent tip that is 3.9, rounded 4.",
+
+  "why.wrong-order": "order does not give the right result.",
+  "hint2.wrong-order": "Four large is 20. With tax of 4 and a tip of 2 that makes 26.",
+
+  "why.null-default": "null is being replaced, and it should not be.",
+  "hint2.null-default": "A default only applies to a missing value. null is a value that was passed.",
+  "hint3.null-default": "If you left a check with || somewhere, it catches null too. Remove it.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "An order with three parameters. Sometimes all three arrive, sometimes none. The function copes either way.",
+  "blocks.1.text": "The first two lines in the console are right. The third says 4 for an order of zero cups with a zero tip.",
+
+  "blocks.2.text": "Missing is not the same as zero",
+  "blocks.3.text": "Pass no value and the parameter becomes undefined. That is absence. Zero is not absence — it is an answer, and a clear one.",
+  "blocks.4.text": "|| does not tell the two apart. It asks whether the value is truthy. Zero is not, an empty string is not, false is not. All three get replaced silently.",
+  "blocks.5.quote": "The code works. It gives the right answer. And it is still wrong — for anyone who meant exactly zero.",
+
+  "blocks.6.text": "What this trick costs",
+  "blocks.7.text": "You will see it written this way in thousands of files. It looks tidy and in most cases it gets through.",
+  "blocks.9.text": "safe becomes 1. The customer ordered zero cups and will pay for one. Nothing crashes and nobody finds out until the complaint arrives.",
+
+  "blocks.10.text": "A default in place",
+  "blocks.11.text": "A value can be given right in the function's brackets, at the parameter itself. It only kicks in when the value is missing.",
+  "blocks.12.text": "Only on undefined. Pass zero and zero goes through. Pass null and null goes through — null is a value that was passed, not an absence.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Remove the three lines with ||. Give the three parameters default values in the brackets: one cup, small, a ten percent tip.",
+  "blocks.15.text": "After the fix the third line in the console has to show 0."
+}

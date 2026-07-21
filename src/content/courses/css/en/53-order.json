@@ -1,0 +1,73 @@
+{
+  "title": "Who speaks last",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.g2": "No important rules",
+  "checkLabels.g3": "The sale selector is one class",
+  "checkLabels.g4": "The soldout selector is one class",
+  "checkLabels.g5": "The sale rule is still there",
+  "checkLabels.g6": "The soldout rule is still there",
+  "checkLabels.t6": "The sale price is red",
+  "checkLabels.t7": "The sold out one is grey",
+  "checkLabels.t8": "The rest are dark",
+  "checkLabels.t9": "The prices are bold",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Nothing gets added here. Things get moved.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+
+  "why.used-important": "You used !important. It works, but lesson 52 explained the price.",
+  "hint2.used-important": "Remove it. This task is solved by moving, not by weight.",
+
+  "why.raised-specificity": "You made the selector more specific. It works, but it sidesteps the task.",
+  "hint2.raised-specificity": "Take it back to one class and settle the conflict with order.",
+
+  "why.sale-gone": "The sale rule is gone. Nothing gets deleted here.",
+  "why.soldout-gone": "The soldout rule is gone. Nothing gets deleted here.",
+
+  "why.no-sale": "There is no element with the sale class.",
+  "why.no-soldout": "There is no element with the soldout class.",
+  "why.no-price": "There is no element with the price class.",
+
+  "why.sale-color": "The sale price is still not red.",
+  "hint2.sale-color": "The .sale rule is there and its value is correct. So the rule is not the problem. Its position is.",
+  "hint3.sale-color": "Both .sale and .price are one class each. Equal specificity. On a tie, the one further down wins.",
+  "hint4.sale-color": "Move the sale and soldout rules below .price.",
+
+  "why.soldout-color": "The sold out price is still not grey.",
+  "why.price-color": "The other prices no longer use the page colour.",
+  "why.price-weight": "The prices lost their bold weight. You deleted more than needed.",
+
+  "blocks.0.text": "The sale price should be red. The sale class is on it, the rule for it is in the file and the value inside is correct. The price is dark like all the others. The sold out one should be grey. It is dark as well.",
+
+  "blocks.1.text": "The last step",
+  "blocks.2.text": "The cascade settles conflicts step by step. On a tie it drops one step down. Order is the bottom step:",
+  "blocks.3.items.0": "Origin and importance. This is where !important from the previous lesson plays out.",
+  "blocks.3.items.1": "Cascade layers. You reach these if you pull a foreign file into @layer.",
+  "blocks.3.items.2": "Specificity. Lesson 50.",
+  "blocks.3.items.3": "Scoping proximity. Only inside @scope.",
+  "blocks.3.items.4": "Order of appearance. Which one is written further down.",
+
+  "blocks.4.text": "When order is even asked",
+  "blocks.5.text": "Only when everything above it is equal. Which is exactly the case here. Both selectors are one class:",
+  "blocks.7.text": "The element carries both classes. Its colour is dark, because .price is written further down. And watch out: the order of the words inside class means nothing. The browser does not read it as priority. Only the order in the stylesheet counts.",
+  "blocks.8.text": "A rule written higher up is not weaker. It just speaks earlier. That is why the special case goes after the general one, not before it.",
+
+  "blocks.9.text": "One file or five",
+  "blocks.10.text": "The same holds between files. Of two linked files the lower link wins. Of two style blocks, the lower one. And declarations from the style attribute are ordered after all stylesheets. That is why your own file goes after the foreign one, not before it.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Make the sale price red and the sold out one grey. By moving code. No !important and no more specific selectors."
+}

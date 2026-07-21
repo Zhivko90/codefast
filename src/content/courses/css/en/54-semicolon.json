@@ -1,0 +1,69 @@
+{
+  "title": "The mark that eats its neighbour",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.g2": "No important rules",
+  "checkLabels.t6": "The tag is brown",
+  "checkLabels.t7": "It has side spacing",
+  "checkLabels.t8": "It has top spacing",
+  "checkLabels.t9": "The note is small",
+  "checkLabels.t10": "The note is grey",
+  "checkLabels.t11": "The tag background is there",
+  "checkLabels.t12": "The space above the note is there",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Two characters are missing. Exactly two.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+
+  "why.used-important": "You used !important. There is no conflict to win here. There is code that is not being read.",
+
+  "why.no-tag": "There is no element with the tag class.",
+  "why.no-note": "There is no element with the note class.",
+
+  "why.tag-color": "The tag is still not brown.",
+  "hint2.tag-color": "The .tag rule is there and the colour line is inside it. So the browser did not accept that line.",
+  "hint3.tag-color": "CSS reports no errors. It silently throws away what it cannot read and moves on. Look at where the colour line ends.",
+  "hint4.tag-color": "A semicolon is missing. Also look at what else went away with it.",
+
+  "why.tag-padding": "The tag has no inner spacing, even though the line for it is in the file.",
+  "hint2.tag-padding": "This line is a victim, not a cause. The culprit is above it.",
+
+  "why.note-size": "The note still uses the page size.",
+  "hint2.note-size": "The same mistake, in another place.",
+  "why.note-color": "The note is still not grey.",
+
+  "why.tag-bg": "The tag background is gone. You deleted more than needed.",
+  "why.note-margin": "The space above the note is gone.",
+
+  "blocks.0.text": "The tags should be brown text on beige, with spacing inside. The background is there, the text colour is not, the spacing is not. The notes below should be small and grey. They are not. All of those lines are in the file, spelled correctly.",
+
+  "blocks.1.text": "The browser does not complain",
+  "blocks.2.text": "Get CSS wrong and nothing breaks. No message, no red. The browser throws away what it cannot read and carries on with the rest. This is deliberate: a new property one browser does not know yet will not take the whole file down. You pay the price when the mistake is yours.",
+
+  "blocks.3.text": "How much gets eaten",
+  "blocks.4.text": "The parser reads declaration by declaration. When it hits something it cannot read, it throws away the declaration it is building and seeks forward to the first semicolon. Only there does it start again. Here is what that means:",
+  "blocks.6.text": "The semicolon after the colour is missing. So the browser reads everything up to the next semicolon as the value of color, padding included. No such value exists. The whole thing is discarded. Two declarations die: the colour and the spacing. border-radius survives, because it sits after the semicolon the parser stopped at.",
+  "blocks.7.text": "A missing semicolon does not kill its own line. It kills its own line and the next one.",
+
+  "blocks.8.text": "The three cases",
+  "blocks.9.text": "Not every mistake costs the same:",
+  "blocks.10.items.0": "An unknown property or an invalid value: only that declaration dies. The rest of the rule goes through.",
+  "blocks.10.items.1": "A missing semicolon: two die. The unfinished one and the innocent one below it.",
+  "blocks.10.items.2": "A missing closing brace: how much is lost depends on the browser and on whether it can read what follows as nested CSS. There is no firm number here.",
+  "blocks.10.items.3": "The last declaration in a block is allowed to go without a semicolon. That is exactly what makes it a trap. It works for months, until someone adds a line under it — and then two lines vanish at once.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Fix the tag and the note. Do not write new declarations. Everything needed is already in the file."
+}

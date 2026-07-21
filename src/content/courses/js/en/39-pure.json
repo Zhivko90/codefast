@@ -1,0 +1,74 @@
+{
+  "title": "Same input, same output",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "addOrder is gone",
+  "checkLabels.t6": "orderTotal exists",
+  "checkLabels.t7": "Two large gives 10",
+  "checkLabels.t8": "Four small gives 12",
+  "checkLabels.t9": "Twice gives the same",
+  "checkLabels.t10": "It remembers nothing between calls",
+  "checkLabels.t11": "The day total is 22",
+  "checkLabels.t12": "Three lines come out",
+  "checkLabels.t13": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The first two lines in the console are the same order. The numbers are not the same.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "orderTotal is not defined means the function does not exist under that name yet.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.still-addorder": "addOrder is still there.",
+  "hint2.still-addorder": "It gets rebuilt and renamed. The old name should not be left anywhere.",
+
+  "why.no-ordertotal": "There is no orderTotal function.",
+  "hint2.no-ordertotal": "It takes a count and a size and returns the price of that order alone.",
+  "hint3.no-ordertotal": "Nothing outside it is touched. It reads an input and returns an output.",
+
+  "why.wrong-total": "orderTotal does not give the right numbers.",
+  "hint2.wrong-total": "Two large at 5 is 10. Four small at 3 is 12.",
+  "hint3.wrong-total": "The day total has nothing to do with this function. It does not enter its sum.",
+
+  "why.not-pure": "The same call gives different answers.",
+  "hint2.not-pure": "Call it twice with the same numbers. The second has to match the first.",
+  "hint3.not-pure": "The function still changes something outside itself and then reads that same thing. So it remembers what came before.",
+  "hint4.not-pure": "It returns only its own result. Adding to the day total happens outside, on a separate line.",
+
+  "why.no-daytotal": "The day total does not come to 22.",
+  "hint2.no-daytotal": "Two large and four small: 10 and 12.",
+  "hint3.no-daytotal": "The two orders are added into dayTotal outside, where they are called.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "A function for a total and a running sum for the day. The first two lines in the console are the same order — two large coffees.",
+  "blocks.1.text": "The first says 10. The second says 20. One question, two different answers.",
+
+  "blocks.2.text": "The function remembers",
+  "blocks.3.text": "addOrder does not work out its own order alone. It touches dayTotal, which lives outside it, and then returns that.",
+  "blocks.4.text": "So its answer depends on how many times it has been called before. Not on the numbers you pass it.",
+  "blocks.5.quote": "The second cup costs 20, because the first one already came through here.",
+
+  "blocks.6.text": "Side effects",
+  "blocks.7.text": "Changing something outside a function is called a side effect. It is not forbidden, and sometimes it is exactly what you want. The problem is when it is hidden.",
+  "blocks.9.text": "visit returns 1, then 2. Here it is deliberate and the name says so. If the function were called stampCount, the same code would be a trap.",
+
+  "blocks.10.text": "A pure function",
+  "blocks.11.text": "A function is pure when the same input always gives the same output and nothing outside it is touched. You can call it whenever and as often as you like.",
+  "blocks.12.text": "Such a function can be checked in one line and understood without reading the rest of the file. That is the whole difference, and you feel it only once the file gets big.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Make orderTotal, which takes a count and a size and returns the price of that order alone. It does not touch dayTotal. addOrder disappears.",
+  "blocks.15.text": "The adding into dayTotal happens outside: two large, then four small. At the end print the same order twice, then dayTotal."
+}

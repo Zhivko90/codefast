@@ -1,0 +1,76 @@
+{
+  "title": "How far a name reaches",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "Four large gives 18",
+  "checkLabels.t6": "Two small gives 6",
+  "checkLabels.t7": "Five large gives 23",
+  "checkLabels.t8": "Below four there is no discount",
+  "checkLabels.t9": "Three visits give 3",
+  "checkLabels.t10": "Zero visits give 0",
+  "checkLabels.t11": "No var left",
+  "checkLabels.t12": "Three lines come out",
+  "checkLabels.t13": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The console shows nothing. The first line crashes and stops everything after it.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below. It says which name does not exist.",
+  "hint3.crashed": "discount is not defined means the name only exists inside the curly brackets of the if. Outside them it is gone.",
+  "hint4.crashed": "Declare it before the if, with the value 0. Inside the if only change its value.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.wrong-order": "order does not give the right numbers.",
+  "hint2.wrong-order": "Four large at 5 is 20, minus ten percent leaves 18. You are getting something smaller.",
+  "hint3.wrong-order": "Look at which name you pass to cupPrice. There is a similar name at the top of the file.",
+  "hint4.wrong-order": "The function receives the size through its own brackets. That is the one that has to go into cupPrice, not the one outside.",
+
+  "why.wrong-discount": "The discount is given when it should not be.",
+  "hint2.wrong-discount": "Three cups is below the threshold. Three large cost 15, with nothing added and nothing taken off.",
+  "hint3.wrong-discount": "The starting value before the if has to be zero. The if raises it only at four and above.",
+
+  "why.wrong-loyalty": "loyalty does not count correctly.",
+  "hint2.wrong-loyalty": "Three visits give 3.",
+
+  "why.empty-loyalty": "loyalty breaks on zero visits.",
+  "hint2.empty-loyalty": "At zero the loop does not run once. Its body never executes.",
+  "hint3.empty-loyalty": "If the name is declared inside the loop, at zero rounds it is never created. You get undefined.",
+  "hint4.empty-loyalty": "Declare the counter before the loop, with the value 0. Inside, only change it.",
+
+  "why.var-leak": "There is still a var.",
+  "hint2.var-leak": "var does not respect curly brackets. That is exactly why the code looked almost fine.",
+  "hint3.var-leak": "let and const only reach the closing bracket of their own block. That is stricter, and therefore safer.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "A total with a discount and a stamp counter. The code is written. The console is empty.",
+  "blocks.1.text": "It is not empty because there is nothing to show. It is empty because the first line crashed and took the other two down with it.",
+
+  "blocks.2.text": "A block has edges",
+  "blocks.3.text": "Declare a name with let or const inside curly brackets and it lives only until the closing bracket. Outside it does not exist. Not empty, not undefined — simply not there.",
+  "blocks.4.text": "That is why declaring inside an if is a trap. You find out only when you need it further down.",
+  "blocks.5.quote": "Decide what has to survive the bracket. That is what gets declared before it.",
+
+  "blocks.6.text": "var does not respect the block",
+  "blocks.7.text": "The second function does not crash. It returns a number and looks fine. The reason is var — it leaks out of the curly brackets and hangs around inside the function.",
+  "blocks.9.text": "stock returns the last n and works. It works until days is zero. Then the loop never runs, last is never created, and the function returns undefined. Nothing crashes.",
+
+  "blocks.10.text": "A name that is not yours",
+  "blocks.11.text": "A function can see names from outside too. So if you get the parameter wrong, the code does not crash — something else with the same name is found and used instead.",
+  "blocks.12.text": "The result comes out, looks plausible, and is wrong. This is the most expensive of the three mistakes here, because it leaves no trace.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix all three places. order has to apply the discount only at four cups and above, and use the size it was given.",
+  "blocks.15.text": "loyalty has to return 0 for zero visits. Not a single var should be left in the whole file."
+}

@@ -3,6 +3,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { mkdir, writeFile, readFile, readdir, rm } from 'node:fs/promises';
 import { join } from 'node:path';
+import net from 'node:net';
 
 const run = promisify(execFile);
 
@@ -61,12 +62,28 @@ async function docker(args) {
   return stdout.trim();
 }
 
+// ⚠ Docker връща „стартиран", преди code-server да слуша. Без това чакане
+// Caddy прокси-ва към затворен порт и браузърът вижда 502 при първо отваряне.
+async function portOpen(port, ms = 25000) {
+  const until = Date.now() + ms;
+  while (Date.now() < until) {
+    const ok = await new Promise((r) => {
+      const sock = net.createConnection({ host: '127.0.0.1', port }, () => { sock.destroy(); r(true); });
+      sock.on('error', () => { sock.destroy(); r(false); });
+      setTimeout(() => { sock.destroy(); r(false); }, 700);
+    });
+    if (ok) return true;
+    await new Promise((r) => setTimeout(r, 300));
+  }
+  return false;
+}
+
 async function freePort() {
   const taken = new Set([...live.values()].map((s) => s.port));
   try {
     const out = await docker(['ps', '--format', '{{.Ports}}']);
     for (const m of out.matchAll(/:(\d+)->/g)) taken.add(Number(m[1]));
-  } catch {}
+  } catch { }
   for (let p = PORT_MIN; p <= PORT_MAX; p++) if (!taken.has(p)) return p;
   return null;
 }
@@ -90,7 +107,7 @@ async function adopt() {
       });
     }
     if (live.size) console.log('adopted ' + live.size);
-  } catch {}
+  } catch { }
 }
 
 async function alive(name) {
@@ -102,7 +119,7 @@ async function alive(name) {
 }
 
 async function kill(key) {
-  try { await docker(['rm', '-f', nameOf(key)]); } catch {}
+  try { await docker(['rm', '-f', nameOf(key)]); } catch { }
   live.delete(key);
 }
 
@@ -125,7 +142,7 @@ async function panelState(key) {
 // да отвори файла вместо тези на урока.
 async function writeIfChanged(path, content) {
   let current = null;
-  try { current = await readFile(path, 'utf8'); } catch {}
+  try { current = await readFile(path, 'utf8'); } catch { }
   if (current !== content) await writeFile(path, content, 'utf8');
 }
 
@@ -239,7 +256,7 @@ async function prepare(home) {
   await mkdir(join(cs, 'User'), { recursive: true });
   await writeIfChanged(join(cs, 'User', 'settings.json'), JSON.stringify(SETTINGS, null, 2));
   // Слепен път в coder.json прави „Workspace does not exist" при всяко отваряне.
-  try { await rm(join(cs, 'coder.json')); } catch {}
+  try { await rm(join(cs, 'coder.json')); } catch { }
   await writeExtension(home);
 }
 
@@ -263,7 +280,7 @@ async function readFiles(dir) {
       if (it.name.startsWith('.')) continue;
       const rel = prefix ? prefix + '/' + it.name : it.name;
       if (it.isDirectory()) await walk(join(base, it.name), rel);
-      else { try { out[rel] = await readFile(join(base, it.name), 'utf8'); } catch {} }
+      else { try { out[rel] = await readFile(join(base, it.name), 'utf8'); } catch { } }
     }
   };
   await walk(dir, '');
@@ -291,7 +308,7 @@ async function start(student, course, files, pro) {
     existing.pro = pro;
     // ⚠ Сигналът се трие и при жив контейнер. Рамката се зарежда наново
     // при всяко отваряне на страницата — старият сигнал я показва рано.
-    try { await rm(join(csDir(key), 'cf-ready')); } catch {}
+    try { await rm(join(csDir(key), 'cf-ready')); } catch { }
     return existing;
   }
   // Сесията сочи към мъртъв контейнер — забравя се и се вдига наново.
@@ -303,13 +320,13 @@ async function start(student, course, files, pro) {
     throw e;
   }
 
-  try { await docker(['rm', '-f', name]); } catch {}
+  try { await docker(['rm', '-f', name]); } catch { }
 
   // Работата на ученика не се презаписва. Стартовите файлове влизат само
   // в празна папка — иначе изгасналият контейнер би изтрил всичко.
   if (await isEmpty(dir)) await writeFiles(dir, files ?? {});
 
-  try { await rm(join(csDir(key), 'cf-ready')); } catch {}
+  try { await rm(join(csDir(key), 'cf-ready')); } catch { }
   await prepare(home);
   await run('chown', ['-R', '1000:1000', home]);
 
@@ -345,17 +362,22 @@ async function start(student, course, files, pro) {
   // Входният файл се отваря пак накрая — само за да е избран, без да мести таба.
   const ordered = sorted.length ? [...sorted, sorted[0]] : [];
 
- // ⚠ Сокетът иска ОТВОРЕН БРАУЗЪР. Появява се преди рамката да се свърже
+  // ⚠ Сокетът иска ОТВОРЕН БРАУЗЪР. Появява се преди рамката да се свърже
   // и тогава връща "No opened code-server instances found".
   // cf-ready се пише от разширението — то тръгва само при свързан клиент.
   (async () => {
     const flag = join(csDir(key), 'cf-ready');
+    const waitFrom = Date.now();
     let ready = false;
     for (let i = 0; i < 360; i++) {
       await new Promise((r) => setTimeout(r, 500));
-      try { await readFile(flag, 'utf8'); ready = true; break; } catch {}
+      try { await readFile(flag, 'utf8'); ready = true; break; } catch { }
     }
-    if (!ready) { console.log('browser never connected: ' + name); return; }
+    // ⚠ Наблюдавано несъответствие: съобщението излезе 85 сек след старта,
+    // а цикълът е 180 сек. Времето се записва, докато причината се намери.
+    const waited = Math.round((Date.now() - waitFrom) / 1000);
+    if (!ready) { console.log('browser never connected: ' + name + ' waited=' + waited); return; }
+    console.log('browser connected: ' + name + ' waited=' + waited);
 
     for (const n of ordered) {
       try {
@@ -370,7 +392,7 @@ async function start(student, course, files, pro) {
   const now = Date.now();
   const session = {
     key, name, port, dir, pro, tree: false, term: false,
-   url: 'https://p' + port + '.' + ZONE + '/' + query,
+    url: 'https://p' + port + '.' + ZONE + '/' + query,
     beat: now, born: now,
   };
   live.set(key, session);
@@ -417,6 +439,8 @@ createServer(async (req, res) => {
       if (!student || !course) return send(res, 400, { error: 'student-and-course-required' });
       try {
         const s = await start(String(student), String(course), files, !!pro);
+        const up = await portOpen(s.port);
+        if (!up) console.log('port never opened: ' + s.name + ' ' + s.port);
         return send(res, 200, { url: s.url, port: s.port });
       } catch (e) {
         if (e.full) return send(res, 503, { error: 'full', used: live.size, max: MAX_LIVE });
@@ -463,7 +487,7 @@ createServer(async (req, res) => {
       try {
         await readFile(join(csDir(key), 'cf-ready'), 'utf8');
         ready = true;
-      } catch {}
+      } catch { }
 
       const st = await panelState(key);
       if (s) { s.tree = st.tree; s.term = st.term; }
