@@ -24,7 +24,7 @@ export default {
     {
       id: 'cascade',
       modules: [
-       { id: 'cascade', lessons: ['49-not-applied', '50-specificity', '51-inherit', '52-important', '53-order', '54-semicolon'] },
+       { id: 'cascade', lessons: ['49-not-applied', '50-specificity', '51-inherit', '52-important', '53-order', '54-semicolon', '55-devtools', 'R7-review-cascade'] },
       ],
     },
   ],

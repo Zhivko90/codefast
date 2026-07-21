@@ -1,0 +1,28 @@
+{
+  "title": "The cascade",
+  "assignment": "Go through the ideas from this section. If something is unclear, go back to the lesson.",
+
+  "groups.0.title": "Why the rule says nothing",
+  "groups.0.items.0.term": "The selector misses",
+  "groups.0.items.0.def": "The code is correct, the value is right, and nothing happens on screen. The first question is not whether the rule is wrong, but whether it applies to that element at all. p:first-child does not mean the first paragraph — it means a paragraph that is the first child of its parent, so a heading before it silences the rule. A class put on all three paragraphs makes no difference, because it singles out none of them. The inspector answers instantly: if the rule is not in the list of matching rules, the mistake is in the selector, not in the declaration.",
+  "groups.0.items.1.term": "Syntax eats its neighbour",
+  "groups.0.items.1.def": "CSS reports no errors. When the parser hits something it cannot read, it throws away the declaration it is building, seeks forward to the first semicolon and carries on from there. So a missing semicolon costs two declarations: the unfinished one and the innocent one below it. An unknown property or an invalid value costs only one. A missing closing brace is the least predictable — how much is lost depends on the browser. The last declaration in a block is allowed to go without a semicolon, and that is exactly what makes it a trap: it works until someone adds a line under it.",
+  "groups.0.items.2.term": "The crossed-out half is half the information",
+  "groups.0.items.2.def": "The inspector shows every rule that matches the element, sorted by strength. The winner is on top, the losers sit below it, crossed out. That is how you tell the two cases apart: a missing rule means a broken selector, a crossed-out rule means a conflict you lost. The computed panel gives the final number and the line it came from. Nothing changed inside the inspector touches your file — it is gone on reload.",
+
+  "groups.1.title": "Who wins the conflict",
+  "groups.1.items.0.term": "Specificity is counted, not added up",
+  "groups.1.items.0.def": "Three separate columns: ids, classes, tags. They are compared left to right and the first difference decides. One id beats any number of classes, because the comparison stops at the first column and the second is never looked at. The full ladder is: origin and importance, cascade layers, specificity, scoping proximity, order of appearance. Each step is asked only when the one above it ties.",
+  "groups.1.items.1.term": "!important takes the comparison out of play",
+  "groups.1.items.1.def": "An important declaration beats every normal one from the same source, whatever the specificity. But it does not switch the cascade off — it moves the conflict one floor up, where specificity decides again between two important ones. That is why the first !important rarely stays alone: the next person has no move left but one more. The word exists for the reader. For important declarations the order of sources is reversed, so an important declaration in the reader's styles beats yours, letting someone who needs large text or their own colours override the design. Against a foreign file the current advice is @layer, not !important.",
+  "groups.1.items.2.term": "Order is the bottom step",
+  "groups.1.items.2.def": "It is asked only when everything above it is equal. Then the one written further down wins. That is why the special case goes after the general one, not before it. The same holds between files: of two linked files the lower link wins, and declarations from the style attribute are ordered after all stylesheets. The order of the words inside class means nothing — the browser does not read it as priority.",
+
+  "groups.2.title": "Where the value comes from",
+  "groups.2.items.0.term": "Half the properties travel down",
+  "groups.2.items.0.def": "Text things are inherited: colour, font, size, line height, alignment, visibility. Box things are not: padding, margin, border, background, width, display. Otherwise every parent border would repeat around every paragraph inside it. inherit does not mean be inherited — it means take whatever the parent has, whatever that is. Three more keywords work on every property: initial gives the initial value from the specification, unset behaves like inherit for inherited properties and like initial for the rest, and revert restores the value the browser would have given.",
+  "groups.2.items.1.term": "Fields and links do not inherit",
+  "groups.2.items.1.def": "A form in the middle of a page with careful typography looks pasted in from outside, because the browser gives fields and buttons a font of their own, usually the system one. Links do not inherit colour for the same reason — they already have one set. Over a dark background that means blue on brown, which is below any readability threshold. Both cases are solved by the same word.",
+  "groups.2.items.2.term": "The file you cannot open",
+  "groups.2.items.2.def": "Before your file runs, the browser's file runs. The heading is large, the link is blue, the list is indented by 40 pixels and has bullets in front of the rows. None of that is in your code and it shows up only in the inspector, at the very bottom of the styles panel. It is the weakest source: any rule of yours beats it, however simple. The one exception is important declarations, where the order of sources is reversed and the browser's important styles go to the top."
+}

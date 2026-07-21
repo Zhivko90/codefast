@@ -1,0 +1,90 @@
+{
+  "title": "The end of day report",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "No || left",
+  "checkLabels.t6": "No old form left",
+  "checkLabels.t7": "Four small gives 12",
+  "checkLabels.t8": "With nothing passed it gives 3",
+  "checkLabels.t9": "Two small gives 8",
+  "checkLabels.t10": "Four large with discount gives 22",
+  "checkLabels.t11": "Below four there is no discount",
+  "checkLabels.t12": "A zero tip is respected",
+  "checkLabels.t13": "An empty call gives a number",
+  "checkLabels.t14": "The day total is 26",
+  "checkLabels.t15": "Three lines come out",
+  "checkLabels.t16": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The console is empty. The first error stops everything below it.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below. Fix the first error and run again — another one is waiting underneath.",
+  "hint3.crashed": "Cannot access before initialization means a call above a declaration. discount is not defined means a name declared inside a block.",
+  "hint4.crashed": "There are two separate reasons for stopping here. They are fixed in different places.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.still-or": "There is still a ||.",
+  "hint2.still-or": "The default is written above, in the function's brackets.",
+
+  "why.still-declared": "There is a function in the old form.",
+  "hint2.still-declared": "The whole file is arrow functions. The word function should not appear.",
+
+  "why.no-subtotal": "subtotal does not return a value.",
+  "hint2.no-subtotal": "It calculates correctly. The result, however, goes nowhere.",
+  "hint3.no-subtotal": "An arrow to curly brackets does not return on its own. Either drop the brackets or write return inside.",
+
+  "why.wrong-receipt": "receipt does not give the right result.",
+  "hint2.wrong-receipt": "Two small is 6. With tax of 1.2 and a tip of 0.6 that is 7.8, rounded 8.",
+  "hint3.wrong-receipt": "If you get something entirely different, check whether subtotal is returning a number to it.",
+
+  "why.wrong-discount": "The discount is not applied correctly.",
+  "hint2.wrong-discount": "Four and above get ten percent. Three get nothing.",
+  "hint3.wrong-discount": "The name is declared inside the if. Outside it does not exist, and that is why the code crashes.",
+  "hint4.wrong-discount": "Declare it before the if, with the value zero. Inside the if only change its value.",
+
+  "why.zero-eaten": "The zero tip is being replaced.",
+  "hint2.zero-eaten": "Two small with an explicit zero tip is 6 plus tax of 1.2, so 7.2, rounded 7.",
+  "hint3.zero-eaten": "|| asks whether the value is truthy, not whether it was passed. Zero is not truthy.",
+
+  "why.no-default": "The empty call does not give a number.",
+  "hint2.no-default": "All three parameters have defaults: one cup, small, ten percent.",
+
+  "why.not-pure": "The day total does not come to 26.",
+  "hint2.not-pure": "Four large and two small: 20 and 6.",
+  "hint3.not-pure": "receipt touches dayTotal on every call. So the sum depends on how many times it has been called.",
+  "hint4.not-pure": "receipt returns only its own result. The adding happens outside, on separate lines, through subtotal.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "An end of day report. Price by size, a total, a final sum with tax, tip, and a discount above four cups.",
+  "blocks.1.text": "The console is empty. Not because there is nothing to show, but because the first line crashes and takes the rest with it.",
+
+  "blocks.2.text": "Five broken places",
+  "blocks.3.text": "Each one comes from a different lesson in this section. Two of them stop the code. Three let it run and give wrong numbers.",
+  "blocks.4.text": "Fix one and run again. Every fix opens the next error — this is what real work looks like.",
+  "blocks.5.quote": "An empty console does not mean everything is broken. It means you have not reached the second error yet.",
+
+  "blocks.6.text": "What you are looking for",
+  "blocks.7.text": "One call sits above the line where its function is declared. One name is declared inside an if and read outside it. One arrow function has curly brackets and returns nothing.",
+  "blocks.8.text": "One default is done with || and eats the zero. And one function changes something outside itself, so its answer depends on history.",
+  "blocks.9.text": "Only the first two crash. The other three work silently, and that is exactly why they cost more.",
+
+  "blocks.10.text": "The numbers",
+  "blocks.11.text": "A small cup is 3, a large one is 5. Tax is twenty percent. The default tip is ten percent, but zero means zero. A ten percent discount applies at four cups and above.",
+  "blocks.12.text": "Four large with a zero tip gives 22. Two small gives 8. The day total for four large and two small is 26.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix all five places. The file stays entirely arrow functions, with not a single ||.",
+  "blocks.15.text": "receipt must not touch dayTotal. The day total is added up outside, before the printing."
+}

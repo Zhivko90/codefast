@@ -1,4 +1,4 @@
-import { createServer } from 'node:http';
+import { createServer, get as httpGet } from 'node:http';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { mkdir, writeFile, readFile, readdir, rm } from 'node:fs/promises';
@@ -62,18 +62,21 @@ async function docker(args) {
   return stdout.trim();
 }
 
-// ⚠ Docker връща „стартиран", преди code-server да слуша. Без това чакане
-// Caddy прокси-ва към затворен порт и браузърът вижда 502 при първо отваряне.
-async function portOpen(port, ms = 25000) {
+// ⚠ TCP проверката е безполезна: docker-proxy приема връзката веднага след
+// docker run, преди code-server да се е вдигнал. Пита се по HTTP.
+async function portOpen(port, ms = 40000) {
   const until = Date.now() + ms;
   while (Date.now() < until) {
     const ok = await new Promise((r) => {
-      const sock = net.createConnection({ host: '127.0.0.1', port }, () => { sock.destroy(); r(true); });
-      sock.on('error', () => { sock.destroy(); r(false); });
-      setTimeout(() => { sock.destroy(); r(false); }, 700);
+      const req = httpGet({ host: '127.0.0.1', port, path: '/', timeout: 2000 }, (res) => {
+        res.resume();
+        r(res.statusCode > 0 && res.statusCode < 500);
+      });
+      req.on('error', () => r(false));
+      req.on('timeout', () => { req.destroy(); r(false); });
     });
     if (ok) return true;
-    await new Promise((r) => setTimeout(r, 300));
+    await new Promise((r) => setTimeout(r, 400));
   }
   return false;
 }

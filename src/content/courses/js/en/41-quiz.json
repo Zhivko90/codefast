@@ -1,0 +1,38 @@
+{
+  "title": "Check",
+
+  "questions.0.text": "A function works out a total and ends with console.log(sum). Then it is called: const total = orderTotal(4, \"small\"); What is total?",
+  "questions.0.options.0": "The number you can see in the console",
+  "questions.0.options.1": "An empty string",
+  "questions.0.options.2": "undefined",
+  "questions.0.options.3": "The code crashes because the function does not return",
+  "questions.0.why": "A function with no return always returns undefined. The number reached your eyes, but not the code. That is exactly why it looks like everything works.",
+
+  "questions.1.text": "Inside an if, const discount = 0.1 is declared. Two lines below, outside the curly brackets, discount is read. What happens?",
+  "questions.1.options.0": "ReferenceError, the name does not exist outside",
+  "questions.1.options.1": "The value is undefined",
+  "questions.1.options.2": "The value is 0.1, if the condition was true",
+  "questions.1.options.3": "The value is 0",
+  "questions.1.why": "const and let live only until the closing bracket of their own block. Outside, the name is not empty and not undefined — it simply is not there. That is why this mistake crashes, and why it is one of the easy ones.",
+
+  "questions.2.text": "const twice = (n) => { n * 2; }; Then console.log(twice(5)); What comes out?",
+  "questions.2.options.0": "10",
+  "questions.2.options.1": "Nothing, the line does not run",
+  "questions.2.options.2": "SyntaxError because of the curly brackets",
+  "questions.2.options.3": "undefined",
+  "questions.2.why": "An arrow straight to an expression returns that expression. An arrow to curly brackets is a body — return has to be written inside. The sum is worked out and thrown away. No errors, no warnings.",
+
+  "questions.3.text": "A function starts with tip = tip || 0.1. A customer explicitly says no tip and it is called with 0. What tip is charged?",
+  "questions.3.options.0": "Zero, exactly as asked",
+  "questions.3.options.1": "Ten percent",
+  "questions.3.options.2": "The code crashes on zero",
+  "questions.3.options.3": "It depends on the size of the bill",
+  "questions.3.why": "|| asks whether the value is truthy, not whether it was passed. Zero is not truthy and gets replaced silently. A default in the function's brackets only kicks in on undefined and lets zero through untouched.",
+
+  "questions.4.text": "A function adds its result to a running total outside itself and returns that total. You call it twice with the same numbers. Which is true?",
+  "questions.4.options.0": "The two answers are the same",
+  "questions.4.options.1": "The second call crashes",
+  "questions.4.options.2": "The second returns undefined",
+  "questions.4.options.3": "The second answer is bigger, because the function remembers the first",
+  "questions.4.why": "The answer depends on history, not on the numbers passed in. Such a function cannot be checked in one line and cannot be called a second time without care. A pure one gives the same output for the same input and touches nothing outside."
+}

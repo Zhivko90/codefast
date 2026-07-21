@@ -1,0 +1,48 @@
+
+
+===== D:\Proekti\codefast\src\data\courses\js\lessons\25-quiz.js =====
+export default {
+  id: 25,
+  quiz: true,
+  label: "mcq",
+  questions: [
+    { options: [undefined, undefined, undefined, undefined], correct: 1 },
+    { options: [undefined, undefined, undefined, undefined], correct: 3 },
+    { options: [undefined, undefined, undefined, undefined], correct: 0 },
+    { options: [undefined, undefined, undefined, undefined], correct: 2 }
+  ],
+  slug: "25-quiz"
+};
+
+===== D:\Proekti\codefast\src\content\courses\js\bg\25-quiz.json =====
+{
+  "title": "Проверка",
+
+  "questions.0.text": "Брояч на наличност: const stock = 0; после if (stock) { line = \"Има \" + stock; } else { line = \"Не е броено\"; } Какво е line?",
+  "questions.0.options.0": "Има 0",
+  "questions.0.options.1": "Не е броено",
+  "questions.0.options.2": "Празен текст",
+  "questions.0.options.3": "Кодът гърми, защото stock не е булево",
+  "questions.0.why": "Нулата е една от шестте лъжливи стойности. Условието пита истинна ли е стойността, не съществува ли тя. Затова известен факт — нула чаши — се отчита като липсваща информация.",
+
+  "questions.1.text": "Три отделни if проверяват дали сметката е над 10, над 25 и над 50, и всяко задава tier. При сметка 60 какво излиза?",
+  "questions.1.options.0": "Първото съвпадение",
+  "questions.1.options.1": "Кодът гърми на второто присвояване",
+  "questions.1.options.2": "Нищо, защото не са свързани с else",
+  "questions.1.options.3": "Последното съвпадение, защото презаписва предишните",
+  "questions.1.why": "Несвързаните условия се изпълняват всичките. Всяко презаписва предишното, значи печели последното написано. Кодът изглежда верен, докато някой не размени два блока.",
+
+  "questions.2.text": "switch по размер: случай small задава 150, случай medium задава 250 но НЯМА break, случай large задава 400 с break. При размер medium какво излиза?",
+  "questions.2.options.0": "400",
+  "questions.2.options.1": "250",
+  "questions.2.options.2": "150",
+  "questions.2.options.3": "Кодът гърми при липсващ break",
+  "questions.2.why": "Без break изпълнението не спира на своя случай, а продължава надолу през следващите. medium задава 250, после веднага 400. Никаква грешка, никакво предупреждение.",
+
+  "questions.3.text": "Кое условие проверява дали стойността ЛИПСВА, без да обърка нулата с липса?",
+  "questions.3.options.0": "if (!value)",
+  "questions.3.options.1": "if (value === false)",
+  "questions.3.options.2": "if (value === null || value === undefined)",
+  "questions.3.options.3": "if (value == 0)",
+  "questions.3.why": "Липсва значи null или undefined. Отрицанието хваща и нулата, и празния текст. Сравнението с false пропуска и двете липси. А два знака с нула съвпадат с празен текст и с false."
+}

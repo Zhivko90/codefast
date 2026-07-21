@@ -1,0 +1,71 @@
+{
+  "title": "The rule that is not in your file",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.g2": "No important rules",
+  "checkLabels.t6": "The bullets are gone",
+  "checkLabels.t7": "The indent is gone",
+  "checkLabels.t8": "No space above",
+  "checkLabels.t9": "No space below",
+  "checkLabels.t10": "The rows are untouched",
+  "checkLabels.t11": "The card is untouched",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "A whole rule is missing. For the list itself, not for the rows inside it.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.used-important": "You used !important. Browser styles are the weakest source. There is nothing to outrank.",
+
+  "why.no-menu": "There is no element with the menu class.",
+  "why.no-items": "There are no rows in the list.",
+  "why.no-card": "There is no element with the card class.",
+
+  "why.markers": "The bullets in front of the rows are still there.",
+  "hint2.markers": "Nowhere in your file does it say they should be. So they come from outside.",
+  "hint3.markers": "Open the inspector and click the list. At the bottom of the styles panel you will see a rule labelled user agent stylesheet. That one belongs to the browser.",
+  "hint4.markers": "The property is visible there. Your job is to give it none in a rule for .menu.",
+
+  "why.indent": "The list is still pushed to the right.",
+  "hint2.indent": "The number is visible in the inspector. The browser gives it to every ul.",
+  "hint3.indent": "It comes from padding, not margin. So it goes away with a zero on the left.",
+
+  "why.gap-top": "There is still empty space above the list.",
+  "hint2.gap-top": "That is a margin from the browser, measured in em. It clears in one go, top and bottom.",
+  "why.gap-bottom": "There is still empty space below the list.",
+
+  "why.rows-gone": "The rows lost their inner spacing. You touched the .menu li rule.",
+  "why.card-gone": "The card lost its spacing. You changed more than needed.",
+
+  "blocks.0.text": "The list is pushed to the right and every row has a bullet in front of it. Read the whole of styles.css. Neither of those is written anywhere. There is exactly one rule for the list, and it is about the rows inside it.",
+
+  "blocks.1.text": "The styles you did not write",
+  "blocks.2.text": "Before your file runs, the browser's own file runs. Lesson 05 mentioned it: the heading is large, the link is blue, the list is indented. Here is what the browser gives every ul, exactly as it is written:",
+  "blocks.4.text": "Those lines are not in your project and you cannot open them. There is only one way to see them: the inspector. In the styles panel they sit at the very bottom, under a user agent stylesheet label, because they are the weakest source. Any rule of yours beats them, no matter how simple it is.",
+
+  "blocks.5.text": "What the inspector shows",
+  "blocks.6.text": "Four things, and each one answers a question from the last six lessons:",
+  "blocks.7.items.0": "The list of matching rules, sorted by strength. The winner sits on top. The crossed-out ones below are the losers — and those are the ones that tell you why your code is doing nothing.",
+  "blocks.7.items.1": "The computed panel. It shows the final number for every property and which line it came from. This is where inherited values show up, and where a 300 shows up as 344.",
+  "blocks.7.items.2": "The box diagram. The four rings from lesson 18, with the real numbers for the selected element.",
+  "blocks.7.items.3": "Every declaration has a checkbox. Switch it off and watch what moves. Values can be edited live too. None of this touches your file — it is gone on reload.",
+  "blocks.8.text": "The crossed-out half is half the information. Look only at what applied and you will never learn why yours did not.",
+
+  "blocks.9.text": "How to open it",
+  "blocks.10.items.0": "F12. Or Ctrl and Shift and I. On a Mac: Cmd and Option and I.",
+  "blocks.10.items.1": "Right click an element and choose Inspect. That opens the inspector with that exact element already selected.",
+  "blocks.10.items.2": "Ctrl and Shift and C turns on the picker. Move the mouse over the page and see which element is which.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Remove the bullets and the indent of the list, and the empty space above and below it. All of that comes from the browser. Check in the inspector which properties they are and give them your own value in a new rule for .menu. Do not touch the rows inside."
+}
