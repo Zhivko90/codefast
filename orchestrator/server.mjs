@@ -351,7 +351,7 @@ async function start(student, course, files, pro) {
   (async () => {
     const flag = join(csDir(key), 'cf-ready');
     let ready = false;
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 360; i++) {
       await new Promise((r) => setTimeout(r, 500));
       try { await readFile(flag, 'utf8'); ready = true; break; } catch {}
     }
