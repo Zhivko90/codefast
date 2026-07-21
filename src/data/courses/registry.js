@@ -515,6 +515,7 @@ import js_l30 from './js/lessons/31-nested.js';
 import js_l31 from './js/lessons/32-broken.js';
 import js_l32 from './js/lessons/33-function.js';
 import js_l33 from './js/lessons/34-return.js';
+import js_l34 from './js/lessons/35-compose.js';
 import js_bg_course from '@/content/courses/js/bg/_course.json';
 import js_bg_0 from '@/content/courses/js/bg/01-hello.json';
 import js_bg_1 from '@/content/courses/js/bg/02-values.json';
@@ -550,6 +551,7 @@ import js_bg_30 from '@/content/courses/js/bg/31-nested.json';
 import js_bg_31 from '@/content/courses/js/bg/32-broken.json';
 import js_bg_32 from '@/content/courses/js/bg/33-function.json';
 import js_bg_33 from '@/content/courses/js/bg/34-return.json';
+import js_bg_34 from '@/content/courses/js/bg/35-compose.json';
 import js_en_course from '@/content/courses/js/en/_course.json';
 import js_en_0 from '@/content/courses/js/en/01-hello.json';
 import js_en_1 from '@/content/courses/js/en/02-values.json';
@@ -585,6 +587,7 @@ import js_en_30 from '@/content/courses/js/en/31-nested.json';
 import js_en_31 from '@/content/courses/js/en/32-broken.json';
 import js_en_32 from '@/content/courses/js/en/33-function.json';
 import js_en_33 from '@/content/courses/js/en/34-return.json';
+import js_en_34 from '@/content/courses/js/en/35-compose.json';
 
 // ── webproject ──
 import { meta as webproject_meta } from './webproject/meta.js';
@@ -1145,6 +1148,7 @@ export const registry = {
       '32-broken': js_l31,
       '33-function': js_l32,
       '34-return': js_l33,
+      '35-compose': js_l34,
     },
     problems: {
     },
@@ -1185,6 +1189,7 @@ export const registry = {
         '32-broken': js_bg_31,
         '33-function': js_bg_32,
         '34-return': js_bg_33,
+        '35-compose': js_bg_34,
       },
       en: {
         _course: js_en_course,
@@ -1222,6 +1227,7 @@ export const registry = {
         '32-broken': js_en_31,
         '33-function': js_en_32,
         '34-return': js_en_33,
+        '35-compose': js_en_34,
       },
     },
     problemText: {

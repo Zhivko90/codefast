@@ -29,7 +29,7 @@ export default {
     {
       id: 'functions',
       modules: [
-        { id: 'basics', lessons: ['33-function', '34-return'] },
+       { id: 'basics', lessons: ['33-function', '34-return', '35-compose'] },
         { id: 'scope', lessons: [] },
       ],
     },

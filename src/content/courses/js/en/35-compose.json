@@ -1,0 +1,83 @@
+{
+  "title": "A function calls a function",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "cupPrice exists",
+  "checkLabels.t6": "Large is 5",
+  "checkLabels.t7": "Small is 3",
+  "checkLabels.t8": "subtotal exists",
+  "checkLabels.t9": "Four small gives 12",
+  "checkLabels.t10": "Two large gives 10",
+  "checkLabels.t11": "The small receipt is 14",
+  "checkLabels.t12": "The large receipt is 12",
+  "checkLabels.t13": "The size is checked once",
+  "checkLabels.t14": "The tax is worked out once",
+  "checkLabels.t15": "Three lines come out",
+  "checkLabels.t16": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "All three functions work. Look at what sits inside all three.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "ReferenceError: cupPrice is not defined means you are calling a function that does not exist yet or is called something else.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.no-cupprice": "There is no cupPrice function.",
+  "hint2.no-cupprice": "The size check is repeated three times. It becomes its own function with that name.",
+  "hint3.no-cupprice": "The function takes a size and returns a number. It knows nothing else and does nothing else.",
+
+  "why.wrong-price": "cupPrice does not give the right numbers.",
+  "hint2.wrong-price": "Large is 5, everything else is 3.",
+  "hint3.wrong-price": "If you get undefined, the function decides but does not return.",
+
+  "why.no-subtotal": "There is no subtotal function.",
+  "hint2.no-subtotal": "It takes a count and a size and returns the sum before tax.",
+
+  "why.wrong-subtotal": "subtotal does not give the right sum.",
+  "hint2.wrong-subtotal": "Four small at 3 is 12. Two large at 5 is 10.",
+  "hint3.wrong-subtotal": "The price is not worked out here. It is asked for from cupPrice.",
+  "hint4.wrong-subtotal": "Calling a function is an expression. It can sit straight inside a sum.",
+
+  "why.wrong-receipt": "receipt does not give the right final result.",
+  "hint2.wrong-receipt": "Four small is 12, with twenty percent tax 14.4, rounded 14.",
+  "hint3.wrong-receipt": "receipt does not work out prices and does not check sizes. It asks subtotal for the sum and adds the tax.",
+
+  "why.still-repeating": "The same thing is worked out in more than one place.",
+  "hint2.still-repeating": "The size check should exist only in cupPrice. The tax only in receipt.",
+  "hint3.still-repeating": "If you left the old cartLine and priceTag there, they carry a copy of the same check. You do not need them.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "hint2.wrong-count": "Three lines at the end: receipt, subtotal and cupPrice.",
+
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Three functions. A receipt with tax, a cart line, a price tag. Each returns what it should. The console shows 14, 10 and 5.",
+  "blocks.1.text": "The code works. It gives the right answer. And it is still wrong.",
+
+  "blocks.2.text": "The same thing, in three places",
+  "blocks.3.text": "Look inside the three functions. The same block — the size is checked, the price becomes 5 or 3.",
+  "blocks.4.text": "Tomorrow the large coffee goes up to 6. You open the file and fix it. Then again. Then you miss the third one, because you thought you had already done it.",
+  "blocks.5.quote": "This kind of mistake does not crash. One of the three places is simply left at yesterday's price.",
+
+  "blocks.6.text": "A function calls a function",
+  "blocks.7.text": "A function does not have to work everything out on its own. It can ask another function and use its answer.",
+  "blocks.9.text": "bags does not know how many beans go into one cup. It asks beans and works with the number it gets back. Change 18 to 20 and it changes in one place.",
+
+  "blocks.10.text": "Layers",
+  "blocks.11.text": "At the bottom sits the small one that knows one thing. Above it sits the one that uses it. Higher still — the one that uses the second.",
+  "blocks.12.text": "Every layer does exactly one step and returns the result upwards. That is why any step can be replaced without touching the rest.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Make three functions: cupPrice takes a size and returns a price. subtotal takes a count and a size and returns the sum before tax, asking cupPrice. receipt takes a count and a size and returns the rounded sum with tax, asking subtotal.",
+  "blocks.15.text": "At the end print three lines: receipt(4, \"small\"), subtotal(2, \"large\") and cupPrice(\"large\"). The size check should exist in only one place in the whole file."
+}

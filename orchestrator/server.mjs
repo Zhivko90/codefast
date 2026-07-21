@@ -7,8 +7,9 @@ import { join } from 'node:path';
 const run = promisify(execFile);
 
 const PORT = Number(process.env.PORT ?? 3100);
-const HOST = process.env.PUBLIC_HOST ?? '77.42.123.202';
-const BASE = process.env.IDE_BASE ?? 'https://ide.codymaster.com';
+// Поддомейн на контейнер. code-server живее в корена — подпътищата го чупят.
+
+const ZONE = process.env.IDE_ZONE ?? 'codymaster.com';
 const ROOT = process.env.STUDENTS_ROOT ?? '/srv/students';
 const IMAGE = process.env.IDE_IMAGE ?? 'codercom/code-server:latest';
 const TOKEN = (await readFile(process.env.TOKEN_FILE ?? '/srv/orchestrator/.token', 'utf8')).trim();
@@ -84,7 +85,7 @@ async function adopt() {
       live.set(key, {
         key, name, port: Number(m[1]), pro: false, tree: false, term: false,
         dir: join(ROOT, key, 'workspace'),
-        url: BASE + '/s/' + m[1] + '/?folder=/home/coder/workspace',
+        url: 'https://p' + m[1] + '.' + ZONE + '/?folder=/home/coder/workspace',
         beat: now, born: now,
       });
     }
@@ -370,7 +371,7 @@ async function start(student, course, files, pro) {
   const now = Date.now();
   const session = {
     key, name, port, dir, pro, tree: false, term: false,
-    url: BASE + '/s/' + port + '/' + query,
+   url: 'https://p' + port + '.' + ZONE + '/' + query,
     beat: now, born: now,
   };
   live.set(key, session);
