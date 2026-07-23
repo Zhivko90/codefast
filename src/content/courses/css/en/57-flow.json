@@ -1,0 +1,68 @@
+{
+  "title": "Normal flow",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You changed the code",
+  "checkLabels.g1": "Everything is closed",
+  "checkLabels.t3": "The file is linked",
+  "checkLabels.t4": "No style in the tag",
+  "checkLabels.t5": "The HTML is untouched",
+  "checkLabels.g2": "No important rules",
+  "checkLabels.t6": "The tags take up space",
+  "checkLabels.t7": "The mark does not ride up",
+  "checkLabels.t8": "The mark does not hang down",
+  "checkLabels.t9": "The lines breathe",
+  "checkLabels.t10": "The mark keeps its sides",
+  "checkLabels.t11": "The tag background is there",
+
+  "why.empty": "The editor is empty. Hit the bin and start over.",
+
+  "why.untouched": "The code is exactly as it was.",
+  "hint2.untouched": "Three changes. Two take something away, one adds it elsewhere.",
+
+  "why.not-closed": "A closing brace is missing.",
+  "why.unlinked": "The page cannot find styles.css. You changed the link line.",
+  "hint2.unlinked": "Hit the bin and start over.",
+  "why.used-inline": "You used style in the tag. That is lesson 01 again.",
+  "why.touched-html": "You edited the HTML. Here you work only in styles.css.",
+  "why.used-important": "You used !important. Nothing is being overridden here. The properties simply do not apply.",
+
+  "why.no-tag": "There is no element with the tag class.",
+  "why.no-mark": "There is no element with the mark class.",
+  "why.no-about": "There is no element with the about class.",
+
+  "why.tag-display": "The tags still ignore the width and height they were given.",
+  "hint2.tag-display": "The width and height are written and they are correct. They just do not apply to that kind of element.",
+  "hint3.tag-display": "A span is an inline element. For inline boxes the box model only holds sideways. You need a kind that sits on the line like a word but measures like a box.",
+  "hint4.tag-display": "One property, one value, in the .tag rule. Lesson 26 showed it.",
+
+  "why.mark-padding": "The marked words still overlap the lines above and below.",
+  "hint2.mark-padding": "The background is painted, but the line is not pushed. That is why the colour creeps up and down.",
+  "hint3.mark-padding": "Vertical padding on an inline element is painted and moves nothing. You cannot fix it by giving it less. You fix it by not having it.",
+  "hint4.mark-padding": "Zero top and bottom. The sides stay.",
+
+  "why.about-lines": "The lines in the paragraph are too close together.",
+  "hint2.about-lines": "Vertical space between lines comes from one property, and it is not padding.",
+  "hint3.about-lines": "Give .about the value 2, with no unit. Lesson 36 explained why no unit.",
+
+  "why.mark-sides": "The mark lost its side spacing. Sideways it does work.",
+  "why.tag-bg": "The tag background is gone. You deleted more than needed.",
+
+  "blocks.0.text": "Three things are wrong. The marked words in the paragraph overlap the lines above and below them. The tags underneath obey neither the width nor the height they were given. And the spacing between them does not happen, even though a margin is written. All of that code is correct.",
+
+  "blocks.1.text": "Everything so far has been in the flow",
+  "blocks.2.text": "You never wrote where anything should go, and everything knew its place anyway. That is normal flow — the layout the browser does on its own. Every box in it takes part in one of two contexts, never both:",
+  "blocks.3.items.0": "Block. Boxes stack one under the other, top to bottom, starting at the top of the containing block. The space between them comes from margin, and vertical margins between neighbours collapse into one.",
+  "blocks.3.items.1": "Inline. Boxes flow in reading order and wrap to a new line when the room runs out. A paragraph with links and bold words inside it is exactly this.",
+
+  "blocks.4.text": "Width fills, height shrinks",
+  "blocks.5.text": "A block element with no width set takes the full width available. The same element with no height set shrinks to its content. The two are not mirror images and they do not come from the same place in the specification. That is why width is rarely set and height is a constant fight — it is held up by the content, and any number you pick turns out wrong sooner or later.",
+
+  "blocks.6.text": "A line is a box too",
+  "blocks.7.text": "Text does not pour out freely. Every line is a box, and its height is set by the tallest thing inside it. Raise the size of one word and the whole line grows with it. But there is a catch: for boxes in an inline context the box model does not fully apply.",
+  "blocks.9.text": "On an inline element width and height do not apply. Neither does vertical margin. Vertical padding is the sneakiest: it IS painted, because the background reaches that far, but it takes no part in the height of the line. So the coloured patch creeps over the neighbouring lines instead of pushing them away.",
+  "blocks.10.text": "Vertical space in running text is not bought with padding. It is bought with line-height.",
+
+  "blocks.11.text": "The task",
+  "blocks.12.text": "Fix all three. The marks should not overlap the neighbouring lines, and the paragraph should breathe. The tags should obey their width, their height and the spacing between them, without dropping one below the other."
+}

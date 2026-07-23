@@ -1,66 +1,84 @@
 {
   "title": "The page does not calculate",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You wrote something",
+  "steps.0.text": "Open `script.js` and print any number to the console.",
+  "steps.1.text": "Make it the total: 1247 coffees at 3 lv each. The sum is written in the code — a ready answer does not count.",
+
   "checkLabels.t2": "You edited script.js",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t3": "The script is linked",
   "checkLabels.t4": "The code runs",
   "checkLabels.t5": "Something came out",
   "checkLabels.t6": "The number is right",
   "checkLabels.t7": "The sum is in the code",
-  "checkLabels.t8": "The paragraphs are still there",
 
-  "why.empty": "The editor is empty. You deleted everything instead of adding a line. Put the code back.",
+  "why.empty": "script.js is empty. That is where you write in this lesson.",
+  "hint2.empty": "Open the script.js tab and write one line.",
 
   "why.untouched": "script.js is still empty. That is where you write in this lesson.",
-  "hint2.untouched": "Open the script.js tab. The other two files stay as they are.",
+  "hint2.untouched": "Open the script.js tab. The other files are not touched.",
 
-  "why.not-closed": "A tag in index.html is open and never closed.",
-  "hint2.not-closed": "index.html is not part of this lesson. If you edited it, put it back the way it was.",
-
-  "why.not-linked": "The script never reaches the page. The file exists, but nothing calls it.",
-  "hint2.not-linked": "The last line in index.html, right before the end of body, links script.js. Check that it is there and that the name matches letter for letter.",
-  "hint3.not-linked": "If the file is called script.js and the line asks for scripts.js, the browser finds nothing and says nothing. One letter is enough.",
-
-  "why.crashed": "Your code stopped with an error before it reached the end.",
-  "hint2.crashed": "Look at the Console panel below. The red line says what it did not like, and where.",
-  "hint3.crashed": "The most common one on day one is a missing bracket or quote. A line that starts with console.log(42 and never closes the bracket stops everything after it.",
+  "why.crashed": "Your code stopped with an error before it got to the end.",
+  "hint2.crashed": "Look at the Console panel on the right. The red line says what it did not like, and where.",
+  "hint3.crashed": "The most common one on day one is a missing bracket or quote. A line starting with console.log(42 and no closing bracket stops everything after it.",
 
   "why.nothing-written": "script.js is empty. There is nothing to run.",
 
   "why.frozen": "Your code never stops. It loops forever and was cut off.",
-  "hint2.frozen": "One line is enough for this lesson. If you wrote a loop, remove it. You do not need it yet.",
+  "hint2.frozen": "One line is enough in this lesson. If you wrote a loop, remove it — you do not need it yet.",
 
   "why.no-output": "The code ran, but nothing came out. The console is empty.",
-  "hint2.no-output": "console.log is the part that shows. Without it the sum is calculated and thrown away.",
-  "hint3.no-output": "Write only 12 + 30 and the computer works out 42, then forgets it immediately. Nobody asked it to show anything.",
+  "hint2.no-output": "`console.log` is what shows things. Without it the sum is worked out and thrown away.",
+  "hint3.no-output": "Write only 12 + 30 and the computer works out 42 and forgets it at once. Nobody asked it to show it.",
 
-  "why.wrong-number": "A number came out, but not this one. The total is different.",
+  "why.wrong-number": "A number came out, but not that one. The total is different.",
   "hint2.wrong-number": "The multiplication sign in JavaScript is not x. The letter x is a name, not an action.",
-  "hint3.wrong-number": "console.log(6 * 7) prints 42. The star multiplies.",
+  "hint3.wrong-number": "`console.log(6 * 7)` prints 42. The asterisk multiplies.",
   "hint4.wrong-number": "Do the same with the two numbers from the page — how many coffees, and at what price.",
 
-  "why.typed-answer": "The number is right, but you typed it by hand. The computer calculated nothing. It only repeated something you already knew.",
-  "hint2.typed-answer": "The point of the lesson is that the sum lives in the code. Leave the two numbers and the sign between them, not the result.",
+  "why.typed-answer": "The number is right, but it is written by hand. The computer worked out nothing — it only repeated what you already knew.",
+  "hint2.typed-answer": "The point of the lesson is for the sum to be in the code. Leave the two numbers and the sign between them, not the result.",
 
-  "why.lost-p": "A line has disappeared from the page. index.html is not part of this lesson.",
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Look at the page on the right. Coffees sold: 1247. Price: 3 lv. Total: 1247 x 3. That is not a sum. Those are characters. The page shows exactly what you wrote into it, letter by letter.",
+  "blocks.2.text": "HTML repeats. It does not calculate. There is no tag for multiply, no tag for remember, no tag for if. CSS will not help either — it decides how the text looks, not what it says.",
 
-  "blocks.0.text": "Look at the page on the right. Coffees sold: 1247. Price: 3. Total: 1247 x 3. That is not a sum. Those are characters. The page shows exactly what you typed into it, letter for letter.",
-  "blocks.1.text": "HTML repeats. It does not calculate. There is no tag for multiply, no tag for remember, no tag for if. CSS will not help either — it decides how the text looks, not what it says.",
+  "blocks.3.text": "The third language",
+  "blocks.4.text": "JavaScript performs actions. It does not describe the page — it does things with it. It lives in a separate file, `script.js`, and runs from top to bottom, line by line, the moment the page opens. Here is the first line you will write:",
 
-  "blocks.2.text": "The third language",
-  "blocks.3.text": "JavaScript performs actions. It does not describe the page, it does things to it. It lives in a separate file, script.js, and runs from top to bottom, line by line, the moment the page opens.",
+  "blocks.5.marks.0.label": "SHOWS",
+  "blocks.5.marks.1.label": "WHAT",
+  "blocks.5.legend.0": "The semicolon at the end says the line is over. Leave it out and JavaScript usually works it out — but not always.",
 
-  "blocks.5.text": "console.log shows. Inside the brackets you put whatever you want to see. Here it is 12 + 30 — but 12 + 30 is not what appears. 42 appears. The sum happens before the showing.",
+  "blocks.6.items.0": "`console` is the console — the place where your code can tell you something.",
+  "blocks.6.items.1": "`log` is the action: show. The dot between them means \"on the console, do log\".",
+  "blocks.6.items.2": "Inside the brackets goes whatever you want to see. Here it is the sum `12 + 30`.",
 
-  "blocks.6.text": "Where it appears",
-  "blocks.7.text": "Not on the page. Open the Console panel below. The preview and the console are two different places: the preview is what a visitor sees, the console is what you see while you write.",
-  "blocks.8.text": "That is why the console comes first in this course. From here on, every error goes through it.",
+  "blocks.7.text": "Notice what comes out. Not `12 + 30`, but 42. The sum happens BEFORE the showing — only the result reaches the console.",
 
-  "blocks.9.text": "The computer does not guess. It does not work anything out in its head and does nothing you have not told it explicitly. That sounds like a flaw. It is the only reason code is predictable.",
+  "blocks.8.text": "Where it comes out",
+  "blocks.9.text": "Not on the page. The number goes to the console — the panel on the right.",
 
-  "blocks.10.text": "The task",
-  "blocks.11.text": "Open script.js. Print the total: 1247 coffees at 3 each. The number should appear in the console.",
-  "blocks.12.text": "Do not work it out in your head and type the answer. The sum has to be in the code — that is the only thing that matters in this lesson, and the checks look for it."
+  "blocks.11.text": "The preview and the console are two different places. The preview is what a visitor sees. The console is what you see while you write.",
+  "blocks.12.text": "That is why the console is the first thing in this course. From here on, every error goes through it.",
+
+  "blocks.13.text": "What can go in the brackets",
+  "blocks.14.text": "Not only sums. A number, a piece of text, anything:",
+
+  "blocks.16.text": "Text needs quotes. Without them JavaScript takes it for the name of something and looks for where it was declared — and there is nothing. A number needs no quotes.",
+
+  "blocks.17.text": "Without console.log nothing comes out",
+  "blocks.18.text": "The computer does not show what you did not ask for. This line is perfectly valid and does nothing visible:",
+
+  "blocks.20.text": "The sum is worked out. The result is thrown away at once, because nobody asked for it. The console stays empty.",
+
+  "blocks.21.text": "Line by line",
+  "blocks.22.text": "The code runs from top to bottom. Three lines give three lines:",
+
+  "blocks.24.quote": "The computer does not guess. It does not calculate in its head and does nothing you did not tell it explicitly. It sounds like a flaw. It is the only reason code is predictable.",
+
+  "blocks.25.text": "So far",
+  "blocks.26.items.0": "HTML shows characters. JavaScript performs actions.",
+  "blocks.26.items.1": "`console.log` shows something in the console, not on the page.",
+  "blocks.26.items.2": "Inside the brackets goes the number, text or sum you want to see.",
+  "blocks.26.items.3": "Without `console.log` the sum is worked out and forgotten."
 }

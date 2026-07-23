@@ -146,12 +146,24 @@ function injectEarly(html, snippet) {
   return snippet + s;   // няма doctype — така или иначе е quirks
 }
 
+// ⚠ ОБЕЗВРЕЖДАВАНЕ НА СКРИПТОВЕТЕ
+// Рамката дели нишката с React. while(true) вътре заковава целия таб —
+// включително бутона „провери". Отвън таймаут е невъзможен, защото
+// главната нишка не стига дотам.
+//
+// При курс, чийто код върви през Worker, превюто рисува САМО страницата.
+// type="text/plain" стига: тагът остава, съдържанието не се изпълнява.
+// Замяната е ПРЕДИ инжекцията — затова прихващането на конзолата оцелява.
+const disarmScripts = (html) =>
+  String(html ?? '').replace(/<script\b/gi, '<script type="text/plain" data-off="1"');
+
 /**
  * @param {string} html      сглобеният документ
- * @param {object} opts      { console: true } — конзолата само където трябва
+ * @param {object} opts      { console: true, run: true }
  */
 export function guard(html, opts = {}) {
   const withConsole = opts.console !== false;
-  const body = withConsole ? injectEarly(html, CONSOLE_TAP) : String(html ?? '');
+  const src = opts.run === false ? disarmScripts(html) : String(html ?? '');
+  const body = withConsole ? injectEarly(src, CONSOLE_TAP) : src;
   return body + CLICK_TRAP;
 }

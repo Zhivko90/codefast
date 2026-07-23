@@ -1,0 +1,43 @@
+{
+  "title": "Check yourself",
+
+  "questions.0.q": "One rule with #promo p gives green. Another with .card .note .text p gives brown and sits further down the file. The paragraph matches both. What colour is it?",
+  "questions.0.options.0": "Brown — three classes weigh more than one id",
+  "questions.0.options.1": "Brown — on a conflict the lower rule wins",
+  "questions.0.options.2": "Green — the comparison stops at the id column",
+  "questions.0.options.3": "Green, because the selector is shorter",
+  "questions.0.hint": "Three columns, compared left to right.",
+  "questions.0.explain": "Specificity is not a sum but three separate columns: ids, classes, tags. They are compared left to right and the first difference decides everything. Here it is 1-0-1 against 0-3-1. The first column differs, so the second is never looked at — and how many classes sit opposite makes no difference. Order in the file is not consulted either, because it is the bottom step and is only reached on a complete tie.",
+
+  "questions.1.q": "A span carries the classes price and sale, in that order. In the file .sale is written above .price, both are one class each and both set a colour. Which one wins?",
+  "questions.1.options.0": "sale — it comes first in the class attribute",
+  "questions.1.options.1": "price — on equal specificity the order in the file decides",
+  "questions.1.options.2": "sale — the special case always beats the general one",
+  "questions.1.options.3": "Neither — they cancel out and the colour is inherited",
+  "questions.1.hint": "Does the browser read class as a priority list?",
+  "questions.1.explain": "Both selectors are one class, so specificity ties and the conflict drops to the bottom step: order of appearance. The one written further down wins, which is price. The order of the words inside class means nothing — the browser does not read it as priority. That is exactly why the special case goes AFTER the general one. The same holds between files: of two linked files the lower link wins.",
+
+  "questions.2.q": "The base .btn rule sets a background with !important. You add .btn.sold-out, also with !important. What happens?",
+  "questions.2.options.0": "Nothing — once written, an !important cannot be beaten",
+  "questions.2.options.1": "They cancel out and the browser style remains",
+  "questions.2.options.2": "The browser rejects the second one — !important goes once per property",
+  "questions.2.options.3": "Yours wins — between two important ones specificity decides again",
+  "questions.2.hint": "Importance does not switch the cascade off. It moves it.",
+  "questions.2.explain": "!important beats every normal declaration from the same source, whatever the specificity. But it does not stop the cascade — it raises the conflict one floor, where specificity decides again between two important ones, and order decides when that ties. That is where the price comes from: the first !important rarely stays alone, because the next person has no move left but one more. Against a foreign file you cannot edit, the current advice is @layer instead.",
+
+  "questions.3.q": "A rule contains color: #7a4a1e with no semicolon. Below it sit padding: 4px 10px; and border-radius: 999px;. Which of the three take effect?",
+  "questions.3.options.0": "Only border-radius — the colour and the spacing disappear",
+  "questions.3.options.1": "Only the colour disappears, the other two work",
+  "questions.3.options.2": "None of the rule works",
+  "questions.3.options.3": "All three work — the semicolon is optional",
+  "questions.3.hint": "How far does the parser seek before starting again?",
+  "questions.3.explain": "The parser reads the value of color and runs into padding without ever seeing an end. No such value exists. It throws away the declaration it is building and seeks forward to the first semicolon — which is not until after 10px. Everything up to there is eaten, so two declarations die: the colour and the spacing. border-radius survives, because it sits past the point the parser reached. No message, no warning. An unknown property or an invalid value would have cost only one declaration.",
+
+  "questions.4.q": "body is set to Georgia. The field in the signup form uses a different font, even though nothing in your file sets it. You open the inspector. What explains it?",
+  "questions.4.options.0": "The body rule is crossed out, because the field is more specific",
+  "questions.4.options.1": "The browser style gives the field a font of its own, so there is nothing to inherit",
+  "questions.4.options.2": "Somewhere in your file there is a rule for the field that you forgot",
+  "questions.4.options.3": "The font failed to load and the browser swapped it for the field only",
+  "questions.4.hint": "Does inheritance reach a value that is already set?",
+  "questions.4.explain": "font-family is one of the inherited properties, but inheritance only applies where no value is set. The browser's own file gives fields and buttons a font of their own, usually the system one, which leaves inheritance nothing to do. In the inspector that rule shows at the very bottom, under a user agent stylesheet label — the weakest source, which here has no competition. The fix is font-family: inherit. Links and colour are the same case."
+}

@@ -1,0 +1,81 @@
+{
+  "title": "One place past the last",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The loop stops in time",
+  "checkLabels.t6": "No negative index",
+  "checkLabels.t7": "The total is 16",
+  "checkLabels.t8": "The last one is 3",
+  "checkLabels.t9": "Past the end still gives undefined",
+  "checkLabels.t10": "The array has five values",
+  "checkLabels.t11": "The first is 4",
+  "checkLabels.t12": "The last index comes from the length",
+  "checkLabels.t13": "Three lines come out",
+  "checkLabels.t14": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The first two lines in the console are NaN and undefined. The numbers are there, the total is not.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.still-past-end": "The loop still reaches the length.",
+  "hint2.still-past-end": "Five values, indexes 0 to 4. The length is 5 — an index that does not exist.",
+  "hint3.still-past-end": "The condition has to stop before the length, not at it.",
+
+  "why.negative-index": "There is still a negative index.",
+  "hint2.negative-index": "Minus one does not mean the last one. In some languages it does. Not here.",
+  "hint3.negative-index": "The last index is one less than the length. It is worked out from it.",
+
+  "why.total-nan": "The total is not 16.",
+  "hint2.total-nan": "4 plus 2 plus 6 plus 1 plus 3.",
+  "hint3.total-nan": "If you get NaN, undefined got into the sum somewhere. A number plus undefined does not crash — it gives NaN.",
+  "hint4.total-nan": "Check how far the counter goes. Its last round reads a place that is not there.",
+
+  "why.wrong-last": "The last value is not 3.",
+  "hint2.wrong-last": "The five numbers are 4, 2, 6, 1 and 3. The last is a three.",
+  "hint3.wrong-last": "Five values, so the last index is 4. That is the length minus one.",
+
+  "why.past-end-changed": "The third line no longer shows undefined.",
+  "hint2.past-end-changed": "It is there on purpose. It shows that reading past the end does not crash.",
+
+  "why.array-changed": "The array has been changed.",
+  "hint2.array-changed": "The numbers and their order stay: 4, 2, 6, 1, 3. The loop gets fixed, not the data.",
+
+  "why.hardcoded-last": "The last index is written by hand.",
+  "hint2.hardcoded-last": "That four becomes wrong the day you add a sixth day.",
+  "hint3.hardcoded-last": "Ask for the length and subtract one from it.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "The same five days. The loop walks the array and adds up. The console shows NaN.",
+  "blocks.1.text": "The numbers are there. The loop runs. Nothing crashes, nothing warns — and the total is nothing.",
+
+  "blocks.2.text": "The length is not an index",
+  "blocks.3.text": "Five values means indexes 0 to 4. The length is 5, but there is no place numbered 5.",
+  "blocks.4.text": "So the loop stops before the length, not at it. Less-than and less-than-or-equal differ by one character and by one round.",
+  "blocks.5.quote": "The last index is always the length minus one. This is not learned once and for all — it is checked every time.",
+
+  "blocks.6.text": "Past the end does not crash",
+  "blocks.7.text": "Ask for a place that is not there and you do not get an error. You get undefined. The code carries calmly on.",
+  "blocks.9.text": "The first line gives undefined. The second gives undefined cup — undefined turns into text and sticks. The third gives 3, and there is no size numbered 3. Three different wrong things and not one message.",
+
+  "blocks.10.text": "How it spreads",
+  "blocks.11.text": "undefined in an addition gives NaN. NaN plus anything gives NaN again. One extra round at the start poisons the whole total.",
+  "blocks.12.text": "So NaN on the screen rarely means a mistake where you see it. It is a trace of something that happened earlier and did not crash.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Fix the loop so it stops in time. The total has to be 16.",
+  "blocks.15.text": "The last value is taken from the length, not with a negative index and not with a hand-written four. The third line stays as it is — it is there on purpose."
+}

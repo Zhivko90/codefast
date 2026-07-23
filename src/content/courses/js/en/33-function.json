@@ -1,5 +1,10 @@
 {
   "title": "Input and output",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Make a function called `withVat`. It takes a price and returns the price with tax, rounded. Exactly that name — the checks look for it.",
+  "steps.1.text": "Call it three times, with the numbers 12, 30 and 7. Print the result of each.",
+  "steps.2.text": "The two lines with the sum should exist in only one place in the whole file.",
 
   "checkLabels.t1": "You wrote something",
   "checkLabels.t2": "You edited script.js",
@@ -13,6 +18,7 @@
   "checkLabels.t10": "It works with any number",
   "checkLabels.t11": "Three lines come out",
   "checkLabels.t12": "The paragraph is still there",
+  "checkLabels.t13": "The function is called three times",
 
   "why.empty": "The editor is empty.",
 
@@ -43,26 +49,65 @@
   "hint2.wrong-general": "The number should not be written inside. It comes from outside, through the brackets.",
   "hint3.wrong-general": "The name in the function's brackets is a blank space. It is filled with whatever you pass when calling it.",
 
+  "why.not-called": "The function exists, but it is never called.",
+  "hint2.not-called": "The old sum is still there. The three lines have to go through withVat.",
+  "hint3.not-called": "console.log(withVat(12)); — the number goes into the function's brackets, the result comes back out.",
+
   "why.wrong-count": "There are not three lines in the console.",
   "why.lost-p": "A paragraph has disappeared from the page.",
 
-  "blocks.0.text": "Three totals with tax. The same two lines, written three times with a different number.",
-  "blocks.1.text": "Now imagine the tax becomes nineteen percent. Or that there are a hundred totals. Or that somebody asks for rounding down instead.",
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Three totals with tax. The same two lines, written three times with a different number.",
+  "blocks.2.text": "Now imagine the tax becomes nineteen percent. Or that there are a hundred totals. Or that somebody asks for rounding down instead. Three places to fix, then a hundred, then a hundred and one — because you missed one.",
 
-  "blocks.2.text": "The function",
-  "blocks.3.text": "You write the sum once, give it a name, and then call it as many times as you like with different numbers.",
-  "blocks.5.text": "price in the brackets is a blank space. It is filled with the number you pass when you call it.",
+  "blocks.3.text": "What it is made of",
+  "blocks.4.text": "You write the sum once, give it a name, and then call it as many times as you like with different numbers.",
 
-  "blocks.6.text": "Not a piece of code",
-  "blocks.7.text": "You will meet the explanation that a function is a piece of code you saved for later. That is true, and useless.",
-  "blocks.8.text": "A function is something that takes an input and returns an output. Give it 12, get 14. Give it 30, get 36. What it does inside is its own business.",
-  "blocks.9.quote": "Think of it as a machine with a funnel on top and a spout underneath.",
+  "blocks.5.marks.0.label": "KEYWORD",
+  "blocks.5.marks.1.label": "NAME",
+  "blocks.5.marks.2.label": "PARAMETER",
+  "blocks.5.legend.0": "The highlighted part is the body. It runs only when the function is called.",
 
-  "blocks.10.text": "Calling it",
-  "blocks.11.text": "Writing a function does not run it. It sits and waits. It runs only when you call it — with its name and brackets.",
-  "blocks.13.text": "The brackets mean do it now. Without them you get the function itself, unperformed — the same mistake as with string methods in lesson thirteen.",
+  "blocks.6.items.0": "`function` — a word of the language. It says a function is being declared here.",
+  "blocks.6.items.1": "`withVat` — the name. This is what you call it by later. You choose it.",
+  "blocks.6.items.2": "`price` in the brackets — the *parameter*. A blank space that gets a value only at the call.",
+  "blocks.6.items.3": "Between the curly brackets — the body. The lines that run.",
 
-  "blocks.14.text": "The task",
-  "blocks.15.text": "Make a function called withVat that takes a price and returns the price with tax, rounded. Exactly that name — the checks look for it.",
-  "blocks.16.text": "Then call it three times with the numbers 12, 30 and 7. The two lines with the sum should exist in only one place in the whole file."
+  "blocks.7.text": "Which of these words belong to the language and which did you choose? Only `function`, `const` and `return` are the language. Everything else is yours — the same function works like this too:",
+
+  "blocks.9.text": "It works exactly the same. Names are for the person reading the code, not for the browser. That is why they are chosen to mean something.",
+
+  "blocks.10.text": "Writing it does not run it",
+  "blocks.11.text": "Declare a function and nothing happens. It sits and waits. The console stays silent.",
+  "blocks.13.text": "It runs only when you call it — with its name and brackets, and inside the brackets the number you are passing.",
+
+  "blocks.15.text": "What happens at the call",
+  "blocks.16.text": "Follow `withVat(12)` step by step:",
+
+  "blocks.17.items.0": "You call `withVat(12)`. The number 12 goes into the brackets.",
+  "blocks.17.items.1": "Inside the function, `price` becomes 12.",
+  "blocks.17.items.2": "`total` becomes 12 plus 12 times 0.2, which is 14.4.",
+  "blocks.17.items.3": "`Math.round(14.4)` gives 14.",
+  "blocks.17.items.4": "`return` sends 14 back out. Where you called it, `withVat(12)` is now 14.",
+
+  "blocks.18.text": "Pass a different number and the same five steps run with it:",
+
+  "blocks.20.text": "One body, two different answers. That is exactly why the parameter exists.",
+
+  "blocks.21.text": "The brackets mean do it now",
+  "blocks.22.text": "The name without brackets and the name with brackets are two different things:",
+
+  "blocks.24.text": "The first gives you the function itself, unperformed. The second runs it and gives the result. The same mistake as with string methods in lesson thirteen.",
+
+  "blocks.25.text": "Not a piece of code",
+  "blocks.26.text": "You will meet the explanation that a function is a piece of code you saved for later. That is true, and useless.",
+  "blocks.27.text": "A function is something that takes an input and returns an output. Give it 12, get 14. Give it 30, get 36. What it does inside is its own business.",
+  "blocks.28.quote": "Think of it as a machine with a funnel on top and a spout underneath.",
+
+  "blocks.29.text": "So far",
+  "blocks.30.items.0": "A function is declared once and called as many times as needed.",
+  "blocks.30.items.1": "The parameter in the brackets is a blank space filled in at the call.",
+  "blocks.30.items.2": "Declaring runs nothing. The brackets do.",
+  "blocks.30.items.3": "`return` sends the answer back out.",
+  "blocks.30.items.4": "You choose the name. The language gives only `function`, `const` and `return`."
 }

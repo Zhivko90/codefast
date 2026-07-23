@@ -31,7 +31,13 @@ export default {
       modules: [
         { id: 'basics', lessons: ['33-function', '34-return', '35-compose'] },
         { id: 'scope', lessons: ['36-scope', '37-arrow', '38-default'] },
-        { id: 'habits', lessons: ['39-pure', '40-broken', '41-quiz'] },
+{ id: 'habits', lessons: ['39-pure', '40-broken', '41-quiz'] },
+      ],
+    },
+    {
+      id: 'arrays',
+      modules: [
+        { id: 'listbasics', lessons: ['42-array', '43-index'] },
       ],
     },
   ],

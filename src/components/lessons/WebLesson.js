@@ -6,8 +6,11 @@ import WorkBench from '@/components/WorkBench';
 import { Link } from '@/i18n/navigation';
 import { problemsForLesson, problemTitle } from '@/core/getProblem';
 import { Blocks } from './shared';
+import Steps from './Steps';
 import { useAuth } from '@/lib/auth';
 import { checkProblem } from '@/core/checkProblem';
+import { runJs } from '@/core/runners/jsRun';
+import { logsFromRun } from '@/components/workbench/ConsolePane';
 import { assemble, packFiles, unpackFiles } from '@/core/bundle';
 import { fetchCode, saveCode, removeCode, markDone } from '@/lib/progress';
 import { fetchProject, saveProject } from '@/lib/project';
@@ -24,6 +27,17 @@ export default function WebLesson({ lesson, lang, course, onDone }) {
   const multi = !!lesson.starterFiles;
   const entry = lesson.entry ?? 'index.html';
 
+// ⚠ Гейтът е runtime от meta.js, НЕ разширението на файла. При freeFiles
+  // ученикът може да си направи script.js в HTML урок — това не бива да
+  // променя как работи превюто там.
+  //
+  // js-worker  → без DOM. Превюто мълчи, конзолата идва от Worker.
+  // js-dom     → страницата Е урокът. Превюто се изпълнява и се вижда.
+  //              Заклещване се пази отвътре, в jsDom.js.
+  const isWorker = lesson.runtime === 'js-worker';
+  const isDom = lesson.runtime === 'js-dom';
+  const isJs = isWorker || isDom;
+
   const starterFiles = useMemo(
     () => (multi ? { ...lesson.starterFiles } : { [entry]: lesson.starterCode ?? '' }),
     [multi, lesson.starterFiles, lesson.starterCode, entry]
@@ -37,15 +51,27 @@ export default function WebLesson({ lesson, lang, course, onDone }) {
 
 const [files, setFiles] = useState(starterFiles);
 
+  // ⚠ В JS урок index.html и styles.css СЪЩЕСТВУВАТ, но не се показват.
+  // index.html свързва скрипта и проверката dom_has го търси; styles.css
+  // не се пипа в нито един урок. Табове за файлове, които никой не отваря,
+  // са шум — виждаш само script.js.
+ // ⚠ При js-dom index.html СЕ ПОКАЗВА — там страницата е част от урока
+  // и ученикът я пипа. Крие се само при js-worker, където е декор.
+  const isHidden = (name) => isWorker && !name.endsWith('.js');
+  const mainOf = (f) =>
+    isJs ? (Object.keys(f).find((n) => n.endsWith('.js')) ?? entry) : entry;
+
   const fileList = useMemo(() => {
     if (!multi) return [];
-    return Object.keys(files).map((name) => ({
-      name,
-      language: name.endsWith('.css') ? 'css' : name.endsWith('.js') ? 'javascript' : 'html',
-    }));
-  }, [multi, files]);
+    return Object.keys(files)
+      .filter((name) => !isHidden(name))
+      .map((name) => ({
+        name,
+        language: name.endsWith('.css') ? 'css' : name.endsWith('.js') ? 'javascript' : 'html',
+      }));
+  }, [multi, files, isJs]);
 
-const [active, setActive] = useState(entry);
+const [active, setActive] = useState(mainOf(starterFiles));
   const [preview, setPreview] = useState(starterAssembled);
   const [result, setResult] = useState(null);
   const [ready, setReady] = useState(false);
@@ -86,6 +112,7 @@ const [active, setActive] = useState(entry);
         setPrevious(p?.content || null);   // за гледане, не за копиране
         setFiles(starterFiles);            // редакторът остава празен
         setPreview(starterAssembled);
+        setActive(mainOf(starterFiles));
       } else {
         const saved = await fetchCode(user?.id, course, lesson.id);
         if (!alive) return;
@@ -96,18 +123,83 @@ const [active, setActive] = useState(entry);
             : { [entry]: saved };
         setFiles(f);
         setPreview(assemble(f, entry));
+        setActive(mainOf(f));
       }
-      setActive(entry);
       setReady(true);
     })();
     return () => { alive = false; };
-  }, [user?.id, course, lesson.id, starterFiles, starterAssembled, isProject, multi, entry]);
+  }, [user?.id, course, lesson.id, starterFiles, starterAssembled, isProject, multi, entry, isJs]);
 
   // живият преглед
   useEffect(() => {
     const id = setTimeout(() => setPreview(assembled), 400);
     return () => clearTimeout(id);
   }, [assembled]);
+
+  // ── ЖИВАТА КОНЗОЛА ПРЕЗ WORKER ──
+  //
+  // ⚠ При js-worker кодът НЕ се изпълнява в превюто. Иначе безкраен цикъл —
+  // а урок 27 учи точно на такъв — заковава целия таб още докато ученикът
+  // пише, защото рамката дели нишката с React. Worker се убива след две
+  // секунди и замръзване не може да се случи.
+  //
+  // Цената: в JS урок не се вижда какво прави скриптът със страницата.
+  // За секции 1–9 няма значение — там няма DOM. За 10–12 трябва jsDom.js.
+  const jsSource = useMemo(
+    () => Object.keys(files).filter((n) => n.endsWith('.js')).map((n) => files[n]).join('\n'),
+    [files]
+  );
+
+  const [consoleLines, setConsoleLines] = useState([]);
+
+ // ⚠ Само при js-worker. При js-dom конзолата идва от самата рамка,
+  // през guard.js — там скриптът се изпълнява наистина.
+  useEffect(() => {
+    if (!isWorker) return;
+    let alive = true;
+    const id = setTimeout(async () => {
+      const res = await runJs(jsSource);
+      if (alive) setConsoleLines(logsFromRun(res));
+    }, 400);
+    return () => { alive = false; clearTimeout(id); };
+  }, [isWorker, jsSource]);
+
+  // ── ЖИВИ СТЪПКИ ──
+  //
+  // ⚠ Минава през СЪЩИЯ checkProblem, който предаването ползва. Втора
+  // реализация щеше да се разминава — стъпка би светнала зелена, а после
+  // да падне при предаване. Един източник на истина.
+  //
+  // ⚠ Пуска се САМО когато урокът има steps и няма axe или style проверки.
+  // Те вдигат скрита рамка на всяко пускане — на всяко натиснато копче
+  // това е скъпо. HTML и CSS курсовете не влизат тук.
+  //
+  // Резултатът отива само в стъпките. Панелът с проверките остава на
+  // предаването — иначе човек вижда червено, преди да е дописал реда.
+// ⚠ БЕЗ живи стъпки при js-dom. Всяка проверка там вдига рамка и пуска
+  // кода наистина — на всяко натиснато копче това е скъпо и може да задейства
+  // fetch или таймер, който ученикът не е поискал.
+  const liveOk = useMemo(() => {
+    if (isDom) return false;
+    if (!Array.isArray(lesson.steps) || lesson.steps.length === 0) return false;
+    if (!hasChecks) return false;
+    return !lesson.checks.some((c) => typeof c.type === 'string' &&
+      (c.type === 'axe_clean' || c.type.startsWith('style_')));
+  }, [isDom, lesson.steps, lesson.checks, hasChecks]);
+
+  const [liveResult, setLiveResult] = useState(null);
+
+  useEffect(() => {
+    if (!liveOk || !ready) return;
+    let alive = true;
+    const id = setTimeout(async () => {
+      try {
+        const r = await checkProblem({ ...lesson, starterCode: starterAssembled }, assembled);
+        if (alive) setLiveResult(r);
+      } catch { /* живата проверка мълчи — предаването ще каже истината */ }
+    }, 500);
+    return () => { alive = false; clearTimeout(id); };
+  }, [liveOk, ready, assembled, lesson, starterAssembled]);
 
   // черновата се пази
   //
@@ -160,6 +252,7 @@ const legacyCheck = (built = assembled) => {
       : legacyCheck(built);
 
 setResult(r);
+    setLiveResult(r);
     setPreview(built);
 
     if (r.passed) {
@@ -176,9 +269,10 @@ setResult(r);
 
   const reset = () => {
     setFiles(starterFiles);
-    setActive(entry);
+    setActive(mainOf(starterFiles));
     setPreview(starterAssembled);
     setResult(null);
+    setLiveResult(null);
     removeCode(user?.id, course, lesson.id);
   };
 
@@ -209,6 +303,10 @@ setResult(r);
   const tabs = [{ id: 'statement', label: t('rail_statement') }];
   if (isProject && previous) tabs.push({ id: 'previous', label: t('project_previous') });
 
+  // При един видим файл рамката рисува обикновен редактор, не мрежа с табове.
+  const soloName = fileList.length === 1 ? fileList[0].name : entry;
+  const soloLang = fileList.length === 1 ? fileList[0].language : 'html';
+
   return (
     <WorkBench
       title={lesson.title}
@@ -217,8 +315,8 @@ setResult(r);
       onTab={setTab}
       code={code}
       onCode={setCode}
-      language={multi ? undefined : 'html'}
-      fileName={entry}
+      language={fileList.length > 1 ? undefined : soloLang}
+      fileName={soloName}
       files={fileList}
       activeFile={active}
       onFile={setActive}
@@ -235,7 +333,7 @@ setResult(r);
       onSubmit={submit}
       onReset={reset}
       canSubmit
-      preview={preview}
+      preview={isWorker ? null : preview}
       result={result}
       checkLabels={checkLabels}
       why={why}
@@ -243,9 +341,12 @@ setResult(r);
       lang={lang}
       course={course}
       itemId={lesson.id}
-      // ⚠ Конзолата се пали САМА при JS урок. Няма .js файл → няма таб,
-      // и 77-те HTML урока плюс CSS курсът не усещат нищо.
-      hasConsole={fileList.some((f) => f.language === 'javascript')}
+  hasConsole={isJs}
+      consoleLines={isWorker ? consoleLines : null}
+      onClearConsole={() => setConsoleLines([])}
+      runPreview={!isWorker}
+      sidePanels={isWorker}
+      chrome={false}
     >
       {tab === 'previous' && previous ? (
         <>
@@ -270,6 +371,15 @@ setResult(r);
         <>
           <h1 className="text-xl font-extrabold text-white mb-5">{lesson.title}</h1>
           <Blocks blocks={lesson.blocks} />
+
+          {/* СТЪПКИТЕ — отмятат се ЖИВО, докато човекът пише.
+              Предаването остава истината; това е обратна връзка. */}
+          <Steps
+            steps={lesson.steps}
+            checks={lesson.checks}
+            result={liveResult ?? result}
+            title={lesson.taskTitle}
+          />
 
           {/* МОСТ: упражни се точно на това, което току-що мина */}
           {practice.length > 0 && (

@@ -112,5 +112,6 @@
   "name_empty": "The name is empty.",
   "name_chars": "No spaces or slashes.",
   "name_ext": "Needs an extension: .html, .css, .js",
-  "name_dup": "That file already exists."
+  "name_dup": "That file already exists.",
+  "copy_code": "Copy code"
 }

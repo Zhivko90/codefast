@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { CF_MSG } from './guard';
+import { fmtEnc } from '@/core/runners/jsRun';
 
 // console-feed рисува разгъваеми обекти. Иска браузър — оттам ssr: false.
 const Console = dynamic(
@@ -18,7 +19,8 @@ const Console = dynamic(
 // ⚠ Засичане на заклещено превю НЯМА и не може да има. Рамката дели нишката
 // с тази страница — заклещи ли се, React не рисува нищо, включително
 // предупреждението. Изпробвано на /bg/constest, случай 9.
-// Предаването е защитено, защото минава през Worker.
+// Затова курсовете с runtime js-worker НЕ изпълняват нищо в рамката —
+// техните редове идват от logsFromRun по-долу.
 const MAX = 300;
 
 export function useConsole(preview) {
@@ -56,15 +58,64 @@ export function useConsole(preview) {
   return { lines: items, clear, errors };
 }
 
+// ⚠ ВСЯКО ПУСКАНЕ ДАВА НОВИ КЛЮЧОВЕ. console-feed рисува по id — повтори ли
+// се ключът, той смята реда за същия и не го пречертава. Тогава старата
+// грешка виси на екрана, докато ученикът вече е поправил кода.
+let runSeq = 0;
+
+export function logsFromRun(res) {
+  if (!res) return [];
+  const r = ++runSeq;
+
+  const out = (res.logs ?? []).map((l, i) => ({
+    id: `r${r}-${i}`,
+    method: l.lvl,
+    data: (l.args ?? []).map((a) => fmtEnc(a)),
+    sig: null,
+    isErr: false,
+  }));
+
+  if (res.err) {
+    out.push({
+      id: `r${r}-err`,
+      method: 'error',
+      data: [res.err.name + ': ' + res.err.message],
+      sig: null,
+      isErr: true,
+    });
+  }
+
+  if (res.timedOut) {
+    out.push({
+      id: `r${r}-timeout`,
+      method: 'error',
+      data: ['Кодът не спря. Спрян е насила след 2 секунди — вероятно има цикъл без изход.'],
+      sig: null,
+      isErr: true,
+    });
+  }
+
+  return out;
+}
+
+// ⚠ LOG_ICON_WIDTH нулира мястото за иконата отляво. Без него console-feed
+// отмества всеки ред навътре и конзолата изглежда като списък с отстъп.
 const STYLES = {
   BASE_FONT_FAMILY: 'ui-monospace, SFMono-Regular, Menlo, monospace',
   BASE_FONT_SIZE: '12.5px',
   BASE_LINE_HEIGHT: '1.6',
   BASE_BACKGROUND_COLOR: 'transparent',
   LOG_BORDER: 'rgba(255,255,255,0.05)',
+  LOG_ICON_WIDTH: '0px',
+  LOG_ICON_HEIGHT: '0px',
+  LOG_ICON: 'none',
+  PADDING: '0px',
 };
 
-export default function ConsolePane({ lines = [], onClear }) {
+// ⚠ „Изчисти" е ГОРЕ, до заглавието. Долу той висеше залепен за дъното на
+// панела, стотици пиксели под последния ред — изглеждаше като чужд бутон.
+// showBar=false → рамката рисува своя лента отгоре и слага бутона там.
+export default function ConsolePane({ lines = [], onClear, showBar = true }) {
   const t = useTranslations('practice');
 
   const logs = useMemo(
@@ -79,9 +130,17 @@ export default function ConsolePane({ lines = [], onClear }) {
 
   return (
     <div className="h-full flex flex-col min-h-0">
-      <div className="flex-1 min-h-0 overflow-y-auto px-1">
+      {showBar && logs.length > 0 && (
+        <div className="shrink-0 flex justify-end px-3 py-1 border-b border-white/[0.06]">
+          <button onClick={onClear} className="text-[11px] text-gray-600 hover:text-gray-300 transition">
+            {t('console_clear')}
+          </button>
+        </div>
+      )}
+
+      <div className="flex-1 min-h-0 overflow-y-auto px-2 py-1">
         {logs.length === 0 ? (
-          <p className="text-gray-600 text-[13px] px-2 py-2">{t('console_empty')}</p>
+          <p className="text-gray-600 text-[13px] px-1 py-1">{t('console_empty')}</p>
         ) : (
           <Console logs={logs} variant="dark" styles={STYLES} />
         )}
@@ -90,14 +149,6 @@ export default function ConsolePane({ lines = [], onClear }) {
       {repeats.length > 0 && (
         <div className="shrink-0 px-3 py-1 text-[11px] text-gray-600 border-t border-white/[0.06]">
           {t('console_repeats')}: {repeats.join(', ')}
-        </div>
-      )}
-
-      {logs.length > 0 && (
-        <div className="shrink-0 px-3 py-1.5 border-t border-white/[0.06]">
-          <button onClick={onClear} className="text-[11px] text-gray-500 hover:text-gray-300 transition">
-            {t('console_clear')}
-          </button>
         </div>
       )}
     </div>

@@ -1,5 +1,11 @@
 {
   "title": "A function calls a function",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Make a function called `cupPrice`. It takes a size and returns a price: large is 5, everything else is 3.",
+  "steps.1.text": "Make `subtotal`. It takes a count and a size and returns the sum before tax — it asks `cupPrice` for the price instead of working it out.",
+  "steps.2.text": "Make `receipt`. It takes a count and a size and returns the rounded sum with tax — it asks `subtotal` for the sum.",
+  "steps.3.text": "Print three lines: `receipt(4, \"small\")`, `subtotal(2, \"large\")` and `cupPrice(\"large\")`.",
 
   "checkLabels.t1": "You wrote something",
   "checkLabels.t2": "You edited script.js",
@@ -71,13 +77,9 @@
 
   "blocks.6.text": "A function calls a function",
   "blocks.7.text": "A function does not have to work everything out on its own. It can ask another function and use its answer.",
-  "blocks.9.text": "bags does not know how many beans go into one cup. It asks beans and works with the number it gets back. Change 18 to 20 and it changes in one place.",
+  "blocks.9.text": "`bags` does not know how many beans go into one cup. It asks `beans` and works with the number it gets back. Change 18 to 20 and it changes in one place.",
 
   "blocks.10.text": "Layers",
   "blocks.11.text": "At the bottom sits the small one that knows one thing. Above it sits the one that uses it. Higher still — the one that uses the second.",
-  "blocks.12.text": "Every layer does exactly one step and returns the result upwards. That is why any step can be replaced without touching the rest.",
-
-  "blocks.13.text": "The task",
-  "blocks.14.text": "Make three functions: cupPrice takes a size and returns a price. subtotal takes a count and a size and returns the sum before tax, asking cupPrice. receipt takes a count and a size and returns the rounded sum with tax, asking subtotal.",
-  "blocks.15.text": "At the end print three lines: receipt(4, \"small\"), subtotal(2, \"large\") and cupPrice(\"large\"). The size check should exist in only one place in the whole file."
+  "blocks.12.text": "Every layer does exactly one step and returns the result upwards. That is why any step can be replaced without touching the rest."
 }

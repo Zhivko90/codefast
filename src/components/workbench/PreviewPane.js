@@ -9,8 +9,13 @@ import { guard } from './guard';
 // Урок → един прозорец с лента като на браузър.
 // Задача → два, един под друг: твоят и целта. Тогава лентата отпада,
 // защото двата надписа вече казват кое какво е.
+//
+// ⚠ run=false → страницата се рисува, скриптовете НЕ тръгват.
+// Рамката дели нишката с React. Заклещи ли се, заковава целия таб —
+// включително бутона „провери". Курсовете, чийто код върви през Worker,
+// не изпълняват нищо тук.
 // ============================================
-export default function PreviewPane({ preview, target }) {
+export default function PreviewPane({ preview, target, run = true }) {
   const t = useTranslations('practice');
   const hasTarget = target != null;
 
@@ -20,13 +25,13 @@ export default function PreviewPane({ preview, target }) {
         <div className="shrink-0 px-3 py-1 text-[10px] font-bold tracking-widest text-gray-500 bg-black/20 border-b border-white/[0.06]">
           {t('pane_mine')}
         </div>
-        <iframe title="preview" srcDoc={guard(preview)} className="flex-1 bg-white w-full border-0" />
+        <iframe title="preview" srcDoc={guard(preview, { run })} className="flex-1 bg-white w-full border-0" />
         <div className="shrink-0 px-3 py-1 text-[10px] font-bold tracking-widest text-emerald-500/70 bg-black/20 border-y border-white/[0.06]">
           {t('pane_target')}
         </div>
         {/* ⚠ БЕЗ конзола. Иначе изходът на еталона се смесва с този на ученика
             и няма как да се различат — srcDoc рамките пращат с origin "null". */}
-        <iframe title="target" srcDoc={guard(target, { console: false })} className="flex-1 bg-white w-full border-0" />
+        <iframe title="target" srcDoc={guard(target, { console: false, run })} className="flex-1 bg-white w-full border-0" />
       </div>
     );
   }
@@ -41,7 +46,7 @@ export default function PreviewPane({ preview, target }) {
           codefast.local
         </div>
       </div>
-      <iframe title="preview" srcDoc={guard(preview)} className="flex-1 bg-white w-full border-0" />
+      <iframe title="preview" srcDoc={guard(preview, { run })} className="flex-1 bg-white w-full border-0" />
     </>
   );
 }

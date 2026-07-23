@@ -82,6 +82,24 @@ files = [], activeFile, onFile, getFile, setFile,
   // JS уроците я палят. HTML и CSS я оставят изключена — нищо не се променя.
   hasConsole = false,
 
+  // ── ОТКЪДЕ ИДВАТ РЕДОВЕТЕ ──
+  // null → от рамката, през postMessage. Така е при HTML и CSS.
+  // масив → отвън, от Worker. Тогава рамката мълчи, защото не изпълнява нищо.
+  consoleLines = null,
+  onClearConsole,
+
+  // false → скриптовете в превюто НЕ се изпълняват. Виж guard.js.
+// false → скриптовете в превюто НЕ се изпълняват. Виж guard.js.
+  runPreview = true,
+
+  // ── ДЯСНАТА КОЛОНА ПРИ JS ──
+  // Превюто отпада: при js-worker то рисува само страница, която никога
+  // не се променя — цялата работа е в конзолата. На негово място дясната
+  // колона се дели наполовина: конзола горе, резултат долу.
+  // ⚠ Долният панел тогава не се рисува изобщо.
+  sidePanels = false,
+   chrome = true,
+
   // ── ДОКЛАД ЗА ГРЕШКА ──
   course, itemId,
 }) {
@@ -99,7 +117,8 @@ files = [], activeFile, onFile, getFile, setFile,
 
   const [leftW, setLeftW] = useState(null);   // null = още не е измерено
   const [prevW, setPrevW] = useState(null);
-  const [botH, setBotH] = useState(340);
+ const [botH, setBotH] = useState(340);
+  const [sideSplit, setSideSplit] = useState(0.5);   // дял на конзолата горе
 
   const [showFb, setShowFb] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
@@ -119,7 +138,16 @@ files = [], activeFile, onFile, getFile, setFile,
   // ⚠ Слуша ВИНАГИ, но панелът се показва само при hasConsole.
   // Куката се чисти при всяка промяна на preview — иначе човек гледа
   // изход от код, който вече не съществува.
-  const cons = useConsole(preview);
+  //
+  // ⚠ Подадат ли се редове отвън, тези тук се пренебрегват. Куката пак се
+  // вика — правилата на React не търпят условно викане.
+  const consFrame = useConsole(preview);
+  const external = consoleLines != null;
+  const consLines = external ? consoleLines : consFrame.lines;
+  const consErrors = external
+    ? consoleLines.filter((l) => l.isErr || l.method === 'error').length
+    : consFrame.errors;
+  const consClear = external ? (onClearConsole ?? (() => {})) : consFrame.clear;
 
   const multi = files.length > 1;
   const activeName = multi ? (activeFile ?? files[0].name) : fileName;
@@ -179,13 +207,13 @@ files = [], activeFile, onFile, getFile, setFile,
   const popped = useRef(false);
   useEffect(() => {
     if (!hasConsole) return;
-    if (cons.errors > 0 && !popped.current) {
+    if (consErrors > 0 && !popped.current) {
       popped.current = true;
       setShowBot(true);
       setBottom('console');
     }
-    if (cons.errors === 0) popped.current = false;
-  }, [cons.errors, hasConsole]);
+    if (consErrors === 0) popped.current = false;
+  }, [consErrors, hasConsole]);
 
   const start = (which) => (e) => {
     e.preventDefault();
@@ -193,7 +221,7 @@ files = [], activeFile, onFile, getFile, setFile,
     if (which === 'l') touched.current.l = true;
     if (which === 'p') touched.current.p = true;
     setDragging(true);
-    document.body.style.cursor = which === 'b' ? 'row-resize' : 'col-resize';
+    document.body.style.cursor = (which === 'b' || which === 's') ? 'row-resize' : 'col-resize';
     document.body.style.userSelect = 'none';
   };
 
@@ -211,6 +239,9 @@ files = [], activeFile, onFile, getFile, setFile,
       if (w < 240) w = 240;
       if (w > r.width - 520) w = r.width - 520;
       setPrevW(w);
+    } else if (drag.current === 's') {
+      const f = (e.clientY - r.top) / r.height;
+      setSideSplit(Math.min(0.85, Math.max(0.15, f)));
     } else {
       let h = r.bottom - e.clientY;
       if (h < 110) h = 110;
@@ -227,6 +258,39 @@ files = [], activeFile, onFile, getFile, setFile,
   };
 
   // ── ПАРЧЕТАТА: един източник, десктоп и телефон ги ползват еднакво ──
+
+// ⚠ Копира ТЕКУЩИЯ файл, не всичките. Ученикът гледа един и това очаква.
+  // Докладът за грешка е другото — той събира всичко, защото там трябва.
+  const [copied, setCopied] = useState(false);
+  const copyCode = () => {
+    const text = multi && getFile ? (getFile(activeName) ?? '') : (code ?? '');
+    try {
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1400);
+    } catch {}
+  };
+
+  const copyBtn = (
+    <button onClick={copyCode} title={t('copy_code')}
+      className="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 text-gray-500 hover:text-gray-200 hover:border-white/25 hover:bg-white/5 transition">
+      {copied ? (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" className="text-emerald-400"><path d="M20 6L9 17l-5-5" /></svg>
+      ) : (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+        </svg>
+      )}
+    </button>
+  );
+
+  const submitBtn = (
+    <button onClick={onSubmit}
+      className="flex items-center gap-1.5 text-sm font-semibold px-5 py-1.5 rounded-lg text-white bg-gradient-to-r from-emerald-500 to-green-600 hover:opacity-90 transition shadow-lg shadow-emerald-500/25 shrink-0">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6"><path d="M20 6L9 17l-5-5" /></svg>
+      {t('submit')}
+    </button>
+  );
 
   const statementInner = (
     <>
@@ -287,10 +351,10 @@ const editorEl = ide ? (
     <ResultPanel result={result} checkLabels={checkLabels} why={why} hints={hints} onTutor={onTutor} />
   );
 
- const consoleBody = <ConsolePane lines={cons.lines} onClear={cons.clear} />;
+  const consoleBody = <ConsolePane lines={consLines} onClear={consClear} />;
 
   const dot = result ? (result.passed ? 'bg-emerald-400' : 'bg-rose-400') : null;
- const consDot = cons.errors > 0 ? 'bg-rose-400' : (cons.lines.length ? 'bg-sky-400' : null);
+  const consDot = consErrors > 0 ? 'bg-rose-400' : (consLines.length ? 'bg-sky-400' : null);
 
   // ⚠ Хардкоднат български, като бутоните на наставника. Трябва да мине
   // през src/messages/{bg,en}/practice.json преди пускане на английски —
@@ -300,32 +364,30 @@ const editorEl = ide ? (
   return (
     <div className="h-full flex flex-col min-h-0">
 
-      {/* ── ГОРНА ЛЕНТА ── */}
-      <div className="shrink-0 h-13 py-2.5 flex items-center gap-2.5 px-2 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
-        {BackLink && (
-          <BackLink href={backHref}
-            className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 transition shrink-0">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-              <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
-            </svg>
-          </BackLink>
-        )}
+      {/* ── ГОРНА ЛЕНТА ──
+          При урок не се рисува: заглавието стои вътре в условието, а
+          „Предай" слиза под редактора. Печели се цял ред височина. */}
+      {chrome && (
+        <div className="shrink-0 h-13 py-2.5 flex items-center gap-2.5 px-2 bg-[var(--bg-page)]/90 backdrop-blur border-b border-white/10">
+          {BackLink && (
+            <BackLink href={backHref}
+              className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/15 text-gray-300 hover:text-white hover:border-white/40 transition shrink-0">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
+              </svg>
+            </BackLink>
+          )}
 
-        {beforeTitle}
-        <span className="font-semibold text-white truncate max-w-[35%]">{title}</span>
-        {badge && <span className={`text-[11px] px-2 py-0.5 rounded-md border shrink-0 ${badge.cls}`}>{badge.text}</span>}
+          {beforeTitle}
+          <span className="font-semibold text-white truncate max-w-[35%]">{title}</span>
+          {badge && <span className={`text-[11px] px-2 py-0.5 rounded-md border shrink-0 ${badge.cls}`}>{badge.text}</span>}
 
-        {extra}
-        {!extra && <div className="flex-1" />}
+          {extra}
+          {!extra && <div className="flex-1" />}
 
-        {canSubmit && (
-          <button onClick={onSubmit}
-            className="flex items-center gap-1.5 text-sm font-semibold px-5 py-1.5 rounded-lg text-white bg-gradient-to-r from-emerald-500 to-green-600 hover:opacity-90 transition shadow-lg shadow-emerald-500/25 shrink-0">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6"><path d="M20 6L9 17l-5-5" /></svg>
-            {t('submit')}
-          </button>
-        )}
-      </div>
+          {canSubmit && <>{copyBtn}{submitBtn}</>}
+        </div>
+      )}
 
    {/* ══════════════════ ТЕЛЕФОН ══════════════════ */}
       {isMobile ? (
@@ -416,7 +478,7 @@ const editorEl = ide ? (
               при всяко превключване на таб. */}
           {hasPreview && (
             <div className={`flex-1 min-h-0 flex flex-col ${mobileView === 'preview' ? '' : 'hidden'}`}>
-              <PreviewPane preview={preview} target={target} />
+              <PreviewPane preview={preview} target={target} run={runPreview} />
             </div>
           )}
 
@@ -425,6 +487,14 @@ const editorEl = ide ? (
           )}
 
           {mobileView === 'result' && <div className="flex-1 min-h-0 overflow-y-auto p-4">{resultBody}</div>}
+
+          {/* ⚠ На телефон „Предай" стои ВИНАГИ отдолу, независимо кой таб е
+              отворен. Иначе се предава само от таба с кода. */}
+          {!chrome && canSubmit && (
+            <div className="shrink-0 px-3 py-2 flex justify-end items-center gap-2 bg-black/30 border-t border-white/10">
+              {copyBtn}{submitBtn}
+            </div>
+          )}
         </div>
       ) : (
 
@@ -488,7 +558,7 @@ const editorEl = ide ? (
               </RailBtn>
             )}
 
-            {!ide && (
+          {!ide && !sidePanels && (
               <RailBtn on={showBot && bottom === 'result'}
                 onClick={() => { setShowBot(!(showBot && bottom === 'result')); setBottom('result'); }}
                 title={t('result')} dot={dot}>
@@ -496,7 +566,7 @@ const editorEl = ide ? (
               </RailBtn>
             )}
 
-            {hasConsole && !ide && (
+            {hasConsole && !ide && !sidePanels && (
               <RailBtn on={showBot && bottom === 'console'}
                 onClick={() => { setShowBot(!(showBot && bottom === 'console')); setBottom('console'); }}
                 title={L_CONSOLE} dot={consDot}>
@@ -538,7 +608,7 @@ const editorEl = ide ? (
             {fileBar}
             <div className="flex-1 min-h-[120px]">{editorEl}</div>
 
-            {showBot && (
+          {showBot && !sidePanels && (
               <>
                 <div onMouseDown={start('b')}
                   className="shrink-0 h-2 cursor-row-resize flex items-center justify-center bg-white/[0.03] hover:bg-sky-500/20 transition-colors group">
@@ -593,14 +663,23 @@ const editorEl = ide ? (
                 </div>
               </>
             )}
-          </div>
 
-          {/* ═══ 3. ПРЕГЛЕД ═══ */}
+            {/* ⚠ „Предай" под редактора, не в горна лента. Стои до кода,
+                върху който натискаш — и горният ред остава за съдържание. */}
+            {!chrome && canSubmit && (
+        <div className="shrink-0 px-3 py-2 flex justify-end items-center gap-2 bg-black/20 border-t border-white/10">
+                {copyBtn}{submitBtn}
+              </div>
+            )}
+          </div>
+{/* ═══ 3. ДЯСНА КОЛОНА ═══ */}
           {/* ⚠ РАМКАТА ОСТАВА В ДЪРВЕТО, САМО СЕ СКРИВА.
               Затворена колона = размонтирана рамка = скриптът не се изпълнява
               = конзолата мълчи. Рамка с display:none пак се зарежда и пак
-              изпълнява — затова тук се крие, а не се маха. */}
-          {hasPreview && (
+              изпълнява — затова тук се крие, а не се маха.
+
+              При sidePanels колоната носи конзолата и резултата, не превюто. */}
+          {(hasPreview || sidePanels) && (
             <>
               {showPrev && (
                 <div onMouseDown={start('p')}
@@ -612,11 +691,49 @@ const editorEl = ide ? (
               )}
 
               <div className={`shrink-0 flex flex-col min-w-0 border-l border-white/10 ${showPrev ? '' : 'hidden'}`}
-                style={{ width: showPrev ? (prevW ?? 320) : 0 }}>
-                <PreviewPane preview={preview} target={target} />
+                style={{ width: showPrev ? (prevW ?? 380) : 0 }}>
+
+                {sidePanels ? (
+                  <>
+                    {/* ── КОНЗОЛА ── */}
+                    <div className="flex flex-col min-h-0" style={{ flexBasis: `${sideSplit * 100}%`, flexGrow: 0, flexShrink: 1 }}>
+                      <div className="shrink-0 flex items-center gap-2 px-3 h-8 bg-black/25 border-b border-white/[0.08]">
+                        <span className="text-[11px] font-bold tracking-wider text-gray-400">{L_CONSOLE}</span>
+                        {consDot && <span className={`w-1.5 h-1.5 rounded-full ${consDot}`} />}
+                      </div>
+                      <div className="flex-1 min-h-0">{consoleBody}</div>
+                    </div>
+
+                    <div onMouseDown={start('s')}
+                      className="shrink-0 h-2 cursor-row-resize flex items-center justify-center bg-white/[0.03] hover:bg-sky-500/20 transition-colors group">
+                      <div className="flex gap-1 pointer-events-none">
+                        {[0, 1, 2].map((i) => <span key={i} className="w-1 h-1 rounded-full bg-gray-700 group-hover:bg-sky-300 transition-colors" />)}
+                      </div>
+                    </div>
+
+                    {/* ── РЕЗУЛТАТ ── */}
+                    <div className="flex-1 min-h-0 flex flex-col">
+                      <div className="shrink-0 flex items-center gap-2 px-3 h-8 bg-black/25 border-y border-white/[0.08]">
+                        <span className="text-[11px] font-bold tracking-wider text-gray-400">{t('result')}</span>
+                        <div className="flex-1" />
+                        {result && (
+                          <span className={`text-[12px] font-semibold ${result.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
+                            {result.passed
+                              ? '✓ ' + t('all_passed')
+                              : `${result.results.filter((r) => r.ok).length} / ${result.results.length}`}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex-1 overflow-y-auto p-4">{resultBody}</div>
+                    </div>
+                  </>
+                ) : (
+                  <PreviewPane preview={preview} target={target} run={runPreview} />
+                )}
               </div>
             </>
           )}
+        
         </div>
       )}
 

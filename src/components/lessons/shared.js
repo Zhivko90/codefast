@@ -3,41 +3,453 @@
 // Общи части, ползвани от няколко изгледа на уроци.
 //
 // Блоковете идват СГЛОБЕНИ за езика: b.text е низ, не { bg, en }.
-// Кодът (b.code, b.html, b.url) не е текст — не се превежда, идва от логиката.
+// Кодът (b.code, b.html, b.url, b.out) не е текст — не се превежда, идва от логиката.
+
+// ── ИНЛАЙН ФОРМАТ В ТЕКСТА ──
+// `код` → рамка.  *дума* → термин при първата му поява.
+//
+// ⚠ Знаците ОСТАВАТ в JSON-а и минават през превода. Преводачът ги пази.
+// ⚠ Не е markdown. Само тези двата. Ако потрябва трети, добавя се ТУК —
+//    не се вкарва цяла библиотека заради едно удебеляване.
+// ⚠ Няма dangerouslySetInnerHTML. Текстът на урока е низ, не HTML.
+export function inline(s) {
+  const str = String(s ?? '');
+  if (!str.includes('`') && !str.includes('*')) return str;   // бърз изход за старите уроци
+
+  const out = [];
+  const re = /`([^`]+)`|\*([^*]+)\*/g;
+  let last = 0;
+  let m;
+  let k = 0;
+
+  while ((m = re.exec(str)) !== null) {
+    if (m.index > last) out.push(str.slice(last, m.index));
+    if (m[1] != null) {
+      out.push(
+        <code key={k++} className="px-1.5 py-0.5 mx-px rounded border border-white/10 bg-black/40 text-sky-200 text-[0.9em] whitespace-nowrap">
+          {m[1]}
+        </code>
+      );
+    } else {
+      out.push(<em key={k++} className="text-gray-200 not-italic font-medium">{m[2]}</em>);
+    }
+    last = re.lastIndex;
+  }
+  if (last < str.length) out.push(str.slice(last));
+  return out;
+}
+
+// ══════════════ ОЦВЕТЯВАНЕ НА КОДА ══════════════
+//
+// ⚠ Това НЕ е парсер. Разпознава по образец и на места ще сбърка —
+// например дума пред скоба се брои за функция, дори да не е.
+// Целта е да се чете по-лесно, не да е вярно на сто на сто.
+// Сбърка ли някъде грозно, оправя се тук, не се вкарва библиотека.
+//
+// ⚠ Никакъв HTML. Кодът се реже на части и всяка става span.
+// ⚠ Цветът се дава по РОЛЯ, не по вид. Точно това правят и гигантите:
+// името, което ученикът е написал, изглежда различно от вграденото.
+// withVat и Math.round не бива да са в един цвят — едното е негово,
+// другото го дава браузърът.
+const CLS = {
+  txt: null,                        // без обвивка — по-малко възли
+  com: 'text-gray-600',             // коментар
+  str: 'text-amber-200/90',         // низ
+  num: 'text-orange-300',           // число
+  kw: 'text-violet-300',            // ключова дума
+  fn: 'text-rose-300',              // ИМЕ, написано от ученика
+  bi: 'text-teal-300',              // вграденото: console, Math, document
+  lit: 'text-orange-300',           // true, false, null, undefined, NaN
+  tag: 'text-rose-300',
+  attr: 'text-violet-300',
+  prop: 'text-teal-300',
+};
+
+const JS_KW = new Set([
+  'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'do',
+  'break', 'continue', 'switch', 'case', 'default', 'new', 'delete', 'typeof',
+  'instanceof', 'in', 'of', 'this', 'class', 'extends', 'super', 'import', 'export',
+  'from', 'as', 'async', 'await', 'try', 'catch', 'finally', 'throw', 'yield',
+]);
+
+// Стойности, не думи. Държат се като числа и затова са в цвета на числата.
+const JS_LIT = new Set(['true', 'false', 'null', 'undefined', 'NaN', 'Infinity']);
+
+// Даденото от браузъра. Ученикът не го е писал и трябва да се вижда.
+const JS_BUILTIN = new Set([
+  'console', 'Math', 'JSON', 'Object', 'Array', 'String', 'Number', 'Boolean',
+  'Date', 'Promise', 'Map', 'Set', 'Error', 'RegExp', 'Symbol', 'BigInt',
+  'document', 'window', 'localStorage', 'sessionStorage', 'navigator',
+  'parseInt', 'parseFloat', 'isNaN', 'fetch', 'setTimeout', 'setInterval',
+  'clearTimeout', 'clearInterval', 'alert', 'prompt', 'confirm',
+]);
+
+function jsTokens(code) {
+  const out = [];
+  const re = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"|`(?:\\.|[^`\\])*`)|(\b\d+(?:\.\d+)?\b)|([A-Za-z_$][\w$]*)/g;
+  let last = 0;
+  let m;
+
+  while ((m = re.exec(code)) !== null) {
+    if (m.index > last) out.push(['txt', code.slice(last, m.index)]);
+    if (m[1]) out.push(['com', m[1]]);
+    else if (m[2]) out.push(['str', m[2]]);
+    else if (m[3]) out.push(['num', m[3]]);
+   else {
+      const w = m[4];
+      const dotted = code[m.index - 1] === '.';        // .log след console
+      const called = code[re.lastIndex] === '(';
+      if (JS_KW.has(w)) out.push(['kw', w]);
+      else if (JS_LIT.has(w)) out.push(['lit', w]);
+      else if (JS_BUILTIN.has(w)) out.push(['bi', w]);
+      else if (dotted) out.push(['prop', w]);          // метод или свойство
+      else if (called) out.push(['fn', w]);            // име, написано от ученика
+      else out.push(['txt', w]);
+    }
+    last = re.lastIndex;
+  }
+  if (last < code.length) out.push(['txt', code.slice(last)]);
+  return out;
+}
+
+function htmlTokens(code) {
+  const out = [];
+  const re = /(<!--[\s\S]*?-->)|(<\/?)([a-zA-Z][\w-]*)((?:"[^"]*"|'[^']*'|[^>])*?)(\/?>)/g;
+  let last = 0;
+  let m;
+
+  while ((m = re.exec(code)) !== null) {
+    if (m.index > last) out.push(['txt', code.slice(last, m.index)]);
+    if (m[1]) {
+      out.push(['com', m[1]]);
+    } else {
+      out.push(['txt', m[2]]);
+      out.push(['tag', m[3]]);
+
+      // атрибути вътре в тага
+      const rest = m[4] ?? '';
+      const are = /([a-zA-Z-]+)(?=\s*=)|("[^"]*"|'[^']*')/g;
+      let al = 0;
+      let am;
+      while ((am = are.exec(rest)) !== null) {
+        if (am.index > al) out.push(['txt', rest.slice(al, am.index)]);
+        out.push(am[1] ? ['attr', am[1]] : ['str', am[2]]);
+        al = are.lastIndex;
+      }
+      if (al < rest.length) out.push(['txt', rest.slice(al)]);
+
+      out.push(['txt', m[5]]);
+    }
+    last = re.lastIndex;
+  }
+  if (last < code.length) out.push(['txt', code.slice(last)]);
+  return out;
+}
+
+function cssTokens(code) {
+  const out = [];
+  const re = /(\/\*[\s\S]*?\*\/)|("[^"]*"|'[^']*')|([a-zA-Z-]+)(?=\s*:)|(#[0-9a-fA-F]{3,8}\b)|(\b\d+(?:\.\d+)?[a-z%]*)/g;
+  let last = 0;
+  let m;
+
+  while ((m = re.exec(code)) !== null) {
+    if (m.index > last) out.push(['txt', code.slice(last, m.index)]);
+    if (m[1]) out.push(['com', m[1]]);
+    else if (m[2]) out.push(['str', m[2]]);
+    else if (m[3]) out.push(['prop', m[3]]);
+    else out.push(['num', m[4] ?? m[5]]);
+    last = re.lastIndex;
+  }
+  if (last < code.length) out.push(['txt', code.slice(last)]);
+  return out;
+}
+
+// Езикът се познава по вида. Урокът може и да го каже сам: b.lang.
+function guessLang(code) {
+  const s = String(code ?? '').trim();
+  if (s.startsWith('<') || /<\/[a-zA-Z]/.test(s)) return 'html';
+  if (/=>|\bfunction\b|\bconst\b|\blet\b|console\./.test(s)) return 'js';
+  if (/\{[^{}]*:[^{}]*[;}]/.test(s)) return 'css';
+  return 'js';
+}
+
+function Painted({ code, lang }) {
+  const src = String(code ?? '');
+  const kind = lang ?? guessLang(src);
+  const toks = kind === 'html' ? htmlTokens(src) : kind === 'css' ? cssTokens(src) : jsTokens(src);
+
+  return toks.map(([t, v], i) =>
+    CLS[t] ? <span key={i} className={CLS[t]}>{v}</span> : v
+  );
+}
+
+// ══════════════ АНАТОМИЯ НА КОДА ══════════════
+//
+// Показва КОЕ ПАРЧЕ КАК СЕ КАЗВА. Не е кодов къс — диаграма е.
+//
+// ⚠ Не е картинка. Картинката не се превежда, не се чете на телефон и
+// остарява мълчаливо, щом кодът се промени. Тук всичко е текст.
+//
+// ⚠ БЕЗ ЦВЕТОВЕ. Надписът и скобата са сиви, парчето само се подчертава.
+// Шарен код се чете по-трудно, не по-лесно — тук се сочи, не се боядисва.
+//
+// ⚠ НАДПИСИТЕ СА КЪСИ. Те стоят над кода, в моноширинна мрежа —
+// дълъг надпис избутва останалите на нов ред. Подробността отива в легендата.
+//
+// В логиката:
+//   { type: "anatomy",
+//     code: `...`,
+//     marks: [ { find: "function" }, { find: "greet", line: 1 } ],
+//     band: { from: 2, to: 3 },
+//     legend: [undefined, undefined] }
+//
+// В текста: blocks.N.marks.0.label (КЪС) и blocks.N.legend.0 (пълното).
+
+// ══════════════ АНАТОМИЯ НА КОДА ══════════════
+//
+// Показва КОЕ ПАРЧЕ КАК СЕ КАЗВА: надпис отгоре, скоба надолу към парчето.
+//
+// ⚠ РИСУВА СЕ КАТО SVG, не като текст в моноширинна мрежа. Мрежата се
+// разминава при първата по-дълга дума — три опита го доказаха. В SVG
+// позицията е число и разминаване е невъзможно.
+//
+// ⚠ Диаграмите на Codecademy са ръчно рисувани SVG картинки. Тази се
+// ГЕНЕРИРА от кода — значи се превежда и не остарява, когато кодът се смени.
+//
+// ⚠ textLength закова всеки ред точно на своята ширина. Без него ширината
+// на знака зависи от шрифта на системата и скобите тръгват настрани.
+//
+// В логиката:
+//   { type: "anatomy",
+//     code: `...`,
+//     marks: [ { find: "withVat" }, { find: "price", line: 1 } ],
+//     band: { from: 2, to: 3 },
+//     legend: [undefined] }
+//
+// В текста: blocks.N.marks.0.label и blocks.N.legend.0
+
+// ⚠ Същите цветове като CLS, но като числа — SVG не разбира класове.
+// Разминат ли се, кодът в диаграмата ще изглежда различно от кода в блока.
+const FILL = {
+  txt: '#d1d5db', com: '#4b5563', str: '#fde68a', num: '#fdba74',
+  kw: '#c4b5fd', fn: '#fda4af', bi: '#5eead4', lit: '#fdba74',
+  tag: '#fda4af', attr: '#c4b5fd', prop: '#5eead4',
+};
+// целият код → списък от редове, всеки списък от [вид, текст]
+function tokenLines(code, lang) {
+  const src = String(code ?? '');
+  const kind = lang ?? guessLang(src);
+  const toks = kind === 'html' ? htmlTokens(src) : kind === 'css' ? cssTokens(src) : jsTokens(src);
+
+  const rows = [[]];
+  for (const [t, v] of toks) {
+    const bits = String(v).split('\n');
+    bits.forEach((b, i) => {
+      if (i > 0) rows.push([]);
+      if (b) rows[rows.length - 1].push([t, b]);
+    });
+  }
+  return rows;
+}
+
+const CH = 7.83;    // ширина на знак при 13px моноширинен
+const LH = 21;      // височина на ред
+const PAD = 16;
+const LBL = 11;     // размер на надписа
+const LBLH = 15;    // етаж на надписите
+const STEM = 12;    // от надписа до скобата
+const TICK = 5;     // зъбчетата на скобата
+
+function Anatomy({ code, marks = [], band, legend = [], lang }) {
+  const lines = String(code ?? '').split('\n');
+  const rows = tokenLines(code, lang);
+
+  // всяка маркировка се закача за първия ред, в който я има
+  const taken = new Set();
+  const placed = [];
+  lines.forEach((ln, i) => {
+    marks.forEach((mk, k) => {
+      if (!mk?.find) return;
+      const at = ln.indexOf(mk.find);
+      if (at === -1) return;
+      if (mk.line != null) { if (mk.line === i + 1) placed.push({ ...mk, at, row: i }); return; }
+      if (taken.has(k)) return;
+      taken.add(k);
+      placed.push({ ...mk, at, row: i });
+    });
+  });
+// ⚠ Ширината на надписа се ПРЕСМЯТА и после се ЗАКОВАВА с textLength.
+  // Иначе оценката и нарисуваното се разминават — кирилицата е по-широка
+  // от очакваното и два съседни надписа се слепват.
+  const withLabel = placed.filter((p) => p.label).sort((a, b) => a.at - b.at);
+  const lvl = [];
+  const shelves = [];
+  withLabel.forEach((p) => {
+    const w = String(p.label).length * (LBL * 0.66);
+    const cx = (p.at + p.find.length / 2) * CH;
+    const from = cx - w / 2;
+    const to = cx + w / 2;
+    let s = 0;
+    while (shelves[s] != null && from < shelves[s] + 18) s++;
+    shelves[s] = to;
+    lvl.push({ ...p, cx, from, to, w, level: s });
+  });
+
+  const depth = shelves.length;
+  const topH = depth ? depth * LBLH + STEM : 0;
+
+  const codeW = Math.max(...lines.map((l) => l.length)) * CH;
+  const leftOut = Math.min(0, ...lvl.map((l) => l.from));
+  const rightOut = Math.max(codeW, ...lvl.map((l) => l.to));
+  const W = rightOut - leftOut + PAD * 2;
+  const H = topH + lines.length * LH + PAD * 1.6;
+  const X0 = PAD - leftOut;      // нула на кода вътре в рисунката
+
+  const items = (Array.isArray(legend) ? legend : [])
+    .map((l) => (typeof l === 'string' ? l : l?.text))
+    .filter(Boolean);
+
+  const codeTop = topH + PAD * 0.6;
+
+  return (
+    <div className="rounded-lg border border-white/10 overflow-hidden bg-black/40">
+      <div className="px-2 py-3 overflow-x-auto">
+        <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ maxWidth: '100%', height: 'auto' }}>
+          {/* тялото — осветено отзад */}
+          {band && (
+            <rect
+              x={X0 - 5} y={codeTop + (band.from - 1) * LH - 3}
+              width={codeW + 10} height={(band.to - band.from + 1) * LH + 2}
+              rx="4" fill="rgba(255,255,255,0.055)"
+            />
+          )}
+
+          {/* надписи и скоби */}
+          {lvl.map((p, i) => {
+            const yLabel = depth * LBLH - p.level * LBLH - 4;
+            const yBar = topH - 2;
+            const x1 = X0 + p.at * CH;
+            const x2 = x1 + p.find.length * CH;
+            const cx = X0 + p.cx;
+
+            return (
+              <g key={i}>
+              <text x={cx} y={yLabel} textAnchor="middle"
+                  textLength={p.w} lengthAdjust="spacingAndGlyphs"
+                  fontSize={LBL} fill="#9ca3af"
+                  fontFamily="ui-sans-serif, system-ui, sans-serif">
+                  {p.label}
+                </text>
+                <path
+                  d={`M ${cx} ${yLabel + 4} V ${yBar} M ${x1} ${yBar} H ${x2} M ${x1} ${yBar} v ${TICK} M ${x2} ${yBar} v ${TICK}`}
+                  stroke="#4b5563" strokeWidth="1" fill="none"
+                />
+              </g>
+            );
+          })}
+
+          {/* самият код */}
+          {rows.map((toks, i) => {
+            const len = lines[i]?.length ?? 0;
+            const y = codeTop + i * LH + 13;
+            if (len === 0) return null;
+            return (
+              <text key={i} x={X0} y={y} xmlSpace="preserve"
+                textLength={len * CH} lengthAdjust="spacing"
+                fontSize="13" fontFamily="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+                {toks.map(([t, v], k) => (
+                  <tspan key={k} fill={FILL[t] ?? FILL.txt}>{v}</tspan>
+                ))}
+              </text>
+            );
+          })}
+        </svg>
+      </div>
+
+      {items.length > 0 && (
+        <div className="border-t border-white/10 bg-black/20 px-4 py-3 flex flex-col gap-1.5">
+          {items.map((t, i) => (
+            <div key={i} className="flex gap-2 text-[12.5px] text-gray-500 leading-relaxed">
+              <span className="shrink-0 text-gray-700">—</span>
+              <span>{inline(t)}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── ЛЕНТИТЕ ──
+// Ученикът трябва да вижда КЪДЕ е: обяснението свърши, задачата почна.
+// Иконата се избира по ключ, не се подава от урока — текстът няма логика.
+const BANDS = {
+  learn: (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <path d="M12 6.5C10.5 5 8 4.5 4 4.5v13c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-13c-4 0-6.5.5-8 2z" /><path d="M12 6.5v12.5" />
+    </svg>
+  ),
+  task: (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="2" /><path d="M8 12.5l2.5 2.5L16 9.5" />
+    </svg>
+  ),
+  recap: (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <path d="M20 20.5a1 1 0 01-1 1H5a1 1 0 01-1-1v-17a1 1 0 011-1h11l4 4z" /><path d="M8 9h8M8 13h8M8 17h5" />
+    </svg>
+  ),
+};
 
 export function Blocks({ blocks }) {
   if (!blocks) return null;
   return (
     <div className="flex flex-col gap-4">
       {blocks.map((b, i) => {
-        if (b.type === 'heading') return <h2 key={i} className="text-lg font-bold text-white mt-3">{b.text}</h2>;
-        if (b.type === 'text') return <p key={i} className="text-gray-300 leading-relaxed">{b.text}</p>;
-        if (b.type === 'quote') return <p key={i} className="border-l-2 border-sky-500/50 pl-4 text-gray-400 italic">{b.text}</p>;
+        // ЛЕНТА — граница между частите на урока. b.kind: learn | task | recap
+        if (b.type === 'band') return (
+          <div key={i} className="-mx-5 mt-4 first:mt-0 px-5 py-2 flex items-center gap-2 bg-white/[0.04] border-y border-white/[0.07]">
+            <span className="text-gray-500">{BANDS[b.kind] ?? BANDS.learn}</span>
+            <span className="text-[13px] font-semibold text-gray-300">{b.text}</span>
+          </div>
+        );
+
+        if (b.type === 'heading') return <h2 key={i} className="text-lg font-bold text-white mt-3">{inline(b.text)}</h2>;
+        if (b.type === 'text') return <p key={i} className="text-gray-300 leading-relaxed">{inline(b.text)}</p>;
+        if (b.type === 'quote') return <p key={i} className="border-l-2 border-sky-500/50 pl-4 text-gray-400 italic">{inline(b.text)}</p>;
 
       // ⚠ items идват като НИЗОВЕ: "blocks.6.items.0" пише низ направо в масива.
         // Обектната форма { text } се приема, за да не гърми стар урок.
-        if (b.type === 'list') return (
-          <ul key={i} className="flex flex-col gap-2">
-            {(b.items ?? []).map((it, j) => {
-              const t = typeof it === 'string' ? it : it?.text;
-              if (!t) return null;   // липсва превод → няма куха стрелка
-              return (
+        // b.ordered → номера вместо стрелки. За разбор на кода ред по ред.
+        if (b.type === 'list') {
+          const items = (b.items ?? []).map((it) => (typeof it === 'string' ? it : it?.text)).filter(Boolean);
+          const Tag = b.ordered ? 'ol' : 'ul';
+          return (
+            <Tag key={i} className="flex flex-col gap-2">
+             {items.map((t, j) => (
                 <li key={j} className="flex gap-3 text-gray-300 leading-relaxed">
-                  <span className="text-sky-400 mt-1">›</span>
-                  <span>{t}</span>
+                  {b.ordered ? (
+                    <span className="shrink-0 w-5 text-right text-gray-500 tabular-nums">{j + 1}.</span>
+                  ) : (
+                    // ⚠ Точката е span, не знак. Знакът зависи от шрифта и се
+                    // мести нагоре-надолу между операционните системи.
+                    <span className="shrink-0 w-1.5 h-1.5 mt-[9px] rounded-full bg-gray-600" />
+                  )}
+                  <span className="min-w-0">{inline(t)}</span>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </Tag>
+          );
+        }
+
+       // АНАТОМИЯ — кое парче как се казва
+        if (b.type === 'anatomy') return (
+          <Anatomy key={i} code={b.code} marks={b.marks} band={b.band} legend={b.legend} lang={b.lang} />
         );
 
         // кодов къс в текста. b.code е код — един за всички езици.
-        // b.text е по избор: подпис под къса.
-        if (b.type === 'code') return (
-          <pre key={i} className="rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-[13px] leading-relaxed overflow-x-auto">
-            <code className="text-sky-200 whitespace-pre-wrap">{b.code ?? b.text ?? ''}</code>
-          </pre>
-        );
+        // b.out е по избор: какво излиза в конзолата. Също код, не се превежда.
+        if (b.type === 'code') return <CodeBlock key={i} code={b.code ?? b.text ?? ''} out={b.out} lang={b.lang} />;
 
         // ОЧАКВАН РЕЗУЛТАТ — като истински браузър прозорец
         if (b.type === 'preview') return (
@@ -74,6 +486,35 @@ export function Blocks({ blocks }) {
   );
 }
 
+// Кодов къс с бутон за копиране и по избор — какво излиза в конзолата.
+function CodeBlock({ code, out, lang }) {
+  const copy = () => { try { navigator.clipboard.writeText(code); } catch {} };
+
+  return (
+    <div className="relative group rounded-lg border border-white/10 overflow-hidden">
+      <button onClick={copy} title="Копирай"
+        className="absolute top-2 right-2 z-10 w-7 h-7 flex items-center justify-center rounded-md text-gray-600 opacity-0 group-hover:opacity-100 hover:text-gray-200 hover:bg-white/10 transition">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+        </svg>
+      </button>
+
+      <pre className="bg-black/40 px-4 py-3 pr-10 text-[13px] leading-relaxed overflow-x-auto">
+        <code className="text-gray-300 whitespace-pre-wrap"><Painted code={code} lang={lang} /></code>
+      </pre>
+
+      {out != null && (
+        <div className="border-t border-white/10 bg-black/60">
+          <div className="px-4 pt-2 text-[10px] uppercase tracking-wider text-gray-500">Конзола</div>
+          <pre className="px-4 pb-3 pt-1 text-[13px] leading-relaxed overflow-x-auto">
+            <code className="text-emerald-300/90 whitespace-pre-wrap">{out}</code>
+          </pre>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Кодов панел + жив преглед (за уроци с demo код).
 export function extractBody(code) {
   const m = code.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
@@ -89,7 +530,7 @@ export function highlight(code) {
 export function CodePreview({ code }) {
   return (
     <div className="flex flex-col gap-3 h-full">
-      <div className="rounded-lg overflow-hidden border border-white/10 shrink-0">
+      <div className="rounded-lg overflow-hidden border border-white/10">
         <div className="flex items-center gap-1.5 px-3 py-2 bg-[var(--bg-elevated)] border-b border-white/10">
           <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
           <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />

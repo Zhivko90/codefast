@@ -38,7 +38,14 @@
       "modules": {
         "basics": { "title": "Input and output" },
         "scope": { "title": "Scope and forms" },
-        "habits": { "title": "Habits" }
+"habits": { "title": "Habits" }
+      }
+    },
+    "arrays": {
+      "title": "Arrays",
+      "desc": "A hundred variables with a number on the end are not data. Here comes one name for many values — and the sorting that looks right and is not.",
+      "modules": {
+        "listbasics": { "title": "Values with an address" }
       }
     }
   }

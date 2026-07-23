@@ -1,0 +1,80 @@
+{
+  "title": "One name for many values",
+
+  "checkLabels.t1": "You wrote something",
+  "checkLabels.t2": "You edited script.js",
+  "checkLabels.t3": "The script is linked",
+  "checkLabels.t4": "The code runs",
+  "checkLabels.t5": "The separate names are gone",
+  "checkLabels.t6": "cups is an array",
+  "checkLabels.t7": "Five values",
+  "checkLabels.t8": "The first is 4",
+  "checkLabels.t9": "The last is 3",
+  "checkLabels.t10": "The third is 6",
+  "checkLabels.t11": "The total is 16",
+  "checkLabels.t12": "The total is not written by hand",
+  "checkLabels.t13": "The count comes from the array",
+  "checkLabels.t14": "Three lines come out",
+  "checkLabels.t15": "The paragraph is still there",
+
+  "why.empty": "The editor is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Try adding a sixth day. You will touch three different places.",
+
+  "why.not-linked": "The script never reaches the page.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel below.",
+  "hint3.crashed": "cups is not defined means the array does not exist under that name yet.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.still-separate": "The separate names are still there.",
+  "hint2.still-separate": "The five constants disappear. One name is left.",
+
+  "why.no-array": "There is no array called cups.",
+  "hint2.no-array": "Name, equals, square brackets, and inside them the values separated by commas.",
+  "hint3.no-array": "The order inside matters. It is exactly the order you write them in.",
+
+  "why.wrong-array": "The values in the array are not right.",
+  "hint2.wrong-array": "The five numbers are 4, 2, 6, 1 and 3, in that order.",
+  "hint3.wrong-array": "Counting starts at zero. The first value sits at 0, the fifth at 4.",
+  "hint4.wrong-array": "A value is taken out with the array's name and the number in square brackets.",
+
+  "why.wrong-total": "The total is not 16.",
+  "hint2.wrong-total": "4 plus 2 plus 6 plus 1 plus 3.",
+  "hint3.wrong-total": "The total is built up with a loop, exactly as in the section on repeating. The counter is the number of the value.",
+  "hint4.wrong-total": "Start from zero and on every round add the value sitting at the current number.",
+
+  "why.hardcoded": "The total is written by hand.",
+  "hint2.hardcoded": "The number 16 should not appear in the file. It is arrived at, not written.",
+
+  "why.hardcoded-length": "The number of days is written by hand.",
+  "hint2.hardcoded-length": "The array knows how many values it carries. Do not tell it.",
+  "hint3.hardcoded-length": "The array's name, a dot, length. The number changes on its own when you add a value.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+  "why.lost-p": "A paragraph has disappeared from the page.",
+
+  "blocks.0.text": "Five days, five cup counts. Five separate names that differ only by the digit at the end.",
+  "blocks.1.text": "Tomorrow the shop opens on Saturday too. You add a sixth day and touch three places: a new name, a new term in the sum, and the five you wrote by hand.",
+
+  "blocks.2.text": "One name, many values",
+  "blocks.3.text": "An array is ordered values under one name. Each has an address — a number by which it is reached.",
+  "blocks.4.text": "It is not a list that merely holds things side by side. The address is the point: any value can be taken out without knowing what surrounds it.",
+  "blocks.5.quote": "It is written with square brackets. The order inside is exactly the one you wrote, and it does not change on its own.",
+
+  "blocks.6.text": "Counting starts at zero",
+  "blocks.7.text": "The first value sits at zero. The second at one. It looks strange until you get used to it, and it causes half of all array mistakes.",
+  "blocks.9.text": "sizes has three values. The first is at 0, the last at 2 — one less than the length. That is why the last one is taken with length minus one.",
+
+  "blocks.10.text": "The array counts itself",
+  "blocks.11.text": "The length is not written by hand. The array knows it and will tell you. Add a value and the number changes on its own.",
+  "blocks.12.text": "That is where the difference lies. Code that asks the array keeps working after the data changes. Code with a hand-written five quietly stays on yesterday's count.",
+
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Make an array called cups with the five numbers: 4, 2, 6, 1 and 3. The five separate names disappear.",
+  "blocks.15.text": "The total is worked out with a loop, not written ready-made. Print the number of days, the total, and the last value — all three asked of the array."
+}

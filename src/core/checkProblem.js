@@ -31,9 +31,11 @@ function stripComments(js) {
     .replace(/(^|[^:])\/\/[^\n]*/g, '$1 ');
 }
 
-function runCheck(check, code, starter, axeMap, styleMap, js) {
+// ⚠ `doc` идва отвън. При js-dom това е страницата СЛЕД изпълнението —
+// урокът пита какво е станало, не какво е написано. Разбиването е един
+// път за всички проверки, не по веднъж на проверка.
+function runCheck(check, code, starter, axeMap, styleMap, js, doc) {
   const clean = removeHtmlComments(code);
-  const doc = parse(code);
   const v = check.value;
 
   switch (kind(check.type)) {
@@ -209,9 +211,15 @@ function runCheck(check, code, starter, axeMap, styleMap, js) {
     }
 
     // Пазач: изходният код да не е изтрит. „changed" минава, ако е трил в HTML-а.
+    // Пазач: изходният код да не е изтрит.
+    //
+    // ⚠ Тук е ЕДИНСТВЕНАТА проверка за празно при JS урок. `changed` гледа
+    // сглобения документ — а той съдържа index.html и не може да е празен,
+    // колкото и да трие ученикът в script.js. Затова празното си има
+    // собствено съобщение, както при `runs`.
     case 'src_changed': {
       const now = stripComments(js.src);
-      if (norm(now) === '') return false;
+      if (norm(now) === '') return { ok: false, err: check.errEmpty ?? check.err };
       if (check.value !== undefined) return norm(now) !== norm(check.value);
       return norm(now) !== norm(stripComments(js.starterSrc ?? ''));
     }
@@ -296,6 +304,11 @@ export async function checkProblem(problem, code) {
     fmt: () => '',
   };
 
+// ⚠ liveHtml: страницата СЛЕД изпълнението. Само при js-dom — там
+  // скриптът мени документа и проверката трябва да гледа резултата.
+  // При js-worker няма DOM и написаното си остава истината.
+  let liveHtml = null;
+
   const codeChecks = checks.filter((c) => CODE_TYPES.has(kind(c.type)));
   if (codeChecks.length) {
     const runtime = problem.runtime;
@@ -315,8 +328,14 @@ export async function checkProblem(problem, code) {
           .map((c) => ({ id: c.id, expr: c.call, await: !!c.await }));
 
         try {
-          js.res = await runner.run(js.src, calls, { timeout: problem.jsTimeout ?? 2000 });
+          // ⚠ js-dom иска целия документ, не само скрипта. Без него
+          // страницата е празна и document.querySelector връща null.
+          js.res = await runner.run(js.src, calls, {
+            timeout: problem.jsTimeout ?? 2000,
+            doc: runner.needsDoc ? code : undefined,
+          });
           js.ran = true;
+          if (runner.needsDoc && js.res.html) liveHtml = js.res.html;
         } catch (e) {
           console.error('изпълнител:', e);
           js.ran = false;
@@ -325,8 +344,11 @@ export async function checkProblem(problem, code) {
     }
   }
 
+  // Едно разбиване за всички dom_* проверки.
+  const doc = parse(liveHtml ?? code);
+
   const results = checks.map((c) => {
-    const raw = runCheck(c, code, starter, axeMap, styleMap, js);
+    const raw = runCheck(c, code, starter, axeMap, styleMap, js, doc);
     const ok = typeof raw === 'boolean' ? raw : !!raw.ok;
     const err = typeof raw === 'boolean' ? c.err : (raw.err ?? c.err);
     return {
