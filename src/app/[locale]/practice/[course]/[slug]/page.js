@@ -13,7 +13,8 @@ import { saveSubmission, fetchHistory, loadCode, isSolved, fetchStatuses } from 
 import { usePlan } from '@/lib/plan';
 import { supabase } from '@/lib/supabase';
 
-const COURSE = 'html';
+// Езикът на редактора по курс. Зашитото "html" оцветяваше JS като HTML.
+const EDITOR_LANG = { html: 'html', css: 'css', js: 'javascript' };
 
 const DIFF = {
   easy: theme.level.beginner,
@@ -22,7 +23,7 @@ const DIFF = {
 };
 
 export default function ProblemPage({ params }) {
-  const { slug } = use(params);
+ const { course: COURSE, slug } = use(params);
   const t = useTranslations('practice');
   const lang = useLocale();
 const { user } = useAuth();
@@ -147,7 +148,7 @@ useEffect(() => {
                       const st = statuses.get(x.slug) ?? 'new';
                       const active = x.slug === slug;
                       return (
-                        <Link key={x.slug} href={`/practice/${x.slug}`} onClick={() => setMenuOpen(false)}
+                        <Link key={x.slug} href={`/practice/${COURSE}/${x.slug}`} onClick={() => setMenuOpen(false)}
                           className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] transition ${
                             active ? 'bg-sky-500/10 text-sky-200' : 'text-gray-400 hover:text-white hover:bg-white/5'
                           }`}>
@@ -196,7 +197,7 @@ useEffect(() => {
 
         code={code}
         onCode={setCode}
-        language="html"
+        language={EDITOR_LANG[COURSE] ?? 'html'}
 
         onRun={() => setPreview(code)}
         onSubmit={submit}

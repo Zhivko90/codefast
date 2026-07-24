@@ -68,7 +68,8 @@ export default {
     { id: "t38", type: "dom_text_not_empty", value: "a", err: "no-link", weight: 145 },
     { id: "t39", type: "dom_attr", value: "a", attr: "href", err: "no-href", weight: 143 },
     { id: "t40", type: "text_not_contains", value: "click here", err: "click-here", weight: 141 },
-    { id: "t41", type: "text_not_contains", value: "кликни тук", err: "click-here", weight: 139 },
+   { id: "t41", type: "text_not_contains", value: "кликни тук", err: "click-here", weight: 139 },
+  { id: "t41b", type: "text_not_contains", value: "click here", err: "click-here", weight: 139, hidden: true },
   ],
   blocks: [
     { type: "text" },

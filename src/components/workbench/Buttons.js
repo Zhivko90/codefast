@@ -39,7 +39,7 @@ const I = (d) => ({ size = 17 }) => (
 );
 
 export const IcoStatement = I(<><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></>);
-export const IcoPreview   = I(<><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></>);
+export const IcoPreview   = I(<><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></>);
 export const IcoResult    = I(<><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></>);
 export const IcoTrash     = I(<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>);
 export const IcoBug       = I(<><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></>);

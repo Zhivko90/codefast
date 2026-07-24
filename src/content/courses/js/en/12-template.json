@@ -1,72 +1,96 @@
 {
   "title": "Text with holes",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You wrote something",
-  "checkLabels.t2": "You edited script.js",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t3": "The script is linked",
-  "checkLabels.t4": "The code runs",
-  "checkLabels.t5": "No joining with plus",
-  "checkLabels.t6": "Nowhere",
-  "checkLabels.t7": "You use template strings",
-  "checkLabels.t8": "The line break is not manual",
-  "checkLabels.t9": "The line is right",
-  "checkLabels.t10": "The receipt is right",
-  "checkLabels.t11": "Two lines come out",
-  "checkLabels.t12": "The paragraph is still there",
+  "steps.0.text": "Rewrite the first line with backticks. The result stays the same: Bean Street sold 40 cups for 420 lv.",
+  "steps.1.text": "And the receipt. The three lines come from a real line break inside the string, not from backslash n.",
+  "steps.2.text": "And the average. The sum goes inside the hole, not outside it.",
 
-  "why.empty": "The editor is empty.",
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "No joining with plus",
+  "checkLabels.t4": "Nowhere",
+  "checkLabels.t5": "The line is right",
+  "checkLabels.t6": "The line break is not manual",
+  "checkLabels.t7": "The receipt is right",
+  "checkLabels.t8": "The average is right",
+  "checkLabels.t9": "You use holes everywhere",
+  "checkLabels.t10": "Three lines come out",
+
+  "why.empty": "script.js is empty. You deleted everything instead of rewriting it.",
 
   "why.untouched": "script.js is exactly as it was.",
-  "hint2.untouched": "The code works. The task is to make it readable.",
-
-  "why.not-closed": "A tag in index.html is open and never closed.",
-  "why.not-linked": "The script never reaches the page.",
+  "hint2.untouched": "The code works and all three lines come out right. The task is to make it readable.",
 
   "why.crashed": "Your code stopped with an error.",
-  "hint2.crashed": "Look at the Console panel below.",
-  "hint3.crashed": "A backtick is not a regular quote and not an apostrophe. It sits under the Esc key on most keyboards, to the left of the number one.",
+  "hint2.crashed": "Look at the Console panel on the right.",
+  "hint3.crashed": "A backtick is not a regular quote and not an apostrophe. It sits to the left of the number one, under Esc on most keyboards.",
 
   "why.nothing-written": "script.js is empty.",
   "why.frozen": "Your code never stops.",
 
   "why.still-glued": "You are still joining with plus.",
-  "hint2.still-glued": "Both lines get rewritten, not just the first one.",
+  "hint2.still-glued": "All three lines get rewritten, not just the first one.",
 
-  "why.no-template": "You are not using template strings.",
+  "why.no-template": "You are not using enough holes.",
   "hint2.no-template": "Regular quotes understand nothing. You need a different mark — the backtick, to the left of the number one.",
   "hint3.no-template": "Between backticks everything is text, except what sits inside a dollar sign and curly braces. That is where a name or a sum goes.",
-  "hint4.no-template": "Swap the double quotes for backticks, remove the pluses, and wrap each name in a dollar sign with curly braces.",
+  "hint4.no-template": "Swap the double quotes for backticks, remove the pluses, and wrap each value in a dollar sign with curly braces.",
 
   "why.manual-newline": "You are still adding line breaks by hand.",
-  "hint2.manual-newline": "Template strings remember a pressed Enter. Just press Enter inside them.",
+  "hint2.manual-newline": "Backticks remember a pressed Enter. Just press Enter inside the string.",
 
-  "why.wrong-line": "The line does not come out right.",
-  "hint2.wrong-line": "It should read: Bean Street sold 40 cups for 420 lv. Check the spaces — they are part of the text.",
+  "why.wrong-line": "The first line does not come out right.",
+  "hint2.wrong-line": "It should read: Bean Street sold 40 cups for 420 lv. Check the spaces — they are part of the text and do not appear on their own.",
 
   "why.wrong-receipt": "The receipt does not come out right.",
   "hint2.wrong-receipt": "Three lines: Shop, Cups, Total. Each on its own line, each with a colon and a space after it.",
 
-  "why.wrong-count": "There are not two lines in the console.",
-  "why.lost-p": "A paragraph has disappeared from the page.",
+  "why.wrong-average": "The average does not come out right.",
+  "hint2.wrong-average": "420 divided by 40 makes 10.5. It should read: Average: 10.5 lv.",
+  "hint3.wrong-average": "The sum goes INSIDE the hole. Leave it outside and the plus will be joining again.",
 
-  "blocks.0.text": "The code works. Both lines come out correctly in the console.",
-  "blocks.1.text": "But read them. The first is seven pluses and eight quote marks for a single sentence. The second is worse — it also contains something called backslash n, which you have to remember means a new line.",
+  "why.wrong-count": "There are not three lines in the console.",
 
-  "blocks.2.text": "The problem is not that it fails",
-  "blocks.3.text": "The problem is that it cannot be read. To work out what comes out, you have to assemble the sentence in your head, piece by piece, skipping over the quotes and pluses.",
-  "blocks.4.text": "And every new piece is a new chance to forget a space. A missing space at the end of a piece does not break anything — two words simply stick together.",
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "The code works. All three lines come out exactly right in the console. Here is the first one:",
 
-  "blocks.5.text": "The backtick",
-  "blocks.6.text": "There is a third kind of quote mark. Not double, not single, but a backtick. It sits to the left of the number one, under Esc.",
-  "blocks.7.text": "Between them text is just text — but whatever you put inside a dollar sign and curly braces is worked out and dropped into place.",
-  "blocks.8.text": "You write the sentence the way it reads. The holes are where the values go.",
+  "blocks.3.text": "But read it. Seven pluses and eight quote marks for a single sentence. To work out what comes out, you have to assemble it in your head, piece by piece, skipping over the quotes and the pluses.",
+  "blocks.4.text": "And every piece is a new chance to forget a space. A missing space at the end of a piece does not break anything — two words simply stick together and nobody complains.",
 
-  "blocks.9.text": "And line breaks",
-  "blocks.10.text": "Regular quotes do not allow a pressed Enter — the code breaks. That is why backslash n exists, meaning a new line.",
-  "blocks.11.text": "Template strings do allow it. Press Enter inside one and it stays. The text in the code looks exactly like the text that comes out.",
+  "blocks.5.text": "Backticks",
+  "blocks.6.text": "There is a third kind of quote mark. Not double, not single, but a **backtick** — to the left of the number one, under Esc. Between them text is just text, but whatever you put inside a dollar sign and curly braces is worked out and dropped into place:",
 
-  "blocks.12.text": "The task",
-  "blocks.13.text": "Rewrite both lines with template strings. The result must be exactly the same — this is an exercise in readability, not behaviour.",
-  "blocks.14.text": "The receipt should be three lines, but without backslash n. Press Enter inside the string."
+  "blocks.8.text": "The same result, with zero pluses. The sentence reads the way it comes out, and the holes sit exactly where the values sit.",
+  "blocks.9.text": "⚠ Do not confuse the backtick with the backslash `\\`. The backslash is the escape character from lesson two; the backtick is the one that opens a template. Different characters, different keys.",
+
+  "blocks.10.text": "An expression goes inside, not just a name",
+  "blocks.11.text": "A hole is not only a place for names. Things are worked out inside it:",
+
+  "blocks.13.text": "That is exactly why backticks are not merely a shorter way to join. With joining, the average needs its own name or brackets in an unexpected place; inside a hole it is simply a sum, written where its result appears.",
+
+  "blocks.14.text": "And what does NOT work",
+  "blocks.15.text": "Holes are a feature of backticks only. In ordinary quotes the same thing is just text:",
+
+  "blocks.17.text": "No error, no warning — it prints `${cups}` literally. If you ever see a dollar sign and curly braces in your output, the first thing you check is the quotes.",
+
+  "blocks.18.text": "And line breaks",
+  "blocks.19.text": "Ordinary quotes do not allow a pressed Enter — the code breaks with a `SyntaxError`. That is why backslash n exists. Backticks do allow it:",
+
+  "blocks.21.text": "The text in the code looks exactly like the text that comes out. This is the second thing lesson two promised about them, and it is why receipts, letters and any multiline text are written this way.",
+  "blocks.22.quote": "The code already worked. This lesson is not about behaviour but about reading — and code is read many more times than it is written.",
+
+  "blocks.23.text": "So far",
+  "blocks.24.items.0": "Backticks sit to the left of the number one. Do not confuse them with the backslash.",
+  "blocks.24.items.1": "Between them `${...}` is a hole that a value drops into.",
+  "blocks.24.items.2": "Things are worked out inside the hole — not just a name, but a whole expression.",
+  "blocks.24.items.3": "In ordinary quotes `${...}` is just text. Nothing breaks.",
+  "blocks.24.items.4": "Backticks remember a pressed Enter. No backslash n needed.",
+
+  "walkthrough.0.text": "The first three lines are not touched. Data is data; this lesson is about the line that gathers it into a sentence.",
+  "walkthrough.1.text": "`${shop} sold ${cups} cups for ${income} lv` — notice where the spaces are. They sit inside the text, between the holes, exactly as they read. With plus-joining every space lived stuck to the end of some piece and slipped past the eye.",
+  "walkthrough.2.text": "The receipt is written on three lines literally. An Enter inside the string stays in the result. The backslash n disappears not because it is wrong, but because it is no longer needed — the code looks like its own output.",
+  "walkthrough.3.text": "`Average: ${income / cups} lv` — the sum is INSIDE. Outside it you would be back to joining, and back to the trap from lesson seven: one value turns into text and the whole sum joins instead of calculating.",
+  "walkthrough.4.text": "The number 10.5 is written nowhere. It comes from 420 divided by 40. Tomorrow the prices will be different and the line will still be right, because there is not a single ready answer in it.",
+  "walkthrough.5.text": "All three lines give exactly what they gave before. Not one output changed. This is the first lesson where you fix something that is not broken — and it is here because the code other people read is part of the work, not decoration on top of it."
 }

@@ -1,72 +1,129 @@
 {
   "title": "Three kinds of things",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You wrote something",
-  "checkLabels.t2": "You edited script.js",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t3": "The script is linked",
-  "checkLabels.t4": "The code runs",
-  "checkLabels.t5": "You printed the name",
-  "checkLabels.t6": "You printed the number",
-  "checkLabels.t7": "You printed yes or no",
-  "checkLabels.t8": "The number is not in double quotes",
-  "checkLabels.t9": "The number is not in single quotes",
-  "checkLabels.t10": "The paragraphs are still there",
+  "steps.0.text": "Below the line from the last lesson, print three things, each on its own line: `Bean Street`, the number 1247, and `true`. Watch which one needs quotes.",
+  "steps.1.text": "Print the new price too: 3.5 lv.",
+  "steps.2.text": "Finally print the kind of the number and the kind of the name, using `typeof`. Seven lines in the console in total.",
 
-  "why.empty": "The editor is empty. You deleted everything instead of adding lines.",
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "The name came out",
+  "checkLabels.t4": "The number came out",
+  "checkLabels.t5": "true came out",
+  "checkLabels.t6": "The number is not in double quotes",
+  "checkLabels.t7": "The number is not in single quotes",
+  "checkLabels.t8": "3.5 came out",
+  "checkLabels.t9": "typeof is there",
+  "checkLabels.t10": "The kind of the number came out",
+  "checkLabels.t11": "The kind of the text came out",
+  "checkLabels.t12": "Seven lines came out",
+
+  "why.empty": "script.js is empty. The line from the last lesson is gone.",
 
   "why.untouched": "script.js is exactly as it was. You have not added anything yet.",
   "hint2.untouched": "The line from the last lesson stays. You write below it.",
 
-  "why.not-closed": "A tag in index.html is open and never closed.",
-  "hint2.not-closed": "index.html is not part of this lesson.",
-
-  "why.not-linked": "The script never reaches the page.",
-  "hint2.not-linked": "The last line in index.html links script.js. Check that it is there.",
-
-  "why.crashed": "Your code stopped with an error before it reached the end.",
-  "hint2.crashed": "Look at the Console panel below. The red line says what it did not like.",
-"hint3.crashed": "Two errors, one root. SyntaxError means the line cannot be read at all. ReferenceError means it can be read, but the word was taken as the name of something that does not exist. Both say the same thing: text needs quotes.",
+  "why.crashed": "Your code stopped with an error before it got to the end.",
+  "hint2.crashed": "Look at the Console panel on the right. The red line says what it did not like.",
+  "hint3.crashed": "Two errors, one root. A SyntaxError means the line cannot be read at all. A ReferenceError means it is read, but the word was taken for the name of something that does not exist. Both say the same thing: text needs quotes.",
 
   "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
 
-  "why.frozen": "Your code never stops. It loops forever and was cut off.",
+  "why.no-name": "The name of the shop does not come out in the console.",
+  "hint2.no-name": "Text is written in quotes. Without them the computer looks for something called Bean.",
+  "hint3.no-name": "`console.log(\"Filter coffee\");` prints Filter coffee. The quotes say: this is text, do not look for anything.",
+  "hint4.no-name": "Do the same with the name of the shop. Exactly `Bean Street`, with capitals.",
 
-  "why.no-name": "The name of the shop does not appear in the console.",
-  "hint2.no-name": "Text goes in quotes. Without them the computer goes looking for something called Bean.",
-  "hint3.no-name": "console.log(\"Filter coffee\"); prints Filter coffee. The quotes say: this is text, do not look for anything.",
-  "hint4.no-name": "Do the same with the name of the shop.",
+  "why.no-number": "The number 1247 does not come out on its own line.",
+  "hint2.no-number": "Each thing goes on its own line, with its own `console.log`.",
+  "hint3.no-number": "Put them together in one `console.log` and they come out on one line, and the check does not find the number on its own.",
 
-  "why.no-number": "The number 1247 does not appear on a line of its own.",
-  "hint2.no-number": "The three things go on three separate lines, each with its own console.log.",
-  "hint3.no-number": "Put them together in one console.log and they come out on one line, and the check does not find the number on its own.",
+  "why.no-boolean": "You did not print `true`.",
+  "hint2.no-boolean": "The third kind of value is written `true` or `false`. No quotes, lowercase.",
 
-  "why.no-boolean": "You have not printed yes or no.",
-  "hint2.no-boolean": "The third kind of value is written true or false. No quotes, lowercase.",
-
-  "why.quoted-number": "The number is in quotes. On screen it looks the same — which is exactly what makes it dangerous.",
+  "why.quoted-number": "The number is in quotes. On screen it looks the same — and that is exactly why it is tricky.",
   "hint2.quoted-number": "Quotes make text. Give them to a number and it stops being a number.",
-  "hint3.quoted-number": "\"5\" + 1 gives \"51\", while 5 + 1 gives 6. One joins, the other adds. The difference is two quote marks.",
-  "hint4.quoted-number": "Remove the quotes around the number. Text wants them, a number does not.",
+  "hint3.quoted-number": "`\"5\" + 1` gives `\"51\"`, and `5 + 1` gives 6. One sticks together, the other adds. The difference is two quotes.",
+  "hint4.quoted-number": "Remove the quotes around the number. Text needs them, a number does not.",
 
-  "why.lost-p": "A line has disappeared from the page. index.html is not part of this lesson.",
+  "why.no-decimal": "You did not print 3.5.",
+  "hint2.no-decimal": "The decimal part is separated with a dot, not a comma. `3.5`, not `3,5`.",
+  "hint3.no-decimal": "With a comma inside `console.log` you get two separate arguments and they come out as `3 5`.",
 
-  "blocks.0.text": "Last lesson you printed a number. Now try a word — the name of the shop.",
-  "blocks.1.text": "It looks reasonable. It does not work.",
-  "blocks.3.text": "ReferenceError: Bean is not defined. The computer did not see text. It saw a name and went looking for something called Bean. It found nothing. And if you write the full name without quotes, it breaks even earlier — SyntaxError, because two words side by side cannot be read as code at all.",
+  "why.no-typeof": "There is no `typeof` in the code.",
+  "hint2.no-typeof": "`typeof` is written before the value, with no brackets: `typeof 42`.",
 
-  "blocks.4.text": "Quotes",
-  "blocks.5.text": "Quotes do not decorate text. They tell the computer: stop searching, these are just letters. Without them every word is the name of something.",
-  "blocks.7.text": "A number is the opposite. 1247 is written bare. It is not the name of anything — it is the number itself.",
+  "why.no-typeof-out": "The kinds do not come out in the console.",
+  "hint2.no-typeof-out": "Two lines are needed: the kind of the number and the kind of the name.",
+  "hint3.no-typeof-out": "`console.log(typeof 1247);` prints number. Do the same with the text.",
 
-  "blocks.8.text": "A third kind",
-  "blocks.9.text": "true and false. Open or closed. Yes or no. Only two values, nothing else, and no quotes. They look useless right now. From section three onward, every decision in your code runs through them.",
+  "why.wrong-count": "There are not seven lines in the console.",
+  "hint2.wrong-count": "One from the last lesson, four values, two kinds.",
 
-  "blocks.11.text": "On screen they look the same",
-  "blocks.12.text": "console.log(1247) and console.log(\"1247\") produce the same line. The console cannot tell them apart. The computer can. One is a number it can do maths with. The other is four characters that happen to look like a number.",
-  "blocks.13.text": "This lesson looks simple, and the most common mistake in the whole language comes out of it. You will meet it in lesson 06, and ten times after that.",
+ "blocks.0.text": "The lesson",
+  "blocks.1.text": "Last lesson you printed a number. Now try a word — the name of the shop. It looks reasonable:",
 
-  "blocks.14.text": "The task",
-  "blocks.15.text": "Below the line from the last lesson, print three things, each on its own line: the name of the shop, the number of coffees sold, and whether it is open.",
-  "blocks.16.text": "Three separate console.log calls. Watch which one needs quotes and which does not."
+  "blocks.3.text": "It does not work. The computer did not see text — it saw two words next to each other and does not know what to do with them. Write only one of them and the error is different: `ReferenceError: Bean is not defined`. Then it took it for the name of something and went looking for it.",
+
+  "blocks.4.text": "The quotes",
+  "blocks.5.text": "Quotes do not decorate the text. They tell the computer: stop looking, these are just letters.",
+
+  "blocks.7.text": "Without them every word is the name of something. With them — it is text. That is their whole job.",
+
+  "blocks.8.text": "The three kinds of quotes",
+  "blocks.9.text": "JavaScript accepts three kinds. For now the difference is almost nil — backticks can do two things more, and the other two are interchangeable:",
+
+  "blocks.11.text": "Backticks can put values inside the text and can span several lines. The first comes in lesson twelve, the second you will see in a moment. Until then use the double ones.",
+
+  "blocks.13.text": "The difference becomes useful the moment the text itself contains a quote. Then you wrap it in the other kind — or put a backslash before the quote, to say \"this one is part of the text, not the end of the text\".",
+
+  "blocks.15.text": "The backslash has a second job, more common than the first. Before an `n` it means a new line. And to show the backslash itself, you double it:",
+
+  "blocks.16.text": "One character or a thousand",
+  "blocks.17.text": "A string can be any length — including zero:",
+
+  "blocks.19.text": "All three are strings. The empty one is a string with no characters in it — do not confuse that with emptiness. Some languages have a separate kind for a single character; JavaScript does not. One character is a string of length one. ⚠ And watch out when counting: `\\n` is ONE character, not two. That is why `\"a\\nb\"` has length three, and `\"C:\\\\Users\"` has eight.",
+
+  "blocks.20.text": "The number",
+  "blocks.21.text": "A number is the opposite. It is written bare — it is not the name of anything, it is the number itself.",
+
+  "blocks.23.text": "The decimal part is separated with a **dot**, not a comma. Three lv fifty is `3.5`. Negative numbers have a minus in front. There is no separate kind for whole and fractional — to JavaScript all of it is one and the same: a number.",
+
+  "blocks.24.text": "A third kind",
+  "blocks.25.text": "Only two values, no others, and no quotes:",
+
+  "blocks.27.text": "Open or closed. There is or there is not. They look useless now. From section three on, every decision in the code goes through them.",
+
+  "blocks.28.text": "And emptiness",
+  "blocks.29.text": "There is also a value that means nothing — on purpose:",
+
+  "blocks.31.text": "`null` is written when you want to say \"there is no value here and that is deliberate\". It differs from `undefined`, which means \"nobody gave a value\". The first is a decision, the second an omission. You will meet both.",
+
+  "blocks.32.text": "How to ask for the kind",
+  "blocks.33.text": "There is a word that says what kind something is:",
+
+  "blocks.35.text": "The fifth line is odd and you should know it: `typeof null` gives `object`. That is a mistake in the language from thirty years ago that cannot be fixed without breaking millions of pages. It is not logical, it just is. Notice the fourth one too — `undefined` has a kind of its own, and it is called exactly that.",
+  "blocks.36.text": "Notice what `typeof` returns — a string. That is why the word `number` comes out rather than the kind itself. It can also be written with brackets, `typeof(42)`, but without them is more common.",
+
+  "blocks.37.text": "On screen they look the same",
+
+  "blocks.39.text": "The same line, twice. The console does not tell them apart. The computer does. One is a number it can calculate with. The other is four characters that happen to look like a number.",
+  "blocks.40.quote": "This lesson looks simple, and out of it comes the most common mistake in the whole language. You will meet it in lesson 07 and ten more times after that.",
+
+  "blocks.41.text": "So far",
+  "blocks.42.items.0": "Text needs quotes. Three kinds, and backticks can do two things more.",
+  "blocks.42.items.1": "The backslash escapes: before a quote it makes it part of the text, before `n` it makes a new line, and before itself it shows itself.",
+  "blocks.42.items.2": "A string can be empty, one character, or a thousand. There is no separate kind for a character.",
+  "blocks.42.items.3": "A number is written bare. The decimal part uses a dot.",
+  "blocks.42.items.4": "`true` and `false` are the third kind. No quotes.",
+  "blocks.42.items.5": "`typeof` says what kind something is. For `null` it lies — it says `object`.",
+
+  "walkthrough.0.text": "The first line stays from the last lesson. The new work goes below it. Seven lines in the console means seven separate prints — put them in one `console.log` with commas and they all come out on one line, and nothing counts on its own.",
+  "walkthrough.1.text": "`console.log(\"Bean Street\");` — the quotes are the only thing separating text from a name. Without them the computer sees two words next to each other and stops. All three kinds work here; the double ones are chosen because backticks are not needed until lesson twelve, and single ones get in the way once the text contains an apostrophe.",
+  "walkthrough.2.text": "`console.log(1247);` — bare, no quotes. `\"1247\"` would print the same line on screen and the lesson would pass by eye. That is why two of the checks look at the code, not the output: from the console this difference is invisible.",
+  "walkthrough.3.text": "`console.log(true);` — lowercase, no quotes. `\"true\"` is a string of four letters and has nothing to do with yes and no. This kind looks useless today; from section three on, every decision in the code goes through it.",
+  "walkthrough.4.text": "`console.log(3.5);` — with a dot. `console.log(3,5)` is not an error, and that is exactly what makes it tricky: JavaScript reads the comma as a separator between two separate things and prints `3 5`.",
+  "walkthrough.5.text": "`typeof` is written before the value, with no brackets — it is an operator, not a function. It returns a string, which is why the word `number` comes out rather than the kind itself. `typeof(1247)` works too; those brackets are just brackets and change nothing."
 }

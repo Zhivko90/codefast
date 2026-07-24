@@ -1,27 +1,79 @@
 {
   "title": "Make it big",
+  "taskTitle": "The task",
 
-  "checkLabels.g1": "The tags must be closed",
-  "checkLabels.t1": "You must open the tag",
-  "checkLabels.t2": "You must close it",
-  "checkLabels.t3": "The name must be INSIDE the tag",
+  "steps.0.text": "Wrap the name with `<h1>` in front and `</h1>` behind.",
+
   "checkLabels.t0": "There is code",
+  "checkLabels.g1": "Tags are closed",
+  "checkLabels.t1": "Tag is opened",
+  "checkLabels.t2": "Tag is closed",
+  "checkLabels.t3": "The name is inside the tag",
+
   "why.empty": "The editor is empty. Even the name is gone. Bring it back and wrap it.",
+  "hint2.empty": "Write your name, then put `<h1>` in front and `</h1>` behind.",
 
-  "why.not-wrapped": "The tags are there, but they are in the wrong order or not closed. First <h1>, then the text, then </h1>. Exactly that order.",
-  "why.no-open": "There is still no tag. You cannot write \"make it big\" — you have to WRAP the name. In front of it goes <h1>.",
-  "why.no-close": "You opened the tag but never closed it. </h1> is missing. The slash says \"the heading ends here\" — without it the browser does not know how far it reaches.",
-  "why.empty-heading": "The tags are there, but the heading is empty. Your name is outside it.",
+  "why.not-wrapped": "The tags are there, but in the wrong order or not closed. `<h1>` first, then the text, then `</h1>`. Exactly that order.",
+  "hint2.not-wrapped": "Read your line left to right. Every tag you open has to close before the line ends.",
 
-  "hint2.empty-heading": "Look carefully at where </h1> ends and where your name sits. One is after the other, but it should be inside.",
-  "hint3.empty-heading": "Wrapping means: tag in front, text in the middle, tag behind. <h1>HERE</h1>, not <h1></h1>HERE.",
+  "why.no-open": "There is no tag yet. You cannot write \"make it big\" — you have to WRAP the name. `<h1>` goes in front.",
+  "hint2.no-open": "Click right before the first letter of the name and type `<h1>` there.",
 
-  "blocks.0.text": "Your name is there, but it is small. It sits like a random word on a blank sheet. But you want it to be a heading — large, bold, important.",
-  "blocks.1.text": "First try on your own",
-  "blocks.2.text": "Try to make it bigger. Seriously, try. You will not manage — and that is exactly the point.",
-  "blocks.3.text": "There is no way to write \"make it big\". There is no font button. There is nowhere to click. Plain text just sits there.",
-  "blocks.4.text": "Here is the tool",
-  "blocks.5.text": "You wrap the text on both sides. In front you put <h1>, behind it </h1>. The slash at the end says \"this is where it ends\".",
-  "blocks.7.text": "Do it and run. The name becomes large and bold.",
-  "blocks.8.text": "Notice what you did NOT do: you did not choose a font, you did not say how big, you did not touch colour. You only said \"this is a heading\". The rest the browser decided."
+  "why.no-close": "You opened the tag but never closed it. `</h1>` is missing. The slash says \"this is where it ends\" — without it the browser does not know how far the heading reaches.",
+  "hint2.no-close": "The closing tag is the same as the opening one, only with a slash before the name.",
+"hint3.no-close": "`<p>Hello</p>` — opens, content, closes. Same three parts, different letter.",
+  "hint4.no-close": "Check where the slash actually is. It goes BEFORE the name: `</h1>`. Write `<h1/>` or `<h1\\>` and nothing gets closed — the tag stays open.",
+
+  "why.empty-heading": "The tags are there, but the heading is empty. Your name is outside.",
+  "hint2.empty-heading": "Look carefully at where `</h1>` ends and where your name sits. One is after the other, and it should be inside.",
+  "hint3.empty-heading": "Wrapping means: tag in front, text in the middle, tag behind. `<h1>HERE</h1>`, not `<h1></h1>HERE`.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Your name is there, but it is small. It sits like a stray word on a blank sheet. And you want it to be a heading — big, bold, important.",
+
+  "blocks.2.text": "Try it yourself first",
+  "blocks.3.text": "Try to make it bigger. Seriously, try. You will not manage — and that is the point.",
+  "blocks.4.text": "There is no way to write \"make it big\". No font button. Nothing to click. Bare text just sits there.",
+
+  "blocks.5.text": "Wrapping",
+  "blocks.6.text": "The tool is a *tag*. You wrap the text on both sides — one tag in front, one behind:",
+  "blocks.7.marks.0.label": "OPENS",
+  "blocks.7.marks.1.label": "THE TEXT",
+  "blocks.7.marks.2.label": "CLOSES",
+  "blocks.7.legend.0": "The slash is the only difference between the two tags. It means \"this is where it ends\".",
+
+  "blocks.8.items.0": "`<h1>` is the opening tag — the tag name in angle brackets.",
+"blocks.8.items.1": "`Alex` is the content — what will show up on the page.",
+  "blocks.8.items.2": "`</h1>` is the closing tag — the same one, with a slash before the name.",
+  "blocks.8.items.3": "All three together are called an *element*. The tag is a part; the element is the whole.",
+
+  "blocks.11.text": "Notice what you did NOT do: you picked no font, said no size, touched no color. You only said \"this is a heading\". The rest was the browser's decision.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Wrap the name in the editor on the right with `<h1>` and `</h1>`.",
+  "blocks.14.text": "Then press Submit. The name turns big and bold.",
+
+  "blocks.15.text": "If you forget the closing tag",
+  "blocks.16.text": "A missing closing tag is the most common mistake of the first week. The browser does not stop with an error — it does something worse:",
+  "blocks.19.text": "The heading never ends, so it swallows everything after it. The code runs, the page shows, and it is still wrong. From now on, when something on your page is inexplicably huge, look for an unclosed tag first.",
+
+  "blocks.20.text": "A tag inside a tag",
+  "blocks.21.text": "Tags can go inside one another. This is called *nesting*. Here `<strong>` sits inside `<h1>` — you will learn that tag later, for now watch only the order:",
+  "blocks.23.text": "One rule: whatever opened last closes first. You opened `<h1>`, then `<strong>` — so you close `</strong>`, then `</h1>`. Like drawers that cannot be shut through one another.",
+  "blocks.25.text": "This is wrong. The tags cross over. The browser shows no error — it guesses what you meant and arranges something of its own. Sometimes it guesses right. Sometimes not.",
+
+  "blocks.26.text": "Spaces do not count",
+  "blocks.27.text": "There are ten spaces between the two names here:",
+  "blocks.30.text": "One comes out. The browser collapses any run of spaces, tabs and newlines into a single space. That is why you cannot align text with spaces — and why indentation in code is free. It is for the person reading, not for the browser.",
+
+  "blocks.31.text": "So far",
+  "blocks.32.items.0": "A tag wraps text: `<h1>` in front, `</h1>` behind.",
+  "blocks.32.items.1": "Opening tag, content, closing tag — the three together are an element.",
+  "blocks.32.items.2": "An unclosed tag swallows everything after it.",
+  "blocks.32.items.3": "When nesting, the last one opened closes first.",
+  "blocks.32.items.4": "Many spaces become one. Indentation is for the human.",
+
+  "walkthrough.0.text": "`<h1>` in front, `</h1>` behind, the name between them. Three parts, nothing more.",
+  "walkthrough.1.text": "The slash is in the closing tag and only there. It does not mean \"end of line\" but \"end of this element\" — so it belongs right after the last letter of the name, not somewhere else.",
+  "walkthrough.2.text": "Nowhere does it say how big to make it. `h1` means \"first-level heading\", not \"large font\". That it comes out big is the browser's decision — and that decision changes with CSS, without touching a single letter of this line."
 }

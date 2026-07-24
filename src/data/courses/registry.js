@@ -505,134 +505,137 @@ import js_outline from './js/outline.js';
 import js_l0 from './js/lessons/01-hello.js';
 import js_l1 from './js/lessons/02-values.js';
 import js_l2 from './js/lessons/03-variable.js';
-import js_l3 from './js/lessons/04-const.js';
-import js_l4 from './js/lessons/05-var.js';
-import js_l5 from './js/lessons/06-plus.js';
-import js_l6 from './js/lessons/07-swap.js';
-import js_l7 from './js/lessons/08-broken.js';
-import js_l8 from './js/lessons/09-quiz.js';
+import js_l3 from './js/lessons/04-naming.js';
+import js_l4 from './js/lessons/05-const.js';
+import js_l5 from './js/lessons/06-var.js';
+import js_l6 from './js/lessons/07-plus.js';
+import js_l7 from './js/lessons/08-swap.js';
+import js_l8 from './js/lessons/09-broken.js';
 import js_l9 from './js/lessons/10-maths.js';
-import js_l10 from './js/lessons/11-shorthand.js';
-import js_l11 from './js/lessons/12-template.js';
-import js_l12 from './js/lessons/13-strings.js';
-import js_l13 from './js/lessons/14-nan.js';
-import js_l14 from './js/lessons/15-math.js';
-import js_l15 from './js/lessons/16-broken.js';
-import js_l16 from './js/lessons/17-quiz.js';
-import js_l17 from './js/lessons/18-if.js';
-import js_l18 from './js/lessons/19-else.js';
-import js_l19 from './js/lessons/20-equality.js';
-import js_l20 from './js/lessons/21-truthy.js';
-import js_l21 from './js/lessons/22-logic.js';
-import js_l22 from './js/lessons/23-switch.js';
-import js_l23 from './js/lessons/24-broken.js';
-import js_l24 from './js/lessons/25-quiz.js';
-import js_l25 from './js/lessons/26-while.js';
-import js_l26 from './js/lessons/27-infinite.js';
-import js_l27 from './js/lessons/28-for.js';
-import js_l28 from './js/lessons/29-offbyone.js';
-import js_l29 from './js/lessons/30-break.js';
-import js_l30 from './js/lessons/31-nested.js';
-import js_l31 from './js/lessons/32-broken.js';
-import js_l32 from './js/lessons/33-function.js';
-import js_l33 from './js/lessons/34-return.js';
-import js_l34 from './js/lessons/35-compose.js';
-import js_l35 from './js/lessons/36-scope.js';
-import js_l36 from './js/lessons/37-arrow.js';
-import js_l37 from './js/lessons/38-default.js';
-import js_l38 from './js/lessons/39-pure.js';
-import js_l39 from './js/lessons/40-broken.js';
-import js_l40 from './js/lessons/41-quiz.js';
-import js_l41 from './js/lessons/42-array.js';
-import js_l42 from './js/lessons/43-index.js';
+import js_l10 from './js/lessons/10-quiz.js';
+import js_l11 from './js/lessons/11-shorthand.js';
+import js_l12 from './js/lessons/12-template.js';
+import js_l13 from './js/lessons/13-strings.js';
+import js_l14 from './js/lessons/14-nan.js';
+import js_l15 from './js/lessons/15-math.js';
+import js_l16 from './js/lessons/16-broken.js';
+import js_l17 from './js/lessons/17-quiz.js';
+import js_l18 from './js/lessons/18-if.js';
+import js_l19 from './js/lessons/19-else.js';
+import js_l20 from './js/lessons/20-equality.js';
+import js_l21 from './js/lessons/21-truthy.js';
+import js_l22 from './js/lessons/22-logic.js';
+import js_l23 from './js/lessons/23-switch.js';
+import js_l24 from './js/lessons/24-broken.js';
+import js_l25 from './js/lessons/25-quiz.js';
+import js_l26 from './js/lessons/26-while.js';
+import js_l27 from './js/lessons/27-infinite.js';
+import js_l28 from './js/lessons/28-for.js';
+import js_l29 from './js/lessons/29-offbyone.js';
+import js_l30 from './js/lessons/30-break.js';
+import js_l31 from './js/lessons/31-nested.js';
+import js_l32 from './js/lessons/32-broken.js';
+import js_l33 from './js/lessons/33-function.js';
+import js_l34 from './js/lessons/34-return.js';
+import js_l35 from './js/lessons/35-compose.js';
+import js_l36 from './js/lessons/36-scope.js';
+import js_l37 from './js/lessons/37-arrow.js';
+import js_l38 from './js/lessons/38-default.js';
+import js_l39 from './js/lessons/39-pure.js';
+import js_l40 from './js/lessons/40-broken.js';
+import js_l41 from './js/lessons/41-quiz.js';
+import js_l42 from './js/lessons/42-array.js';
+import js_l43 from './js/lessons/43-index.js';
 import js_bg_course from '@/content/courses/js/bg/_course.json';
 import js_bg_0 from '@/content/courses/js/bg/01-hello.json';
 import js_bg_1 from '@/content/courses/js/bg/02-values.json';
 import js_bg_2 from '@/content/courses/js/bg/03-variable.json';
-import js_bg_3 from '@/content/courses/js/bg/04-const.json';
-import js_bg_4 from '@/content/courses/js/bg/05-var.json';
-import js_bg_5 from '@/content/courses/js/bg/06-plus.json';
-import js_bg_6 from '@/content/courses/js/bg/07-swap.json';
-import js_bg_7 from '@/content/courses/js/bg/08-broken.json';
-import js_bg_8 from '@/content/courses/js/bg/09-quiz.json';
+import js_bg_3 from '@/content/courses/js/bg/04-naming.json';
+import js_bg_4 from '@/content/courses/js/bg/05-const.json';
+import js_bg_5 from '@/content/courses/js/bg/06-var.json';
+import js_bg_6 from '@/content/courses/js/bg/07-plus.json';
+import js_bg_7 from '@/content/courses/js/bg/08-swap.json';
+import js_bg_8 from '@/content/courses/js/bg/09-broken.json';
 import js_bg_9 from '@/content/courses/js/bg/10-maths.json';
-import js_bg_10 from '@/content/courses/js/bg/11-shorthand.json';
-import js_bg_11 from '@/content/courses/js/bg/12-template.json';
-import js_bg_12 from '@/content/courses/js/bg/13-strings.json';
-import js_bg_13 from '@/content/courses/js/bg/14-nan.json';
-import js_bg_14 from '@/content/courses/js/bg/15-math.json';
-import js_bg_15 from '@/content/courses/js/bg/16-broken.json';
-import js_bg_16 from '@/content/courses/js/bg/17-quiz.json';
-import js_bg_17 from '@/content/courses/js/bg/18-if.json';
-import js_bg_18 from '@/content/courses/js/bg/19-else.json';
-import js_bg_19 from '@/content/courses/js/bg/20-equality.json';
-import js_bg_20 from '@/content/courses/js/bg/21-truthy.json';
-import js_bg_21 from '@/content/courses/js/bg/22-logic.json';
-import js_bg_22 from '@/content/courses/js/bg/23-switch.json';
-import js_bg_23 from '@/content/courses/js/bg/24-broken.json';
-import js_bg_24 from '@/content/courses/js/bg/25-quiz.json';
-import js_bg_25 from '@/content/courses/js/bg/26-while.json';
-import js_bg_26 from '@/content/courses/js/bg/27-infinite.json';
-import js_bg_27 from '@/content/courses/js/bg/28-for.json';
-import js_bg_28 from '@/content/courses/js/bg/29-offbyone.json';
-import js_bg_29 from '@/content/courses/js/bg/30-break.json';
-import js_bg_30 from '@/content/courses/js/bg/31-nested.json';
-import js_bg_31 from '@/content/courses/js/bg/32-broken.json';
-import js_bg_32 from '@/content/courses/js/bg/33-function.json';
-import js_bg_33 from '@/content/courses/js/bg/34-return.json';
-import js_bg_34 from '@/content/courses/js/bg/35-compose.json';
-import js_bg_35 from '@/content/courses/js/bg/36-scope.json';
-import js_bg_36 from '@/content/courses/js/bg/37-arrow.json';
-import js_bg_37 from '@/content/courses/js/bg/38-default.json';
-import js_bg_38 from '@/content/courses/js/bg/39-pure.json';
-import js_bg_39 from '@/content/courses/js/bg/40-broken.json';
-import js_bg_40 from '@/content/courses/js/bg/41-quiz.json';
-import js_bg_41 from '@/content/courses/js/bg/42-array.json';
-import js_bg_42 from '@/content/courses/js/bg/43-index.json';
+import js_bg_10 from '@/content/courses/js/bg/10-quiz.json';
+import js_bg_11 from '@/content/courses/js/bg/11-shorthand.json';
+import js_bg_12 from '@/content/courses/js/bg/12-template.json';
+import js_bg_13 from '@/content/courses/js/bg/13-strings.json';
+import js_bg_14 from '@/content/courses/js/bg/14-nan.json';
+import js_bg_15 from '@/content/courses/js/bg/15-math.json';
+import js_bg_16 from '@/content/courses/js/bg/16-broken.json';
+import js_bg_17 from '@/content/courses/js/bg/17-quiz.json';
+import js_bg_18 from '@/content/courses/js/bg/18-if.json';
+import js_bg_19 from '@/content/courses/js/bg/19-else.json';
+import js_bg_20 from '@/content/courses/js/bg/20-equality.json';
+import js_bg_21 from '@/content/courses/js/bg/21-truthy.json';
+import js_bg_22 from '@/content/courses/js/bg/22-logic.json';
+import js_bg_23 from '@/content/courses/js/bg/23-switch.json';
+import js_bg_24 from '@/content/courses/js/bg/24-broken.json';
+import js_bg_25 from '@/content/courses/js/bg/25-quiz.json';
+import js_bg_26 from '@/content/courses/js/bg/26-while.json';
+import js_bg_27 from '@/content/courses/js/bg/27-infinite.json';
+import js_bg_28 from '@/content/courses/js/bg/28-for.json';
+import js_bg_29 from '@/content/courses/js/bg/29-offbyone.json';
+import js_bg_30 from '@/content/courses/js/bg/30-break.json';
+import js_bg_31 from '@/content/courses/js/bg/31-nested.json';
+import js_bg_32 from '@/content/courses/js/bg/32-broken.json';
+import js_bg_33 from '@/content/courses/js/bg/33-function.json';
+import js_bg_34 from '@/content/courses/js/bg/34-return.json';
+import js_bg_35 from '@/content/courses/js/bg/35-compose.json';
+import js_bg_36 from '@/content/courses/js/bg/36-scope.json';
+import js_bg_37 from '@/content/courses/js/bg/37-arrow.json';
+import js_bg_38 from '@/content/courses/js/bg/38-default.json';
+import js_bg_39 from '@/content/courses/js/bg/39-pure.json';
+import js_bg_40 from '@/content/courses/js/bg/40-broken.json';
+import js_bg_41 from '@/content/courses/js/bg/41-quiz.json';
+import js_bg_42 from '@/content/courses/js/bg/42-array.json';
+import js_bg_43 from '@/content/courses/js/bg/43-index.json';
 import js_en_course from '@/content/courses/js/en/_course.json';
 import js_en_0 from '@/content/courses/js/en/01-hello.json';
 import js_en_1 from '@/content/courses/js/en/02-values.json';
 import js_en_2 from '@/content/courses/js/en/03-variable.json';
-import js_en_3 from '@/content/courses/js/en/04-const.json';
-import js_en_4 from '@/content/courses/js/en/05-var.json';
-import js_en_5 from '@/content/courses/js/en/06-plus.json';
-import js_en_6 from '@/content/courses/js/en/07-swap.json';
-import js_en_7 from '@/content/courses/js/en/08-broken.json';
-import js_en_8 from '@/content/courses/js/en/09-quiz.json';
+import js_en_3 from '@/content/courses/js/en/04-naming.json';
+import js_en_4 from '@/content/courses/js/en/05-const.json';
+import js_en_5 from '@/content/courses/js/en/06-var.json';
+import js_en_6 from '@/content/courses/js/en/07-plus.json';
+import js_en_7 from '@/content/courses/js/en/08-swap.json';
+import js_en_8 from '@/content/courses/js/en/09-broken.json';
 import js_en_9 from '@/content/courses/js/en/10-maths.json';
-import js_en_10 from '@/content/courses/js/en/11-shorthand.json';
-import js_en_11 from '@/content/courses/js/en/12-template.json';
-import js_en_12 from '@/content/courses/js/en/13-strings.json';
-import js_en_13 from '@/content/courses/js/en/14-nan.json';
-import js_en_14 from '@/content/courses/js/en/15-math.json';
-import js_en_15 from '@/content/courses/js/en/16-broken.json';
-import js_en_16 from '@/content/courses/js/en/17-quiz.json';
-import js_en_17 from '@/content/courses/js/en/18-if.json';
-import js_en_18 from '@/content/courses/js/en/19-else.json';
-import js_en_19 from '@/content/courses/js/en/20-equality.json';
-import js_en_20 from '@/content/courses/js/en/21-truthy.json';
-import js_en_21 from '@/content/courses/js/en/22-logic.json';
-import js_en_22 from '@/content/courses/js/en/23-switch.json';
-import js_en_23 from '@/content/courses/js/en/24-broken.json';
-import js_en_24 from '@/content/courses/js/en/25-quiz.json';
-import js_en_25 from '@/content/courses/js/en/26-while.json';
-import js_en_26 from '@/content/courses/js/en/27-infinite.json';
-import js_en_27 from '@/content/courses/js/en/28-for.json';
-import js_en_28 from '@/content/courses/js/en/29-offbyone.json';
-import js_en_29 from '@/content/courses/js/en/30-break.json';
-import js_en_30 from '@/content/courses/js/en/31-nested.json';
-import js_en_31 from '@/content/courses/js/en/32-broken.json';
-import js_en_32 from '@/content/courses/js/en/33-function.json';
-import js_en_33 from '@/content/courses/js/en/34-return.json';
-import js_en_34 from '@/content/courses/js/en/35-compose.json';
-import js_en_35 from '@/content/courses/js/en/36-scope.json';
-import js_en_36 from '@/content/courses/js/en/37-arrow.json';
-import js_en_37 from '@/content/courses/js/en/38-default.json';
-import js_en_38 from '@/content/courses/js/en/39-pure.json';
-import js_en_39 from '@/content/courses/js/en/40-broken.json';
-import js_en_40 from '@/content/courses/js/en/41-quiz.json';
-import js_en_41 from '@/content/courses/js/en/42-array.json';
-import js_en_42 from '@/content/courses/js/en/43-index.json';
+import js_en_10 from '@/content/courses/js/en/10-quiz.json';
+import js_en_11 from '@/content/courses/js/en/11-shorthand.json';
+import js_en_12 from '@/content/courses/js/en/12-template.json';
+import js_en_13 from '@/content/courses/js/en/13-strings.json';
+import js_en_14 from '@/content/courses/js/en/14-nan.json';
+import js_en_15 from '@/content/courses/js/en/15-math.json';
+import js_en_16 from '@/content/courses/js/en/16-broken.json';
+import js_en_17 from '@/content/courses/js/en/17-quiz.json';
+import js_en_18 from '@/content/courses/js/en/18-if.json';
+import js_en_19 from '@/content/courses/js/en/19-else.json';
+import js_en_20 from '@/content/courses/js/en/20-equality.json';
+import js_en_21 from '@/content/courses/js/en/21-truthy.json';
+import js_en_22 from '@/content/courses/js/en/22-logic.json';
+import js_en_23 from '@/content/courses/js/en/23-switch.json';
+import js_en_24 from '@/content/courses/js/en/24-broken.json';
+import js_en_25 from '@/content/courses/js/en/25-quiz.json';
+import js_en_26 from '@/content/courses/js/en/26-while.json';
+import js_en_27 from '@/content/courses/js/en/27-infinite.json';
+import js_en_28 from '@/content/courses/js/en/28-for.json';
+import js_en_29 from '@/content/courses/js/en/29-offbyone.json';
+import js_en_30 from '@/content/courses/js/en/30-break.json';
+import js_en_31 from '@/content/courses/js/en/31-nested.json';
+import js_en_32 from '@/content/courses/js/en/32-broken.json';
+import js_en_33 from '@/content/courses/js/en/33-function.json';
+import js_en_34 from '@/content/courses/js/en/34-return.json';
+import js_en_35 from '@/content/courses/js/en/35-compose.json';
+import js_en_36 from '@/content/courses/js/en/36-scope.json';
+import js_en_37 from '@/content/courses/js/en/37-arrow.json';
+import js_en_38 from '@/content/courses/js/en/38-default.json';
+import js_en_39 from '@/content/courses/js/en/39-pure.json';
+import js_en_40 from '@/content/courses/js/en/40-broken.json';
+import js_en_41 from '@/content/courses/js/en/41-quiz.json';
+import js_en_42 from '@/content/courses/js/en/42-array.json';
+import js_en_43 from '@/content/courses/js/en/43-index.json';
 
 // ── webproject ──
 import { meta as webproject_meta } from './webproject/meta.js';
@@ -1183,46 +1186,47 @@ export const registry = {
       '01-hello': js_l0,
       '02-values': js_l1,
       '03-variable': js_l2,
-      '04-const': js_l3,
-      '05-var': js_l4,
-      '06-plus': js_l5,
-      '07-swap': js_l6,
-      '08-broken': js_l7,
-      '09-quiz': js_l8,
+      '04-naming': js_l3,
+      '05-const': js_l4,
+      '06-var': js_l5,
+      '07-plus': js_l6,
+      '08-swap': js_l7,
+      '09-broken': js_l8,
       '10-maths': js_l9,
-      '11-shorthand': js_l10,
-      '12-template': js_l11,
-      '13-strings': js_l12,
-      '14-nan': js_l13,
-      '15-math': js_l14,
-      '16-broken': js_l15,
-      '17-quiz': js_l16,
-      '18-if': js_l17,
-      '19-else': js_l18,
-      '20-equality': js_l19,
-      '21-truthy': js_l20,
-      '22-logic': js_l21,
-      '23-switch': js_l22,
-      '24-broken': js_l23,
-      '25-quiz': js_l24,
-      '26-while': js_l25,
-      '27-infinite': js_l26,
-      '28-for': js_l27,
-      '29-offbyone': js_l28,
-      '30-break': js_l29,
-      '31-nested': js_l30,
-      '32-broken': js_l31,
-      '33-function': js_l32,
-      '34-return': js_l33,
-      '35-compose': js_l34,
-      '36-scope': js_l35,
-      '37-arrow': js_l36,
-      '38-default': js_l37,
-      '39-pure': js_l38,
-      '40-broken': js_l39,
-      '41-quiz': js_l40,
-      '42-array': js_l41,
-      '43-index': js_l42,
+      '10-quiz': js_l10,
+      '11-shorthand': js_l11,
+      '12-template': js_l12,
+      '13-strings': js_l13,
+      '14-nan': js_l14,
+      '15-math': js_l15,
+      '16-broken': js_l16,
+      '17-quiz': js_l17,
+      '18-if': js_l18,
+      '19-else': js_l19,
+      '20-equality': js_l20,
+      '21-truthy': js_l21,
+      '22-logic': js_l22,
+      '23-switch': js_l23,
+      '24-broken': js_l24,
+      '25-quiz': js_l25,
+      '26-while': js_l26,
+      '27-infinite': js_l27,
+      '28-for': js_l28,
+      '29-offbyone': js_l29,
+      '30-break': js_l30,
+      '31-nested': js_l31,
+      '32-broken': js_l32,
+      '33-function': js_l33,
+      '34-return': js_l34,
+      '35-compose': js_l35,
+      '36-scope': js_l36,
+      '37-arrow': js_l37,
+      '38-default': js_l38,
+      '39-pure': js_l39,
+      '40-broken': js_l40,
+      '41-quiz': js_l41,
+      '42-array': js_l42,
+      '43-index': js_l43,
     },
     problems: {
     },
@@ -1232,92 +1236,94 @@ export const registry = {
         '01-hello': js_bg_0,
         '02-values': js_bg_1,
         '03-variable': js_bg_2,
-        '04-const': js_bg_3,
-        '05-var': js_bg_4,
-        '06-plus': js_bg_5,
-        '07-swap': js_bg_6,
-        '08-broken': js_bg_7,
-        '09-quiz': js_bg_8,
+        '04-naming': js_bg_3,
+        '05-const': js_bg_4,
+        '06-var': js_bg_5,
+        '07-plus': js_bg_6,
+        '08-swap': js_bg_7,
+        '09-broken': js_bg_8,
         '10-maths': js_bg_9,
-        '11-shorthand': js_bg_10,
-        '12-template': js_bg_11,
-        '13-strings': js_bg_12,
-        '14-nan': js_bg_13,
-        '15-math': js_bg_14,
-        '16-broken': js_bg_15,
-        '17-quiz': js_bg_16,
-        '18-if': js_bg_17,
-        '19-else': js_bg_18,
-        '20-equality': js_bg_19,
-        '21-truthy': js_bg_20,
-        '22-logic': js_bg_21,
-        '23-switch': js_bg_22,
-        '24-broken': js_bg_23,
-        '25-quiz': js_bg_24,
-        '26-while': js_bg_25,
-        '27-infinite': js_bg_26,
-        '28-for': js_bg_27,
-        '29-offbyone': js_bg_28,
-        '30-break': js_bg_29,
-        '31-nested': js_bg_30,
-        '32-broken': js_bg_31,
-        '33-function': js_bg_32,
-        '34-return': js_bg_33,
-        '35-compose': js_bg_34,
-        '36-scope': js_bg_35,
-        '37-arrow': js_bg_36,
-        '38-default': js_bg_37,
-        '39-pure': js_bg_38,
-        '40-broken': js_bg_39,
-        '41-quiz': js_bg_40,
-        '42-array': js_bg_41,
-        '43-index': js_bg_42,
+        '10-quiz': js_bg_10,
+        '11-shorthand': js_bg_11,
+        '12-template': js_bg_12,
+        '13-strings': js_bg_13,
+        '14-nan': js_bg_14,
+        '15-math': js_bg_15,
+        '16-broken': js_bg_16,
+        '17-quiz': js_bg_17,
+        '18-if': js_bg_18,
+        '19-else': js_bg_19,
+        '20-equality': js_bg_20,
+        '21-truthy': js_bg_21,
+        '22-logic': js_bg_22,
+        '23-switch': js_bg_23,
+        '24-broken': js_bg_24,
+        '25-quiz': js_bg_25,
+        '26-while': js_bg_26,
+        '27-infinite': js_bg_27,
+        '28-for': js_bg_28,
+        '29-offbyone': js_bg_29,
+        '30-break': js_bg_30,
+        '31-nested': js_bg_31,
+        '32-broken': js_bg_32,
+        '33-function': js_bg_33,
+        '34-return': js_bg_34,
+        '35-compose': js_bg_35,
+        '36-scope': js_bg_36,
+        '37-arrow': js_bg_37,
+        '38-default': js_bg_38,
+        '39-pure': js_bg_39,
+        '40-broken': js_bg_40,
+        '41-quiz': js_bg_41,
+        '42-array': js_bg_42,
+        '43-index': js_bg_43,
       },
       en: {
         _course: js_en_course,
         '01-hello': js_en_0,
         '02-values': js_en_1,
         '03-variable': js_en_2,
-        '04-const': js_en_3,
-        '05-var': js_en_4,
-        '06-plus': js_en_5,
-        '07-swap': js_en_6,
-        '08-broken': js_en_7,
-        '09-quiz': js_en_8,
+        '04-naming': js_en_3,
+        '05-const': js_en_4,
+        '06-var': js_en_5,
+        '07-plus': js_en_6,
+        '08-swap': js_en_7,
+        '09-broken': js_en_8,
         '10-maths': js_en_9,
-        '11-shorthand': js_en_10,
-        '12-template': js_en_11,
-        '13-strings': js_en_12,
-        '14-nan': js_en_13,
-        '15-math': js_en_14,
-        '16-broken': js_en_15,
-        '17-quiz': js_en_16,
-        '18-if': js_en_17,
-        '19-else': js_en_18,
-        '20-equality': js_en_19,
-        '21-truthy': js_en_20,
-        '22-logic': js_en_21,
-        '23-switch': js_en_22,
-        '24-broken': js_en_23,
-        '25-quiz': js_en_24,
-        '26-while': js_en_25,
-        '27-infinite': js_en_26,
-        '28-for': js_en_27,
-        '29-offbyone': js_en_28,
-        '30-break': js_en_29,
-        '31-nested': js_en_30,
-        '32-broken': js_en_31,
-        '33-function': js_en_32,
-        '34-return': js_en_33,
-        '35-compose': js_en_34,
-        '36-scope': js_en_35,
-        '37-arrow': js_en_36,
-        '38-default': js_en_37,
-        '39-pure': js_en_38,
-        '40-broken': js_en_39,
-        '41-quiz': js_en_40,
-        '42-array': js_en_41,
-        '43-index': js_en_42,
+        '10-quiz': js_en_10,
+        '11-shorthand': js_en_11,
+        '12-template': js_en_12,
+        '13-strings': js_en_13,
+        '14-nan': js_en_14,
+        '15-math': js_en_15,
+        '16-broken': js_en_16,
+        '17-quiz': js_en_17,
+        '18-if': js_en_18,
+        '19-else': js_en_19,
+        '20-equality': js_en_20,
+        '21-truthy': js_en_21,
+        '22-logic': js_en_22,
+        '23-switch': js_en_23,
+        '24-broken': js_en_24,
+        '25-quiz': js_en_25,
+        '26-while': js_en_26,
+        '27-infinite': js_en_27,
+        '28-for': js_en_28,
+        '29-offbyone': js_en_29,
+        '30-break': js_en_30,
+        '31-nested': js_en_31,
+        '32-broken': js_en_32,
+        '33-function': js_en_33,
+        '34-return': js_en_34,
+        '35-compose': js_en_35,
+        '36-scope': js_en_36,
+        '37-arrow': js_en_37,
+        '38-default': js_en_38,
+        '39-pure': js_en_39,
+        '40-broken': js_en_40,
+        '41-quiz': js_en_41,
+        '42-array': js_en_42,
+        '43-index': js_en_43,
       },
     },
     problemText: {

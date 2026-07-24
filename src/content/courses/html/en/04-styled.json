@@ -1,13 +1,36 @@
 {
   "title": "What you were actually doing",
-  "blocks.0.text": "For three lessons you have been writing without me explaining what you are doing. That was on purpose. Now you have experience, and the words will land on something.",
-  "blocks.1.text": "Those brackets are called tags",
-  "blocks.3.text": "<h1> is an opening tag. </h1> is a closing one — you know it by the slash. What sits between them is the content. The three together make one element.",
-  "blocks.4.text": "Almost every tag has a twin. If you open, you close. Forget to close, and the browser starts guessing where the thing ends — and it usually guesses wrong.",
-  "blocks.5.text": "And why they are needed at all",
-  "blocks.6.text": "Did you notice you never said how big the heading should be? Nor what font, nor what colour. You only said: \"this is a heading\". The browser decided how it looks.",
-  "blocks.7.text": "That is exactly what HTML is. You do not draw — you describe. You say what each thing is: this is a heading, this is a sentence, this is a link. How it gets shown is someone else's job.",
-  "blocks.8.text": "Whose job is the look, then",
-  "blocks.9.text": "CSS's. It comes later and says: \"make headings blue\", \"make sentences use this font\". But CSS can only colour something that already exists. And who creates it? You, with HTML.",
-  "blocks.10.text": "HTML says what is there. CSS says how it looks. JavaScript says what it does. In that order — because you cannot colour or animate something that does not exist."
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "You have written code for three lessons without me explaining what you were doing. That was deliberate. Now you have the experience, and the words will land on something.",
+  "blocks.2.text": "You know what things are called: `<h1>` is the opening tag, `</h1>` is the closing one, the content sits between them, and all three together are an element. One question is left that I kept walking past.",
+
+  "blocks.3.text": "You never said how big",
+  "blocks.4.text": "Go back and check. In none of the three lessons did you write a font, a size, a color or any spacing. You wrote two tags:",
+  "blocks.7.text": "And still the heading came out big and bold, with blank space beneath it. Nobody asked for that. Where did it come from?",
+
+  "blocks.8.text": "The browser brings its own stylesheet",
+  "blocks.9.text": "Every browser loads a CSS file of its own before it ever sees yours. It is called the *user agent stylesheet*. It says what to do with each tag. Here is the real rule for `<h1>` in Chrome:",
+  "blocks.11.text": "That is CSS. You did not write it — the people who built the browser did. `2em` means twice the normal size. The two margins are the blank space above and below that puzzled you.",
+  "blocks.12.text": "Without that file your page would be one unbroken mush of identical text. Headings would not be big, lists would have no bullets, links would not be blue.",
+
+  "blocks.13.text": "It is not the same everywhere",
+  "blocks.14.text": "Chrome, Firefox and Safari carry different files. That is why the same HTML looks slightly different across browsers — a few pixels of margin here, a different font weight there.",
+  "blocks.15.text": "You can see it yourself. Right-click a heading on any real site, then Inspect. In the styles panel scroll to the very bottom — it says User Agent Stylesheet, and these exact rules sit under it.",
+
+  "blocks.16.text": "It loses to your CSS",
+  "blocks.17.text": "This stylesheet has the lowest weight of all. Write your own rule for `<h1>` and yours wins. So it is not a limit — it is the floor, not the ceiling.",
+  "blocks.18.text": "And that is the point: if the look comes from a separate file that can be swapped, then the look was never part of the tag.",
+  "blocks.19.text": "You did not pick `<h1>` because you wanted big text. You picked it because this is the heading. That it comes out big is someone else's decision — made by another person, in another file, and open to change.",
+
+  "blocks.20.text": "Who does what",
+  "blocks.21.text": "HTML says what exists. CSS says how it looks. JavaScript says what it does. In that order — because you cannot color or animate something that is not there.",
+  "blocks.22.text": "From now on, when you see something on your page you did not ask for — a size, a margin, a link color — your first thought already knows where to go.",
+
+  "blocks.23.text": "So far",
+  "blocks.24.items.0": "The page looks styled because the browser ships its own CSS.",
+  "blocks.24.items.1": "It is called the user agent stylesheet.",
+  "blocks.24.items.2": "Big headings, margins, list bullets and blue links all come from there.",
+  "blocks.24.items.3": "It differs slightly between browsers and loses to your own CSS.",
+  "blocks.24.items.4": "HTML — what exists. CSS — how it looks. JavaScript — what it does."
 }

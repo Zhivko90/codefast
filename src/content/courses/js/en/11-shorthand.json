@@ -1,31 +1,29 @@
 {
   "title": "Accumulating",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You wrote something",
-  "checkLabels.t2": "You edited script.js",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t3": "The script is linked",
-  "checkLabels.t4": "The code runs",
-  "checkLabels.t5": "The number is not typed in",
-  "checkLabels.t6": "The cups use the short form",
-  "checkLabels.t7": "The stock too",
-  "checkLabels.t8": "The orders count with ++",
-  "checkLabels.t9": "The cups are 40",
-  "checkLabels.t10": "10 are left",
-  "checkLabels.t11": "The orders are 2",
-  "checkLabels.t12": "Three lines come out",
-  "checkLabels.t13": "The paragraphs are still there",
+  "steps.0.text": "Rewrite the four cup lines with the short form. The total should be 40 — one of the lines does not add.",
+  "steps.1.text": "The stock too. From 50 there should be 10 left.",
+  "steps.2.text": "And the orders. They are already 2 — here only the form changes.",
 
-  "why.empty": "The editor is empty.",
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "The total is not typed in",
+  "checkLabels.t4": "The cups use the short form",
+  "checkLabels.t5": "The cups are 40",
+  "checkLabels.t6": "The stock uses the short form",
+  "checkLabels.t7": "10 are left",
+  "checkLabels.t8": "The orders use the short form",
+  "checkLabels.t9": "The orders are 2",
+  "checkLabels.t10": "Three lines come out",
+
+  "why.empty": "script.js is empty. You deleted everything instead of fixing it.",
 
   "why.untouched": "script.js is exactly as it was.",
   "hint2.untouched": "The sales are 12, 8, 15 and 5. Add them up in your head and look at what the console shows.",
 
-  "why.not-closed": "A tag in index.html is open and never closed.",
-  "why.not-linked": "The script never reaches the page.",
-
   "why.crashed": "Your code stopped with an error.",
-  "hint2.crashed": "Look at the Console panel below.",
+  "hint2.crashed": "Look at the Console panel on the right.",
 
   "why.nothing-written": "script.js is empty.",
   "why.frozen": "Your code never stops.",
@@ -34,13 +32,13 @@
   "hint2.typed-answer": "Tomorrow the sales will be different. The lines have to add up, not announce the result.",
 
   "why.long-cups": "The cups are still added the long way.",
-  "hint2.long-cups": "cups = cups + 12 can be written shorter. The plus sign goes in front of the equals sign.",
+  "hint2.long-cups": "`cups = cups + 12` can be written shorter. The plus sign goes BEFORE the equals sign.",
 
   "why.long-stock": "The stock is still calculated the long way.",
   "hint2.long-stock": "The same works for subtraction.",
 
   "why.long-orders": "The orders are still counted the long way.",
-  "hint2.long-orders": "Adding one has a sign of its own. Two pluses stuck together.",
+  "hint2.long-orders": "Adding one has a sign of its own — two pluses stuck together. `orders += 1` works too.",
 
   "why.wrong-cups": "The cups are not 40.",
   "hint2.wrong-cups": "12 plus 8 plus 15 plus 5 makes 40. Read the four lines one at a time and find the one that does not add.",
@@ -54,25 +52,49 @@
   "hint2.wrong-orders": "Two lines, each adding one.",
 
   "why.wrong-count": "There are not three lines in the console.",
-  "why.lost-p": "A line has disappeared from the page.",
 
-  "blocks.0.text": "Four sales are added into a total. Then the sales are taken off the stock, and the orders are counted one at a time.",
-  "blocks.1.text": "The code runs. The console shows three numbers and not one of them is right. Add the four sales up in your head and compare.",
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Four sales are added into a total. Then the sales are taken off the stock, and the orders are counted one at a time. The code runs and does not crash:",
 
-  "blocks.2.text": "Accumulating is everywhere",
-  "blocks.3.text": "Take the value, add something, put it back under the same name. This happens so often in code that it has its own form.",
-  "blocks.5.text": "Both lines do the same thing. The second is not read left to right like a sentence — it is read as an action: add twelve to the cups.",
+  "blocks.3.text": "Twelve plus eight plus fifteen plus five makes 40. The console shows 20. One of the four lines does not add — it replaces, and everything gathered before it disappears.",
 
-  "blocks.6.text": "Counting",
-  "blocks.7.text": "Adding one is even more common. It has a sign of its own, and you will need it in every loop from section four onwards.",
-  "blocks.9.text": "One up, one down. Nothing more.",
+  "blocks.4.text": "Accumulating is everywhere",
+  "blocks.5.text": "Take the value, add something, put it back under the same name. This happens so often that it has its own form:",
 
-  "blocks.10.text": "The trap",
-  "blocks.11.text": "The plus sign goes BEFORE the equals sign. The other way round is still valid code — but it means something completely different.",
-  "blocks.12.text": "Reversed, they do not add. They replace. Everything gathered so far disappears and nobody complains, because the line is perfectly correct — it just does not do what you thought.",
-  "blocks.13.text": "Two signs, swapped around. That is the difference between a correct total and a silent loss.",
+  "blocks.7.text": "Both lines do the same thing, which is why the result is 24 and not 12. The second is not read left to right like a sentence — it is read as an action: add twelve to the cups. There are short forms for every operation: `-=`, `*=`, `/=`.",
 
-  "blocks.14.text": "The task",
-  "blocks.15.text": "Rewrite everything with the short form: the adding, the subtracting and the counting. You will have to read each line separately.",
-  "blocks.16.text": "That is the point. One of them hides the bug, and you will only see it if you read slowly."
+  "blocks.9.text": "⚠ One important thing about them: they run LAST. The right-hand side is worked out whole before being applied. That is why this line gives 16 and not 11 — three plus five makes eight first, then the two is multiplied by eight. Lesson ten was about precedence; this is the same rule applied here.",
+
+  "blocks.10.text": "Counting",
+  "blocks.11.text": "Adding one is even more common. It has a sign of its own, and you will need it in every loop from section four onwards:",
+
+  "blocks.13.text": "One up, one down. Nothing more. `orders += 1` works too — it is the same, just longer.",
+
+  "blocks.15.text": "⚠ And `++` does not act on a number, it acts on a NAME. This line crashes. The reason is simple: counting assigns a new value to something, and you cannot assign anything to the number three — it is three.",
+  "blocks.16.text": "That is also why `++` does not work on a `const`. You will also meet the other form, `++orders`, in front of the name. The difference shows up only if you use the returned value inside another expression — the trailing one returns the old value, the leading one the new. Do not write like that. Know it so you recognize it.",
+
+  "blocks.17.text": "The trap",
+  "blocks.18.text": "The plus sign goes BEFORE the equals sign. The other way round is still valid code — but it means something completely different:",
+
+  "blocks.20.text": "`a =+ 5` is not an error. The computer reads it as \"let a point at plus five\" — an equals sign followed by a unary plus in front of the number. That is an assignment, not an accumulation. Everything gathered so far disappears and nobody complains, because the line is perfectly correct — it just does not do what you thought.",
+  "blocks.21.quote": "Two signs, swapped around. That is the difference between a correct total and a silent loss.",
+
+  "blocks.22.text": "And with text",
+  "blocks.23.text": "The short form inherits everything from the sign it shortens — including the plus sign's double life from lesson seven:",
+
+  "blocks.25.text": "With text `+=` joins rather than adds. That is useful when you really are building a string. It is dangerous when you thought you were calculating and somewhere along the way the number became text.",
+
+  "blocks.26.text": "So far",
+  "blocks.27.items.0": "`cups += 12` is the same as `cups = cups + 12`. There are also `-=`, `*=`, `/=`.",
+  "blocks.27.items.1": "Short forms run last. The right-hand side is worked out whole.",
+  "blocks.27.items.2": "`++` and `--` add and subtract one. They act on a name only, not on a number.",
+  "blocks.27.items.3": "`=+` is valid code that replaces instead of accumulating. The order of the two signs decides everything.",
+  "blocks.27.items.4": "`+=` on text joins, exactly like the ordinary plus.",
+
+  "walkthrough.0.text": "The four cup lines become `+=`, including the broken one. Here fixing and shortening are the same action: `cups =+ 15` and `cups += 15` differ by the position of two characters, and the result differs by twenty.",
+  "walkthrough.1.text": "Notice that the first two lines were correct and we rewrite them anyway. Not because they are wrong, but because four lines written two different ways read more slowly than four identical ones. Uniformity is not decoration — it is what lets you spot the line that stands out.",
+  "walkthrough.2.text": "`stock -= cups;` — the same form, a different operation. The stock starts at 50 and the accumulated total is taken off it. The 10 only comes out because the cups are now 40; while they were 20, this line gave 30 and looked correct.",
+  "walkthrough.3.text": "`orders++;` twice. These two lines were CORRECT before the fix — the orders were 2 in the starter code too. Nothing is being repaired here, only the form is changing. Not every change is a fix.",
+  "walkthrough.4.text": "`orders += 1;` works too — the check accepts both, because it looks at what the code does, not which sign it is written with. `++` is the shorter one and it is what you will meet in the loops from section four.",
+  "walkthrough.5.text": "The number 40 appears nowhere in the code and one of the checks guards exactly that. The total is a result, not data — it is accumulated from the four sales. Tomorrow the sales will be different and the code has to work without you touching it."
 }

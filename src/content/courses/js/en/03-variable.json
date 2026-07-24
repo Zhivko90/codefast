@@ -1,72 +1,113 @@
 {
-  "title": "A name instead of a number",
+  "title": "A name instead of the number",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You wrote something",
-  "checkLabels.t2": "You edited script.js",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t3": "The script is linked",
-  "checkLabels.t4": "The code runs",
-  "checkLabels.t5": "There is a name sold holding 1247",
-  "checkLabels.t6": "There is a name price holding 3",
-  "checkLabels.t7": "The number is not repeated",
-  "checkLabels.t8": "The total is right",
-  "checkLabels.t9": "All four lines are kept",
-  "checkLabels.t10": "The paragraphs are still there",
+  "steps.0.text": "Give the two numbers names: `sold` for 1247 and `price` for 3. Exactly those names — the checks look for them letter by letter.",
+  "steps.1.text": "Rewrite the four lines using the names. The number 1247 should be left in only one place in the code.",
+  "steps.2.text": "The numbers in the console do not change: 3741, 748.2, 103.91666666666667 and 3341.",
 
-  "why.empty": "The editor is empty. You deleted everything instead of rewriting it.",
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "There is a name sold with the value 1247",
+  "checkLabels.t4": "There is a name price with the value 3",
+  "checkLabels.t5": "The number 1247 is written once",
+  "checkLabels.t6": "The price too",
+  "checkLabels.t7": "The total is 3741",
+  "checkLabels.t8": "The tax is 748.2",
+  "checkLabels.t9": "The last sum is 3341",
+  "checkLabels.t10": "Four lines come out",
+
+  "why.empty": "script.js is empty. You deleted everything instead of rewriting it.",
 
   "why.untouched": "script.js is exactly as it was.",
   "hint2.untouched": "The four lines stay, but the numbers in them become names.",
 
-  "why.not-closed": "A tag in index.html is open and never closed.",
-  "hint2.not-closed": "index.html is not part of this lesson.",
-
-  "why.not-linked": "The script never reaches the page.",
-  "hint2.not-linked": "The last line in index.html links script.js.",
-
-  "why.crashed": "Your code stopped with an error before it reached the end.",
-  "hint2.crashed": "Look at the Console panel below. The red line says what it did not like.",
-  "hint3.crashed": "A name is created before it is used. Use it on line 1 and create it on line 5, and you get an error.",
+  "why.crashed": "Your code stopped with an error before it got to the end.",
+  "hint2.crashed": "Look at the Console panel on the right. The red line says what it did not like.",
+"hint3.crashed": "A name is created before it is used. Use it on line 1 and create it on line 5 and you get an error.",
+  "hint5.crashed": "`sold is not defined` means you left out the `let` when creating it. Without it the line does not create a name — it only tries to use one that is not there.",
+  "hint4.crashed": "`Identifier has already been declared` means you declared the same name twice with `let`.",
 
   "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
 
-  "why.frozen": "Your code never stops. It loops forever and was cut off.",
+  "why.no-sold": "There is no name `sold` with the value 1247.",
+  "hint2.no-sold": "A name is created with `let`, then an equals sign, then the value.",
+  "hint3.no-sold": "`let cups = 12;` creates a name `cups` that points to 12. From then on you write `cups` instead of 12.",
+  "hint4.no-sold": "Do the same with the number 1247 and the name `sold`. Exactly that name — the check looks for it letter by letter.",
 
-  "why.no-sold": "There is no name sold holding 1247.",
-  "hint2.no-sold": "A name is created with let, then an equals sign, then the value.",
-  "hint3.no-sold": "let cups = 12; creates the name cups, pointing at 12. From then on you write cups instead of 12.",
-  "hint4.no-sold": "Do the same with 1247 and the name sold. Exactly that name — the check looks for it letter by letter.",
+  "why.no-price": "There is no name `price` with the value 3.",
+  "hint2.no-price": "The second number needs a name too. Exactly `price`, lowercase.",
 
-  "why.no-price": "There is no name price holding 3.",
-  "hint2.no-price": "The second number needs a name too. Exactly price, lowercase.",
+  "why.still-repeating": "The number is still somewhere in the sums.",
+  "hint2.still-repeating": "You created the name but did not use it everywhere. Go through the four lines.",
+  "hint3.still-repeating": "The point is for the number to be written EXACTLY ONCE — where the name is created. Leave it in a second place and tomorrow you will change one and forget the other.",
 
-  "why.still-repeating": "The number 1247 is still sitting in one of the sums.",
-  "hint2.still-repeating": "You created the name but did not use it everywhere. Go through all four lines.",
-  "hint3.still-repeating": "The point is that the number appears EXACTLY ONCE — where the name is created. Leave it in a second place and tomorrow you will change one and forget the other.",
+  "why.wrong-total": "The numbers in the console have changed.",
+  "hint2.wrong-total": "The sums are not touched. Only the numbers in them become names.",
+  "hint3.wrong-total": "The four lines give 3741, 748.2, 103.91666666666667 and 3341. Get anything else and a name points to the wrong value somewhere.",
 
-  "why.wrong-total": "The total is no longer 3741.",
-  "hint2.wrong-total": "The sums do not change. Only the numbers inside them become names.",
+  "why.wrong-count": "There are not four lines in the console.",
 
-  "why.wrong-count": "There are not four lines. The task is to rewrite the same ones, not to add or remove.",
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Look at `script.js`. The number 1247 sits on four lines. The number 3 — on three.",
+  "blocks.2.text": "Now imagine the price becomes 4 lv. You touch three lines. Miss one and the sum is wrong and nothing crashes. You will find out when somebody tells you the numbers do not add up.",
 
-  "why.lost-p": "A line has disappeared from the page. index.html is not part of this lesson.",
+  "blocks.3.text": "Give it a name",
+  "blocks.4.text": "Instead of repeating the value, you name it once and then use the name:",
 
-  "blocks.0.text": "Look at script.js. The number 1247 appears on four lines. The number 3 appears on two.",
-  "blocks.1.text": "Now imagine the price goes up to 4. You edit two lines. Miss one and the total is wrong, and nothing breaks. You find out when somebody tells you the numbers do not add up.",
+  "blocks.5.marks.0.label": "CREATES",
+  "blocks.5.marks.1.label": "THE NAME",
+  "blocks.5.marks.2.label": "THE VALUE",
+  "blocks.5.legend.0": "The semicolon at the end says the line is over. In JavaScript you can almost always leave it out — but \"almost\" is reason enough to write it.",
 
-  "blocks.2.text": "Give it a name",
-  "blocks.3.text": "Instead of repeating the value, you name it once and use the name after that.",
-  "blocks.5.text": "let creates the name. The equals sign says what it points at. From then on cups means 12 everywhere in the code.",
+  "blocks.6.items.0": "`let` is a word of the language. It creates a new name.",
+  "blocks.6.items.1": "`cups` is the name. You choose it.",
+  "blocks.6.items.2": "The equals sign connects the two: from here on `cups` means 12.",
 
-  "blocks.6.text": "Not a box",
-  "blocks.7.text": "You will meet the explanation that a variable is a box you put a value into. Forget it. A box implies the value is inside, and yours alone.",
-  "blocks.8.text": "A name points at a value. Nothing more.",
-  "blocks.9.text": "The difference will matter in section six, when two names point at the same array and you wonder why changing one shows up through the other. Boxes do not explain that. Names that point do.",
+  "blocks.8.text": "Anywhere a number can stand, a name can stand too. The computer first looks at what it points to, then calculates. That is why the second line gives 24, not `cups * 2`.",
 
-  "blocks.10.text": "A name is used like the value",
-  "blocks.12.text": "Anywhere a number can stand, a name can stand too. The computer first looks at what it points to, then does the maths.",
+  "blocks.9.text": "Two separate steps",
+  "blocks.10.text": "Creating the name and giving it a value are different things. They can be written on one line, or apart:",
 
-  "blocks.13.text": "The task",
-  "blocks.14.text": "Name the two numbers: sold for 1247 and price for 3. Exactly those names — the checks look for them letter by letter.",
-  "blocks.15.text": "Then rewrite the four lines using the names. The number 1247 should remain in the code in only one place: where the name is created."
+"blocks.12.text": "The first line says \"a name `cups` exists\". The second says \"it points to 12\". They are usually written together because it is shorter — but it helps to know they are two things. You will also meet several names on one line, separated by commas: `let a = 1, b = 2;`. It works, but it reads worse. One name per line.",
+  "blocks.13.text": "Declare a name with no value and it points to `undefined`. ⚠ Do not confuse that with a name that does not exist at all. The first gives `undefined` and the code carries on. The second gives a `ReferenceError` and the code stops. There is a difference between empty and absent.",
+
+  "blocks.14.text": "Not a box",
+  "blocks.15.text": "You will meet the explanation that a variable is a box you put a value into. Forget it. A box implies the value is inside and is yours alone.",
+ 
+  "blocks.16.text": "A name points to a value. Nothing more. And since that is so, two names can point at the same thing:",
+
+  "blocks.18.text": "The third line does not make a new copy. It tells `shopName` to point where `hello` points. The two names are not tied to each other — they simply happen to be looking at the same thing right now.",
+  "blocks.19.quote": "The difference will matter in section six, when two names will point to the same array and you will wonder why changing one shows through the other. Boxes do not explain that. Pointing names do.",
+
+  "blocks.20.text": "The value can change",
+  "blocks.21.text": "A name can start pointing to something else. Then the old one is lost:",
+
+  "blocks.23.text": "After the third line, 12 is nowhere. Nobody keeps it. `let` allows this — and that is exactly why lesson five is about a way to forbid it.",
+
+  "blocks.24.text": "A name is created once",
+  "blocks.25.text": "Changing the value and creating a new name are different things. A second `let` with the same name crashes:",
+
+  "blocks.27.text": "It looks like needless strictness. It is a warning: declare the same name twice and one of them is almost certainly a typo or forgotten code. Changing a value is written without `let`.",
+
+  "blocks.28.text": "The kind can change too",
+  "blocks.29.text": "In some languages a name is declared as \"a number\" and can then hold only numbers. Not in JavaScript:",
+
+  "blocks.31.text": "One name, two different kinds. It is called dynamic typing and it is convenient, until it becomes the cause of a bug — a name you expect to be a number with text inside.",
+  "blocks.32.text": "That is exactly what happens in lesson 07, and it will look like broken maths.",
+
+  "blocks.33.text": "So far",
+  "blocks.34.items.0": "`let` creates a name that points to a value.",
+  "blocks.34.items.1": "The name can stand anywhere the value can stand.",
+  "blocks.34.items.2": "Two names can point at the same thing.",
+  "blocks.34.items.3": "The value can change. Then the old one disappears.",
+  "blocks.34.items.4": "A name is declared with `let` only once. A second declaration crashes.",
+
+  "walkthrough.0.text": "The two names sit at the top because a name is created before it is used. The code runs top to bottom — put `console.log(sold * price)` above the `let sold` line and you get an error, not an empty line.",
+  "walkthrough.1.text": "`let sold = 1247;` — from here on 1247 is written in exactly one place in the whole file. That is the entire gain: tomorrow the price changes on one line instead of three, and there is no way to miss one of them.",
+  "walkthrough.2.text": "`console.log(sold * price);` — the name stands exactly where the number stood. The computer first looks at what it points to, then multiplies. The console shows what it showed before. The code changed, the result did not. That is the point.",
+  "walkthrough.3.text": "The third line stays `sold / 12`. Not every line needs both names — the price has no business in the average month. It prints `103.91666666666667`: JavaScript does not round unless you ask it to.",
+  "walkthrough.4.text": "The fourth line keeps 400 bare, and that is deliberate. The number appears once and means nothing outside that line. A name is for a value that repeats or carries meaning. Name everything and the code becomes as unreadable as if you had named nothing.",
+  "walkthrough.5.text": "It is `let`, not `const`, because `const` comes in lesson five. The blank line between the declarations and the sums is not accidental either: the data sits above, what is done with it sits below. The computer does not notice the blank line. The person reading does."
 }

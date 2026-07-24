@@ -1,29 +1,70 @@
 {
   "title": "Say something about yourself",
+  "taskTitle": "The task",
 
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "The heading must still be there",
-  "checkLabels.t2": "There must be a paragraph",
-  "checkLabels.t3": "The paragraph must be closed",
-  "checkLabels.t4": "The sentence must be INSIDE the paragraph",
+  "steps.0.text": "Below the heading, add a sentence about yourself, wrapped in `<p>`.",
+
   "checkLabels.t0": "There is code",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t1": "The heading is still there",
+  "checkLabels.t2": "There is a paragraph",
+  "checkLabels.t3": "The paragraph is closed",
+  "checkLabels.t4": "The sentence is inside the paragraph",
+
   "why.empty": "The editor is empty. You deleted the heading too. Bring the code back and add the sentence.",
+  "hint2.empty": "Put back `<h1>` with your name, then add the paragraph line below it.",
 
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.lost-heading": "The heading is gone. The task is to ADD a sentence below it, not to replace it. Put <h1> back.",
-  "why.no-p": "The sentence is there, but it is bare text. The browser does not know it is a sentence — to it, these are just letters. Wrap it in <p>.",
-  "why.no-close": "You opened <p> but never closed it. </p> is missing.",
-  "why.empty-p": "The paragraph is there, but it is empty. Your sentence sits outside it.",
+  "why.not-closed": "Some tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "Check the two lines separately. Each starts with a tag and ends with the same tag, with a slash.",
 
-  "hint2.empty-p": "Look at where </p> ends and where your sentence sits. One is after the other, but it should be inside.",
-  "hint3.empty-p": "Wrapping means: tag in front, text in the middle, tag behind. <p>HERE</p>, not <p></p>HERE.",
+  "why.lost-heading": "The heading is gone. The task is to ADD a sentence below it, not to replace it. Put `<h1>` back.",
 
-  "blocks.0.text": "The heading is done. Now you want a sentence below it — for example, what you do.",
-  "blocks.1.text": "Try the naive way",
-  "blocks.2.text": "Just write the sentence after </h1>. Press Enter, go to a new line, write it. Run.",
-  "blocks.3.text": "It works, right? It appears. But it is bare text — hanging there, without being anything in particular. The browser does not know it is a sentence. To it, this is just... letters.",
-  "blocks.4.text": "Tell it what it is",
-  "blocks.6.text": "The letter \"p\" comes from \"paragraph\". You wrap the sentence and it is no longer random text, but a paragraph.",
-  "blocks.7.text": "You will say: it looks almost the same. Yes. But try writing two sentences one below the other WITHOUT <p> — you will see they glue into one line, no matter how many times you press Enter. With <p> each stands on its own.",
-  "blocks.8.text": "The first lesson of the web: the blank lines you see in your code do not exist for the browser."
+  "why.no-p": "The sentence is there, but it is bare text. The browser does not know it is a sentence — to it, these are just letters. Wrap it in `<p>`.",
+  "hint2.no-p": "Same move as the last lesson, different letter: tag in front, tag behind.",
+  "hint3.no-p": "`<h1>Heading</h1>` makes a heading. `<p>Sentence</p>` makes a paragraph.",
+
+  "why.no-close": "You opened `<p>` but never closed it. `</p>` is missing.",
+  "hint2.no-close": "The slash goes BEFORE the letter: `</p>`. Not `<p/>`.",
+
+  "why.empty-p": "The paragraph is there, but it is empty. Your sentence is outside.",
+  "hint2.empty-p": "Look at where `</p>` ends and where your sentence sits. One is after the other, and it should be inside.",
+  "hint3.empty-p": "Wrapping means: tag in front, text in the middle, tag behind. `<p>HERE</p>`, not `<p></p>HERE`.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "The heading is done. Now you want a sentence below it — what you do, for instance.",
+
+  "blocks.2.text": "Try the naive way",
+  "blocks.3.text": "Just write. Go to a new line after `</h1>`, type the sentence, press Enter, type a second one:",
+  "blocks.6.text": "The two sentences stick together on one line. Enter does not count. You learned this last lesson — spaces and newlines collapse into a single space. Here is the consequence: you cannot split text by pressing keys.",
+
+  "blocks.7.text": "Tell it what this is",
+  "blocks.8.text": "The letter `p` comes from paragraph. You wrap each sentence separately:",
+  "blocks.11.text": "Now each one stands on its own. Not because you said \"add spacing\", but because you said \"these are two paragraphs\" — and the browser knows how paragraphs are shown.",
+
+  "blocks.12.text": "The task",
+  "blocks.13.text": "Below the heading, add one sentence about yourself. Wrap it in `<p>`.",
+  "blocks.14.text": "The heading stays. You are not replacing it — you are adding below it.",
+
+  "blocks.15.text": "The role, not the look",
+  "blocks.16.text": "Here is the same sentence written twice. Once as a heading, once as a paragraph:",
+  "blocks.19.text": "The same words. A different role. `<h1>` says \"this is the page's heading\", `<p>` says \"this is a paragraph of text\". That one comes out big and the other small is a consequence — not the reason you picked the tag.",
+  "blocks.20.text": "A tag does not describe how the text should look. A tag says what the text IS. The look is the browser's decision and it changes with CSS, without touching a single letter of the HTML.",
+
+  "blocks.21.text": "Who benefits from this",
+  "blocks.22.text": "Not the browser — it would show something anyway. The person with a screen reader benefits. Readers have a shortcut to jump to the next and previous paragraph, the same way your eyes skip across the blank spaces. Bare text has nothing to jump to. One unbroken block of words gets read letter by letter, start to finish.",
+
+  "blocks.23.text": "An empty paragraph is not spacing",
+  "blocks.24.text": "The first temptation, when you want more room between two paragraphs, is to add a third empty one:",
+  "blocks.26.text": "Do not. The screen reader announces that there is a paragraph and then reads nothing — because there is nothing. The person waits and does not know what they missed. Spacing is a look, and looks are made with CSS, not with an empty element.",
+
+  "blocks.27.text": "So far",
+  "blocks.28.items.0": "Enter in the code does not make a new line on the page.",
+  "blocks.28.items.1": "`<p>` wraps a paragraph — each paragraph gets its own tag.",
+  "blocks.28.items.2": "The tag says what role the text has, not how it should look.",
+  "blocks.28.items.3": "Paragraphs give the screen reader something to jump between.",
+  "blocks.28.items.4": "An empty `<p>` is not spacing. Spacing is CSS's job.",
+
+  "walkthrough.0.text": "The heading stays untouched. The new line goes below it — the task was \"add\", not \"replace\".",
+  "walkthrough.1.text": "`<p>` in front, `</p>` behind, the sentence between them. The same three parts as `<h1>`, only a different letter.",
+  "walkthrough.2.text": "Why two different tags at all, if both just show text: because Google, screen readers and CSS are coming later. All three read which tag you picked, not how big it looks."
 }

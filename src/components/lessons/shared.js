@@ -1,17 +1,7 @@
 'use client';
 
-// Общи части, ползвани от няколко изгледа на уроци.
-//
-// Блоковете идват СГЛОБЕНИ за езика: b.text е низ, не { bg, en }.
-// Кодът (b.code, b.html, b.url, b.out) не е текст — не се превежда, идва от логиката.
+import { useState } from 'react';
 
-// ── ИНЛАЙН ФОРМАТ В ТЕКСТА ──
-// `код` → рамка.  *дума* → термин при първата му поява.
-//
-// ⚠ Знаците ОСТАВАТ в JSON-а и минават през превода. Преводачът ги пази.
-// ⚠ Не е markdown. Само тези двата. Ако потрябва трети, добавя се ТУК —
-//    не се вкарва цяла библиотека заради едно удебеляване.
-// ⚠ Няма dangerouslySetInnerHTML. Текстът на урока е низ, не HTML.
 export function inline(s) {
   const str = String(s ?? '');
   if (!str.includes('`') && !str.includes('*')) return str;   // бърз изход за старите уроци
@@ -173,7 +163,7 @@ function guessLang(code) {
   return 'js';
 }
 
-function Painted({ code, lang }) {
+export function Painted({ code, lang }) {
   const src = String(code ?? '');
   const kind = lang ?? guessLang(src);
   const toks = kind === 'html' ? htmlTokens(src) : kind === 'css' ? cssTokens(src) : jsTokens(src);
@@ -486,18 +476,37 @@ export function Blocks({ blocks }) {
   );
 }
 
-// Кодов къс с бутон за копиране и по избор — какво излиза в конзолата.
-function CodeBlock({ code, out, lang }) {
-  const copy = () => { try { navigator.clipboard.writeText(code); } catch {} };
+export function CopyBtn({ text, className = '' }) {
+  const [done, setDone] = useState(false);
+
+  const copy = () => {
+    try {
+      navigator.clipboard.writeText(text ?? '');
+      setDone(true);
+      setTimeout(() => setDone(false), 1400);
+    } catch {}
+  };
 
   return (
-    <div className="relative group rounded-lg border border-white/10 overflow-hidden">
-      <button onClick={copy} title="Копирай"
-        className="absolute top-2 right-2 z-10 w-7 h-7 flex items-center justify-center rounded-md text-gray-600 opacity-0 group-hover:opacity-100 hover:text-gray-200 hover:bg-white/10 transition">
+    <button onClick={copy} title="Копирай"
+      className={`w-7 h-7 flex items-center justify-center rounded-md transition ${
+        done ? 'text-emerald-400' : 'text-gray-600 hover:text-gray-200 hover:bg-white/10'
+      } ${className}`}>
+      {done ? (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M20 6L9 17l-5-5" /></svg>
+      ) : (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
           <rect x="9" y="9" width="12" height="12" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
         </svg>
-      </button>
+      )}
+    </button>
+  );
+}
+
+function CodeBlock({ code, out, lang }) {
+  return (
+    <div className="relative group rounded-lg border border-white/10 overflow-hidden">
+      <CopyBtn text={code} className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100" />
 
       <pre className="bg-black/40 px-4 py-3 pr-10 text-[13px] leading-relaxed overflow-x-auto">
         <code className="text-gray-300 whitespace-pre-wrap"><Painted code={code} lang={lang} /></code>
@@ -514,7 +523,6 @@ function CodeBlock({ code, out, lang }) {
     </div>
   );
 }
-
 // Кодов панел + жив преглед (за уроци с demo код).
 export function extractBody(code) {
   const m = code.match(/<body[^>]*>([\s\S]*?)<\/body>/i);

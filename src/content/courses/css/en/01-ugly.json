@@ -4,52 +4,73 @@
   "checkLabels.t1": "You wrote something",
   "checkLabels.t2": "You touched the code",
   "checkLabels.g1": "Everything closed",
-  "checkLabels.t3": "The heading is dark red",
+  "checkLabels.t3": "The heading is dark blue",
   "checkLabels.t4": "Both paragraphs too",
-  "checkLabels.t5": "The heading is not empty",
-  "checkLabels.t6": "The paragraphs are still there",
+  "checkLabels.t5": "Three separate style attributes",
+  "checkLabels.t6": "The heading is not empty",
+  "checkLabels.t7": "The paragraphs are still there",
 
   "why.empty": "The editor is empty. You deleted the page instead of colouring it. Bring the code back.",
 
   "why.untouched": "The code is exactly as it was. You haven't changed anything yet.",
   "hint2.untouched": "You need to add something inside three tags — the <h1> and both <p>.",
 
-  "why.not-closed": "A tag is open and never closed, or a quote is missing.",
-  "hint2.not-closed": "The value of style goes in quotes. One to open, one to close.",
-  "hint3.not-closed": "<p style=\"color: teal>Text</p> — the quote after teal is missing. From there on the browser reads everything as part of the value and the page falls apart.",
-  "hint4.not-closed": "Go through the three lines one by one. Every style has a quote before and a quote after.",
+  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "Every <h1> needs a </h1>, every <p> needs a </p>. The counts have to match.",
+  "hint3.not-closed": "<p style=\"color: darkgreen\">Text — with no </p> the paragraph never ends and swallows everything below it.",
+  "hint4.not-closed": "You add style inside the OPENING tag. The closing tag isn't touched at all.",
 
-  "why.no-h1": "There is no heading. You deleted the <h1> instead of colouring it.",
+  "why.no-h1": "There is no heading. Either you deleted the <h1>, or a quote above is left open.",
   "hint2.no-h1": "The task is to change the colour, not to remove elements. Bring the heading back.",
 
   "why.empty-h1": "The heading is there but empty. You colour the text, you don't delete it.",
 
-  "why.h1-not-red": "The heading is not dark red. Either you gave it no colour, or the colour is a different one.",
-  "hint2.h1-not-red": "The colour goes on the tag itself — inside the opening bracket, after its name.",
-  "hint3.h1-not-red": "<h2 style=\"color: navy\">Contact</h2> — a dark blue heading. See where style sits: inside the <h2>, before the closing bracket.",
-  "hint4.h1-not-red": "Do the same on the <h1>, but with darkred instead of navy.",
+  "why.h1-not-blue": "The heading is not dark blue. Either you gave it no colour, or the colour is a different one.",
+  "hint2.h1-not-blue": "The colour goes on the tag itself — inside the opening bracket, after its name.",
+  "hint3.h1-not-blue": "<h2 style=\"color: darkgreen\">Contact</h2> — a dark green heading. See where style sits: inside the <h2>, before the closing bracket.",
+  "hint4.h1-not-blue": "Do the same on the <h1>, but with darkblue instead of darkgreen.",
 
-  "why.no-p": "There is not a single paragraph left. You deleted them.",
-  "hint2.no-p": "The two lines under the heading have to stay. You colour them, you don't remove them.",
+  "why.no-p": "There is not a single paragraph left. Either you deleted them, or a quote above is left open and the browser swallowed the rest.",
+  "hint2.no-p": "The value of style goes in quotes. One to open, one to close. Go through the three lines and count them.",
+  "hint3.no-p": "<p style=\"color: teal>Text</p> — the quote after teal is missing. From there on the browser reads everything as part of the value, reaches the end of the file and never finds a closing quote. Everything past that point disappears.",
+  "hint4.no-p": "Look at the last line still visible in the preview. The mistake is right below it.",
 
-  "why.p-not-red": "One of the paragraphs is still not dark red. The check looks at both — not just the first one.",
-  "hint2.p-not-red": "You coloured one and stopped. There are two paragraphs.",
-  "hint3.p-not-red": "Here every tag carries its own colour. Give it to the first one and the second knows nothing about it. It is a separate element.",
-  "hint4.p-not-red": "Add the same thing to the second <p>. Word for word what you wrote on the first.",
+  "why.p-not-blue": "One of the paragraphs is still not dark blue. The check looks at both — not just the first one.",
+  "hint2.p-not-blue": "You coloured one and stopped. There are two paragraphs.",
+  "hint3.p-not-blue": "Here every tag carries its own colour. Give it to the first one and the second knows nothing about it. It is a separate element.",
+  "hint4.p-not-blue": "Add the same thing to the second <p>. Word for word what you wrote on the first.",
+
+  "why.not-three": "The colour is right, but it isn't given to the three tags separately. The task asks for style on each of them.",
+  "hint2.not-three": "You may have written one rule that catches all three at once. It works — but it isn't what this lesson wants you to feel.",
+  "hint3.not-three": "Here every tag carries its own style, in its own style attribute. Three tags means three style attributes.",
 
   "why.lost-p": "A paragraph is gone. The task is to colour the text, not to delete lines.",
   "hint2.lost-p": "Look at the preview. Both sentences under the heading should be there.",
 
-  "blocks.0.text": "Look at the page on the right. A cafe name, two lines of text. Black on white, a font from the nineties, everything stuck to the top left. You didn't get anything wrong — that is what a page without CSS looks like.",
-  "blocks.1.text": "So far you learned what a thing IS. <h1> is a heading. <p> is a paragraph. Not one of those tags says how it should look. There is no tag for red, no tag for bigger. That is not what HTML is for.",
+  "blocks.0.text": "What you're looking at",
+  "blocks.1.text": "Look at the page on the right. A cafe name, two lines of text. Black on white, a font from the nineties, everything stuck to the top left. You didn't get anything wrong. And it isn't a page without styles — the heading is bigger than the paragraph because the browser carries its own stylesheet and applies it to every page, so it stays readable. That is the browser's taste, not yours. Lesson 05 is about it.",
+  "blocks.2.text": "So far you learned what a thing IS. `<h1>` is a heading. `<p>` is a paragraph. Not one of those tags says how it should look. What is bigger and what is black is the browser's decision. That is not what HTML is for.",
 
-  "blocks.2.text": "One property",
-  "blocks.4.text": "color is a property. teal is a value. A colon between them. That is all of CSS — property, colon, value. Everything else in this course is a variation on that one line.",
+  "blocks.3.text": "One property",
+  "blocks.5.text": "`color` is a property. `teal` is a value. A colon between them. That is all of CSS — property, colon, value. Everything else in this course is a variation on that one line.",
 
-  "blocks.5.text": "A colour has more than one name",
-  "blocks.6.text": "darkred, #8b0000 and rgb(139, 0, 0) are the same colour. Written differently, understood identically. The check here asks the browser what the colour actually is — it does not compare the letters you typed. Write it any of the three ways and it passes.",
-  "blocks.7.text": "Courses that compare text reject your correct code because you put a space somewhere else. That cannot happen here.",
+  "blocks.6.text": "A colour has more than one name",
+  "blocks.7.text": "`darkblue`, `#00008b` and `rgb(0, 0, 139)` are the same colour. Written differently, understood identically. The check here asks the browser what the colour actually is — it does not compare the letters you typed. Write it any of the three ways and it passes.",
+  "blocks.8.text": "Courses that compare text reject your correct code because you put a space somewhere else. That cannot happen here.",
 
-  "blocks.8.text": "Make the heading and both paragraphs dark red. The colour is darkred — or however you prefer to write it.",
-  "blocks.9.text": "You will write the same thing three times. Remember how tedious it is. The next lesson starts exactly there."
+  "blocks.9.text": "The task",
+  "blocks.10.text": "Make the heading and both paragraphs dark blue. The colour is `darkblue` — or however you prefer to write it. Give `style` to each of the three tags separately.",
+
+  "blocks.12.text": "In short",
+  "blocks.13.items.0": "The browser already styles your page. CSS is an argument with it, not a start from nothing.",
+  "blocks.13.items.1": "Property, colon, value. That is all of CSS.",
+  "blocks.13.items.2": "One colour has several spellings. `darkblue`, `#00008b` and `rgb(0, 0, 139)` are the same thing.",
+  "blocks.13.items.3": "`style` on the tag itself applies only to that tag. The neighbour knows nothing about it.",
+
+  "blocks.14.text": "You wrote the same thing three times. Remember how tedious it is. Lesson 02 starts exactly there.",
+
+  "walkthrough.0.text": "Three lines, the same thing three times. `style` goes inside the opening tag, after its name, before the `>`. The closing tag isn't touched — it only says where the element ends.",
+  "walkthrough.1.text": "`color: darkblue` is one declaration: property, colon, value. There is no semicolon here because there is only one declaration. Add a second and a semicolon has to sit between them.",
+  "walkthrough.2.text": "I wrote `darkblue`, but `#00008b` and `rgb(0, 0, 139)` pass as well. The check asks the browser what the colour is, and it stores all three identically. If you wrote one of the others, your solution is not worse than this one.",
+  "walkthrough.3.text": "One rule in the head would have done the same job with less typing. We deliberately don't do that here. You have to feel the repetition first — otherwise lesson 02 is just new syntax instead of an answer to a problem."
 }

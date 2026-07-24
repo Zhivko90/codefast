@@ -1,27 +1,55 @@
 {
-  "title": "Choose what your site will be about",
+  "title": "Pick what your site will be about",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You must write something",
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t2": "There must be a heading with text in it",
-  "checkLabels.t3": "There must be a sentence under it",
+  "checkLabels.t1": "Something is written",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t2": "There is a heading with text in it",
+  "checkLabels.t3": "There is a sentence below it",
 
   "why.empty": "The editor is empty. Nobody can tell you what to write — that is the whole point of this lesson. A topic. A heading. One sentence.",
-  "why.not-closed": "You opened a tag and never closed it. The browser does not know where the heading ends, so it will turn everything after it into a heading.",
-  "why.no-heading": "You wrote something, but it is not a heading. Bare text is just text. To be a heading it has to be inside <h1>.",
-  "why.no-sentence": "The heading is there, but it is alone. The lesson asks for one sentence under it — why you chose the topic. That goes in <p>.",
+  "hint2.empty": "Do not agonise over which topic is good. Any of them is, as long as you care about it. Write the first one that comes to mind.",
 
-  "hint2.empty": "Do not wonder which topic is good. Any of them is, as long as you care about it. Write the first thing that comes to mind.",
-  "hint2.not-closed": "If you opened <h1>, there must be a </h1> somewhere. Go top to bottom, tag by tag.",
-  "hint2.no-heading": "Your topic has to be a heading: <h1>My topic</h1>.",
-  "hint3.no-heading": "Check the text is INSIDE the tag. <h1>My dog</h1>, not <h1></h1>My dog.",
-  "hint2.no-sentence": "Under the heading you need one sentence — why you chose the topic. You wrap it in <p>...</p>.",
+  "why.not-closed": "You opened a tag but never closed it. The browser does not know where the heading ends and will turn everything after it into a heading.",
+  "hint2.not-closed": "If you opened `<h1>`, there has to be a `</h1>` somewhere. Go top to bottom, tag by tag.",
 
-  "blocks.0.text": "The lessons will teach you on someone else's example — a bicycle for sale. It is foreign on purpose: it can be broken, botched, taken apart. But six times through this course the editor will be empty and it will say \"your page\" above it. Then there is no example. There is only what you remember — and what you have already built.",
-  "blocks.1.text": "So first decide what it is about",
-  "blocks.2.text": "Your favourite game. Your dog. A band you listen to. Your team. Your grandmother's recipe. A film you have watched ten times. Anything — as long as you care about it.",
-  "blocks.3.text": "This is not a formality. If the page is about something you do not care about, you will click \"next lesson\" and forget it. If it is about something of yours, you will want it to be good.",
-  "blocks.4.text": "Do it now",
-  "blocks.5.text": "Empty editor. Write a heading with your topic and one sentence under it — why you chose it. The two tags you know are enough.",
-  "blocks.6.text": "This is the first version of your page. Next time the editor is empty, it will be waiting below — so you can see where you are picking up from."
+  "why.no-heading": "You wrote something, but it is not a heading. Bare text is just text. To be a heading it has to sit in `<h1>`.",
+  "hint2.no-heading": "Your topic should be a heading: `<h1>My topic</h1>`.",
+  "hint3.no-heading": "Check whether the text is INSIDE the tag. `<h1>My dog</h1>`, not `<h1></h1>My dog`.",
+
+  "why.no-sentence": "The heading is there but it stands alone. The lesson also wants one sentence below it — why you picked the topic. It goes in `<p>`.",
+  "hint2.no-sentence": "Below the heading there should be one sentence. Wrap it in `<p>`.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "From here on the lessons will teach you on someone else's example — a bike for sale. It is deliberately not yours: it can be broken, botched and taken apart.",
+  "blocks.2.text": "But six times in this course the editor will be empty and the header will say \"your page\". Then there is no example. There is only what you remember — and what you have already built.",
+
+  "blocks.3.text": "So first decide what it is about",
+  "blocks.4.text": "Anything at all, as long as you care about it:",
+  "blocks.5.items.0": "Your favourite game.",
+  "blocks.5.items.1": "Your dog.",
+  "blocks.5.items.2": "A band you listen to.",
+  "blocks.5.items.3": "Your team.",
+  "blocks.5.items.4": "Your grandmother's recipe.",
+  "blocks.5.items.5": "A film you have watched ten times.",
+  "blocks.6.text": "This is not a formality. If the page is about something you do not care about, you will click \"next lesson\" and forget it. If it is yours, you will want it to be good. The difference is not in tags — it is in whether you open this course tomorrow.",
+
+  "blocks.7.text": "The task",
+  "blocks.8.text": "An empty editor. Write a heading with your topic and one sentence below it — why you picked it.",
+  "blocks.9.text": "The two tags you know are enough. Nothing more is asked.",
+
+  "blocks.10.text": "What happens to this page",
+  "blocks.11.text": "It does not get thrown away like a handed-in sheet. This is the first version of your site, and next time the editor is empty you will find it where you left it.",
+  "blocks.12.text": "That is why the topic gets picked now and not later. Thirty lessons from here you will know links, images, tables and forms — and every one of them will have somewhere to go.",
+  "blocks.13.text": "If you change your mind in two days and want a different topic, change it. Nobody minds. Dragging along a topic that bores you, only because you picked it first, is the worse outcome.",
+
+  "blocks.14.text": "So far",
+  "blocks.15.items.0": "The lessons run on someone else's example; your site is separate.",
+  "blocks.15.items.1": "You pick the topic and it stays for the whole course.",
+  "blocks.15.items.2": "Caring about the topic decides whether you finish.",
+  "blocks.15.items.3": "The page is saved and waits for you at the next empty editor.",
+
+  "walkthrough.0.text": "This is the example from the lessons — a bike for sale. It is not the right answer; your topic is different and should be.",
+  "walkthrough.1.text": "The heading says what the page is about. The sentence says why. The two together are enough for a first version.",
+  "walkthrough.2.text": "The checks only look for a heading with text and a paragraph with text. Nobody grades what they say — this is the one lesson where the content is entirely your call."
 }

@@ -1,15 +1,44 @@
 {
   "title": "Write your name",
-  "checkLabels.t1": "Did you change the text to something of your own",
-  "checkLabels.t2": "Is there anything in the editor",
-  "why.empty": "The editor is empty. You deleted \"Hello\" but wrote nothing in its place. The task is to write your name — not just to remove someone else's.",
-  "why.unchanged": "It still says \"Hello\". Delete it and write your name — that is the whole lesson. There is no right answer. There is yours.",
-  "hint2.unchanged": "Click in the editor on the right. Select the word Hello. Press Backspace. Type your name.",
-  "blocks.0.text": "No introduction. No explanations. On the right there is a page that says \"Hello\".",
-  "blocks.1.text": "Do this",
-  "blocks.2.text": "Delete \"Hello\" and write your name. Then press the green \"Submit\" button.",
-  "blocks.3.text": "That is it. There is nothing else to do in this lesson.",
-  "blocks.4.text": "What happened",
-  "blocks.5.text": "You have just written a web page. I am not joking — what is on the right is a real page, the kind that would sit on the internet. It just happens to have only a name on it for now.",
-  "blocks.6.text": "I am not going to explain what HTML is. I will explain it after you have written a few things — then the words will mean something."
+  "taskTitle": "The task",
+
+  "steps.0.text": "Delete `Hello` and write your name in its place.",
+
+  "checkLabels.t2": "Editor is not empty",
+  "checkLabels.t1": "The text is yours",
+
+  "why.empty": "The editor is empty. You deleted `Hello` but wrote nothing in its place. The task is to write your name — not to remove someone else's.",
+  "hint2.empty": "Click in the editor and write your name. One word is enough.",
+
+  "why.unchanged": "It still says `Hello`. Delete it and write your name — that is the whole lesson. There is no right answer. There is yours.",
+  "hint2.unchanged": "Click in the editor on the right. Select the word Hello. Press Backspace. Write your name.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "No introduction. No explanations. On the right there is a page that says `Hello`.",
+  "blocks.2.text": "It is not a picture and not an exercise. This is a real web page — a file called `index.html`, the same kind of file every site you opened today is made of.",
+
+  "blocks.3.text": "The task",
+  "blocks.4.text": "Delete `Hello` and write your name.",
+  "blocks.5.items.0": "Click in the editor on the right.",
+  "blocks.5.items.1": "Select the word Hello.",
+  "blocks.5.items.2": "Press Backspace.",
+  "blocks.5.items.3": "Write your name.",
+  "blocks.6.text": "Then press the green Submit button. That is it. There is nothing else to do in this lesson.",
+
+  "blocks.7.text": "What just happened",
+  "blocks.8.text": "You just wrote a web page. Not a joke. Here is the code and here is what the browser shows:",
+  "blocks.11.text": "One to one. The browser showed exactly what you wrote, letter by letter. That dullness is the basic rule of HTML and you will need it for the next ten lessons: the page never guesses and never adds anything of its own.",
+
+  "blocks.12.text": "Why there is no explanation",
+  "blocks.13.text": "Courses usually open with twenty minutes on what HTML is, when it was invented and by whom. You have not written a line yet, and you are already being explained to.",
+  "blocks.14.text": "Here it is the other way round. I will explain what HTML is after you have written a few things — then the words will mean something. Until then, just write.",
+
+  "blocks.15.text": "So far",
+  "blocks.16.items.0": "The page on the right is real, not an exercise.",
+  "blocks.16.items.1": "The file is called `index.html`.",
+  "blocks.16.items.2": "The browser shows exactly what you wrote — nothing more.",
+  "blocks.16.items.3": "You write on the left, you watch the result on the right. That is the whole course.",
+
+  "walkthrough.0.text": "There is no correct solution here. Whatever name you wrote is the right one — the check only looks at whether the text is yours and not the borrowed `Hello`.",
+  "walkthrough.1.text": "One line of plain text is already a valid page. The browser needs no tags and no brackets to show it. You add those when the text grows past one word and you have to say what each part is."
 }

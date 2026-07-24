@@ -1,42 +1,87 @@
 {
   "title": "The tag says what it IS. The attribute says the details",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Add an image with `<img>` and `src` below the sentence.",
+  "steps.1.text": "Give it an `alt` that describes what can be seen in it.",
 
   "checkLabels.t0": "There is code",
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be an image",
-  "checkLabels.t2": "The image must have a src",
-  "checkLabels.t3": "The image must have alt with text",
-  "checkLabels.t6": "alt must say something",
-  "checkLabels.t4": "The heading must still be there",
-  "checkLabels.t5": "The sentence must still be there",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t1": "There is an image",
+  "checkLabels.t2": "The image has a src",
+  "checkLabels.t3": "The image has an alt with text",
+  "checkLabels.t6": "The alt says something",
+  "checkLabels.t4": "The heading is still there",
+  "checkLabels.t5": "The sentence is still there",
 
   "why.empty": "The editor is empty. You are adding an image, and you deleted the whole page. Bring the code back.",
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-img": "There is no image. The tag is img — it has no closing tag, because it has nothing to wrap.",
-  "why.no-src": "The tag is there, but it does not say WHICH image. Without src the browser has nothing to show — you get a broken icon.",
-  "why.no-alt": "There is no alt, or it is empty. A blind person reaches the image and their screen reader says... nothing. Google does not see the image either — it reads alt.",
-  "why.useless-alt": "You wrote \"photo\" or \"image\". The reader has already told the person there is an image there. You just repeated it. You did not tell them what IS SEEN on it.",
-  "why.lost-content": "Something is gone from the page. You are adding an image, not deleting what you already have.",
+  "hint2.empty": "Restore the page from the last lesson and add the image line inside the body.",
 
-  "hint2.no-img": "The tag is img. Write it inside <body>, under the sentence.",
-  "hint3.no-img": "img has no closing tag. Just <img ...> and that is it. See the example.",
-  "hint2.no-src": "src says where the image is. The value is an address.",
-  "hint3.no-src": "Look at the example — there is a working address there you can use.",
-  "hint2.no-alt": "alt is the text that replaces the image. Describe what can be seen on it.",
-  "hint3.no-alt": "Do not write \"photo\". Write what IS on it: \"A red bicycle leaning against a wall\".",
-  "hint2.useless-alt": "If the image disappears and your text does not replace it — your alt is rubbish.",
-  "hint3.useless-alt": "Close your eyes. Someone is reading the page aloud to you. What do you need to hear to know what is there?",
-  "hint2.lost-content": "Compare with the original code. The heading and the sentence stay — the image gets ADDED below them.",
+  "why.not-closed": "Some tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "`<img>` has no closing tag. If you wrote `</img>`, remove it.",
 
-  "blocks.0.text": "So far your tags only said what a thing IS. A heading. A paragraph. But sometimes that is not enough.",
-  "blocks.1.text": "An image. The tag says \"this is an image\". But WHICH image? From where? That does not fit into the tag's name.",
-  "blocks.2.text": "Attributes",
-  "blocks.3.text": "They go inside the opening tag. Name, equals, value in quotes. You have already seen two — lang and charset. Here are the third and fourth.",
-  "blocks.5.text": "Add an image to your page. Run. It appears.",
-  "blocks.6.text": "src is obvious. alt is not.",
-  "blocks.7.text": "src says where the file is. Without it there is nothing to show.",
-  "blocks.8.text": "alt is the text that replaces the image when it cannot be seen. Slow internet. A broken address. Or — a blind person, whose screen reader cannot see a picture and reads only this.",
-  "blocks.9.text": "What alt is NOT",
-  "blocks.10.text": "\"Do not write alt=\"photo\". The reader has already told the person there is an image there — you are just repeating it. Write what IS on it. If the image disappears and your text does not replace it — your alt is rubbish.\"",
-  "blocks.11.text": "\"Google does not see pictures. It reads alt. You write for the blind person — and the search engine wins too.\""
+  "why.no-img": "There is no image. The tag is `img` — it has no closing tag, because there is nothing for it to wrap.",
+  "hint2.no-img": "Write it inside `<body>`, below the sentence.",
+  "hint3.no-img": "Just `<img ...>` and that is all. Look at the example above.",
+
+  "why.no-src": "The tag is there, but it does not say WHICH image. Without `src` the browser has nothing to show — you get a broken icon.",
+  "hint2.no-src": "`src` says where the image is. The value is an address, in quotes.",
+  "hint3.no-src": "If you have no image of your own, use `https://picsum.photos/400/250` — it returns a random one.",
+
+  "why.no-alt": "There is no `alt`, or it is empty. A blind person reaches the image and their reader tells them… nothing.",
+  "hint2.no-alt": "`alt` is the text that replaces the image. Describe what can be seen in it.",
+  "hint3.no-alt": "Do not write \"image\". Write what is IN it: `alt=\"Red bicycle leaning against a wall\"`.",
+
+  "why.useless-alt": "You wrote \"image\" or \"photo\". The reader has already told the person there is an image there. You repeated it instead of saying what can be SEEN.",
+  "hint2.useless-alt": "If the image disappears and your text does not replace it, your `alt` is pointless.",
+  "hint3.useless-alt": "Close your eyes. Somebody is reading your page aloud. What would you need to hear to know what is there?",
+
+  "why.lost-content": "Something disappeared from the page. You are adding an image, not deleting what you already have.",
+  "hint2.lost-content": "Compare with the starting code. The heading and the sentence stay — the image is ADDED below them.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "So far your tags only said what a thing IS. A heading. A paragraph. But sometimes that is not enough.",
+  "blocks.2.text": "An image. The tag can say \"this is an image\". But WHICH image, from where? That does not fit into the tag's name.",
+
+  "blocks.3.text": "The attribute",
+  "blocks.4.marks.0.label": "WHAT IT IS",
+  "blocks.4.marks.1.label": "WHICH ONE",
+  "blocks.4.marks.2.label": "WHAT IS SEEN",
+  "blocks.4.legend.0": "Attributes go inside the opening tag, separated by spaces. Their order does not matter.",
+
+  "blocks.5.items.0": "On the left is the name — what you are describing.",
+  "blocks.5.items.1": "Then an equals sign.",
+  "blocks.5.items.2": "On the right is the value, in quotes.",
+  "blocks.6.text": "You have already written two without knowing their name: `lang` on `<html>` and `charset` on `<meta>`. Same shape, same place.",
+
+  "blocks.7.text": "The quotes",
+  "blocks.8.text": "By the letter of the standard the quotes are not required — a value with no spaces and no special characters passes bare. But here is what happens to a value that contains a space:",
+  "blocks.10.text": "The browser sees `alt=\"Blue\"` and then a separate attribute named `bicycle`. Half the text vanishes silently. No error, no warning — just half an `alt`.",
+  "blocks.11.text": "So the rule in practice is one thing: always quotes, always double ones. Single quotes are appropriate only when the value itself contains double quotes.",
+
+  "blocks.12.text": "Attributes with no value",
+  "blocks.13.text": "There are also ones where there is nothing to specify — they are either on or off. You write the name alone:",
+  "blocks.15.text": "`controls` has no value. Its presence switches on the playback buttons. These are called *boolean* attributes and you will meet more of them in the lessons on forms. You do not write `controls=\"true\"` — that is redundant.",
+
+  "blocks.16.text": "Only in the opening tag",
+  "blocks.17.text": "An attribute belongs to the opening tag. Nothing goes into the closing one — it is only a name and a slash. `</p class=\"note\">` is a mistake, even though the browser quietly swallows it.",
+
+  "blocks.18.text": "src and alt",
+  "blocks.19.text": "`src` says where the file is. Without it there is nothing to show — you get a broken icon.",
+  "blocks.20.text": "`alt` is the text that replaces the image when it cannot be seen. A weak connection. A broken address. Or a blind person whose reader cannot see a picture and reads only this. It gets a whole lesson later — for now the rule is enough: describe what can be seen, do not write \"image\".",
+
+  "blocks.21.text": "The task",
+  "blocks.22.text": "Add an image below the sentence. It needs two attributes: `src` and `alt`.",
+  "blocks.23.text": "If you have no suitable image, use `https://picsum.photos/400/250` — it returns a random one. What matters here is the attributes, not the content.",
+
+  "blocks.24.text": "So far",
+  "blocks.25.items.0": "An attribute is a name, an equals sign and a value in quotes.",
+  "blocks.25.items.1": "It goes inside the opening tag, never the closing one.",
+  "blocks.25.items.2": "A value with a space and no quotes falls apart halfway.",
+  "blocks.25.items.3": "Boolean attributes have no value — only a name.",
+  "blocks.25.items.4": "`src` says which image it is, `alt` says what is seen in it.",
+
+  "walkthrough.0.text": "One line added to the body. `<img>` has no closing tag because there is nothing to wrap — its content is the file itself.",
+  "walkthrough.1.text": "The two attributes are separated by a space and their order does not matter. `alt=\"…\" src=\"…\"` works the same.",
+  "walkthrough.2.text": "The `alt` here describes what is seen, not that something is seen. If the image fails to load, the sentence in its place still does the job — that is the test of whether it is written well."
 }

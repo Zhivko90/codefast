@@ -1,0 +1,87 @@
+{
+  "title": "The old keyword",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Remove every `var` from `script.js`. Not one should be left.",
+  "steps.1.text": "The console numbers become 0 and 0. Do not remove the block and do not remove the second declaration — both names have to exist at the same time.",
+
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "No var left anywhere",
+  "checkLabels.t4": "The outer one stays 0",
+  "checkLabels.t5": "There are two names, not one",
+  "checkLabels.t6": "sold is 1247",
+  "checkLabels.t7": "Both lines are kept",
+
+  "why.empty": "script.js is empty. You deleted everything instead of fixing it.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Look at the two numbers in the console. The second one should not be what it is.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel on the right.",
+  "hint3.crashed": "`Identifier has already been declared` means you declared the same name twice at the same level. That is exactly what `var` allowed silently.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.var-left": "There is still a `var` somewhere.",
+  "hint2.var-left": "All four declarations change, not just the problematic one.",
+  "hint3.var-left": "Mix `var` and `const` in one file and everyone reading it has to remember which line follows which rules.",
+
+  "why.leaked": "The outer `discount` is no longer 0. The inner one has leaked out.",
+  "hint2.leaked": "`let` and `const` stop at the edge of a block. `var` does not.",
+  "hint3.leaked": "With `var`, the same name is declared a second time and the assignment overwrites the first. With `let` or `const` inside the block, a SEPARATE name is created and it lives only there.",
+  "hint4.leaked": "Change both declarations of `discount`. The inner one becomes its own name and the outer one stays 0.",
+
+  "why.wrong-shape": "The name `discount` does not appear four times. Two declarations and two prints are needed.",
+  "hint2.wrong-shape": "Do not remove the block and do not remove the second declaration. The point is for both names to exist at once without interfering.",
+
+  "why.no-sold": "There is no name `sold` holding 1247.",
+  "why.wrong-count": "There are not two lines in the console.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Look at `script.js`. One name, two prints. Between them there is a block — the two curly braces — that sets `discount` to 50.",
+
+  "blocks.3.text": "The console shows 0 and then 50. That looks reasonable, until you ask why the block changed something outside itself. Nobody asked it to.",
+
+  "blocks.4.text": "First difference: blocks",
+  "blocks.5.text": "`let` and `const` stop at the edge of a block. Whatever is declared inside lives only inside. `var` does not work that way — it leaks out to the nearest function, and with no function, to the whole file.",
+
+  "blocks.7.text": "The name is declared inside the braces and is still visible outside. The same code with `let` gives something else:",
+
+  "blocks.9.text": "That is where the 50 at the start of the lesson comes from. The inner `var discount` did not create a new name — it found the outer one and overwrote its value.",
+
+  "blocks.10.text": "Second difference: redeclaration",
+  "blocks.11.text": "`var` lets the same name be declared twice at the same level:",
+
+  "blocks.13.text": "The second `var` does not create a new name and does not crash — the declaration itself is simply ignored. The assignment still runs, which is why John comes out at the end. `let` and `const` do not allow this:",
+
+  "blocks.15.text": "That sounds like a restriction. It is really a warning: if you are declaring the same name twice, one of them is almost certainly a typo or forgotten code.",
+
+  "blocks.16.text": "Third difference: order",
+  "blocks.17.text": "With `var` the name exists before the line it is declared on. It has no value, but there is no error either:",
+
+  "blocks.19.text": "The declaration is lifted to the start, the assignment stays where it is. That is why you get `undefined` rather than an error. With `let` and `const` it is the other way round:",
+
+  "blocks.21.text": "The name exists but cannot be reached until execution gets to its line. It looks stricter and it is stricter — but the error shows up straight away instead of wandering through the file as `undefined`.",
+
+  "blocks.22.text": "It is not forbidden",
+  "blocks.23.text": "You will meet the claim that `var` is banned or removed. It is not. It works in every browser, it will work in twenty years, and millions of lines of existing code use it.",
+  "blocks.24.text": "`var` has DIFFERENT rules. Older ones, from a time when the language had no block-level names at all. `let` and `const` arrived in 2015 precisely to fix that. So you will see `var` in other people's code and in old tutorials — you need to know what it does, not to think of it as broken.",
+  "blocks.25.quote": "The language cannot remove `var` without breaking half the internet. So it does not remove it. It only removes it from new code — yours.",
+
+  "blocks.26.text": "So far",
+  "blocks.27.items.0": "`let` and `const` stop at the edge of a block. `var` leaks out.",
+  "blocks.27.items.1": "`var` lets the same name be declared twice. The second declaration is ignored silently.",
+  "blocks.27.items.2": "With `var` the name exists before its own line and gives `undefined`.",
+  "blocks.27.items.3": "`var` is not banned and not removed. It has older rules.",
+  "blocks.27.items.4": "New code uses `const`, and `let` where the change is deliberate.",
+
+  "walkthrough.0.text": "All four `var` are changed, not just the problematic one. Leave one and the file mixes two different ways of creating a name, and anyone reading it later — including you in a month — has to remember which line follows which rules.",
+  "walkthrough.1.text": "It is `const`, because not one of the four names is ever reassigned. That rule comes from lesson five and does not stop applying just because this lesson is about `var`. The checks accept `let` too — they look at what the code does, not at which word it is written with.",
+  "walkthrough.2.text": "The block with the curly braces is not removed. It is the proof. With `var` the inner declaration found the outer name and overwrote its value; with `const` it creates a new one that lives only between the braces. Without the block there is nothing to show.",
+  "walkthrough.3.text": "The second `const discount` is not a duplicate name. At the same level, a second declaration with the same name crashes. Here the two are at different levels, which makes them two separate names that happen to be spelled the same.",
+  "walkthrough.4.text": "The inner `discount` is not used for anything, and that is deliberate. Use it and the lesson becomes about something else. The only thing that needs to be seen is that it exists and never reaches the outside world.",
+  "walkthrough.5.text": "The outer `discount` stays 0 on both lines. Before it was 0 and 50, and the 50 came from nowhere — it came from inside the block and leaked out. That is the whole difference this lesson shows, and it is not a matter of taste: one version lies quietly, the other cannot."
+}

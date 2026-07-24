@@ -6,7 +6,9 @@ export default {
   id: 14,
   type: "web",
   label: "coding",
-  starterCode: `<!DOCTYPE html>
+  entry: "index.html",
+  starterFiles: {
+    "index.html": `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,7 +20,8 @@ export default {
     <img src="https://picsum.photos/400/250" alt="A red bicycle">
     <p>Call me if you want it.
   </body>
-</html>`,
+</html>`
+  },
   checks: [
     { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "g1", type: "balanced", hidden: true, err: "not-closed", weight: 1000, guard: true },
@@ -29,13 +32,50 @@ export default {
     { id: "t4", type: "dom_attr", value: "img", attr: "src", err: "lost-img", weight: 30 },
   ],
   blocks: [
+    { type: "band", kind: "learn" },
     { type: "text" },
     { type: "text" },
+
+    { type: "band", kind: "task" },
+    { type: "text" },
+    { type: "text" },
+    { type: "text" },
+
     { type: "heading" },
     { type: "text" },
     { type: "text" },
+
+    { type: "heading" },
     { type: "text" },
-    { type: "quote" },
+    { type: "text" },
+
+    { type: "heading" },
+    { type: "list", ordered: true, items: [undefined, undefined, undefined] },
+
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+
+    { type: "text" },
+
+    { type: "band", kind: "recap" },
+    { type: "list", items: [undefined, undefined, undefined, undefined, undefined] },
   ],
+  solution: {
+    "index.html": `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bike for sale</title>
+  </head>
+  <body>
+    <h1>Red bike, almost new</h1>
+    <p>Bought it two years ago. Rode it four times.</p>
+    <img src="https://picsum.photos/400/250" alt="A red bicycle">
+    <p>Call me if you want it.</p>
+  </body>
+</html>`
+  },
+  walkthrough: [undefined, undefined, undefined, undefined],
   slug: "14-broken"
 };

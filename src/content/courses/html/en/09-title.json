@@ -1,34 +1,75 @@
 {
-  "title": "The name of the tab",
+  "title": "The name of the page",
+  "taskTitle": "The task",
 
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be a title",
-  "checkLabels.t2": "title must be inside head",
-  "checkLabels.t3": "title must have text in it",
-  "checkLabels.t4": "The heading must still be there",
-  "checkLabels.t5": "The sentence must still be there",
+  "steps.0.text": "Add a `<title>` with a name for the page inside `<head>`.",
+
   "checkLabels.t0": "There is code",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t1": "There is a title",
+  "checkLabels.t2": "The title is in head",
+  "checkLabels.t3": "The title has text in it",
+  "checkLabels.t4": "The heading is still there",
+  "checkLabels.t5": "The sentence is still there",
+
   "why.empty": "The editor is empty. You deleted the page instead of naming it. Bring the code back.",
+  "hint2.empty": "Restore the skeleton from the last lesson and add `<title>` in the head.",
 
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-title": "The tab still says \"index.html\". Nobody bookmarks a tab like that. Give the page a name.",
-  "why.title-not-in-head": "The title is there, but not in head. In body the browser moves it for you, but your code is lying — and some tools will miss it.",
-  "why.empty-title": "The tag is there, but it is empty. The tab will stay nameless.",
-  "why.lost-content": "Something is gone from the page. You are naming the tab, not deleting content. The heading and the sentence stay.",
+  "why.not-closed": "Some tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "Check `<title>`. It wants a closing tag too — `</title>`.",
 
-  "hint2.no-title": "The tag is title. It goes inside <head>, exactly as you saw in the example.",
-  "hint2.title-not-in-head": "Look at where you put it. Is it between <head> and </head>, or between <body> and </body>?",
-  "hint3.title-not-in-head": "<title> is information ABOUT the page — what it is called. So its place is in the invisible half.",
-  "hint2.empty-title": "There must be text between <title> and </title>. <title>My page</title>, not <title></title>.",
-  "hint2.lost-content": "Compare with the original code. The heading and the sentence must be inside <body>.",
+  "why.no-title": "The page has no name. The browser shows the file path, and a screen reader has nothing to announce when the page opens.",
+  "hint2.no-title": "The tag is `title`. It goes inside `<head>`, exactly as you saw in the example.",
 
-  "blocks.0.text": "Look at the browser tab above. What does it say?",
-  "blocks.1.text": "\"index.html\". Or nothing. Or some path to a file. Nobody bookmarks a tab like that. Nobody finds it later among twenty others.",
-  "blocks.2.text": "The empty head is needed now",
-  "blocks.3.text": "Remember <head> — the part that is not visible? So far it sat empty and looked pointless. Here is the first thing that goes into it.",
-  "blocks.5.text": "Run. The tab above changes. Nothing visible in the page has changed — but something did.",
-  "blocks.6.text": "Who reads this",
-  "blocks.7.text": "The tab. Bookmarks. History. The Google result — the blue line people click on. All of them read <title>.",
-  "blocks.8.text": "None of them looks at your page. They read only this one word in the head.",
-  "blocks.9.text": "\"I do not write HTML for the browser. I write it for those who do not look at the screen.\""
+  "why.title-not-in-head": "The title is there, but not in the head. In the body the browser moves it up on its own, but your code is lying — and some tools read only the head and will not find it.",
+  "hint2.title-not-in-head": "Look at where you put it. Is it between `<head>` and `</head>`, or between `<body>` and `</body>`?",
+  "hint3.title-not-in-head": "`<title>` is information ABOUT the page — what it is called. So it belongs in the invisible part.",
+
+  "why.empty-title": "The tag is there, but it is empty. The page still has no name.",
+  "hint2.empty-title": "There has to be text between `<title>` and `</title>`. `<title>My page</title>`, not `<title></title>`.",
+
+  "why.lost-content": "Something disappeared from the page. You are adding a name, not deleting content. The heading and the sentence stay.",
+  "hint2.lost-content": "Compare with the starting code. `<h1>` and `<p>` belong in `<body>`.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Your page works, but it has no name. Open it in a real browser and the tab at the top says `index.html` — or the file path, or nothing.",
+  "blocks.2.text": "Nobody bookmarks a tab like that. Nobody finds it later among twenty others.",
+
+  "blocks.3.text": "The empty head is needed now",
+  "blocks.4.text": "Remember `<head>` — the part that is not visible? It has been sitting empty and looking pointless. Here is the first thing that goes into it:",
+  "blocks.6.text": "Now run it. And watch closely: **nothing will change**. The preview on the right looks exactly as before. This is the first line in this course whose result appears nowhere in the editor — and that is precisely why it matters.",
+
+  "blocks.7.text": "Who reads this",
+  "blocks.8.items.0": "The browser tab — open the file in a real browser and look.",
+  "blocks.8.items.1": "Bookmarks. Save the page and this name gets stored.",
+  "blocks.8.items.2": "History. A week from now you will search by exactly this.",
+  "blocks.8.items.3": "Google — the blue line people click on.",
+  "blocks.8.items.4": "The screen reader. It matters most there, and it gets there earliest.",
+
+  "blocks.9.text": "How it looks in Google",
+  "blocks.10.text": "The blue line in the results is nothing but `<title>`. Not `<h1>`, not the first sentence — this exact tag:",
+  "blocks.12.text": "That is why a longer, descriptive name does better here than a short, generic one. \"Home\" says nothing. \"Blue mountain bike for sale in Sofia\" says something.",
+
+  "blocks.13.text": "The first thing a person hears",
+  "blocks.14.text": "When a page opens, the screen reader announces the title BEFORE anything else. Not the heading on screen — the one from the head. If it is missing, the person does not know where they have landed.",
+  "blocks.15.text": "And not only on opening. JAWS and NVDA have a key for it — Insert+T. With ten tabs open, that is how you work out which one you are on. Which is why titles have to differ per page: ten pages called \"Home\" is the same as ten untitled tabs.",
+
+  "blocks.16.text": "title and h1 are not the same thing",
+  "blocks.18.text": "`<title>` is the name of the whole document. `<h1>` is the heading of the content inside the body. It is convention for the two to mirror each other, with one difference: the document title usually also carries the site name, because it gets read outside the site — in a tab, a bookmark, a search result.",
+  "blocks.19.text": "The order matters. The page's purpose first, the site name second. The other way round means the reader hears the same opening on every page before reaching the part that differs. And one more thing: `<title>` takes text only — no tags inside it.",
+
+  "blocks.20.text": "The task",
+  "blocks.21.text": "Give your page a name. The tag is `title` and it goes inside `<head>`.",
+  "blocks.22.text": "Remember that the result will not show up on the right. If you want to see it with your own eyes, open the file in a real browser and look at the tab.",
+
+  "blocks.23.text": "So far",
+  "blocks.24.items.0": "`<title>` is the page's name and lives in `<head>`.",
+  "blocks.24.items.1": "It is invisible on the page — and visible everywhere else.",
+  "blocks.24.items.2": "The screen reader announces it first, before the content.",
+  "blocks.24.items.3": "In Google it is the blue line. Descriptive beats generic.",
+  "blocks.24.items.4": "A different name per page; purpose first, site name second.",
+
+  "walkthrough.0.text": "One line, inside the head. Nothing else is touched.",
+  "walkthrough.1.text": "Here the name matches `<h1>`, because there is only one page. Once the site has several, each gets its own — and that is when you add the site name at the end.",
+  "walkthrough.2.text": "If you put it in `<body>`, the browser quietly moves it into the head and everything on screen looks fine. The code works and is still wrong — which is exactly why the check reads the raw text rather than the finished document."
 }

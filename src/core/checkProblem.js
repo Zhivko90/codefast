@@ -6,11 +6,11 @@ import {
   rawBody,
   visibleText,
   balanced,
-} from './helpers';
-import { runAxe } from './axeCheck';
-import { runStyles } from './styleCheck';
-import { getRunner, hasRunner } from './runners';
-import { assemble } from './bundle';
+} from './helpers.js';
+import { runAxe } from './axeCheck.js';
+import { runStyles } from './styleCheck.js';
+import { getRunner, hasRunner } from './runners/index.js';
+import { assemble } from './bundle.js';
 
 // ⚠ КАКВО ВЛИЗА ТУК: ЕДИН низ HTML, сглобен от bundle.js.
 // <script src="script.js"> вече е <script data-from="script.js">…</script>.
@@ -39,14 +39,24 @@ function runCheck(check, code, starter, axeMap, styleMap, js, doc) {
   const v = check.value;
 
   switch (kind(check.type)) {
-    case 'code_contains':
-      return norm(clean).includes(norm(v));
+case 'code_contains': {
+      const hay = check.stripComments ? clean : code;
+      return norm(hay).includes(norm(v));
+    }
 
-    case 'code_not_contains':
-      return !norm(clean).includes(norm(v));
+    case 'code_not_contains': {
+      const hay = check.stripComments === false ? code : clean;
+      return !norm(hay).includes(norm(v));
+    }
 
-    case 'dom_has':
+   case 'dom_has':
       return !!doc.querySelector(v);
+
+    case 'has_doctype':
+      return doc.doctype != null;
+
+    case 'has_doctype':
+      return doc.doctype != null;
 
     // ⚠ ВСИЧКИ, не първият. Два <h2>, вторият празен — това не е ✓.
     case 'dom_text_not_empty': {

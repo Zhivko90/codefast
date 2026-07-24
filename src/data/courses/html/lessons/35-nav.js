@@ -55,7 +55,6 @@ export default {
     { type: "heading" },
     { type: "text" },
     { type: "quote" },
-    { type: "text" },
   ],
   slug: "35-nav"
 };

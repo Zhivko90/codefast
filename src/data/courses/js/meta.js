@@ -4,7 +4,7 @@
 export const meta = {
   slug: 'js',
   category: 'web',
-  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+  icon: 'https://skillicons.dev/icons?i=js',
   level: 'beginner',
   runtime: 'js-worker',
 };

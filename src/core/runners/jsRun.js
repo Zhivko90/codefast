@@ -115,7 +115,7 @@ self.onmessage = async function (e) {
   }).join('');
 
   try {
-    (0, eval)(src + tail);
+    (0, eval)('"use strict";' + src + tail);
   } catch (err) {
     grabErr(err && err.name, err && err.message, null);
     self.postMessage({ done: true, err: self.__ERR__, logs: self.__LOGS__, calls: [] });

@@ -1,0 +1,122 @@
+{
+  "title": "How to name things",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Remove the second name. Only `sold` with the value 1247 stays.",
+  "steps.1.text": "Rename `p` to `price`. One-letter names say nothing.",
+  "steps.2.text": "Add `TAX_RATE` with the value 0.2. Capital letters — the value is hard-coded and never changes.",
+  "steps.3.text": "Give `total` a value: the sum plus the tax. The console should show two lines.",
+
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "One name, not two",
+  "checkLabels.t4": "sold is 1247",
+  "checkLabels.t5": "No one-letter names",
+  "checkLabels.t6": "price is 3",
+  "checkLabels.t7": "TAX_RATE exists",
+  "checkLabels.t8": "The tax is 0.2",
+  "checkLabels.t9": "The total comes out",
+  "checkLabels.t10": "Two lines come out",
+
+  "why.empty": "script.js is empty.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The second line in the console says undefined. The first one is wrong, but it does not show.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel on the right.",
+  "hint3.crashed": "A SyntaxError on a declaration means the name is not allowed — it starts with a digit, has a hyphen, or is a word of the language.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.two-names": "The name `Sold` still exists.",
+  "hint2.two-names": "`sold` and `Sold` are two separate names. The computer sees nothing in common between them.",
+  "hint3.two-names": "One is 1247, the other 1300. The sum uses the wrong one and nobody complains.",
+  "hint4.two-names": "Delete the second line. Then fix the sum to use `sold`.",
+
+  "why.wrong-sold": "`sold` is not 1247.",
+  "hint2.wrong-sold": "The first line is not touched. Only the second one goes.",
+
+  "why.short-name": "There is still a one-letter name.",
+  "hint2.short-name": "`p` says nothing. Three months later you will not know whether it was price, percent or position.",
+  "hint3.short-name": "Rename it to `price` — both where it is created and where it is used.",
+
+  "why.no-price": "There is no name `price` with the value 3.",
+
+  "why.no-caps": "There is no constant `TAX_RATE`.",
+  "hint2.no-caps": "The tax is twenty percent. That is written 0.2.",
+  "hint3.no-caps": "Capital letters with underscores between words. That is how hard-coded values that never change are written.",
+  "hint4.no-caps": "`const TAX_RATE = 0.2;` — then use it in the sum.",
+
+  "why.wrong-tax": "`TAX_RATE` is not 0.2.",
+  "hint2.wrong-tax": "Twenty percent is written 0.2, not 20 and not 0.02.",
+
+  "why.no-total": "`total` is not the right sum.",
+  "hint2.no-total": "1247 times 3 is 3741. With twenty percent on top — 4489.2.",
+  "hint3.no-total": "`total` is declared with no value and is therefore undefined. Give it the sum.",
+
+  "why.wrong-count": "There are not two lines in the console.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Look at `script.js`. The code runs. Nothing crashes. The console shows two numbers.",
+  "blocks.2.text": "Both are wrong. One is worked out with the wrong number of coffees. The other is `undefined` — a word you will meet until the end of this course.",
+
+  "blocks.3.text": "Capitals and lowercase",
+  "blocks.4.text": "The first two lines declare `sold` and `Sold`. They look like one name typed carelessly. They are not.",
+
+  "blocks.6.text": "Two separate names, two separate values. The computer sees nothing in common between them — to it, `s` and `S` are different characters, exactly like `a` and `b`. The sum below uses `Sold`, so it calculates with 1300 instead of 1247.",
+
+  "blocks.7.text": "What is allowed",
+  "blocks.8.text": "The rules are few and learned once:",
+
+  "blocks.9.items.0": "Letters, digits, underscore `_` and dollar sign `$`.",
+  "blocks.9.items.1": "The first character cannot be a digit.",
+  "blocks.9.items.2": "No spaces and no hyphens.",
+  "blocks.9.items.3": "It cannot be a word of the language itself — `let`, `const`, `return`, `function` and a few more.",
+
+  "blocks.11.text": "All four are allowed. The underscore and the dollar sign mean nothing special — they are just characters, like letters, and they can even be the whole name: `let $ = 1;` works. ⚠ But a leading underscore deserves care. It is allowed, and by convention it means the thing is internal and not to be touched from outside. Put one there without that intention and you mislead the reader.",
+
+  "blocks.13.text": "There are two more like it. `let my-name;` gives `Unexpected token '-'`, because the hyphen reads as subtraction. `let let;` gives `let is disallowed as a lexically bound name` — the word belongs to the language and it cannot hand it over. ⚠ All three are syntax errors: the file stops while being read and not one line runs. That is why you cannot see all three at once — the first one stops everything.",
+
+  "blocks.14.text": "camelCase",
+  "blocks.15.text": "Names have no spaces. When several words are needed, they are stuck together — the first with a lowercase letter, each following one with a capital.",
+
+  "blocks.17.text": "It is called camelCase, because the capitals look like humps. It is not a rule of the language but a convention — and everyone follows it. Code written any other way is spotted from a distance.",
+
+  "blocks.18.text": "In English",
+  "blocks.19.text": "Non-Latin letters are allowed. `let брой = 5;` works and will not crash.",
+  "blocks.20.text": "And still it is not done. Code is written in English everywhere in the world — that way people from other countries can read it, that way every library you will use looks, and that way you search the internet when something does not work.",
+
+  "blocks.21.text": "A name with no value",
+  "blocks.22.text": "You can declare a name without giving it anything. Then it points to `undefined`.",
+
+  "blocks.24.text": "`undefined` is not zero and not an empty string. It means: this name exists, but nobody gave it a value. Try to calculate with it and you get `NaN` — there is a whole lesson on that in the next section.",
+  "blocks.25.quote": "A name with no value and a name that does not exist at all are different things. The first gives `undefined`. The second gives an error.",
+
+  "blocks.26.text": "Capital letters",
+  "blocks.27.text": "There is one case where a name is written in all capitals: when the value is hard-coded, known in advance, and never changes. In the example you will also see a word you do not know yet — `const`. For now treat it as a stricter version of `let`; the whole next lesson is about it.",
+
+  "blocks.29.text": "`TAX_RATE` and `MAX_CUPS` are like that — you wrote them down and they will stay. `price` and `sold` come from outside, so they go in lowercase. A convention, not a rule — but you see at once what is law and what is today's value.",
+
+  "blocks.30.text": "Short names",
+  "blocks.31.text": "One-letter names save three seconds while writing and cost hours while reading.",
+
+  "blocks.33.text": "What is `d`? Discount, days, difference, date? You have to read the whole file to find out. And in three months you will be exactly that person reading it for the first time.",
+  "blocks.34.text": "The opposite is bad too: `theCurrentPriceOfOneCoffeeInLevaWithoutTax` is precise and unusable. The goal is a name that says what it holds, in as few words as possible. Three words are perfectly normal. ⚠ And length is not the only measure: `data`, `value`, `info` are normal-sized and still say nothing. Ask not whether it is long, but whether you will know what is inside without reading further.",
+
+  "blocks.35.text": "So far",
+  "blocks.36.items.0": "Capitals and lowercase are different characters. `sold` and `Sold` are two names.",
+  "blocks.36.items.1": "Letters, digits, `_` and `$`. Does not start with a digit, no hyphens, not a word of the language.",
+  "blocks.36.items.2": "Several words are stuck together in camelCase.",
+  "blocks.36.items.3": "A name with no value points to `undefined`.",
+  "blocks.36.items.4": "CAPITAL LETTERS only for hard-coded values that never change.",
+  "blocks.36.items.5": "A new name is cheaper than a reused one. You save a line and lose an hour looking for it.",
+
+  "walkthrough.0.text": "The second line simply goes. It is not renamed — it is deleted. As long as `Sold` exists as a separate name, one day you will type it instead of `sold` and again nothing will crash. That is exactly what the starter code did: it calculated with 1300 and said nothing.",
+  "walkthrough.1.text": "`p` becomes `price` in both places — where it is created and where it is used. Rename only one and you get a ReferenceError. That is the good news: this mistake shows up immediately, while `sold` against `Sold` never shows up at all.",
+  "walkthrough.2.text": "`TAX_RATE` is written in capitals with an underscore because 0.2 is written down by you, known in advance, and will not change until somebody rewrites the line. `price` and `sold` come from outside — they go in lowercase. A convention, not a rule: the language does not notice the difference, the reader notices it at once.",
+  "walkthrough.3.text": "`let total = sold * price;` — the declaration with no value is gone. The starter code had `let total;` and that is exactly why the second console line said `undefined`. The name existed, the value did not.",
+  "walkthrough.4.text": "`total = total + total * TAX_RATE;` — no `let`. The name already exists; a second declaration with the same name crashes. Multiplication happens before addition, so no brackets are needed. `sold * price * 1.2` works too — the same number, but 1.2 tells the reader nothing and `TAX_RATE` does.",
+  "walkthrough.5.text": "The two `console.log` lines stay two: the sum without tax and with it, 3741 and 4489.2. Twenty percent is written 0.2. With 20 the total would be twenty times bigger, with 0.02 it would be two percent. The dot is the only difference between right and absurd."
+}

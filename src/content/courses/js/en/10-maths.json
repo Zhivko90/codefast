@@ -1,29 +1,28 @@
 {
   "title": "What gets calculated first",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You wrote something",
-  "checkLabels.t2": "You edited script.js",
-  "checkLabels.g1": "Everything closed",
-  "checkLabels.t3": "The script is linked",
-  "checkLabels.t4": "The code runs",
-  "checkLabels.t5": "The income is not typed in",
-  "checkLabels.t6": "The profit either",
-  "checkLabels.t7": "The income is 420",
-  "checkLabels.t8": "The profit is 220",
-  "checkLabels.t9": "The average is 4.2",
-  "checkLabels.t10": "Three lines come out",
-  "checkLabels.t11": "The paragraphs are still there",
+  "steps.0.text": "The profit is the income minus the whole rent. It should come out as 220.",
+  "steps.1.text": "The average is the income divided by all the cups sold. It should come out as 4.2.",
+  "steps.2.text": "The cups are packed six to a box. How many are left over? It should come out as 4.",
 
-  "why.empty": "The editor is empty.",
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "The income is not typed in",
+  "checkLabels.t4": "The profit either",
+  "checkLabels.t5": "The income is 420",
+  "checkLabels.t6": "The profit is 220",
+  "checkLabels.t7": "The average is 4.2",
+  "checkLabels.t8": "4 cups are left over",
+  "checkLabels.t9": "Four lines come out",
+
+  "why.empty": "script.js is empty. You deleted everything instead of fixing it.",
 
   "why.untouched": "script.js is exactly as it was.",
-  "hint2.untouched": "The income comes out right. The other two numbers are not what they should be.",
-
-  "why.not-closed": "A tag in index.html is open and never closed.",
-  "why.not-linked": "The script never reaches the page.",
+  "hint2.untouched": "The income comes out right. The other three numbers are not what they should be.",
 
   "why.crashed": "Your code stopped with an error.",
-  "hint2.crashed": "Look at the Console panel below.",
+  "hint2.crashed": "Look at the Console panel on the right.",
 
   "why.nothing-written": "script.js is empty.",
   "why.frozen": "Your code never stops.",
@@ -36,35 +35,71 @@
 
   "why.wrong-profit": "The profit is not 220.",
   "hint2.wrong-profit": "The rent is 200 lev, all of it. Read the line slowly and see what happens to it before it gets subtracted.",
-  "hint3.wrong-profit": "Division happens before subtraction. 420 - 200 / 2 is not (420 - 200) / 2. The first gives 320, the second gives 110.",
+  "hint3.wrong-profit": "Division happens before subtraction. `420 - 200 / 2` is not `(420 - 200) / 2`. The first gives 320, the second gives 110.",
+  "hint4.wrong-profit": "No brackets are needed here. A division needs to go.",
 
   "why.wrong-average": "The average is not 4.2.",
   "hint2.wrong-average": "The average is the income divided by all the cups sold. There are 100 cups.",
-  "hint3.wrong-average": "Division happens before addition, so the income is divided by one number only, and the other gets stuck on top. Brackets say what happens first.",
+  "hint3.wrong-average": "Division happens before addition, so the income is divided by one number only and the other gets stuck on top. That is why 70.5 comes out instead of 4.2.",
   "hint4.wrong-average": "Put brackets around the two quantities being added.",
 
-  "why.wrong-count": "There are not three lines in the console.",
-  "why.lost-p": "A line has disappeared from the page.",
+  "why.wrong-leftover": "There are not 4 cups left over.",
+  "hint2.wrong-leftover": "A hundred cups, six to a box. Sixteen full boxes and a few extra.",
+  "hint3.wrong-leftover": "Division tells you how many times the six fits. You want the other thing — what is left after that. It has its own sign.",
+  "hint4.wrong-leftover": "The remainder sign is `%`. And brackets are needed here too, or only one quantity gets divided.",
 
-  "blocks.0.text": "Three sums. Income, profit, average price per cup.",
-  "blocks.1.text": "The income comes out right: 420. The other two are wrong, and nothing breaks. The profit shows 320 on a rent of 200, and the average price is 70 lev a cup.",
+  "why.wrong-count": "There are not four lines in the console.",
 
-  "blocks.2.text": "The signs are not equal",
-  "blocks.3.text": "Multiplication and division happen before addition and subtraction. Not left to right — the strong ones first, then the weak ones.",
-  "blocks.5.text": "The first gives 14, the second gives 20. The same numbers, the same signs, a different order.",
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Four sums. Income, profit, average price per cup, and how many cups are left unpacked:",
 
-  "blocks.6.text": "Brackets say what comes first",
-  "blocks.7.text": "Whatever is inside brackets is calculated before everything else. That is the only way to impose your own order.",
-  "blocks.8.items.0": "brackets first",
-  "blocks.8.items.1": "then multiplication and division, left to right",
-  "blocks.8.items.2": "then addition and subtraction, left to right",
-  "blocks.9.text": "The rule is the same as at school. The difference is that there the mistake is visible, and here the number simply comes out different.",
+  "blocks.3.text": "The income is right. The other three are not, and nothing breaks. The profit shows 320 on a rent of 200. The average price shows 70.5 lev a cup. And the leftovers show 50 out of a hundred.",
 
-  "blocks.10.text": "Write brackets even when you do not need them",
-  "blocks.11.text": "Nobody remembers the whole order by heart, and the list is far longer than the three lines above. Brackets do not slow the code down and cost nothing.",
-  "blocks.12.text": "Code you read without hesitating is better than code that is correct and makes you think.",
+  "blocks.4.text": "The signs are not equal",
+  "blocks.5.text": "Multiplication and division happen before addition and subtraction. Not left to right — the strong ones first, then the weak ones.",
 
-  "blocks.13.text": "The task",
-  "blocks.14.text": "Fix the two wrong sums. The profit is the income minus the whole rent. The average is the income divided by all the cups sold.",
-  "blocks.15.text": "The numbers 420 and 220 should not appear in the code. They are results, not data."
+  "blocks.7.text": "The first gives 14, the second gives 20. The same numbers, the same signs, a different order.",
+
+  "blocks.8.text": "How the mistake actually happens",
+  "blocks.9.text": "A person reads the line like a sentence, left to right: fifty plus ten is sixty, eight plus two is ten, sixty divided by ten is six. The computer does something else:",
+
+  "blocks.11.text": "It starts with the division: ten divided by eight is 1.25. Then it adds: fifty plus 1.25 plus two is 53.25. The two lines look almost the same and differ by fifty.",
+
+  "blocks.12.text": "The remainder",
+  "blocks.13.text": "There is also a sign that is not taught at school. `%` gives **what is left** after dividing into whole parts. It has nothing to do with percentages, despite how it is written:",
+
+  "blocks.15.text": "A hundred cups, six to a box, gives sixteen full boxes and four extra. Those four are what `%` returns. The second and third lines show its most common use: a remainder of one after dividing by two means odd, zero means even. Its precedence is the same as multiplication.",
+
+  "blocks.16.text": "The exponent",
+  "blocks.17.text": "`**` raises a number to a power. Its precedence is **above** multiplication:",
+
+  "blocks.19.text": "That is why the second line gives 18 and not 36 — three squared is worked out first, then multiplied by two. You will also meet the older form `Math.pow(7, 3)`, which does the same as `7 ** 3`. Both give 343.",
+
+  "blocks.20.text": "The whole order",
+  "blocks.21.text": "The list is much longer, but four steps are enough for arithmetic:",
+
+  "blocks.22.items.0": "brackets first",
+  "blocks.22.items.1": "then the exponent",
+  "blocks.22.items.2": "then multiplication, division and remainder, left to right",
+  "blocks.22.items.3": "then addition and subtraction, left to right",
+
+  "blocks.23.text": "The rule is the same as at school, with one step added on top. The difference is that there the mistake is visible, and here the number simply comes out different.",
+
+  "blocks.24.text": "Write brackets even when you do not need them",
+  "blocks.25.text": "Nobody remembers the whole order by heart. Brackets do not slow the code down and cost nothing, and they save you from exactly this kind of mistake — the quiet one that gives you a number instead of a message.",
+  "blocks.26.quote": "Code you read without hesitating is better than code that is correct and makes you think.",
+
+  "blocks.27.text": "So far",
+  "blocks.28.items.0": "Brackets are worked out first. Then the exponent. Then multiplication, division and remainder. Then addition and subtraction.",
+  "blocks.28.items.1": "The same numbers in a different order give a different result.",
+  "blocks.28.items.2": "`%` gives the remainder after dividing into whole parts, not percentages.",
+  "blocks.28.items.3": "`**` is the exponent and is worked out before multiplication. `Math.pow` is the older form.",
+  "blocks.28.items.4": "A precedence mistake is quiet. Nobody complains, the number is simply different.",
+
+  "walkthrough.0.text": "The first six lines are not touched. That is where the data lives and the only place the numbers are written. The two checks for 420 and 220 look at exactly that: the result is calculated, not copied in.",
+  "walkthrough.1.text": "The income line is left untouched, and that is deliberate. `espressoPrice * espressoSold + lattePrice * latteSold` is correct precisely because precedence works in your favour — both multiplications happen before the addition. The lesson is not \"precedence is a trap\" but \"precedence exists and you need to know it in both directions\".",
+  "walkthrough.2.text": "`income - rent` — here no brackets are added, a division is removed. Dividing by two was simply wrong; no brackets would have fixed it. The first repair is recognizing which sign is surplus, not which one is missing.",
+  "walkthrough.3.text": "`income / (espressoSold + latteSold)` — here it is the other way round. The signs are right, their order is not. Without brackets the division catches only the first quantity and the second gets stuck on top: 10.5 plus 60 makes 70.5. Brackets do not change the sum, they change the order it is done in.",
+  "walkthrough.4.text": "`(espressoSold + latteSold) % perBox` — two repairs at once. Brackets first, for the same reason as the line above. And then the division becomes a remainder, because the question is not how many parts it divides into, but what is left after it does.",
+  "walkthrough.5.text": "Notice that all three mistakes were of the same kind and not one of them crashed. The numbers came out, the console was clean, and you had to know what to expect in order to notice. That is why the task states the exact numbers up front — otherwise there is no way to check that you were wrong."
 }

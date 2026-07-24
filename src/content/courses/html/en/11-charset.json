@@ -1,35 +1,95 @@
 {
-  "title": "What language is this in",
+  "title": "The letters and the language",
+  "taskTitle": "The task",
 
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be a lang",
-  "checkLabels.t2": "lang must not be empty",
-  "checkLabels.t3": "The encoding must still be there",
+  "steps.0.text": "Add `<meta charset=\"utf-8\">` as the first thing inside `<head>`.",
+  "steps.1.text": "Add `lang` to the opening `<html>` tag.",
+
   "checkLabels.t0": "There is code",
-  "checkLabels.t3b": "The alphabet isn't empty",
-  "checkLabels.t4": "The page name is still there",
-  "checkLabels.t5": "The heading is still there",
-  "checkLabels.t6": "The sentence is still there",
-  "why.lost-content": "Content vanished from the page. The task is to add the language, not to delete things.",
-  "why.empty": "The editor is empty. You are adding one attribute, and you deleted the whole page. Bring the code back.",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t1": "There is a meta with a charset",
+  "checkLabels.t2": "The charset is not empty",
+  "checkLabels.t3": "The charset is in head",
+  "checkLabels.t4": "There is a lang",
+  "checkLabels.t5": "lang is not empty",
+  "checkLabels.t6": "The declaration is still there",
+  "checkLabels.t7": "The page name survived",
+  "checkLabels.t8": "The heading survived",
+  "checkLabels.t9": "The sentence survived",
 
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-lang": "There is no lang. A screen reader does not know what language it is reading and will pronounce your text in the wrong voice.",
-  "why.empty-lang": "lang is there, but it is empty. An empty attribute is the same as a missing one — nobody knows what the language is.",
-  "why.lost-meta": "The encoding is gone. You are adding an attribute, not deleting lines.",
+  "why.empty": "The editor is empty. You are adding two lines, and you deleted the whole page. Bring the code back.",
+  "hint2.empty": "Restore the skeleton from the last lesson and add the two things to the head and to `<html>`.",
 
-  "hint2.no-lang": "The attribute goes INSIDE the opening <html> tag, before the closing bracket.",
-  "hint3.no-lang": "Look at the example. The tag is already there — you are only adding something to it.",
-  "hint2.empty-lang": "The value has to be the language code. bg for Bulgarian, en for English.",
-  "hint3.empty-lang": "If your page is in English — <html lang=\"en\">. If it is in Bulgarian — <html lang=\"bg\">.",
+  "why.not-closed": "Some tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "`<meta>` has no closing tag — it is a void element. Check the others.",
 
-  "blocks.0.text": "Your page is in some language. You know that. The browser does not.",
-  "blocks.1.text": "It seems pointless. Who cares what language it is in? Turns out — quite a few people.",
-  "blocks.2.text": "One attribute",
-  "blocks.3.text": "It is not a new tag. It is something you write INSIDE a tag you already have.",
-  "blocks.5.text": "Add it to your <html>. Run. Nothing changes on screen.",
-  "blocks.6.text": "Who reads it",
-  "blocks.7.text": "A screen reader. It needs to know how to pronounce the words. Without lang it will read your text in the wrong voice — and out comes a mess nobody understands.",
-  "blocks.8.text": "Google too. It decides who to show your page to. If it does not know the language, it will show it to the wrong people, or to nobody.",
-  "blocks.9.text": "\"Think of the last time you opened a site and something suddenly started talking. What did you do? Closed the tab. Now imagine that reader is the only way you can read.\""
+  "why.no-meta": "No character encoding is declared. The browser will guess how to read your letters, and every letter outside the English alphabet becomes a gamble.",
+  "hint2.no-meta": "The tag is `meta`. It goes in `<head>` and has no closing tag.",
+  "hint3.no-meta": "The whole line is `<meta charset=\"utf-8\">`. Look at the example above.",
+
+  "why.empty-charset": "The encoding is declared but empty. An empty attribute passes every \"is it written\" check and says nothing. The browser still has to guess.",
+  "hint2.empty-charset": "The value is `utf-8`. It goes inside the quotes.",
+
+  "why.charset-not-in-head": "The encoding is there, but not in the head. It has to be among the first things in the file — the browser reads it before it reaches the text. Further down is already too late.",
+  "hint2.charset-not-in-head": "Look at where you put it. Is it between `<head>` and `</head>`?",
+  "hint3.charset-not-in-head": "It belongs as the first thing inside the head — before `<title>`.",
+
+  "why.no-lang": "There is no `lang`. The screen reader does not know what language it is reading and will pronounce your text in the wrong voice.",
+  "hint2.no-lang": "It is not a new tag. It is written INSIDE the opening `<html>`, before the closing bracket.",
+  "hint3.no-lang": "The tag is already there — you are only adding something to it. Look at the example.",
+
+  "why.empty-lang": "`lang` is there but empty. An empty attribute is the same as a missing one — nobody knows what the language is.",
+  "hint2.empty-lang": "The value is the language code: `bg` for Bulgarian, `en` for English.",
+  "hint3.empty-lang": "If your page is in English — `<html lang=\"en\">`.",
+
+  "why.lost-doctype": "The declaration from the last lesson is gone. You are adding things, not deleting old ones.",
+  "why.lost-content": "Content disappeared from the page. The task is to add two lines, not to delete.",
+  "hint2.lost-content": "Compare with the starting code. The body stays untouched.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Your page is written in some language, with some letters. You know that. The browser does not.",
+  "blocks.2.text": "That raises two questions you have to answer: how to read your letters, and what language the words are in. They are different things and they take different lines.",
+
+  "blocks.3.text": "First: the letters",
+  "blocks.4.text": "A computer does not store letters. It stores numbers. To turn them back into letters it needs a table — which number is which letter. You tell it which one:",
+  "blocks.5.marks.0.label": "INFORMATION",
+  "blocks.5.marks.1.label": "ABOUT WHAT",
+  "blocks.5.marks.2.label": "THE TABLE",
+  "blocks.5.legend.0": "`meta` has no closing tag. It wraps nothing — it only carries a piece of information.",
+
+  "blocks.6.items.0": "`meta` is the tag for information ABOUT the page. Hence its place — in the head.",
+  "blocks.6.items.1": "`charset` is which set of characters is in use.",
+  "blocks.6.items.2": "`utf-8` is the table that covers every writing system — Cyrillic, Chinese, Arabic, emoji. Around 98 per cent of pages on the web use it today.",
+
+  "blocks.7.text": "What happens without it",
+  "blocks.8.text": "The browser starts with a guess of its own, usually based on where the person is. If it guesses right, lucky. If not, you get that letter breakdown you have seen: question marks, boxes, strange glyphs. It even has a name — mojibake.",
+  "blocks.9.text": "The classic example is `café` coming out as `cafÃ©`. Notice the page does not crash and no error appears anywhere. Your code works — it just lies about the letters.",
+
+  "blocks.10.text": "Why it goes first in the head",
+  "blocks.11.text": "The specification wants this line to fit within the first 1024 bytes of the file — counting the declaration, `<html>`, `<head>` and the line itself. The reason is reading order: the browser has to know the table before it starts decoding the text.",
+  "blocks.12.text": "If it reaches a character it cannot decode, it has to start parsing over. Some browsers do it and lose time; others do not bother and leave the mess. That is why the line sits at the top of the head, before `<title>`, and not somewhere further down.",
+
+  "blocks.13.text": "Second: the language",
+  "blocks.14.text": "The encoding says how to read the letters. The language says what the words are. The second one is not a new tag — it is something written inside a tag you already have:",
+  "blocks.16.text": "Something written inside an opening tag like this is called an *attribute*. It has a name on the left and a value in quotes on the right. There is a whole lesson on them shortly — for now it is enough to know where they go.",
+
+  "blocks.17.text": "Who reads the language",
+  "blocks.18.items.0": "The screen reader. It needs to know how to pronounce the words. Without `lang` it will read Bulgarian text in an English voice and produce noise nobody understands.",
+  "blocks.18.items.1": "Google. It decides who to show your page to. If it does not know the language, it shows it to the wrong people, or to nobody.",
+  "blocks.18.items.2": "The browser's translator. It offers a translation only when it knows where to start from.",
+
+  "blocks.19.text": "The task",
+  "blocks.20.text": "Add both: the encoding as the first thing in `<head>`, and the language on the opening `<html>`.",
+  "blocks.21.text": "Run it. Nothing will change on screen — the third lesson in a row. If you are getting used to that, you have understood who the head is written for.",
+
+  "blocks.22.text": "So far",
+  "blocks.23.items.0": "`<meta charset=\"utf-8\">` says which table to read the letters by.",
+  "blocks.23.items.1": "It goes first in `<head>`, before everything else.",
+  "blocks.23.items.2": "Without it, letters outside the English alphabet fall apart.",
+  "blocks.23.items.3": "`lang` on `<html>` says what language the words are in.",
+  "blocks.23.items.4": "It is read by screen readers, by Google and by the translator.",
+
+  "walkthrough.0.text": "Two lines added to the skeleton. Nothing old was touched.",
+  "walkthrough.1.text": "The encoding is the first child of the head — before `<title>`. The standard does not demand that exact position, but it is the only way to be sure it fits inside the first 1024 bytes, whatever you add later.",
+  "walkthrough.2.text": "`lang=\"en\"` is for an English page. A Bulgarian one takes `bg`. The check does not look at which value you used, only that it is not empty: it cannot know what language you are writing in."
 }

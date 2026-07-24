@@ -92,12 +92,9 @@ files = [], activeFile, onFile, getFile, setFile,
 // false → скриптовете в превюто НЕ се изпълняват. Виж guard.js.
   runPreview = true,
 
-  // ── ДЯСНАТА КОЛОНА ПРИ JS ──
-  // Превюто отпада: при js-worker то рисува само страница, която никога
-  // не се променя — цялата работа е в конзолата. На негово място дясната
-  // колона се дели наполовина: конзола горе, резултат долу.
-  // ⚠ Долният панел тогава не се рисува изобщо.
-  sidePanels = false,
+sidePanels = false,
+  resultBeside = false,
+
    chrome = true,
 
   // ── ДОКЛАД ЗА ГРЕШКА ──
@@ -118,7 +115,9 @@ files = [], activeFile, onFile, getFile, setFile,
   const [leftW, setLeftW] = useState(null);   // null = още не е измерено
   const [prevW, setPrevW] = useState(null);
  const [botH, setBotH] = useState(340);
-  const [sideSplit, setSideSplit] = useState(0.5);   // дял на конзолата горе
+const [sideSplit, setSideSplit] = useState(0.5);   // дял на конзолата горе
+  const [showRes, setShowRes] = useState(false);
+  const [besideSplit, setBesideSplit] = useState(0.68);
 
   const [showFb, setShowFb] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
@@ -198,8 +197,12 @@ files = [], activeFile, onFile, getFile, setFile,
 
   // При предаване долният панел изскача.
   useEffect(() => {
-    if (result) { setShowBot(true); setBottom('result'); setMobileView('result'); }
-  }, [result]);
+if (result) {
+      if (resultBeside) { setShowPrev(true); setShowRes(true); } else setShowBot(true);
+      setBottom('result');
+      setMobileView('result');
+    }
+  }, [result, resultBeside]);
 
   // ⚠ Грешка по време на изпълнение → конзолата се ОТВАРЯ САМА, веднъж.
   // Ученикът вижда бяло превю и не знае къде да търси. Не го карай да
@@ -239,9 +242,12 @@ files = [], activeFile, onFile, getFile, setFile,
       if (w < 240) w = 240;
       if (w > r.width - 520) w = r.width - 520;
       setPrevW(w);
-    } else if (drag.current === 's') {
+   } else if (drag.current === 's') {
       const f = (e.clientY - r.top) / r.height;
       setSideSplit(Math.min(0.85, Math.max(0.15, f)));
+    } else if (drag.current === 'r') {
+      const f = (e.clientY - r.top) / r.height;
+      setBesideSplit(Math.min(0.85, Math.max(0.3, f)));
     } else {
       let h = r.bottom - e.clientY;
       if (h < 110) h = 110;
@@ -351,7 +357,9 @@ const editorEl = ide ? (
     <ResultPanel result={result} checkLabels={checkLabels} why={why} hints={hints} onTutor={onTutor} />
   );
 
-  const consoleBody = <ConsolePane lines={consLines} onClear={consClear} />;
+const consoleBody = <ConsolePane lines={consLines} onClear={consClear} />;
+
+ 
 
   const dot = result ? (result.passed ? 'bg-emerald-400' : 'bg-rose-400') : null;
   const consDot = consErrors > 0 ? 'bg-rose-400' : (consLines.length ? 'bg-sky-400' : null);
@@ -478,7 +486,7 @@ const editorEl = ide ? (
               при всяко превключване на таб. */}
           {hasPreview && (
             <div className={`flex-1 min-h-0 flex flex-col ${mobileView === 'preview' ? '' : 'hidden'}`}>
-              <PreviewPane preview={preview} target={target} run={runPreview} />
+        <PreviewPane preview={preview} target={target} run={runPreview} url={entry} onReload={onRun} />
             </div>
           )}
 
@@ -558,9 +566,13 @@ const editorEl = ide ? (
               </RailBtn>
             )}
 
-          {!ide && !sidePanels && (
-              <RailBtn on={showBot && bottom === 'result'}
-                onClick={() => { setShowBot(!(showBot && bottom === 'result')); setBottom('result'); }}
+       {!ide && !sidePanels && (
+              <RailBtn on={resultBeside ? showRes : (showBot && bottom === 'result')}
+                onClick={() => {
+                  if (resultBeside) { setShowRes((v) => !v); setShowPrev(true); return; }
+                  setShowBot(!(showBot && bottom === 'result'));
+                  setBottom('result');
+                }}
                 title={t('result')} dot={dot}>
                 <IcoResult />
               </RailBtn>
@@ -608,7 +620,7 @@ const editorEl = ide ? (
             {fileBar}
             <div className="flex-1 min-h-[120px]">{editorEl}</div>
 
-          {showBot && !sidePanels && (
+         {showBot && !sidePanels && !resultBeside && (
               <>
                 <div onMouseDown={start('b')}
                   className="shrink-0 h-2 cursor-row-resize flex items-center justify-center bg-white/[0.03] hover:bg-sky-500/20 transition-colors group">
@@ -724,11 +736,46 @@ const editorEl = ide ? (
                           </span>
                         )}
                       </div>
-                      <div className="flex-1 overflow-y-auto p-4">{resultBody}</div>
+               <div className="flex-1 overflow-y-auto p-4">{resultBody}</div>
                     </div>
                   </>
+  ) : resultBeside ? (
+                  <>
+                    <div className={`flex flex-col min-h-0 ${showRes ? '' : 'flex-1'}`}
+                      style={showRes ? { flexBasis: `${besideSplit * 100}%`, flexGrow: 0, flexShrink: 1 } : undefined}>
+                      <PreviewPane preview={preview} target={target} run={runPreview} url={entry} onReload={onRun} onClose={() => setShowPrev(false)} />
+                    </div>
+
+                    {showRes && (
+                      <>
+                        <div onMouseDown={start('r')}
+                          className="shrink-0 h-2 cursor-row-resize flex items-center justify-center bg-white/[0.03] hover:bg-sky-500/20 transition-colors group">
+                          <div className="flex gap-1 pointer-events-none">
+                            {[0, 1, 2].map((i) => <span key={i} className="w-1 h-1 rounded-full bg-gray-700 group-hover:bg-sky-300 transition-colors" />)}
+                          </div>
+                        </div>
+
+                        <div className="flex-1 min-h-0 flex flex-col">
+                          <div className="shrink-0 flex items-center gap-2 px-3 h-8 bg-black/25 border-y border-white/[0.08]">
+                            <span className="text-[11px] font-bold tracking-wider text-gray-400">{t('result')}</span>
+                            <div className="flex-1" />
+                            {result && (
+                              <span className={`text-[12px] font-semibold ${result.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
+                                {result.passed
+                                  ? '✓ ' + t('all_passed')
+                                  : `${result.results.filter((r) => r.ok).length} / ${result.results.length}`}
+                              </span>
+                            )}
+                            <button onClick={() => setShowRes(false)}
+                              className="w-6 h-6 flex items-center justify-center rounded text-gray-600 hover:text-white transition">✕</button>
+                          </div>
+                          <div className="flex-1 overflow-y-auto p-4">{resultBody}</div>
+                        </div>
+                      </>
+                    )}
+                  </>
                 ) : (
-                  <PreviewPane preview={preview} target={target} run={runPreview} />
+                  <PreviewPane preview={preview} target={target} run={runPreview} url={entry} onReload={onRun} onClose={() => setShowPrev(false)} />
                 )}
               </div>
             </>

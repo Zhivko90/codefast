@@ -22,37 +22,10 @@ import { useEffect, useState } from 'react';
 import { listCourses, getCourse } from '@/core/getCourse';
 import { checkProblem } from '@/core/checkProblem';
 import { assemble } from '@/core/bundle';
+import { solutionFiles } from '@/core/solutionFiles';
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// Свежда двете форми до едно: карта файл → съдържание, или null при неяснота.
-function solutionFiles(lesson) {
-  const s = lesson.solution;
-  if (!s) return null;
-  if (typeof s === 'object') return s;
-
-const files = lesson.starterFiles;
-  if (!files) return { __single: s };
-  const entry = lesson.entry ?? 'index.html';
-
- // Низ значи ЕДИН файл. Кой — познава се по вида на урока:
-  // JS уроците дават script.js, CSS уроците styles.css. Ако и двата
-  // ги има, решава типът на курса, не редът в обекта.
-const names = Object.keys(files);
-  const txt = String(s);
-  const looksHtml = /<(!doctype|html|body|div|h1|p|section)\b/i.test(txt);
-
-  const pick =
-    looksHtml && names.includes(entry) ? entry
-    : names.includes('script.js') && txt.includes('console.') ? 'script.js'
-    : names.includes('script.js') && !names.includes('styles.css') ? 'script.js'
-    : names.includes('styles.css') && !names.includes('script.js') ? 'styles.css'
-    : names.includes('script.js') ? 'script.js'
-    : names.length === 1 ? names[0]
-    : null;
-
-  return pick ? { [pick]: s } : null;
-}
 
 export default function Verify() {
   const [rows, setRows] = useState([]);

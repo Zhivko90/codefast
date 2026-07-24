@@ -5,58 +5,76 @@
   "checkLabels.t2": "You changed the code",
   "checkLabels.g1": "Everything closed",
   "checkLabels.t3": "The file is linked",
-  "checkLabels.t4": "The heading is dark red",
-  "checkLabels.t5": "All three paragraphs are brown",
-  "checkLabels.t6": "The line height is 24 pixels",
   "checkLabels.t7": "You didn't use style on the tag",
+  "checkLabels.t4": "The heading is dark blue",
+  "checkLabels.t5": "All three paragraphs are brown",
+  "checkLabels.t6": "There's space under every block",
   "checkLabels.t8": "The paragraphs are still there",
 
-  "why.empty": "The editor is empty. Hit the bin and start again.",
+  "why.empty": "The editor is empty. Bring the file back and start again.",
 
   "why.untouched": "The code is exactly as it was.",
-  "hint2.untouched": "You write in styles.css. index.html isn't touched.",
+  "hint2.untouched": "You write in `styles.css`. `index.html` isn't touched.",
 
   "why.not-closed": "A tag is open and never closed.",
-  "hint2.not-closed": "If you've edited index.html, hit the bin.",
+  "hint2.not-closed": "If you've edited `index.html`, restore it.",
 
-  "why.unlinked": "The page can't find styles.css. You've edited index.html.",
-  "hint2.unlinked": "Hit the bin and work only in styles.css.",
+  "why.unlinked": "The page can't find `styles.css`. You've edited `index.html`.",
+  "hint2.unlinked": "Restore both files and work only in `styles.css`.",
 
-  "why.no-h1": "There is no heading. You've edited index.html.",
-  "why.no-p": "There are no paragraphs. You've edited index.html.",
+  "why.no-h1": "There is no heading. You've edited `index.html`.",
+  "why.no-p": "There are no paragraphs. You've edited `index.html`.",
 
-  "why.h1-not-red": "The heading isn't dark red.",
-  "hint2.h1-not-red": "A rule for h1 with the color property. The value is darkred.",
+  "why.h1-not-blue": "The heading isn't dark blue.",
+  "hint2.h1-not-blue": "A rule for `h1` with the `color` property. The value is `darkblue`.",
 
   "why.p-not-brown": "A paragraph is left without colour — or not all of them are brown. The check looks at all three.",
-  "hint2.p-not-brown": "One rule for p catches every paragraph at once. Don't write three.",
+  "hint2.p-not-brown": "One rule for `p` catches every paragraph at once. Don't write three.",
   "hint3.p-not-brown": "If you tried to colour just one of them — that's exactly the lesson. By tag you can't. Go back and colour all three.",
-  "hint4.p-not-brown": "p { color: saddlebrown; } — one rule, three paragraphs.",
+  "hint4.p-not-brown": "`p { color: saddlebrown; }` — one rule, three paragraphs.",
 
-  "why.no-line-height": "The line height isn't 24 pixels. The lines are stuck to each other.",
-  "hint2.no-line-height": "The property is line-height. It goes in the same p rule.",
-  "hint3.no-line-height": "line-height isn't the gap BETWEEN lines. It's the height of the line itself — the text sits in the middle of it. That's why 24px with a 16px font gives 8 pixels of air, split above and below.",
-  "hint4.no-line-height": "Add line-height: 24px; to the p rule.",
+  "why.no-gap": "The blocks are stuck together. It wants 12 pixels under the heading AND under every paragraph.",
+  "hint2.no-gap": "The property is `margin-bottom`. Both `h1` and `p` need it.",
+  "hint3.no-gap": "You can write it twice, in both rules. Or once: `h1, p { margin-bottom: 12px; }` — the comma means \"both of these\". The check accepts either, because the result is the same.",
+  "hint4.no-gap": "`margin-bottom: 12px` on the heading and on the paragraphs.",
 
-  "why.used-inline": "You used style on the tag. I understand why — you wanted to reach just one paragraph. There's no way, not with what you know. Remove it.",
+  "why.used-inline": "You used `style` on the tag. I understand why — you wanted to reach just one paragraph. There's no way, not with what you know. Remove it.",
   "hint2.used-inline": "That's the whole point of this lesson: a tag selector can't tell one paragraph from another. The tool comes next time.",
   "hint3.used-inline": "The attribute works, but it's a step backwards — it put you back where you were in lesson 01. Three elements, three copies of the same thing.",
-  "hint4.used-inline": "Delete the style attribute. Make all three paragraphs the same and accept that the third one can't be different yet.",
+  "hint4.used-inline": "Delete the `style` attribute. Make all three paragraphs the same and accept that the third one can't be different yet.",
 
-  "why.lost-p": "A paragraph is gone. The work is in styles.css.",
+  "why.lost-p": "A paragraph is gone. The work is in `styles.css`.",
 
-  "blocks.0.text": "You've known the tag selector since lesson 02. p catches the paragraphs, h1 catches the heading. Now you'll see how far it goes.",
+  "blocks.0.text": "How far it reaches",
+  "blocks.1.text": "You've known the tag selector since lesson 02. `p` catches the paragraphs, `h1` catches the heading. You'll meet it under three names — *type selector*, *tag name selector*, *element selector*. Same thing.",
+  "blocks.2.text": "It has a widest relative too: `*` picks every element on the page, no exceptions. That's where almost every reset like the one in lesson 05 begins. Now you'll see how far the whole family reaches.",
 
-  "blocks.1.text": "The task",
-  "blocks.2.text": "The heading dark red. All three paragraphs brown, with a line height of 24 pixels.",
-  "blocks.3.text": "Then, before you submit, do one more thing: try to make ONLY the last paragraph — the one about Christmas — a different colour. Seriously, try.",
+  "blocks.3.text": "The task",
+  "blocks.4.text": "The cafe's menu has three lines. Dress it:",
+  "blocks.5.items.0": "The heading — `darkblue`",
+  "blocks.5.items.1": "All three paragraphs — `saddlebrown`",
+  "blocks.5.items.2": "Under the heading and under every paragraph — 12 pixels of space",
+  "blocks.6.text": "The third one is wanted by both `h1` and `p`. You can write it twice. Or once, with a comma between the two selectors: `h1, p { }`. The result is identical and the check takes either — the comma just saves typing.",
 
-  "blocks.4.text": "It won't work",
-  "blocks.5.text": "You write p and catch all of them. You write p again — you catch all of them again, only now you've overwritten the first rule. There's no way to say \"the third one\", because a tag selector doesn't know there is a third. It knows what a thing is, not which one it is.",
-  "blocks.6.text": "The only way out, with what you have, is to go back to the style attribute on the tag. It works. And it puts you exactly where you were in lesson 01 — three elements, three repetitions, nothing learned.",
-  "blocks.7.text": "That's why this check rejects it. Not because it's forbidden, but because it isn't the answer.",
+  "blocks.7.text": "Before you submit, do one more thing: try to make ONLY the last paragraph — the one about Christmas — a different colour. Seriously, try.",
+  "blocks.8.text": "It won't work",
+  "blocks.9.text": "You write `p` and catch all of them. You write `p` again — you catch all of them again, only now you've overwritten the first rule. There's no way to say \"the third one\", because a tag selector doesn't know there is a third. It knows what a thing IS, not which one it is.",
+  "blocks.10.text": "The only way out, with what you have, is to go back to the `style` attribute on the tag. It works. And it puts you exactly where you were in lesson 01 — three elements, three repetitions, nothing learned.",
+  "blocks.11.text": "That's why this check rejects it. Not because it's forbidden, but because it isn't the answer.",
 
-  "blocks.8.text": "What's missing",
-  "blocks.9.text": "What you're missing is a way to PUT A LABEL on one element and then call it by that label. HTML has such a thing — you used it in the HTML course without needing it. CSS is what it was waiting for.",
-  "blocks.10.text": "The next lesson is about it."
+  "blocks.12.text": "What's missing",
+  "blocks.13.text": "What you're missing is a way to PUT A LABEL on one element and then call it by that label. HTML has such a thing — you used it in the HTML course without needing it. CSS is what it was waiting for. The next lesson is about that.",
+
+  "blocks.14.text": "In short",
+  "blocks.15.items.0": "Type selector, tag name selector, element selector — three names for `p` and `h1`.",
+  "blocks.15.items.1": "`*` catches every element. That's where every reset begins.",
+  "blocks.15.items.2": "A comma between two selectors means \"both of these\". One rule instead of two.",
+  "blocks.15.items.3": "A type selector knows WHAT a thing is, not WHICH one it is. All the paragraphs or none.",
+
+  "blocks.16.text": "That isn't a shortcoming of CSS. It's a division of labour: the type comes from the HTML, and which one comes from something you attach yourself.",
+
+  "walkthrough.0.text": "`h1` and `p` are two separate rules, because their colours differ. A comma is no help here — it gives the same style to both selectors.",
+  "walkthrough.1.text": "`margin-bottom` is the same for both, so I collected it into `h1, p { }`. If you wrote it twice, in the two rules, the result is exactly the same and the check passes. The comma is a convenience, not a rule.",
+  "walkthrough.2.text": "Notice what I did NOT do: I didn't touch `body`. The file was already styling it and that isn't this lesson's job. Don't rewrite things that work just because they're in front of you.",
+  "walkthrough.3.text": "The third paragraph is the same colour as the other two. The attempt to single it out was deliberate and had to fail. If you ended up reaching for `style` on the tag and got annoyed — the lesson did exactly its job."
 }

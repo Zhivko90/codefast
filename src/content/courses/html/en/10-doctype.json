@@ -1,41 +1,66 @@
 {
-  "title": "The two lines everybody writes",
+  "title": "The line before everything",
+  "taskTitle": "The task",
 
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be a DOCTYPE",
-  "checkLabels.t2": "There must be a meta",
-  "checkLabels.t3": "charset must be inside head",
-  "checkLabels.t4": "The tab title must still be there",
-  "checkLabels.t5": "The heading must still be there",
-  "checkLabels.t6": "The sentence must still be there",
+  "steps.0.text": "Add `<!DOCTYPE html>` as the first line of the file, before `<html>`.",
+
   "checkLabels.t0": "There is code",
-  "checkLabels.t2b": "The alphabet isn't empty",
-  "why.empty-charset": "The alphabet is declared, but empty. An empty attribute exists — it passes every check for \"is it written\" and says nothing. The browser still has to guess how to read the letters.",
-  "why.empty": "The editor is empty. You are adding two lines, and you deleted the whole page. Bring the code back.",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t1": "There is a DOCTYPE",
+  "checkLabels.t4": "The page name is still there",
+  "checkLabels.t5": "The heading is still there",
+  "checkLabels.t6": "The sentence is still there",
 
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-doctype": "There is no DOCTYPE. Without it the browser switches into a mode for ancient sites and some things start behaving strangely.",
-  "why.no-meta": "There is no meta with an encoding. Non-English letters will come out as question marks or gibberish on someone else's computer.",
-  "why.charset-not-in-head": "The encoding is there, but not in head. It has to be the FIRST thing — the browser reads it before it reaches your text. Put it in body and it is already too late.",
-  "why.lost-title": "The tab title is gone. You are adding two lines, not deleting old ones.",
-  "why.lost-content": "Something is gone from the page. You are adding two lines to the head — the body stays untouched.",
+  "why.empty": "The editor is empty. You are adding one line, and you deleted the whole page. Bring the code back.",
+  "hint2.empty": "Restore the skeleton from the last lesson and put the declaration at the very top.",
 
-  "hint2.no-doctype": "DOCTYPE is the first line of the file. Before <html>, not inside it.",
-  "hint3.no-doctype": "The exact line is <!DOCTYPE html>. See the example.",
-  "hint2.no-meta": "The tag is meta. It has no closing tag — it is a void element.",
-  "hint3.no-meta": "It goes inside <head>, before <title>. See the example.",
-  "hint2.charset-not-in-head": "Look at where you put it. Is it between <head> and </head>?",
-  "hint3.charset-not-in-head": "The browser reads the head before it reaches the body. If the encoding is down there, it has already read your text wrong.",
-  "hint2.lost-content": "Compare with the original code. The heading and the sentence must be inside <body>.",
+  "why.not-closed": "Some tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "The declaration is not a tag and does not close. Check the rest.",
 
-  "blocks.0.text": "Open any website. Right click, \"View page source\". The first lines are the same everywhere.",
-  "blocks.1.text": "They are not a formality. Each of them solves a real problem.",
-  "blocks.2.text": "Here they are",
-  "blocks.3.text": "Two lines. You write them once and never think about them again. But it is worth knowing what they do.",
-  "blocks.5.text": "Add them to your page. Run. You will not see a difference — that is exactly the point.",
-  "blocks.6.text": "DOCTYPE",
-  "blocks.7.text": "It tells the browser: this is modern HTML. Without it the browser switches into a mode for ancient nineties sites and some things start behaving strangely.",
-  "blocks.8.text": "The encoding",
-  "blocks.9.text": "A computer stores letters as numbers. utf-8 is the table it uses to turn them back. Without it, every letter outside the English alphabet is a gamble.",
-  "blocks.10.text": "\"Try removing the meta and writing something in another alphabet. Then open it on someone else's computer. You will see question marks, gibberish or empty boxes. Your code works — it just lies.\""
+  "why.no-doctype": "There is no declaration. The browser switches to quirks mode — the one for sites from twenty-five years ago.",
+  "hint2.no-doctype": "The first line of the file. Before `<html>`, not inside it.",
+  "hint3.no-doctype": "The exact line is `<!DOCTYPE html>`. Look at the example.",
+
+  "why.lost-title": "The page name is gone. You are adding one line, not deleting old ones.",
+  "why.lost-content": "Something disappeared from the page. You are adding a line at the top — the body stays untouched.",
+  "hint2.lost-content": "Compare with the starting code. The heading and the sentence belong in `<body>`.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Open any site at all. Right-click, View Page Source. The first line is the same everywhere — on Google, on the news site, at your bank.",
+  "blocks.2.text": "It is not a formality and not a tradition. It solves a real problem you never see, because everybody writes it.",
+
+  "blocks.3.text": "Here it is",
+  "blocks.5.text": "Add it to your page and run it. You will see no difference. That is exactly why most courses explain it wrongly — there is nothing to show.",
+
+  "blocks.6.text": "What it does NOT do",
+  "blocks.7.text": "You will meet the explanation \"it tells the browser this is HTML5\". That is not true. Older standards did give this line such a meaning, but no browser has ever used it for anything other than one single thing.",
+  "blocks.8.text": "It is a switch with two positions. Nothing more.",
+
+  "blocks.9.text": "The two modes",
+  "blocks.10.text": "The nineties: pages were written in two versions — one for Netscape Navigator, one for Internet Explorer. When the standards arrived, browsers could not simply adopt them, because that would break almost everything on the web.",
+  "blocks.11.text": "So they introduced two modes. With the declaration — the rules from the standard. Without it — an imitation of Navigator 4 and Internet Explorer 5. Today there are three modes: quirks, limited-quirks and no-quirks, but the idea is the same.",
+
+  "blocks.12.text": "What actually breaks",
+  "blocks.13.text": "The most tangible difference is how sizes are counted. Take a box:",
+  "blocks.15.text": "In standards mode `width` is the content only — the padding and border are added on top and the box comes out 350 pixels wide. In quirks mode those same 300 include everything and the content shrinks.",
+  "blocks.16.text": "So the page does not crash. It just has different sizes than you expect, and the cause is one missing line at the top. That is why, when a layout behaves inexplicably, you check the declaration before you go hunting through the CSS.",
+
+  "blocks.17.text": "How to check",
+  "blocks.18.text": "In the console, type `document.compatMode`. The answer `CSS1Compat` means everything is fine. `BackCompat` means you are in quirks mode.",
+  "blocks.19.text": "Firefox even logs a warning to the console on its own when a page is in that mode. No warning means no problem.",
+
+  "blocks.20.text": "The task",
+  "blocks.21.text": "Add the declaration to your page.",
+  "blocks.22.text": "One rule: it is the FIRST thing in the file. Nothing before it — not a comment, not a blank line, not a space.",
+
+  "blocks.23.text": "So far",
+  "blocks.24.items.0": "`<!DOCTYPE html>` is the first line of every HTML file.",
+  "blocks.24.items.1": "It does not declare a version — it switches the browser's mode.",
+  "blocks.24.items.2": "Without it, layout imitates browsers from the nineties.",
+  "blocks.24.items.3": "The most visible effect is that sizes are counted differently.",
+  "blocks.24.items.4": "You check it with `document.compatMode` in the console.",
+
+  "walkthrough.0.text": "One line at the top. Nothing else is touched.",
+  "walkthrough.1.text": "The capitals are not required — `<!doctype html>` works just as well. It is written in capitals by habit, to set it apart from tags. The check ignores case.",
+  "walkthrough.2.text": "Notice there is no closing tag. This is not an element and it wraps nothing — it is an instruction to the browser, before the document has begun."
 }

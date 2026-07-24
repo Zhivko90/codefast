@@ -1,9 +1,10 @@
 {
-  "title": "The ruin",
+  "title": "The wreck",
+  "taskTitle": "The task",
 
-  "checkLabels.t0": "You must write something",
+  "checkLabels.t0": "Something is written",
   "checkLabels.g1": "Hidden test",
-  "checkLabels.t1": "The tab title is there",
+  "checkLabels.t1": "The page name is there",
   "checkLabels.t2": "The heading is there",
   "checkLabels.t3": "Both paragraphs are there",
   "checkLabels.t5": "The paragraphs are not empty",
@@ -13,19 +14,51 @@
 
   "why.not-closed": "Something is open and never closed. Go top to bottom, tag by tag.",
   "hint2.not-closed": "Four tags are open and never closed. That is all I am telling you.",
-  "hint3.not-closed": "Run it and look at the result. The browser tried to clean up the mess for you — look at HOW it cleaned it. That is your clue: the swallowed text shows you where a closing tag is missing.",
-  "hint4.not-closed": "Go through the code top to bottom. For every opening tag, hunt for its closing one with your eyes. The first one you cannot find — that is it.",
+  "hint3.not-closed": "Run it and look at the result. The browser has tried to clean up the mess for you — look at HOW it cleaned it up. The swallowed text shows you where a closing tag is missing.",
+  "hint4.not-closed": "Walk the code top to bottom. For every opening tag, hunt for its closing one. The first one you cannot find is the culprit.",
 
-  "why.lost-title": "The tab title is gone. The task is to CLOSE the tags, not delete them.",
+  "why.lost-title": "The page name is gone. The task is to CLOSE the tags, not delete them.",
   "why.lost-h1": "The heading is gone. The task is to CLOSE the tags, not delete them.",
-  "why.lost-p": "A paragraph is gone or empty. There were two, with text in them. The task is to close them, not remove them.",
+  "why.lost-p": "A paragraph is gone or empty. There were two, with text. The task is to close them, not remove them.",
   "why.lost-img": "The image is gone. The task is to CLOSE the tags, not delete them.",
 
-  "blocks.0.text": "Here is code someone wrote in a hurry. It works. Almost.",
-  "blocks.1.text": "Four tags are open and never closed. I will not tell you which.",
-  "blocks.2.text": "Your task",
-  "blocks.3.text": "Fix it. Run it and look at what comes out — that is your first clue. The browser does not stop with an error, it tries to clean up the mess for you. And it cleans up wrong.",
-  "blocks.4.text": "Do not delete anything. Everything that is there must stay. Only close what is open.",
-  "blocks.5.text": "The tests are hidden. They will not tell you WHAT is wrong — only that something is.",
-  "blocks.6.text": "\"Half the mistakes in real code are not syntax errors. The code works. It just lies.\""
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Here is some code somebody wrote in a hurry. It works. Almost.",
+  "blocks.2.text": "Four tags are open and never closed. I am not telling you which.",
+
+  "blocks.3.text": "The task",
+  "blocks.4.text": "Fix it. Run it and see what comes out — that is your first clue. The browser does not stop with an error; it tries to clean up the mess for you, and it cleans it up wrongly.",
+  "blocks.5.text": "Do not delete anything. Everything that is there has to stay. Only close what is open.",
+  "blocks.6.text": "The checks are hidden. They will not tell you WHAT is wrong — only that something is.",
+
+  "blocks.7.text": "Why the browser does not crash",
+  "blocks.8.text": "It is not an oversight. It was decided at the very start of the web: it matters more that people can publish than that the syntax is flawless. Had it been strict from the beginning, the web probably would not be what it is today.",
+  "blocks.9.text": "So every browser carries built-in rules for making sense of broken code. You will always get something that works. But the browser does not always guess right — and that is when it gets interesting.",
+
+  "blocks.10.text": "The two kinds of error",
+  "blocks.11.text": "In most languages an error is a syntax error: the program does not start and it tells you where. The other kind is a logic error: everything runs, but it does not do what you meant.",
+  "blocks.12.text": "HTML has almost none of the first kind. It only has the second. That is why there is no red line pointing at the spot — there is only a page that looks odd.",
+
+  "blocks.13.text": "How you hunt for it",
+  "blocks.14.items.0": "Run it and watch. The swallowed text points at the missing closing tag.",
+  "blocks.14.items.1": "Open the developer tools and look at the tree. It shows what the browser UNDERSTOOD, not what you wrote — the difference between the two is the bug.",
+  "blocks.14.items.2": "Put it through a validator. It is the only one that says it outright.",
+
+  "blocks.15.text": "The validator",
+  "blocks.16.text": "The W3C runs a free markup checking service. It takes a page address, an uploaded file, or code pasted directly — the last is quickest for practice.",
+  "blocks.17.text": "One thing about its messages: they come with a line number, but for an unclosed tag they point at the FIRST line after where the closing tag should have been. Do not look for the bug on the line it names — look just above it.",
+
+  "blocks.18.text": "Half the bugs in real code are not syntax errors. The code works. It just lies.",
+
+  "blocks.19.text": "So far",
+  "blocks.20.items.0": "The browser silently repairs broken code using built-in rules.",
+  "blocks.20.items.1": "That is a deliberate decision from the start of the web, not a flaw.",
+  "blocks.20.items.2": "You always get something that works — not always the right thing.",
+  "blocks.20.items.3": "The tree in the developer tools shows what the browser understood.",
+  "blocks.20.items.4": "The validator is the only one that names the error outright.",
+
+  "walkthrough.0.text": "Four closing tags, nothing else. Not one line deleted and not one added apart from those.",
+  "walkthrough.1.text": "The unclosed `<title>` is the worst of them. It ends nowhere, so it swallows `</head>` and the start of the body — the whole page turns into a tab name. That is why you spot it first.",
+  "walkthrough.2.text": "The two paragraphs are sneakier. The browser closes `<p>` on its own as soon as it sees the next block element, so on screen they look fine. The code works and is still wrong — exactly the case this lesson is about.",
+  "walkthrough.3.text": "`<img>` is not on the list. It has no closing tag because there is nothing to wrap. If you added `</img>`, remove it."
 }

@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { problemsForLesson, problemTitle } from '@/core/getProblem';
 import { Blocks } from './shared';
 import Steps from './Steps';
+import SolutionPane from '@/components/workbench/SolutionPane';
 import { useAuth } from '@/lib/auth';
 import { checkProblem } from '@/core/checkProblem';
 import { runJs } from '@/core/runners/jsRun';
@@ -298,9 +299,39 @@ setResult(r);
     ? (lesson.checkLabels ?? {})
     : { main: lesson.testCase ?? t('test_cases') };
 
-  // МОСТЪТ: има ли задачи точно за този урок?
-  const practice = problemsForLesson(course, lesson.id);
+const practice = problemsForLesson(course, lesson.id);
+
+// ⚠ РЕШЕНИЕТО Е НИЗ ИЛИ КАРТА.
+  //   низ   → отива във файла, който ученикът ПИШЕ: единственият, който не е
+  //           entry. В JS урок това е script.js, в CSS — styles.css. Заковано
+  //           име лъже — до тук CSS решение се показваше като index.html.
+  //   карта → показват се ВСИЧКИ файлове в нея, всеки под своето име.
+  //           Урок 07 дава и двата и досега вторият изчезваше мълчаливо.
+  //
+  // Същото решение като solved() в /bg/lessontest. Разминат ли се двете,
+  // тестът ще мери едно, а ученикът ще вижда друго.
+  const solutionFiles = (() => {
+    const s = lesson.solution;
+    if (!s) return [];
+
+    if (typeof s === 'string') {
+      if (!multi) return [{ name: entry, code: s }];
+      const others = Object.keys(starterFiles).filter((n) => n !== entry);
+      const name = isJs
+        ? (others.find((n) => n.endsWith('.js')) ?? others[0] ?? entry)
+        : (others[0] ?? entry);
+      return [{ name, code: s }];
+    }
+
+    if (typeof s === 'object') {
+      return Object.keys(s).map((name) => ({ name, code: s[name] }));
+    }
+    return [];
+  })();
+  const showSolution = solutionFiles.length > 0;
+
   const tabs = [{ id: 'statement', label: t('rail_statement') }];
+  if (showSolution) tabs.push({ id: 'solution', label: t('rail_solution') });
   if (isProject && previous) tabs.push({ id: 'previous', label: t('project_previous') });
 
   // При един видим файл рамката рисува обикновен редактор, не мрежа с табове.
@@ -346,9 +377,16 @@ setResult(r);
       onClearConsole={() => setConsoleLines([])}
       runPreview={!isWorker}
       sidePanels={isWorker}
-      chrome={false}
+      resultBeside={!isWorker}
+chrome={false}
     >
-      {tab === 'previous' && previous ? (
+ {tab === 'solution' && showSolution ? (
+        <SolutionPane
+          files={solutionFiles}
+          walkthrough={lesson.walkthrough}
+          passed={result?.passed === true}
+        />
+      ) : tab === 'previous' && previous ? (
         <>
           <h2 className="text-lg font-bold text-white mb-2">{t('project_previous')}</h2>
           <p className="text-[13px] text-gray-500 leading-relaxed mb-4">{t('project_previous_hint')}</p>
@@ -389,7 +427,7 @@ setResult(r);
               </p>
               <div className="flex flex-col gap-2">
                 {practice.map((x) => (
-                  <Link key={x.slug} href={`/practice/${x.slug}?from=${course}-${lesson.id}`}
+                  <Link key={x.slug} href={`/practice/${course}/${x.slug}?from=${course}-${lesson.id}`}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.07] hover:bg-emerald-500/[0.12] transition group">
                     <span className="shrink-0 w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-300">
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

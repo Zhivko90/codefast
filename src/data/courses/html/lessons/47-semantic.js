@@ -86,7 +86,6 @@ export default {
     { type: "text" },
     { type: "text" },
     { type: "text" },
-    { type: "text" },
   ],
   slug: "47-semantic"
 };

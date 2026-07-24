@@ -41,7 +41,6 @@ export default {
     { type: "text" },
     { type: "text" },
     { type: "text" },
-    { type: "text" },
   ],
   slug: "33-links"
 };

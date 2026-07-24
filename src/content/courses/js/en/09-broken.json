@@ -1,0 +1,113 @@
+{
+  "title": "Five broken things",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Make the code run. The two loud errors are both around `cups` — after them `cups` should be 20.",
+  "steps.1.text": "Fix the sum. `total` should be 23 — twenty cups plus three lev. There are two reasons why it is not.",
+  "steps.2.text": "Swap the two shifts and print four lines: `cups`, `total`, `morning`, `evening`.",
+
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "The price is still text",
+  "checkLabels.t4": "No var left anywhere",
+  "checkLabels.t5": "The eight appears once",
+  "checkLabels.t6": "The twelve too",
+  "checkLabels.t7": "cups is 20",
+  "checkLabels.t8": "The sum is 23",
+  "checkLabels.t9": "Morning is 12",
+  "checkLabels.t10": "Evening is 8",
+  "checkLabels.t11": "Four lines come out",
+
+  "why.empty": "script.js is empty. You deleted everything instead of fixing it.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The console is empty and there is one red line. The script dies on the first line and nothing below it runs.",
+
+  "why.crashed": "Your code stopped with an error before it reached the end.",
+  "hint2.crashed": "Look at the red line in the console. It points at the FIRST broken thing — not the only one.",
+  "hint3.crashed": "`Cannot access before initialization` means a name is used earlier than the line that creates it. `Assignment to constant variable` means a `const` is being overwritten.",
+  "hint4.crashed": "Fix it, submit again, and you will see the next one. The errors come out one at a time.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.erased-source": "You removed the quotes from the price.",
+  "hint2.erased-source": "The price arrives as text. The task is to convert it where you use it, not to rewrite where it comes from.",
+
+  "why.var-left": "There is still a `var` somewhere.",
+  "hint2.var-left": "Look at the block in the middle. It should not change anything outside itself.",
+  "hint3.var-left": "Do not rename the inner name. Change the word it is declared with — `let` does not leak out of a block, so the same name can stay.",
+
+  "why.typed-answer": "You typed a number by hand instead of swapping.",
+  "hint2.typed-answer": "The eight and the twelve appear only where the names are created.",
+
+  "why.no-cups": "`cups` is not 20.",
+  "hint2.no-cups": "Two things around `cups` are broken. One is a line too many, the other is a line in the wrong place.",
+  "hint3.no-cups": "`const` creates a name and gives it a value at once. The second assignment tries to change it, and that is why it breaks. The value is already there.",
+  "hint4.no-cups": "And: a name cannot be used before the line that creates it. Print it after that line, not before.",
+
+  "why.total-wrong": "The sum is not 23.",
+  "hint2.total-wrong": "Twenty and three added together make 23. If you get 203, the plus sign has joined a number with text.",
+  "hint3.total-wrong": "There is a second reason too. Look at the block above the sum — something from it is getting out and should not be.",
+  "hint4.total-wrong": "The two reasons are fixed in two different places: the price needs converting, the block needs a word that does not leak.",
+
+  "why.no-swap": "The shifts are not swapped.",
+  "hint2.no-swap": "Two names are not enough. One of the values has to be kept before it gets overwritten.",
+
+  "why.wrong-count": "There are not four lines in the console.",
+  "hint2.wrong-count": "Print `cups`, `total`, `morning` and `evening`. One line each.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "This file is broken in five places. Each one comes from a lesson in this section.",
+  "blocks.2.text": "Two of the five break loudly. The other three run and give the wrong answer — quietly, with nothing complaining. The quiet ones are the dangerous ones.",
+
+  "blocks.3.text": "What it is supposed to do",
+  "blocks.4.text": "The code counts the cups and the price, swaps the two shifts, and prints four numbers:",
+
+  "blocks.5.items.0": "`cups` stays 20",
+  "blocks.5.items.1": "`total` is 23 — twenty cups plus three lev",
+  "blocks.5.items.2": "`morning` becomes 12",
+  "blocks.5.items.3": "`evening` becomes 8",
+  "blocks.5.items.4": "four lines in the console, one for each",
+
+  "blocks.6.text": "How to read an error message",
+  "blocks.7.text": "The red line is not a punishment. It is the shortest description of the problem you will ever get:",
+
+  "blocks.9.items.0": "`ReferenceError` — the **kind**. The family the error belongs to. There are several kinds and each means something different.",
+  "blocks.9.items.1": "`Cannot access 'cups' before initialization` — the **description**. What exactly happened, with the culprit's name inside it.",
+  "blocks.9.items.2": "And **where** — the file and the line number. That is where you start looking.",
+
+  "blocks.10.text": "The kind narrows the search, the description finishes it. Read both and in most cases you already know what to fix without having looked at the code.",
+
+  "blocks.11.text": "The three kinds you will meet",
+  "blocks.12.text": "There are others, but these three cover almost everything in the first year:",
+
+  "blocks.13.items.0": "`SyntaxError` — the line cannot be read at all. A missing bracket, a missing quote, a forbidden name.",
+  "blocks.13.items.1": "`ReferenceError` — the line reads, but the name in it does not exist or has not reached its own line yet.",
+  "blocks.13.items.2": "`TypeError` — the name exists, but something impossible is being done with it. A `const` being reassigned, for example.",
+
+  "blocks.14.text": "One distinction is worth remembering: a `SyntaxError` stops the file **before it starts** — the console is completely empty, not one line came out. The other two stop execution on their own line, and everything printed before them stays on screen. An empty console means one thing, a half-full one means another.",
+
+  "blocks.15.text": "How to fix broken code",
+  "blocks.16.text": "Do not read it all at once and do not fix five things at the same time. The code breaks on the first error, and everything below it is unknown — it might be fine, it might not. There is no way to know until you get there.",
+"blocks.17.text": "So: fix one, submit, look at what comes out. Then the next one. This is also how you work with real code. First make it run. Then make it right. And if the message means nothing to you — copy it and search for it online. That is not cheating; it is how everyone who writes code works. Somebody got your error before you did and wrote it down.",
+  "blocks.18.quote": "Five errors are not fixed five times slower than one. They are fixed five times — one at a time.",
+
+  "blocks.19.text": "The loud and the quiet",
+"blocks.20.text": "The two loud ones are the easy ones. The console gives you the kind, the description and the line. Read the message — it almost always says exactly what happened. And be careful not to confuse an error with a warning: an error stops execution, a warning stops nothing. Errors are usually red, warnings usually yellow.",
+  "blocks.21.text": "The three quiet ones are the hard ones. There the code runs, the numbers come out, and they are simply not the right numbers. There is no red line and no message. The only way is to work out what you expect and compare it with what you see.",
+
+  "blocks.22.text": "So far",
+  "blocks.23.items.0": "An error message has three parts: the kind, the description and where.",
+  "blocks.23.items.1": "A `SyntaxError` stops the file before it starts. The console stays completely empty.",
+  "blocks.23.items.2": "`ReferenceError` and `TypeError` stop on their own line. Whatever printed before them stays.",
+  "blocks.23.items.3": "Fix one thing, then submit. Not five at once.",
+  "blocks.23.items.4": "Quiet errors are more dangerous than loud ones. You catch them only by comparing with what you expected.",
+
+  "walkthrough.0.text": "The first broken thing is the line that prints `cups` before `cups` exists. It is not fixed — it is moved. Printing has to come after the name is created, not before it. That is why in the solution all four prints are at the end, together.",
+  "walkthrough.1.text": "The second is `cups = 20;` — a line too many, trying to reassign a `const`. It is not changed to `let`: the value is already given on the line above and this line does nothing except break. It gets deleted.",
+  "walkthrough.2.text": "The third is the block with `var`. The fix is `var` becoming `let` — and the inner name **stays `total`**. That is exactly the lesson from six: `let` stops at the curly brace and the inner `total` is a separate name that never touches the outer one. Rename it to something else and you have dodged the collision instead of understanding why it is gone.",
+  "walkthrough.3.text": "The fourth is the swap. `const keep = morning;` before the two assignments. The saved name is created once and never changes, so it is `const`, while `morning` and `evening` are `let`, because those are the ones that move.",
+  "walkthrough.4.text": "The fifth is `cups + priceText`. The price arrives as text and stays text — the quotes are not touched. `Number(priceText)` converts it where it is used and the sum becomes 23 instead of `\"203\"`. The conversion sits in the sum, because that is the only place the price enters a calculation.",
+  "walkthrough.5.text": "Notice which two broke loudly and which three stayed quiet. The loud ones were both around `cups` and found themselves — the console pointed at them. The three quiet ones produced numbers: 999 instead of 0, two identical shifts, and `\"203\"` instead of 23. Not one of them would have been noticed if the lesson had not said what to expect."
+}

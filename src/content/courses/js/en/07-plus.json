@@ -1,0 +1,108 @@
+{
+  "title": "The plus sign has two jobs",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Convert the three pieces of text into numbers with `Number` and name them `sold`, `price` and `tips`. Exactly those names — the checks look for them letter by letter.",
+  "steps.1.text": "Rewrite the three sums using the new names. The console should show 3741, 1250 and 3759.",
+
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "The cup count is still text",
+  "checkLabels.t4": "The price too",
+  "checkLabels.t5": "The tips too",
+  "checkLabels.t6": "sold is the number 1247",
+  "checkLabels.t7": "price is the number 3",
+  "checkLabels.t8": "tips is the number 18",
+  "checkLabels.t9": "The sum is 1250",
+  "checkLabels.t10": "With tips it is 3759",
+  "checkLabels.t11": "The total is 3741",
+  "checkLabels.t12": "Three lines come out",
+
+  "why.empty": "script.js is empty. You deleted everything instead of fixing it.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "Look at the second and third numbers in the console. One is five characters long, the other six.",
+
+  "why.crashed": "Your code stopped with an error.",
+  "hint2.crashed": "Look at the Console panel on the right.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.erased-source": "You removed the quotes from the data.",
+  "hint2.erased-source": "The numbers arrive as text and that does not change. The task is to convert them, not to rewrite where they come from.",
+  "hint3.erased-source": "Every form field returns text. You type 42, you get `\"42\"`. You cannot fix that at the source — you fix it where you use it.",
+
+  "why.not-converted": "There is no name `sold`, `price` or `tips` holding a real number.",
+  "hint2.not-converted": "`Number` takes text and pulls the number out of it.",
+  "hint3.not-converted": "`Number(\"42\")` returns 42 — a real number, not text that looks like one.",
+  "hint4.not-converted": "Make one new name for each of the three texts. Exactly `sold`, `price` and `tips`.",
+
+  "why.still-glued": "The sum still joins instead of adding.",
+  "hint2.still-glued": "1247 and 3 added together make 1250. If you get 12473, the plus sign has joined two pieces of text.",
+  "hint3.still-glued": "The plus sign looks at what you give it. Two numbers — it adds. Text on either side — it joins.",
+
+  "why.tips-glued": "The sum with tips is not 3759.",
+  "hint2.tips-glued": "Here the left side is ALREADY the number 3741. And text still comes out.",
+  "hint3.tips-glued": "One piece of text on either side is enough. It does not matter that the other side is a proper number — the plus joins them both.",
+  "hint4.tips-glued": "Convert the tips as well, not just the first two.",
+
+  "why.no-total": "The total is not 3741.",
+  "hint2.no-total": "1247 times 3. The multiplication worked before too — do not break it.",
+
+  "why.wrong-count": "There are not three lines in the console.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Look at `script.js`. This time the numbers are in quotes — the way they arrive from any form field. Type 42 into a field and you get the text `\"42\"`.",
+
+  "blocks.3.text": "The first number is right. The other two are not. All three lines look written the same way.",
+
+  "blocks.4.text": "One sign, two jobs",
+  "blocks.5.text": "An operator between two things is called *binary*. The same sign in front of one thing is *unary* — and then it is a different operator that happens to be written the same way.",
+
+  "blocks.7.text": "A minus between two numbers subtracts. In front of one number it flips the sign. Nobody gets confused, because the two jobs look different. With the plus they do not.",
+
+  "blocks.8.text": "The binary plus",
+  "blocks.9.text": "Between two numbers it adds. The moment there is text on one side, it stops adding and starts joining:",
+
+  "blocks.11.text": "It does not matter which side the text is on. The other one turns into text and the two get stuck together.",
+
+  "blocks.13.text": "The same three things, a different order, a different result. Operations run left to right: the first line adds 4 and 5, then sticks `px` on. The second starts with text, so everything after it is joining. Once it becomes text, it stays text to the end of the line.",
+
+  "blocks.14.text": "The other signs have no second job",
+  "blocks.15.text": "Multiplication, subtraction and division cannot join anything. So they turn the text into a number and calculate:",
+
+  "blocks.17.text": "The same text three times, three numbers, and on the fourth — joining. That is why the first sum at the start of the lesson is right and the other two are not. It is not an accident. The plus sign is busy.",
+
+  "blocks.18.text": "Number",
+  "blocks.19.text": "Do not rely on the language guessing. Say explicitly what you want:",
+
+  "blocks.21.text": "`Number` takes text and pulls the number out. The third line proves it — the result is of kind number, not text that looks like a number.",
+
+  "blocks.23.text": "Empty text becomes **zero**, not an error. Spaces only — also zero. So an empty form field does not crash: it quietly enters the sum as nothing and the report simply comes out smaller.",
+  "blocks.24.text": "`\"42px\"` is different — there are letters in it and `Number` gives up with `NaN`. There is also `parseInt`, which returns 42 in that same case. `NaN` and the difference between the two have a whole lesson in the next section.",
+
+  "blocks.25.text": "The unary plus",
+  "blocks.26.text": "You will meet this form too. A plus in front of one piece of text does the same as `Number`, only shorter:",
+
+  "blocks.28.text": "It works, it is standard, and you will see it in other people's code. Here we write the long form, because `Number(soldText)` reads and `+soldText` looks like a typo. Know it so you recognize it.",
+
+  "blocks.29.text": "Why this is the most common mistake",
+  "blocks.30.text": "Everything that comes from outside is text. Forms, addresses, files, answers from a server. The numbers in them look like numbers and behave like numbers in every operation but one.",
+  "blocks.31.text": "So your code will work until somebody tries to add. Then the sum becomes a join, and nothing breaks.",
+  "blocks.32.quote": "Convert at the door, not halfway down. Let text get inside your code and it will surface where you least expect it.",
+
+  "blocks.33.text": "So far",
+  "blocks.34.items.0": "The binary plus adds numbers and joins text. One piece of text on either side is enough.",
+  "blocks.34.items.1": "Operations run left to right. Once it becomes text, it stays text.",
+  "blocks.34.items.2": "Only the plus is ambiguous. `*`, `-` and `/` always convert to numbers.",
+  "blocks.34.items.3": "`Number` converts explicitly. Empty text gives 0, text with letters gives `NaN`.",
+  "blocks.34.items.4": "A plus in front of one piece of text does the same, only shorter. We write the long form.",
+
+  "walkthrough.0.text": "The first three lines are not touched. The data arrives as text and that does not change — you cannot fix the form it comes from. That is why three of the checks count the quotes: remove them and the lesson is passed by deletion, and `Number` stays unlearned.",
+  "walkthrough.1.text": "The conversion happens **once, at the door**, into three new names. The other way — `Number(soldText) * Number(priceText)` straight in the sum — gives the same result but repeats the conversion on every line. One source of text, one place to convert it.",
+  "walkthrough.2.text": "`const total = sold * price;` — this sum was right before too. Multiplication has no second job and simply turns the text into a number. It is here deliberately: it shows that the whole language is not unreliable, just one operator.",
+  "walkthrough.3.text": "`const together = sold + price;` — this is the line the lesson exists for. It used to give `\"12473\"`, five characters side by side. Now it gives 1250.",
+  "walkthrough.4.text": "`const withTips = total + tips;` — here is the second blow. The left side `total` was **already** the number 3741 and the result still came out as `\"374118\"`. One piece of text on the right is enough. That is why the conversion goes at the door, not where the problem showed up.",
+  "walkthrough.5.text": "The three `console.log` lines stay three and print the names, not the sums. The sums already have names, and a name says what the number is. `console.log(sold * price)` would give the same number and nothing more."
+}

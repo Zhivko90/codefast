@@ -3,56 +3,80 @@
 
   "checkLabels.t1": "You wrote something",
   "checkLabels.g1": "Every tag is closed",
+  "checkLabels.t7": "The styles are in the file, not the page",
   "checkLabels.t2": "There's a heading with text",
   "checkLabels.t3": "There's a sentence with text",
   "checkLabels.t4": "The stylesheet is linked",
+  "checkLabels.t8": "The link is in the head",
   "checkLabels.t5": "You set a font",
   "checkLabels.t6": "The heading isn't black",
 
   "why.empty": "It's blank. I know. This is where most people freeze — and there's no trick for it. Write anything. One tag. One word. Code gets written by starting to write.",
-  "hint2.empty": "Don't think about what's correct. Write an <h1> with a name in it. You'll fix it after.",
+  "hint2.empty": "Don't think about what's correct. Write an `<h1>` with a name in it. You'll fix it after.",
 
-  "why.not-closed": "A tag is open and never closed, or a quote is missing.",
-  "hint2.not-closed": "Check the <link> — its values go in quotes. One to open, one to close.",
-  "hint3.not-closed": "<link rel=\"stylesheet\" href=\"styles.css> — the quote after css is missing. From there the browser reads everything as part of the value.",
+  "why.not-closed": "A tag is open and never closed, or a quote is missing. If you don't have a single tag yet — that's the next step.",
+  "hint2.not-closed": "Check the `<link>` — its values go in quotes. One to open, one to close.",
+  "hint3.not-closed": "`<link rel=\"stylesheet\" href=\"styles.css>` — the quote after css is missing. From there the browser reads everything as part of the value and the page falls apart.",
+
+  "why.wrote-style-tag": "You wrote a `<style>` inside the page. It works — but the task is to link the file.",
+  "hint2.wrote-style-tag": "Move the rules to the `styles.css` tab and leave only the `<link>` line in the page.",
+  "hint3.wrote-style-tag": "Lesson 04 was about why the separate file wins: one change, every page. A copy inside the page drifts from the file the next day.",
 
   "why.no-heading": "There's no heading with text in it. You know the tag from the HTML course.",
-  "hint2.no-heading": "The tag is h1. You wrap the text: <h1> in front, </h1> behind.",
-  "hint3.no-heading": "If you already wrote it, check the text is INSIDE. <h1>Bean Street</h1>, not <h1></h1>Bean Street.",
+  "hint2.no-heading": "The tag is `h1`. You wrap the text: `<h1>` in front, `</h1>` behind.",
+  "hint3.no-heading": "If you already wrote it, check the text is INSIDE. `<h1>Bean Street</h1>`, not `<h1></h1>Bean Street`.",
 
   "why.no-p": "There's a heading but nothing under it. One sentence is enough.",
-  "hint2.no-p": "The tag is p. One sentence under the heading: <p>...</p>.",
+  "hint2.no-p": "The tag is `p`. One sentence under the heading: `<p>...</p>`.",
 
   "why.no-body": "There's no body. Your page is empty or the tags don't close.",
-  "hint2.no-body": "Start from the skeleton: <!DOCTYPE html>, then html, head, body.",
+  "hint2.no-body": "Start from the skeleton: `<!DOCTYPE html>`, then `html`, `head`, `body`.",
 
-  "why.not-linked": "The styles aren't reaching the page. Either there's no <link>, or the path in it points at a file that doesn't exist.",
-  "hint2.not-linked": "Look at the name on the second tab above the editor. Letter by letter. Then compare it with what you wrote in href.",
-  "hint3.not-linked": "<link rel=\"stylesheet\" href=\"styles.css\"> — the line goes in <head>. rel says what it is, href is the path. The tag closes itself, there's no </link>.",
-  "hint4.not-linked": "If you wrote the styles in a <style> inside the page — that works, but here I want you to link the file. That's exactly what I promised you in lesson 04.",
+  "why.not-linked": "The styles aren't reaching the page. Either there's no `<link>`, or the path in it points at a file that doesn't exist.",
+  "hint2.not-linked": "Look at the name on the second tab above the editor. Letter by letter. Then compare it with what you wrote in `href`.",
+  "hint3.not-linked": "`<link rel=\"stylesheet\" href=\"styles.css\">` — the line goes in `<head>`. `rel` says what the relationship is, `href` is the path. The tag closes itself, there's no `</link>`.",
+  "hint4.not-linked": "A wrong name gives you no error. It gives you a page with no styles. That's exactly what I promised you in lesson 04.",
+
+  "why.link-in-body": "The link is outside `<head>`. It works, but that isn't where it belongs.",
+  "hint2.link-in-body": "Move the line between `<head>` and `</head>`. The browser needs to know the styles before it paints the text.",
 
   "why.no-font": "You haven't set a font. The page is using the browser's default.",
-  "hint2.no-font": "The property is font-family, and its place is body — from there it flows down to everything.",
-  "hint3.no-font": "font-family: Georgia, serif; — the first is what you want, the second is the fallback if the machine doesn't have it.",
+  "hint2.no-font": "The property is `font-family`, and its place is `body` — from there it flows down to everything.",
+  "hint3.no-font": "`font-family: Georgia, serif;` — the first is what you want, the second is the fallback if the machine doesn't have it.",
 
   "why.no-color": "The heading is black, meaning you never gave it a colour. Give it whatever you like — just not black.",
-  "hint2.no-color": "A rule for h1 with the color property. The value is your choice.",
+  "hint2.no-color": "A rule for `h1` with the `color` property. The value is your choice.",
 
-  "blocks.0.text": "Two tabs. Both blank. Nothing there — no skeleton, no comments, nothing to fill in.",
-  "blocks.1.text": "This is where most people freeze. You know everything you need and your fingers still won't move. That's normal. You'll go through it many more times.",
+  "blocks.0.text": "The blank screen",
+  "blocks.1.text": "Two tabs. Both blank. Nothing there — no skeleton, no comments, nothing to fill in.",
+  "blocks.2.text": "This is where most people freeze. You know everything you need and your fingers still won't move. It isn't for lack of knowledge. Every course's forum is full of people writing \"I finished the whole curriculum and I have no idea where to start\". Nobody teaches that moment — they just hand out a project and walk away.",
 
-  "blocks.2.text": "Make a page and dress it",
-  "blocks.3.text": "No instructions. No steps. No correct answer. Only this:",
-  "blocks.4.items.0": "index.html — a heading and at least one sentence",
-  "blocks.4.items.1": "index.html — one line that links styles.css",
-  "blocks.4.items.2": "styles.css — a font on body",
-  "blocks.4.items.3": "styles.css — a colour on the heading, whichever you like",
+  "blocks.3.text": "If you've frozen",
+  "blocks.4.text": "Write anything. One tag. One name. Just don't stare at the blank screen. Code gets written by starting to write — not by sitting and working out the right way. Your first line won't survive into the final file, and that is completely normal.",
+  "blocks.5.text": "There's no correct answer, so you can't get it wrong. You can only not start it.",
 
-  "blocks.5.text": "The promise",
-  "blocks.6.text": "In lesson 04 I told you you'd write the <link> yourself, in your own file, and that there it would really work. Here's that moment. Get the name wrong by one letter and the page stays unstyled and nobody tells you why. Exactly like tomorrow, in real work.",
-  "blocks.7.text": "I'm not checking which colour you picked. This is your page. I'm only checking you didn't leave it black.",
+  "blocks.6.text": "The promise",
+  "blocks.7.text": "In lesson 04 I told you you'd write the `<link>` yourself, in your own file, and that there it would really work. Here's that moment. Get the name wrong by one letter and the page stays unstyled and nobody tells you why.",
+  "blocks.8.text": "I'm not checking which colour you picked, or which font. This is your page. I'm only checking that you set them. Other courses hand you exact numbers — 20 pixels of padding, background `#efefef` — so you always have something to compare against. Here you don't. That's the price of the page being yours.",
 
-  "blocks.8.text": "If you've frozen",
-  "blocks.9.text": "Write anything. One tag. One name. Just don't stare at the blank screen. Code gets written by starting to write — not by sitting and working out the right way.",
-  "blocks.10.text": "Other courses teach you to follow steps. This lesson teaches you to start from nothing. The second one is the hard one, and the second one is what you'll do for the rest of your life."
+  "blocks.9.text": "The task",
+  "blocks.10.text": "No instructions. No steps. Only this:",
+  "blocks.11.items.0": "`index.html` — a heading and at least one sentence",
+  "blocks.11.items.1": "`index.html` — inside `<head>`, one line that links `styles.css`",
+  "blocks.11.items.2": "`styles.css` — a font on `body`",
+  "blocks.11.items.3": "`styles.css` — a colour on the heading, whichever you like",
+  "blocks.12.text": "The styles go in the file, not in a `<style>` inside the page. That's the difference lesson 04 paid to teach you.",
+
+  "blocks.13.text": "In short",
+  "blocks.14.items.0": "The skeleton of a page: `<!DOCTYPE html>`, `html`, `head`, `body`.",
+  "blocks.14.items.1": "One line in `<head>` connects the external file.",
+  "blocks.14.items.2": "A wrong file name gives you no error — it gives you a page with no styles.",
+  "blocks.14.items.3": "A blank screen isn't solved by thinking. It's solved by typing.",
+
+  "blocks.15.text": "Other courses teach you to follow steps. This lesson teaches you to start from nothing. The second one is the hard one, and the second one is what you'll do for the rest of your life.",
+
+  "walkthrough.0.text": "The skeleton first. `<!DOCTYPE html>`, `html`, and inside it `head` and `body`. I type it from memory every time — not because I memorised it, but because it's been the same shape for thirty years. If you don't have it yet, copy it from here; by the tenth time it'll come out on its own.",
+  "walkthrough.1.text": "`<link>` in the head. I put it right after `<title>`, but it could go before — the order between them doesn't matter. What matters is that it's in `<head>` and not in `<body>`.",
+  "walkthrough.2.text": "I put `font-family` on `body`, not on each element separately. Fonts are inherited downward — the heading and the paragraph pick it up on their own. That's your first meeting with inheritance; lesson 51 is about it.",
+  "walkthrough.3.text": "I picked `darkblue` and Georgia. You picked something else, and that is the correct answer to this lesson. The check only asks whether you touched the two properties — it doesn't compare your value with mine. A course that rejected you for choosing a different colour would be the thing that's broken."
 }

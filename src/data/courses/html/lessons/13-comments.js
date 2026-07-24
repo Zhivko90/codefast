@@ -3,7 +3,9 @@ export default {
   id: 13,
   type: "web",
   label: "coding",
-  starterCode: `<!DOCTYPE html>
+  entry: "index.html",
+  starterFiles: {
+    "index.html": `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,27 +16,76 @@ export default {
     <p>I have been playing it for three years.</p>
     <img src="https://picsum.photos/400/250" alt="A red bicycle leaning against a wall">
   </body>
-</html>`,
+</html>`
+  },
   checks: [
     { id: "t0", type: "changed", value: "", err: "empty", weight: 1100 },
     { id: "g1", type: "balanced", err: "not-closed", weight: 1000, guard: true },
-    { id: "t1", type: "code_contains", value: "<!--", err: "no-comment", weight: 60 },
-    { id: "t2", type: "code_contains", value: "-->", err: "not-closed-comment", weight: 50 },
+    { id: "t1", type: "code_contains", value: "<!--", err: "no-comment", weight: 60, step: 1 },
+    { id: "t2", type: "code_contains", value: "-->", err: "not-closed-comment", weight: 50, step: 1 },
     { id: "t3", type: "dom_text_not_empty", value: "h1", err: "lost-content", weight: 40 },
     { id: "t5", type: "dom_text_not_empty", value: "p", err: "lost-content", weight: 35 },
     { id: "t4", type: "dom_has", value: "img", err: "lost-img", weight: 30 },
   ],
   blocks: [
+    { type: "band", kind: "learn" },
     { type: "text" },
     { type: "text" },
+
     { type: "heading" },
-    { type: "code", code: `<!-- Тук започва галерията -->` },
+    {
+      type: "code",
+      code: `<!-- Gallery starts here -->`
+    },
     { type: "text" },
     { type: "text" },
+
     { type: "heading" },
     { type: "text" },
     { type: "text" },
-    { type: "quote" },
+    { type: "list", items: [undefined, undefined, undefined] },
+
+    { type: "heading" },
+    { type: "text" },
+    {
+      type: "code",
+      code: `<!-- <img src="old.jpg" alt="Old photo"> -->`
+    },
+    { type: "text" },
+    { type: "text" },
+
+    { type: "heading" },
+    { type: "text" },
+    {
+      type: "code",
+      code: `<!-- outer <!-- inner --> still outer -->`
+    },
+    { type: "text" },
+    { type: "text" },
+
+    { type: "band", kind: "task" },
+    { type: "text" },
+    { type: "text" },
+
+    { type: "band", kind: "recap" },
+    { type: "list", items: [undefined, undefined, undefined, undefined, undefined] },
   ],
+  steps: [undefined],
+  solution: {
+    "index.html": `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My favourite game</title>
+  </head>
+  <body>
+    <h1>My favourite game</h1>
+    <p>I have been playing it for three years.</p>
+    <!-- The picture goes here until I take my own -->
+    <img src="https://picsum.photos/400/250" alt="A red bicycle leaning against a wall">
+  </body>
+</html>`
+  },
+  walkthrough: [undefined, undefined, undefined],
   slug: "13-comments"
 };

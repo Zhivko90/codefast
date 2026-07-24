@@ -17,30 +17,29 @@ import { useState } from 'react';
 import { getCourse } from '@/core/getCourse';
 import { checkProblem } from '@/core/checkProblem';
 import { assemble } from '@/core/bundle';
+import { solutionFiles } from '@/core/solutionFiles';
 
-const COURSE = 'js';
+const COURSES = ['html', 'css', 'js'];
 
-// Решението може да е един низ (един файл) или карта с файлове.
-// Слива се ВЪРХУ стартовите файлове — урокът дава само това, което се сменя.
-function solved(lesson) {
-  const s = lesson.solution;
-  if (!s) return null;
-  if (lesson.starterFiles) {
-    return { ...lesson.starterFiles, ...(typeof s === 'string' ? { 'script.js': s } : s) };
-  }
-  return typeof s === 'string' ? s : Object.values(s)[0];
-}
+
 
 export default function LessonTest() {
+  const [courseId, setCourseId] = useState('css');
   const [rows, setRows] = useState([]);
   const [busy, setBusy] = useState(false);
+
+  const pick = (id) => { setCourseId(id); setRows([]); };
 
   const run = async () => {
     setBusy(true);
     setRows([]);
 
-    const course = getCourse(COURSE, 'bg');
-    if (!course) { setBusy(false); return; }
+    const course = getCourse(courseId, 'bg');
+    if (!course) {
+      setRows([{ slug: courseId, id: 0, notes: ['getCourse не върна такъв курс'], starterFails: false, solutionPasses: false }]);
+      setBusy(false);
+      return;
+    }
 
     const acc = [];
 
@@ -66,13 +65,12 @@ export default function LessonTest() {
         row.notes.push('стартовият код ГРЪМНА: ' + (e?.message ?? e));
       }
 
-      // ── 2. решението трябва да МИНЕ ──
-      const sol = solved(lesson);
+  const sol = solutionFiles(lesson);
       if (!sol) {
         row.solutionPasses = null;
-        row.notes.push('няма поле solution');
+        row.notes.push(lesson.solution ? 'solution е низ, а не личи в кой файл отива — сложи solutionFile' : 'няма поле solution');
       } else {
-        const solCode = multi ? assemble(sol, entry) : sol;
+        const solCode = sol.__single ? sol.__single : assemble(sol, entry);
         try {
           const r = await checkProblem(lesson, solCode);
           row.solutionPasses = r.passed;
@@ -109,10 +107,23 @@ export default function LessonTest() {
 
   return (
     <div className="min-h-screen bg-[#0b0d10] text-gray-200 p-8">
-      <h1 className="text-xl font-semibold mb-1">Уроците на курса „{COURSE}"</h1>
+      <h1 className="text-xl font-semibold mb-1">Уроците на курса „{courseId}"</h1>
       <p className="text-[13px] text-gray-500 mb-5">
         Стартовият код трябва да пада. Решението трябва да минава.
       </p>
+
+      <div className="flex items-center gap-2 mb-4">
+        {COURSES.map((id) => (
+          <button key={id} onClick={() => pick(id)} disabled={busy}
+            className={`px-3 py-1.5 rounded-lg border text-[13px] font-mono transition disabled:opacity-40 ${
+              id === courseId
+                ? 'bg-white/10 border-white/25 text-gray-100'
+                : 'bg-transparent border-white/10 text-gray-500 hover:text-gray-300'
+            }`}>
+            {id}
+          </button>
+        ))}
+      </div>
 
       <button onClick={run} disabled={busy}
         className="px-4 py-2 rounded-lg bg-sky-500/15 border border-sky-500/30 text-sky-200 text-[13px] font-semibold hover:bg-sky-500/25 transition disabled:opacity-40">

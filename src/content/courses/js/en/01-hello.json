@@ -19,7 +19,7 @@
 
   "why.crashed": "Your code stopped with an error before it got to the end.",
   "hint2.crashed": "Look at the Console panel on the right. The red line says what it did not like, and where.",
-  "hint3.crashed": "The most common one on day one is a missing bracket or quote. A line starting with console.log(42 and no closing bracket stops everything after it.",
+  "hint3.crashed": "The most common one on day one is a missing bracket or quote. A line starting with `console.log(42` and no closing bracket stops everything after it.",
 
   "why.nothing-written": "script.js is empty. There is nothing to run.",
 
@@ -28,10 +28,10 @@
 
   "why.no-output": "The code ran, but nothing came out. The console is empty.",
   "hint2.no-output": "`console.log` is what shows things. Without it the sum is worked out and thrown away.",
-  "hint3.no-output": "Write only 12 + 30 and the computer works out 42 and forgets it at once. Nobody asked it to show it.",
+  "hint3.no-output": "Write only `12 + 30` and the computer works out 42 and forgets it at once. Nobody asked it to show it.",
 
   "why.wrong-number": "A number came out, but not that one. The total is different.",
-  "hint2.wrong-number": "The multiplication sign in JavaScript is not x. The letter x is a name, not an action.",
+  "hint2.wrong-number": "The multiplication sign in JavaScript is not `x`. The letter `x` is a name, not an action.",
   "hint3.wrong-number": "`console.log(6 * 7)` prints 42. The asterisk multiplies.",
   "hint4.wrong-number": "Do the same with the two numbers from the page — how many coffees, and at what price.",
 
@@ -42,43 +42,56 @@
   "blocks.1.text": "Look at the page on the right. Coffees sold: 1247. Price: 3 lv. Total: 1247 x 3. That is not a sum. Those are characters. The page shows exactly what you wrote into it, letter by letter.",
   "blocks.2.text": "HTML repeats. It does not calculate. There is no tag for multiply, no tag for remember, no tag for if. CSS will not help either — it decides how the text looks, not what it says.",
 
-  "blocks.3.text": "The third language",
-  "blocks.4.text": "JavaScript performs actions. It does not describe the page — it does things with it. It lives in a separate file, `script.js`, and runs from top to bottom, line by line, the moment the page opens. Here is the first line you will write:",
+  "blocks.3.text": "Where the third language comes from",
+"blocks.4.text": "JavaScript lives in a separate file — `script.js`. The page calls it with one line, at the very bottom of its body: `<script src=\"script.js\"></script>`. That line is already there and is not touched in this course. A separate file is not just tidiness: the browser downloads it once and keeps it. If the visitor opens a second page that points at the same file, it is already there and is not fetched again.",
+  "blocks.5.text": "Why at the bottom: the browser reads the page from top to bottom and stops at the script until it has run. Put it at the top and the visitor stares at a blank screen while the code runs. At the bottom — the page is already visible.",
 
-  "blocks.5.marks.0.label": "SHOWS",
-  "blocks.5.marks.1.label": "WHAT",
-  "blocks.5.legend.0": "The semicolon at the end says the line is over. Leave it out and JavaScript usually works it out — but not always.",
+  "blocks.6.text": "The first line",
+  "blocks.7.text": "JavaScript performs actions. It does not describe the page — it does things with it. Here is the first line you will write:",
 
-  "blocks.6.items.0": "`console` is the console — the place where your code can tell you something.",
-  "blocks.6.items.1": "`log` is the action: show. The dot between them means \"on the console, do log\".",
-  "blocks.6.items.2": "Inside the brackets goes whatever you want to see. Here it is the sum `12 + 30`.",
+  "blocks.8.marks.0.label": "SHOWS",
+  "blocks.8.marks.1.label": "WHAT",
+"blocks.8.legend.0": "The semicolon at the end says the line is over. Leave it out and JavaScript usually works it out from the line break. The cases where it does not are few and strange, and the bugs they cause are miserable to find. So it is always written.",
 
-  "blocks.7.text": "Notice what comes out. Not `12 + 30`, but 42. The sum happens BEFORE the showing — only the result reaches the console.",
+  "blocks.9.items.0": "`console` is the console — the place where your code can tell you something.",
+  "blocks.9.items.1": "`log` is the action: show. The dot between them means \"on the console, do log\".",
+  "blocks.9.items.2": "Inside the brackets goes whatever you want to see. Here it is the sum `12 + 30`.",
 
-  "blocks.8.text": "Where it comes out",
-  "blocks.9.text": "Not on the page. The number goes to the console — the panel on the right.",
+  "blocks.10.text": "Where it comes out",
+  "blocks.11.text": "Not on the page. The number goes to the console — the panel on the right.",
 
-  "blocks.11.text": "The preview and the console are two different places. The preview is what a visitor sees. The console is what you see while you write.",
-  "blocks.12.text": "That is why the console is the first thing in this course. From here on, every error goes through it.",
+  "blocks.13.text": "Notice what comes out. Not `12 + 30`, but 42. The sum happens BEFORE the showing — only the result reaches the console.",
+  "blocks.14.text": "The preview and the console are two different places. The preview is what a visitor sees. The console is what you see while you write. That is why it is the first thing in this course — from here on, every error goes through it.",
 
-  "blocks.13.text": "What can go in the brackets",
-  "blocks.14.text": "Not only sums. A number, a piece of text, anything:",
+  "blocks.15.text": "What can go in the brackets",
+  "blocks.16.text": "Not only sums. A number, a piece of text, anything:",
 
-  "blocks.16.text": "Text needs quotes. Without them JavaScript takes it for the name of something and looks for where it was declared — and there is nothing. A number needs no quotes.",
+  "blocks.18.text": "Text needs quotes. Without them JavaScript takes it for the name of something and looks for where it was declared — and there is nothing. A number needs no quotes. There is more on that in the next lesson.",
 
-  "blocks.17.text": "Without console.log nothing comes out",
-  "blocks.18.text": "The computer does not show what you did not ask for. This line is perfectly valid and does nothing visible:",
+  "blocks.19.text": "Without console.log nothing comes out",
+  "blocks.20.text": "The computer does not show what you did not ask for. This line is perfectly valid and does nothing visible:",
 
-  "blocks.20.text": "The sum is worked out. The result is thrown away at once, because nobody asked for it. The console stays empty.",
+  "blocks.22.text": "The sum is worked out. The result is thrown away at once, because nobody asked for it. The console stays empty.",
 
-  "blocks.21.text": "Line by line",
-  "blocks.22.text": "The code runs from top to bottom. Three lines give three lines:",
+  "blocks.23.text": "When, and in what order",
+  "blocks.24.text": "The code runs once — the moment the page opens. From top to bottom, line by line. Three lines give three lines:",
 
-  "blocks.24.quote": "The computer does not guess. It does not calculate in its head and does nothing you did not tell it explicitly. It sounds like a flaw. It is the only reason code is predictable.",
+  "blocks.26.text": "Close the page and open it again and everything runs from the start. Nothing is remembered in between.",
+  "blocks.27.quote": "The computer does not guess. It does not calculate in its head and does nothing you did not tell it explicitly. It sounds like a flaw. It is the only reason code is predictable.",
 
-  "blocks.25.text": "So far",
-  "blocks.26.items.0": "HTML shows characters. JavaScript performs actions.",
-  "blocks.26.items.1": "`console.log` shows something in the console, not on the page.",
-  "blocks.26.items.2": "Inside the brackets goes the number, text or sum you want to see.",
-  "blocks.26.items.3": "Without `console.log` the sum is worked out and forgotten."
+  "blocks.28.text": "Notes in the code",
+  "blocks.29.text": "Not everything in a file is meant to run. Two slashes turn the rest of the line into a note — the computer skips it. For several lines at once there is the other kind:",
+
+"blocks.31.text": "Notes are for the person reading the code. They are used for something else too: to switch a line off temporarily instead of deleting it. You will do that often while hunting a bug. The editor does it for you — `Ctrl+/` for a single line, `Ctrl+Shift+/` for several selected ones. On Mac it is `Cmd` and `Option`. ⚠ One warning: multiline notes do not nest. Wrap a chunk that already contains `/* */` and the note ends halfway, and everything after it breaks.",
+
+  "blocks.32.text": "So far",
+  "blocks.33.items.0": "HTML shows characters. JavaScript performs actions.",
+  "blocks.33.items.1": "The script runs once, when the page opens, from top to bottom.",
+  "blocks.33.items.2": "`console.log` shows something in the console, not on the page.",
+  "blocks.33.items.3": "Without `console.log` the sum is worked out and forgotten.",
+  "blocks.33.items.4": "`//` makes a note to the end of the line. `/* */` — for several lines.",
+  "walkthrough.0.text": "The whole lesson is one line. Not because the task is small, but because `console.log` does exactly one thing.",
+  "walkthrough.1.text": "`1247 * 3` is worked out first. At this point the result is 3741 and nobody has seen it yet.",
+  "walkthrough.2.text": "Then `console.log` gets it ready-made and shows it. What goes in the brackets is not the sum — it is the sum's result.",
+  "walkthrough.3.text": "Why not `console.log(3741)`: the number would be right, but the computer would have calculated nothing. Tomorrow the price becomes 4 and the line with the sum is fixed in one place, while a written-in answer simply stays a lie."
 }

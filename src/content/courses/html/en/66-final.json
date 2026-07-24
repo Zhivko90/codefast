@@ -42,7 +42,7 @@
   "checkLabels.t38": "A link with words in it",
   "checkLabels.t39": "The link leads somewhere",
   "checkLabels.t40": "The link is not \"click here\"",
-  "checkLabels.t41": "The link is not \"кликни тук\"",
+  "checkLabels.t41": "The link is not \"click here\"",
 
   "why.empty": "You will freeze. A blank file does that to everyone, including people who have done this for twenty years. The difference is that you now know what to do with the feeling. Write one tag. Any tag. Then the next.",
   "hint2.empty": "Do not think about the site. Think about the first line. It is the same in every file you have ever written.",

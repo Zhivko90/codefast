@@ -1,18 +1,3 @@
-// ЛОГИКА. Нула думи. Текстът е в src/content/courses/js/{bg,en}/01-hello.json
-//
-// ★ ПРОБЛЕМЪТ ПРЕДИ ИНСТРУМЕНТА.
-// Страницата вече показва „1247 x 3". Показва ЗНАЦИТЕ. Не отговора.
-// HTML не смята — той повтаря. Оттам излиза нуждата от втори език.
-//
-// ⚠ ЗАЩО ЧИСЛАТА СА ГОЛЕМИ
-// 2 + 2 се пише наум и урокът се минава с console.log(4) — без нищо научено.
-// 1247 x 3 не се смята наум. Инструментът става НУЖЕН, не украса.
-// t7 затваря и последната вратичка: отговорът не бива да е в кода.
-//
-// ⚠ МАХНАТИ ЧЕТИРИ ПРОВЕРКИ: changed, balanced, dom_has, dom_count.
-// И четирите гледат СГЛОБЕНИЯ документ, а index.html вече не се показва
-// в JS урок — ученикът не може да го счупи. Проверка, която не може да
-// падне, е украса. Празният редактор се хваща от src_changed.errEmpty.
 export default {
   id: 1,
   type: "web",
@@ -52,20 +37,17 @@ h1 {
     { id: "t5", type: "logs", mode: "count", min: 1, err: "no-output", weight: 400, step: 1 },
 
     { id: "t6", type: "logs", mode: "equals", value: "3741", err: "wrong-number", weight: 300, step: 2 },
-    // ⚠ Отговорът НЕ бива да е в кода. Сметнал го е някъде другаде и го е
-    // преписал → минава изхода, пропуска урока.
-    //
-    // ⚠ В СЪЩАТА СТЪПКА като t6. Сама тя минава на празен редактор и
-    // стъпката би светнала зелена, преди човекът да е написал нещо.
     { id: "t7", type: "src_not_contains", value: "3741", err: "typed-answer", weight: 250, step: 2 },
   ],
   blocks: [
-    // ── Проблемът ──
     { type: "band", kind: "learn" },
     { type: "text" },
     { type: "text" },
 
-    // ── Третият език ──
+    { type: "heading" },
+    { type: "text" },
+    { type: "text" },
+
     { type: "heading" },
     { type: "text" },
     {
@@ -79,7 +61,6 @@ h1 {
     },
     { type: "list", ordered: true, items: [undefined, undefined, undefined] },
 
-    // ── Къде излиза ──
     { type: "heading" },
     { type: "text" },
     {
@@ -90,7 +71,6 @@ h1 {
     { type: "text" },
     { type: "text" },
 
-    // ── Какво влиза вътре ──
     { type: "heading" },
     { type: "text" },
     {
@@ -102,7 +82,6 @@ Bean Street`
     },
     { type: "text" },
 
-    // ── Без console.log ──
     { type: "heading" },
     { type: "text" },
     {
@@ -112,7 +91,6 @@ Bean Street`
     },
     { type: "text" },
 
-    // ── Ред по ред ──
     { type: "heading" },
     { type: "text" },
     {
@@ -124,15 +102,28 @@ console.log(3);`,
 2
 3`
     },
+    { type: "text" },
     { type: "quote" },
 
-    // ── Обобщение ──
+    { type: "heading" },
+    { type: "text" },
+    {
+      type: "code",
+      code: `console.log(1247 * 3);
+
+/*
+console.log("not now");
+console.log("nor this");
+*/`,
+      out: `3741`
+    },
+    { type: "text" },
+
     { type: "band", kind: "recap" },
-    { type: "list", items: [undefined, undefined, undefined, undefined] },
+    { type: "list", items: [undefined, undefined, undefined, undefined, undefined] },
   ],
-  steps: [undefined, undefined],
-  // ⚠ ЕТАЛОННОТО РЕШЕНИЕ. Не е текст, не се превежда, ученикът не го вижда.
-  // /bg/lessontest го пуска и иска да мине. Падне ли — урокът е непроходим.
+steps: [undefined, undefined],
   solution: `console.log(1247 * 3);`,
+  walkthrough: [undefined, undefined, undefined, undefined],
   slug: "01-hello"
 };

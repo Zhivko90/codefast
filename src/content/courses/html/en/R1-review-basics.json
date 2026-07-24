@@ -1,24 +1,38 @@
 {
   "title": "The basics",
-  "assignment": "Review the concepts from this section. If something is unclear, go back to the lesson.",
+  "assignment": "Go over the concepts from this section. If something is unclear, go back to the lesson.",
 
   "groups.0.title": "Tags and elements",
   "groups.0.items.0.term": "Opening and closing tag",
-  "groups.0.items.0.def": "<h1> opens. </h1> closes. The slash says \"this is where it ends\". Forget it, and the browser guesses where the thing ends — and it usually guesses wrong.",
+  "groups.0.items.0.def": "<h1> opens. </h1> closes. The slash goes BEFORE the name and means \"this is where it ends\". Not after it — <h1/> closes nothing.",
   "groups.0.items.1.term": "Element",
-  "groups.0.items.1.def": "Opening tag + content + closing tag. The three together.",
+  "groups.0.items.1.def": "Opening tag + content + closing tag. All three together.",
   "groups.0.items.2.term": "Wrapping",
-  "groups.0.items.2.def": "The text sits INSIDE the tag, not after it. <h1>Ivan</h1>, not <h1></h1>Ivan.",
+  "groups.0.items.2.def": "The text sits INSIDE the tag, not after it. <h1>Alex</h1>, not <h1></h1>Alex.",
+  "groups.0.items.3.term": "An unclosed tag swallows",
+  "groups.0.items.3.def": "Forget the closing tag and the element never ends — it eats everything after it. The page shows, there is no error, and it is still wrong. When something is inexplicably huge, look for an unclosed tag first.",
+  "groups.0.items.4.term": "Nesting",
+  "groups.0.items.4.def": "A tag inside a tag. Whatever opened last closes first. Cross them over and the browser shows no error — it guesses what you meant.",
 
   "groups.1.title": "The tags you know",
   "groups.1.items.0.term": "<h1>",
-  "groups.1.items.0.def": "Top-level heading. It does not mean \"big\" — it means \"important\". The size is the browser's call.",
+  "groups.1.items.0.def": "First-level heading. It does not mean \"big\" — it means \"this is the page's heading\". The size is the browser's decision.",
   "groups.1.items.1.term": "<p>",
-  "groups.1.items.1.def": "Paragraph. Without it, sentences glue into one line, no matter how many Enters you press.",
+  "groups.1.items.1.def": "Paragraph. Each paragraph gets its own tag. Without it, sentences stick together on one line no matter how many times you press Enter.",
 
   "groups.2.title": "What you are actually doing",
   "groups.2.items.0.term": "You describe, you do not draw",
-  "groups.2.items.0.def": "You never say how big, what font, what colour. You only say what a thing IS. How it looks is the browser's call.",
-  "groups.2.items.1.term": "Blank lines do not exist",
-  "groups.2.items.1.def": "The Enters you see in your code are not there for the browser. If you want separation, you say so with a tag."
+  "groups.2.items.0.def": "You never say how big, which font, which color. You only say what a thing IS. The same words in <h1> and in <p> are one sentence with two different roles.",
+  "groups.2.items.1.term": "The browser's stylesheet",
+  "groups.2.items.1.def": "The page looks styled because the browser loads CSS of its own before it sees yours. Big headings, margins, list bullets and blue links come from there. Your CSS overrides it.",
+  "groups.2.items.2.term": "Who benefits",
+  "groups.2.items.2.def": "The person with a screen reader. Readers have shortcuts to jump paragraph to paragraph and heading to heading. Bare text has nothing to jump to.",
+
+  "groups.3.title": "Three traps",
+  "groups.3.items.0.term": "Spaces do not count",
+  "groups.3.items.0.def": "Any run of spaces, tabs and newlines becomes ONE space. That is why you cannot align with spaces — and why indentation in code is free.",
+  "groups.3.items.1.term": "An empty paragraph is not spacing",
+  "groups.3.items.1.def": "The screen reader announces a paragraph and reads nothing. Spacing is a look, and looks are made with CSS.",
+  "groups.3.items.2.term": "HTML, CSS, JavaScript",
+  "groups.3.items.2.def": "HTML says what exists. CSS says how it looks. JavaScript says what it does. In that order — you cannot color something that is not there."
 }

@@ -3,7 +3,7 @@ export default {
     {
       id: 'nothing',
       modules: [
-        { id: 'firstrun', lessons: ['01-hello', '02-values', '03-variable', '04-const', '05-var', '06-plus', '07-swap', '08-broken', '09-quiz'] },
+       { id: 'firstrun', lessons: ['01-hello', '02-values', '03-variable', '04-naming', '05-const', '06-var', '07-plus', '08-swap', '09-broken', '10-quiz'] },
       ],
     },
     {

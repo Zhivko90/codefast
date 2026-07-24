@@ -11,65 +11,80 @@
   "checkLabels.t7": "The class is on the right paragraph",
   "checkLabels.t8": "The note is grey",
   "checkLabels.t9": "The note is italic",
-  "checkLabels.t10": "The heading is still dark red",
+  "checkLabels.t10": "The heading is still dark blue",
 
-  "why.empty": "The editor is empty. Hit the bin and start again.",
+  "why.empty": "The editor is empty. Bring the files back and start again.",
 
   "why.untouched": "The code is exactly as it was.",
-  "hint2.untouched": "Here you work in BOTH files. The label goes in index.html, the rule goes in styles.css.",
+  "hint2.untouched": "Here you work in BOTH files. The label goes in `index.html`, the rule goes in `styles.css`.",
 
   "why.not-closed": "A tag is open and never closed, or a quote is missing.",
-  "hint2.not-closed": "The class value goes in quotes: class=\"note\". One to open, one to close.",
-  "hint3.not-closed": "<p class=\"note>Text</p> — the quote after note is missing. From there the browser reads everything as part of the value.",
+  "hint2.not-closed": "The `class` value goes in quotes: `class=\"note\"`. One to open, one to close.",
+  "hint3.not-closed": "`<p class=\"note>Text</p>` — the quote after note is missing. From there the browser reads everything as part of the value.",
 
-  "why.unlinked": "The page can't find styles.css. You've edited the link line.",
-  "hint2.unlinked": "Hit the bin and start again. You're touching the class and the rule, not the link.",
+  "why.unlinked": "The page can't find `styles.css`. You've edited the `link` line.",
+  "hint2.unlinked": "Bring the files back and start again. You're touching the class and the rule, not the link.",
 
   "why.no-h1": "There is no heading.",
-  "why.h1-broken": "The heading isn't dark red any more. You edited the h1 rule, and that one was fine.",
+  "why.h1-broken": "The heading isn't dark blue any more. You edited the `h1` rule, and that one was fine.",
   "hint2.h1-broken": "You're adding a new rule. The old ones stay untouched.",
 
-  "why.used-inline": "You used style on the tag. That's exactly what we're getting away from — you now have the real tool.",
-  "hint2.used-inline": "A class is a label, not a style. In the HTML you only put the name. The colour goes in styles.css.",
+  "why.used-inline": "You used `style` on the tag. That's exactly what we're getting away from — you now have the real tool.",
+  "hint2.used-inline": "A class is a label, not a style. In the HTML you only put the name. The colour goes in `styles.css`.",
 
   "why.lost-p": "There aren't three paragraphs any more. You're adding a label, not deleting or adding.",
-  "hint2.lost-p": "All three sentences have to stay. Only one of them gets a class.",
+  "hint2.lost-p": "All three sentences have to stay. Only one of them gets a `class`.",
 
   "why.wrong-count": "The class is on the wrong number of paragraphs. It should be exactly one.",
   "hint2.wrong-count": "You've put it on more than one — or on none.",
-  "hint3.wrong-count": "Put class=\"note\" on all three and all three go grey. The rule works, but you've achieved nothing — they all look the same again, just greyer.",
+  "hint3.wrong-count": "Put `class=\"note\"` on all three and all three go grey. The rule works, but you've achieved nothing — they all look the same again, just greyer.",
   "hint4.wrong-count": "One class, one paragraph. Remove it from the others.",
 
   "why.no-note": "There's no element with that class. Either you didn't add it, or the name doesn't match.",
-  "hint2.no-note": "Compare letter by letter: the one in class=\"...\" and the one after the dot in styles.css.",
-  "hint3.no-note": ".Note and .note are different. The dot in front is required in CSS and absent in HTML.",
-  "hint4.no-note": "In HTML: class=\"note\". In CSS: .note { }. No dot in the first, a dot in the second.",
+  "hint2.no-note": "Compare letter by letter: the one in `class=\"...\"` and the one after the dot in `styles.css`.",
+  "hint3.no-note": "`.Note` and `.note` are different. In a page with `<!DOCTYPE html>` the case counts — a capital in one place and a lowercase in the other means two different classes.",
+  "hint4.no-note": "In HTML: `class=\"note\"`. In CSS: `.note { }`. No dot in the first, a dot in the second.",
 
   "why.wrong-one": "The class is on the wrong paragraph. The note is the one about Christmas.",
   "hint2.wrong-one": "Which of the three sentences is extra information rather than part of the main text?",
 
   "why.note-not-gray": "The paragraph with the class isn't grey.",
-  "hint2.note-not-gray": "The rule starts with a dot and the class name: .note { }",
-  "hint3.note-not-gray": "If you wrote note without a dot, CSS looks for a tag called note. There isn't one, so the rule catches nothing.",
-  "hint4.note-not-gray": ".note { color: gray; }",
+  "hint2.note-not-gray": "The rule starts with a dot and the class name: `.note { }`",
+  "hint3.note-not-gray": "If you wrote `note` without a dot, CSS looks for a tag called note. There isn't one, so the rule catches nothing.",
+  "hint4.note-not-gray": "`.note { color: gray; }`",
 
   "why.note-not-italic": "The note is grey but not italic.",
-  "hint2.note-not-italic": "The property is font-style. It goes in the same rule.",
-  "hint3.note-not-italic": "font-style: italic; — that slants the text. Don't confuse it with font-weight, which makes it bold.",
+  "hint2.note-not-italic": "The property is `font-style`. It goes in the same rule.",
+  "hint3.note-not-italic": "`font-style: italic;` — that slants the text. Don't confuse it with `font-weight`, which makes it bold.",
 
-  "blocks.0.text": "Last lesson you tried to reach one paragraph and couldn't. A tag selector knows what a thing is, not which one it is. What you were missing was a way to PUT A LABEL on it.",
+  "blocks.0.text": "The label",
+  "blocks.1.text": "Last lesson you tried to reach one paragraph and couldn't. A tag selector knows what a thing IS, not which one it is. What you were missing was a way to PUT A LABEL on it.",
 
-  "blocks.1.text": "Two steps",
-  "blocks.2.text": "First you stick the label in the HTML. The attribute is called class, and the name is yours to pick:",
-  "blocks.4.text": "Then you call it in the CSS. A dot in front — it says \"this is a class, not a tag\":",
-  "blocks.6.text": "The dot is the difference. note without a dot means a tag called note — there isn't one. .note means any element carrying that label.",
+  "blocks.2.text": "Two steps",
+  "blocks.3.text": "First you stick the label in the HTML. The attribute is called `class`, and the name is yours to pick:",
+  "blocks.5.text": "Then you call it in the CSS. A dot in front — it says \"this is a class, not a tag\":",
+  "blocks.7.text": "The dot is the difference. `note` without a dot means a tag called note — there isn't one. `.note` means any element carrying that label.",
 
-  "blocks.7.text": "How to pick the name",
-  "blocks.8.text": "The name says WHAT the thing is, not how it looks. note is a good name. gray is a bad one — tomorrow you decide the note should be blue, and your class is called gray. The rest of the code is now lying.",
-  "blocks.9.text": "One element can carry several classes, separated by spaces. And one class can sit on as many elements as you like — that's exactly what makes it useful. Put note on five notes across the whole site and fix all five with one rule.",
-  "blocks.10.text": "A class isn't a style. It's a name. The style lives separately, in the CSS — and that's precisely why one label can mean different things on different pages.",
+  "blocks.8.text": "How to pick the name",
+  "blocks.9.text": "The name says WHAT the thing is, not how it looks. `note` is a good name. `gray` is a bad one — tomorrow you decide the note should be blue, and your class is called gray. The rest of the code is now lying.",
+  "blocks.10.text": "One element can carry several classes, separated by spaces: `class=\"note urgent\"`. And one class can sit on as many elements as you like — that's exactly what makes it useful. Put `note` on five notes across the whole site and fix all five with one rule.",
+  "blocks.11.text": "Selectors stick together in the CSS too, with no space between them. `p.note` means a paragraph carrying that class — not every element with it. `.note.urgent` means an element carrying BOTH labels. A space between them would mean something else entirely, and that's lesson 11.",
+  "blocks.12.text": "A class isn't a style. It's a name. The style lives separately, in the CSS — and that's precisely why one label can mean different things on different pages.",
 
-  "blocks.11.text": "The task",
-  "blocks.12.text": "Put a class of note on the Christmas paragraph — only that one. In styles.css make it grey and italic.",
-  "blocks.13.text": "Don't touch the other rules. And don't put the class on all three — if you do, it'll work, and you'll be right back where you started."
+  "blocks.13.text": "The task",
+  "blocks.14.text": "Put a class of `note` on the Christmas paragraph — only that one. In `styles.css` make it grey and italic.",
+  "blocks.16.text": "Don't touch the other rules. And don't put the class on all three — if you do, it'll work, and you'll be right back where you started.",
+
+  "blocks.17.text": "In short",
+  "blocks.18.items.0": "In HTML: `class=\"note\"`, no dot. In CSS: `.note`, with a dot.",
+  "blocks.18.items.1": "The name says what the thing IS, not how it looks.",
+  "blocks.18.items.2": "One class on many elements. One element with many classes.",
+  "blocks.18.items.3": "Case counts. `.Note` and `.note` are two different classes.",
+
+  "blocks.19.text": "One to keep in mind: the name has to start with a letter. `class=\"2col\"` is legal HTML, but `.2col` in CSS doesn't work — and nobody will tell you why. Start your names with a letter and you'll never meet this.",
+
+  "walkthrough.0.text": "The class goes in the opening tag, like any other attribute. The closing `</p>` isn't touched — it has no attributes at all.",
+  "walkthrough.1.text": "The `.note` rule sits BELOW the `p` rule. That isn't an accident: the two argue over the colour of the same paragraph, and the lower one wins. Why exactly that one — lesson 53.",
+  "walkthrough.2.text": "I wrote `gray`. If you wrote `grey`, that passes too — the two names are the same colour in CSS and the browser reports them identically.",
+  "walkthrough.3.text": "I called it `note`, not `gray` or `last`. `gray` would have started lying the day the note turned blue. `last` would have started lying the day you added a paragraph below it. A name that describes the role outlives a name that describes the look or the position."
 }

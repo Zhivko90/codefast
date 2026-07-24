@@ -1,35 +1,73 @@
 {
-  "title": "A note for you in six months",
+  "title": "A note for yourself six months from now",
+  "taskTitle": "The task",
 
-  "checkLabels.t0": "You must write something",
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t1": "There must be a comment",
-  "checkLabels.t2": "The comment must be closed",
-  "checkLabels.t3": "The heading must still be there",
-  "checkLabels.t5": "The sentence must still be there",
-  "checkLabels.t4": "The image must still be there",
+  "steps.0.text": "Add one comment somewhere inside `<body>`.",
 
-  "why.empty": "The editor is empty. You deleted the page instead of leaving yourself a note in it. Bring the code back.",
-  "why.not-closed": "A tag is open and never closed, or closed in the wrong order.",
-  "why.no-comment": "There is no comment. The syntax is odd and hard to remember: <!-- in front, --> behind.",
-  "why.not-closed-comment": "You opened the comment but never closed it. --> is missing. An unclosed comment eats everything after it — the whole page disappears.",
-  "why.lost-content": "Something is gone from the page. You are adding a comment, not deleting. And careful: you may have commented it out — and commented code does not exist.",
-  "why.lost-img": "The image is gone. You may have commented it out. Commented code does not exist — to the browser it is not there.",
+  "checkLabels.t0": "Something is written",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t1": "There is a comment",
+  "checkLabels.t2": "The comment is closed",
+  "checkLabels.t3": "The heading is still there",
+  "checkLabels.t5": "The sentence is still there",
+  "checkLabels.t4": "The image is still there",
 
-  "hint2.no-comment": "The syntax is <!-- text -->. See the example.",
-  "hint3.no-comment": "Put it somewhere in <body>, before the image for instance.",
-  "hint2.not-closed-comment": "--> is missing. Look at where your comment ends.",
-  "hint3.not-closed-comment": "Without the closing --> the browser thinks the comment runs to the end of the file. And eats everything.",
-  "hint2.lost-content": "Check that nothing ended up INSIDE the comment. Between <!-- and --> nothing exists.",
-  "hint2.lost-img": "Check the image did not end up INSIDE the comment. Between <!-- and --> nothing exists.",
+  "why.empty": "The editor is empty. You deleted the page instead of leaving a note in it. Bring the code back.",
+  "hint2.empty": "Restore the page from the last lesson and add the comment line.",
 
-  "blocks.0.text": "Your code is getting long. Five or six lines doing different things. Today it is all clear to you.",
-  "blocks.1.text": "In six months you will open it and think: \"what is this, who wrote it, why is it like that\". You wrote it. You just forgot.",
-  "blocks.2.text": "You leave yourself a note",
-  "blocks.4.text": "The syntax is odd and hard to remember. <!-- in front, --> behind.",
-  "blocks.5.text": "Put one comment in your code — anywhere. Run. Nothing appears on the page.",
-  "blocks.6.text": "Who reads it",
-  "blocks.7.text": "Not the browser. Not Google. Not the blind person. Only someone who opens the code — and that someone is usually you.",
-  "blocks.8.text": "Careful: commented code DOES NOT EXIST. Wrap something in <!-- --> and to the browser it is gone. That is handy when you want to switch something off for a moment. And it is a trap when you forget.",
-  "blocks.9.text": "\"You in six months open the file and cannot understand what you wrote.\""
+  "why.not-closed": "Some tag is open and never closed, or closed in the wrong order.",
+  "hint2.not-closed": "Check the comment too — it also has a beginning and an end.",
+
+  "why.no-comment": "There is no comment. The markers are odd and hard to remember: `<!--` in front, `-->` behind.",
+  "hint2.no-comment": "Put it somewhere in `<body>` — above the image, for instance.",
+  "hint3.no-comment": "The whole line is `<!-- some text -->`. Look at the example.",
+
+  "why.not-closed-comment": "You opened the comment but never closed it. `-->` is missing. An unclosed comment eats everything after it — the whole page disappears.",
+  "hint2.not-closed-comment": "Look at where your comment ends.",
+  "hint3.not-closed-comment": "Without the closing `-->` the browser assumes the comment runs to the end of the file.",
+
+  "why.lost-content": "Something disappeared from the page. You are adding a comment, not deleting. And watch out: you may have commented it out — and commented-out things do not exist.",
+  "hint2.lost-content": "Check whether something ended up INSIDE the comment. Between `<!--` and `-->` nothing exists.",
+
+  "why.lost-img": "The image is gone. You may have wrapped it in the comment. Commented-out code does not exist — as far as the browser is concerned it is not there.",
+  "hint2.lost-img": "Look at where your comment ends. If `-->` is below the image line, the image is inside.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Your code is getting long. A dozen lines doing different things. Today it is all clear to you.",
+  "blocks.2.text": "Six months from now you will open it and think: \"what is this, who wrote it, why is it like this\". You wrote it. You just forgot.",
+
+  "blocks.3.text": "Leaving yourself a note",
+  "blocks.5.text": "The markers are odd and hard to remember. `<!--` in front, `-->` behind. Notice the exclamation mark is only in the opening one — the closing one does not have it.",
+  "blocks.6.text": "Put a comment in your code, anywhere. Run it. Nothing will appear on the page.",
+
+  "blocks.7.text": "It is not a hiding place",
+  "blocks.8.text": "A comment is not displayed, but it travels to the visitor along with the rest of the page. Right-click, View Page Source — and there it is, word for word. Anyone can read it.",
+  "blocks.9.text": "This is not a minor detail. OWASP — the organisation that writes the security handbooks — has a dedicated procedure for reviewing comments for leaked information. The reason: people put debugging notes in them and then forget to remove them.",
+  "blocks.10.items.0": "No passwords or keys. It sounds obvious and it is a classic.",
+  "blocks.10.items.1": "No internal addresses or server names.",
+  "blocks.10.items.2": "No notes about unfinished things that have not been announced.",
+
+  "blocks.11.text": "Switching code off",
+  "blocks.12.text": "The second use is the more common one: you disable something temporarily without deleting it.",
+  "blocks.14.text": "The image disappears from the page. It is not deleted — as far as the browser is concerned it is not there. Remove the markers and it comes back. You will do this constantly while hunting for where a bug comes from.",
+  "blocks.15.text": "But do not fool yourself that you removed it. The file still contains that line and it still travels across the network. Hidden does not mean gone.",
+
+  "blocks.16.text": "Two traps",
+  "blocks.18.text": "Comments do not nest. Here the whole comment ends at the first `-->`, and the remainder — `still outer -->` — shows up on the page as ordinary text. It looks like a bug out of nowhere.",
+  "blocks.19.text": "The second: avoid two hyphens side by side inside a comment. `--` can terminate it early and you get the same result. If you need a dash, use one.",
+
+  "blocks.20.text": "The task",
+  "blocks.21.text": "Add one comment to your page. Anything at all — but make it something that would actually help you half a year from now.",
+  "blocks.22.text": "\"This is the heading\" does not help. \"The picture is temporary until I take my own\" does.",
+
+  "blocks.23.text": "So far",
+  "blocks.24.items.0": "`<!--` opens, `-->` closes. The exclamation mark is only in front.",
+  "blocks.24.items.1": "It does not show on the page, but it is visible in View Source.",
+  "blocks.24.items.2": "No passwords or internal notes inside.",
+  "blocks.24.items.3": "Commented-out code does not run, but it still travels.",
+  "blocks.24.items.4": "Comments inside comments do not work.",
+
+  "walkthrough.0.text": "One line above the image. Nothing else is touched.",
+  "walkthrough.1.text": "The note says why the image is what it is, not what it is. The second is visible from the code itself; the first is not.",
+  "walkthrough.2.text": "If your page suddenly goes blank, check the comments first. A missing `-->` turns the whole rest of the file into a note."
 }

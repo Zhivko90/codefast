@@ -113,5 +113,16 @@
   "name_chars": "No spaces or slashes.",
   "name_ext": "Needs an extension: .html, .css, .js",
   "name_dup": "That file already exists.",
-  "copy_code": "Copy code"
+  "copy_code": "Copy code",
+"sol_warn_title": "The finished code is here.",
+  "sol_warn_body": "It is worth going through the hint ladder first — the last rung tells you what to do without giving you the code. Whoever reads the answer remembers it for two days.",
+  "sol_reveal": "Show it",
+  "sol_walkthrough": "Step by step",
+  "f_search": "Search problems",
+  "f_random": "Random",
+  "f_difficulty": "Difficulty",
+  "f_sort": "Sort",
+  "sort_default": "Default",
+  "sort_diff": "By difficulty",
+  "sort_lesson": "By lesson"
 }

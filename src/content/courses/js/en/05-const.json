@@ -1,0 +1,103 @@
+{
+  "title": "What changes and what does not",
+  "taskTitle": "The task",
+
+  "steps.0.text": "Delete the line that changes the price halfway through. It should never have existed.",
+  "steps.1.text": "Make `sold` and `price` constants. They do not change anywhere in this code.",
+  "steps.2.text": "`vat` stays `let` — it is worked out in two steps. The console should show 748.2 and 3341.",
+
+  "checkLabels.t1": "You edited script.js",
+  "checkLabels.t2": "The code runs",
+  "checkLabels.t3": "The price is 3",
+  "checkLabels.t4": "sold is const",
+  "checkLabels.t5": "price is const",
+  "checkLabels.t6": "sold is 1247",
+  "checkLabels.t7": "The tax is worked out",
+  "checkLabels.t8": "The last number is right",
+  "checkLabels.t9": "Four lines come out",
+
+  "why.empty": "script.js is empty. You deleted everything instead of fixing it.",
+
+  "why.untouched": "script.js is exactly as it was.",
+  "hint2.untouched": "The code runs and does not crash. That is exactly the problem — look at the last two numbers.",
+
+  "why.crashed": "Your code stopped with an error before it got to the end.",
+  "hint2.crashed": "Look at the Console panel on the right.",
+  "hint3.crashed": "`TypeError: Assignment to constant variable` means you are trying to change something declared with `const`. That is exactly what `const` does — it does not allow it.",
+  "hint4.crashed": "`SyntaxError: Missing initializer` means you declared a `const` with no value. It wants a value straight away, on the same line.",
+
+  "why.nothing-written": "script.js is empty.",
+  "why.frozen": "Your code never stops.",
+
+  "why.wrong-price": "`price` is not 3. Somewhere in the middle the price changes and the last two sums lie.",
+  "hint2.wrong-price": "The line `price = 4` should never have existed. Delete it — do not correct it to 3.",
+  "hint3.wrong-price": "The first two sums use a price of 3. After it the rest use 4. Nobody complains — the numbers are simply different.",
+
+  "why.sold-not-const": "`sold` is still `let`.",
+  "hint2.sold-not-const": "The number of coffees sold does not change in this code. So it should not be able to.",
+  "hint3.sold-not-const": "`const cups = 12;` creates a name that cannot point to anything else. Try it and the code crashes on the spot instead of quietly calculating with the wrong value.",
+
+  "why.price-not-const": "`price` is still `let`.",
+  "hint2.price-not-const": "The price does not change either. Make it `const`.",
+
+  "why.no-sold": "There is no name `sold` with the value 1247.",
+
+  "why.no-vat": "The tax is not worked out correctly. It should be twenty percent of the total.",
+  "hint2.no-vat": "`vat` is worked out from `sold` and `price`. If the price changed in between, the number will be different.",
+  "hint3.no-vat": "1247 times 3 is 3741. Twenty percent of that is 748.2.",
+
+  "why.wrong-last": "The last number is not right. It is worked out with the wrong price.",
+  "hint2.wrong-last": "1247 times 3 minus 400 is 3341. Get anything else and the price is 4 somewhere.",
+
+  "why.wrong-count": "There are not four lines in the console.",
+
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "Look at `script.js`. The code runs. Nothing crashes, the console is clean, four numbers come out.",
+  "blocks.2.text": "And two of them are wrong.",
+
+  "blocks.3.text": "Find it yourself",
+  "blocks.4.text": "Somewhere in the middle the price changes from 3 to 4. The first two sums use the old price, the last two the new one. No error, no warning. Just numbers that do not add up.",
+  "blocks.5.text": "This is the most common kind of mistake in programming and it has nothing to do with syntax. The code is correct. Its meaning is not.",
+  "blocks.6.quote": "The language cannot tell you the number is wrong — it does not know what you meant. The only thing it can do is not allow the change at all.",
+
+  "blocks.7.text": "const",
+  "blocks.8.text": "`let` creates a name that can point to something else. `const` creates one that cannot:",
+
+  "blocks.10.text": "Notice what comes out: the three first, then the error. The first line runs normally — reading a constant is allowed. Only the assignment is stopped, and on exactly its own line.",
+  "blocks.11.text": "Compare it with the alternative: a quiet change you find two months later, because somebody told you the report does not add up. `const` does not make the code faster and does not save memory. It makes it predictable — you see the name and you know nothing will change it further down.",
+
+  "blocks.12.text": "It wants a value straight away",
+  "blocks.13.text": "With `let` you can create a name now and give it a value later. This works:",
+
+  "blocks.15.text": "With `const` it does not. And the error is of a different kind:",
+
+  "blocks.17.text": "It makes sense: a constant with no value is pointless, because a value cannot be given to it later. So the language does not allow it at all. ⚠ Notice the difference between the two errors. Reassignment stops the code **on its own line**, and everything printed before it stays on screen. A missing value stops the file **before it starts** — the console is completely empty.",
+
+  "blocks.18.text": "When to use which",
+  "blocks.19.text": "`const` for everything that does not change. `let` only where the change is deliberate:",
+
+  "blocks.21.text": "`price` and `sold` come from outside and stay. `total` is worked out and then changed — it wants `let`.",
+  "blocks.22.text": "You write `let` only when the value really has to change: a counter in a loop, a running sum, something that depends on the user's choice. ⚠ And do not confuse `const` with the CAPITAL LETTERS from the last lesson. Capitals are only for values written down by you and known in advance. A value that is WORKED OUT while the code runs and then never changes is just as constant — but is written in lowercase. That is why `TAX_RATE` is in capitals and `total` is not, even though both are `const`.",
+
+  "blocks.23.text": "The rule",
+  "blocks.24.quote": "`const`, until something proves it has to be `let`.",
+  "blocks.25.text": "The opposite rule — `let` everywhere just in case — is exactly what let the mistake above exist.",
+
+  "blocks.26.text": "It does not freeze everything",
+  "blocks.27.text": "`const` protects the **name**, not the contents. For numbers and text there is no difference — they do not change from the inside anyway.",
+  "blocks.28.text": "But there are values that have an inside: arrays and objects. There `const` stops the name from pointing elsewhere, while changes inside are made freely. It looks like a contradiction until you reach section six — that is where it becomes clear why it is exactly so.",
+
+  "blocks.29.text": "So far",
+  "blocks.30.items.0": "`const` creates a name that cannot point to anything else.",
+  "blocks.30.items.1": "An attempt to change it gives a `TypeError` on the exact line. What printed before it stays.",
+  "blocks.30.items.2": "`const` with no value gives a `SyntaxError` and the file does not start at all.",
+  "blocks.30.items.3": "`const` by default, `let` only where the change is deliberate.",
+  "blocks.30.items.4": "`const` protects the name, not the contents.",
+
+  "walkthrough.0.text": "The line `price = 4` is deleted, not corrected. Change it to `price = 3` and the code gives the right numbers, and tomorrow somebody writes 4 again. Remove the line and the question is never asked again.",
+  "walkthrough.1.text": "`const sold` and `const price` — now that same `price = 4` line would never reach the console. The code would stop with a `TypeError` and point at the line number. The result is the same as deleting it, but the difference is in the timing: you find out while writing, not two months later from somebody whose report does not add up.",
+  "walkthrough.2.text": "The first two sums are not touched at all. They were already right — they used the price before it changed. The last two fix themselves once the reassignment is gone. You touch two lines and four numbers come out right.",
+  "walkthrough.3.text": "`let vat` stays `let`, because its value is changed on the next line. Written on one line — `const vat = sold * price * 0.2;` — it would be just as correct and cleaner. The rule is `const` by default, but \"by default\" does not mean \"always\": once the code relies on two steps, the name owes a `let`.",
+  "walkthrough.4.text": "`vat = vat * 0.2;` — no `let`. The name already exists and simply starts pointing at a new number. The right-hand side is worked out first, with the value it holds now, and only then does the name move to the result. That is why the line is not nonsense, even though `vat` sits on both sides of the equals sign.",
+  "walkthrough.5.text": "The last line is left untouched and that is exactly what makes it telling: it was 4588, it is now 3341. You did not go near it. The number came right because the price stopped changing behind its back. That is the whole gain from `const` — not faster code, but code that cannot lie to you quietly."
+}

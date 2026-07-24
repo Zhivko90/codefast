@@ -1,28 +1,46 @@
 {
-  "title": "Blank page",
+  "title": "Blank sheet",
+  "taskTitle": "The task",
 
-  "checkLabels.t1": "You must write something",
-  "checkLabels.g1": "All tags must be closed",
-  "checkLabels.t2": "There must be a heading with text in it",
-  "checkLabels.t3": "There must be a sentence with text in it",
+  "checkLabels.t1": "Something is written",
+  "checkLabels.g1": "All tags are closed",
+  "checkLabels.t2": "There is a heading with text in it",
+  "checkLabels.t3": "There is a sentence with text in it",
 
-  "why.empty": "It is empty. I know. This is the moment where most people freeze — and there is no trick for it. Write anything at all. A name. A single letter. Code gets written by starting to write.",
-  "why.not-closed": "A tag is open and never closed. Every opening tag wants a closing one.",
+  "why.empty": "It is empty. I know. This is the moment most people freeze — and there is no trick for it. Write anything. A name. A single letter. Code gets written by starting to write.",
+  "hint2.empty": "Do not think about what is correct. Write one name. You can fix it afterwards.",
+
+  "why.not-closed": "Some tag is open and never closed. Every opening tag wants its closing one.",
+  "hint2.not-closed": "Go top to bottom. Every tag you open is looking for its closing tag. If you opened `<h1>`, there has to be a `</h1>` somewhere.",
+
   "why.no-heading": "There is no heading with text in it. You know the tag. Wrap your name in it.",
-  "why.no-p": "There is a heading, but nothing under it. Who you are — that is the heading. What you do — that is the sentence.",
+  "hint2.no-heading": "The heading tag is `h1`. You wrap the name: `<h1>` in front, `</h1>` behind.",
+  "hint3.no-heading": "If you already wrote it, check whether the name is INSIDE. `<h1>Alex</h1>`, not `<h1></h1>Alex`.",
 
-  "hint2.empty": "Do not think about what is correct. Write one name. You will fix it later.",
-  "hint2.not-closed": "Go top to bottom. Every tag you open is looking for its closing tag. If you opened <h1>, there must be a </h1> somewhere.",
-  "hint2.no-heading": "The heading tag is h1. You wrap the name: <h1> in front, </h1> behind.",
-  "hint3.no-heading": "If you already wrote it, check the name is INSIDE. <h1>Ivan</h1>, not <h1></h1>Ivan.",
-  "hint2.no-p": "The tag for a sentence is p. One sentence under the heading: <p>...</p>.",
+  "why.no-p": "There is a heading but nothing under it. Who you are — that is the heading. What you do — that is the sentence.",
+  "hint2.no-p": "The paragraph tag is `p`. One sentence below the heading.",
 
-  "blocks.0.text": "The editor on the right is empty. There is nothing. Nothing to fix, no dashes to fill in, no code to copy.",
-  "blocks.1.text": "This is the moment where most people freeze. You know everything you need — and still your fingers will not move. That is normal. You will live through it many more times.",
-  "blocks.2.text": "Make a page about yourself",
-  "blocks.3.text": "No instructions. No steps. No right answer. Just this: a page that says who you are and what you do.",
-  "blocks.4.text": "You know two tags. They are enough.",
-  "blocks.5.text": "If you are frozen",
-  "blocks.6.text": "Write anything at all. A name. A single letter. Just do not stare at the empty screen. Code gets written by starting to write — not by sitting and wondering what the right way is.",
-  "blocks.7.text": "Other courses teach you to follow steps. This lesson teaches you to start from nothing. The second is the hard part, and the second is what you will do for the rest of your life."
+  "blocks.0.text": "The lesson",
+  "blocks.1.text": "The editor on the right is empty. Nothing there. Nothing to fix, no blanks to fill, no code to copy.",
+  "blocks.2.text": "This is the moment most people freeze. You know everything you need — and your fingers still will not move. That is normal. You will go through it many more times.",
+
+  "blocks.3.text": "The task",
+  "blocks.4.text": "Make a page about yourself. No instructions. No steps. No right answer. Just this: a page that says who you are and what you do.",
+  "blocks.5.text": "You know two tags. That is enough.",
+  "blocks.6.text": "There is deliberately no example above the editor. An example would mean there is a correct page, and there is not — there is yours.",
+
+  "blocks.7.text": "If you are frozen",
+  "blocks.8.text": "Write anything. A name. A single letter. Just do not stare at the empty screen. Code gets written by starting to write — not by sitting and working out the right way.",
+  "blocks.9.text": "And remember what you already know: the browser does not take offence. A wrong tag breaks nothing you cannot undo. Run it and you see immediately what happened — then you move things around until it is yours.",
+  "blocks.10.text": "Other courses teach you to follow steps. This lesson teaches you to start from nothing. The second one is the hard part, and the second one is what you will be doing for the rest of your life.",
+
+  "blocks.11.text": "So far",
+  "blocks.12.items.0": "An empty editor is a normal part of the work, not a sign that you are not ready.",
+  "blocks.12.items.1": "Two tags are enough for a real page.",
+  "blocks.12.items.2": "There is no correct page. There is yours.",
+  "blocks.12.items.3": "The first line is the hardest. Write it and the rest follows.",
+
+  "walkthrough.0.text": "This is not the right answer. It is the smallest thing that passes the checks — a heading and one sentence.",
+  "walkthrough.1.text": "Your page almost certainly looks different, and that is good. The checks only ask whether there is a heading with text and a paragraph with text. What they say is your business.",
+  "walkthrough.2.text": "There is no `<!DOCTYPE>`, no `<html>`, no `<head>`. The browser copes without them. Why they get written anyway — that is the next module."
 }
